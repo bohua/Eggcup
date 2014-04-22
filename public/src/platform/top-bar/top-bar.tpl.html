@@ -1,0 +1,28 @@
+
+<!--Created by Bli on 14-2-13.-->
+<div ng-controller="topBarController" class="top-bar-wrapper">
+  <t id="search-box-caption">智能搜索</t>
+  <div id="global-search-box" class="input-control text">
+    <input type="text" value="" placeholder="请输入想要查询的关键字..."/>
+    <button class="btn-search"></button>
+  </div>
+  <div id="top-bar-center-title">
+    <t>测试帐户</t>
+  </div>
+  <div id="top-bar-right-button-panel">
+    <nav class="horizontal-menu">
+      <ul>
+        <li><a ng-click="showUserMenu()" class="dropdown-toggle"><i class="icon-user-2"></i>
+            <t>用户名</t></a>
+          <ul id="user-dropdown-menu" class="dropdown-menu">
+            <li><a href="#"><i class="icon-eye">帐户信息</i></a></li>
+            <li><a href="#"><i class="icon-loop">切换帐套</i></a></li>
+            <li><a href="#"><i class="icon-locked-2">锁屏</i></a></li>
+            <li class="divider"></li>
+            <li><a href="#"><i class="icon-switch">登出系统</i></a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>

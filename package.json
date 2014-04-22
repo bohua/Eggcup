@@ -1,0 +1,34 @@
+{
+	"author": "Bohua Li",
+	"name": "Doodle",
+	"version": "0.0.1",
+	"private": true,
+	"start": "node server.js",
+	"licenses": [
+		{
+			"type": "MIT",
+			"url": "https://raw.github.com/angular-app/angular-app/master/LICENSE"
+		}
+	],
+	"devDependencies": {
+		"express": "3.4.8",
+		"jade": "*",
+		"less-middleware": "*",
+		"walk": "*",
+		"mysql": "*",
+		"sequelize": "*",
+		"lodash":"*",
+		"extend":"*",
+		"q": "*",
+
+		"grunt": "*",
+		"grunt-contrib-less": "*",
+		"grunt-contrib-concat": "*",
+		"grunt-contrib-clean": "*",
+		"grunt-contrib-watch": "*",
+		"grunt-html2js": "*",
+		"grunt-contrib-uglify": "*",
+		"grunt-contrib-copy": "*",
+		"grunt-contrib-jade": "*"
+	}
+}

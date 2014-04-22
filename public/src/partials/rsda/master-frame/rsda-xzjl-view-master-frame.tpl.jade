@@ -1,0 +1,282 @@
+//Created by Bli on 2014/4/8.
+fieldset(keyboard-support)
+	legend
+		span.text-muted 个人信息
+		span.place-right.text-muted.doodle-legend Personal Info
+	div.expandable-section(ng-show="expandableSection.showPersonalInfoSection")
+		div.row
+			div.span2
+				label 姓名
+				div.input-control.text(data-role="input-control")
+					input(type="text", placeholder="输入姓名", ng-model="rsda_model.name", autofocus, tab-start)
+					button.btn-clear
+			div.span2
+				label 缩写
+				div.input-control.text(data-role="input-control")
+					input(type="text", placeholder="缩写", ng-model="rsda_model.py")
+					button.btn-clear
+			div.span1
+				label 性别
+				div.input-control.select
+					select(ng-model="rsda_model.xb")
+						option(value="", default, selected) 无
+						option(value="0" ) 男
+						option(value="1" ) 女
+			div.span2
+				label 出生日期
+				div.input-control.text(data-role="datepicker")
+					input(type="text", placeholder="选择生日", ng-model="rsda_model.csrq")
+					button.btn-date(tabindex="-1")
+			div.span1
+				label 年龄
+				div.input-control.text
+					input(type="text", placeholder="自动", disabled, ng-model="rsda_model.nl")
+			div.span2
+				label 政治面貌
+				div.input-control.select
+					select(ng-model="rsda_model.zzmm")
+						option(value="" )
+						option(value="1" ) 群众
+						option(value="2" ) 团员
+						option(value="3" ) 党员
+		div.row
+			div.span2
+				label 民族
+				div.input-control.select
+					select(ng-model="rsda_model.mz")
+						option(value="" )
+			div.span2
+				label 婚姻状态
+				div.input-control.select
+					select(ng-model="rsda_model.hyzt")
+						option(value="" )
+						option(value="1" ) 未婚
+						option(value="2" ) 已婚
+			div.span2
+				label 生份证号
+				div.input-control.text
+					input(type="text", placeholder="身份证号", , ng-model="rsda_model.sfzh")
+					button.btn-clear
+			div.span2
+				label 学历
+				div.input-control.select
+					select(ng-model="rsda_model.xl")
+						option(value="" )
+						option(value="8" ) 博士
+						option(value="7" ) 硕士
+						option(value="6" ) 本科
+						option(value="5" ) 大专
+						option(value="4" ) 中专
+						option(value="3" ) 高中
+						option(value="2" ) 初中
+						option(value="1" ) 无
+			div.span2
+				label 学位
+				div.input-control.select
+					select(ng-model="rsda_model.xw")
+						option(value="" )
+						option(value="1" ) 群众
+						option(value="2" ) 团员
+						option(value="3" ) 党员
+		div.row
+			div.span2
+				label 毕业时间
+				iv.input-control.text(data-role="datepicker")
+					input(type="text", placeholder="毕业时间", ng-model="rsda_model.bysj")
+					button.btn-date(tabindex="-1")
+			div.span4
+				label 毕业院校
+				div.input-control.text
+					input(type="text", placeholder="毕业学校/学院", ng-model="rsda_model.byxx")
+					button.btn-clear
+			div.span4
+				label 专业
+				div.input-control.text
+					input(type="text", placeholder="所学专业", ng-model="rsda_model.zy")
+					button.btn-clear
+
+	legend
+		span.text-muted 职能信息
+		span.place-right.text-muted.doodle-legend Occupation Details
+	div.expandable-section(ng-show="expandableSection.showCareerInfoSection")
+		div.row
+			div.span3
+				label 所属部门
+				div.input-control.select
+					select(ng-model="rsda_model.ssbm")
+						option(value="" )
+			div.span2
+				label 职位
+				div.input-control.select
+					select(ng-model="rsda_model.zw")
+						option(value="" )
+			div.span2
+				label 身份
+				div.input-control.text
+					input(type="text", placeholder="身份", ng-model="rsda_model.sf")
+					button.btn-clear
+			div.span3
+				label 行政级别
+				div.input-control.select
+					select(ng-model="rsda_model.xzjb")
+						option(value="" )
+		div.row
+			div.span2
+				label 雇佣性质
+				div.input-control.select
+					select(ng-model="rsda_model.gyxz")
+						option(value="" )
+						option(value="1" ) 全民合同工
+						option(value="2" ) 集体合同工
+						option(value="3" ) 临时合同工
+			div.span2
+				label 参加工作时间
+				div.input-control.text(data-role="datepicker")
+					input(type="text", placeholder="选择日期", ng-model="rsda_model.cjgzdw_date")
+					button.btn-date(tabindex="-1")
+			div.span2
+				label 工龄
+				div.input-control.text
+					input(type="text", placeholder="自动", disabled, ng-model="rsda_model.gl")
+			div.span2
+				label 参加本单位时间
+				div.input-control.text(data-role="datepicker")
+					input(type="text", placeholder="选择日期", ng-model="rsda_model.jbdw_date")
+					button.btn-date(tabindex="-1")
+			div.span2
+				label 本单位工龄
+				div.input-control.text
+					input(type="text", placeholder="自动", disabled, ng-model="rsda_model.bdwgl")
+		div.row
+			div.span3
+				label 职称
+				div.input-control.select
+					select(ng-model="rsda_model.zc")
+						option(value="" )
+			div.span2
+				label 获得职称时间
+				div.input-control.text(data-role="datepicker")
+					input(type="text", placeholder="选择日期", ng-model="rsda_model.zc_date")
+					button.btn-date(tabindex="-1")
+
+	legend
+		span.text-muted 联系方式
+		span.place-right.text-muted.doodle-legend Contact Info
+	div.expandable-section(ng-show="expandableSection.showContactInfoSection")
+		div.row
+			div.span4
+				label 家庭住址
+				div.input-control.text
+					input(type="text", placeholder="家庭住址", ng-model="rsda_model.jtdz")
+					button.btn-clear
+			div.span2
+				label 籍贯
+				div.input-control.text
+					input(type="text", placeholder="籍贯", ng-model="rsda_model.jg")
+					button.btn-clear
+			div.span2
+				label 手机
+				div.input-control.text
+					input(type="text", placeholder="手机", ng-model="rsda_model.sj")
+					button.btn-clear
+			div.span2
+				label 电话
+				div.input-control.text
+					input(type="text", placeholder="电话", ng-model="rsda_model.dh")
+					button.btn-clear
+		div.row
+			div.span3
+				label 电子邮件
+				div.input-control.text
+					input(type="text", placeholder="电子邮件", ng-model="rsda_model.email")
+					button.btn-clear
+			div.span2
+				label 住房
+				div.input-control.select
+					select(ng-model="rsda_model.zf")
+						option(value="" )
+						option(value="1" ) 单位住房
+						option(value="2" ) 集体宿舍
+						option(value="3" ) 个人住房
+						option(value="4" ) 个人购房
+						option(value="5" ) 其它住房
+			div.span2
+				label 暂住人口
+				div.input-control.checkbox
+					label
+						input(type="checkbox", ng-model="rsda_model.zzrk")
+						span.check
+						span 是, 暂住人口
+			div.span3
+				label 暂住证号
+				div.input-control.text
+					input(type="text", placeholder="暂住证号", ng-model="rsda_model.zzzh")
+					button.btn-clear
+
+	legend
+		span.text-muted 工资信息
+		span.place-right.text-muted.doodle-legend Salary Talk
+	div.expandable-section(ng-show="expandableSection.showSalaryInfoSection")
+		div.row
+			div.span4
+				label 工资发放方式
+				div.input-control.select
+					select(ng-model="rsda_model.gzfffs")
+						option(value="" )
+						option(value="财政拨款" )
+						option(value="教育局自筹资金" )
+						option(value="教育局自筹资-预算卡外" )
+						option(value="教育局自筹资-局自筹" )
+						option(value="学校自筹资金" )
+			div.span2
+				label 工资级别
+				div.input-control.text
+					input(type="text", placeholder="工资级别", ng-model="rsda_model.gzjb")
+					button.btn-clear
+			div.span2
+				label 基本工资
+				div.input-control.text
+					input(type="text", placeholder="0.00", ng-model="rsda_model.jbgz")
+					button.btn-clear
+			div.span2
+				label 级别工资
+				div.input-control.text
+					input(type="text", placeholder="0.00", ng-model="rsda_model.jbgz2")
+					button.btn-clear
+		div.row
+			div.span2
+				label 工龄工资
+				div.input-control.text
+					input(type="text", placeholder="0.00", ng-model="rsda_model.glgz")
+					button.btn-clear
+			div.span2
+				label 其它工资1
+				div.input-control.text
+					input(type="text", placeholder="0.00", ng-model="rsda_model.qtgz1")
+					button.btn-clear
+			div.span2
+				label 其它工资2
+				div.input-control.text
+					input(type="text", placeholder="0.00", ng-model="rsda_model.qtgz1")
+					button.btn-clear
+			div.span2
+				label 其它工资3
+				div.input-control.text
+					input(type="text", placeholder="0.00", ng-model="rsda_model.qtgz1")
+					button.btn-clear
+		div.row
+			div.span4
+				label 开户银行
+				div.input-control.text
+					input(type="text", placeholder="开户银行", ng-model="rsda_model.bankmc")
+					button.btn-clear
+			div.span4
+				label 银行帐号
+				div.input-control.text
+					input(type="text", placeholder="银行帐号", ng-model="rsda_model.banknumber", tab-end)
+					button.btn-clear
+
+
+
+
+

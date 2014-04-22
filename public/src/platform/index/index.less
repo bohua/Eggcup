@@ -1,0 +1,63 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+.unselectable {
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+
+  /*
+    Introduced in IE 10.
+    See http://ie.microsoft.com/testdrive/HTML5/msUserSelect/
+  */
+  -ms-user-select: none;
+  user-select: none;
+}
+
+t {
+  font-family: @font !important;
+}
+
+.bleach-stage {
+  position: relative;
+}
+
+.bleach-content {
+  position: relative;
+  top: -@top-bar-height;
+  padding-top: @top-bar-height;
+
+  width: 100%;
+  height: 100%;
+}
+
+.dropdown-menu{
+  //background: @grey-light !important;
+
+  li:hover{
+    background: @green !important;
+    border-color: @green !important;
+
+    i, t {
+      color: @white !important;
+    }
+  }
+
+  i, t {
+    color: @black-bg !important;
+  }
+
+}
+
+#right-stage {
+  width: 100%;
+  padding-left: @left-panel-width;
+  z-index: 10;
+  height: ~"calc(100% - @{top-bar-height})";
+}
+
+#view-port{
+  overflow: hidden;
+}

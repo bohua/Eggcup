@@ -1,0 +1,745 @@
+
+<!--Created by Bli on 2014/4/4.-->
+<div id="rsda-form" class="grid doodle-form-sheet">
+  <div data-role="tab-control" data-effect="fade" class="tab-control">
+    <ul class="tabs">
+      <li class="active"><a href="#_page_rsda_master"><i class="icon-user"></i><span>基本信息</span></a></li>
+      <li><a href="#_page_rsda_extra"><i class="icon-tag"></i><span>扩充信息</span></a></li>
+      <li><a href="#_page_rsda_family"><i class="icon-home"></i><span>家庭</span></a></li>
+      <li><a href="#_page_rsda_experience"><i class="icon-history"></i><span>经历</span></a></li>
+      <li><a href="#_page_rsda_skill"><i class="icon-wrench"></i><span>技能</span></a></li>
+      <li><a href="#_page_rsda_certificate"><i class="icon-copy"></i><span>证照</span></a></li>
+      <div class="place-right rsda-xzjl-func-button"><a data-hint="清空" ng-mousedown="empty($event)" class="hint--bottom"><i class="icon-remove"></i></a></div>
+      <div class="place-right rsda-xzjl-func-button"><a data-hint="导出" ng-mousedown="export($event)" class="hint--bottom"><i class="icon-file-excel"></i></a></div>
+      <div class="place-right rsda-xzjl-func-button"><a data-hint="打印" ng-mousedown="print($event)" class="hint--bottom"><i class="icon-printer"></i></a></div>
+      <div class="place-right rsda-xzjl-func-button"><a data-hint="保存" ng-mousedown="save($event)" class="hint--bottom"><i class="icon-download"></i></a></div>
+    </ul>
+    <div class="frames">
+      <div id="_page_rsda_master" class="frame">
+        <!--Created by Bli on 2014/4/8.-->
+        <fieldset keyboard-support="keyboard-support">
+          <legend><span class="text-muted">个人信息</span><span class="place-right text-muted doodle-legend">Personal Info</span></legend>
+          <div ng-show="expandableSection.showPersonalInfoSection" class="expandable-section">
+            <div class="row">
+              <div class="span2">
+                <label>姓名</label>
+                <div data-role="input-control" class="input-control text">
+                  <input type="text" placeholder="输入姓名" ng-model="rsda_model.name" autofocus="autofocus" tab-start="tab-start"/>
+                  <button class="btn-clear"></button>
+                </div>
+              </div>
+              <div class="span2">
+                <label>缩写</label>
+                <div data-role="input-control" class="input-control text">
+                  <input type="text" placeholder="缩写" ng-model="rsda_model.py"/>
+                  <button class="btn-clear"></button>
+                </div>
+              </div>
+              <div class="span1">
+                <label>性别</label>
+                <div class="input-control select">
+                  <select ng-model="rsda_model.xb">
+                    <option value="" default="default" selected="selected">无</option>
+                    <option value="0">男</option>
+                    <option value="1">女</option>
+                  </select>
+                </div>
+              </div>
+              <div class="span2">
+                <label>出生日期</label>
+                <div data-role="datepicker" class="input-control text">
+                  <input type="text" placeholder="选择生日" ng-model="rsda_model.csrq"/>
+                  <button tabindex="-1" class="btn-date"></button>
+                </div>
+              </div>
+              <div class="span1">
+                <label>年龄</label>
+                <div class="input-control text">
+                  <input type="text" placeholder="自动" disabled="disabled" ng-model="rsda_model.nl"/>
+                </div>
+              </div>
+              <div class="span2">
+                <label>政治面貌</label>
+                <div class="input-control select">
+                  <select ng-model="rsda_model.zzmm">
+                    <option value=""></option>
+                    <option value="1">群众</option>
+                    <option value="2">团员</option>
+                    <option value="3">党员</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="span2">
+                <label>民族</label>
+                <div class="input-control select">
+                  <select ng-model="rsda_model.mz">
+                    <option value=""></option>
+                  </select>
+                </div>
+              </div>
+              <div class="span2">
+                <label>婚姻状态</label>
+                <div class="input-control select">
+                  <select ng-model="rsda_model.hyzt">
+                    <option value=""></option>
+                    <option value="1">未婚</option>
+                    <option value="2">已婚</option>
+                  </select>
+                </div>
+              </div>
+              <div class="span2">
+                <label>生份证号</label>
+                <div class="input-control text">
+                  <input type="text" placeholder="身份证号" ,="," ng-model="rsda_model.sfzh"/>
+                  <button class="btn-clear"></button>
+                </div>
+              </div>
+              <div class="span2">
+                <label>学历</label>
+                <div class="input-control select">
+                  <select ng-model="rsda_model.xl">
+                    <option value=""></option>
+                    <option value="8">博士</option>
+                    <option value="7">硕士</option>
+                    <option value="6">本科</option>
+                    <option value="5">大专</option>
+                    <option value="4">中专</option>
+                    <option value="3">高中</option>
+                    <option value="2">初中</option>
+                    <option value="1">无</option>
+                  </select>
+                </div>
+              </div>
+              <div class="span2">
+                <label>学位</label>
+                <div class="input-control select">
+                  <select ng-model="rsda_model.xw">
+                    <option value=""></option>
+                    <option value="1">群众</option>
+                    <option value="2">团员</option>
+                    <option value="3">党员</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="span2">
+                <label>毕业时间</label>
+                <iv data-role="datepicker" class="input-control text">
+                  <input type="text" placeholder="毕业时间" ng-model="rsda_model.bysj"/>
+                  <button tabindex="-1" class="btn-date"></button>
+                </iv>
+              </div>
+              <div class="span4">
+                <label>毕业院校</label>
+                <div class="input-control text">
+                  <input type="text" placeholder="毕业学校/学院" ng-model="rsda_model.byxx"/>
+                  <button class="btn-clear"></button>
+                </div>
+              </div>
+              <div class="span4">
+                <label>专业</label>
+                <div class="input-control text">
+                  <input type="text" placeholder="所学专业" ng-model="rsda_model.zy"/>
+                  <button class="btn-clear"></button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <legend><span class="text-muted">职能信息</span><span class="place-right text-muted doodle-legend">Occupation Details</span></legend>
+          <div ng-show="expandableSection.showCareerInfoSection" class="expandable-section">
+            <div class="row">
+              <div class="span3">
+                <label>所属部门</label>
+                <div class="input-control select">
+                  <select ng-model="rsda_model.ssbm">
+                    <option value=""></option>
+                  </select>
+                </div>
+              </div>
+              <div class="span2">
+                <label>职位</label>
+                <div class="input-control select">
+                  <select ng-model="rsda_model.zw">
+                    <option value=""></option>
+                  </select>
+                </div>
+              </div>
+              <div class="span2">
+                <label>身份</label>
+                <div class="input-control text">
+                  <input type="text" placeholder="身份" ng-model="rsda_model.sf"/>
+                  <button class="btn-clear"></button>
+                </div>
+              </div>
+              <div class="span3">
+                <label>行政级别</label>
+                <div class="input-control select">
+                  <select ng-model="rsda_model.xzjb">
+                    <option value=""></option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="span2">
+                <label>雇佣性质</label>
+                <div class="input-control select">
+                  <select ng-model="rsda_model.gyxz">
+                    <option value=""></option>
+                    <option value="1">全民合同工</option>
+                    <option value="2">集体合同工</option>
+                    <option value="3">临时合同工</option>
+                  </select>
+                </div>
+              </div>
+              <div class="span2">
+                <label>参加工作时间</label>
+                <div data-role="datepicker" class="input-control text">
+                  <input type="text" placeholder="选择日期" ng-model="rsda_model.cjgzdw_date"/>
+                  <button tabindex="-1" class="btn-date"></button>
+                </div>
+              </div>
+              <div class="span2">
+                <label>工龄</label>
+                <div class="input-control text">
+                  <input type="text" placeholder="自动" disabled="disabled" ng-model="rsda_model.gl"/>
+                </div>
+              </div>
+              <div class="span2">
+                <label>参加本单位时间</label>
+                <div data-role="datepicker" class="input-control text">
+                  <input type="text" placeholder="选择日期" ng-model="rsda_model.jbdw_date"/>
+                  <button tabindex="-1" class="btn-date"></button>
+                </div>
+              </div>
+              <div class="span2">
+                <label>本单位工龄</label>
+                <div class="input-control text">
+                  <input type="text" placeholder="自动" disabled="disabled" ng-model="rsda_model.bdwgl"/>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="span3">
+                <label>职称</label>
+                <div class="input-control select">
+                  <select ng-model="rsda_model.zc">
+                    <option value=""></option>
+                  </select>
+                </div>
+              </div>
+              <div class="span2">
+                <label>获得职称时间</label>
+                <div data-role="datepicker" class="input-control text">
+                  <input type="text" placeholder="选择日期" ng-model="rsda_model.zc_date"/>
+                  <button tabindex="-1" class="btn-date"></button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <legend><span class="text-muted">联系方式</span><span class="place-right text-muted doodle-legend">Contact Info</span></legend>
+          <div ng-show="expandableSection.showContactInfoSection" class="expandable-section">
+            <div class="row">
+              <div class="span4">
+                <label>家庭住址</label>
+                <div class="input-control text">
+                  <input type="text" placeholder="家庭住址" ng-model="rsda_model.jtdz"/>
+                  <button class="btn-clear"></button>
+                </div>
+              </div>
+              <div class="span2">
+                <label>籍贯</label>
+                <div class="input-control text">
+                  <input type="text" placeholder="籍贯" ng-model="rsda_model.jg"/>
+                  <button class="btn-clear"></button>
+                </div>
+              </div>
+              <div class="span2">
+                <label>手机</label>
+                <div class="input-control text">
+                  <input type="text" placeholder="手机" ng-model="rsda_model.sj"/>
+                  <button class="btn-clear"></button>
+                </div>
+              </div>
+              <div class="span2">
+                <label>电话</label>
+                <div class="input-control text">
+                  <input type="text" placeholder="电话" ng-model="rsda_model.dh"/>
+                  <button class="btn-clear"></button>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="span3">
+                <label>电子邮件</label>
+                <div class="input-control text">
+                  <input type="text" placeholder="电子邮件" ng-model="rsda_model.email"/>
+                  <button class="btn-clear"></button>
+                </div>
+              </div>
+              <div class="span2">
+                <label>住房</label>
+                <div class="input-control select">
+                  <select ng-model="rsda_model.zf">
+                    <option value=""></option>
+                    <option value="1">单位住房</option>
+                    <option value="2">集体宿舍</option>
+                    <option value="3">个人住房</option>
+                    <option value="4">个人购房</option>
+                    <option value="5">其它住房</option>
+                  </select>
+                </div>
+              </div>
+              <div class="span2">
+                <label>暂住人口</label>
+                <div class="input-control checkbox">
+                  <label>
+                    <input type="checkbox" ng-model="rsda_model.zzrk"/><span class="check"></span><span>是, 暂住人口</span>
+                  </label>
+                </div>
+              </div>
+              <div class="span3">
+                <label>暂住证号</label>
+                <div class="input-control text">
+                  <input type="text" placeholder="暂住证号" ng-model="rsda_model.zzzh"/>
+                  <button class="btn-clear"></button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <legend><span class="text-muted">工资信息</span><span class="place-right text-muted doodle-legend">Salary Talk</span></legend>
+          <div ng-show="expandableSection.showSalaryInfoSection" class="expandable-section">
+            <div class="row">
+              <div class="span4">
+                <label>工资发放方式</label>
+                <div class="input-control select">
+                  <select ng-model="rsda_model.gzfffs">
+                    <option value=""></option>
+                    <option value="财政拨款"></option>
+                    <option value="教育局自筹资金"></option>
+                    <option value="教育局自筹资-预算卡外"></option>
+                    <option value="教育局自筹资-局自筹"></option>
+                    <option value="学校自筹资金"></option>
+                  </select>
+                </div>
+              </div>
+              <div class="span2">
+                <label>工资级别</label>
+                <div class="input-control text">
+                  <input type="text" placeholder="工资级别" ng-model="rsda_model.gzjb"/>
+                  <button class="btn-clear"></button>
+                </div>
+              </div>
+              <div class="span2">
+                <label>基本工资</label>
+                <div class="input-control text">
+                  <input type="text" placeholder="0.00" ng-model="rsda_model.jbgz"/>
+                  <button class="btn-clear"></button>
+                </div>
+              </div>
+              <div class="span2">
+                <label>级别工资</label>
+                <div class="input-control text">
+                  <input type="text" placeholder="0.00" ng-model="rsda_model.jbgz2"/>
+                  <button class="btn-clear"></button>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="span2">
+                <label>工龄工资</label>
+                <div class="input-control text">
+                  <input type="text" placeholder="0.00" ng-model="rsda_model.glgz"/>
+                  <button class="btn-clear"></button>
+                </div>
+              </div>
+              <div class="span2">
+                <label>其它工资1</label>
+                <div class="input-control text">
+                  <input type="text" placeholder="0.00" ng-model="rsda_model.qtgz1"/>
+                  <button class="btn-clear"></button>
+                </div>
+              </div>
+              <div class="span2">
+                <label>其它工资2</label>
+                <div class="input-control text">
+                  <input type="text" placeholder="0.00" ng-model="rsda_model.qtgz1"/>
+                  <button class="btn-clear"></button>
+                </div>
+              </div>
+              <div class="span2">
+                <label>其它工资3</label>
+                <div class="input-control text">
+                  <input type="text" placeholder="0.00" ng-model="rsda_model.qtgz1"/>
+                  <button class="btn-clear"></button>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="span4">
+                <label>开户银行</label>
+                <div class="input-control text">
+                  <input type="text" placeholder="开户银行" ng-model="rsda_model.bankmc"/>
+                  <button class="btn-clear"></button>
+                </div>
+              </div>
+              <div class="span4">
+                <label>银行帐号</label>
+                <div class="input-control text">
+                  <input type="text" placeholder="银行帐号" ng-model="rsda_model.banknumber" tab-end="tab-end"/>
+                  <button class="btn-clear"></button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+      <div id="_page_rsda_extra" class="frame">
+        <!--Created by Bli on 2014/4/8.-->
+        <fieldset keyboard-support="keyboard-support">
+          <legend><span class="text-muted">社会保险</span><span class="place-right text-muted doodle-legend">Social Insurances</span></legend>
+          <div ng-show="expandableSection.showSocialInsuranceSection" class="expandable-section">
+            <div class="row">
+              <div class="span2">
+                <label>参加社会保险</label>
+                <div class="input-control checkbox">
+                  <label>
+                    <input type="checkbox" ng-model="rsda_model.rsda_social_security.cjbx" autofocus="autofocus" tab-start="tab-start"/><span class="check"></span><span>参加</span>
+                  </label>
+                </div>
+              </div>
+              <div class="span3">
+                <label>保险缴纳参数</label>
+                <div class="input-control text">
+                  <input type="text" placeholder="保险缴纳参数" ng-model="rsda_model.rsda_social_security.bxjncs"/>
+                  <button class="btn-clear"></button>
+                </div>
+              </div>
+              <div class="span2">
+                <label>参加养老保险时间</label>
+                <div data-role="datepicker" class="input-control text">
+                  <input type="text" placeholder="选择日期" ng-model="rsda_model.rsda_social_security.ylbx_date"/>
+                  <button tabindex="-1" class="btn-date"></button>
+                </div>
+              </div>
+              <div class="span3">
+                <label>养老保险帐号</label>
+                <div class="input-control text">
+                  <input type="text" placeholder="养老保险帐号" ng-model="rsda_model.rsda_social_security.ylhao"/>
+                  <button class="btn-clear"></button>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="span2">
+                <label>参加医疗保险时间</label>
+                <div data-role="datepicker" class="input-control text">
+                  <input type="text" placeholder="选择日期" ng-model="rsda_model.rsda_social_security.ylbx2_date"/>
+                  <button tabindex="-1" class="btn-date"></button>
+                </div>
+              </div>
+              <div class="span3">
+                <label>医疗保险帐号</label>
+                <div class="input-control text">
+                  <input type="text" placeholder="医疗保险帐号" ng-model="rsda_model.rsda_social_security.ylhao2"/>
+                  <button class="btn-clear"></button>
+                </div>
+              </div>
+              <div class="span2">
+                <label>参加失业保险时间</label>
+                <div data-role="datepicker" class="input-control text">
+                  <input type="text" placeholder="选择日期" ng-model="rsda_model.rsda_social_security.sybx_date"/>
+                  <button tabindex="-1" class="btn-date"></button>
+                </div>
+              </div>
+              <div class="span3">
+                <label>失业保险帐号</label>
+                <div class="input-control text">
+                  <input type="text" placeholder="失业保险帐号" ng-model="rsda_model.rsda_social_security.syhao"/>
+                  <button class="btn-clear"></button>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="span2">
+                <label>参加工伤保险时间</label>
+                <div data-role="datepicker" class="input-control text">
+                  <input type="text" placeholder="选择日期" ng-model="rsda_model.rsda_social_security.gsbx_date"/>
+                  <button tabindex="-1" class="btn-date"></button>
+                </div>
+              </div>
+              <div class="span3">
+                <label>工伤保险帐号</label>
+                <div class="input-control text">
+                  <input type="text" placeholder="工伤保险帐号" ng-model="rsda_model.rsda_social_security.gshao"/>
+                  <button class="btn-clear"></button>
+                </div>
+              </div>
+              <div class="span2">
+                <label>参加公积金时间</label>
+                <div data-role="datepicker" class="input-control text">
+                  <input type="text" placeholder="选择日期" ng-model="rsda_model.rsda_social_security.gjj_date"/>
+                  <button tabindex="-1" class="btn-date"></button>
+                </div>
+              </div>
+              <div class="span3">
+                <label>公积金帐号</label>
+                <div class="input-control text">
+                  <input type="text" placeholder="公积金帐号" ng-model="rsda_model.rsda_social_security.gjjhao"/>
+                  <button class="btn-clear"></button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <legend><span class="text-muted">商业保险</span><span class="place-right text-muted doodle-legend">Business Insurances</span></legend>
+          <div ng-show="expandableSection.showBusinessInsuranceSection" class="expandable-section">
+            <div class="row">
+              <div class="span3">
+                <label>团体住院保险</label>
+                <div class="input-control checkbox">
+                  <label>
+                    <input type="checkbox" ng-model="rsda_model.rsda_social_security.syzybx"/><span class="check"></span><span>参加</span>
+                  </label>
+                </div>
+              </div>
+              <div class="span3">
+                <label>团体人身伤害保险</label>
+                <div class="input-control checkbox">
+                  <label>
+                    <input type="checkbox" ng-model="rsda_model.rsda_social_security.syrsbx"/><span class="check"></span><span>参加</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <legend><span class="text-muted">其它资金</span><span class="place-right text-muted doodle-legend">Additional Fundations</span></legend>
+          <div ng-show="expandableSection.showAdditionalFundationsSection" class="expandable-section">
+            <div class="row">
+              <div class="span3">
+                <label>股本</label>
+                <div class="input-control text">
+                  <input type="text" placeholder="0.00" ng-model="rsda_model.rsda_social_security.gbj"/>
+                  <button class="btn-clear"></button>
+                </div>
+              </div>
+              <div class="span3">
+                <label>自留金</label>
+                <div class="input-control text">
+                  <input type="text" placeholder="0.00" ng-model="rsda_model.rsda_social_security.zlj"/>
+                  <button class="btn-clear"></button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <legend><span class="text-muted">联系人/投保人</span><span class="place-right text-muted doodle-legend">Contact Person & Funder</span></legend>
+          <div ng-show="expandableSection.showContactPersonAndFunderSection" class="expandable-section">
+            <div class="row">
+              <div class="span2">
+                <label>联系人</label>
+                <div class="input-control text">
+                  <input type="text" placeholder="联系人" ng-model="rsda_model.rsda_social_security.lxr_bx"/>
+                  <button class="btn-clear"></button>
+                </div>
+              </div>
+              <div class="span2">
+                <label>联系人关系</label>
+                <div class="input-control text">
+                  <input type="text" placeholder="联系人关系" ng-model="rsda_model.rsda_social_security.lxr_gx"/>
+                  <button class="btn-clear"></button>
+                </div>
+              </div>
+              <div class="span2">
+                <label>联系人职务</label>
+                <div class="input-control text">
+                  <input type="text" placeholder="联系人职务" ng-model="rsda_model.rsda_social_security.lxr_zw"/>
+                  <button class="btn-clear"></button>
+                </div>
+              </div>
+              <div class="span3">
+                <label>联系人电话</label>
+                <div class="input-control text">
+                  <input type="text" placeholder="联系人电话" ng-model="rsda_model.rsda_social_security.lxr_tel"/>
+                  <button class="btn-clear"></button>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="span4">
+                <label>联系人单位</label>
+                <div class="input-control text">
+                  <input type="text" placeholder="联系人单位" ng-model="rsda_model.rsda_social_security.lxr_dw"/>
+                  <button class="btn-clear"></button>
+                </div>
+              </div>
+              <div class="span5">
+                <label>联系人地址</label>
+                <div class="input-control text">
+                  <input type="text" placeholder="联系人地址" ng-model="rsda_model.rsda_social_security.lxr_addr"/>
+                  <button class="btn-clear"></button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <legend><span class="text-muted">计划生育</span><span class="place-right text-muted doodle-legend">Birth Strategy</span></legend>
+          <div ng-show="expandableSection.showBirthStrategySection" class="expandable-section">
+            <div class="row">
+              <div class="span4">
+                <label>准生证号</label>
+                <div class="input-control text">
+                  <input type="text" placeholder="准生证号" ng-model="rsda_model.rsda_first_birth.zszhao"/>
+                  <button class="btn-clear"></button>
+                </div>
+              </div>
+              <div class="span4">
+                <label>独生子女证号</label>
+                <div class="input-control text">
+                  <input type="text" placeholder="独生子女证号" ng-model="rsda_model.rsda_first_birth.dsznzhao"/>
+                  <button class="btn-clear"></button>
+                </div>
+              </div>
+              <div class="span2">
+                <label>子女数
+                  <div class="input-control text">
+                    <input type="text" placeholder="0" ng-model="rsda_model.rsda_first_birth.zns"/>
+                    <button class="btn-clear"></button>
+                  </div>
+                </label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="span2">
+                <label>本人生育次数</label>
+                <div class="input-control text">
+                  <input type="text" placeholder="0" ng-model="rsda_model.rsda_first_birth.brsycs"/>
+                  <button class="btn-clear"></button>
+                </div>
+              </div>
+              <div class="span2">
+                <label>配偶生育次数</label>
+                <div class="input-control text">
+                  <input type="text" placeholder="0" ng-model="rsda_model.rsda_first_birth.posycs"/>
+                  <button class="btn-clear"></button>
+                </div>
+              </div>
+              <div class="span2">
+                <label>节育措失</label>
+                <div class="input-control text">
+                  <input type="text" placeholder="节育措失" ng-model="rsda_model.rsda_first_birth.jycs"/>
+                  <button class="btn-clear"></button>
+                </div>
+              </div>
+              <div class="span2">
+                <label>落实措施日期</label>
+                <div data-role="datepicker" class="input-control text">
+                  <input type="text" placeholder="选择日期" ng-model="rsda_model.rsda_first_birth.lscs_date"/>
+                  <button tabindex="-1" class="btn-date"></button>
+                </div>
+              </div>
+            </div>
+            <hr/>
+            <div class="row">
+              <div class="span2">
+                <label>子女姓名</label>
+                <div class="input-control text">
+                  <input type="text" placeholder="子女姓名" ng-model="rsda_model.rsda_first_birth.rsda_first_birth_children[0].znxm"/>
+                  <button class="btn-clear"></button>
+                </div>
+              </div>
+              <div class="span2">
+                <label>性别</label>
+                <div class="input-control select">
+                  <select ng-model="rsda_model.rsda_first_birth.rsda_first_birth_children[0].znxb">
+                    <option value="" default="default" selected="selected">无</option>
+                    <option value="0">男</option>
+                    <option value="1">女</option>
+                  </select>
+                </div>
+              </div>
+              <div class="span2">
+                <label>生产方式</label>
+                <div class="input-control text">
+                  <input type="text" placeholder="生产方式" ng-model="rsda_model.rsda_first_birth.rsda_first_birth_children[0].scfs"/>
+                  <button class="btn-clear"></button>
+                </div>
+              </div>
+              <div class="span2">
+                <label>生产日期</label>
+                <div data-role="datepicker" class="input-control text">
+                  <input type="text" placeholder="选择日期" ng-model="rsda_model.rsda_first_birth.rsda_first_birth_children[0].sc_date"/>
+                  <button tabindex="-1" class="btn-date"></button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+      <div id="_page_rsda_family" class="frame">
+        <!--Created by Bli on 2014/4/8.-->
+        <fieldset ng-controller="family-member-frame-controller">
+          <legend><span class="text-muted">家庭成员</span><span class="place-right text-muted doodle-legend">Family Members</span></legend>
+          <div ng-show="expandableSection.showFamilyMembersSection">
+            <table class="table dataTable">
+              <thead>
+                <tr>
+                  <th nowrap="nowrap" class="text-left">成员姓名</th>
+                  <th nowrap="nowrap" class="text-left">关系</th>
+                  <th nowrap="nowrap" class="text-left">出生日期</th>
+                  <th nowrap="nowrap" class="text-left">工作单位</th>
+                  <th nowrap="nowrap" class="text-left">但任职位</th>
+                  <th nowrap="nowrap" class="text-left">政治面貌</th>
+                  <th nowrap="nowrap" class="text-left">联系电话</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="row in rsda_model.rsda_family_member">
+                  <td class="text-left">{{row.jtcyxm}}</td>
+                  <td class="text-left">{{row.ybrgx}}</td>
+                  <td class="text-left">{{row.csrq}}</td>
+                  <td class="text-left">{{row.gzdw}}</td>
+                  <td class="text-left">{{row.drzw}}</td>
+                  <td class="text-left">{{row.zzmm}}</td>
+                  <td class="text-left">{{row.lxdh}}</td>
+                  <td class="text-right"><a data-hint="修改" ng-mousedown="modifyFamilyMember($index)" class="hint--top"><i class="icon-pencil fg-active-darkBlue"></i></a><a data-hint="删除" ng-mousedown="deleteFamilyMember($index)" class="hint--top"><i class="icon-cancel-2 fg-darkRed"></i></a></td>
+                </tr>
+              </tbody>
+            </table>
+            <hr/>
+            <div>
+              <popup-dialog dialog-config="familyMemberEditorConfig" on-confirm="addFamilyMember(data)" class="doodle-command-button"><i class="icon-plus-2"></i><span> 添加成员</span></popup-dialog>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+      <div id="_page_rsda_experience" class="frame">
+        <!--Created by Bli on 2014/4/8.-->
+        <fieldset>
+          <legend><span>个人经历</span><span class="place-right">Professional Expereince</span></legend>
+          <div ng-show="showPersonalInfoSection" class="expandable-section">
+            <div class="row"></div>
+          </div>
+        </fieldset>
+      </div>
+      <div id="_page_rsda_skill" class="frame">
+        <!--Created by Bli on 2014/4/8.-->
+        <fieldset>
+          <legend><span>技能信息</span><span class="place-right">Skills</span></legend>
+          <div ng-show="showPersonalInfoSection" class="expandable-section">
+            <div class="row"></div>
+          </div>
+        </fieldset>
+      </div>
+      <div id="_page_rsda_certificate" class="frame">
+        <!--Created by Bli on 2014/4/8.-->
+        <fieldset>
+          <legend><span>证照信息</span><span class="place-right">Certificates</span></legend>
+          <div ng-show="showPersonalInfoSection" class="expandable-section">
+            <div class="row"></div>
+          </div>
+        </fieldset>
+      </div>
+    </div>
+  </div>
+</div>

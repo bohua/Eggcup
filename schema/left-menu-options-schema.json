@@ -1,0 +1,153 @@
+[
+	{
+		"id": "home",
+		"title": "主页",
+		"icon": "icon-home",
+		"link": "#/"
+	},
+
+	{
+		"id": "rsda",
+		"title": "人事档案",
+		"icon": "icon-user",
+		"submenus": [
+			{
+				"id": "dall",
+				"title": "档案浏览",
+				"icon": "icon-eye-2",
+				"link": "#/rsda/dall"
+			},
+			{
+				"id": "xzjl",
+				"title": "新增记录",
+				"icon": "icon-plus-2",
+				"link": "#/rsda/xzjl"
+			},
+			{
+				"id": "rscx",
+				"title": "人事查询",
+				"icon": "icon-search",
+				"link": "#/rsda/rscx"
+			}
+		]
+	},
+
+	{
+		"id": "ddgl",
+		"title": "调动管理",
+		"icon": "icon-cycle",
+		"submenus": [
+			{
+				"id": "ygjz",
+				"title": "员工就职",
+				"icon": "icon-enter",
+				"link": "#/ddgl/ygjz"
+			},
+			{
+				"id": "rsdd",
+				"title": "人事调动",
+				"icon": "icon-loop",
+				"link": "#/ddgl/rsdd"
+			},
+			{
+				"id": "lzdj",
+				"title": "离职登记",
+				"icon": "icon-exit",
+				"link": "#/ddgl/lzdj"
+			},
+			{
+				"id": "fzdj",
+				"title": "复职登记",
+				"icon": "icon-enter-2",
+				"link": "#/ddgl/fzdj"
+			},
+			{
+				"id": "ydcx",
+				"title": "异动查询",
+				"icon": "icon-search",
+				"link": "#/ddgl/ydcx"
+			}
+		]
+	},
+
+	{
+		"id": "htgl",
+		"title": "合同管理",
+		"icon": "icon-bookmark-4",
+		"submenus": [
+			{
+				"id": "htdj",
+				"title": "合同登记",
+				"icon": "icon-plus-2",
+				"link": "#/htgl/htdj"
+			},{
+				"id": "sydq",
+				"title": "试用到期",
+				"icon": "icon-history",
+				"link": "#/htgl/sydq"
+			},{
+				"id": "htdq",
+				"title": "合同到期",
+				"icon": "icon-clock",
+				"link": "#/htgl/htdq"
+			}
+		]
+	},
+
+	{
+		"id": "gzgl",
+		"title": "工资管理",
+		"icon": "icon-coins",
+		"submenus": [
+			{
+				"id": "gzlr",
+				"title": "工资录入",
+				"icon": "icon-dollar-2",
+				"link": "#/gzgl/gzlr"
+			}
+		]
+	},
+
+	{
+		"id": "pxgl",
+		"title": "培训管理",
+		"icon": "icon-cube"
+	},
+
+	{
+		"id": "jxkh",
+		"title": "绩效考核",
+		"icon": "icon-stats-up"
+	},
+
+	{
+		"id": "jcgl",
+		"title": "奖惩管理",
+		"icon": "icon-trophy"
+	},
+
+	{
+		"id": "jcsj",
+		"title": "基础数据",
+		"icon": "icon-equalizer"
+	},
+
+	{
+		"id": "cxhz",
+		"title": "查询汇总",
+		"icon": "icon-pie"
+	},
+
+	{
+		"id": "fzgn",
+		"title": "辅助功能",
+		"icon": "icon-calculate"
+	},
+
+	{
+		"id": "xtsz",
+		"title": "系统设置",
+		"icon": "icon-cog"
+	}
+
+]

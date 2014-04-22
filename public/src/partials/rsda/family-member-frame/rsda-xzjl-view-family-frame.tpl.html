@@ -1,0 +1,36 @@
+
+<!--Created by Bli on 2014/4/8.-->
+<fieldset ng-controller="family-member-frame-controller">
+  <legend><span class="text-muted">家庭成员</span><span class="place-right text-muted doodle-legend">Family Members</span></legend>
+  <div ng-show="expandableSection.showFamilyMembersSection">
+    <table class="table dataTable">
+      <thead>
+        <tr>
+          <th nowrap="nowrap" class="text-left">成员姓名</th>
+          <th nowrap="nowrap" class="text-left">关系</th>
+          <th nowrap="nowrap" class="text-left">出生日期</th>
+          <th nowrap="nowrap" class="text-left">工作单位</th>
+          <th nowrap="nowrap" class="text-left">但任职位</th>
+          <th nowrap="nowrap" class="text-left">政治面貌</th>
+          <th nowrap="nowrap" class="text-left">联系电话</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="row in rsda_model.rsda_family_member">
+          <td class="text-left">{{row.jtcyxm}}</td>
+          <td class="text-left">{{row.ybrgx}}</td>
+          <td class="text-left">{{row.csrq}}</td>
+          <td class="text-left">{{row.gzdw}}</td>
+          <td class="text-left">{{row.drzw}}</td>
+          <td class="text-left">{{row.zzmm}}</td>
+          <td class="text-left">{{row.lxdh}}</td>
+          <td class="text-right"><a data-hint="修改" ng-mousedown="modifyFamilyMember($index)" class="hint--top"><i class="icon-pencil fg-active-darkBlue"></i></a><a data-hint="删除" ng-mousedown="deleteFamilyMember($index)" class="hint--top"><i class="icon-cancel-2 fg-darkRed"></i></a></td>
+        </tr>
+      </tbody>
+    </table>
+    <hr/>
+    <div>
+      <popup-dialog dialog-config="familyMemberEditorConfig" on-confirm="addFamilyMember(data)" class="doodle-command-button"><i class="icon-plus-2"></i><span> 添加成员</span></popup-dialog>
+    </div>
+  </div>
+</fieldset>

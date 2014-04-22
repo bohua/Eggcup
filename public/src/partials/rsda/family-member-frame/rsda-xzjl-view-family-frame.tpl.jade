@@ -1,0 +1,36 @@
+//Created by Bli on 2014/4/8.
+fieldset(ng-controller="family-member-frame-controller")
+	legend
+		span.text-muted 家庭成员
+		span.place-right.text-muted.doodle-legend Family Members
+	div(ng-show="expandableSection.showFamilyMembersSection")
+		table.table.dataTable
+			thead
+				tr
+					th.text-left(nowrap) 成员姓名
+					th.text-left(nowrap) 关系
+					th.text-left(nowrap) 出生日期
+					th.text-left(nowrap) 工作单位
+					th.text-left(nowrap) 但任职位
+					th.text-left(nowrap) 政治面貌
+					th.text-left(nowrap) 联系电话
+			tbody
+				tr(ng-repeat="row in rsda_model.rsda_family_member")
+					td.text-left {{row.jtcyxm}}
+					td.text-left {{row.ybrgx}}
+					td.text-left {{row.csrq}}
+					td.text-left {{row.gzdw}}
+					td.text-left {{row.drzw}}
+					td.text-left {{row.zzmm}}
+					td.text-left {{row.lxdh}}
+					td.text-right
+						a.hint--top(data-hint="修改", ng-mousedown="modifyFamilyMember($index)")
+							i.icon-pencil.fg-active-darkBlue
+						a.hint--top(data-hint="删除", ng-mousedown="deleteFamilyMember($index)")
+							i.icon-cancel-2.fg-darkRed
+
+		hr
+		div
+			popup-dialog.doodle-command-button(dialog-config="familyMemberEditorConfig", on-confirm="addFamilyMember(data)")
+				i.icon-plus-2
+				span  添加成员
