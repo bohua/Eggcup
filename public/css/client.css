@@ -311,87 +311,87 @@ t {
 #preload-mask .loader-title .login-button:hover {
   color: #ffffff;
 }
-.doodle-form-sheet {
+.view-form-sheet {
   width: 100%;
   height: 100%;
   padding: 10px 5px 0 5px;
 }
-.doodle-form-sheet .tab-control {
+.view-form-sheet .tab-control {
   height: 100%;
 }
-.doodle-form-sheet .tab-control ul > li > a > i {
+.view-form-sheet .tab-control ul > li > a > i {
   margin-right: 5px;
 }
-.doodle-form-sheet .tab-control .frames {
+.view-form-sheet .tab-control .frames {
   height: calc(100% - 35px);
 }
-.doodle-form-sheet .tab-control .frames .frame {
+.view-form-sheet .tab-control .frames .frame {
   height: 100%;
   overflow-y: auto;
 }
-.doodle-form-sheet .row .span1 {
+.view-form-sheet .row .span1 {
   width: 7.5% !important;
 }
-.doodle-form-sheet .row .span2 {
+.view-form-sheet .row .span2 {
   width: calc(7.5*2% + 20px) !important;
 }
-.doodle-form-sheet .row .span3 {
+.view-form-sheet .row .span3 {
   width: calc(7.5*3% + 20*2px) !important;
 }
-.doodle-form-sheet .row .span4 {
+.view-form-sheet .row .span4 {
   width: calc(7.5*4% + 20*3px) !important;
 }
-.doodle-form-sheet .row .span5 {
+.view-form-sheet .row .span5 {
   width: calc(7.5*5% + 20*4px) !important;
 }
-.doodle-form-sheet select {
+.view-form-sheet select {
   height: 34px;
 }
-.doodle-form-sheet .expandable-section {
+.view-form-sheet .expandable-section {
   background-color: rgba(248, 248, 248, 0.8);
   padding: 0 0 0 8px;
   border: 1px solid #d9d9d9;
 }
-.doodle-form-sheet .rsda-xzjl-func-button {
+.view-form-sheet .rsda-xzjl-func-button {
   margin-right: 20px;
 }
-.doodle-form-sheet .rsda-xzjl-func-button i {
+.view-form-sheet .rsda-xzjl-func-button i {
   color: #343539;
   font-size: 25px;
   cursor: pointer;
 }
-.doodle-form-sheet .rsda-xzjl-func-button a:hover i {
+.view-form-sheet .rsda-xzjl-func-button a:hover i {
   color: #aaaaaa;
 }
-.doodle-form-sheet legend {
+.view-form-sheet legend {
   padding-top: 10px !important;
 }
-.doodle-form-sheet .row {
+.view-form-sheet .row {
   margin-top: 0 !important;
 }
-.doodle-form-sheet .input-control.text input:focus {
+.view-form-sheet .input-control.text input:focus {
   padding-right: 25px !important;
 }
-.doodle-form-sheet .doodle-legend {
+.view-form-sheet .view-form-legend {
   font-size: 16px;
 }
-.doodle-form-sheet label {
+.view-form-sheet label {
   color: #696969;
 }
-.doodle-form-sheet table {
+.view-form-sheet table {
   background-color: rgba(248, 248, 248, 0.8);
 }
-.doodle-form-sheet table a {
+.view-form-sheet table a {
   margin-left: 10px;
   cursor: pointer;
 }
-.doodle-command-button {
+.view-command-button {
   cursor: pointer;
   padding: 5px 10px;
   background: #1ec8a6 !important;
   color: #ffffff !important;
 }
-.doodle-command-button:hover {
+.view-command-button:hover {
   border: 1px solid #aaaaaa;
   color: #343539 !important;
 }

@@ -1,7 +1,7 @@
 
 <!--Created by Bli on 2014/4/8.-->
 <fieldset ng-controller="family-member-frame-controller">
-  <legend><span class="text-muted">家庭成员</span><span class="place-right text-muted doodle-legend">Family Members</span></legend>
+  <legend><span class="text-muted">家庭成员</span><span class="place-right text-muted view-form-legend">Family Members</span></legend>
   <div ng-show="expandableSection.showFamilyMembersSection">
     <table class="table dataTable">
       <thead>
@@ -30,7 +30,7 @@
     </table>
     <hr/>
     <div>
-      <popup-dialog dialog-config="familyMemberEditorConfig" on-confirm="addFamilyMember(data)" class="doodle-command-button"><i class="icon-plus-2"></i><span> 添加成员</span></popup-dialog>
+      <popup-dialog dialog-config="familyMemberEditorConfig" on-confirm="addFamilyMember(data)" class="view-command-button"><i class="icon-plus-2"></i><span> 添加成员</span></popup-dialog>
     </div>
   </div>
 </fieldset>

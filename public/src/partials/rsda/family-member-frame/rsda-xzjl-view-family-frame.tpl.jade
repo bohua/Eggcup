@@ -2,7 +2,7 @@
 fieldset(ng-controller="family-member-frame-controller")
 	legend
 		span.text-muted 家庭成员
-		span.place-right.text-muted.doodle-legend Family Members
+		span.place-right.text-muted.view-form-legend Family Members
 	div(ng-show="expandableSection.showFamilyMembersSection")
 		table.table.dataTable
 			thead
@@ -31,6 +31,6 @@ fieldset(ng-controller="family-member-frame-controller")
 
 		hr
 		div
-			popup-dialog.doodle-command-button(dialog-config="familyMemberEditorConfig", on-confirm="addFamilyMember(data)")
+			popup-dialog.view-command-button(dialog-config="familyMemberEditorConfig", on-confirm="addFamilyMember(data)")
 				i.icon-plus-2
 				span  添加成员

@@ -1,6 +1,6 @@
 
 <!--Created by Bli on 2014/4/4.-->
-<div id="rsda-form" class="grid doodle-form-sheet">
+<div id="rsda-form" class="grid view-form-sheet">
   <div data-role="tab-control" data-effect="fade" class="tab-control">
     <ul class="tabs">
       <li class="active"><a href="#_page_rsda_master"><i class="icon-user"></i><span>基本信息</span></a></li>
@@ -18,7 +18,7 @@
       <div id="_page_rsda_master" class="frame">
         <!--Created by Bli on 2014/4/8.-->
         <fieldset keyboard-support="keyboard-support">
-          <legend><span class="text-muted">个人信息</span><span class="place-right text-muted doodle-legend">Personal Info</span></legend>
+          <legend><span class="text-muted">个人信息</span><span class="place-right text-muted view-form-legend">Personal Info</span></legend>
           <div ng-show="expandableSection.showPersonalInfoSection" class="expandable-section">
             <div class="row">
               <div class="span2">
@@ -148,7 +148,7 @@
               </div>
             </div>
           </div>
-          <legend><span class="text-muted">职能信息</span><span class="place-right text-muted doodle-legend">Occupation Details</span></legend>
+          <legend><span class="text-muted">职能信息</span><span class="place-right text-muted view-form-legend">Occupation Details</span></legend>
           <div ng-show="expandableSection.showCareerInfoSection" class="expandable-section">
             <div class="row">
               <div class="span3">
@@ -240,7 +240,7 @@
               </div>
             </div>
           </div>
-          <legend><span class="text-muted">联系方式</span><span class="place-right text-muted doodle-legend">Contact Info</span></legend>
+          <legend><span class="text-muted">联系方式</span><span class="place-right text-muted view-form-legend">Contact Info</span></legend>
           <div ng-show="expandableSection.showContactInfoSection" class="expandable-section">
             <div class="row">
               <div class="span4">
@@ -310,7 +310,7 @@
               </div>
             </div>
           </div>
-          <legend><span class="text-muted">工资信息</span><span class="place-right text-muted doodle-legend">Salary Talk</span></legend>
+          <legend><span class="text-muted">工资信息</span><span class="place-right text-muted view-form-legend">Salary Talk</span></legend>
           <div ng-show="expandableSection.showSalaryInfoSection" class="expandable-section">
             <div class="row">
               <div class="span4">
@@ -400,7 +400,7 @@
       <div id="_page_rsda_extra" class="frame">
         <!--Created by Bli on 2014/4/8.-->
         <fieldset keyboard-support="keyboard-support">
-          <legend><span class="text-muted">社会保险</span><span class="place-right text-muted doodle-legend">Social Insurances</span></legend>
+          <legend><span class="text-muted">社会保险</span><span class="place-right text-muted view-form-legend">Social Insurances</span></legend>
           <div ng-show="expandableSection.showSocialInsuranceSection" class="expandable-section">
             <div class="row">
               <div class="span2">
@@ -494,7 +494,7 @@
               </div>
             </div>
           </div>
-          <legend><span class="text-muted">商业保险</span><span class="place-right text-muted doodle-legend">Business Insurances</span></legend>
+          <legend><span class="text-muted">商业保险</span><span class="place-right text-muted view-form-legend">Business Insurances</span></legend>
           <div ng-show="expandableSection.showBusinessInsuranceSection" class="expandable-section">
             <div class="row">
               <div class="span3">
@@ -515,7 +515,7 @@
               </div>
             </div>
           </div>
-          <legend><span class="text-muted">其它资金</span><span class="place-right text-muted doodle-legend">Additional Fundations</span></legend>
+          <legend><span class="text-muted">其它资金</span><span class="place-right text-muted view-form-legend">Additional Fundations</span></legend>
           <div ng-show="expandableSection.showAdditionalFundationsSection" class="expandable-section">
             <div class="row">
               <div class="span3">
@@ -534,7 +534,7 @@
               </div>
             </div>
           </div>
-          <legend><span class="text-muted">联系人/投保人</span><span class="place-right text-muted doodle-legend">Contact Person & Funder</span></legend>
+          <legend><span class="text-muted">联系人/投保人</span><span class="place-right text-muted view-form-legend">Contact Person & Funder</span></legend>
           <div ng-show="expandableSection.showContactPersonAndFunderSection" class="expandable-section">
             <div class="row">
               <div class="span2">
@@ -583,7 +583,7 @@
               </div>
             </div>
           </div>
-          <legend><span class="text-muted">计划生育</span><span class="place-right text-muted doodle-legend">Birth Strategy</span></legend>
+          <legend><span class="text-muted">计划生育</span><span class="place-right text-muted view-form-legend">Birth Strategy</span></legend>
           <div ng-show="expandableSection.showBirthStrategySection" class="expandable-section">
             <div class="row">
               <div class="span4">
@@ -679,7 +679,7 @@
       <div id="_page_rsda_family" class="frame">
         <!--Created by Bli on 2014/4/8.-->
         <fieldset ng-controller="family-member-frame-controller">
-          <legend><span class="text-muted">家庭成员</span><span class="place-right text-muted doodle-legend">Family Members</span></legend>
+          <legend><span class="text-muted">家庭成员</span><span class="place-right text-muted view-form-legend">Family Members</span></legend>
           <div ng-show="expandableSection.showFamilyMembersSection">
             <table class="table dataTable">
               <thead>
@@ -708,7 +708,7 @@
             </table>
             <hr/>
             <div>
-              <popup-dialog dialog-config="familyMemberEditorConfig" on-confirm="addFamilyMember(data)" class="doodle-command-button"><i class="icon-plus-2"></i><span> 添加成员</span></popup-dialog>
+              <popup-dialog dialog-config="familyMemberEditorConfig" on-confirm="addFamilyMember(data)" class="view-command-button"><i class="icon-plus-2"></i><span> 添加成员</span></popup-dialog>
             </div>
           </div>
         </fieldset>

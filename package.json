@@ -1,6 +1,6 @@
 {
 	"author": "Bohua Li",
-	"name": "Doodle",
+	"name": "Eggcup",
 	"version": "0.0.1",
 	"private": true,
 	"start": "node server.js",
