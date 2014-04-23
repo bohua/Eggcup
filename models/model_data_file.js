@@ -4,10 +4,10 @@
 
 module.exports = function (sequelize, DataTypes) {
 
-	var DATA_FJ = sequelize.define('DATA_FJ', {
+	var DATA_FILE = sequelize.define('DATA_FILE', {
 		title:			{ type: DataTypes.STRING },
 		url:			{ type: DataTypes.STRING }
 	});
 
-	return DATA_FJ;
+	return DATA_FILE;
 };

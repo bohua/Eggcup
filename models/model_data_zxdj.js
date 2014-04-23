@@ -1,14 +1,10 @@
 /**
  * Created by Bli on 2014/4/1.
  */
-module.exports = function (DataTypes, DataTypes) {
+module.exports = function (sequelize, DataTypes) {
 
-	var DATA_ZXDJ = DataTypes.define('DATA_ZXDJ', {
-		khmc:			{ type: DataTypes.STRING },
-		khlxr:			{ type: DataTypes.STRING },
-		khtel:			{ type: DataTypes.STRING },
-		khemail:		{ type: DataTypes.STRING },
-		khaddr:			{ type: DataTypes.STRING },
+	var DATA_ZXDJ = sequelize.define('DATA_ZXDJ', {
+		dm:				{ type: DataTypes.STRING, allowNull: false },
 		zxfs1:			{ type: DataTypes.BOOLEAN, defaultValue: false },
 		zxfs2:			{ type: DataTypes.BOOLEAN, defaultValue: false},
 		zxfs3:			{ type: DataTypes.BOOLEAN, defaultValue: false },
@@ -23,13 +19,16 @@ module.exports = function (DataTypes, DataTypes) {
 		clr:			{ type: DataTypes.STRING },
 		clfs:			{ type: DataTypes.STRING },
 		bz:				{ type: DataTypes.STRING },
-		L1:			{ type: DataTypes.BOOLEAN, defaultValue: false },
+		L1:				{ type: DataTypes.BOOLEAN, defaultValue: false },
 		shbz:			{ type: DataTypes.BOOLEAN, defaultValue: false }
 	},{
 		classMethods: {
 			associate: function (models) {
 				DATA_ZXDJ
-					.hasMany(models.DATA_FJ)
+					.hasMany(models.DATA_FILE)
+					.hasOne(models.DATA_ZXSH)
+					.hasMany(models.DATA_TA)
+					.hasMany(models.DATA_HT)
 					.belongsTo(models.REF_KH);
 			}
 		}

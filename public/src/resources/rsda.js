@@ -1,12 +1,12 @@
 /**
  * Created by Bli on 2014/4/7.
  */
-angular.module('rsda-resource', ['ngResource'])
-    .factory('RSDA', ['$resource', function ($resource) {
-        var RSDA = $resource(
-            '/rsda/:rsda_id',
-            {rsda_id: '@id'}
+angular.module('task-resource', ['ngResource'])
+    .factory('TASK', ['$resource', function ($resource) {
+        var TASK = $resource(
+            '/task/:task_id',
+            {task_id: '@id'}
         );
 
-        return RSDA;
+        return TASK;
     }]);
