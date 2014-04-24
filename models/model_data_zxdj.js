@@ -5,6 +5,7 @@ module.exports = function (sequelize, DataTypes) {
 
 	var DATA_ZXDJ = sequelize.define('DATA_ZXDJ', {
 		dm:				{ type: DataTypes.STRING, allowNull: false },
+		khId:			{ type: DataTypes.INTEGER },
 		zxfs1:			{ type: DataTypes.BOOLEAN, defaultValue: false },
 		zxfs2:			{ type: DataTypes.BOOLEAN, defaultValue: false},
 		zxfs3:			{ type: DataTypes.BOOLEAN, defaultValue: false },
@@ -28,8 +29,8 @@ module.exports = function (sequelize, DataTypes) {
 					.hasMany(models.DATA_FILE)
 					.hasOne(models.DATA_ZXSH)
 					.hasMany(models.DATA_TA)
-					.hasMany(models.DATA_HT)
-					.belongsTo(models.REF_KH);
+					.hasMany(models.DATA_HT);
+					//.hasOne(models.REF_KH, {as:'Kh'});
 			}
 		}
 	});

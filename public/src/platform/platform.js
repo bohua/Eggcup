@@ -1,7 +1,7 @@
 /**
  * Created by Bli on 14-2-10.
  */
-angular.module('platform', ['ngRoute', /*'preload-mask', */'left-menu', 'router-guide', 'top-bar', 'popup-dialog'])
+angular.module('platform', ['ngRoute', /*'preload-mask', */'left-menu', /*'router-guide',*/ 'top-bar', 'popup-dialog'])
 	.config(function ($routeProvider) {
 
 	})

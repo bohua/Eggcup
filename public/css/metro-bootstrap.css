@@ -784,7 +784,7 @@ a {
   font-weight: normal;
   font-style: normal;
   color: #000000;
-  font-size: 11pt;
+  font-size: 12pt;
   line-height: 15pt;
   letter-spacing: 0.02em;
 }
@@ -793,7 +793,7 @@ a {
   font-weight: normal;
   font-style: normal;
   color: #000000;
-  font-size: 11pt;
+  font-size: 12pt;
   line-height: 15pt;
   letter-spacing: 0.02em;
   font-family: 'Courier New', monospace;
@@ -916,7 +916,7 @@ a {
   font-weight: normal;
   font-style: normal;
   color: #000000;
-  font-size: 11pt;
+  font-size: 12pt;
   line-height: 15pt;
   letter-spacing: 0.02em;
   font-weight: bold;
@@ -929,10 +929,10 @@ a {
   font-size: 13.75pt;
 }
 .metro h3 small {
-  font-size: 11pt;
+  font-size: 12pt;
 }
 .metro h4 small {
-  font-size: 11pt;
+  font-size: 12pt;
 }
 .metro a,
 .metro .link {
@@ -961,7 +961,7 @@ a {
   font-weight: normal;
   font-style: normal;
   color: #000000;
-  font-size: 11pt;
+  font-size: 12pt;
   line-height: 15pt;
   letter-spacing: 0.02em;
 }
@@ -1044,7 +1044,7 @@ a {
   font-weight: normal;
   font-style: normal;
   color: #000000;
-  font-size: 11pt;
+  font-size: 12pt;
   line-height: 15pt;
   letter-spacing: 0.02em;
 }
@@ -1120,7 +1120,7 @@ a {
   font-weight: normal;
   font-style: normal;
   color: #000000;
-  font-size: 11pt;
+  font-size: 12pt;
   line-height: 15pt;
   letter-spacing: 0.02em;
   font-family: 'Courier New', monospace;
@@ -5047,7 +5047,7 @@ a {
   font-size: 14pt;
 }
 .metro .tile .tile-content.email .email-data .email-data-subtitle {
-  font-size: 11pt;
+  font-size: 12pt;
 }
 .metro .tile .tile-content.email .email-data .email-data-text {
   font-size: 10pt;
@@ -9750,7 +9750,7 @@ a {
   font-weight: normal;
   font-style: normal;
   color: #000000;
-  font-size: 11pt;
+  font-size: 12pt;
   line-height: 15pt;
   letter-spacing: 0.02em;
   font-family: 'Courier New', monospace;

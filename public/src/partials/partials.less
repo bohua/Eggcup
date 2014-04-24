@@ -1,6 +1,42 @@
-.view-form-sheet{
+@import "zxdj-view/zxdj-view";
+
+.view-header {
+  height: @top-bar-height;
   width: 100%;
-  height: 100%;
+  padding: 0 20px;
+  border-bottom: 1px solid @grey-border;
+
+  span {
+    line-height: @top-bar-height !important;
+  }
+
+  .view-header-control-button-set button {
+    line-height: @top-bar-height;
+
+    background: none;
+    padding: 0 5px;
+    i {
+      color: @black-bg;
+      font-size: 25px;
+      cursor: pointer;
+    }
+
+    a:hover {
+      i {
+        color: @grey-dark;
+      }
+    }
+  }
+}
+
+.view-form-sheet {
+  width: 100%;
+  height: ~"calc(100% - @{top-bar-height})";
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  padding: 10px;
+
   @span-unit: 7.5;
   @margin-unit: 20;
 
@@ -41,6 +77,10 @@
     width: ~"calc(@{span-unit}*5% + @{margin-unit}*4px)" !important;
   }
 
+  .row .span10 {
+    width: ~"calc(@{span-unit}*10% + @{margin-unit}*9px)" !important;
+  }
+
   select {
     height: 34px;
   }
@@ -49,27 +89,10 @@
     background-color: @grey-light;
     padding: 0 0 0 8px;
     border: 1px solid @grey-border;
+    margin-top: 10px;
   }
 
-  .rsda-xzjl-func-button {
-    margin-right: 20px;
-    i {
-      color: @black-bg;
-      font-size: 25px;
-      cursor: pointer;
-    }
-
-    a:hover{
-      i {
-        color: @grey-dark;
-      }
-    }
-  }
-
-
-  padding: 10px 5px 0 5px;
-
-  legend{
+  legend {
     padding-top: 10px !important;
   }
 
@@ -77,8 +100,7 @@
     margin-top: 0 !important;
   }
 
-
-  .input-control.text input:focus{
+  .input-control.text input:focus {
     padding-right: 25px !important;
   }
 
@@ -88,6 +110,7 @@
 
   label {
     color: @grey-darker;
+    font-size: 12pt;
   }
 
   table {
@@ -98,21 +121,26 @@
       cursor: pointer;
     }
   }
+
+  textarea {
+    resize: vertical;
+    font-size: 12pt;
+  }
 }
 
-.view-command-button{
+.view-command-button {
   cursor: pointer;
   padding: 5px 10px;
   background: @green !important;
   color: @white !important;
 
-  &:hover{
+  &:hover {
     border: 1px solid @grey-dark;
     color: @black-bg !important;
   }
 }
 
-.ng-invalid{
+.ng-invalid {
   background-color: @red-light;
 }
 

@@ -9,7 +9,9 @@ angular.module('keyboard-support', [])
 				var tablist = $($element).find(':tabbable');
 
 				$element.on('keydown', function ($event) {
-					if ($event.keyCode === 13) {
+					var el = $event.target;
+
+					if (el.tagName !== 'TEXTAREA' && $event.keyCode === 13) {
 						$timeout(function () {
 							$.tabNext();
 						});
@@ -17,8 +19,7 @@ angular.module('keyboard-support', [])
 						return false;
 					}
 
-					var el = $event.target;
-					if (el.tagName === 'INPUT') {
+					if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
 						if ($event.keyCode === 37 && ($(el).attr('type') === "checkbox" || $(el).caret().start === 0)) {
 							if(!el.hasAttribute('tab-start')) {
 								$.tabPrev();

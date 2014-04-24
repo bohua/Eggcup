@@ -1,0 +1,112 @@
+//Created by Bli on 2014/4/24.
+div.view-header
+	span.subheader 咨询登记
+	comment.text-muted.margin20 Consulting Registery
+	div.view-header-control-button-set.place-right
+		button.hint--bottom(data-hint="新建", ng-click="new($event)")
+			a: i.icon-file
+		button.hint--bottom(data-hint="保存", ng-click="save($event)")
+			a: i.icon-floppy
+		button.hint--bottom(data-hint="修改", ng-click="edit($event)")
+			a: i.icon-copy
+		button.hint--bottom(data-hint="删除", ng-click="delete($event)")
+			a: i.icon-remove
+		button.hint--bottom(data-hint="查找", ng-click="search($event)")
+			a: i.icon-search
+		button.hint--bottom(data-hint="打印", ng-click="print($event)")
+			a: i.icon-printer
+
+
+div#zxdj-form.grid.view-form-sheet
+	fieldset(keyboard-support)
+		span.item-title 单据信息
+		comment.text-muted.margin15 Basic Information
+		div.expandable-section
+			div.row
+				div.span5
+					label 登记单号
+				div.span5
+					label 登记日期
+
+		hr
+		span.item-title 客户信息
+		comment.text-muted.margin15 Customer Information
+		div.expandable-section
+			div.row
+				div.span5
+					label 选择客户公司
+					div.input-control.text
+						input(type="text", placeholder="公司名称", autofocus, tab-start)
+						button.btn-search(ng-click="find($event)", tabindex="-1")
+
+		hr
+		span.item-title 咨询信息
+		comment.text-muted.margin15 Consulting Details
+		div.expandable-section
+			div.row
+				div.span3
+					label 阅读权限
+					div.input-control.checkbox
+						label
+							input(type="checkbox", ng-model="task.ydqx1")
+							span.check
+							span 内部浏览
+					div.input-control.checkbox
+						label
+							input(type="checkbox", ng-model="task.ydqx2")
+							span.check
+							span 客户浏览
+				div.span4
+					label 咨询方式
+					div.input-control.checkbox
+						label
+							input(type="checkbox", ng-model="task.zxfs1")
+							span.check
+							span 电子邮件
+					div.input-control.checkbox
+						label
+							input(type="checkbox", ng-model="task.zxfs2")
+							span.check
+							span 电话
+					div.input-control.checkbox
+						label
+							input(type="checkbox", ng-model="task.zxfs3")
+							span.check
+							span 面谈
+					div.input-control.checkbox
+						label
+							input(type="checkbox", ng-model="task.zxfs4")
+							span.check
+							span 传真
+			div.row
+				div.span2
+					label 批送日期
+					div.input-control.text(data-role="datepicker")
+						input(type="text", placeholder="选择日期", ng-model="task.psdate")
+						button.btn-date(tabindex="-1")
+				div.span2
+					label 处理人
+					div.input-control.text
+						input(type="text", placeholder="处理人", ng-model="task.clr")
+						button.btn-clear
+				div.span4
+					label 处理方式
+					div.input-control.text
+						input(type="text", placeholder="处理方式", ng-model="task.clfs")
+						button.btn-clear
+				div.span2
+					label 登记人
+					div.input-control.text
+						input(type="text", placeholder="登记人", ng-model="task.djr")
+						button.btn-clear
+			div.row
+				div.span10
+					label 咨询主题
+					div.input-control.text
+						input(type="text", placeholder="咨询主题", ng-model="task.zxzt")
+						button.btn-clear
+			div.row
+				div.span10
+					label 咨询事项
+					div.input-control.textarea
+						textarea(placeholder="咨询事项", ng-model="task.zxsx", tab-end)
