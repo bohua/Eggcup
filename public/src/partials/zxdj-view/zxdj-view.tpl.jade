@@ -1,5 +1,6 @@
 //Created by Bli on 2014/4/24.
 div.view-header
+	i.icon-arrow-left-3.view-header-icon(ng-click="getBack()")
 	span.subheader 咨询登记
 	comment.text-muted.margin20 Consulting Registery
 	div.view-header-control-button-set.place-right
@@ -37,7 +38,7 @@ div#zxdj-form.grid.view-form-sheet
 					label 选择客户公司
 					div.input-control.text
 						input(type="text", placeholder="公司名称", autofocus, tab-start)
-						button.btn-search(ng-click="find($event)", tabindex="-1")
+						button.btn-search(ng-click="getCompany($event)", tabindex="-1")
 
 		hr
 		span.item-title 咨询信息

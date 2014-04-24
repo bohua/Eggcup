@@ -12,8 +12,9 @@ angular.module('zxdj-view', [
 	'$scope',
 	'$http',
 	'$timeout',
+	'$location',
 	'TASK',
-	function ($scope, $http, $timeout, TASK) {
+	function ($scope, $http, $timeout, $location, TASK) {
 
 		$.Metro.initTabs();
 		$.Metro.initInputs();
@@ -40,4 +41,10 @@ angular.module('zxdj-view', [
 			}
 		});
 
+		/**
+		 * ng-click functions
+		 */
+		$scope.getBack = function () {
+			$location.path('/');
+		}
 	}]);

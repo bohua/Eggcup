@@ -290,11 +290,20 @@ t {
   padding: 0 20px;
   border-bottom: 1px solid #d9d9d9;
 }
+.view-header .view-header-icon {
+  font-size: 25px !important;
+  margin-right: 15px;
+  cursor: pointer !important;
+}
+.view-header .view-header-icon:hover {
+  color: #aaaaaa;
+}
 .view-header span {
   line-height: 50px !important;
 }
 .view-header .view-header-control-button-set button {
-  line-height: 50px;
+  position: relative;
+  top: 14px;
   background: none;
   padding: 0 5px;
 }
@@ -327,29 +336,41 @@ t {
   overflow-y: auto;
 }
 .view-form-sheet .row .span1 {
-  width: 7.5% !important;
+  width: calc((100% - 180px) / 10) !important;
 }
 .view-form-sheet .row .span2 {
-  width: calc(7.5*2% + 20px) !important;
+  width: calc((100% - 180px) / 10 * 2 + 20px) !important;
 }
 .view-form-sheet .row .span3 {
-  width: calc(7.5*3% + 20*2px) !important;
+  width: calc((100% - 180px) / 10 * 3 + 40px) !important;
 }
 .view-form-sheet .row .span4 {
-  width: calc(7.5*4% + 20*3px) !important;
+  width: calc((100% - 180px) / 10 * 4 + 60px) !important;
 }
 .view-form-sheet .row .span5 {
-  width: calc(7.5*5% + 20*4px) !important;
+  width: calc((100% - 180px) / 10 * 5 + 80px) !important;
+}
+.view-form-sheet .row .span6 {
+  width: calc((100% - 180px) / 10 * 6 + 100px) !important;
+}
+.view-form-sheet .row .span7 {
+  width: calc((100% - 180px) / 10 * 7 + 120px) !important;
+}
+.view-form-sheet .row .span8 {
+  width: calc((100% - 180px) / 10 * 8 + 140px) !important;
+}
+.view-form-sheet .row .span9 {
+  width: calc((100% - 180px) / 10 * 9 + 160px) !important;
 }
 .view-form-sheet .row .span10 {
-  width: calc(7.5*10% + 20*9px) !important;
+  width: 100% !important;
 }
 .view-form-sheet select {
   height: 34px;
 }
 .view-form-sheet .expandable-section {
   background-color: rgba(248, 248, 248, 0.8);
-  padding: 0 0 0 8px;
+  padding: 0 10px 0 10px;
   border: 1px solid #d9d9d9;
   margin-top: 10px;
 }
