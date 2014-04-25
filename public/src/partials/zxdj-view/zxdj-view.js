@@ -4,6 +4,7 @@
 angular.module('zxdj-view', [
 	'ngRoute',
 	'keyboard-support',
+	'ref-data-service',
 	'task-resource'
 ]).config(['$routeProvider', function ($routeProvider) {
 	$routeProvider.
@@ -13,8 +14,9 @@ angular.module('zxdj-view', [
 	'$http',
 	'$timeout',
 	'$location',
+	'refDataService',
 	'TASK',
-	function ($scope, $http, $timeout, $location, TASK) {
+	function ($scope, $http, $timeout, $location, refDataService, TASK) {
 
 		$.Metro.initTabs();
 		$.Metro.initInputs();
@@ -29,8 +31,11 @@ angular.module('zxdj-view', [
 			locale: 'zhCN',
 			weekStart: -1,
 			selected: function (date) {
-				var el = $(this).get(0)._calendar.parent().find('input')
-				var model = el.attr('ng-model').split('.')[1];
+				var _calendar = $(this).get(0)._calendar,
+					el = _calendar.parent().find('input'),
+					model = el.attr('ng-model').split('.')[1];
+
+				_calendar.hide();
 
 				if (model) {
 					$scope.rsda_model[model] = date;
@@ -46,5 +51,9 @@ angular.module('zxdj-view', [
 		 */
 		$scope.getBack = function () {
 			$location.path('/');
-		}
+		};
+
+		$scope.getAutoComplete = function () {
+			console.log(refDataService.getCustomerList());
+		};
 	}]);

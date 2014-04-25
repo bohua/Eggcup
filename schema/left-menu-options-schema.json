@@ -23,18 +23,18 @@
 	{
 		"id": "zxfw",
 		"title": "咨询服务",
-		"icon": "icon-cycle",
+		"icon": "icon-user",
 		"submenus": [
 			{
 				"id": "jdhf",
 				"title": "解答回复",
-				"icon": "icon-comments",
+				"icon": "icon-phone",
 				"link": "#/zxfw/jdhf"
 			},
 			{
 				"id": "tahf",
 				"title": "提案回复",
-				"icon": "icon-newspaper",
+				"icon": "icon-bookmark-2",
 				"link": "#/zxfw/tahf"
 			}
 		]
@@ -43,7 +43,7 @@
 	{
 		"id": "htzx",
 		"title": "合同执行",
-		"icon": "icon-bookmark-4",
+		"icon": "icon-cycle",
 		"submenus": [
 			{
 				"id": "htqd",

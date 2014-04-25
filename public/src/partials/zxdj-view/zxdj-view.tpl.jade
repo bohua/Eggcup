@@ -37,8 +37,13 @@ div#zxdj-form.grid.view-form-sheet
 				div.span5
 					label 选择客户公司
 					div.input-control.text
-						input(type="text", placeholder="公司名称", autofocus, tab-start)
-						button.btn-search(ng-click="getCompany($event)", tabindex="-1")
+						input(type="text", placeholder="公司名称", autofocus, tab-start, list="customer_list")
+						datalist#customer_list
+							option AB
+							option BC
+							option CD
+
+						//button.btn-search(ng-click="getCompany($event)", tabindex="-1")
 
 		hr
 		span.item-title 咨询信息
