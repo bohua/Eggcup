@@ -4,16 +4,19 @@
 angular.module('customer-list', [
 	'ngRoute',
 	'customer-resource'
-]).config(['$routeProvider', function ($routeProvider) {
+]).config(['$routeProvider', 'CUSTOMER', function ($routeProvider, CUSTOMER) {
 	$routeProvider.
-		when('/config/customer', {templateUrl: '/src/partials/config/customer/customer-list-view.tpl.html', controller: 'customerListController'});
+		when('/config/customer', {
+			templateUrl: '/src/partials/config/customer/customer-list-view.tpl.html',
+			controller: 'customerListController',
+			resolve: {
+				customers: CUSTOMER.query().$promise
+			}
+		});
 }]).controller('customerListController', [
 	'$scope',
-	'$http',
-	'$timeout',
-	'$location',
 	'CUSTOMER',
-	function ($scope, $http, $timeout, $location, CUSTOMER) {
+	function ($scope, CUSTOMER, customers) {
 		$scope.headers = [
 			'公司名称',
 			'担当',
@@ -22,7 +25,7 @@ angular.module('customer-list', [
 			'联系人'
 		];
 
-		$scope.customer_list = CUSTOMER.query();
+		$scope.customer_list = customers;
 
 		$scope.customerDetailsConfig = {
 			dialogOption: {
@@ -33,7 +36,7 @@ angular.module('customer-list', [
 				title: '详细信息',
 				padding: 10,
 				width: 800,
-				height: 400,
+				height: 600,
 				overlayClickClose: false
 			},
 
@@ -54,14 +57,17 @@ angular.module('customer-list', [
 		 * Closure functions
 		 */
 		function saveCustomer(model){
+			console.log('saved:', model);
+			/*
 			var customer = new CUSTOMER(model);
 			customer.$save(function(){
 				CUSTOMER.query();
 			});
+			*/
 		}
 
-		function deleteCustomer(){
-
+		function deleteCustomer(model){
+			console.log('deleted:', model);
 		}
 
 		/**

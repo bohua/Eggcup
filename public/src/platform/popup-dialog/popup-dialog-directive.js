@@ -7,6 +7,7 @@ angular.module('popup-dialog', [])
 			restrict: 'AE',
 			scope: {
 				dialogConfig: "=",
+				dataModel: "=",
 				emitConfirm : '&onConfirm',
 				emitCancel : '&onCancel'
 			},
@@ -26,7 +27,7 @@ angular.module('popup-dialog', [])
 							return xhr.status + " " + xhr.statusText;
 						}
 
-						$($element).on('click', function (event, data_model) {
+						$($element).on('click', function (event) {
 							$.extend(true, $scope.dialogConfig.dialogOption, {
 								content: $compile(response)($scope),
 								onShow: _onDialogShow
@@ -38,11 +39,10 @@ angular.module('popup-dialog', [])
 							$scope.showErrorMessage = false;
 							$scope._parentApi = $scope.dialogConfig.api;
 
-							if(data_model){
-								_sendInModel = data_model;
+							_sendInModel = $scope.dataModel;
+							if(_sendInModel){
 								$scope.dialog_data_model = $.extend(true, {}, data_model);
 							}else{
-								_sendInModel = null;
 								$scope.dialog_data_model = {};
 							}
 						});

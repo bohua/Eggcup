@@ -1,2 +1,22 @@
 //Created by Bohua on 2014-04-28.
+span.subheader 客户信息
+hr
 
+div#customer-detail-form.grid.view-form-sheet
+	fieldset(keyboard-support)
+		span.item-title 公司信息
+		comment.text-muted.margin15 Company Information
+		div.expandable-section
+			div.row
+				div.span3
+					label 公司名称
+					div.input-control.text
+						input(type="text", placeholder="公司名称", ng-model="dialog_data_model.name", autofocus, tab-start)
+						button.btn-clear
+				div.span7
+					label 公司地址
+					div.input-control.text
+						input(type="text", placeholder="公司地址", ng-model="dialog_data_model.address")
+						button.btn-clear
+
+		hr

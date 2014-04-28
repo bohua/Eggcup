@@ -19,7 +19,7 @@ div#customer-list.grid.view-form-sheet
 				th.text-center(ng-repeat="header in headers track by $index", nowrap)
 					t {{header}}
 		tbody
-			tr.cursor-pointer(ng-repeat="row in customer_list track by $index", popup-dialog="customerDetailsConfig", on-confirm="")
+			tr.cursor-pointer(ng-repeat="row in customer_list track by $index", popup-dialog, dialog-config="customerDetailsConfig", data-model="row")
 				td {{row.name}}
 				td {{row.presenter}}
 				td {{row.address}}
