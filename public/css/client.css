@@ -316,6 +316,12 @@ t {
 .view-header .view-header-control-button-set button a:hover i {
   color: #aaaaaa;
 }
+.view-header .view-header-control-search-box {
+  position: relative;
+  top: 10px;
+  right: 10px;
+  width: 250px;
+}
 .view-form-sheet {
   width: 100%;
   height: calc(100% - 50px);
@@ -414,4 +420,12 @@ t {
 }
 .ng-invalid {
   background-color: #fac4c8;
+}
+.record-control-button-set button {
+  background: none !important;
+  font-size: 12pt!important;
+  padding: 0!important;
+}
+.cursor-pointer {
+  cursor: pointer;
 }

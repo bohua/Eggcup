@@ -101,12 +101,12 @@
 				"id": "customer",
 				"title": "公司信息",
 				"icon": "icon-briefcase",
-				"link": "#/system/customer"
+				"link": "#/config/customer"
 			},{
 				"id": "employee",
 				"title": "人员信息",
 				"icon": "icon-user",
-				"link": "#/system/employee"
+				"link": "#/config/employee"
 			}
 		]
 	}

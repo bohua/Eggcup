@@ -1,15 +1,16 @@
 //Created by Bli on 2014/4/28.
 div.view-header
 	i.icon-arrow-left-3.view-header-icon(ng-click="getBack()")
-	span.subheader 咨询登记
-	comment.text-muted.margin20 Consulting Registery
+	span.subheader 客户信息
+	comment.text-muted.margin20 Customer Information
 	div.view-header-control-button-set.place-right
 		button.hint--bottom(data-hint="新建", ng-click="new($event)")
-			a: i.icon-file
-		button.hint--bottom(data-hint="查找", ng-click="search($event)")
-			a: i.icon-search
-		button.hint--bottom(data-hint="打印", ng-click="print($event)")
-			a: i.icon-printer
+			a: i.icon-new
+	div.view-header-control-search-box.place-right
+		div.input-control.text
+			input(type="text", placeholder="输入关键字搜索", ng-model="query")
+			button.btn-search(ng-click="searchCompany($event)", tabindex="-1")
+
 
 div#customer-list.grid.view-form-sheet
 	table.table.bordered.hovered
@@ -18,5 +19,15 @@ div#customer-list.grid.view-form-sheet
 				th.text-center(ng-repeat="header in headers track by $index", nowrap)
 					t {{header}}
 		tbody
-			tr(ng-repeat="row in customer_list track by $index")
-				td.text-right(ng-repeat="cell in row track by $index", nowrap) {{cell}}
+			tr.cursor-pointer(ng-repeat="row in customer_list track by $index", popup-dialog="customerDetailsConfig", on-confirm="")
+				td {{row.name}}
+				td {{row.presenter}}
+				td {{row.address}}
+				td {{row.tel}}
+				td {{row.contact}}
+
+				//td.record-control-button-set
+					button.hint--bottom(data-hint="详细", ng-click="detail($event, $index)")
+						a: i.icon-clipboard-2.fg-darkBlue
+					button.hint--bottom(data-hint="删除", ng-click="remove($event, $index)")
+						a: i.icon-cancel-2.fg-darkRed

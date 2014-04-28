@@ -4,7 +4,7 @@
 angular.module('popup-dialog', [])
 	.directive('popupDialog',[ '$compile', function ($compile) {
 		var Dialog = {
-			restrict: 'E',
+			restrict: 'AE',
 			scope: {
 				dialogConfig: "=",
 				emitConfirm : '&onConfirm',
@@ -36,6 +36,7 @@ angular.module('popup-dialog', [])
 
 							//Initialization of Dialog
 							$scope.showErrorMessage = false;
+							$scope._parentApi = $scope.dialogConfig.api;
 
 							if(data_model){
 								_sendInModel = data_model;
