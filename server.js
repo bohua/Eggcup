@@ -10,6 +10,7 @@ var path = require('path');
 var db = require('./models');
 var security = require('./routes/security');
 var rsda = require('./routes/rsda');
+var basics = require('./routes/basics');
 
 var app = express();
 
@@ -39,6 +40,8 @@ app.get('/getLocationArray', platform.getLocationArray);
 app.post('/login', security.userLogin);
 app.get('/rsda/:rsda_id', rsda.getRsdaModel);
 app.post('/rsda', rsda.setRsdaModel);
+app.get('/customer', basics.getCustomerList);
+app.get('/customer/:customer_id', basics.getCustomer);
 
 db
 	.sequelize

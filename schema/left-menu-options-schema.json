@@ -93,8 +93,21 @@
 	},
 
 	{
-		"id": "xtsz",
-		"title": "系统设置",
-		"icon": "icon-cog"
+		"id": "config",
+		"title": "基本数据",
+		"icon": "icon-tools",
+		"submenus": [
+			{
+				"id": "customer",
+				"title": "公司信息",
+				"icon": "icon-briefcase",
+				"link": "#/system/customer"
+			},{
+				"id": "employee",
+				"title": "人员信息",
+				"icon": "icon-user",
+				"link": "#/system/employee"
+			}
+		]
 	}
 ]

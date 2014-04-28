@@ -4,9 +4,9 @@
 angular.module('customer-resource', ['ngResource'])
 	.factory('CUSTOMER', ['$resource', function ($resource) {
 		var CUSTOMER = $resource(
-			'/kh/:kh_id',
+			'/customer/:customer_id',
 			{
-				kh_id: '@id'
+				customer_id: '@id'
 			},
 			{
 				getAll: {

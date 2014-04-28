@@ -3,7 +3,7 @@
  */
 angular.module('ref-data-service', ['customer-resource'])
 	.factory('refDataService', ['$rootScope', 'CUSTOMER', function ($rootScope, CUSTOMER) {
-		var customer_list = CUSTOMER.getAll();
+		var customer_list = CUSTOMER.query();
 
 		var Service = {
 			getCustomerList: function(){
