@@ -25,7 +25,7 @@ angular.module('popup-dialog', [])
 							return xhr.status + " " + xhr.statusText;
 						}
 
-						$($element).on('popup', function ($event, dataModel) {
+						$($element).on('popup', function ($event, mode, dataModel) {
 							$.extend(true, $scope.dialogConfig.dialogOption, {
 								content: $compile(response)($scope),
 								onShow: _onDialogShow
@@ -34,8 +34,10 @@ angular.module('popup-dialog', [])
 							popupDialog = $.Dialog($scope.dialogConfig.dialogOption);
 
 							//Initialization of Dialog
-							$scope.showErrorMessage = false;
-							$scope._parentApi = $scope.dialogConfig.api;
+							$scope.prop = {};
+							$scope.prop.showErrorMessage = false;
+							$scope.prop._parentApi = $scope.dialogConfig.api;
+							$scope.prop.mode = mode;
 
 							if(dataModel){
 								$scope.dialog_data_model = $.extend(true, {}, dataModel);
@@ -51,7 +53,7 @@ angular.module('popup-dialog', [])
 						var valid = _onValidateForm();
 
 						if(!valid){
-							$scope.showErrorMessage = true;
+							$scope.prop.showErrorMessage = true;
 							return;
 						}
 					}

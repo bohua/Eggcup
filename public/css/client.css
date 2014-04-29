@@ -294,7 +294,7 @@ t {
   background-color: #eeeeee;
 }
 .view-header .view-header-icon {
-  font-size: 25px !important;
+  font-size: 25px!important;
   margin-right: 15px;
   cursor: pointer !important;
 }
@@ -311,8 +311,7 @@ t {
   padding: 0 5px;
 }
 .view-header .view-header-control-button-set button i {
-  color: #343539;
-  font-size: 25px;
+  font-size: 15pt;
   cursor: pointer;
 }
 .view-header .view-header-control-button-set button a:hover i {

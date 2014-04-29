@@ -51,7 +51,7 @@ div#customer-detail-form.grid.view-form-sheet(ng-controller="customerDetailContr
 				div.span3
 					label 担单人员
 					div.input-control.select
-						select
+						select(ng-model="dialog_data_model.presenter")
 							option(selected="selected")
 							option(ng-repeat="employee in employee_list", value="{{employee.id}}") {{employee.name}}
 				div.span4
@@ -68,8 +68,12 @@ div#customer-detail-form.grid.view-form-sheet(ng-controller="customerDetailContr
 						//button.btn-clear
 
 		hr
-		div.place-left(ng-show="showErrorMessage")
-			span.fg-red 单据填写有误，请修正红色标记
+		div.place-left
+			button.button.danger(ng-click="delete()", ng-if="prop.mode=='edit'") 删除
+
 		div.form-actions
 			button.button.primary(ng-click="Confirm('update', true)") 保存
 			button.button(type="button", ng-click="Cancel()") 取消
+
+		div.place-right(ng-show="prop.showErrorMessage")
+			span.fg-red.margin20.bg-grayLighter 单据填写有误，请修正红色标记

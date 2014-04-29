@@ -8,4 +8,11 @@ angular.module('customer-editor', [])
 		$scope.clear = function(model){
 			$scope.dialog_data_model[model] = '';
 		};
+
+		$scope.delete = function(){
+			var confirmResult = confirm('确认删除么？');
+			if(confirmResult === true){
+				$scope.Confirm('remove', false);
+			}
+		}
 	}]);

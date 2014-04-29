@@ -40,8 +40,17 @@ app.get('/getLocationArray', platform.getLocationArray);
 app.post('/login', security.userLogin);
 app.get('/rsda/:rsda_id', rsda.getRsdaModel);
 app.post('/rsda', rsda.setRsdaModel);
+
+/**
+ * Customer Resource requests
+ */
 app.get('/customer', basics.getCustomerList);
 app.get('/customer/:customer_id', basics.getCustomer);
+app.post('/customer/:customer_id', basics.setCustomer)
+
+/**
+ * Employee Resource requests
+ */
 app.get('/employee', basics.getEmployeeList);
 app.get('/employee/:employee_id', basics.getEmployee);
 
