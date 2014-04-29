@@ -46,8 +46,9 @@ app.post('/rsda', rsda.setRsdaModel);
  */
 app.get('/customer', basics.getCustomerList);
 app.get('/customer/:customer_id', basics.getCustomer);
-app.post('/customer/:customer_id', basics.setCustomer)
-
+app.post('/customer/:customer_id', basics.setCustomer);
+app.post('/customer', basics.addCustomer);
+app.delete('/customer', basics.delCustomer);
 /**
  * Employee Resource requests
  */

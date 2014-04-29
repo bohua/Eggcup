@@ -47,7 +47,7 @@ angular.module('customer-list', [
 				title: '详细信息',
 				padding: 10,
 				width: '80%',
-				height: '90%',
+				height: '500px',
 				overlayClickClose: false
 			},
 
@@ -75,8 +75,11 @@ angular.module('customer-list', [
 
 		}
 
-		function deleteCustomer(model) {
-			console.log('deleted:', model);
+		function deleteCustomer(id) {
+			console.log('deleted:', id);
+			var customer = CUSTOMER.delete(id, function(){
+				$scope.customer_list = CUSTOMER.query();
+			});
 		}
 
 		function getEmployeeList() {
@@ -106,7 +109,7 @@ angular.module('customer-list', [
 				}
 				case 'remove':
 				{
-					deleteCustomer(data);
+					deleteCustomer({id: data.id});
 					break;
 				}
 			}
