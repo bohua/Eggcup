@@ -245,9 +245,11 @@ t {
 /**
  * Created by Bli on 14-3-6.
  */
+.form-actions {
+  float: right;
+}
 .form-actions button {
   margin-left: 10px;
-  float: right;
 }
 #comparison-dialog-calendar {
   margin: 0 20px 20px 28px;
@@ -387,7 +389,7 @@ t {
 .view-form-sheet .row {
   margin-top: 0 !important;
 }
-.view-form-sheet .input-control.text input:focus {
+.view-form-sheet .input-control.text input:focus:not(.hasList) {
   padding-right: 25px !important;
 }
 .view-form-sheet .view-form-legend {

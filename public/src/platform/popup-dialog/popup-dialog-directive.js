@@ -7,14 +7,12 @@ angular.module('popup-dialog', [])
 			restrict: 'AE',
 			scope: {
 				dialogConfig: "=",
-				dataModel: "=",
 				emitConfirm : '&onConfirm',
 				emitCancel : '&onCancel'
 			},
 			link: function ($scope, $element, $attributes) {
 				var _onDialogShow = $scope.dialogConfig.onShow,
 					template = $scope.dialogConfig.template,
-					_sendInModel,
 					popupDialog;
 
 				var _onValidateForm = $scope.dialogConfig.onValidateForm || function(){
@@ -27,7 +25,7 @@ angular.module('popup-dialog', [])
 							return xhr.status + " " + xhr.statusText;
 						}
 
-						$($element).on('click', function (event) {
+						$($element).on('popup', function ($event, dataModel) {
 							$.extend(true, $scope.dialogConfig.dialogOption, {
 								content: $compile(response)($scope),
 								onShow: _onDialogShow
@@ -39,9 +37,8 @@ angular.module('popup-dialog', [])
 							$scope.showErrorMessage = false;
 							$scope._parentApi = $scope.dialogConfig.api;
 
-							_sendInModel = $scope.dataModel;
-							if(_sendInModel){
-								$scope.dialog_data_model = $.extend(true, {}, data_model);
+							if(dataModel){
+								$scope.dialog_data_model = $.extend(true, {}, dataModel);
 							}else{
 								$scope.dialog_data_model = {};
 							}
@@ -49,8 +46,8 @@ angular.module('popup-dialog', [])
 					});
 				}
 
-				$scope.Confirm = function(){
-					if(_onValidateForm){
+				$scope.Confirm = function(action, validate){
+					if(validate && _onValidateForm){
 						var valid = _onValidateForm();
 
 						if(!valid){
@@ -60,7 +57,7 @@ angular.module('popup-dialog', [])
 					}
 
 					$.Dialog.close();
-					$scope.emitConfirm({data: $scope.dialog_data_model});
+					$scope.emitConfirm({action: action, data: $scope.dialog_data_model});
 				};
 
 				$scope.Cancel = function(){

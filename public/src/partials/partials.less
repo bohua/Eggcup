@@ -137,7 +137,9 @@
   }
 
   .input-control.text input:focus {
-    padding-right: 25px !important;
+    &:not(.hasList) {
+      padding-right: 25px !important;
+    }
   }
 
   .view-form-legend {

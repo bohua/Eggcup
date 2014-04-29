@@ -65,6 +65,7 @@
                 input.val('');
                 input.focus();
                 that._trigger("onClear", null, el);
+
             });
 
             if (!input.attr("disabled")) input.on('click', function(){$(this).focus();});

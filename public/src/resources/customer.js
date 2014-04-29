@@ -7,14 +7,6 @@ angular.module('customer-resource', ['ngResource'])
 			'/customer/:customer_id',
 			{
 				customer_id: '@id'
-			},
-			{
-				getAll: {
-					method: 'GET',
-					params: {
-						getAll:true
-					}
-				}
 			}
 		);
 

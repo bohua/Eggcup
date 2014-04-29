@@ -42,6 +42,8 @@ app.get('/rsda/:rsda_id', rsda.getRsdaModel);
 app.post('/rsda', rsda.setRsdaModel);
 app.get('/customer', basics.getCustomerList);
 app.get('/customer/:customer_id', basics.getCustomer);
+app.get('/employee', basics.getEmployeeList);
+app.get('/employee/:employee_id', basics.getEmployee);
 
 db
 	.sequelize

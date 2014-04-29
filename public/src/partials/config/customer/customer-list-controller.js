@@ -3,84 +3,92 @@
  */
 angular.module('customer-list', [
 	'ngRoute',
-	'customer-resource'
+	'customer-resource',
+	'employee-resource',
+	'customer-editor'
 ]).config(['$routeProvider', function ($routeProvider) {
 	$routeProvider.
 		when('/config/customer', {
 			templateUrl: '/src/partials/config/customer/customer-list-view.tpl.html',
-			controller: customerListController,
-			resolve: customerListController.resolve
+			controller: 'customerListController',
+			resolve: {
+				customers: function(CUSTOMER){
+					return CUSTOMER.query().$promise;
+				},
+				employees: function(EMPLOYEE){
+					return EMPLOYEE.query().$promise;
+				}
+			}
 		});
-}])/*.controller('customerListController', [
+}]).controller('customerListController', [
 	'$scope',
-	'CUSTOMER',
-	customerListController
-	]);
-*/
-function customerListController($scope, CUSTOMER, customers) {
-	$scope.headers = [
-		'公司名称',
-		'担当',
-		'地址',
-		'电话',
-		'联系人'
-	];
+	'customers',
+	'employees',
+	function ($scope, customers, employees) {
 
-	$scope.customer_list = customers;
+		$scope.headers = [
+			'公司名称',
+			'担当',
+			'地址',
+			'电话',
+			'联系人'
+		];
 
-	$scope.customerDetailsConfig = {
-		dialogOption: {
-			overlay: true,
-			shadow: true,
-			flat: true,
-			icon: '<i class="icon-briefcase"></i>',
-			title: '详细信息',
-			padding: 10,
-			width: 800,
-			height: 600,
-			overlayClickClose: false
-		},
+		$scope.customer_list = customers;
+		$scope.employee_list = employees;
 
-		template: '/src/partials/config/customer/customer-detail-view.tpl.html',
+		$scope.customerDetailsConfig = {
+			dialogOption: {
+				overlay: true,
+				shadow: true,
+				flat: true,
+				icon: '<i class="icon-briefcase"></i>',
+				title: '详细信息',
+				padding: 10,
+				width: '80%',
+				height: '90%',
+				overlayClickClose: false
+			},
 
-		onShow: function (_dialogWin) {
-			$.Metro.initInputs();
-			_dialogWin.find('.auto-focus').focus();
-		},
+			template: '/src/partials/config/customer/customer-editor-view.tpl.html',
 
-		api:{
-			saveCustomer: saveCustomer,
-			deleteCustomer: deleteCustomer
-		}
-	};
+			onShow: function (_dialogWin) {
+				$.Metro.initInputs();
+				_dialogWin.find('.auto-focus').focus();
+			},
 
-	/**
-	 * Closure functions
-	 */
-	function saveCustomer(model){
-		console.log('saved:', model);
-		/*
-		 var customer = new CUSTOMER(model);
-		 customer.$save(function(){
-		 CUSTOMER.query();
-		 });
+			api: {
+				saveCustomer: saveCustomer,
+				deleteCustomer: deleteCustomer,
+				getEmployeeList: getEmployeeList
+			}
+		};
+
+		/**
+		 * Closure functions
 		 */
-	}
+		function saveCustomer(model) {
+			console.log('saved:', model);
+			/*
+			 var customer = new CUSTOMER(model);
+			 customer.$save(function(){
+			 CUSTOMER.query();
+			 });
+			 */
+		}
 
-	function deleteCustomer(model){
-		console.log('deleted:', model);
-	}
+		function deleteCustomer(model) {
+			console.log('deleted:', model);
+		}
 
-	/**
-	 * ng-click functions
-	 */
-	$scope.detail=function($event, $index){
-		console.log($event, $index);
-	}
-}
+		function getEmployeeList(){
+			return $scope.employee_list;
+		}
 
-customerListController.resolve = {
-	customers: function(CUSTOMER){
-		return CUSTOMER.query().$promise;
-	}
-}
+		/**
+		 * ng-click functions
+		 */
+		$scope.detail = function ($event, dataModel) {
+			$($event.target).parent('tr').trigger('popup', [dataModel]);
+		};
+	}]);
