@@ -5,5 +5,6 @@ angular.module('app', [
 	'platform',
 	'zxdj-view',
 	'customer-list',
-	'employee-list'
+	'employee-list',
+	'dashboard'
 ]);

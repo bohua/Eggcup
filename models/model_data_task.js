@@ -7,7 +7,7 @@ module.exports = function (sequelize, DataTypes) {
 		code:			{ type: DataTypes.STRING, allowNull: false },
 		customer:		{ type: DataTypes.INTEGER },
 		employee:		{ type: DataTypes.INTEGER },
-		topic:			{ type: DataTypes.STRING },
+		topic:			{ type: DataTypes.STRING, defaultValue: '暂无主题' },
 		status:			{ type: DataTypes.INTEGER },
 		description:	{ type: DataTypes.STRING }
 	},{

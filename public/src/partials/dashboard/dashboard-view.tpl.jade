@@ -1,0 +1,149 @@
+//Created by Bli on 2014/4/30.
+div.view-header
+	i.icon-arrow-left-3.view-header-icon(ng-click="getBack()")
+	span.subheader 任务板
+	comment.text-muted.margin20 Dashboard
+	div.view-header-control-button-set.place-right
+		button.hint--bottom(
+		data-hint="新建",
+		popup-dialog,
+		dialog-config="customerEditorConfig",
+		ng-click="new($event, {})",
+		on-confirm="confirmEmitted(action, data)"
+		)
+			a: i.icon-new
+	div.view-header-control-search-box.place-right
+		div.input-control.text
+			input(type="text", placeholder="输入关键字搜索", ng-model="searchText")
+			button.btn-search(tabindex="-1")
+
+div#dashboard.grid.padding10
+	div.row
+		div.task-group.panel
+			div.panel-header.text-center
+				span.subheader 登记
+				comment.text-muted.margin20 Register
+			div.panel-content.nano
+				div.nano-content
+					div.panel.task-block
+						div.panel-header TK-1021
+							span.task-status.place-right.fg-darkRed 待审分配
+						div.panel-content
+							label.text-info 主题
+							label.text-ellipsis 沙石厂关于下水污染问题的咨询解答，酌情予以妥善安排
+							label.text-info 最后期限
+							label 2014-06-29 (56天后)
+							hr.margin5
+							span.task-control-button-set.text-right.margin20
+								icon.icon-share
+								icon.icon-folder-2
+								icon.icon-printer
+					div.panel.task-block
+						div.panel-header TK-1021
+							span.task-status.place-right.fg-darkRed 待审分配
+						div.panel-content
+							label.text-info 主题
+							label.text-ellipsis 沙石厂关于下水污染问题的咨询解答，酌情予以妥善安排
+							label.text-info 最后期限
+							label 2014-06-29 (56天后)
+							hr.margin5
+							span.task-control-button-set.text-right.margin20
+								icon.icon-share
+								icon.icon-folder-2
+								icon.icon-printer
+					div.panel.task-block
+						div.panel-header TK-1021
+							span.task-status.place-right.fg-darkRed 待审分配
+						div.panel-content
+							label.text-info 主题
+							label.text-ellipsis 沙石厂关于下水污染问题的咨询解答，酌情予以妥善安排
+							label.text-info 最后期限
+							label 2014-06-29 (56天后)
+							hr.margin5
+							span.task-control-button-set.text-right.margin20
+								icon.icon-share
+								icon.icon-folder-2
+								icon.icon-printer
+					div.panel.task-block
+						div.panel-header TK-1021
+							span.task-status.place-right.fg-darkRed 待审分配
+						div.panel-content
+							label.text-info 主题
+							label.text-ellipsis 沙石厂关于下水污染问题的咨询解答，酌情予以妥善安排
+							label.text-info 最后期限
+							label 2014-06-29 (56天后)
+							hr.margin5
+							span.task-control-button-set.text-right.margin20
+								icon.icon-share
+								icon.icon-folder-2
+								icon.icon-printer
+
+					div.panel.task-block
+						div.panel-header TK-1022
+						div.panel-content
+					div.panel.task-block
+						div.panel-header TK-1024
+						div.panel-content
+					div.panel.task-block
+						div.panel-header TK-1026
+						div.panel-content
+		div.task-group.panel
+			div.panel-header.text-center
+				span.subheader 解答
+				comment.text-muted.margin20 Reply
+			div.panel-content
+				div.panel.task-block
+					div.panel-header
+					div.panel-content
+				div.panel.task-block
+					div.panel-header
+					div.panel-content
+				div.panel.task-block
+					div.panel-header
+					div.panel-content
+				div.panel.task-block
+					div.panel-header
+					div.panel-content
+				div.panel.task-block
+					div.panel-header
+					div.panel-content
+		div.task-group.panel
+			div.panel-header.text-center
+				span.subheader 合同
+				comment.text-muted.margin20 Contract
+			div.panel-content
+				div.panel.task-block
+					div.panel-header
+					div.panel-content
+				div.panel.task-block
+					div.panel-header
+					div.panel-content
+				div.panel.task-block
+					div.panel-header
+					div.panel-content
+				div.panel.task-block
+					div.panel-header
+					div.panel-content
+				div.panel.task-block
+					div.panel-header
+					div.panel-content
+		div.task-group.panel
+			div.panel-header.text-center
+				span.subheader 结案
+				comment.text-muted.margin20 Seal
+			div.panel-content
+				div.panel.task-block
+					div.panel-header
+					div.panel-content
+				div.panel.task-block
+					div.panel-header
+					div.panel-content
+				div.panel.task-block
+					div.panel-header
+					div.panel-content
+				div.panel.task-block
+					div.panel-header
+					div.panel-content
+				div.panel.task-block
+					div.panel-header
+					div.panel-content

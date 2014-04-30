@@ -7,7 +7,6 @@ angular.module('left-menu', [])
 			.success(function (data) {
 				$scope.menus = data;
 
-
 				$timeout(function(){
 					$('#left-stage').find('[data-role=dropdown]').dropdown();
 					$('#left-stage').find('.pull-menu, .menu-pull').each(function () {
@@ -16,7 +15,7 @@ angular.module('left-menu', [])
 				},1);
 			});
 
-		$scope.toggleStatus = 'expand';
+		$scope.toggleStatus = 'collapse';
 
 		$scope.toggleLeftMenu = function () {
 			var delay = 200;

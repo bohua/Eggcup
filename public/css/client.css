@@ -63,7 +63,7 @@ t {
 }
 #right-stage {
   width: 100%;
-  padding-left: 200px;
+  padding-left: 50px;
   z-index: 10;
   height: calc(100% - 50px);
 }
@@ -155,7 +155,7 @@ t {
 }
 #left-stage {
   float: left;
-  width: 200px;
+  width: 50px;
   height: calc(100% - 50px);
   background-color: #eeeeee;
   border-right: 1px solid #d9d9d9;
@@ -285,6 +285,46 @@ t {
 }
 #preload-mask .loader-title .login-button:hover {
   color: #ffffff;
+}
+#dashboard {
+  height: calc(100% - 50px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 10px 0 10px 10px;
+}
+#dashboard > .row {
+  margin: 0;
+  height: 100%;
+}
+#dashboard .nano {
+  height: calc(100% - 50px);
+}
+#dashboard .panel-header comment {
+  font-size: 12pt;
+}
+#dashboard .panel-content {
+  padding: 10px 2px;
+}
+#dashboard .task-group {
+  width: 24%;
+  margin-right: 1%;
+  height: 100%;
+  float: left;
+}
+#dashboard .task-group .subheader {
+  color: #696969;
+}
+#dashboard .task-group .task-block {
+  margin: 5px;
+  border: 1px solid #696969;
+  /*
+      &:hover{
+        outline: 2px solid @grey-darker;
+      }
+      */
+}
+#dashboard .task-group .task-status {
+  font-size: 14pt;
 }
 .view-header {
   height: 50px;
