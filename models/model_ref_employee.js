@@ -12,6 +12,7 @@ module.exports = function (sequelize, DataTypes) {
 		tel:			{ type: DataTypes.STRING },
 		mobile:			{ type: DataTypes.STRING },
 		role:			{ type: DataTypes.STRING },
+		email:			{ type: DataTypes.STRING },
 		description:	{ type: DataTypes.STRING },
 
 		//激活使用

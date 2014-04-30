@@ -1,13 +1,13 @@
 //Created by Bli on 2014/4/28.
 div.view-header
 	i.icon-arrow-left-3.view-header-icon(ng-click="getBack()")
-	span.subheader 客户信息
-	comment.text-muted.margin20 Customer Information
+	span.subheader 员工信息
+	comment.text-muted.margin20 Employee Information
 	div.view-header-control-button-set.place-right
 		button.hint--bottom(
 		data-hint="新建",
 		popup-dialog,
-		dialog-config="customerEditorConfig",
+		dialog-config="employeeEditorConfig",
 		ng-click="new($event, {})",
 		on-confirm="confirmEmitted(action, data)"
 		)
@@ -26,20 +26,14 @@ div#customer-list.grid.view-form-sheet
 					t {{header}}
 		tbody
 			tr.cursor-pointer(
-			ng-repeat="row in customer_list | filter:searchText",
+			ng-repeat="row in employee_list | filter:searchText",
 			popup-dialog,
-			dialog-config="customerEditorConfig",
+			dialog-config="employeeEditorConfig",
 			ng-click="detail($event, row)",
 			on-confirm="confirmEmitted(action, data)"
 			)
 				td {{row.name}}
-				td {{row.presenter}}
-				td {{row.address}}
+				td {{row.role}}
 				td {{row.tel}}
-				td {{row.contact}}
-
-				//td.record-control-button-set
-					button.hint--bottom(data-hint="详细", ng-click="detail($event, $index)")
-						a: i.icon-clipboard-2.fg-darkBlue
-					button.hint--bottom(data-hint="删除", ng-click="remove($event, $index)")
-						a: i.icon-cancel-2.fg-darkRed
+				td {{row.mobile}}
+				td {{row.email}}

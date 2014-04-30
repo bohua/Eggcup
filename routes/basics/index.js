@@ -5,14 +5,15 @@
 /**
  * Customer Resource routes
  */
-module.exports.getCustomer = require('./Customer/getCustomer.js');
-module.exports.getCustomerList = require('./Customer/getCustomerList.js');
-module.exports.setCustomer = require('./Customer/setCustomer.js');
-module.exports.addCustomer = require('./Customer/addCustomer.js');
-module.exports.delCustomer = require('./Customer/delCustomer.js');
+module.exports.getCustomer = require('./Customer/getCustomer');
+module.exports.getCustomerList = require('./Customer/getCustomerList');
+module.exports.setCustomer = require('./Customer/setCustomer');
+//module.exports.addCustomer = require('./Customer/addCustomer');
+//module.exports.delCustomer = require('./Customer/delCustomer');
 
 /**
  * Employee Resource routes
  */
-module.exports.getEmployee = require('./getEmployee.js');
-module.exports.getEmployeeList = require('./getEmployeeList.js');
+module.exports.getEmployee = require('./Employee/getEmployee');
+module.exports.getEmployeeList = require('./Employee/getEmployeeList');
+module.exports.setEmployee = require('./Employee/setEmployee');

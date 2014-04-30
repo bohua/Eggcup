@@ -329,6 +329,13 @@ t {
   overflow-y: auto;
   overflow-x: hidden;
   padding: 10px;
+  /*
+  .input-control.text input:focus {
+    &:not(.hasList) {
+      padding-right: 25px !important;
+    }
+  }
+  */
 }
 .view-form-sheet .tab-control {
   height: 100%;
@@ -387,9 +394,6 @@ t {
 }
 .view-form-sheet .row {
   margin-top: 0 !important;
-}
-.view-form-sheet .input-control.text input:focus:not(.hasList) {
-  padding-right: 25px !important;
 }
 .view-form-sheet .view-form-legend {
   font-size: 16px;

@@ -1,46 +1,40 @@
 /**
  * Created by Bli on 2014/4/28.
  */
-angular.module('customer-list', [
+angular.module('employee-list', [
 	'ngRoute',
-	'customer-resource',
 	'employee-resource',
-	'customer-editor'
+	'employee-editor'
 ]).config(['$routeProvider', function ($routeProvider) {
 	$routeProvider.
-		when('/config/customer', {
-			templateUrl: '/src/partials/config/customer/customer-list-view.tpl.html',
-			controller: 'customerListController',
+		when('/config/employee', {
+			templateUrl: '/src/partials/config/employee/employee-list-view.tpl.html',
+			controller: 'employeeListController',
 			resolve: {
-				customers: function (CUSTOMER) {
-					return CUSTOMER.query().$promise;
-				},
 				employees: function (EMPLOYEE) {
 					return EMPLOYEE.query().$promise;
 				}
 			}
 		});
-}]).controller('customerListController', [
+}]).controller('employeeListController', [
 	'$scope',
-	'CUSTOMER',
-	'customers',
+	'EMPLOYEE',
 	'employees',
-	function ($scope, CUSTOMER, customers, employees) {
+	function ($scope, EMPLOYEE, employees) {
 		/**
 		 * Scope initializations
 		 */
 		$scope.headers = [
-			'公司名称',
-			'担当',
-			'地址',
+			'姓名',
+			'职位',
 			'电话',
-			'联系人'
+			'手机',
+			'邮箱'
 		];
 
-		$scope.customer_list = customers;
 		$scope.employee_list = employees;
 
-		$scope.customerEditorConfig = {
+		$scope.employeeEditorConfig = {
 			dialogOption: {
 				overlay: true,
 				shadow: true,
@@ -49,41 +43,35 @@ angular.module('customer-list', [
 				title: '详细信息',
 				padding: 10,
 				width: '80%',
-				height: '500px',
+				height: '300px',
 				overlayClickClose: false
 			},
 
-			template: '/src/partials/config/customer/customer-editor-view.tpl.html',
+			template: '/src/partials/config/employee/employee-editor-view.tpl.html',
 
 			onShow: function (_dialogWin) {
 				$.Metro.initInputs();
 				_dialogWin.find('.auto-focus').focus();
 			},
 
-			api: {
-				getEmployeeList: getEmployeeList
-			}
+			api: {}
 		};
 
 		/**
 		 * Closure functions
 		 */
-		function saveCustomer(model) {
-			 var customer = new CUSTOMER(model);
-			 customer.$save(function(){
-				 $scope.customer_list = CUSTOMER.query();
+		function saveEmployee(model) {
+			var employee = new EMPLOYEE(model);
+			employee.$save(function(){
+				 $scope.employee_list = EMPLOYEE.query();
 			 });
 
 		}
 
-		function deleteCustomer(id) {
-			CUSTOMER.delete(id, function(){
-				$scope.customer_list = CUSTOMER.query();
+		function deleteEmployee(id) {
+			EMPLOYEE.delete(id, function(){
+				$scope.employee_list = EMPLOYEE.query();
 			});
-		}
-
-		function getEmployeeList() {
-			return $scope.employee_list;
 		}
 
 		/**
@@ -104,12 +92,12 @@ angular.module('customer-list', [
 			switch (action) {
 				case 'update':
 				{
-					saveCustomer(data);
+					saveEmployee(data);
 					break;
 				}
 				case 'remove':
 				{
-					deleteCustomer({id: data.id});
+					deleteEmployee({id: data.id});
 					break;
 				}
 			}

@@ -1,13 +1,8 @@
 /**
  * Created by Bli on 2014/4/29.
  */
-angular.module('customer-editor', [])
-	.controller('customerEditorController', ['$scope', function($scope){
-		/**
-		 * Initialize References
-		 */
-		$scope.employee_list = $scope.dialogConfig.api.getEmployeeList();
-
+angular.module('employee-editor', [])
+	.controller('employeeEditorController', ['$scope', function($scope){
 		/**
 		 * Initialize Emitters
 		 */

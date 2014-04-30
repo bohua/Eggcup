@@ -47,13 +47,14 @@ app.post('/rsda', rsda.setRsdaModel);
 app.get('/customer', basics.getCustomerList);
 app.get('/customer/:customer_id', basics.getCustomer);
 app.post('/customer/:customer_id', basics.setCustomer);
-app.post('/customer', basics.addCustomer);
-app.delete('/customer', basics.delCustomer);
+//app.post('/customer', basics.addCustomer);
+//app.delete('/customer', basics.delCustomer);
 /**
  * Employee Resource requests
  */
 app.get('/employee', basics.getEmployeeList);
 app.get('/employee/:employee_id', basics.getEmployee);
+app.post('/employee/:employee_id', basics.setEmployee);
 
 db
 	.sequelize
