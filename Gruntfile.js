@@ -34,10 +34,10 @@ module.exports = function (grunt) {
 		// running `grunt watch` will watch for changes
 		watch: {
 			files: [
-				"./public/**/*.less",
-				"./public/**/*.jade"
+				"./public/**/*.less"//,
+				//"./public/**/*.jade"
 				],
-			tasks: ["default"]
+			tasks: ["less"]
 		}
 	});
 	grunt.loadNpmTasks('grunt-contrib-less');

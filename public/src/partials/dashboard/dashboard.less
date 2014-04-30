@@ -27,23 +27,44 @@
     height: 100%;
     float: left;
 
+    border: 1px @grey-border solid;
+
     .subheader {
       color: @grey-darker;
     }
 
     .task-block {
-      margin: 5px;
-      border: 1px solid @grey-darker;
+      margin: 10px 5px;
+      border: 1px @grey-border solid;
+      cursor: pointer;
 
-      /*
       &:hover{
-        outline: 2px solid @grey-darker;
+        .panel-header{
+          background-color: @green;
+          color: @white;
+          cursor: inherit;
+        }
+
       }
-      */
+
+
+      label {
+        cursor: inherit;
+        font-size: 12pt;
+      }
+
+      .task-control-button-set {
+        button {
+          background: none;
+          font-size: 15pt;
+          padding: 0 10px 0 0;
+        }
+      }
     }
 
-    .task-status{
+    .task-status {
       font-size: 14pt;
     }
+
   }
 }

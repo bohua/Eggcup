@@ -310,18 +310,29 @@ t {
   margin-right: 1%;
   height: 100%;
   float: left;
+  border: 1px #d9d9d9 solid;
 }
 #dashboard .task-group .subheader {
   color: #696969;
 }
 #dashboard .task-group .task-block {
-  margin: 5px;
-  border: 1px solid #696969;
-  /*
-      &:hover{
-        outline: 2px solid @grey-darker;
-      }
-      */
+  margin: 10px 5px;
+  border: 1px #d9d9d9 solid;
+  cursor: pointer;
+}
+#dashboard .task-group .task-block:hover .panel-header {
+  background-color: #1ec8a6;
+  color: #ffffff;
+  cursor: inherit;
+}
+#dashboard .task-group .task-block label {
+  cursor: inherit;
+  font-size: 12pt;
+}
+#dashboard .task-group .task-block .task-control-button-set button {
+  background: none;
+  font-size: 15pt;
+  padding: 0 10px 0 0;
 }
 #dashboard .task-group .task-status {
   font-size: 14pt;

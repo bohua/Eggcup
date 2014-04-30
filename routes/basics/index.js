@@ -8,8 +8,8 @@
 module.exports.getCustomer = require('./Customer/getCustomer');
 module.exports.getCustomerList = require('./Customer/getCustomerList');
 module.exports.setCustomer = require('./Customer/setCustomer');
-//module.exports.addCustomer = require('./Customer/addCustomer');
-//module.exports.delCustomer = require('./Customer/delCustomer');
+module.exports.addCustomer = require('./Customer/addCustomer');
+module.exports.delCustomer = require('./Customer/delCustomer');
 
 /**
  * Employee Resource routes
