@@ -310,6 +310,7 @@ t {
   margin-right: 1%;
   height: 100%;
   float: left;
+  background-color: rgba(248, 248, 248, 0.8);
   border: 1px #d9d9d9 solid;
 }
 #dashboard .task-group .subheader {
@@ -320,10 +321,15 @@ t {
   border: 1px #d9d9d9 solid;
   cursor: pointer;
 }
-#dashboard .task-group .task-block:hover .panel-header {
-  background-color: #1ec8a6;
-  color: #ffffff;
+#dashboard .task-group .task-block:hover {
+  outline: 2px solid #1ec8a6;
+}
+#dashboard .task-group .task-block .panel-header {
   cursor: inherit;
+}
+#dashboard .task-group .task-block .panel-content {
+  background-color: #ffffff;
+  padding: 5px;
 }
 #dashboard .task-group .task-block label {
   cursor: inherit;
@@ -336,6 +342,9 @@ t {
 }
 #dashboard .task-group .task-status {
   font-size: 14pt;
+}
+#dashboard .panel-header {
+  border-bottom: 1px solid #d9d9d9;
 }
 .view-header {
   height: 50px;

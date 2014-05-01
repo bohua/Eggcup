@@ -26,6 +26,7 @@
     margin-right: 1%;
     height: 100%;
     float: left;
+    background-color: @grey-light;
 
     border: 1px @grey-border solid;
 
@@ -39,14 +40,17 @@
       cursor: pointer;
 
       &:hover{
-        .panel-header{
-          background-color: @green;
-          color: @white;
-          cursor: inherit;
-        }
-
+        outline: 2px solid @green;
       }
 
+      .panel-header{
+        cursor: inherit;
+      }
+
+      .panel-content{
+        background-color: @white;
+        padding: 5px;
+      }
 
       label {
         cursor: inherit;
@@ -66,5 +70,9 @@
       font-size: 14pt;
     }
 
+  }
+
+  .panel-header{
+    border-bottom: 1px solid @grey-border;
   }
 }
