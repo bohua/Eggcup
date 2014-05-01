@@ -22,15 +22,28 @@ module.exports = function (req, res) {
 
 	productCodeWalker.on('file', function(root, stat, next) {
 		// Add js file to the list of files
+
+		var rules = [/.*\.js/];
+
+		for(var i in rules){
+			if(stat.name.match(rules[i])){
+				jsFiles.push(root + '/' + stat.name);
+			}
+		}
+
+		next();
+
+/*
 		var suffix = '.js';
 		//var minFolder = 'minified';
 
 		if(stat.name.indexOf(suffix, stat.name.length - suffix.length) !== -1
-			/*&& root.indexOf(minFolder, root.length - minFolder.length) !== -1*/){
+			//&& root.indexOf(minFolder, root.length - minFolder.length) !== -1){
 
 			jsFiles.push(root + '/' + stat.name);
 		}
 		next();
+*/
 	});
 
 	productCodeWalker.on('end', function() {
@@ -41,6 +54,6 @@ module.exports = function (req, res) {
 			}
 		}
 
-		res.render('./src/platform/index/index', { title: 'Joy HR', data: result });
+		res.render('./src/platform/index/index', { title: '咨询业务管理 CBMS', data: result });
 	});
 };
