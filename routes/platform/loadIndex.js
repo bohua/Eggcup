@@ -12,25 +12,21 @@ function formatFilePath(longPath){
 module.exports = function (req, res) {
 	var walk = require('walk');
 	var jsFiles = [];
+	var cssFiles = [];
 	var pathArr = __dirname.split('\\');
 	pathArr.pop();
 	pathArr.pop();
 	var projectPath= pathArr.join('/');
-	var result = [];
+	var jsToImport = [];
+	var jsRule = /.*\.js/;
 
 	var productCodeWalker  = walk.walk(projectPath+'/public/src', { followLinks: false });
 
 	productCodeWalker.on('file', function(root, stat, next) {
-		// Add js file to the list of files
-
-		var rules = [/.*\.js/];
-
-		for(var i in rules){
-			if(stat.name.match(rules[i])){
-				jsFiles.push(root + '/' + stat.name);
-			}
+		// Add production code & style to the list of files
+		if(stat.name.match(jsRule)){
+			jsFiles.push(root + '/' + stat.name);
 		}
-
 		next();
 
 /*
@@ -50,10 +46,10 @@ module.exports = function (req, res) {
 		for(var i=0; i<jsFiles.length; i++){
 			var fileName = formatFilePath(jsFiles[i]);
 			if(fileName){
-				result.push(fileName);
+				jsToImport.push(fileName);
 			}
 		}
 
-		res.render('./src/platform/index/index', { title: '咨询业务管理 CBMS', data: result });
+		res.render('./src/platform/index/index', { title: '咨询业务管理 CBMS', jsFiles: jsToImport});
 	});
 };

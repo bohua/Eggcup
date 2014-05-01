@@ -21,6 +21,154 @@ select {
 th {
   color: #274b6d;
 }
+.view-header {
+  height: 50px;
+  width: 100%;
+  padding: 0 20px;
+  border-bottom: 1px solid #d9d9d9;
+  background-color: #eeeeee;
+}
+.view-header .view-header-icon {
+  font-size: 25px!important;
+  margin-right: 15px;
+  cursor: pointer !important;
+}
+.view-header .view-header-icon:hover {
+  color: #aaaaaa;
+}
+.view-header span {
+  line-height: 50px !important;
+}
+.view-header .view-header-control-button-set button {
+  position: relative;
+  top: 14px;
+  background: none;
+  padding: 0 5px;
+}
+.view-header .view-header-control-button-set button i {
+  font-size: 15pt;
+  cursor: pointer;
+}
+.view-header .view-header-control-button-set button a:hover i {
+  color: #aaaaaa;
+}
+.view-header .view-header-control-search-box {
+  position: relative;
+  top: 10px;
+  right: 10px;
+  width: 250px;
+}
+.view-form-sheet {
+  width: 100%;
+  height: calc(100% - 50px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 10px;
+  /*
+  .input-control.text input:focus {
+    &:not(.hasList) {
+      padding-right: 25px !important;
+    }
+  }
+  */
+}
+.view-form-sheet .tab-control {
+  height: 100%;
+}
+.view-form-sheet .tab-control ul > li > a > i {
+  margin-right: 5px;
+}
+.view-form-sheet .tab-control .frames {
+  height: calc(100% - 35px);
+}
+.view-form-sheet .tab-control .frames .frame {
+  height: 100%;
+  overflow-y: auto;
+}
+.view-form-sheet .row .span1 {
+  width: calc((100% - 180px) / 10) !important;
+}
+.view-form-sheet .row .span2 {
+  width: calc((100% - 180px) / 10 * 2 + 20px) !important;
+}
+.view-form-sheet .row .span3 {
+  width: calc((100% - 180px) / 10 * 3 + 40px) !important;
+}
+.view-form-sheet .row .span4 {
+  width: calc((100% - 180px) / 10 * 4 + 60px) !important;
+}
+.view-form-sheet .row .span5 {
+  width: calc((100% - 180px) / 10 * 5 + 80px) !important;
+}
+.view-form-sheet .row .span6 {
+  width: calc((100% - 180px) / 10 * 6 + 100px) !important;
+}
+.view-form-sheet .row .span7 {
+  width: calc((100% - 180px) / 10 * 7 + 120px) !important;
+}
+.view-form-sheet .row .span8 {
+  width: calc((100% - 180px) / 10 * 8 + 140px) !important;
+}
+.view-form-sheet .row .span9 {
+  width: calc((100% - 180px) / 10 * 9 + 160px) !important;
+}
+.view-form-sheet .row .span10 {
+  width: 100% !important;
+}
+.view-form-sheet select {
+  height: 34px;
+}
+.view-form-sheet .expandable-section {
+  background-color: rgba(248, 248, 248, 0.8);
+  padding: 0 10px 0 10px;
+  border: 1px solid #d9d9d9;
+  margin-top: 10px;
+}
+.view-form-sheet legend {
+  padding-top: 10px !important;
+}
+.view-form-sheet .row {
+  margin-top: 0 !important;
+}
+.view-form-sheet .view-form-legend {
+  font-size: 16px;
+}
+.view-form-sheet label {
+  color: #696969;
+  font-size: 12pt;
+}
+.view-form-sheet table {
+  background-color: rgba(248, 248, 248, 0.8);
+}
+.view-form-sheet table a {
+  margin-left: 10px;
+  cursor: pointer;
+}
+.view-form-sheet textarea {
+  resize: vertical;
+  font-size: 12pt;
+}
+.view-command-button {
+  cursor: pointer;
+  padding: 5px 10px;
+  background: #1ec8a6 !important;
+  color: #ffffff !important;
+}
+.view-command-button:hover {
+  border: 1px solid #aaaaaa;
+  color: #343539 !important;
+}
+.ng-invalid {
+  background-color: #fac4c8;
+}
+.record-control-button-set button {
+  background: none !important;
+  font-size: 12pt!important;
+  padding: 0!important;
+}
+.cursor-pointer {
+  cursor: pointer;
+}
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
@@ -345,152 +493,4 @@ t {
 }
 #dashboard .panel-header {
   border-bottom: 1px solid #d9d9d9;
-}
-.view-header {
-  height: 50px;
-  width: 100%;
-  padding: 0 20px;
-  border-bottom: 1px solid #d9d9d9;
-  background-color: #eeeeee;
-}
-.view-header .view-header-icon {
-  font-size: 25px!important;
-  margin-right: 15px;
-  cursor: pointer !important;
-}
-.view-header .view-header-icon:hover {
-  color: #aaaaaa;
-}
-.view-header span {
-  line-height: 50px !important;
-}
-.view-header .view-header-control-button-set button {
-  position: relative;
-  top: 14px;
-  background: none;
-  padding: 0 5px;
-}
-.view-header .view-header-control-button-set button i {
-  font-size: 15pt;
-  cursor: pointer;
-}
-.view-header .view-header-control-button-set button a:hover i {
-  color: #aaaaaa;
-}
-.view-header .view-header-control-search-box {
-  position: relative;
-  top: 10px;
-  right: 10px;
-  width: 250px;
-}
-.view-form-sheet {
-  width: 100%;
-  height: calc(100% - 50px);
-  overflow-y: auto;
-  overflow-x: hidden;
-  padding: 10px;
-  /*
-  .input-control.text input:focus {
-    &:not(.hasList) {
-      padding-right: 25px !important;
-    }
-  }
-  */
-}
-.view-form-sheet .tab-control {
-  height: 100%;
-}
-.view-form-sheet .tab-control ul > li > a > i {
-  margin-right: 5px;
-}
-.view-form-sheet .tab-control .frames {
-  height: calc(100% - 35px);
-}
-.view-form-sheet .tab-control .frames .frame {
-  height: 100%;
-  overflow-y: auto;
-}
-.view-form-sheet .row .span1 {
-  width: calc((100% - 180px) / 10) !important;
-}
-.view-form-sheet .row .span2 {
-  width: calc((100% - 180px) / 10 * 2 + 20px) !important;
-}
-.view-form-sheet .row .span3 {
-  width: calc((100% - 180px) / 10 * 3 + 40px) !important;
-}
-.view-form-sheet .row .span4 {
-  width: calc((100% - 180px) / 10 * 4 + 60px) !important;
-}
-.view-form-sheet .row .span5 {
-  width: calc((100% - 180px) / 10 * 5 + 80px) !important;
-}
-.view-form-sheet .row .span6 {
-  width: calc((100% - 180px) / 10 * 6 + 100px) !important;
-}
-.view-form-sheet .row .span7 {
-  width: calc((100% - 180px) / 10 * 7 + 120px) !important;
-}
-.view-form-sheet .row .span8 {
-  width: calc((100% - 180px) / 10 * 8 + 140px) !important;
-}
-.view-form-sheet .row .span9 {
-  width: calc((100% - 180px) / 10 * 9 + 160px) !important;
-}
-.view-form-sheet .row .span10 {
-  width: 100% !important;
-}
-.view-form-sheet select {
-  height: 34px;
-}
-.view-form-sheet .expandable-section {
-  background-color: rgba(248, 248, 248, 0.8);
-  padding: 0 10px 0 10px;
-  border: 1px solid #d9d9d9;
-  margin-top: 10px;
-}
-.view-form-sheet legend {
-  padding-top: 10px !important;
-}
-.view-form-sheet .row {
-  margin-top: 0 !important;
-}
-.view-form-sheet .view-form-legend {
-  font-size: 16px;
-}
-.view-form-sheet label {
-  color: #696969;
-  font-size: 12pt;
-}
-.view-form-sheet table {
-  background-color: rgba(248, 248, 248, 0.8);
-}
-.view-form-sheet table a {
-  margin-left: 10px;
-  cursor: pointer;
-}
-.view-form-sheet textarea {
-  resize: vertical;
-  font-size: 12pt;
-}
-.view-command-button {
-  cursor: pointer;
-  padding: 5px 10px;
-  background: #1ec8a6 !important;
-  color: #ffffff !important;
-}
-.view-command-button:hover {
-  border: 1px solid #aaaaaa;
-  color: #343539 !important;
-}
-.ng-invalid {
-  background-color: #fac4c8;
-}
-.record-control-button-set button {
-  background: none !important;
-  font-size: 12pt!important;
-  padding: 0!important;
-}
-.cursor-pointer {
-  cursor: pointer;
 }

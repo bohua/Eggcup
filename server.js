@@ -33,7 +33,7 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
-app.get('/', platform.loadJsScript);
+app.get('/', platform.loadIndex);
 app.get('/getLeftMenu', platform.getLeftMenu);
 app.get('/getLocationArray', platform.getLocationArray);
 app.post('/login', security.userLogin);

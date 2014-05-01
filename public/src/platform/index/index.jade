@@ -34,7 +34,7 @@ html(ng-app='app')
 		script(src='/lib/highcharts/modules/no-data-to-display.src.js')
 
 		//Load product code
-		- var jsFilesToAppend = data || [];
+		- var jsFilesToAppend = jsFiles || [];
 			each jsFile in jsFilesToAppend
 				script(src= jsFile)
 
