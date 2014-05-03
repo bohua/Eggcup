@@ -19,7 +19,7 @@ module.exports = function (sequelize, DataTypes) {
 		description:	{ type: DataTypes.STRING },
 
 		//业务员绑定
-		presenter:		{ type: DataTypes.INTEGER },
+		employeeId:		{ type: DataTypes.INTEGER },
 		privateFlag:	{ type: DataTypes.BOOLEAN, defaultValue: false },
 
 		//激活使用

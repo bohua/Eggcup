@@ -1,4 +1,3 @@
-
 /**
  * Module dependencies.
  */
@@ -17,7 +16,7 @@ var app = express();
 app.set('port', process.env.PORT || 8080);
 app.set('views', path.join(__dirname, 'public'));
 app.set('view engine', 'jade');
-app.use(express.favicon( path.join(__dirname, 'public', 'images', 'favicon.ico')));
+app.use(express.favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 app.use(express.logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded());
@@ -30,7 +29,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // development only
 if ('development' == app.get('env')) {
-  app.use(express.errorHandler());
+	app.use(express.errorHandler());
 }
 
 app.get('/', platform.loadIndex);
@@ -53,18 +52,16 @@ app.get('/employee', basics.getEmployeeList);
 app.get('/employee/:employee_id', basics.getEmployee);
 app.post('/employee/:employee_id', basics.setEmployee);
 
-db
-	.sequelize
-	.authenticate()
-	.complete(function(err) {
-		if (err) {
-			throw err;
-		} else {
-			http.createServer(app).listen(app.get('port'), function(){
-				global.db = db;
-				global.exception_handler = require( path.join(__dirname , 'server', 'exceptions', 'exception_handler.js'));
+db.setup('eggcup', 'root', 'root', {
+	dialect: 'mysql',
+	port: 3306,
+	pool: { maxConnections: 5, maxIdleTime: 30}
+});
 
-				console.log('Express server listening on port ' + app.get('port'));
-			})
-		}
-	});
+http.createServer(app).listen(app.get('port'), function () {
+	/*
+	 global.db = db;
+	 global.exception_handler = require( path.join(__dirname , 'server', 'exceptions', 'exception_handler.js'));
+	 */
+	console.log('Express server listening on port ' + app.get('port'));
+});
