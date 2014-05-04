@@ -1,8 +1,8 @@
 /**
  * Created by Bli on 2014/4/29.
  */
-angular.module('customer-editor', [])
-	.controller('customerEditorController', ['$scope', function($scope){
+angular.module('customer-editor', ['tag-reference-service'])
+	.controller('customerEditorController', ['$scope', 'tagReferenceService', function($scope, tagReferenceService){
 		/**
 		 * Initialize References
 		 */
@@ -17,4 +17,8 @@ angular.module('customer-editor', [])
 				$scope.Confirm('remove', false);
 			}
 		}
+
+		tagReferenceService.getSysTag().then(function(SYSTAG){
+			$scope.sysTag = SYSTAG;
+		});
 	}]);

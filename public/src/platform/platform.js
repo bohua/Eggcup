@@ -7,12 +7,11 @@ angular.module('platform',
 		'left-menu',
 		/*'router-guide',*/
 		'top-bar',
-		'popup-dialog',
-		'ref-data-service'
+		'popup-dialog'
 	]).config(function ($routeProvider) {
 
 	})
-	.controller('platformController', ['$scope', '$rootScope', '$timeout', '$location', 'refDataService', function ($scope, $rootScope, $timeout, $location, refDataService) {
+	.controller('platformController', ['$scope', '$rootScope', '$timeout', '$location', function ($scope, $rootScope, $timeout, $location) {
 
 		/*
 		 if ($location.path() !== '/') {

@@ -5,9 +5,19 @@ var bo = require(__dirname + '/../../../server/basics/employee_bo');
 
 module.exports = function (req, res) {
 	var id = req.body.id;
+	var model = req.body;
+	if (model.tags) {
+		var tagIdArray = [];
+		for (var i in model.tags) {
+			tagIdArray.push('%' + model.tags[i].id + '%');
+		}
+		if (tagIdArray.length > 0) {
+			model.tags = tagIdArray.join(',');
+		}
+	}
 
 	if (!id) {
-		bo.add(req.body).then(
+		bo.add(model).then(
 			function (success) {
 				res.statusCode = 200;
 				res.json(success);
@@ -21,7 +31,7 @@ module.exports = function (req, res) {
 			}
 		);
 	} else {
-		bo.update(req.body).then(
+		bo.update(model).then(
 			function (success) {
 				res.statusCode = 200;
 				res.json(success);

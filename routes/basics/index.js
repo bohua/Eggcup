@@ -17,3 +17,8 @@ module.exports.delCustomer = require('./Customer/delCustomer');
 module.exports.getEmployee = require('./Employee/getEmployee');
 module.exports.getEmployeeList = require('./Employee/getEmployeeList');
 module.exports.setEmployee = require('./Employee/setEmployee');
+
+/**
+ * Tag Resource routes
+ */
+module.exports.getTagList = require('./Tag/getTagList');

@@ -36,6 +36,17 @@ div#employee-editor-form.grid.view-form-sheet(ng-controller="employeeEditorContr
 					div.input-control.text
 						input(type="text", placeholder="备注", ng-model="dialog_data_model.description")
 						//button.btn-clear
+			div.row
+				div.span10
+					label 标签
+					//input(type="text", data-role="tagsinput", tab-end)
+					bootstrap-tagsinput(
+					ng-model="dialog_data_model.tags",
+					tag-gen="tagGenerator",
+					tagClass="getTagClass",
+					itemvalue="id",
+					itemtext="tag",
+					tab-end)
 
 		hr
 		div.place-left

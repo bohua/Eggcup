@@ -4,7 +4,8 @@
 angular.module('employee-list', [
 	'ngRoute',
 	'employee-resource',
-	'employee-editor'
+	'employee-editor',
+	'bootstrap-tagsinput'
 ]).config(['$routeProvider', function ($routeProvider) {
 	$routeProvider.
 		when('/config/employee', {
@@ -52,6 +53,20 @@ angular.module('employee-list', [
 			onShow: function (_dialogWin) {
 				$.Metro.initInputs();
 				_dialogWin.find('.auto-focus').focus();
+				/*
+				$('input[data-role="tagsinput"]').tagsinput({
+					tagClass: function(tag) {
+						switch(tag.type){
+							case 'config': return 'label bg-darkGray';
+							case 'custom': return 'label bg-darkBlue';
+							case 'permit': return 'label bg-darkRed';
+							default : return 'label bg-darkBlue';
+						}
+					},
+					itemValue: 'id',
+					itemText: 'value'
+				});
+				*/
 			},
 
 			api: {}

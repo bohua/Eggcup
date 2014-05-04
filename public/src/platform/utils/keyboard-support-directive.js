@@ -10,8 +10,9 @@ angular.module('keyboard-support', [])
 
 				$element.on('keydown', function ($event) {
 					var el = $event.target;
+					var isTagsInput = $(el).hasClass('tagsinput');
 
-					if (el.tagName !== 'TEXTAREA' && $event.keyCode === 13) {
+					if (el.tagName !== 'TEXTAREA' && $event.keyCode === 13 && !isTagsInput) {
 						$timeout(function () {
 							$.tabNext();
 						});

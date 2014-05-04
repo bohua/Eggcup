@@ -4,7 +4,6 @@
 angular.module('zxdj-view', [
 	'ngRoute',
 	'keyboard-support',
-	'ref-data-service',
 	'task-resource'
 ]).config(['$routeProvider', function ($routeProvider) {
 	$routeProvider.
@@ -14,9 +13,8 @@ angular.module('zxdj-view', [
 	'$http',
 	'$timeout',
 	'$location',
-	'refDataService',
 	'TASK',
-	function ($scope, $http, $timeout, $location, refDataService, TASK) {
+	function ($scope, $http, $timeout, $location, TASK) {
 
 		$.Metro.initTabs();
 		$.Metro.initInputs();
@@ -51,9 +49,5 @@ angular.module('zxdj-view', [
 		 */
 		$scope.getBack = function () {
 			$location.path('/');
-		};
-
-		$scope.getAutoComplete = function () {
-			console.log(refDataService.getCustomerList());
 		};
 	}]);

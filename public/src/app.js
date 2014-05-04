@@ -4,6 +4,7 @@
 angular.module('app', [
 	'platform',
 	'zxdj-view',
+	'tag-reference-service',
 	'customer-list',
 	'employee-list',
 	'dashboard'

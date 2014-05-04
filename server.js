@@ -51,6 +51,10 @@ app.delete('/customer', basics.delCustomer);
 app.get('/employee', basics.getEmployeeList);
 app.get('/employee/:employee_id', basics.getEmployee);
 app.post('/employee/:employee_id', basics.setEmployee);
+/**
+ * Tag Resource requests
+ */
+app.get('/tag', basics.getTagList);
 
 db.setup('eggcup', 'root', 'root', {
 	dialect: 'mysql',
