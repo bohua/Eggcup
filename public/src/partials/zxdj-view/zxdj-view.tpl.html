@@ -1,0 +1,135 @@
+
+<!--Created by Bli on 2014/4/24.-->
+<div class="view-header"><i ng-click="getBack()" class="icon-arrow-left-3 view-header-icon"></i><span class="subheader">咨询登记</span>
+  <comment class="text-muted margin20">Consulting Registery</comment>
+  <div class="view-header-control-button-set place-right">
+    <button data-hint="新建" ng-click="new($event)" class="hint--bottom"><a><i class="icon-file"></i></a></button>
+    <button data-hint="保存" ng-click="save($event)" class="hint--bottom"><a><i class="icon-floppy"></i></a></button>
+    <button data-hint="修改" ng-click="edit($event)" class="hint--bottom"><a><i class="icon-copy"></i></a></button>
+    <button data-hint="删除" ng-click="delete($event)" class="hint--bottom"><a><i class="icon-remove"></i></a></button>
+    <button data-hint="查找" ng-click="search($event)" class="hint--bottom"><a><i class="icon-search"></i></a></button>
+    <button data-hint="打印" ng-click="print($event)" class="hint--bottom"><a><i class="icon-printer"></i></a></button>
+  </div>
+</div>
+<div id="zxdj-form" class="grid view-form-sheet">
+  <fieldset keyboard-support="keyboard-support"><span class="item-title">单据信息</span>
+    <comment class="text-muted margin15">Basic Information</comment>
+    <div class="expandable-section">
+      <div class="row">
+        <div class="span5">
+          <label>登记单号</label>
+        </div>
+        <div class="span5">
+          <label>登记日期</label>
+        </div>
+      </div>
+    </div>
+    <hr/><span class="item-title">客户信息</span>
+    <comment class="text-muted margin15">Customer Information</comment>
+    <div class="expandable-section">
+      <div class="row">
+        <div class="span5">
+          <label>选择客户公司</label>
+          <div class="input-control text">
+            <input type="text" placeholder="公司名称" ng-model="test" autofocus="autofocus" tab-start="tab-start" list="customer_list"/>
+            <datalist id="customer_list">
+              <option value="first">AB</option>
+              <option value="second">BC</option>
+              <option value="third">CD</option>
+            </datalist>
+            <!--button.btn-search(ng-click="getCompany($event)", tabindex="-1")-->
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr/><span class="item-title">咨询信息</span>
+    <comment class="text-muted margin15">Consulting Details</comment>
+    <div class="expandable-section">
+      <div class="row">
+        <div class="span3">
+          <label>阅读权限</label>
+          <div class="input-control checkbox">
+            <label>
+              <input type="checkbox" ng-model="task.ydqx1"/><span class="check"></span><span>内部浏览</span>
+            </label>
+          </div>
+          <div class="input-control checkbox">
+            <label>
+              <input type="checkbox" ng-model="task.ydqx2"/><span class="check"></span><span>客户浏览</span>
+            </label>
+          </div>
+        </div>
+        <div class="span4">
+          <label>咨询方式</label>
+          <div class="input-control checkbox">
+            <label>
+              <input type="checkbox" ng-model="task.zxfs1"/><span class="check"></span><span>电子邮件</span>
+            </label>
+          </div>
+          <div class="input-control checkbox">
+            <label>
+              <input type="checkbox" ng-model="task.zxfs2"/><span class="check"></span><span>电话</span>
+            </label>
+          </div>
+          <div class="input-control checkbox">
+            <label>
+              <input type="checkbox" ng-model="task.zxfs3"/><span class="check"></span><span>面谈</span>
+            </label>
+          </div>
+          <div class="input-control checkbox">
+            <label>
+              <input type="checkbox" ng-model="task.zxfs4"/><span class="check"></span><span>传真</span>
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span2">
+          <label>批送日期</label>
+          <div data-role="datepicker" class="input-control text">
+            <input type="text" placeholder="选择日期" ng-model="task.psdate"/>
+            <button tabindex="-1" class="btn-date"></button>
+          </div>
+        </div>
+        <div class="span2">
+          <label>处理人</label>
+          <div class="input-control text">
+            <input type="text" placeholder="处理人" ng-model="task.clr"/>
+            <button class="btn-clear"></button>
+          </div>
+        </div>
+        <div class="span4">
+          <label>处理方式</label>
+          <div class="input-control text">
+            <input type="text" placeholder="处理方式" ng-model="task.clfs"/>
+            <button class="btn-clear"></button>
+          </div>
+        </div>
+        <div class="span2">
+          <label>登记人</label>
+          <div class="input-control text">
+            <input type="text" placeholder="登记人" ng-model="task.djr"/>
+            <button class="btn-clear"></button>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span10">
+          <label>咨询主题</label>
+          <div class="input-control text">
+            <input type="text" placeholder="咨询主题" ng-model="task.zxzt"/>
+            <button class="btn-clear"></button>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span10">
+          <label>咨询事项</label>
+          <div class="input-control textarea">
+            <textarea placeholder="咨询事项" ng-model="task.zxsx" tab-end="tab-end"></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+</div>
