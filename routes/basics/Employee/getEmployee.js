@@ -7,9 +7,11 @@ var tag_bo = require(__dirname + '/../../../server/basics/tag_bo');
 var utils = require(__dirname + '/../../../server/utils');
 
 module.exports = function (req, res) {
-	var id = req.params.employee_id;
 
-	employee_bo.get(id, true).then(
+	employee_bo.get({
+		id: req.params.employee_id,
+		enable: true
+	}).then(
 		function (success) {
 			var employee = utils.retreiveDataValues(success);
 			var employeeTagString = employee.tags;
@@ -30,7 +32,7 @@ module.exports = function (req, res) {
 						});
 					}
 				);
-			}else{
+			} else {
 				res.contentType('json');
 				res.json(employee);
 			}

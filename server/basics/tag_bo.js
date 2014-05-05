@@ -57,25 +57,6 @@ var TAG = new Bo('REF_TAG',
 			return deferred.promise;
 		}
 	}, {
-		name: 'getAllByType',
-		method: function (type) {
-			var deferred = Q.defer();
-
-			this.orm.model(this._table).findAll({
-				where: {
-					type: type
-				}
-			}).then(
-				function (success) {
-					deferred.resolve(success);
-				},
-				function (failure) {
-					deferred.reject(failure);
-				});
-
-			return deferred.promise;
-		}
-	}, {
 		name: 'PersistTagList',
 		method: function(tagList){
 			var deferred = Q.defer();

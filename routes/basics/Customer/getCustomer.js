@@ -5,9 +5,11 @@
 var bo = require(__dirname + '/../../../server/basics/customer_bo');
 
 module.exports = function (req, res) {
-	var id = req.params.customer_id;
 
-	bo.get(id, true).then(
+	bo.get({
+		id: req.params.customer_id,
+		enable: true
+	}).then(
 		function (success) {
 			res.contentType('json');
 			res.json(success);

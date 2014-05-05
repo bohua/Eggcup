@@ -6,7 +6,6 @@ var db = require('../models');
 var fs = require('fs');
 
 
-
 db.setup('eggcup', 'root', 'root', {
 	dialect: 'mysql',
 	port: 3306,
@@ -23,30 +22,12 @@ db.Seq()
 		} else {
 			global.db = db;
 
-			generateKh().then(function (cus_list) {
-				generateEmployee().then(function () {
-					generateTag().then(function () {
-						db.REF_TAG.findAll().success(function (tags) {
-							/*
-							db.REF_EMPLOYEE.find({where: {id: '1'}}).success(function (emp) {
-								emp.addTag(tags[0]);
-								emp.addTag(tags[2]);
-							});
-							db.REF_EMPLOYEE.find({where: {id: '2'}}).success(function (emp) {
-								emp.addTag(tags[0]);
-							});
-							db.REF_EMPLOYEE.find({where: {id: '3'}}).success(function (emp) {
-								emp.addTag(tags[1]);
-							});
-							*/
-						});
-					});
-				});
-			});
-
-	}
-})
-;
+			generateKh();
+			generateTag();
+			generateEmployee();
+			generateTask();
+		}
+	});
 
 
 function generateKh() {
@@ -175,6 +156,34 @@ function generateTag() {
 		{
 			tag: '管理员',
 			type: 'permit'
+		}
+	]).success(function (sdepold) {
+		//console.log(sdepold)
+		deferred.resolve(sdepold);
+	});
+
+	return deferred.promise;
+
+}
+
+function generateTask() {
+	var deferred = new Q.defer();
+	db.model('DATA_TASK').bulkCreate([
+		{
+			id: 1001,
+			code: 'TK-1001',
+			customer: 1,
+			employee: 1,
+			topic: '沙石厂关于下水污染问题的咨询解答，酌情予以妥善安排',
+			status: 0,
+			description: ''
+		},{
+			code: 'TK-1002',
+			customer: 2,
+			employee: 2,
+			topic: '小明的足球',
+			status: 0,
+			description: ''
 		}
 	]).success(function (sdepold) {
 		//console.log(sdepold)

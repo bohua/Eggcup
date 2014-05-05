@@ -29,7 +29,9 @@ function findTags(employee){
 
 module.exports = function (req, res) {
 
-	employee_bo.getAll(true).then(
+	employee_bo.getAll({
+		enable: true
+	}).then(
 		function (success) {
 			var promises = [];
 

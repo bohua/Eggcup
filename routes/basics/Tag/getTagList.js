@@ -6,7 +6,9 @@ var tag_bo = require(__dirname + '/../../../server/basics/tag_bo');
 module.exports = function (req, res) {
 	var types = req.query.type;
 
-	tag_bo.getAllByType(types).then(
+	tag_bo.get({
+		type: types
+	}).then(
 		function (success) {
 			res.contentType('json');
 			res.json(success);

@@ -6,7 +6,9 @@ var bo = require(__dirname + '/../../../server/basics/customer_bo');
 
 module.exports = function (req, res) {
 
-	bo.getAll(true).then(
+	bo.getAll({
+		enable: true
+	}).then(
 		function (success) {
 			res.contentType('json');
 			res.json(success);

@@ -71,14 +71,11 @@ var BO = function (schema) {
 		return deferred.promise;
 	};
 
-	this.get = function (id, enabledOnly) {
+	this.get = function (where) {
 		var deferred = Q.defer();
 
 		this.orm.model(this._table).find({
-			where: {
-				id: id,
-				enable: enabledOnly
-			}
+			where: where
 		}).then(
 			function (success) {
 				deferred.resolve(success);
@@ -90,13 +87,11 @@ var BO = function (schema) {
 		return deferred.promise;
 	};
 
-	this.getAll = function (enabledOnly) {
+	this.getAll = function (where) {
 		var deferred = Q.defer();
 
 		this.orm.model(this._table).findAll({
-			where: {
-				enable: enabledOnly
-			}
+			where: where
 		}).then(
 			function (success) {
 				deferred.resolve(success);
