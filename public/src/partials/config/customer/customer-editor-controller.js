@@ -18,7 +18,8 @@ angular.module('customer-editor', ['tag-reference-service'])
 			}
 		}
 
-		tagReferenceService.getSysTag().then(function(SYSTAG){
-			$scope.sysTag = SYSTAG;
-		});
+		/**
+		 * Get system tags
+		 */
+		var sysTag = tagReferenceService.getSysTag();
 	}]);

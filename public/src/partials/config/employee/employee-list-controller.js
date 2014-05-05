@@ -4,8 +4,7 @@
 angular.module('employee-list', [
 	'ngRoute',
 	'employee-resource',
-	'employee-editor',
-	'bootstrap-tagsinput'
+	'employee-editor'
 ]).config(['$routeProvider', function ($routeProvider) {
 	$routeProvider.
 		when('/config/employee', {

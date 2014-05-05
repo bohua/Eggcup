@@ -1,7 +1,7 @@
 /**
  * Created by Bli on 2014/4/29.
  */
-angular.module('employee-editor', ['tag-reference-service'])
+angular.module('employee-editor', ['tag-reference-service', 'bootstrap-tagsinput'])
 	.controller('employeeEditorController', ['$scope', 'tagReferenceService', function ($scope, tagReferenceService) {
 		/**
 		 * Initialize Emitters
@@ -12,6 +12,11 @@ angular.module('employee-editor', ['tag-reference-service'])
 				$scope.Confirm('remove', false);
 			}
 		};
+
+		/**
+		 * Get system tags
+		 */
+		var sysTag = tagReferenceService.getSysTag();
 
 		/*
 		 //$scope.tagList = [{value: 1, text: '管理员', type:'config'}];
@@ -24,9 +29,9 @@ angular.module('employee-editor', ['tag-reference-service'])
 		var tmpId = 1;
 		$scope.tagGenerator = function (newTagValue) {
 			var isSysTag;
-			for (var i in $scope.sysTag) {
-				if ($scope.sysTag[i].tag === newTagValue) {
-					isSysTag = $scope.sysTag[i];
+			for (var i in sysTag) {
+				if (sysTag[i].tag === newTagValue) {
+					isSysTag = sysTag[i];
 					break;
 				}
 			}
@@ -58,8 +63,4 @@ angular.module('employee-editor', ['tag-reference-service'])
 					return 'label bg-darkBlue';
 			}
 		}
-
-		tagReferenceService.getSysTag().then(function (SYSTAG) {
-			$scope.sysTag = SYSTAG;
-		});
 	}]);

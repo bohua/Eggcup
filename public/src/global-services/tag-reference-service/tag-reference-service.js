@@ -3,9 +3,14 @@
  */
 angular.module('tag-reference-service', ['tag-resource'])
 	.factory('tagReferenceService', ['TAG', function (TAG) {
+		var sysTagList;
 		var Service = {
-			getSysTag : function(){
-				return TAG.query({type: ['config', 'permit']}).$promise;
+			init: function () {
+				sysTagList = TAG.query({type: ['config', 'permit']});
+			},
+
+			getSysTag: function () {
+				return sysTagList;
 			}
 		};
 

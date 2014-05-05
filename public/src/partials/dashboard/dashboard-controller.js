@@ -24,5 +24,8 @@ angular.module('dashboard', [
 	'customers',
 	'employees',
 	function ($scope, customers, employees) {
+		/**
+		 * Initialize the nano scrollers
+		 */
 		$(".nano").nanoScroller();
 	}]);

@@ -12,13 +12,6 @@ angular.module('platform',
 
 	})
 	.controller('platformController', ['$scope', '$rootScope', '$timeout', '$location', function ($scope, $rootScope, $timeout, $location) {
-
-		/*
-		 if ($location.path() !== '/') {
-		 $location.path('/');
-		 }
-		 */
-
 		/*
 		 $timeout(function(){
 		 $scope.$broadcast('emitPreloadMask', false);
