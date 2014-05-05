@@ -5,18 +5,18 @@
 var Q = require("q");
 var Bo = require("./abstract_bo");
 
-function findOrCreateTag(Tag, model){
+function findOrCreateTag(Tag, model) {
 	var deferred = Q.defer();
 
-	model.findOrCreate({ tag: Tag.tag}, { type: 'custom'} )
-		.success(function(success, created){
+	model.findOrCreate({ tag: Tag.tag}, { type: 'custom'})
+		.success(function (success, created) {
 			Tag.id = success.getDataValue('id');
 			Tag.tag = success.getDataValue('tag');
 			Tag.type = success.getDataValue('type');
 			Tag.category = success.getDataValue('category');
 			deferred.resolve(TAG);
 		})
-		.error(function(error){
+		.error(function (error) {
 			deferred.reject(error);
 		})
 
@@ -32,8 +32,11 @@ var TAG = new Bo('REF_TAG',
 			var promises = [];
 
 			for (var i in tagIdArray) {
-				var id = tagIdArray[i].replace('%', '');
-				promises.push(this.get(id, true));
+				var id = tagIdArray[i].replace(/%/g, '');
+				promises.push(this.get({
+					id: id,
+					enable: true
+				}));
 			}
 
 			Q.allSettled(promises)
@@ -58,11 +61,11 @@ var TAG = new Bo('REF_TAG',
 		}
 	}, {
 		name: 'PersistTagList',
-		method: function(tagList){
+		method: function (tagList) {
 			var deferred = Q.defer();
 
 			//When no tags saved resolve with empty array directly
-			if(!tagList || tagList.length === 0){
+			if (!tagList || tagList.length === 0) {
 				deferred.resolve([]);
 				return deferred.promise;
 			}
@@ -71,21 +74,21 @@ var TAG = new Bo('REF_TAG',
 			var clone = tagList.slice();
 
 			var customTagList = [];
-			for(var i in clone){
-				if(clone[i].type === 'custom'){
+			for (var i in clone) {
+				if (clone[i].type === 'custom') {
 					customTagList.push(clone[i]);
 				}
 			}
-			if(customTagList.length === 0){
+			if (customTagList.length === 0) {
 				deferred.resolve(clone);
-			}else{
+			} else {
 				var promises = [];
-				for(var j in clone){
+				for (var j in clone) {
 					promises.push(findOrCreateTag(clone[j], this.orm.model(this._table)));
 				}
 
 				Q.allSettled(promises)
-					.then(function(){
+					.then(function () {
 						deferred.resolve(clone);
 					});
 			}
