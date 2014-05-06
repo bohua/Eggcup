@@ -3,7 +3,7 @@
  */
 
 var Q = require("q");
-var Bo = require("./abstract_bo");
+var Bo = require(__dirname+ "/../abstract_bo");
 
 function findOrCreateTag(Tag, model) {
 	var deferred = Q.defer();

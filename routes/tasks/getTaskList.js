@@ -5,9 +5,7 @@ var task_bo = require(__dirname + '/../../server/tasks/task_bo');
 
 module.exports = function (req, res) {
 
-	task_bo.getAll({
-		enable: true
-	}).then(
+	task_bo.getAll().then(
 		function (success) {
 			res.contentType('json');
 			res.json(success);

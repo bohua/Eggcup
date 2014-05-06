@@ -25,56 +25,17 @@ div#dashboard.grid.padding10
 				comment.text-muted.margin20 Register
 			div.panel-content.nano
 				div.nano-content
-					div.panel.task-block
-						div.panel-header TK-1021
-							span.task-status.place-right.fg-darkRed 待审分配
+					div.panel.task-block(ng-repeat="task in taskList.register track by task.id")
+						div.panel-header TK-{{task.id}}
+							span.task-status.place-right.fg-darkRed {{task.status}}
 						div.panel-content
 							label.text-info 客户
-							label.text-ellipsis 兵马俑沙石场
+							label.text-ellipsis {{task.customer}}
 							label.text-info 主题
-							label.text-ellipsis 沙石厂关于下水污染问题的咨询解答，酌情予以妥善安排
+							label.text-ellipsis {{task.topic}}
 							label.text-info 最后期限
 							label 2014-06-29 (56天后)
-					div.panel.task-block
-						div.panel-header TK-1021
-							span.task-status.place-right.fg-darkRed 待审分配
-						div.panel-content
-							label.text-info 客户
-							label.text-ellipsis 兵马俑沙石场
-							label.text-info 主题
-							label.text-ellipsis 沙石厂关于下水污染问题的咨询解答，酌情予以妥善安排
-							label.text-info 最后期限
-							label 2014-06-29 (56天后)
-					div.panel.task-block
-						div.panel-header TK-1021
-							span.task-status.place-right.fg-darkRed 待审分配
-						div.panel-content
-							label.text-info 客户
-							label.text-ellipsis 兵马俑沙石场
-							label.text-info 主题
-							label.text-ellipsis 沙石厂关于下水污染问题的咨询解答，酌情予以妥善安排
-							label.text-info 最后期限
-							label 2014-06-29 (56天后)
-					div.panel.task-block
-						div.panel-header TK-1021
-							span.task-status.place-right.fg-darkRed 待审分配
-						div.panel-content
-							label.text-info 客户
-							label.text-ellipsis 兵马俑沙石场
-							label.text-info 主题
-							label.text-ellipsis 沙石厂关于下水污染问题的咨询解答，酌情予以妥善安排
-							label.text-info 最后期限
-							label 2014-06-29 (56天后)
-					div.panel.task-block
-						div.panel-header TK-1021
-							span.task-status.place-right.fg-darkRed 待审分配
-						div.panel-content
-							label.text-info 客户
-							label.text-ellipsis 兵马俑沙石场
-							label.text-info 主题
-							label.text-ellipsis 沙石厂关于下水污染问题的咨询解答，酌情予以妥善安排
-							label.text-info 最后期限
-							label 2014-06-29 (56天后)
+
 		div.task-group.panel
 			div.panel-header.text-center
 				span.subheader 解答
@@ -86,38 +47,9 @@ div#dashboard.grid.padding10
 				span.subheader 合同
 				comment.text-muted.margin20 Contract
 			div.panel-content
-				div.panel.task-block
-					div.panel-header
-					div.panel-content
-				div.panel.task-block
-					div.panel-header
-					div.panel-content
-				div.panel.task-block
-					div.panel-header
-					div.panel-content
-				div.panel.task-block
-					div.panel-header
-					div.panel-content
-				div.panel.task-block
-					div.panel-header
-					div.panel-content
+
 		div.task-group.panel
 			div.panel-header.text-center
 				span.subheader 结案
 				comment.text-muted.margin20 Seal
 			div.panel-content
-				div.panel.task-block
-					div.panel-header
-					div.panel-content
-				div.panel.task-block
-					div.panel-header
-					div.panel-content
-				div.panel.task-block
-					div.panel-header
-					div.panel-content
-				div.panel.task-block
-					div.panel-header
-					div.panel-content
-				div.panel.task-block
-					div.panel-header
-					div.panel-content

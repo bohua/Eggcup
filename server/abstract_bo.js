@@ -5,7 +5,7 @@ var Q = require("q");
 var extend = require("extend");
 
 var BO = function (schema) {
-	this.orm = require(__dirname + "/../../models");
+	this.orm = require(__dirname + "/../models");
 	this._table = schema;
 
 	this.add = function (model) {

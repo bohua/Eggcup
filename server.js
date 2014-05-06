@@ -9,6 +9,7 @@ var path = require('path');
 var db = require('./models');
 var security = require('./routes/security');
 var basics = require('./routes/basics');
+var tasks = require('./routes/tasks');
 
 var app = express();
 
@@ -55,7 +56,14 @@ app.post('/employee/:employee_id', basics.setEmployee);
  * Tag Resource requests
  */
 app.get('/tag', basics.getTagList);
+/**
+ * Task Resource requests
+ */
+app.get('/task', tasks.getTaskList);
 
+/**
+ * Initialize DB singleton
+ */
 db.setup('eggcup', 'root', 'root', {
 	dialect: 'mysql',
 	port: 3306,
