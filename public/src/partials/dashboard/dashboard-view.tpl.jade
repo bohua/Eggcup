@@ -27,7 +27,7 @@ div#dashboard.grid.padding10
 				div.nano-content
 					div.panel.task-block(ng-repeat="task in taskList.register track by task.id")
 						div.panel-header TK-{{task.id}}
-							span.task-status.place-right.fg-darkRed {{task.status}}
+							span.task-status.place-right.fg-darkRed {{translateStatus(task.status)}}
 						div.panel-content
 							label.text-info 客户
 							label.text-ellipsis {{task.customer}}
@@ -40,7 +40,18 @@ div#dashboard.grid.padding10
 			div.panel-header.text-center
 				span.subheader 解答
 				comment.text-muted.margin20 Reply
-			div.panel-content
+			div.panel-content.nano
+				div.nano-content
+					div.panel.task-block(ng-repeat="task in taskList.reply track by task.id")
+						div.panel-header TK-{{task.id}}
+							span.task-status.place-right.fg-darkRed {{translateStatus(task.status)}}
+						div.panel-content
+							label.text-info 客户
+							label.text-ellipsis {{task.customer}}
+							label.text-info 主题
+							label.text-ellipsis {{task.topic}}
+							label.text-info 最后期限
+							label 2014-06-29 (56天后)
 
 		div.task-group.panel
 			div.panel-header.text-center

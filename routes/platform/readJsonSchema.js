@@ -1,13 +1,16 @@
 /**
  * Created by Bli on 14-3-02.
  */
-fs = require('fs');
+var fs = require('fs');
+var Q = require('q');
 
-module.exports = function (schemaPath, callback) {
+module.exports = function (schemaPath) {
+	var deferred = Q.defer();
 	try{
-		callback(JSON.parse(fs.readFileSync(schemaPath, 'utf8')), null);
+		deferred.resolve(JSON.parse(fs.readFileSync(schemaPath, 'utf8')));
 	}catch(e){
 		//Catch exceptions
-		callback(null, e);
+		deferred.reject(e);
 	}
+	return deferred.promise;
 };

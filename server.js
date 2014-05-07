@@ -1,15 +1,18 @@
 /**
  * Module dependencies.
  */
-
+var Q = require('q');
 var express = require('express');
 var platform = require('./routes/platform');
 var http = require('http');
 var path = require('path');
 var db = require('./models');
+var task_status_service = require('./server/tasks/task_status_service');
 var security = require('./routes/security');
 var basics = require('./routes/basics');
 var tasks = require('./routes/tasks');
+
+var startup_check_promises = [];
 
 var app = express();
 
@@ -60,9 +63,16 @@ app.get('/tag', basics.getTagList);
  * Task Resource requests
  */
 app.get('/task', tasks.getTaskList);
+app.get('/statusList', tasks.getStatusList);
+
 
 /**
- * Initialize DB singleton
+ * Initialize Services
+ */
+startup_check_promises.push(task_status_service.init());
+
+/**
+ * Initialize DB
  */
 db.setup('eggcup', 'root', 'root', {
 	dialect: 'mysql',
@@ -70,10 +80,26 @@ db.setup('eggcup', 'root', 'root', {
 	pool: { maxConnections: 5, maxIdleTime: 30}
 });
 
-http.createServer(app).listen(app.get('port'), function () {
-	/*
-	 global.db = db;
-	 global.exception_handler = require( path.join(__dirname , 'server', 'exceptions', 'exception_handler.js'));
-	 */
-	console.log('Express server listening on port ' + app.get('port'));
-});
+Q.allSettled(startup_check_promises)
+	.then(
+	function (results) {
+		for (var i in results) {
+			if (results[i].state === "fulfilled") {
+				console.log('Startup self check passed: ', results[i].value);
+			}else{
+				console.log('Startup self check NOT passed: ', results[i].value);
+			}
+		}
+
+		http.createServer(app).listen(app.get('port'), function () {
+			/*
+			 global.db = db;
+			 global.exception_handler = require( path.join(__dirname , 'server', 'exceptions', 'exception_handler.js'));
+			 */
+			console.log('Express server listening on port ' + app.get('port'));
+		});
+	},
+	function (failure) {
+		console.log('Startup canceled, due to self check failure:', failure);
+	}
+);

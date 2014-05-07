@@ -5,7 +5,8 @@ angular.module('dashboard', [
 	'ngRoute',
 	'customer-resource',
 	'employee-resource',
-	'task-resource'
+	'task-resource',
+	'task-status-service'
 ]).config(['$routeProvider', function ($routeProvider) {
 	$routeProvider.
 		when('/', {
@@ -28,7 +29,8 @@ angular.module('dashboard', [
 	'customers',
 	'employees',
 	'tasks',
-	function ($scope, customers, employees, tasks) {
+	'taskStatusService',
+	function ($scope, customers, employees, tasks, taskStatusService) {
 		/**
 		 * Initialize the nano scrollers
 		 */
@@ -43,6 +45,7 @@ angular.module('dashboard', [
 			};
 			for (var i in taskList) {
 				var task = taskList[i];
+
 				if (task.status < 200) {
 					groups.register.push(task);
 				}else if(task.status < 300){
@@ -57,5 +60,8 @@ angular.module('dashboard', [
 			return groups;
 		}
 
+		$scope.translateStatus = taskStatusService.translateStatus;
 		$scope.taskList = groupingTasks(tasks);
+
+
 	}]);

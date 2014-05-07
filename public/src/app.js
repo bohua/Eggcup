@@ -3,6 +3,7 @@
  */
 angular.module('app', [
 	'tag-reference-service',
+	'task-status-service',
 	'platform',
 	'zxdj-view',
 	'customer-list',
@@ -14,7 +15,8 @@ angular.module('app', [
 	'$timeout',
 	'$location',
 	'tagReferenceService',
-	function ($scope, $rootScope, $timeout, $location, tagReferenceService) {
+	'taskStatusService',
+	function ($scope, $rootScope, $timeout, $location, tagReferenceService, taskStatusService) {
 
 		/*
 		 if ($location.path() !== '/') {
@@ -26,4 +28,6 @@ angular.module('app', [
 		 * Initialize global services
 		 */
 		tagReferenceService.init();
+
+		taskStatusService.init();
 	}]);

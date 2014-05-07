@@ -3,3 +3,4 @@
  */
 module.exports.getTask = require('./getTask');
 module.exports.getTaskList = require('./getTaskList');
+module.exports.getStatusList = require('./getStatusList');

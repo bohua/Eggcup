@@ -175,14 +175,13 @@ function generateTask() {
 			customer: 1,
 			employee: 1,
 			topic: '沙石厂关于下水污染问题的咨询解答，酌情予以妥善安排',
-			status: 0,
 			description: ''
 		},{
 			code: 'TK-1002',
 			customer: 2,
 			employee: 2,
 			topic: '小明的足球',
-			status: 0,
+			status: 200,
 			description: ''
 		}
 	]).success(function (sdepold) {
