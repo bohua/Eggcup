@@ -334,9 +334,6 @@ t {
 #left-stage .sidebar-menu > a:not(:hover) {
   background-color: #eeeeee;
 }
-#left-stage .sidebar-menu > ul {
-  background-color: rgba(248, 248, 248, 0.8);
-}
 #left-stage .sidebar-menu > ul.hide-submenu {
   height: 0;
   opacity: 0;
