@@ -40,6 +40,9 @@ angular.module('customer-list', [
 		$scope.customer_list = customers;
 		$scope.employee_list = employees;
 
+		/**
+		 * popup window configuration
+		 */
 		$scope.customerEditorConfig = {
 			dialogOption: {
 				overlay: true,
@@ -93,7 +96,7 @@ angular.module('customer-list', [
 			$($event.target).parent('tr').trigger('popup', ['edit', dataModel]);
 		};
 
-		$scope.new = function ($event) {
+		$scope.newCustomer = function ($event) {
 			$($event.currentTarget).trigger('popup', ['add']);
 		};
 
