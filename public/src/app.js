@@ -5,6 +5,7 @@ angular.module('app', [
 	'tag-reference-service',
 	'task-status-service',
 	'customer-list-service',
+	'employee-list-service',
 	'platform',
 	'zxdj-view',
 	'customer-list',
@@ -18,7 +19,8 @@ angular.module('app', [
 	'tagReferenceService',
 	'taskStatusService',
 	'customerListService',
-	function ($scope, $rootScope, $timeout, $location, tagReferenceService, taskStatusService, customerListService) {
+	'employeeListService',
+	function ($scope, $rootScope, $timeout, $location, tagReferenceService, taskStatusService, customerListService, employeeListService) {
 
 		/*
 		 if ($location.path() !== '/') {
@@ -32,4 +34,5 @@ angular.module('app', [
 		tagReferenceService.init();
 		taskStatusService.init();
 		customerListService.init();
+		employeeListService.init();
 	}]);

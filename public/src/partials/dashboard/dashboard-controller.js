@@ -42,11 +42,11 @@ angular.module('dashboard', [
 				title: '详细信息',
 				padding: 10,
 				width: '80%',
-				height: '500px',
+				height: '80%',
 				overlayClickClose: false
 			},
 
-			template: '/src/partials/dashboard/task-editor-view.tpl.html',
+			template: '/src/partials/zxdj-view/zxdj-view.tpl.html',
 
 			onShow: function (_dialogWin) {
 				$.Metro.initInputs();
