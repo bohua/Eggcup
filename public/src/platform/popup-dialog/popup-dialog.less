@@ -8,33 +8,35 @@
   }
 }
 
-.window .content{
-  height: ~"calc(100% - 50px)" !important;
+.window {
+  .content {
+    height: ~"calc(100% - 50px)" !important;
 
-  .view-form-sheet{
-    height: 100%;
-    margin-bottom: 0;
-  }
-}
-
-.view-form-sheet{
-  padding: 0;
-
-  height: inherit;
-
-  .tab-control{
-    height: auto;
-    .frame{
-      padding: 10px 10px 0 10px;
+    .view-form-sheet {
+      height: 100%;
+      margin-bottom: 0;
     }
   }
-}
 
-.dialog-contol-panel {
-  width: 100%;
-  padding: 15px;
-}
+  .view-form-sheet {
+    padding: 0;
 
-.dialog-content-panel{
-  height: ~"calc(100% - 50px)";
+    height: inherit;
+
+    .tab-control {
+      height: auto;
+      .frame {
+        padding: 10px 10px 0 10px;
+      }
+    }
+  }
+
+  .dialog-contol-panel {
+    width: 100%;
+    padding: 15px;
+  }
+
+  .dialog-content-panel {
+    height: ~"calc(100% - 50px)";
+  }
 }

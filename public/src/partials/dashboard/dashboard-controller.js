@@ -90,7 +90,7 @@ angular.module('dashboard', [
 		$scope.detail = function ($event, dataModel) {
 			$($event.currentTarget).trigger('popup', ['edit', dataModel]);
 		};
-		$scope.newTask = function($event){
+		$scope.newTask = function ($event) {
 			$($event.currentTarget).trigger('popup', ['add']);
 		};
 
@@ -100,43 +100,43 @@ angular.module('dashboard', [
 		 * @returns {{a1_register: {seq: number, title: string, sub_title: string, task_list: Array}, a2_arrange: {seq: number, title: string, sub_title: string, task_list: Array}, a3_proposal: {seq: number, title: string, sub_title: string, task_list: Array}, a4_contract: {seq: number, title: string, sub_title: string, task_list: Array}}}
 		 */
 		function groupingTasks(taskList) {
-			var groups = {
-				a1_register: {
+			var groups = [
+				{
 					seq: 1,
-					title: '登记',
-					sub_title: 'Register',
-					task_list: []
-				},
-				a2_arrange: {
-					seq: 2,
 					title: '接洽',
 					sub_title: 'Arrange',
 					task_list: []
 				},
-				a3_proposal: {
-					seq: 3,
+				{
+					seq: 2,
 					title: '提案',
 					sub_title: 'Proposal',
 					task_list: []
 				},
-				a4_contract: {
-					seq: 4,
+				{
+					seq: 3,
 					title: '合同',
 					sub_title: 'Contract',
 					task_list: []
+				},
+				{
+					seq: 4,
+					title: '结案',
+					sub_title: 'Conclude',
+					task_list: []
 				}
-			};
+			];
 			for (var i in taskList) {
 				var task = taskList[i];
 
 				if (task.status < 200) {
-					groups.a1_register.task_list.push(task);
-				}else if(task.status < 300){
-					groups.a2_arrange.task_list.push(task);
-				}else if(task.status < 400){
-					groups.a3_proposal.task_list.push(task);
-				}else if(task.status >= 400){
-					groups.a4_contract.task_list.push(task);
+					groups[0].task_list.push(task);
+				} else if (task.status < 300) {
+					groups[1].task_list.push(task);
+				} else if (task.status < 400) {
+					groups[2].task_list.push(task);
+				} else if (task.status >= 400) {
+					groups[3].task_list.push(task);
 				}
 			}
 

@@ -1,4 +1,40 @@
-<!--Created by Bli on 2014/4/28.--><div class="view-header"><i ng-click="getBack()" class="icon-arrow-left-3 view-header-icon"></i><span class="subheader">客户信息</span><comment class="text-muted margin20">Customer Information</comment><div class="view-header-control-button-set place-right"><button data-hint="新建" popup-dialog="popup-dialog" dialog-config="customerEditorConfig" ng-click="newCustomer($event, {})" on-confirm="confirmEmitted(action, data)" class="hint--bottom"><a><i class="icon-new"></i></a></button></div><div class="view-header-control-search-box place-right"><div class="input-control text"><input type="text" placeholder="输入关键字搜索" ng-model="searchText"/><button tabindex="-1" class="btn-search"></button></div></div></div><div id="customer-list" class="grid view-form-sheet"><table class="table bordered hovered"><thead><tr><th ng-repeat="header in headers track by $index" nowrap="nowrap" class="text-center"><t>{{header}}</t></th></tr></thead><tbody><tr ng-repeat="row in customer_list | filter:searchText" popup-dialog="popup-dialog" dialog-config="customerEditorConfig" ng-click="detail($event, row)" on-confirm="confirmEmitted(action, data)" class="cursor-pointer"><td>{{row.name}}</td><td>{{row.presenter}}</td><td>{{row.address}}</td><td>{{row.tel}}</td><td>{{row.contact}}</td><!--td.record-control-button-setbutton.hint--bottom(data-hint="详细", ng-click="detail($event, $index)")
- a: i.icon-clipboard-2.fg-darkBlue
-button.hint--bottom(data-hint="删除", ng-click="remove($event, $index)")
- a: i.icon-cancel-2.fg-darkRed--></tr></tbody></table></div>
+
+<!--Created by Bli on 2014/4/28.-->
+<div class="view-header"><i ng-click="getBack()" class="icon-arrow-left-3 view-header-icon"></i><span class="subheader">客户信息</span>
+  <comment class="text-muted margin20">Customer Information</comment>
+  <div class="view-header-control-button-set place-right">
+    <button data-hint="新建" popup-dialog="popup-dialog" dialog-config="customerEditorConfig" ng-click="newCustomer($event, {})" on-confirm="confirmEmitted(action, data)" class="hint--bottom"><a><i class="icon-new"></i></a></button>
+  </div>
+  <div class="view-header-control-search-box place-right">
+    <div class="input-control text">
+      <input type="text" placeholder="输入关键字搜索" ng-model="searchText"/>
+      <button tabindex="-1" class="btn-search"></button>
+    </div>
+  </div>
+</div>
+<div id="customer-list" class="grid view-form-sheet">
+  <table class="table bordered hovered">
+    <thead>
+      <tr>
+        <th ng-repeat="header in headers track by $index" nowrap="nowrap" class="text-center">
+          <t>{{header}}</t>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="row in customer_list | filter:searchText" popup-dialog="popup-dialog" dialog-config="customerEditorConfig" ng-click="detail($event, row)" on-confirm="confirmEmitted(action, data)" class="cursor-pointer">
+        <td>{{row.name}}</td>
+        <td>{{row.presenter}}</td>
+        <td>{{row.address}}</td>
+        <td>{{row.tel}}</td>
+        <td>{{row.contact}}</td>
+        <!--td.record-control-button-set
+        button.hint--bottom(data-hint="详细", ng-click="detail($event, $index)")
+         a: i.icon-clipboard-2.fg-darkBlue
+        button.hint--bottom(data-hint="删除", ng-click="remove($event, $index)")
+         a: i.icon-cancel-2.fg-darkRed
+        -->
+      </tr>
+    </tbody>
+  </table>
+</div>

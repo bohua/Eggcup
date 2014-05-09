@@ -406,21 +406,21 @@ t {
   height: 100%;
   margin-bottom: 0;
 }
-.view-form-sheet {
+.window .view-form-sheet {
   padding: 0;
   height: inherit;
 }
-.view-form-sheet .tab-control {
+.window .view-form-sheet .tab-control {
   height: auto;
 }
-.view-form-sheet .tab-control .frame {
+.window .view-form-sheet .tab-control .frame {
   padding: 10px 10px 0 10px;
 }
-.dialog-contol-panel {
+.window .dialog-contol-panel {
   width: 100%;
   padding: 15px;
 }
-.dialog-content-panel {
+.window .dialog-content-panel {
   height: calc(100% - 50px);
 }
 #preload-mask {
