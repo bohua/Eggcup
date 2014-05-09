@@ -22,5 +22,5 @@ angular.module('task-editor', ['tag-reference-service', 'customer-list-service',
 			$scope.employeeList = employeeListService.getEmployeeList();
 			$scope.customerList = customerListService.getCustomerList();
 
-			$scope.translateCustomer= customerListService.translateCustomer;
+			$scope.translateCustomer = customerListService.translateCustomer;
 		}]);

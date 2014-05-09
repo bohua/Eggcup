@@ -7,9 +7,9 @@ fieldset(keyboard-support)
 			div.span5
 				label 选择客户公司
 				div.input-control.text
-					input(type="text", placeholder="公司名称", value="translateCustomer({{dialog_data_model.customer}})", autofocus, tab-start, list="customer_list")
+					input(type="text", placeholder="公司名称", value="{{translateCustomer(dialog_data_model.customer)}}", autofocus, tab-start, list="customer_list")
 					datalist#customer_list
-						option(ng-repeat="customer in customerList" value="{{customer.name}}") {{customer.id}}
+						option(ng-repeat="customer in customerList") {{customer.name}}
 			div.span2
 				label 执行人
 				div.input-control.select
