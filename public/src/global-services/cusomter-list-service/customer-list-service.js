@@ -13,7 +13,7 @@ angular.module('customer-list-service', ['customer-resource'])
 				return customerList;
 			},
 
-			translateStatus: function (customerId) {
+			translateCustomer: function (customerId) {
 				var found = _.where(customerList, {id: customerId});
 				if (found.length === 0) {
 					return customerId;

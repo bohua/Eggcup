@@ -16,12 +16,7 @@ module.exports = function (sequelize, DataTypes) {
 		role:			{ type: DataTypes.STRING },
 		email:			{ type: DataTypes.STRING },
 		description:	{ type: DataTypes.STRING },
-		tags:			{
-			type: DataTypes.STRING,
-			get : function(){
-
-			}
-		},
+		tags:			{ type: DataTypes.STRING },
 
 		//激活使用
 		enable:			{ type: DataTypes.BOOLEAN, defaultValue: true }

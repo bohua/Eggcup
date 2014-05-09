@@ -83,8 +83,8 @@ var TAG = new Bo('REF_TAG',
 				deferred.resolve(clone);
 			} else {
 				var promises = [];
-				for (var j in clone) {
-					promises.push(findOrCreateTag(clone[j], this.orm.model(this._table)));
+				for (var j in customTagList) {
+					promises.push(findOrCreateTag(customTagList[j], this.orm.model(this._table)));
 				}
 
 				Q.allSettled(promises)

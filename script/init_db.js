@@ -171,18 +171,19 @@ function generateTask() {
 	db.model('DATA_TASK').bulkCreate([
 		{
 			id: 1001,
-			code: 'TK-1001',
 			customer: 1,
-			employee: 1,
+			reporter: 1,
+			assignee: 1,
 			topic: '沙石厂关于下水污染问题的咨询解答，酌情予以妥善安排',
-			description: ''
-		},{
-			code: 'TK-1002',
+			description: '测试数据'
+		},
+		{
 			customer: 2,
-			employee: 2,
+			reporter: 2,
+			assignee: 3,
 			topic: '小明的足球',
 			status: 200,
-			description: ''
+			description: '测试数据'
 		}
 	]).success(function (sdepold) {
 		//console.log(sdepold)

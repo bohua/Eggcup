@@ -1,0 +1,29 @@
+//Created by Bli on 2014/5/5.
+div#task-editor-form.grid.view-form-sheet(ng-controller="taskEditorController")
+	div.dialog-content-panel
+		div.tab-control(data-role="tab-control", data-effect="fade")
+			ul.tabs
+				li.active
+					a(href="#_page_master")
+						i.icon-user
+						span 基本信息
+				li
+					a(href="#_page_extra")
+						i.icon-tag
+						span 扩充信息
+
+			div.frames
+				div.frame#_page_master
+					include task-editor-view-master-tab.tpl.jade
+			div.frames
+				div.frame#_page_extra
+					include task-editor-view-extra-tab.tpl.jade
+
+	div.dialog-contol-panel
+		div.place-left
+			button.button.danger(ng-click="delete()", ng-if="prop.mode=='edit'") 删除
+		div.form-actions
+			button.button.primary(ng-click="Confirm('update', true)") 保存
+			button.button(type="button", ng-click="Cancel()") 取消
+		div.place-right(ng-show="prop.showErrorMessage")
+			span.fg-red.margin20.bg-grayLighter 单据填写有误，请修正红色标记

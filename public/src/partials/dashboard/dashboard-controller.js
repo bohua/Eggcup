@@ -7,7 +7,8 @@ angular.module('dashboard', [
 	'employee-resource',
 	'task-resource',
 	'task-status-service',
-	'customer-list-service'
+	'customer-list-service',
+	'task-editor'
 ]).config(['$routeProvider', function ($routeProvider) {
 	$routeProvider.
 		when('/', {
@@ -41,15 +42,16 @@ angular.module('dashboard', [
 				icon: '<i class="icon-tag"></i>',
 				title: '详细信息',
 				padding: 10,
-				width: '80%',
-				height: '80%',
+				width: '90%',
+				height: '90%',
 				overlayClickClose: false
 			},
 
-			template: '/src/partials/zxdj-view/zxdj-view.tpl.html',
+			template: '/src/partials/task-editor/task-editor-view.tpl.html',
 
 			onShow: function (_dialogWin) {
 				$.Metro.initInputs();
+				$.Metro.initTabs();
 				_dialogWin.find('.auto-focus').focus();
 			},
 
@@ -79,7 +81,7 @@ angular.module('dashboard', [
 		 * Service binds
 		 */
 		$scope.translateStatus = taskStatusService.translateStatus;
-		$scope.translateCustomer = customerListService.translateStatus;
+		$scope.translateCustomer = customerListService.translateCustomer;
 		$scope.taskList = groupingTasks(tasks);
 
 		/**

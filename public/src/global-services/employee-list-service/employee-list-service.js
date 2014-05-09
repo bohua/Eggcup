@@ -9,11 +9,11 @@ angular.module('employee-list-service', ['employee-resource'])
 				employeeList = EMPLOYEE.query();
 			},
 
-			getCustomerList: function () {
+			getEmployeeList: function () {
 				return employeeList;
 			},
 
-			translateStatus: function (employeeId) {
+			translateEmployee: function (employeeId) {
 				var found = _.where(employeeList, {id: employeeId});
 				if (found.length === 0) {
 					return employeeId;
