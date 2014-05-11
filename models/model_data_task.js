@@ -7,6 +7,7 @@ module.exports = function (sequelize, DataTypes) {
 		customer:		{ type: DataTypes.INTEGER },
 		reporter:		{ type: DataTypes.INTEGER },
 		assignee:		{ type: DataTypes.INTEGER },
+		handling:       { type: DataTypes.STRING },
 		topic:			{ type: DataTypes.STRING, defaultValue: '暂无主题' },
 		status:			{ type: DataTypes.INTEGER, defaultValue: 100 },
 		description:	{ type: DataTypes.TEXT },

@@ -1,42 +1,42 @@
 //Created by bli on 2014/5/9.
 fieldset(keyboard-support)
-	span.item-title 咨询方式
-	comment.text-muted.margin15 Incoming way
-	div.expandable-section
-		div.span4
-			div.input-control.checkbox
-				label
-					input(type="checkbox", ng-model="dialog_data_model.prop_isEmail")
-					span.check
-					span 电子邮件
-			div.input-control.checkbox
-				label
-					input(type="checkbox", ng-model="dialog_data_model.prop_isTel")
-					span.check
-					span 电话
-			div.input-control.checkbox
-				label
-					input(type="checkbox", ng-model="dialog_data_model.prop_isF2F")
-					span.check
-					span 面谈
-			div.input-control.checkbox
-				label
-					input(type="checkbox", ng-model="dialog_data_model.prop_isFax")
-					span.check
-					span 传真
-	hr
-	span.item-title 阅读权限
-	comment.text-muted.margin15 Permissions
-	div.expandable-section
-		div.span3
-			div.input-control.checkbox
-				label
-					input(type="checkbox", ng-model="dialog_data_model.prop_internal")
-					span.check
-					span 内部浏览
-			div.input-control.checkbox
-				label
-					input(type="checkbox", ng-model="dialog_data_model.prop_external")
-					span.check
-					span 客户浏览
+	div.row
+		div.span5
+			span.item-title 咨询方式
+			comment.text-muted.margin15 Incoming way
+			div.expandable-section
+				div.input-control.checkbox
+					label
+						input(type="checkbox", ng-model="dialog_data_model.prop_isEmail")
+						span.check
+						span 电子邮件
+				div.input-control.checkbox
+					label
+						input(type="checkbox", ng-model="dialog_data_model.prop_isTel")
+						span.check
+						span 电话
+				div.input-control.checkbox
+					label
+						input(type="checkbox", ng-model="dialog_data_model.prop_isF2F")
+						span.check
+						span 面谈
+				div.input-control.checkbox
+					label
+						input(type="checkbox", ng-model="dialog_data_model.prop_isFax")
+						span.check
+						span 传真
+		div.span5
+			span.item-title 阅读权限
+			comment.text-muted.margin15 Permissions
+			div.expandable-section
+				div.input-control.checkbox
+					label
+						input(type="checkbox", ng-model="dialog_data_model.prop_internal")
+						span.check
+						span 内部浏览
+				div.input-control.checkbox
+					label
+						input(type="checkbox", ng-model="dialog_data_model.prop_external")
+						span.check
+						span 客户浏览
 

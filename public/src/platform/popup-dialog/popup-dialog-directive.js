@@ -26,13 +26,6 @@ angular.module('popup-dialog', [])
 						}
 
 						$($element).on('popup', function ($event, mode, dataModel) {
-							$.extend(true, $scope.dialogConfig.dialogOption, {
-								content: $compile(response)($scope),
-								onShow: _onDialogShow
-							});
-
-							popupDialog = $.Dialog($scope.dialogConfig.dialogOption);
-
 							//Initialization of Dialog
 							$scope.prop = {};
 							$scope.prop.showErrorMessage = false;
@@ -44,6 +37,12 @@ angular.module('popup-dialog', [])
 							}else{
 								$scope.dialog_data_model = {};
 							}
+
+							$.extend(true, $scope.dialogConfig.dialogOption, {
+								content: $compile(response)($scope),
+								onShow: _onDialogShow
+							});
+							popupDialog = $.Dialog($scope.dialogConfig.dialogOption);
 						});
 					});
 				}

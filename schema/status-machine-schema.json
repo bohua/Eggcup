@@ -1,26 +1,40 @@
 [
 	{
 		"code": 100,
-		"status": "新任务"
+		"status": "新任务",
+		"precedence": [
+			{
+				"action": "报送审核",
+				"nextStatus": 110
+			},
+			{
+				"action": "结案",
+				"nextStatus": 400
+			}
+		]
 	},
 	{
 		"code": 110,
-		"status": "待审"
+		"status": "待审中"
 	},
 	{
-		"code": 200,
+		"code": 120,
 		"status": "待回复"
 	},
 	{
-		"code": 210,
+		"code": 130,
 		"status": "回复中"
 	},
 	{
-		"code": 300,
+		"code": 200,
 		"status": "提案中"
 	},
 	{
-		"code": 400,
+		"code": 300,
 		"status": "合同中"
+	},
+	{
+		"code": 400,
+		"status": "汇总报告"
 	}
 ]

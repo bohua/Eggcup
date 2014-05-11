@@ -4,18 +4,28 @@ fieldset(keyboard-support)
 	comment.text-muted.margin15 Customer Information
 	div.expandable-section
 		div.row
-			div.span5
-				label 选择客户公司
+			div.span2
+				label 任务状态
+				div.input-control.select
+					select(ng-model="dialog_data_model.status")
+						option(ng-repeat="status in statusStack" value="{{status.nextStatus}}") {{status.action}}
+			div.span4
+				label 客户公司
 				div.input-control.text
 					input(type="text", placeholder="公司名称", value="{{translateCustomer(dialog_data_model.customer)}}", autofocus, tab-start, list="customer_list")
 					datalist#customer_list
 						option(ng-repeat="customer in customerList") {{customer.name}}
 			div.span2
-				label 执行人
+				label 担当人
 				div.input-control.select
 					select(ng-model="dialog_data_model.assignee")
 						option(ng-repeat="employee in employeeList" value="{{employee.id}}") {{employee.name}}
-	hr
+			div.span2
+				label 处理方式
+				div.input-control.text
+					input(type="text", placeholder="处理方式", ng-model="dialog_data_model.handling")
+					button.btn-clear
+
 	span.item-title 咨询信息
 	comment.text-muted.margin15 Consulting Details
 	div.expandable-section
