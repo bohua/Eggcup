@@ -4,13 +4,7 @@ div.view-header
 	span.subheader 任务板
 	comment.text-muted.margin20 Dashboard
 	div.view-header-control-button-set.place-right
-		button.hint--bottom(
-		data-hint="新建",
-		popup-dialog,
-		dialog-config="taskEditorConfig",
-		ng-click="newTask($event, {})",
-		on-confirm="confirmEmitted(action, data)"
-		)
+		button.hint--bottom(data-hint="新建", ng-click="newTask($event, {})")
 			a: i.icon-new
 	div.view-header-control-search-box.place-right
 		div.input-control.text
@@ -26,11 +20,7 @@ div#dashboard.grid.padding10
 			div.panel-content.nano
 				div.nano-content
 					div.panel.task-block(
-					ng-repeat="task in task_group.task_list track by task.id",
-					popup-dialog,
-					dialog-config="taskEditorConfig",
-					on-confirm="confirmEmitted(action, data)"
-					ng-click="detail($event, task)")
+					ng-repeat="task in task_group.task_list track by task.id", ng-click="detail($event, task)")
 						div.panel-header TK-{{task.id}}
 							span.task-status.place-right.fg-darkRed {{translateStatus(task.status)}}
 						div.panel-content

@@ -1,14 +1,12 @@
 //Created by bli on 2014/5/9.
 fieldset(keyboard-support)
 	span.item-title 任务信息
-	comment.text-muted.margin15 Customer Information
+	comment.text-muted.margin15 Task Information
 	div.expandable-section
 		div.row
 			div.span2
 				label 任务状态
-				div.input-control.select
-					select(ng-model="dialog_data_model.status")
-						option(ng-repeat="status in statusStack" value="{{status.nextStatus}}") {{status.action}}
+				span.fg-darkRed.text-content {{translateStatus(dialog_data_model.status)}}
 			div.span4
 				label 客户公司
 				div.input-control.text

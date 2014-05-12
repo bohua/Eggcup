@@ -6,8 +6,7 @@ var task_bo = require(__dirname + '/../../server/tasks/task_bo');
 module.exports = function (req, res) {
 
 	task_bo.get({
-		id: req.params.task_id,
-		enable: true
+		id: req.params.task_id
 	}).then(
 		function (success) {
 			res.contentType('json');

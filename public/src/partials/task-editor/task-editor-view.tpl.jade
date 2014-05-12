@@ -1,5 +1,36 @@
 //Created by Bli on 2014/5/5.
-div#task-editor-form.grid.view-form-sheet(ng-controller="taskEditorController")
+div.view-header(ng-show='showViewHeader')
+	i.icon-arrow-left-3.view-header-icon(ng-click="getBack()")
+	span.subheader(ng-if="dialog_data_model.id") 任务 TK-{{dialog_data_model.id}}
+	span.subheader(ng-if="!dialog_data_model.id") 新建任务
+	comment.text-muted.margin20 Task Editor
+	div.view-header-control-button-set.place-right
+		button
+			i.icon-download-2
+			span 保存
+
+		span.sep |
+
+		div.button-dropdown
+			button.dropdown-toggle
+				i.icon-share
+				span 发送
+			ul.dropdown-menu.right-border-fix(data-role="dropdown")
+				li(ng-repeat="precedence in statusStack track by $index")
+					a(ng-click="console.log(precedence.nextStatus)") {{precedence.action}}
+
+		span.sep |
+
+		div.button-dropdown
+			button.dropdown-toggle
+				i.icon-share-2
+				span 其它
+			ul.dropdown-menu.right-border-fix(data-role="dropdown")
+				li: a 删除
+
+
+
+div#task-editor-form.grid.view-form-sheet
 	div.dialog-content-panel
 		div.tab-control(data-role="tab-control", data-effect="fade")
 			ul.tabs
@@ -19,11 +50,11 @@ div#task-editor-form.grid.view-form-sheet(ng-controller="taskEditorController")
 				div.frame#_page_extra
 					include task-editor-view-extra-tab.tpl.jade
 
-	div.dialog-contol-panel
+	div.dialog-contol-panel(ng-show='showDialogFooter')
 		div.place-left
 			button.button.danger(ng-click="delete()", ng-if="prop.mode=='edit'") 删除
 		div.form-actions
 			button.button.primary(ng-click="Confirm('update', true)") 保存
-			button.button(type="button", ng-click="Cancel()") 取消
+			button.button(type="button", ng-click="Cancel()") 关闭
 		div.place-right(ng-show="prop.showErrorMessage")
 			span.fg-red.margin20.bg-grayLighter 单据填写有误，请修正红色标记

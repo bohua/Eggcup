@@ -22,10 +22,11 @@ angular.module('dashboard', [
 		});
 }]).controller('dashboardController', [
 	'$scope',
+	'$location',
 	'tasks',
 	'taskStatusService',
 	'customerListService',
-	function ($scope, tasks, taskStatusService, customerListService) {
+	function ($scope, $location, tasks, taskStatusService, customerListService) {
 		/**
 		 * Initialize the nano scrollers
 		 */
@@ -34,6 +35,7 @@ angular.module('dashboard', [
 		/**
 		 * popup window configuration
 		 */
+		/*
 		$scope.taskEditorConfig = {
 			dialogOption: {
 				overlay: true,
@@ -58,10 +60,12 @@ angular.module('dashboard', [
 			api: {
 			}
 		};
+		*/
 
 		/**
 		 * directive bindings
 		 */
+		/*
 		$scope.confirmEmitted = function (action, data) {
 			switch (action) {
 				case 'update':
@@ -76,6 +80,7 @@ angular.module('dashboard', [
 				}
 			}
 		}
+		*/
 
 		/**
 		 * Service binds
@@ -88,10 +93,12 @@ angular.module('dashboard', [
 		 * ng-click bindings
 		 */
 		$scope.detail = function ($event, dataModel) {
-			$($event.currentTarget).trigger('popup', ['edit', dataModel]);
+			//$($event.currentTarget).trigger('popup', ['edit', dataModel]);
+			$location.path('/task-editor/edit/' + dataModel.id);
 		};
 		$scope.newTask = function ($event) {
-			$($event.currentTarget).trigger('popup', ['add']);
+			//$($event.currentTarget).trigger('popup', ['add']);
+			$location.path('/task-editor/new/' + new Date().toString());
 		};
 
 		/**

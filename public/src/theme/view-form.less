@@ -5,13 +5,13 @@
   border-bottom: 1px solid @grey-border;
   background-color: @grey;
 
-  .view-header-icon{
-    font-size: 25px!important;
+  .view-header-icon {
+    font-size: 25px !important;
     margin-right: 15px;
 
     cursor: pointer !important;
 
-    &:hover{
+    &:hover {
       color: @grey-dark;
     }
   }
@@ -20,29 +20,42 @@
     line-height: @top-bar-height !important;
   }
 
-  .view-header-control-button-set button {
-    position: relative;
-    top: 14px;
-
-    background: none;
-    padding: 0 5px;
-    i {
-      font-size: 15pt;
-      cursor: pointer;
+  .view-header-control-button-set {
+    .sep{
+      font-weight: bold;
+      margin: 0 5px;
+      color: @grey-dark;
     }
 
-    a:hover {
+    .dropdown-menu.right-border-fix{
+      right: -19px;
+      min-width: 150px;
+    }
+
+    button {
+      //position: relative;
+      //top: 14px;
+
+      background: none;
+      padding: 0 5px;
+
       i {
+        margin-right: 5px;
+        font-size: 14pt;
+        cursor: pointer;
+      }
+
+      &:hover {
         color: @grey-dark;
       }
     }
-  }
 
-  .view-header-control-search-box{
-    position: relative;
-    top: 10px;
-    right: 10px;
-    width: 250px;
+    .view-header-control-search-box {
+      position: relative;
+      top: 10px;
+      right: 10px;
+      width: 250px;
+    }
   }
 }
 
@@ -164,8 +177,12 @@
     font-size: 12pt;
   }
 
-  .checkbox label{
+  .checkbox label {
     margin: 5px 5px 5px 0;
+  }
+
+  .text-content {
+    line-height: 34px;
   }
 }
 
@@ -185,13 +202,13 @@
   background-color: @red-light;
 }
 
-.record-control-button-set button{
+.record-control-button-set button {
   background: none !important;
-  font-size: 12pt!important;
-  padding: 0!important;
+  font-size: 12pt !important;
+  padding: 0 !important;
   //background-color: @white !important;
 }
 
-.cursor-pointer{
+.cursor-pointer {
   cursor: pointer;
 }

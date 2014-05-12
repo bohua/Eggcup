@@ -29,7 +29,7 @@ th {
   background-color: #eeeeee;
 }
 .view-header .view-header-icon {
-  font-size: 25px!important;
+  font-size: 25px !important;
   margin-right: 15px;
   cursor: pointer !important;
 }
@@ -39,20 +39,28 @@ th {
 .view-header span {
   line-height: 50px !important;
 }
+.view-header .view-header-control-button-set .sep {
+  font-weight: bold;
+  margin: 0 5px;
+  color: #aaaaaa;
+}
+.view-header .view-header-control-button-set .dropdown-menu.right-border-fix {
+  right: -19px;
+  min-width: 150px;
+}
 .view-header .view-header-control-button-set button {
-  position: relative;
-  top: 14px;
   background: none;
   padding: 0 5px;
 }
 .view-header .view-header-control-button-set button i {
-  font-size: 15pt;
+  margin-right: 5px;
+  font-size: 14pt;
   cursor: pointer;
 }
-.view-header .view-header-control-button-set button a:hover i {
+.view-header .view-header-control-button-set button:hover {
   color: #aaaaaa;
 }
-.view-header .view-header-control-search-box {
+.view-header .view-header-control-button-set .view-header-control-search-box {
   position: relative;
   top: 10px;
   right: 10px;
@@ -151,6 +159,9 @@ th {
 .view-form-sheet .checkbox label {
   margin: 5px 5px 5px 0;
 }
+.view-form-sheet .text-content {
+  line-height: 34px;
+}
 .view-command-button {
   cursor: pointer;
   padding: 5px 10px;
@@ -166,8 +177,8 @@ th {
 }
 .record-control-button-set button {
   background: none !important;
-  font-size: 12pt!important;
-  padding: 0!important;
+  font-size: 12pt !important;
+  padding: 0 !important;
 }
 .cursor-pointer {
   cursor: pointer;
