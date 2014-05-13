@@ -89,8 +89,8 @@ th {
 .view-form-sheet .tab-control .frames {
   height: calc(100% - 35px);
   border-top: 1px #eeeeee solid;
+  border-bottom: 1px #eeeeee solid;
   border-left: 0 !important;
-  border-bottom: 0 !important;
   border-right: 0 !important;
   margin: -1px;
 }

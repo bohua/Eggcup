@@ -29,7 +29,6 @@ angular.module('task-editor', [
 	'taskStatusService',
 	'model',
 	function ($routeParams, $location, $scope, tagReferenceService, customerListService, employeeListService, taskStatusService, model) {
-
 		/**
 		 * Initialize Metro UI
 		 */
