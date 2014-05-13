@@ -182,7 +182,7 @@ function generateTask() {
 			reporter: 2,
 			assignee: 3,
 			topic: '小明的足球',
-			status: 200,
+			status: 450,
 			description: '测试数据'
 		}
 	]).success(function (sdepold) {

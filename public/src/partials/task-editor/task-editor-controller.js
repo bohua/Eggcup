@@ -21,13 +21,14 @@ angular.module('task-editor', [
 		})
 }]).controller('taskEditorController', [
 	'$routeParams',
+	'$location',
 	'$scope',
 	'tagReferenceService',
 	'customerListService',
 	'employeeListService',
 	'taskStatusService',
 	'model',
-	function ($routeParams, $scope, tagReferenceService, customerListService, employeeListService, taskStatusService, model) {
+	function ($routeParams, $location, $scope, tagReferenceService, customerListService, employeeListService, taskStatusService, model) {
 
 		/**
 		 * Initialize Metro UI
@@ -35,7 +36,6 @@ angular.module('task-editor', [
 		$.Metro.initTabs();
 		$.Metro.initInputs();
 		$.Metro.initDropdowns('.view-header');
-		$.Metro.initPulls('.view-header');
 
 		/**
 		 * Initialize Emitters
@@ -63,7 +63,7 @@ angular.module('task-editor', [
 		}
 
 		$scope.getBack = function(){
-			window.history.back();
+			$location.path('/');
 		}
 
 		$scope.employeeList = employeeListService.getEmployeeList();

@@ -36,19 +36,47 @@ div#task-editor-form.grid.view-form-sheet
 			ul.tabs
 				li.active
 					a(href="#_page_master")
-						i.icon-user
-						span 基本信息
-				li
-					a(href="#_page_extra")
 						i.icon-tag
-						span 扩充信息
+						span 摘要
+				li(ng-show="dialog_data_model.status > 110")
+					a(href="#_page_arrange")
+						i.icon-eye-2
+						span 审核
+				li(ng-show="dialog_data_model.status > 120")
+					a(href="#_page_reply")
+						i.icon-reply-2
+						span 回复
+				li(ng-show="dialog_data_model.status >= 200")
+					a(href="#_page_proposal")
+						i.icon-bookmark-2
+						span 提案
+				li(ng-show="dialog_data_model.status >= 300")
+					a(href="#_page_contract")
+						i.icon-cycle
+						span 合同
+				li(ng-show="dialog_data_model.status >= 400")
+					a(href="#_page_close")
+						i.icon-stats-up
+						span 报告
 
 			div.frames
 				div.frame#_page_master
 					include task-editor-view-master-tab.tpl.jade
 			div.frames
-				div.frame#_page_extra
-					include task-editor-view-extra-tab.tpl.jade
+				div.frame#_page_arrange
+					include task-editor-view-arrange-tab.tpl.jade
+			div.frames
+				div.frame#_page_reply
+					include task-editor-view-reply-tab.tpl.jade
+			div.frames
+				div.frame#_page_proposal
+					include task-editor-view-proposal-tab.tpl.jade
+			div.frames
+				div.frame#_page_contract
+					include task-editor-view-contract-tab.tpl.jade
+			div.frames
+				div.frame#_page_close
+					include task-editor-view-close-tab.tpl.jade
 
 	div.dialog-contol-panel(ng-show='showDialogFooter')
 		div.place-left

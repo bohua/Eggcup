@@ -69,7 +69,7 @@ th {
 .view-form-sheet {
   width: 100%;
   height: calc(100% - 50px);
-  overflow-y: auto;
+  overflow-y: hidden;
   overflow-x: hidden;
   padding: 10px;
   /*
@@ -88,6 +88,11 @@ th {
 }
 .view-form-sheet .tab-control .frames {
   height: calc(100% - 35px);
+  border-top: 1px #eeeeee solid;
+  border-left: 0 !important;
+  border-bottom: 0 !important;
+  border-right: 0 !important;
+  margin: -1px;
 }
 .view-form-sheet .tab-control .frames .frame {
   height: 100%;
@@ -161,6 +166,9 @@ th {
 }
 .view-form-sheet .text-content {
   line-height: 34px;
+}
+.view-form-sheet .dialog-content-panel {
+  height: 100%;
 }
 .view-command-button {
   cursor: pointer;
