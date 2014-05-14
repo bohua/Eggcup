@@ -7,7 +7,8 @@ angular.module('platform',
 		'left-menu',
 		/*'router-guide',*/
 		'top-bar',
-		'popup-dialog'
+		'popup-dialog',
+		'date-picker-helper'
 	]).config(function ($routeProvider) {
 
 	})

@@ -50,10 +50,26 @@ div#task-editor-form.grid.view-form-sheet
 					a(href="#_page_proposal")
 						i.icon-bookmark-2
 						span 提案
+				li(ng-show="dialog_data_model.status >= 200")
+					a(href="#_page_proposal")
+						i.icon-bookmark-2
+						span 报价
 				li(ng-show="dialog_data_model.status >= 300")
 					a(href="#_page_contract")
 						i.icon-cycle
 						span 合同
+				li(ng-show="dialog_data_model.status >= 300")
+					a(href="#_page_contract")
+						i.icon-cycle
+						span 执行
+				li(ng-show="dialog_data_model.status >= 300")
+					a(href="#_page_contract")
+						i.icon-cycle
+						span 收款
+				li(ng-show="dialog_data_model.status >= 300")
+					a(href="#_page_contract")
+						i.icon-cycle
+						span 完成
 				li(ng-show="dialog_data_model.status >= 400")
 					a(href="#_page_close")
 						i.icon-stats-up

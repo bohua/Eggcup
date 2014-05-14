@@ -1,2 +1,61 @@
 //Created by bli on 2014/5/13.
+fieldset(keyboard-support)
+	span.item-title 提案要义
+	comment.text-muted.margin15 Proposal Abstract
+	div.expandable-section
+		div.row
+			div.span4
+				label 提案标的
+				div.input-control.text
+					input(type="text", placeholder="提案标的")
+			div.span2
+				label 提案日期
+				div.input-control.text(date-picker-helper)
+					input(type="text", placeholder="提案日期")
+					button.btn-date(tabindex="-1")
+			div.span2
+				label 提案人
+				div.input-control.text
+					input(type="text", placeholder="提案人")
+			div.span2
+				label 翻译人
+				div.input-control.text
+					input(type="text", placeholder="翻译人")
+		div.row
+			div.span10
+				label 咨询事项
+				div.input-control.textarea
+					textarea(placeholder="咨询事项")
 
+	span.item-title 提案报价
+	comment.text-muted.margin15 Minutes of Meeting
+	div.expandable-section
+		div.row
+			div.span10
+				label 报价明细
+				table.table.bordered
+					thead
+						tr
+							th 服务内容
+							th 服务时间
+							th 服务费用
+							th 交通费用
+							th 小计
+							th 操作
+					tbody
+						tr
+							td 市场调查
+							td 2014/05/05
+							td 2100.00
+							td 200.00
+							td 220.00
+							td.toolbar.transparent
+								button
+									i.icon-attachment 附件
+								button
+									i.icon-remove 删除
+		div.row
+			div.span3.margin10
+				button
+					i.icon-plus-2
+					span 添加明细

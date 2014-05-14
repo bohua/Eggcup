@@ -11,22 +11,24 @@ fieldset(keyboard-support)
 						option(ng-repeat="employee in employeeList" value="{{employee.id}}") {{employee.name}}
 			div.span2
 				label 处理方式
-				div.input-control.text
-					input(type="text", placeholder="处理方式", ng-model="dialog_data_model.handling")
+				div.input-control.select
+					select(ng-model="dialog_data_model.handling")
+						option(value = 0) 解答回复
+						option(value = 1) 提案回复
 
 	span.item-title 时间安排
 	comment.text-muted.margin15 Time window
 	div.expandable-section
 		div.row
-			div.span5
+			div.span3
 				label 启始日期
-				div.input-control.text(data-role="datepicker")
-					input(type="text", placeholder="启始日期")
+				div.input-control.text(date-picker-helper)
+					input(type="text", placeholder="启始日期", ng-model="startdate")
 					button.btn-date(tabindex="-1")
-			div.span5
+			div.span3
 				label 结束日期
-				div.input-control.text(data-role="datepicker")
-					input(type="text", placeholder="结束日期")
+				div.input-control.text(date-picker-helper)
+					input(type="text", placeholder="结束日期", ng-model="enddate")
 					button.btn-date(tabindex="-1")
 
 	span.item-title 补充信息

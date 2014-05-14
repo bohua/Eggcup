@@ -72,4 +72,10 @@ angular.module('task-editor', [
 
 		//Get possible precedence status
 		$scope.statusStack = taskStatusService.getPrecedence($scope.dialog_data_model.status);
+
+
+		/**
+		 * Tmp
+		 */
+		$scope.address_type = 0;
 	}]);

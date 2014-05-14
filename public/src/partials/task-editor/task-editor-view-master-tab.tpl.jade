@@ -20,8 +20,11 @@ fieldset(keyboard-support)
 						option(ng-repeat="employee in employeeList" value="{{employee.id}}") {{employee.name}}
 			div.span2
 				label 处理方式
-				div.input-control.text
-					input(type="text", placeholder="处理方式", ng-model="dialog_data_model.handling")
+				div.input-control.select
+					select(ng-model="dialog_data_model.handling")
+						option(value = 0) 解答回复
+						option(value = 1) 提案回复
+
 
 	span.item-title 咨询信息
 	comment.text-muted.margin15 Consulting Details
