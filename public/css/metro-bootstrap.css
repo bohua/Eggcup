@@ -1646,7 +1646,8 @@ a {
   text-align: center;
   vertical-align: middle !important;
   background-color: #d9d9d9;
-  border: 1px transparent solid;
+  border: 1px solid rgba(55,55,55,.5);
+    border-radius: 5px!important;
   color: #222222;
   border-radius: 0;
   cursor: pointer;
@@ -2665,7 +2666,6 @@ a {
   display: inline-block;
   cursor: pointer;
   position: relative;
-  background-color: #fff;
   outline: 0;
   height: 34px;
   width: 100%;
@@ -2929,6 +2929,7 @@ a {
   padding: 5px;
   z-index: 1;
   -webkit-appearance: none;
+  border-radius: 5px;
 }
 .metro .input-control.text input:focus,
 .metro .input-control.password input:focus,
@@ -2985,6 +2986,7 @@ a {
   border: 1px #d9d9d9 solid;
   width: 100%;
   padding: 5px;
+  border-radius: 5px;
 }
 .metro .input-control.select select:focus,
 .metro .input-control.textarea select:focus,
@@ -5640,7 +5642,8 @@ a {
   position: relative;
 }
 .metro .tab-control .tabs > li > a {
-  border: 1px #eeeeee solid;
+  border: 1px #d9d9d9 solid;
+  border-bottom: 0;
   display: block;
   float: left;
   padding: 5px 10px;
@@ -5649,6 +5652,8 @@ a {
   left: 0;
   color: inherit;
   background-color: #eeeeee;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
 }
 .metro .tab-control .tabs > li.active a {
   border-bottom-color: #ffffff;
@@ -5673,7 +5678,7 @@ a {
 }
 .metro .tab-control .frames {
   z-index: 1;
-  border: 1px #eeeeee solid;
+  border: 1px #d9d9d9 solid;
   margin-top: -1px;
 }
 .metro .tab-control .frames .frame {
@@ -6372,6 +6377,7 @@ a {
   min-height: 200px;
   min-width: 200px;
   border-top: 0;
+  border-radius: 5px;
 }
 .metro .window .caption {
   position: absolute;
