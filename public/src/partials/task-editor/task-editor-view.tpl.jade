@@ -4,30 +4,25 @@ div.view-header(ng-show='showViewHeader')
 	span.subheader(ng-if="dialog_data_model.id") 任务 TK-{{dialog_data_model.id}}
 	span.subheader(ng-if="!dialog_data_model.id") 新建任务
 	comment.text-muted.margin20 Task Editor
-	div.view-header-control-button-set.place-right
+	div.view-control-button-set.place-right
 		button
 			i.icon-download-2
 			span 保存
-
-		span.sep |
-
 		div.button-dropdown
 			button.dropdown-toggle
 				i.icon-share
 				span 发送
+				i.icon-arrow-down-4
 			ul.dropdown-menu.right-border-fix(data-role="dropdown")
 				li(ng-repeat="precedence in statusStack track by $index")
 					a(ng-click="console.log(precedence.nextStatus)") {{precedence.action}}
-
-		span.sep |
-
 		div.button-dropdown
 			button.dropdown-toggle
 				i.icon-share-2
 				span 其它
+				i.icon-arrow-down-4
 			ul.dropdown-menu.right-border-fix(data-role="dropdown")
 				li: a 删除
-
 
 
 div#task-editor-form.grid.view-form-sheet
@@ -73,7 +68,15 @@ div#task-editor-form.grid.view-form-sheet
 				li(ng-show="dialog_data_model.status >= 400")
 					a(href="#_page_close")
 						i.icon-stats-up
-						span 报告
+						span 催款
+				li(ng-show="dialog_data_model.status >= 400")
+					a(href="#_page_close")
+						i.icon-stats-up
+						span 费用
+				li(ng-show="dialog_data_model.status >= 400")
+					a(href="#_page_close")
+						i.icon-stats-up
+						span 汇总
 
 			div.frames
 				div.frame#_page_master

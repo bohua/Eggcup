@@ -3,11 +3,16 @@
  */
 
 angular.module('top-bar', [])
-	.controller('topBarController', ['$scope', function ($scope) {
-	$('#user-dropdown-menu').dropdown({
-		effect: 'fade'
-	});
-	$scope.showUserMenu = function(){
+	.controller('topBarController', ['$scope', '$rootScope', function ($scope, $rootScope) {
+		$('#user-dropdown-menu').dropdown({
+			effect: 'fade'
+		});
 
-	};
-}]);
+		$scope.toggleLeftMenu = function() {
+			$rootScope.$broadcast('toggleLeftMenu', true);
+		}
+
+		$scope.showUserMenu = function () {
+
+		};
+	}]);

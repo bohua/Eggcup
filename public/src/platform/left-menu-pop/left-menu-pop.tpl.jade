@@ -1,0 +1,26 @@
+//Created by Bli on 14-2-10.
+
+nav.sidebar.light(ng-controller='leftMenuPopController')
+	ul
+		li.title
+			div.side-menu-header
+				i.icon-firefox
+				t 功能列表
+			div.pop-left-button.place-right(ng-click='toggleLeftMenu(false)')
+				i.icon-arrow-left-5
+		li.sidebar-menu(ng-repeat='menu in menus', menu-id='{{menu.id}}')
+
+			a(ng-if='hasLink(menu.link)' href='{{menu.link}}' ng-class='{"dropdown-toggle": hasSubMenu(menu)}')
+				i(class='{{menu.icon}}')
+				t {{menu.title}}
+			a(ng-if='!hasLink(menu.link)' ng-class='{"dropdown-toggle": hasSubMenu(menu)}')
+				i(class='{{menu.icon}}')
+				t {{menu.title}}
+
+			ul.dropdown-menu(ng-if='hasSubMenu(menu)', data-role="dropdown")
+				li.sidebar-sub-menu(ng-repeat='submenu in menu.submenus', menu-id='{{submenu.id}}')
+					a(href='{{submenu.link}}')
+						i(class='{{submenu.icon}}')
+						t {{submenu.title}}
+
+#pop-mask

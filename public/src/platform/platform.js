@@ -4,7 +4,7 @@
 angular.module('platform',
 	['ngRoute',
 		/*'preload-mask', */
-		'left-menu',
+		'left-menu-pop',
 		/*'router-guide',*/
 		'top-bar',
 		'popup-dialog',

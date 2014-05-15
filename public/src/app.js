@@ -28,6 +28,10 @@ angular.module('app', [
 		 }
 		 */
 
+		$scope.$on('$routeChangeSuccess', function () {
+			$rootScope.$broadcast('toggleLeftMenu', false);
+		});
+
 		/**
 		 * Initialize global services
 		 */
@@ -35,4 +39,11 @@ angular.module('app', [
 		taskStatusService.init();
 		customerListService.init();
 		employeeListService.init();
+
+		/**
+		 * Global configuration
+		 */
+		$(document).on('contextmenu', function (e) {
+			e.preventDefault();
+		})
 	}]);
