@@ -1,9 +1,11 @@
 //Created by Bli on 2014/5/5.
-div.view-header(ng-show='showViewHeader')
-	i.icon-arrow-left-3.view-header-icon(ng-click="getBack()")
-	span.subheader(ng-if="dialog_data_model.id") 任务 TK-{{dialog_data_model.id}}
-	span.subheader(ng-if="!dialog_data_model.id") 新建任务
-	comment.text-muted.margin20 Task Editor
+div.view-header
+	div.view-topic-span
+		i.icon-arrow-left-3.view-header-icon(ng-click="getBack()")
+		span.subheader(ng-if="dialog_data_model.id") 任务
+			span.text-info(ng-click="toggleAbstract()") TK-{{dialog_data_model.id}}
+		span.subheader(ng-if="!dialog_data_model.id") 新建任务
+		comment.text-muted.margin20 Task Editor
 	div.view-control-button-set.place-right
 		button
 			i.icon-download-2
@@ -24,7 +26,7 @@ div.view-header(ng-show='showViewHeader')
 			ul.dropdown-menu.right-border-fix(data-role="dropdown")
 				li: a 删除
 
-	div.abstract-panel.grid
+	div.abstract-panel.grid(ng-show="showAbstract")
 		div.row
 			div.span4
 				label 主题 :
@@ -51,9 +53,6 @@ div.view-header(ng-show='showViewHeader')
 			div.span3
 				label 邮箱 :
 					span.text-content  {{translateEmployee(dialog_data_model.customer)}}
-
-
-
 
 div#task-editor-form.grid.view-form-sheet
 	div.dialog-content-panel

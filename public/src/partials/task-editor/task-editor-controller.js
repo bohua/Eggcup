@@ -23,12 +23,13 @@ angular.module('task-editor', [
 	'$routeParams',
 	'$location',
 	'$scope',
+	'$timeout',
 	'tagReferenceService',
 	'customerListService',
 	'employeeListService',
 	'taskStatusService',
 	'model',
-	function ($routeParams, $location, $scope, tagReferenceService, customerListService, employeeListService, taskStatusService, model) {
+	function ($routeParams, $location, $scope, $timeout, tagReferenceService, customerListService, employeeListService, taskStatusService, model) {
 		/**
 		 * Initialize Metro UI
 		 */
@@ -65,6 +66,19 @@ angular.module('task-editor', [
 			$location.path('/');
 		}
 
+		$scope.showAbstract = false;
+		$scope.toggleAbstract = function(){
+			$scope.showAbstract = !$scope.showAbstract;
+
+			$timeout(function(){
+				_reCalcWin($scope.showAbstract);
+			});
+		}
+
+		$(window).on('resize',function(){
+			_reCalcWin($scope.showAbstract)
+		});
+
 		$scope.employeeList = employeeListService.getEmployeeList();
 		$scope.customerList = customerListService.getCustomerList();
 		$scope.translateCustomer = customerListService.translateCustomer;
@@ -79,4 +93,12 @@ angular.module('task-editor', [
 		 * Tmp
 		 */
 		$scope.address_type = 0;
+
+		function _reCalcWin(isAbsExpand){
+			var header = isAbsExpand ? $('.abstract-panel').outerHeight() + 50 : 40;
+			var rest = $('#view-port').height() - header;
+
+			$('.view-header').height(header+ 'px');
+			$('#task-editor-form').height(rest + 'px');
+		}
 	}]);

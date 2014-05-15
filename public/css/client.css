@@ -34,7 +34,7 @@ th {
   color: #274b6d;
 }
 .view-header {
-  height: 140px;
+  height: 40px;
   width: 100%;
   padding: 0 20px;
 }
@@ -77,7 +77,7 @@ th {
 }
 .view-form-sheet {
   width: 100%;
-  height: calc(100% - 140px);
+  height: calc(100% - 40px);
   overflow-y: hidden;
   overflow-x: hidden;
   padding: 5px 10px;
@@ -207,6 +207,11 @@ th {
 }
 .cursor-pointer {
   cursor: pointer;
+}
+.view-control-button-set {
+  position: absolute;
+  right: 10px;
+  top: 0;
 }
 .view-control-button-set button.dropdown-toggle {
   padding-right: 0!important;
@@ -599,4 +604,11 @@ t {
 }
 .abstract-panel .text-content {
   color: #343539;
+}
+.view-topic-span {
+  padding-top: 5px;
+  height: 40px;
+}
+.view-topic-span > span {
+  cursor: pointer;
 }
