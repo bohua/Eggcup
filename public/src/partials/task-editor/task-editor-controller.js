@@ -68,6 +68,7 @@ angular.module('task-editor', [
 		$scope.employeeList = employeeListService.getEmployeeList();
 		$scope.customerList = customerListService.getCustomerList();
 		$scope.translateCustomer = customerListService.translateCustomer;
+		$scope.translateEmployee = employeeListService.translateEmployee;
 		$scope.translateStatus = taskStatusService.translateStatus;
 
 		//Get possible precedence status

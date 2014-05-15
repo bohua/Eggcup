@@ -1,5 +1,5 @@
 .view-header {
-  height: @top-bar-height;
+  height: @view-header-height;
   width: 100%;
   padding: 0 20px;
 
@@ -20,7 +20,7 @@
   }
 
   >span {
-    line-height: @top-bar-height !important;
+    line-height: 40px !important;
   }
 
   .view-header-control-button-set {
@@ -58,7 +58,7 @@
 
 .view-form-sheet {
   width: 100%;
-  height: ~"calc(100% - @{top-bar-height})";
+  height: ~"calc(100% - @{view-header-height})";
   overflow-y: hidden;
   overflow-x: hidden;
 

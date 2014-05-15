@@ -32,7 +32,7 @@ th {
   color: #274b6d;
 }
 .view-header {
-  height: 40px;
+  height: 140px;
   width: 100%;
   padding: 0 20px;
 }
@@ -75,7 +75,7 @@ th {
 }
 .view-form-sheet {
   width: 100%;
-  height: calc(100% - 40px);
+  height: calc(100% - 140px);
   overflow-y: hidden;
   overflow-x: hidden;
   padding: 5px 10px;
@@ -576,4 +576,25 @@ t {
 }
 #dashboard .panel-header {
   border-bottom: 1px solid #d9d9d9;
+}
+.abstract-panel {
+  border: 1px solid #d9d9d9;
+  background-color: rgba(248, 248, 248, 0.8);
+  border-radius: 5px;
+  padding: 10px;
+  margin-top: 5px;
+  font-size: 11pt;
+}
+.abstract-panel .row {
+  margin-top: 0!important;
+  margin-left: 5px!important;
+  margin-right: 5px!important;
+  margin-bottom: 0!important;
+  border-bottom: 1px solid #eeeeee;
+}
+.abstract-panel label {
+  color: #aaaaaa;
+}
+.abstract-panel .text-content {
+  color: #343539;
 }

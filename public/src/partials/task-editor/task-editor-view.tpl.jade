@@ -24,6 +24,36 @@ div.view-header(ng-show='showViewHeader')
 			ul.dropdown-menu.right-border-fix(data-role="dropdown")
 				li: a 删除
 
+	div.abstract-panel.grid
+		div.row
+			div.span6
+				label 主题 :
+					span.text-content  {{dialog_data_model.topic}}
+			div.span2
+				label 状态 :
+					span.text-content  {{translateEmployee(dialog_data_model.status)}}
+			div.span2
+				label 报告人 :
+					span.text-content  {{translateEmployee(dialog_data_model.reporter)}}
+			div.span2
+				label 担当人 :
+					span.text-content  {{translateEmployee(dialog_data_model.assignee)}}
+		div.row
+			div.span4
+				label 客户 :
+					span.text-content  {{translateCustomer(dialog_data_model.customer)}}
+			div.span2
+				label 联系人 :
+					span.text-content  {{translateEmployee(dialog_data_model.assignee)}}
+			div.span2
+				label 电话 :
+					span.text-content  {{translateEmployee(dialog_data_model.customer)}}
+			div.span3
+				label 邮箱 :
+					span.text-content  {{translateEmployee(dialog_data_model.customer)}}
+
+
+
 
 div#task-editor-form.grid.view-form-sheet
 	div.dialog-content-panel
