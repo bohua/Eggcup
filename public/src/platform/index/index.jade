@@ -5,6 +5,9 @@ html(ng-app='app')
 		meta(name="apple-mobile-web-app-status-bar-style", content="black")
 		link(rel="apple-touch-startup-image", href="/startup.png")
 
+		link(rel="apple-touch-startup-image", href="images/ipadLandscape.png", media="(device-width: 768px) and (orientation:landscape) and (-webkit-min-device-pixel-ratio: 2)")
+		link(rel="apple-touch-startup-image", href="images/ipadPortrait.png", media="(device-width: 768px) and (orientation:portrait) and (-webkit-min-device-pixel-ratio: 2)")
+
 		title= title
 		link(rel='stylesheet', href='/css/client.css')
 		link(rel='stylesheet', href='/css/metro-bootstrap.css')

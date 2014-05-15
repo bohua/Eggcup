@@ -10,7 +10,7 @@ fieldset(keyboard-support)
 			div.span4
 				label 客户公司
 				div.input-control.text
-					input(type="text", placeholder="公司名称", value="{{translateCustomer(dialog_data_model.customer)}}", autofocus, tab-start, list="customer_list")
+					input(type="text", placeholder="公司名称", value="{{translateCustomer(dialog_data_model.customer)}}", tab-start, list="customer_list")
 					datalist#customer_list
 						option(ng-repeat="customer in customerList") {{customer.name}}
 			div.span2

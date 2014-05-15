@@ -50,6 +50,7 @@ module.exports = function (req, res) {
 			}
 		}
 
+		//setTimeout(function(){res.render('./src/platform/index/index', { title: '咨询业务管理 CBMS', jsFiles: jsToImport})}, 2000);
 		res.render('./src/platform/index/index', { title: '咨询业务管理 CBMS', jsFiles: jsToImport});
 	});
 };
