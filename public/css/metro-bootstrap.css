@@ -1727,13 +1727,15 @@ a {
   text-decoration: none !important;
 }
 .metro button {
+  border-radius: 5px;
+  height: 30px;
+  margin: 5px;
   padding: 4px 12px;
   text-align: center;
   vertical-align: middle !important;
-  background-color: #d9d9d9;
-  border: 1px transparent solid;
+  background-color: #eeeeee;
+  border: 1px #d9d9d9 solid;
   color: #222222;
-  border-radius: 0;
   cursor: pointer;
   display: inline-block;
   outline: none;
@@ -1741,6 +1743,19 @@ a {
   font-size: 14px;
   line-height: 16px;
 }
+
+.metro button:hover{
+  background-color: #1EC8A6;
+  color: #ffffff;
+  color: #ffffff;
+  border: 1px solid #1EC8A6;
+}
+
+
+.metro button i{
+  margin-right: 5px;
+}
+
 .metro button.default {
   background-color: #008287;
   color: #fff;
@@ -1961,8 +1976,9 @@ a {
 .metro .toolbar .transparent button:hover,
 .metro .toolbar.transparent .button:hover,
 .metro .toolbar .transparent .button:hover {
-  background-color: #eeeeee;
-  border: 1px #ffffff solid;
+  background-color: #1EC8A6;
+  border: 1px #1EC8A6 solid;
+  color: #ffffff;
 }
 .metro .toolbar button,
 .metro .toolbar .button {
@@ -5665,7 +5681,7 @@ a {
   color: #1d1d1d;
 }
 .metro .tab-control .tabs > li:hover a {
-  background-color: #d5d5d5;
+  background-color: #1ec8a6;
   color: #ffffff;
 }
 .metro .tab-control .tabs > li.place-right {

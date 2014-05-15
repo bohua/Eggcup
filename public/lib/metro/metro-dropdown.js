@@ -8,12 +8,17 @@
 			toggleElement: false
         },
 
+		_position: function(parent, me){
+			me.css('min-width', parent.width());
+		},
+
         _create: function(){
             var  that = this,
                  menu = this.element,
                  name = this.name,
                  parent = this.element.parent(),
                  toggle = this.options.toggleElement || parent.children('.dropdown-toggle');
+
 
             if (menu.data('effect') != undefined) {
                 this.options.effect = menu.data('effect');
@@ -31,6 +36,7 @@
                             that._close(el);
                         }
                     });
+					that._position(parent, menu);
                     that._open(menu);
                 }
             });

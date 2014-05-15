@@ -23,6 +23,11 @@ input,
 select {
   font-family: 'Microsoft Yahei' !important;
 }
+input:hover,
+select:hover,
+textarea:hover {
+  border: 1px solid #696969 !important;
+}
 th {
   color: #274b6d;
 }
@@ -162,6 +167,11 @@ th {
   margin-left: 10px;
   cursor: pointer;
 }
+.view-form-sheet table button {
+  border: 1px transparent  solid;
+  margin: 0;
+  font-size: 11pt!important;
+}
 .view-form-sheet textarea {
   resize: vertical;
   font-size: 12pt;
@@ -195,16 +205,6 @@ th {
 }
 .cursor-pointer {
   cursor: pointer;
-}
-.view-control-button-set button {
-  background-color: #eeeeee !important;
-  border: 1px solid #d9d9d9 !important;
-  border-radius: 5px!important;
-  height: 30px;
-  margin: 5px;
-}
-.view-control-button-set button i {
-  margin-right: 5px;
 }
 .view-control-button-set button.dropdown-toggle {
   padding-right: 0!important;
