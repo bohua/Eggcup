@@ -26,7 +26,7 @@ div.view-header(ng-show='showViewHeader')
 
 	div.abstract-panel.grid
 		div.row
-			div.span6
+			div.span4
 				label 主题 :
 					span.text-content  {{dialog_data_model.topic}}
 			div.span2
@@ -62,7 +62,7 @@ div#task-editor-form.grid.view-form-sheet
 				li.active
 					a(href="#_page_master")
 						i.icon-tag
-						span 摘要
+						span 登记
 				li(ng-show="dialog_data_model.status > 110")
 					a(href="#_page_arrange")
 						i.icon-eye-2
@@ -99,10 +99,6 @@ div#task-editor-form.grid.view-form-sheet
 					a(href="#_page_close")
 						i.icon-stats-up
 						span 催款
-				li(ng-show="dialog_data_model.status >= 400")
-					a(href="#_page_close")
-						i.icon-stats-up
-						span 费用
 				li(ng-show="dialog_data_model.status >= 400")
 					a(href="#_page_close")
 						i.icon-stats-up
