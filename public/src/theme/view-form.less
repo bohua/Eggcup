@@ -67,6 +67,24 @@
   @span-unit: 7.5;
   @margin-unit: 20;
 
+
+  fieldset{
+    .window &{
+      margin-top: 10px;
+    }
+
+    >.item-title{
+      margin-left: 20px;
+      border: 1px solid @grey-border;
+      padding: 5px 20px;
+      border-bottom: none;
+      border-top-left-radius: 6px;
+      border-top-right-radius: 6px;
+      background-color: @grey;
+      color: @black-bg;
+    }
+  }
+
   .tab-control {
     height: 100%;
 
@@ -85,17 +103,6 @@
       .frame {
         height: 100%;
         overflow-y: auto;
-
-        .item-title{
-          margin-left: 20px;
-          border: 1px solid @grey-border;
-          padding: 5px 20px;
-          border-bottom: none;
-          border-top-left-radius: 6px;
-          border-top-right-radius: 6px;
-          background-color: @grey;
-          color: @black-bg;
-        }
       }
     }
   }

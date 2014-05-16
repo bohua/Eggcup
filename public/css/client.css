@@ -29,7 +29,7 @@ select {
 input:hover,
 select:hover,
 textarea:hover {
-  border: 1px solid #1ec8a6 !important;
+  border: 1px solid #696969 !important;
 }
 th {
   color: #274b6d;
@@ -96,6 +96,19 @@ th {
   }
   */
 }
+.window .view-form-sheet fieldset {
+  margin-top: 10px;
+}
+.view-form-sheet fieldset > .item-title {
+  margin-left: 20px;
+  border: 1px solid #d9d9d9;
+  padding: 5px 20px;
+  border-bottom: none;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  background-color: #eeeeee;
+  color: #4d4d4d;
+}
 .view-form-sheet .tab-control {
   height: 100%;
 }
@@ -113,16 +126,6 @@ th {
 .view-form-sheet .tab-control .frames .frame {
   height: 100%;
   overflow-y: auto;
-}
-.view-form-sheet .tab-control .frames .frame .item-title {
-  margin-left: 20px;
-  border: 1px solid #d9d9d9;
-  padding: 5px 20px;
-  border-bottom: none;
-  border-top-left-radius: 6px;
-  border-top-right-radius: 6px;
-  background-color: #eeeeee;
-  color: #4d4d4d;
 }
 .view-form-sheet .row .span1 {
   width: calc((100% - 180px) / 10) !important;
@@ -512,7 +515,6 @@ t {
 }
 .window .dialog-contol-panel {
   width: 100%;
-  padding: 15px;
 }
 .window .dialog-content-panel {
   height: calc(100% - 50px);

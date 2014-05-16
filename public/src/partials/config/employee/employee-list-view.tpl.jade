@@ -3,19 +3,19 @@ div.view-header
 	i.icon-arrow-left-3.view-header-icon(ng-click="getBack()")
 	span.subheader 员工信息
 	comment.text-muted.margin20 Employee Information
-	div.view-header-control-button-set.place-right
+	div.place-right
 		button.hint--bottom(
-		data-hint="新建",
 		popup-dialog,
 		dialog-config="employeeEditorConfig",
 		ng-click="new($event, {})",
 		on-confirm="confirmEmitted(action, data)"
 		)
-			a: i.icon-new
-	div.view-header-control-search-box.place-right
-		div.input-control.text
-			input(type="text", placeholder="输入关键字搜索", ng-model="searchText")
-			button.btn-search(tabindex="-1")
+			i.icon-new
+			span 新建
+	div.view-header-control-search-box.place-right.margin5
+			div.input-control.text
+				input(type="text", placeholder="查找员工", ng-model="searchText")
+				button.btn-search(tabindex="-1")
 
 
 div#customer-list.grid.view-form-sheet
