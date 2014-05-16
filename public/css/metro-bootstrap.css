@@ -738,6 +738,7 @@ a {
   font-size: 2.5rem;
   line-height: 2.5rem;
   letter-spacing: 0.01em;
+    text-shadow: 1px 1px 1px #eee;
 }
 .metro .subheader-secondary {
   font-family: 'Segoe UI Light_', 'Open Sans Light', Verdana, Arial, Helvetica, sans-serif;
@@ -758,6 +759,7 @@ a {
   font-size: 1.6rem;
   line-height: 1.6rem;
   letter-spacing: 0.02em;
+    text-shadow: 1px 1px 1px #eee;
 }
 .metro .item-title-secondary {
   font-family: 'Segoe UI Semibold_', 'Open Sans Bold', Verdana, Arial, Helvetica, sans-serif;
@@ -1742,6 +1744,7 @@ a {
   font-family: 'Segoe UI Light_', 'Open Sans Light', Verdana, Arial, Helvetica, sans-serif;
   font-size: 14px;
   line-height: 16px;
+  box-shadow: 1px 1px 1px #eee;
 }
 
 .metro button:hover{
@@ -2044,7 +2047,6 @@ a {
 .metro button.dropdown-toggle,
 .metro .button.dropdown-toggle {
   padding-right: 16px;
-  border: 0;
 }
 .metro button.dropdown-toggle:before,
 .metro .button.dropdown-toggle:before {
@@ -5670,11 +5672,12 @@ a {
   background-color: #eeeeee;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
+    box-shadow: 1px 0px 1px #eee;
 }
 .metro .tab-control .tabs > li.active a {
   border-bottom-color: #ffffff;
   background-color: #ffffff;
-  border-top: 2px #e51400 solid;
+    box-shadow: 0px 2px 0 #e51400 inset;
 }
 .metro .tab-control .tabs > li.active:hover a {
   background-color: #ffffff;

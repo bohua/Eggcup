@@ -148,6 +148,7 @@ th {
   border: 1px solid #d9d9d9;
   margin: 10px 0;
   border-radius: 5px;
+  box-shadow: 1px 1px 1px #eeeeee;
 }
 .view-form-sheet legend {
   padding-top: 10px !important;
@@ -277,6 +278,7 @@ t {
   background-color: #343539;
   border-bottom: 1px solid #d9d9d9;
   margin: 0;
+  box-shadow: 1px 1px 1px #eeeeee;
 }
 #top-bar .row,
 .top-bar-wrapper .row {
@@ -555,6 +557,7 @@ t {
   float: left;
   background-color: rgba(248, 248, 248, 0.8);
   border: 1px #d9d9d9 solid;
+  box-shadow: 1px 1px 1px #eeeeee;
 }
 #dashboard .task-group .subheader {
   color: #696969;
@@ -563,12 +566,14 @@ t {
   margin: 10px 5px;
   border: 1px #d9d9d9 solid;
   cursor: pointer;
+  box-shadow: 1px 1px 3px #eeeeee;
 }
 #dashboard .task-group .task-block:hover {
   outline: 2px solid #1ec8a6;
 }
 #dashboard .task-group .task-block .panel-header {
   cursor: inherit;
+  box-shadow: 1px 0px 1px #eeeeee;
 }
 #dashboard .task-group .task-block .panel-content {
   background-color: #ffffff;
@@ -606,9 +611,14 @@ t {
   color: #343539;
 }
 .view-topic-span {
-  padding-top: 5px;
+  padding-top: 8px;
   height: 40px;
 }
-.view-topic-span > span {
+.view-topic-span > span > span {
   cursor: pointer;
+  font-size: 15pt;
+  margin: 10px;
+}
+.view-topic-span > span > span:hover {
+  color: #1b6eae !important;
 }

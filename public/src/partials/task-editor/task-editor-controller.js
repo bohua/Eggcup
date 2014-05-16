@@ -62,23 +62,29 @@ angular.module('task-editor', [
 			$scope.dialog_data_model.status = 100;
 		}
 
-		$scope.getBack = function(){
-			$location.path('/');
-		}
+		/**
+		 * Abstract code section
+		 */
+		$scope.showAbstract = true;
+		$timeout(function () {
+			_reCalcWin($scope.showAbstract);
+		});
 
-		$scope.showAbstract = false;
-		$scope.toggleAbstract = function(){
+		$scope.toggleAbstract = function () {
 			$scope.showAbstract = !$scope.showAbstract;
 
-			$timeout(function(){
+			$timeout(function () {
 				_reCalcWin($scope.showAbstract);
 			});
 		}
 
-		$(window).on('resize',function(){
+		$(window).on('resize', function () {
 			_reCalcWin($scope.showAbstract)
 		});
 
+		/**
+		 * view handlers binding
+		 */
 		$scope.employeeList = employeeListService.getEmployeeList();
 		$scope.customerList = customerListService.getCustomerList();
 		$scope.translateCustomer = customerListService.translateCustomer;
@@ -88,17 +94,30 @@ angular.module('task-editor', [
 		//Get possible precedence status
 		$scope.statusStack = taskStatusService.getPrecedence($scope.dialog_data_model.status);
 
+		//Set backward button action
+		$scope.getBack = function () {
+			$location.path('/');
+		}
 
 		/**
 		 * Tmp
 		 */
 		$scope.address_type = 0;
 
-		function _reCalcWin(isAbsExpand){
+		function _reCalcWin(isAbsExpand) {
+			var delay = 200;
 			var header = isAbsExpand ? $('.abstract-panel').outerHeight() + 50 : 40;
 			var rest = $('#view-port').height() - header;
 
-			$('.view-header').height(header+ 'px');
-			$('#task-editor-form').height(rest + 'px');
+			$('.view-header').animate({
+				height: header
+			}, delay, function () {
+
+			});
+			$('#task-editor-form').animate({
+				height: rest
+			}, delay, function () {
+
+			});
 		}
 	}]);
