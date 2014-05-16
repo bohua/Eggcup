@@ -75,12 +75,12 @@ div#task-editor-form.grid.view-form-sheet
 						i.icon-bookmark-2
 						span 提案
 				li(ng-show="dialog_data_model.status >= 200")
-					a(href="#_page_proposal")
-						i.icon-bookmark-2
+					a(href="#_page_price")
+						i.icon-cart-2
 						span 报价
 				li(ng-show="dialog_data_model.status >= 300")
 					a(href="#_page_contract")
-						i.icon-cycle
+						i.icon-auction
 						span 合同
 				li(ng-show="dialog_data_model.status >= 300")
 					a(href="#_page_contract")
@@ -88,16 +88,12 @@ div#task-editor-form.grid.view-form-sheet
 						span 执行
 				li(ng-show="dialog_data_model.status >= 300")
 					a(href="#_page_contract")
-						i.icon-cycle
+						i.icon-coins
 						span 收款
 				li(ng-show="dialog_data_model.status >= 300")
 					a(href="#_page_contract")
-						i.icon-cycle
+						i.icon-history
 						span 完成
-				li(ng-show="dialog_data_model.status >= 400")
-					a(href="#_page_close")
-						i.icon-stats-up
-						span 催款
 				li(ng-show="dialog_data_model.status >= 400")
 					a(href="#_page_close")
 						i.icon-stats-up
@@ -112,6 +108,8 @@ div#task-editor-form.grid.view-form-sheet
 					include task-editor-view-reply-tab.tpl.jade
 				div.frame#_page_proposal
 					include task-editor-view-proposal-tab.tpl.jade
+				div.frame#_page_price
+					include task-editor-view-price-tab.tpl.jade
 				div.frame#_page_contract
 					include task-editor-view-contract-tab.tpl.jade
 				div.frame#_page_close

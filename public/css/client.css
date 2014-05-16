@@ -17,6 +17,7 @@ body {
   width: 100%;
   height: 100%;
   overflow: auto;
+  background-color: rgba(225, 225, 225, 0.1);
 }
 span,
 legend,
@@ -28,7 +29,7 @@ select {
 input:hover,
 select:hover,
 textarea:hover {
-  border: 1px solid #696969 !important;
+  border: 1px solid #1ec8a6 !important;
 }
 th {
   color: #274b6d;
@@ -113,6 +114,16 @@ th {
   height: 100%;
   overflow-y: auto;
 }
+.view-form-sheet .tab-control .frames .frame .item-title {
+  margin-left: 20px;
+  border: 1px solid #d9d9d9;
+  padding: 5px 20px;
+  border-bottom: none;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  background-color: #eeeeee;
+  color: #4d4d4d;
+}
 .view-form-sheet .row .span1 {
   width: calc((100% - 180px) / 10) !important;
 }
@@ -149,10 +160,10 @@ th {
   font-size: 12pt;
 }
 .view-form-sheet .expandable-section {
-  background-color: rgba(248, 248, 248, 0.8);
+  background-color: rgba(248, 248, 248, 0.5);
   padding: 0 10px 0 10px;
   border: 1px solid #d9d9d9;
-  margin: 10px 0;
+  margin: 5px 0 20px 0;
   border-radius: 5px;
   box-shadow: 1px 1px 1px #eeeeee;
 }
@@ -170,7 +181,7 @@ th {
   font-size: 12pt;
 }
 .view-form-sheet table {
-  background-color: rgba(248, 248, 248, 0.8);
+  background-color: rgba(248, 248, 248, 0.5);
 }
 .view-form-sheet table a {
   margin-left: 10px;
@@ -180,6 +191,18 @@ th {
   border: 1px transparent  solid;
   margin: 0;
   font-size: 11pt!important;
+}
+.view-form-sheet table .in-table-button {
+  cursor: pointer;
+  padding: 5px 10px;
+}
+.view-form-sheet table .in-table-button:hover {
+  background: #1ec8a6;
+  border-radius: 5px;
+  color: #ffffff;
+}
+.view-form-sheet table .in-table-button:active {
+  background: #4d4d4d;
 }
 .view-form-sheet textarea {
   resize: vertical;
@@ -521,7 +544,7 @@ t {
 }
 #preload-mask .loader-title .login-button {
   background-color: #4d4d4d;
-  color: rgba(248, 248, 248, 0.8);
+  color: rgba(248, 248, 248, 0.5);
 }
 #preload-mask .loader-title .login-button:hover {
   color: #ffffff;
@@ -561,7 +584,7 @@ t {
   margin-right: 1%;
   height: 100%;
   float: left;
-  background-color: rgba(248, 248, 248, 0.8);
+  background-color: rgba(248, 248, 248, 0.5);
   border: 1px #d9d9d9 solid;
   box-shadow: 1px 1px 1px #eeeeee;
 }
@@ -608,7 +631,7 @@ t {
 }
 .abstract-panel {
   border: 1px solid #d9d9d9;
-  background-color: rgba(248, 248, 248, 0.8);
+  background-color: rgba(248, 248, 248, 0.5);
   border-radius: 5px;
   padding: 10px;
   margin-top: 5px;
@@ -622,10 +645,10 @@ t {
   border-bottom: 1px solid #eeeeee;
 }
 .abstract-panel label {
-  color: #aaaaaa;
+  color: #696969;
 }
 .abstract-panel .text-content {
-  color: #4d4d4d;
+  color: #0067b0;
 }
 .view-topic-span {
   padding-top: 8px;
