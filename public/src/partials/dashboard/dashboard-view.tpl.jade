@@ -20,7 +20,7 @@ div#dashboard.grid
 	div.row
 		div.task-group.panel(ng-repeat="task_group in taskList track by task_group.seq")
 			div.panel-header.text-center
-				span.subheader {{task_group.title}}
+				span.subheader.fg-black {{task_group.title}}
 				comment.text-muted.margin20 {{task_group.sub_title}}
 			div.panel-content.nano
 				div.nano-content

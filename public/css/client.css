@@ -541,7 +541,7 @@ t {
   height: calc(100% - 40px);
   overflow-y: auto;
   overflow-x: hidden;
-  padding: 5px 0 10px 10px;
+  padding: 5px 0 12px 10px;
 }
 #dashboard > .row {
   margin: 0;
@@ -578,8 +578,19 @@ t {
   outline: 2px solid #1ec8a6;
 }
 #dashboard .task-group .task-block .panel-header {
+  background: #4d4d4d;
   cursor: inherit;
   box-shadow: 1px 0px 1px #eeeeee;
+  height: 35px;
+  padding: 5px;
+  color: #ffffff;
+}
+#dashboard .task-group .task-block .panel-header span {
+  background: #eeeeee;
+  padding: 5px;
+  position: relative;
+  top: -7px;
+  border: 1px solid #4d4d4d;
 }
 #dashboard .task-group .task-block .panel-content {
   background-color: #ffffff;
