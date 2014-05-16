@@ -33,6 +33,12 @@ textarea:hover {
 th {
   color: #274b6d;
 }
+.input-control button {
+  box-shadow: none !important;
+}
+.input-control button:hover {
+  color: #696969 !important;
+}
 .view-header {
   height: 40px;
   width: 100%;
@@ -196,7 +202,7 @@ th {
 }
 .view-command-button:hover {
   border: 1px solid #aaaaaa;
-  color: #343539 !important;
+  color: #4d4d4d !important;
 }
 .ng-invalid {
   background-color: #fac4c8;
@@ -258,7 +264,7 @@ t {
 }
 .dropdown-menu i,
 .dropdown-menu t {
-  color: #343539 !important;
+  color: #4d4d4d !important;
 }
 #right-stage {
   width: 100%;
@@ -275,7 +281,7 @@ t {
   z-index: 300;
   height: 40px;
   width: 100%;
-  background-color: #343539;
+  background-color: #4d4d4d;
   border-bottom: 1px solid #d9d9d9;
   margin: 0;
   box-shadow: 1px 1px 1px #eeeeee;
@@ -396,7 +402,7 @@ t {
 }
 #left-stage li.title {
   background-color: #eeeeee;
-  color: #343539;
+  color: #4d4d4d;
   height: 50px !important;
   border-bottom: 1px solid #d9d9d9;
 }
@@ -509,12 +515,12 @@ t {
   color: #aa4643;
 }
 #preload-mask .loader-title > span span {
-  color: #343539;
+  color: #4d4d4d;
   font-family: 'Audiowide', cursive !important;
   text-shadow: 0 0 4px #ffffff;
 }
 #preload-mask .loader-title .login-button {
-  background-color: #343539;
+  background-color: #4d4d4d;
   color: rgba(248, 248, 248, 0.8);
 }
 #preload-mask .loader-title .login-button:hover {
@@ -528,7 +534,7 @@ t {
   z-index: 999;
   width: 100%;
   height: 100%;
-  background-color: #343539;
+  background-color: #4d4d4d;
   opacity: 0.5;
 }
 #dashboard {
@@ -608,7 +614,7 @@ t {
   color: #aaaaaa;
 }
 .abstract-panel .text-content {
-  color: #343539;
+  color: #4d4d4d;
 }
 .view-topic-span {
   padding-top: 8px;
