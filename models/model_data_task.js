@@ -25,11 +25,11 @@ module.exports = function (sequelize, DataTypes) {
 		/**
 		 * Arrangement Properties
 		 */
-		handling:		{ type: DataTypes.INTEGER },
-		start_date:		{ type: DataTypes.DATE},
-		end_date:		{ type: DataTypes.DATE},
+		handling:		    { type: DataTypes.INTEGER },
+		start_date:		    { type: DataTypes.DATE},
+		end_date:		    { type: DataTypes.DATE},
 		arrangement_comment: {type: DataTypes.TEXT},
-		arrangement_date: {type: DataTypes.DATE},
+		arrangement_date:   {type: DataTypes.DATE},
 
 		/**
 		 * Reply Properties
@@ -38,16 +38,24 @@ module.exports = function (sequelize, DataTypes) {
 		reply_withTel:		{ type: DataTypes.BOOLEAN, defaultValue: false },
 		reply_withF2F:		{ type: DataTypes.BOOLEAN, defaultValue: false },
 		reply_withFax:		{ type: DataTypes.BOOLEAN, defaultValue: false },
-		reply_date:			{ type: DateTypes.DATE },
+		reply_date:			{ type: DataTypes.DATE },
 		consult_person:		{ type: DataTypes.STRING },
 		reply_person:		{ type: DataTypes.INTEGER},
-		translate_person:	{ type: DataTypes.INTEGER}
+		translate_person:	{ type: DataTypes.INTEGER},
+
+		meeting_address:    { type: DataTypes.STRING },
+		meeting_people_A:   { type: DataTypes.STRING },
+		meeting_people_B:   { type: DataTypes.STRING },
+
+		consult_context:    { type: DataTypes.TEXT },
+		reply_context:      { type: DataTypes.TEXT },
+		law_context:        { type: DataTypes.TEXT }
 
 	},{
 		classMethods: {
 			associate: function (models) {
 				DATA_TASK
-					.hasOne(models.DATA_ZXSH, {as:'distribute'})
+					.hasMany(models.JOIN_ATTACHLIST, {as:'reply_attachments'})
 			}
 		}
 	});
