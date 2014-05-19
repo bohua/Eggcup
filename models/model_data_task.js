@@ -6,8 +6,7 @@ module.exports = function (sequelize, DataTypes) {
 	var DATA_TASK = sequelize.define('DATA_TASK', {
 		customer:		{ type: DataTypes.INTEGER },
 		reporter:		{ type: DataTypes.INTEGER },
-		assignee:		{ type: DataTypes.INTEGER },
-		handling:       { type: DataTypes.INTEGER },
+		report_date:	{ type: DataTypes.DATE },
 		topic:			{ type: DataTypes.STRING, defaultValue: '暂无主题' },
 		status:			{ type: DataTypes.INTEGER, defaultValue: 100 },
 		description:	{ type: DataTypes.TEXT },
@@ -21,14 +20,34 @@ module.exports = function (sequelize, DataTypes) {
 		prop_isF2F:		{ type: DataTypes.BOOLEAN, defaultValue: false },
 		prop_isFax:		{ type: DataTypes.BOOLEAN, defaultValue: false },
 		prop_internal:	{ type: DataTypes.BOOLEAN, defaultValue: false },
-		prop_external:	{ type: DataTypes.BOOLEAN, defaultValue: false }
+		prop_external:	{ type: DataTypes.BOOLEAN, defaultValue: false },
+
+		/**
+		 * Arrangement Properties
+		 */
+		handling:		{ type: DataTypes.INTEGER },
+		start_date:		{ type: DataTypes.DATE},
+		end_date:		{ type: DataTypes.DATE},
+		arrangement_comment: {type: DataTypes.TEXT},
+		arrangement_date: {type: DataTypes.DATE},
+
+		/**
+		 * Reply Properties
+		 */
+		reply_withEmail:	{ type: DataTypes.BOOLEAN, defaultValue: false },
+		reply_withTel:		{ type: DataTypes.BOOLEAN, defaultValue: false },
+		reply_withF2F:		{ type: DataTypes.BOOLEAN, defaultValue: false },
+		reply_withFax:		{ type: DataTypes.BOOLEAN, defaultValue: false },
+		reply_date:			{ type: DateTypes.DATE },
+		consult_person:		{ type: DataTypes.STRING },
+		reply_person:		{ type: DataTypes.INTEGER},
+		translate_person:	{ type: DataTypes.INTEGER}
+
 	},{
 		classMethods: {
 			associate: function (models) {
 				DATA_TASK
 					.hasOne(models.DATA_ZXSH, {as:'distribute'})
-					.hasOne(models.DATA_TA, {as:'proposal'})
-					.hasOne(models.DATA_HT, {as:'contract'});
 			}
 		}
 	});

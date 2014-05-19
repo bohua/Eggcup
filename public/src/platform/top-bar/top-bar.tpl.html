@@ -1,1 +1,25 @@
-<!--Created by Bli on 14-2-13.--><div ng-controller="topBarController" class="top-bar-wrapper"><div id="left-menu-switcher" ng-click="toggleLeftMenu()" class="place-left"><i class="icon-lines fg-hover-grayLight"></i></div><div id="global-search-box" class="input-control text"><input type="text" value="" placeholder="请输入关键字搜索..."/><button class="btn-search"></button></div><div id="top-bar-right-button-panel"><nav class="horizontal-menu"><ul><li><a ng-click="showUserMenu()" class="dropdown-toggle"><i class="icon-user-2"></i><t>李小帅</t><i class="icon-arrow-down-4"></i></a><ul id="user-dropdown-menu" class="dropdown-menu"><li><a href="#"><i class="icon-eye"></i><span>帐户信息</span></a></li><li><a href="#"><i class="icon-loop"></i><span>切换帐套</span></a></li><li><a href="#"><i class="icon-locked-2"></i><span>锁屏</span></a></li><li class="divider"></li><li><a href="#"><i class="icon-switch"></i><span>登出系统</span></a></li></ul></li></ul></nav></div></div>
+
+<!--Created by Bli on 14-2-13.-->
+<div ng-controller="topBarController" class="top-bar-wrapper">
+  <div id="left-menu-switcher" ng-click="toggleLeftMenu()" class="place-left"><i class="icon-lines fg-hover-grayLight"></i></div>
+  <div id="global-search-box" class="input-control text">
+    <input type="text" value="" placeholder="请输入关键字搜索..."/>
+    <button class="btn-search"></button>
+  </div>
+  <div id="top-bar-right-button-panel">
+    <nav class="horizontal-menu">
+      <ul>
+        <li><a ng-click="showUserMenu()" class="dropdown-toggle"><i class="icon-user-2"></i>
+            <t>李小帅</t><i class="icon-arrow-down-4"></i></a>
+          <ul id="user-dropdown-menu" class="dropdown-menu">
+            <li><a href="#"><i class="icon-eye"></i><span>帐户信息</span></a></li>
+            <li><a href="#"><i class="icon-loop"></i><span>切换帐套</span></a></li>
+            <li><a href="#"><i class="icon-locked-2"></i><span>锁屏</span></a></li>
+            <li class="divider"></li>
+            <li><a href="#"><i class="icon-switch"></i><span>登出系统</span></a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>

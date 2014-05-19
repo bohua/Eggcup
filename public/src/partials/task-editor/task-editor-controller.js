@@ -78,8 +78,14 @@ angular.module('task-editor', [
 			});
 		}
 
+		var reCalcWinPromise;
 		$(window).on('resize', function () {
-			_reCalcWin($scope.showAbstract)
+			if( reCalcWinPromise ){
+				$timeout.cancel(reCalcWinPromise);
+			}
+			reCalcWinPromise = $timeout(function(){
+				_reCalcWin($scope.showAbstract);
+			}, 400);
 		});
 
 		/**
@@ -105,7 +111,7 @@ angular.module('task-editor', [
 		$scope.address_type = 0;
 
 		function _reCalcWin(isAbsExpand) {
-			var delay = 200;
+			var delay = 400;
 			var header = isAbsExpand ? $('.abstract-panel').outerHeight() + 50 : 40;
 			var rest = $('#view-port').height() - header;
 
