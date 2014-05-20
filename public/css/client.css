@@ -591,7 +591,7 @@ t {
   box-shadow: 1px 1px 1px #eeeeee;
 }
 #dashboard .task-group .subheader {
-  color: #696969;
+  color: #696969 !important;
 }
 #dashboard .task-group .task-block {
   margin: 10px 5px;
