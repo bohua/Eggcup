@@ -99,7 +99,7 @@ th {
 .window .view-form-sheet fieldset {
   margin-top: 10px;
 }
-.view-form-sheet fieldset > .item-title {
+.view-form-sheet fieldset .item-title {
   margin-left: 20px;
   border: 1px solid #d9d9d9;
   padding: 5px 20px;
