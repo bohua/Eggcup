@@ -3,7 +3,7 @@
  */
 module.exports = function (sequelize, DataTypes) {
 
-	var JOIN_ATTACHLIST = sequelize.define('JOIN_ATTACHLIST', {
+	var MAP_ATTACH_LIST = sequelize.define('MAP_ATTACH_LIST', {
 		list_id:		{ type: DataTypes.INTEGER, allowNull: false },
 		file_name:      { type: DataTypes.STRING },
 		file_ext:       { type: DataTypes.STRING },
@@ -11,5 +11,5 @@ module.exports = function (sequelize, DataTypes) {
 		url:			{ type: DataTypes.STRING }
 	});
 
-	return JOIN_ATTACHLIST;
+	return MAP_ATTACH_LIST;
 };

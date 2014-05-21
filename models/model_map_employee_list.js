@@ -3,10 +3,11 @@
  */
 module.exports = function (sequelize, DataTypes) {
 
-	var JOIN_EMPLOYEELIST = sequelize.define('JOIN_EMPLOYEELIST', {
+	var MAP_EMPLOYEE_LIST = sequelize.define('MAP_EMPLOYEE_LIST', {
+		list_id:		{ type: DataTypes.INTEGER },
 		employeeId :	{ type: DataTypes.INTEGER },
 		major:			{ type: DataTypes.BOOLEAN, defaultValue: false }
 	});
 
-	return JOIN_EMPLOYEELIST;
+	return MAP_EMPLOYEE_LIST;
 };
