@@ -50,10 +50,18 @@ module.exports = function (sequelize, DataTypes) {
 
 		consult_context:    { type: DataTypes.TEXT },
 		reply_context:      { type: DataTypes.TEXT },
-		law_context:        { type: DataTypes.TEXT },
+		law_context:        { type: DataTypes.TEXT }
 
-		reply_attach_list:	{ type: DataTypes.INTEGER }
+		//reply_attach_list:	{ type: DataTypes.INTEGER }
 
+	},{
+		classMethods: {
+			associate: function (models) {
+				DATA_TASK
+					.hasMany(models.REF_EMPLOYEE, {through: models.MAP_TASK_EMPLOYEE, as: 'assignee'});
+					//.hasMany(models.MAP_ATTACH_LIST, {as: 'reply_attach_list', foregin_key});
+			}
+		}
 	});
 
 	return DATA_TASK;

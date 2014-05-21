@@ -22,10 +22,22 @@ db.Seq()
 		} else {
 			global.db = db;
 
-			generateKh();
-			generateTag();
-			generateEmployee();
-			generateTask();
+			Q.allResolved([generateKh(), generateTag(), generateEmployee(),generateTask()])
+				.then(function(){
+					db.model('DATA_TASK')
+						.find({where: {id: 1001}})
+						.success(function(task){
+							db.model('REF_EMPLOYEE').find({
+								where:{id:1}
+							}).success(function(employee){
+								//console.log('task:', task);
+								//console.log('employee:', employee);
+								//task.addAssignee(employee);
+								task.addAssignee(employee);
+							});
+						})
+				});
+
 		}
 	});
 
