@@ -6,6 +6,7 @@ module.exports = function (sequelize, DataTypes) {
 	var DATA_TASK = sequelize.define('DATA_TASK', {
 		customer:		{ type: DataTypes.INTEGER },
 		reporter:		{ type: DataTypes.INTEGER },
+		assignees:		{ type: DataTypes.INTEGER },
 		report_date:	{ type: DataTypes.DATE },
 		topic:			{ type: DataTypes.STRING, defaultValue: '暂无主题' },
 		status:			{ type: DataTypes.INTEGER, defaultValue: 100 },
@@ -49,15 +50,10 @@ module.exports = function (sequelize, DataTypes) {
 
 		consult_context:    { type: DataTypes.TEXT },
 		reply_context:      { type: DataTypes.TEXT },
-		law_context:        { type: DataTypes.TEXT }
+		law_context:        { type: DataTypes.TEXT },
 
-	},{
-		classMethods: {
-			associate: function (models) {
-				DATA_TASK
-					.hasMany(models.JOIN_ATTACHLIST, {as:'reply_attachments'})
-			}
-		}
+		reply_attach_list:	{ type: DataTypes.INTEGER }
+
 	});
 
 	return DATA_TASK;
