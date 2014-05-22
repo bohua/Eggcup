@@ -22,30 +22,25 @@ db.Seq()
 		} else {
 			global.db = db;
 
-			Q.allSettled([generateKh(), generateTag(), generateEmployee(), generateTask()])
+			Q.allSettled([generateKh(), generateTag(), generateEmployee(), generateTask(), generateAttachments()])
 				.then(function () {
-					db.model('REF_CUSTOMER').find({where: {id: 1}})
-						.success(function (customer) {
-							db.model('DATA_TASK')
-								.find({where: {id: 1001}})
-								.success(function (task) {
-									db.model('REF_EMPLOYEE').find({
-										where: {id: 1}
-									}).success(function (employee) {
-										//console.log('task:', task);
-										//console.log('employee:', employee);
-										//task.addAssignee(employee);
-										task.addAssignee(employee);
-										task.setReporter(employee);
-										task.setCustomer(customer);
-									});
-								})
+					db.model('REF_ATTACHMENT').findAll().success(function (attachments) {
+						db.model('REF_CUSTOMER').findAll().success(function (customers) {
+							db.model('DATA_TASK').findAll().success(function (tasks) {
+								db.model('REF_EMPLOYEE').findAll().success(function (employees) {
+									tasks[0].addAssignee(employees[0]);
+									tasks[0].setReporter(employees[0]);
+									tasks[0].setCustomer(customers[0]);
+									tasks[0].setReplyAttach([attachments[0], attachments[1]]);
+									tasks[0].setProposalAttach([attachments[2]]);
+								});
+							})
 						});
-				});
-
+					});
+				}
+			);
 		}
 	});
-
 
 function generateKh() {
 	var deferred = new Q.defer();
@@ -173,6 +168,36 @@ function generateTag() {
 		{
 			tag: '管理员',
 			type: 'permit'
+		}
+	]).success(function (sdepold) {
+		//console.log(sdepold)
+		deferred.resolve(sdepold);
+	});
+
+	return deferred.promise;
+
+}
+
+function generateAttachments() {
+	var deferred = new Q.defer();
+	db.model('REF_ATTACHMENT').bulkCreate([
+		{
+			file_name: '1.docx',
+			file_ext: 'docx',
+			file_size: '168309098',
+			url: 'localhost://attachments/test/1.docx'
+		},
+		{
+			file_name: '2.xlsx',
+			file_ext: 'xlsx',
+			file_size: '24830909',
+			url: 'localhost://attachments/test/2.xlsx'
+		},
+		{
+			file_name: '3.pdf',
+			file_ext: 'pdf',
+			file_size: '12368309098',
+			url: 'localhost://attachments/test/3.pdf'
 		}
 	]).success(function (sdepold) {
 		//console.log(sdepold)

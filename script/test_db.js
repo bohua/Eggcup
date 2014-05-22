@@ -22,7 +22,8 @@ db.Seq()
 			global.db = db;
 
 			//testGetTaskFromEmployee();
-			testEagerLoading();
+			//testEagerLoading();
+			testGetAttachments();
 		}
 	});
 
@@ -56,5 +57,18 @@ function testEagerLoading(){
 			]
 		}).success(function(task){
 			console.log(JSON.stringify(task));
+		});
+}
+
+function testGetAttachments(){
+	db.model('DATA_TASK')
+		.find({
+			where: {
+				id: 1001
+			}
+		}).success(function(task){
+			task.getReplyAttach().success(function(attaches){
+				console.log(JSON.stringify(attaches));
+			});
 		});
 }
