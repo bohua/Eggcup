@@ -24,7 +24,7 @@ module.exports = function (sequelize, DataTypes) {
 		classMethods: {
 			associate: function (models) {
 				REF_EMPLOYEE
-					.hasMany(models.DATA_TASK, {through: models.MAP_TASK_EMPLOYEE});
+					.hasMany(models.DATA_TASK, {through: models.MAP_TASK_ASSIGNEE, as: 'assignedTask'});
 			}
 		}
 	});

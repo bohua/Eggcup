@@ -3,9 +3,9 @@
  */
 module.exports = function (sequelize, DataTypes) {
 
-	var MAP_TASK_EMPLOYEE = sequelize.define('MAP_TASK_EMPLOYEE', {
+	var MAP_TASK_ASSIGNEE = sequelize.define('MAP_TASK_ASSIGNEE', {
 		isMajor:			{ type: DataTypes.BOOLEAN, defaultValue: false }
 	});
 
-	return MAP_TASK_EMPLOYEE;
+	return MAP_TASK_ASSIGNEE;
 };

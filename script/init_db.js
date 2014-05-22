@@ -22,20 +22,25 @@ db.Seq()
 		} else {
 			global.db = db;
 
-			Q.allResolved([generateKh(), generateTag(), generateEmployee(),generateTask()])
-				.then(function(){
-					db.model('DATA_TASK')
-						.find({where: {id: 1001}})
-						.success(function(task){
-							db.model('REF_EMPLOYEE').find({
-								where:{id:1}
-							}).success(function(employee){
-								//console.log('task:', task);
-								//console.log('employee:', employee);
-								//task.addAssignee(employee);
-								task.addAssignee(employee);
-							});
-						})
+			Q.allSettled([generateKh(), generateTag(), generateEmployee(), generateTask()])
+				.then(function () {
+					db.model('REF_CUSTOMER').find({where: {id: 1}})
+						.success(function (customer) {
+							db.model('DATA_TASK')
+								.find({where: {id: 1001}})
+								.success(function (task) {
+									db.model('REF_EMPLOYEE').find({
+										where: {id: 1}
+									}).success(function (employee) {
+										//console.log('task:', task);
+										//console.log('employee:', employee);
+										//task.addAssignee(employee);
+										task.addAssignee(employee);
+										task.setReporter(employee);
+										task.setCustomer(customer);
+									});
+								})
+						});
 				});
 
 		}
@@ -183,16 +188,10 @@ function generateTask() {
 	db.model('DATA_TASK').bulkCreate([
 		{
 			id: 1001,
-			customer: 1,
-			reporter: 1,
-			assignee: 1,
 			topic: '沙石厂关于下水污染问题的咨询解答，酌情予以妥善安排',
 			description: '测试数据'
 		},
 		{
-			customer: 2,
-			reporter: 2,
-			assignee: 3,
 			topic: '小明的足球',
 			status: 450,
 			description: '测试数据'

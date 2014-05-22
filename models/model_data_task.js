@@ -5,8 +5,7 @@ module.exports = function (sequelize, DataTypes) {
 
 	var DATA_TASK = sequelize.define('DATA_TASK', {
 		customer:		{ type: DataTypes.INTEGER },
-		reporter:		{ type: DataTypes.INTEGER },
-		assignees:		{ type: DataTypes.INTEGER },
+		//reporter:		{ type: DataTypes.INTEGER },
 		report_date:	{ type: DataTypes.DATE },
 		topic:			{ type: DataTypes.STRING, defaultValue: '暂无主题' },
 		status:			{ type: DataTypes.INTEGER, defaultValue: 100 },
@@ -58,8 +57,9 @@ module.exports = function (sequelize, DataTypes) {
 		classMethods: {
 			associate: function (models) {
 				DATA_TASK
-					.hasMany(models.REF_EMPLOYEE, {through: models.MAP_TASK_EMPLOYEE, as: 'assignee'});
-					//.hasMany(models.MAP_ATTACH_LIST, {as: 'reply_attach_list', foregin_key});
+					.hasMany(models.REF_EMPLOYEE, {through: models.MAP_TASK_ASSIGNEE, as: 'assignee'})
+					.belongsTo(models.REF_EMPLOYEE, {as: 'reporter', foreignKey: 'reporter_id'})
+					.belongsTo(models.REF_CUSTOMER, {as: 'customer', foreignKey: 'customer_id'})
 			}
 		}
 	});

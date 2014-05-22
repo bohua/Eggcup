@@ -5,7 +5,14 @@ var Q = require('q');
 var db = require('../models');
 var fs = require('fs');
 
-db
+db.setup('eggcup', 'root', 'root', {
+	dialect: 'mysql',
+	port: 3306,
+	pool: { maxConnections: 5, maxIdleTime: 30}
+});
+
+
+db.Seq()
 	.sequelize
 	.sync()
 	.complete(function (err) {
@@ -14,10 +21,40 @@ db
 		} else {
 			global.db = db;
 
-			db.REF_EMPLOYEE.find({where: {id: '1'}}).success(function (emp) {
-				emp.getTags().success(function(tags){
-					console.log(emp.getDataValue('name'), ':', tags.length);
-				});
-			});
+			//testGetTaskFromEmployee();
+			testEagerLoading();
 		}
 	});
+
+function testGetTaskFromEmployee(){
+	db.model('REF_EMPLOYEE').find({where: {id: '1'}}).success(function (emp) {
+		emp.getDATATASKs().success(function(tasks){
+			console.log(JSON.stringify(tasks));
+		});
+	});
+}
+
+function testEagerLoading(){
+	db.model('DATA_TASK')
+		.find({
+			where: {
+				id: 1001
+			},
+			include: [
+				{
+					model: db.model('REF_EMPLOYEE'),
+					as: 'assignee'
+				},
+				{
+					model: db.model('REF_EMPLOYEE'),
+					as: 'reporter'
+				},
+				{
+					model: db.model('REF_CUSTOMER'),
+					as: 'customer'
+				}
+			]
+		}).success(function(task){
+			console.log(JSON.stringify(task));
+		});
+}
