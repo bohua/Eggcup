@@ -54,11 +54,12 @@ module.exports = function (sequelize, DataTypes) {
 		classMethods: {
 			associate: function (models) {
 				DATA_TASK
+					.hasOne(models.DATA_REPLY, {as:'replySheet', foreignKey: 'task_id'})
 					.hasMany(models.REF_EMPLOYEE, {as: 'assignee', through: models.MAP_TASK_ASSIGNEE})
 					.belongsTo(models.REF_EMPLOYEE, {as: 'reporter', foreignKey: 'reporter_id'})
 					.belongsTo(models.REF_CUSTOMER, {as: 'customer', foreignKey: 'customer_id'})
-					.hasMany(models.REF_ATTACHMENT, {as: 'replyAttach', foreignKey: 'reply_attachment_id'})
 					.hasMany(models.REF_ATTACHMENT, {as: 'proposalAttach', foreignKey: 'proposal_attachment_id'})
+
 			}
 		}
 	});

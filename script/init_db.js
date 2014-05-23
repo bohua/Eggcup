@@ -31,8 +31,8 @@ db.Seq()
 									tasks[0].addAssignee(employees[0]);
 									tasks[0].setReporter(employees[0]);
 									tasks[0].setCustomer(customers[0]);
-									tasks[0].setReplyAttach([attachments[0], attachments[1]]);
-									tasks[0].setProposalAttach([attachments[2]]);
+									//tasks[0].setReplyAttach([attachments[0], attachments[1]]);
+									//tasks[0].setProposalAttach([attachments[2]]);
 								});
 							})
 						});
