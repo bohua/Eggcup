@@ -10,6 +10,7 @@ module.exports = function (sequelize, DataTypes) {
 		status:					{ type: DataTypes.INTEGER, defaultValue: 100 },
 		description:			{ type: DataTypes.TEXT },
 		tags:					{ type: DataTypes.STRING },
+		handling:				{ type: DataTypes.INTEGER },
 
 		/**
 		 * Other Properties
@@ -19,42 +20,13 @@ module.exports = function (sequelize, DataTypes) {
 		prop_isF2F:				{ type: DataTypes.BOOLEAN, defaultValue: false },
 		prop_isFax:				{ type: DataTypes.BOOLEAN, defaultValue: false },
 		prop_internal:			{ type: DataTypes.BOOLEAN, defaultValue: false },
-		prop_external:			{ type: DataTypes.BOOLEAN, defaultValue: false },
-
-		/**
-		 * Arrangement Properties
-		 */
-		handling:				{ type: DataTypes.INTEGER },
-		start_date:				{ type: DataTypes.DATE},
-		end_date:				{ type: DataTypes.DATE},
-		arrangement_comment:	{type: DataTypes.TEXT},
-		arrangement_date:   	{type: DataTypes.DATE},
-
-		/**
-		 * Reply Properties
-		 */
-		reply_withEmail:		{ type: DataTypes.BOOLEAN, defaultValue: false },
-		reply_withTel:			{ type: DataTypes.BOOLEAN, defaultValue: false },
-		reply_withF2F:			{ type: DataTypes.BOOLEAN, defaultValue: false },
-		reply_withFax:			{ type: DataTypes.BOOLEAN, defaultValue: false },
-		reply_date:				{ type: DataTypes.DATE },
-		consult_person:			{ type: DataTypes.STRING },
-		reply_person:			{ type: DataTypes.INTEGER},
-		translate_person:		{ type: DataTypes.INTEGER},
-
-		meeting_address:		{ type: DataTypes.STRING },
-		meeting_people_A:		{ type: DataTypes.STRING },
-		meeting_people_B:		{ type: DataTypes.STRING },
-
-		consult_context:		{ type: DataTypes.TEXT },
-		reply_context:			{ type: DataTypes.TEXT },
-		law_context:			{ type: DataTypes.TEXT }
-
+		prop_external:			{ type: DataTypes.BOOLEAN, defaultValue: false }
 	},{
 		classMethods: {
 			associate: function (models) {
 				DATA_TASK
 					.hasOne(models.DATA_REPLY, {as:'replySheet', foreignKey: 'task_id'})
+					.hasOne(models.DATA_ARRANGE, {as:'arrangeSheet', foreignKey: 'task_id'})
 					.hasMany(models.REF_EMPLOYEE, {as: 'assignee', through: models.MAP_TASK_ASSIGNEE})
 					.belongsTo(models.REF_EMPLOYEE, {as: 'reporter', foreignKey: 'reporter_id'})
 					.belongsTo(models.REF_CUSTOMER, {as: 'customer', foreignKey: 'customer_id'})
