@@ -30,3 +30,14 @@ div#price-tab-detail-editor-form.grid.view-form-sheet(ng-controller="priceTabDet
 					label 公关费用
 					div.input-control.text
 						input(type="text", placeholder="0.00")
+
+		attachment-manager
+
+		div.dialog-contol-panel
+			div.place-left
+				button.button.danger(ng-click="delete()", ng-if="prop.mode=='edit'") 删除
+			div.form-actions
+				button.button.primary(ng-click="Confirm('update', true)") 保存
+				button.button(type="button", ng-click="Cancel()") 取消
+			div.place-right(ng-show="prop.showErrorMessage")
+				span.fg-red.margin20.bg-grayLighter 单据填写有误，请修正红色标记

@@ -1,7 +1,7 @@
 //Created by bli on 2014/5/26.
 
 span.item-title 附件列表
-comment.text-muted.margin15 Minutes of Meeting
+comment.text-muted.margin15 Attachment List
 div.expandable-section
 	div.row
 		div.span10
@@ -9,17 +9,19 @@ div.expandable-section
 			table.table.bordered
 				thead
 					tr
-						th 名称
 						th 文件名
+						th 说明
+						th 大小
 						th 操作
 				tbody
-					tr
-						td 宪法章程
-						td Xianfazhangcheng.docx
+					tr(ng-repeat='row in dataList')
+						td {{row.file_name}}
+						td {{row.file_desc}}
+						td {{row.file_size}}
 						td.toolbar.transparent
-							button
+							button(ng-click='DownloadFile(row.file_url)')
 								i.icon-download 下载
-							button
+							button(ng-click='DeleteFile(row.file_url)')
 								i.icon-remove 删除
 	div.row
 		div.span3
@@ -27,4 +29,7 @@ div.expandable-section
 			div.input-control.file
 				input(type="file")
 				button.btn-file
+		button.upload-button
+			i.icon-upload-3
+			span 上传
 

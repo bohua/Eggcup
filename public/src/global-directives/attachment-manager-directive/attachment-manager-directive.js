@@ -10,18 +10,19 @@ angular.module('attachment-manager', [])
 				emitUploaded : '&onUploaded',
 				emitDeleted : '&onDeleted'
 			},
-			templateUrl: 'attachment-manager.tpl.html',
+			templateUrl: '/src/global-directives/attachment-manager-directive/attachment-manager.tpl.html',
 			link: function ($scope, $element, $attributes) {
+				$.Metro.initInputs($element);
 
-				$scope.Upload = function(file){
+				$scope.UploadFile = function(file){
 
 					$scope.emitUploaded({action: action, data: $scope.dialog_data_model});
 				};
 
-				$scope.Download = function(){
+				$scope.DownloadFile = function(){
 				};
 
-				$scope.Delete = function(){
+				$scope.DeleteFile = function(){
 					$scope.emitDeleted();
 				};
 			}

@@ -1,7 +1,7 @@
 /**
  * Created by bli on 2014/5/26.
  */
-angular.module('price-tab-controller', [])
+angular.module('price-tab-controller', ['price-tab-detail-editor-controller'])
 	.controller('priceTabController', ['$scope', function($scope){
 		/**
 		 * Initialize Emitters
