@@ -15,7 +15,7 @@ module.exports = function (sequelize, DataTypes) {
 	}, {
 		classMethods: {
 			associate: function (models) {
-				DATA_REPLY
+				DATA_ARRANGE
 					.belongsTo(models.DATA_TASK, {as: 'task', foreignKey: 'task_id'})
 			}
 		}

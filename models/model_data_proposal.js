@@ -14,7 +14,7 @@ module.exports = function (sequelize, DataTypes) {
 	}, {
 		classMethods: {
 			associate: function (models) {
-				DATA_REPLY
+				DATA_PROPOSAL
 					.belongsTo(models.DATA_TASK, {as: 'task', foreignKey: 'task_id'})
 					.hasMany(models.REF_ATTACHMENT, {as: 'proposalAttach'})
 			}
