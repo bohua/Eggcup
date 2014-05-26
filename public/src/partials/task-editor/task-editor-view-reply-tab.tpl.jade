@@ -110,8 +110,11 @@ fieldset(keyboard-support)
 								button
 									i.icon-remove 删除
 		div.row
-			div.span3
+			div.span5
 				label 上传附件
 				div.input-control.file
 					input(type="file")
 					button.btn-file
+			button.upload-button(ng-click="uploadAttachment")
+				i.icon-upload-3
+				span 上传

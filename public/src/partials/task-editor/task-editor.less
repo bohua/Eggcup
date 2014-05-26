@@ -38,3 +38,45 @@
     }
   }
 }
+
+.upload-button{
+  position: relative;
+  top: 26px;
+}
+
+.attachment-token{
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 300px;
+  overflow: hidden;
+
+  border-radius: 6px;
+  border: 1px solid @grey-border;
+  background-color: @grey;
+  padding: 2px 10px;
+
+  margin-bottom: 3px;
+
+  &:hover{
+    background-color: @grey-border;
+  }
+
+  i {
+    position: relative;
+    left: -2px;
+
+    margin: 0px 5px;
+
+    &.icon-file-excel{
+      color: @green-dark;
+    }
+
+    &.icon-file-word{
+      color: @blue-dark;
+    }
+
+    &.icon-file-pdf{
+      color: @red;
+    }
+  }
+}
