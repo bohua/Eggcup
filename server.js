@@ -22,6 +22,7 @@ app.set('views', path.join(__dirname, 'public'));
 app.set('view engine', 'jade');
 app.use(express.favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 app.use(express.logger('dev'));
+app.use(express.bodyParser({uploadDir: __dirname + '/uploads'}));
 app.use(express.json());
 app.use(express.urlencoded());
 app.use(express.methodOverride());
@@ -30,7 +31,6 @@ app.use(express.session());
 app.use(app.router);
 //app.use(require('less-middleware')({ src: path.join(__dirname, 'public') }));
 app.use(express.static(path.join(__dirname, 'public')));
-
 // development only
 if ('development' == app.get('env')) {
 	app.use(express.errorHandler());
@@ -65,6 +65,14 @@ app.get('/tag', basics.getTagList);
 app.get('/task', tasks.getTaskList);
 app.get('/task/:task_id', tasks.getTask);
 app.get('/statusList', tasks.getStatusList);
+
+/**
+ * Upload request
+ */
+app.post('/file-upload', function(req, res, next) {
+	console.log(req.body);
+	console.log(req.files);
+});
 
 
 /**

@@ -24,12 +24,11 @@ div.expandable-section
 							button(ng-click='DeleteFile(row.file_url)')
 								i.icon-remove 删除
 	div.row
-		div.span3
-			label 上传附件
-			div.input-control.file
-				input(type="file")
-				button.btn-file
-		button.upload-button
-			i.icon-upload-3
-			span 上传
+		div.span2
+			button.upload-button
+				i.icon-upload-3
+				span 上传附件
+			input#fileupload(type="file", name="files[]", data-url="/file-upload")
+	div.row
+		div.progress-bar(data-role="progress-bar", data-color="#1ec8a6")
 
