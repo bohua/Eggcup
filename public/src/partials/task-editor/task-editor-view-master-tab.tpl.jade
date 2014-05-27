@@ -10,7 +10,7 @@ fieldset(keyboard-support)
 			div.span4
 				label 客户公司
 				div.input-control.text
-					input(type="text", placeholder="公司名称", value="{{translateCustomer(dialog_data_model.customer)}}", tab-start, list="customer_list")
+					input(type="text", placeholder="公司名称", value="{{translateCustomer(dialog_data_model.customer)}}", list="customer_list")
 					datalist#customer_list
 						option(ng-repeat="customer in customerList") {{customer.name}}
 			div.span2
@@ -38,7 +38,7 @@ fieldset(keyboard-support)
 			div.span10
 				label 咨询事项
 				div.input-control.textarea
-					textarea(placeholder="咨询事项", ng-model="dialog_data_model.description", tab-end)
+					textarea(placeholder="咨询事项", ng-model="dialog_data_model.description")
 
 	div.row
 		div.span5

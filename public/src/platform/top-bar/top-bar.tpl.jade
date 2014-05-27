@@ -1,19 +1,20 @@
 //Created by Bli on 14-2-13.
-div.top-bar-wrappernavbar.navbar-inverse.navbar-fixed-top(ng-controller='topBarController', role="navigation")
+div.top-bar-wrappernavbar.navbar-inverse.navbar-fixed-top( role="navigation")
 	div.container-fluid
 		div.navbar-header
-			button.navbar-toggle(data-toggle="collapse", data-target="navbar-collapse")
+			button.navbar-toggle(type="button", data-toggle="collapse", data-target="#topbar-collapse")
 				span.sr-only
 				span.icon-bar
 				span.icon-bar
 				span.icon-bar
 			a.navbar-brand 久富科技
 
-		#navbar-collapse.collapse.navbar-collapse
-			ul.nav.navbar-nav
+		#topbar-collapse.collapse.navbar-collapse
+
 			ul.nav.navbar-nav.navbar-right
 				li.dropdown
-					a.dropdown-toggle(data-toggle="dropdown") 李小帅
+					a.dropdown-toggle(data-toggle="dropdown")
+						span.cursor-pointer 李小帅
 						b.caret
 					ul.dropdown-menu
 						li: a(href="#")
@@ -31,7 +32,7 @@ div.top-bar-wrappernavbar.navbar-inverse.navbar-fixed-top(ng-controller='topBarC
 							span 登出系统
 
 			form.navbar-form.navbar-right(role="search")
-				div.form-group
+				div.form-group.margin5.h-only
 					input.form-control(type="text", placeholder="任务代号")
 				button.btn.btn-default(type="submit") 查询
 

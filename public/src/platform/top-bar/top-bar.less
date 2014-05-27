@@ -7,66 +7,6 @@
   border-bottom: 1px solid @grey-border;
   margin: 0;
   box-shadow: 1px 1px 1px @grey;
-
-  .row {
-    margin: 0;
-  }
-
-  div {
-    float: left;
-  }
-
-  #global-search-box {
-    width: 200px;
-    margin: 5px 0 0 7px;
-    position: absolute;
-    right: 160px;
-  }
-
-  #top-bar-center-title {
-    position: relative;
-    left: ~"calc(50% - @{title-width}/2 - @{title-search-box-width} - 120px)";
-    padding: 0 50px 4px 50px;
-    margin-top: 5px;
-
-    t {
-      font-size: 14pt;
-      color: @white; //@black-bg;
-    }
-  }
-
-  #top-bar-right-button-panel {
-    height: @top-bar-height;
-    float: right;
-    margin-right: 10px;
-
-    ul {
-      margin: 0;
-
-      li {
-        cursor: pointer;
-        &:hover{
-          background-color: rgba(225,225,225, .2);
-        }
-      }
-
-      t{
-        font-size: 15px;
-      }
-      i{
-        font-size: 14pt;
-      }
-
-      a::after {
-        content: none;
-        //color: @white; //@black-bg;
-      }
-      i, t {
-        color: @white; //@black-bg;
-        margin: 5px;
-      }
-    }
-  }
 }
 
 #left-menu-switcher {
@@ -75,24 +15,5 @@
   i{
     vertical-align: 5%;
     margin-left: 10px;
-  }
-}
-
-.dropdown-menu {
-  min-width: 125px;
-  a{
-    padding: 5px 15px;
-  }
-
-  i, span {
-    margin-left: 0;
-  }
-
-  i {
-    margin-right: 5px
-  }
-
-  span{
-    white-space: nowrap;
   }
 }

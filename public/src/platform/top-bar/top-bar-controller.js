@@ -5,6 +5,10 @@
 angular.module('top-bar', [])
 	.controller('topBarController', ['$scope', '$rootScope', function ($scope, $rootScope) {
 
+		$('#topbar-collapse').collapse({
+
+		});
+		/*
 		$scope.toggleLeftMenu = function() {
 			$rootScope.$broadcast('toggleLeftMenu', true);
 		}
@@ -12,4 +16,5 @@ angular.module('top-bar', [])
 		$scope.showUserMenu = function () {
 
 		};
+		*/
 	}]);

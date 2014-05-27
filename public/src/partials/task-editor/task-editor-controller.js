@@ -37,9 +37,11 @@ angular.module('task-editor', [
 		/**
 		 * Initialize Metro UI
 		 */
+		/*
 		$.Metro.initTabs();
 		$.Metro.initInputs();
 		$.Metro.initDropdowns('.view-header');
+		*/
 
 		/**
 		 * Initialize Emitters

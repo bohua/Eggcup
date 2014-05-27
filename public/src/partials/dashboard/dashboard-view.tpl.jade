@@ -4,30 +4,40 @@ div.view-header
 	span.subheader 任务板
 	comment.text-muted.margin20 Dashboard
 
-	div.place-right.view-control-button-set
-		button
+	div.btn-group.view-control-button-set
+		button.btn.btn-default
 			i.icon-filter
 			span 过滤
-		button
+		button.btn.btn-default
 			i.icon-cog
 			span 设置
-		button
+		button.btn.btn-default
 			i.icon-help-2
 			span 帮助
 
 
-div#dashboard.grid
+div#dashboard.container-fluid
 	div.row
-		div.task-group.panel(ng-repeat="task_group in taskList track by task_group.seq")
-			div.panel-header.text-center
-				span.subheader.fg-black {{task_group.title}}
-				comment.text-muted.margin20 {{task_group.sub_title}}
-			div.panel-content.nano
-				div.nano-content
-					div.panel.task-block(
-					ng-repeat="task in task_group.task_list track by task.id", ng-click="detail($event, task)")
-						div.panel-header TK-{{task.id}}
-							span.task-status.place-right.fg-darkRed {{translateStatus(task.status)}}
-						div.panel-content
-							label.text-ellipsis.text-info {{translateCustomer(task.customer)}}
-							label {{task.topic}}
+		div.col-md-3.col-sm-3.task-group(ng-repeat="task_group in taskList track by task_group.seq")
+			div.panel.panel-default
+				div.panel-heading.text-center
+					span.subheader {{task_group.title}}
+					comment.text-muted.margin20 {{task_group.sub_title}}
+				div.panel-body.nano
+					div.nano-content
+						div.list-group
+							a.list-group-item(ng-repeat="task in task_group.task_list track by $index", ng-click="detail($event, task)")
+								h4.list-group-item-heading {{task.id}} - {{translateStatus(task.status)}}
+								p.list-group-item-text {{translateCustomer(task.customer)}}
+								p.list-group-item-text {{task.topic}}
+
+
+
+
+					//div.panel.task-block(
+						ng-repeat="task in task_group.task_list track by task.id", ng-click="detail($event, task)")
+							div.panel-heading TK-{{task.id}}
+								span.task-status.place-right.fg-darkRed {{translateStatus(task.status)}}
+							div.panel-body
+								label.text-ellipsis.text-info {{translateCustomer(task.customer)}}
+								label {{task.topic}}

@@ -9,78 +9,92 @@
     height: 100%;
   }
 
-  .nano {
-    height: ~"calc(100% - @{top-bar-height})";
-  }
-
-  .panel-header comment {
-    font-size: 12pt;
-  }
-
-  .panel-content {
-    padding: 10px 2px;
-  }
-
-  .task-group {
-    width: 24%;
-    margin-right: 1%;
-    margin-bottom: 0;
+  .task-group{
     height: 100%;
-    float: left;
-    background-color: @grey-light;
+    padding: 3px;
 
-    border: 1px @grey-border solid;
-    box-shadow: 1px 1px 1px @grey;
-
-    .subheader {
-      color: @grey-darker!important;
+    .panel{
+      height: 100%;
+      margin-bottom: 10px;
     }
-
-    .task-block {
-      margin: 10px 5px;
-      border: 1px @grey-border solid;
-      cursor: pointer;
-      box-shadow: 1px 1px 3px @grey;
-
-      &:hover{
-        outline: 2px solid @green;
-      }
-
-      .panel-header{
-        background: @black-bg;
-        cursor: inherit;
-        box-shadow: 1px 0px 1px @grey;
-        height: 35px;
-        padding: 5px;
-        color: @white;
-
-        span{
-          background: @grey;
-          padding: 0 10px;
-          position: relative;
-          border: 1px solid @black-bg;
-          border-radius: 20px;
-        }
-      }
-
-      .panel-content{
-        background-color: @white;
-        padding: 5px;
-      }
-
-      label {
-        cursor: inherit;
-        font-size: 12pt;
-      }
-    }
-
-    .task-status {
-      font-size: 14pt;
-    }
-
   }
 
-  .panel-header{
-    border-bottom: 1px solid @grey-border;
+  .nano {
+    height: ~"calc(100% - 45px)";
   }
+
+  .nano-content{
+    padding: 5px;
+  }
+
+//  .panel-header comment {
+//    font-size: 12pt;
+//  }
+//
+//  .panel-content {
+//    padding: 10px 2px;
+//  }
+
+//  .task-group {
+//    width: 24%;
+//    margin-right: 1%;
+//    margin-bottom: 0;
+//    height: 100%;
+//    float: left;
+//    background-color: @grey-light;
+//
+//    border: 1px @grey-border solid;
+//    box-shadow: 1px 1px 1px @grey;
+//
+//    .subheader {
+//      color: @grey-darker!important;
+//    }
+//
+//    .task-block {
+//      margin: 10px 5px;
+//      border: 1px @grey-border solid;
+//      cursor: pointer;
+//      box-shadow: 1px 1px 3px @grey;
+//
+//      &:hover{
+//        outline: 2px solid @green;
+//      }
+//
+//      .panel-header{
+//        background: @black-bg;
+//        cursor: inherit;
+//        box-shadow: 1px 0px 1px @grey;
+//        height: 35px;
+//        padding: 5px;
+//        color: @white;
+//
+//        span{
+//          background: @grey;
+//          padding: 0 10px;
+//          position: relative;
+//          border: 1px solid @black-bg;
+//          border-radius: 20px;
+//        }
+//      }
+//
+//      .panel-content{
+//        background-color: @white;
+//        padding: 5px;
+//      }
+//
+//      label {
+//        cursor: inherit;
+//        font-size: 12pt;
+//      }
+//    }
+//
+//    .task-status {
+//      font-size: 14pt;
+//    }
+//
+//  }
+//
+//  .panel-header{
+//    border-bottom: 1px solid @grey-border;
+//  }
 }

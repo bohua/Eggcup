@@ -137,7 +137,9 @@ angular.module('dashboard', [
 				var task = taskList[i];
 
 				if (task.status < 200) {
-					groups[0].task_list.push(task);
+					for(var i=0; i < 20; i++){
+						groups[0].task_list.push(task);
+					}
 				} else if (task.status < 300) {
 					groups[1].task_list.push(task);
 				} else if (task.status < 400) {

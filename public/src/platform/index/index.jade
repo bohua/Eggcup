@@ -62,7 +62,9 @@ html(lang="zh", ng-app='app')
 	body.unselectable(ng-controller='appController')
 		#screen-mask
 		#preload-mask(preload-mask-directive, ng-show='enablePreload')
+
 		#top-bar.bleach-stage(ng-include='"/src/platform/top-bar/top-bar.tpl.html"')
+
 		#left-stage.bleach-stage(ng-include='"/src/platform/left-menu-pop/left-menu-pop.tpl.html"')
 		#right-stage.bleach-stage
 			//#router-guide(ng-include='"/src/platform/router-guide/router-guide.tpl.html"')

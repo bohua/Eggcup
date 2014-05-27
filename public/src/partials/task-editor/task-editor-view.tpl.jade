@@ -6,24 +6,24 @@ div.view-header
 			span.text-info(ng-click="toggleAbstract()") TK-{{dialog_data_model.id}}
 		span.subheader(ng-if="!dialog_data_model.id") 新建任务
 		comment.text-muted.margin20 Task Editor
-	div.view-control-button-set.place-right
-		button
+	div.btn-group.place-right
+		button.btn.btn-default
 			i.icon-download-2
 			span 保存
-		div.button-dropdown
-			button.dropdown-toggle
+		div.btn-group
+			button.btn.btn-default.dropdown-toggle(data-toggle="dropdown")
 				i.icon-share
 				span 提交
-				i.icon-arrow-down-4
-			ul.dropdown-menu.right-border-fix(data-role="dropdown")
+				span.caret
+			ul.dropdown-menu
 				li(ng-repeat="precedence in statusStack track by $index")
 					a(ng-click="console.log(precedence.nextStatus)") {{precedence.action}}
-		div.button-dropdown
-			button.dropdown-toggle
+		div.btn-group
+			button.btn.btn-default.dropdown-toggle(data-toggle="dropdown")
 				i.icon-share-2
 				span 其它
-				i.icon-arrow-down-4
-			ul.dropdown-menu.right-border-fix(data-role="dropdown")
+				span.caret
+			ul.dropdown-menu
 				li: a 删除
 
 	div.abstract-panel.grid(ng-show="showAbstract")
