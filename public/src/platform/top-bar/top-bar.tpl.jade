@@ -1,12 +1,50 @@
 //Created by Bli on 14-2-13.
-div.top-bar-wrapper(ng-controller='topBarController')
-	#left-menu-switcher.place-left(ng-click='toggleLeftMenu()')
-		i.icon-lines.fg-hover-grayLight
-	#global-search-box.input-control.text
+div.top-bar-wrappernavbar.navbar-inverse.navbar-fixed-top(ng-controller='topBarController', role="navigation")
+	div.container-fluid
+		div.navbar-header
+			button.navbar-toggle(data-toggle="collapse", data-target="navbar-collapse")
+				span.sr-only
+				span.icon-bar
+				span.icon-bar
+				span.icon-bar
+			a.navbar-brand 久富科技
+
+		#navbar-collapse.collapse.navbar-collapse
+			ul.nav.navbar-nav
+			ul.nav.navbar-nav.navbar-right
+				li.dropdown
+					a.dropdown-toggle(data-toggle="dropdown") 李小帅
+						b.caret
+					ul.dropdown-menu
+						li: a(href="#")
+							i.icon-eye
+							span 帐户信息
+						li: a(href='#')
+							i.icon-loop
+							span 切换帐套
+						li: a(href='#')
+							i.icon-locked-2
+							span 锁屏
+						li.divider
+						li: a(href='#')
+							i.icon-switch
+							span 登出系统
+
+			form.navbar-form.navbar-right(role="search")
+				div.form-group
+					input.form-control(type="text", placeholder="任务代号")
+				button.btn.btn-default(type="submit") 查询
+
+
+
+
+			//#left-menu-switcher.navbar-toggle(ng-click='toggleLeftMenu()')
+				i.icon-lines.fg-hover-grayLight
+	//#global-search-box.input-control.text
 		input(type='text', value='', placeholder='请输入关键字搜索...')
 		button.btn-search
 
-	#top-bar-right-button-panel
+	//#top-bar-right-button-panel
 		nav.horizontal-menu: ul
 			li
 				a.dropdown-toggle(ng-click='showUserMenu()')
