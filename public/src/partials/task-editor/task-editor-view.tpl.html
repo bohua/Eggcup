@@ -1,2 +1,526 @@
-<!--Created by Bli on 2014/5/5.--><div class="view-header"><div class="view-topic-span"><i ng-click="getBack()" class="icon-arrow-left-3 view-header-icon"></i><span ng-if="dialog_data_model.id" class="subheader">任务<span ng-click="toggleAbstract()" class="text-info">TK-{{dialog_data_model.id}}</span></span><span ng-if="!dialog_data_model.id" class="subheader">新建任务</span><comment class="text-muted margin20">Task Editor</comment></div><div class="btn-group place-right"><button class="btn btn-default"><i class="icon-download-2"></i><span>保存</span></button><div class="btn-group"><button data-toggle="dropdown" class="btn btn-default dropdown-toggle"><i class="icon-share"></i><span>提交</span><span class="caret"></span></button><ul class="dropdown-menu"><li ng-repeat="precedence in statusStack track by $index"><a ng-click="console.log(precedence.nextStatus)">{{precedence.action}}</a></li></ul></div><div class="btn-group"><button data-toggle="dropdown" class="btn btn-default dropdown-toggle"><i class="icon-share-2"></i><span>其它</span><span class="caret"></span></button><ul class="dropdown-menu"><li><a>删除</a></li></ul></div></div><div ng-show="showAbstract" class="abstract-panel grid"><div class="row"><div class="span4"><label>主题 :<span class="text-content"> {{dialog_data_model.topic}}</span></label></div><div class="span2"><label>状态 :<span class="text-content"> {{translateEmployee(dialog_data_model.status)}}</span></label></div><div class="span2"><label>报告人 :<span class="text-content"> {{translateEmployee(dialog_data_model.reporter)}}</span></label></div><div class="span2"><label>担当人 :<span class="text-content"> {{translateEmployee(dialog_data_model.assignee)}}</span></label></div></div><div class="row"><div class="span4"><label>客户 :<span class="text-content"> {{translateCustomer(dialog_data_model.customer)}}</span></label></div><div class="span2"><label>联系人 :<span class="text-content"> {{translateEmployee(dialog_data_model.assignee)}}</span></label></div><div class="span2"><label>电话 :<span class="text-content"> {{translateEmployee(dialog_data_model.customer)}}</span></label></div><div class="span3"><label>邮箱 :<span class="text-content"> {{translateEmployee(dialog_data_model.customer)}}</span></label></div></div></div></div><div id="task-editor-form" class="grid view-form-sheet"><div class="dialog-content-panel"><div data-role="tab-control" data-effect="fade" class="tab-control"><ul class="tabs"><li class="active"><a href="#_page_master"><i class="icon-tag"></i><span>登记</span></a></li><li ng-show="dialog_data_model.status &gt; 110"><a href="#_page_arrange"><i class="icon-eye-2"></i><span>审核</span></a></li><li ng-show="dialog_data_model.status &gt; 120"><a href="#_page_reply"><i class="icon-reply-2"></i><span>回复</span></a></li><li ng-show="dialog_data_model.status &gt;= 200"><a href="#_page_proposal"><i class="icon-bookmark-2"></i><span>提案</span></a></li><li ng-show="dialog_data_model.status &gt;= 200"><a href="#_page_price"><i class="icon-cart-2"></i><span>报价</span></a></li><li ng-show="dialog_data_model.status &gt;= 300"><a href="#_page_contract"><i class="icon-auction"></i><span>合同</span></a></li><li ng-show="dialog_data_model.status &gt;= 300"><a href="#_page_contract"><i class="icon-cycle"></i><span>执行</span></a></li><li ng-show="dialog_data_model.status &gt;= 300"><a href="#_page_contract"><i class="icon-coins"></i><span>收款</span></a></li><li ng-show="dialog_data_model.status &gt;= 300"><a href="#_page_contract"><i class="icon-history"></i><span>完成</span></a></li><li ng-show="dialog_data_model.status &gt;= 400"><a href="#_page_close"><i class="icon-stats-up"></i><span>汇总</span></a></li></ul><div class="frames"><div id="_page_master" class="frame"><!--Created by bli on 2014/5/9.--><fieldset keyboard-support="keyboard-support"><span class="item-title">任务信息</span><comment class="text-muted margin15">Task Information</comment><div class="expandable-section"><div class="row"><div class="span2"><label>任务状态</label><span class="fg-darkRed text-content">{{translateStatus(dialog_data_model.status)}}</span></div><div class="span4"><label>客户公司</label><div class="input-control text"><input type="text" placeholder="公司名称" value="{{translateCustomer(dialog_data_model.customer)}}" list="customer_list"/><datalist id="customer_list"><option ng-repeat="customer in customerList">{{customer.name}}</option></datalist></div></div><div class="span2"><label>担当人</label><div class="input-control select"><select ng-model="dialog_data_model.assignee"><option ng-repeat="employee in employeeList" value="{{employee.id}}">{{employee.name}}</option></select></div></div><div class="span2"><label>处理方式</label><div class="input-control select"><select ng-model="dialog_data_model.handling"><option value="0">解答回复</option><option value="1">提案回复</option></select></div></div></div></div><span class="item-title">咨询信息</span><comment class="text-muted margin15">Consulting Details</comment><div class="expandable-section"><div class="row"><div class="span10"><label>咨询主题</label><div class="input-control text"><input type="text" placeholder="咨询主题" ng-model="dialog_data_model.topic" required="required"/></div></div></div><div class="row"><div class="span10"><label>咨询事项</label><div class="input-control textarea"><textarea placeholder="咨询事项" ng-model="dialog_data_model.description"></textarea></div></div></div></div><div class="row"><div class="span5"><span class="item-title">咨询方式</span><comment class="text-muted margin15">Incoming way</comment><div class="expandable-section"><div class="input-control checkbox"><label><input type="checkbox" ng-model="dialog_data_model.prop_isEmail"/><span class="check"></span><span>电子邮件</span></label></div><div class="input-control checkbox"><label><input type="checkbox" ng-model="dialog_data_model.prop_isTel"/><span class="check"></span><span>电话</span></label></div><div class="input-control checkbox"><label><input type="checkbox" ng-model="dialog_data_model.prop_isF2F"/><span class="check"></span><span>面谈</span></label></div><div class="input-control checkbox"><label><input type="checkbox" ng-model="dialog_data_model.prop_isFax"/><span class="check"></span><span>传真</span></label></div></div></div><div class="span5"><span class="item-title">阅读权限</span><comment class="text-muted margin15">Permissions</comment><div class="expandable-section"><div class="input-control checkbox"><label><input type="checkbox" ng-model="dialog_data_model.prop_internal"/><span class="check"></span><span>内部浏览</span></label></div><div class="input-control checkbox"><label><input type="checkbox" ng-model="dialog_data_model.prop_external"/><span class="check"></span><span>客户浏览</span></label></div></div></div></div></fieldset></div><div id="_page_arrange" class="frame"><!--Created by bli on 2014/5/9.--><fieldset keyboard-support="keyboard-support"><span class="item-title">分配方式</span><comment class="text-muted margin15">Assignments</comment><div class="expandable-section"><div class="row"><div class="span2"><label>担当人</label><div class="input-control select"><select ng-model="dialog_data_model.assignee"><option ng-repeat="employee in employeeList" value="{{employee.id}}">{{employee.name}}</option></select></div></div><div class="span2"><label>处理方式</label><div class="input-control select"><select ng-model="dialog_data_model.handling"><option value="0">解答回复</option><option value="1">提案回复</option></select></div></div></div></div><span class="item-title">时间安排</span><comment class="text-muted margin15">Time window</comment><div class="expandable-section"><div class="row"><div class="span3"><label>启始日期</label><div date-picker-helper="date-picker-helper" class="input-control text"><input type="text" placeholder="启始日期" ng-model="startdate"/><button tabindex="-1" class="btn-date"></button></div></div><div class="span3"><label>结束日期</label><div date-picker-helper="date-picker-helper" class="input-control text"><input type="text" placeholder="结束日期" ng-model="enddate"/><button tabindex="-1" class="btn-date"></button></div></div></div></div><span class="item-title">补充信息</span><comment class="text-muted margin15">Memo</comment><div class="expandable-section"><div class="row"><div class="span10"><label>分配审核意见</label><div class="input-control textarea"><textarea placeholder="咨询事项" ng-model="dialog_data_model.description" tab-end="tab-end"></textarea></div></div></div></div></fieldset></div><div id="_page_reply" class="frame"><!--Created by bli on 2014/5/13.--><fieldset keyboard-support="keyboard-support"><div ng-show="dialog_data_model.handling == 0"><span class="item-title">咨询解答 (邮件/电话)</span><comment class="text-muted margin15">Reply</comment><div class="expandable-section"><div class="row"><div class="span4"><label>解答方式</label><div class="input-control checkbox"><label><input type="checkbox"/><span class="check"></span><span>电子邮件</span></label></div><div class="input-control checkbox"><label><input type="checkbox"/><span class="check"></span><span>电话</span></label></div><div class="input-control checkbox"><label><input type="checkbox"/><span class="check"></span><span>面谈</span></label></div><div class="input-control checkbox"><label><input type="checkbox"/><span class="check"></span><span>传真</span></label></div></div><div class="span2"><label>咨询人</label><div class="input-control text"><input type="text" placeholder="咨询人"/></div></div><div class="span2"><label>答复人</label><div class="input-control text"><input type="text" placeholder="答复人"/></div></div><div class="span2"><label>翻译人</label><div class="input-control text"><input type="text" placeholder="翻译人"/></div></div></div></div></div><div ng-show="dialog_data_model.handling != 0"><span class="item-title">咨询解答 (面谈)</span><comment class="text-muted margin15">Reply</comment><div class="expandable-section"><div class="row"><div class="span10"><label>面谈地址</label><div class="input-control radio default-style span1"><label><input type="radio" name="r1" ng-model="address_type" value="0"/><span class="check"></span><span>JKH</span></label></div><div class="input-control radio default-style span1"><label><input type="radio" name="r1" ng-model="address_type" value="1"/><span class="check"></span><span>其它</span></label></div><div class="input input-control text span8"><input type="text" placeholder="详细地址" ng-disabled="address_type == 0"/></div></div></div><div class="row"><div class="span5"><label>我方人员</label><div class="input-control text"><input type="text" placeholder="我方人员"/></div></div><div class="span5"><label>客户人员</label><div class="input-control text"><input type="text" placeholder="客户人员"/></div></div></div></div></div><span class="item-title">过程记录</span><comment class="text-muted margin15">Minutes of Meeting</comment><div class="expandable-section"><div class="row"><div class="span10"><label>咨询事项</label><div class="input-control textarea"><textarea placeholder="咨询事项"></textarea></div></div></div><div class="row"><div class="span10"><label>解答回复</label><div class="input-control textarea"><textarea placeholder="解答回复"></textarea></div></div></div><div class="row"><div class="span10"><label>法律依据</label><div class="input-control textarea"><textarea placeholder="法律依据"></textarea></div></div></div></div><span class="item-title">附件列表</span><comment class="text-muted margin15">Minutes of Meeting</comment><div class="expandable-section"><div class="row"><div class="span10"><label>所属附件</label><table class="table bordered"><thead><tr><th>名称</th><th>文件名</th><th>操作</th></tr></thead><tbody><tr><td>宪法章程</td><td>Xianfazhangcheng.docx</td><td class="toolbar transparent"><button><i class="icon-download">下载</i></button><button><i class="icon-remove">删除</i></button></td></tr></tbody></table></div></div><div class="row"><div class="span5"><label>上传附件</label><div class="input-control file"><input type="file"/><button class="btn-file"></button></div></div><button ng-click="uploadAttachment" class="upload-button"><i class="icon-upload-3"></i><span>上传</span></button></div></div></fieldset></div><div id="_page_proposal" class="frame"><!--Created by bli on 2014/5/13.--><fieldset keyboard-support="keyboard-support"><span class="item-title">提案要义</span><comment class="text-muted margin15">Proposal Abstract</comment><div class="expandable-section"><div class="row"><div class="span4"><label>提案标的</label><div class="input-control text"><input type="text" placeholder="提案标的"/></div></div><div class="span2"><label>提案日期</label><div date-picker-helper="date-picker-helper" class="input-control text"><input type="text" placeholder="提案日期"/><button tabindex="-1" class="btn-date"></button></div></div><div class="span2"><label>提案人</label><div class="input-control text"><input type="text" placeholder="提案人"/></div></div><div class="span2"><label>翻译人</label><div class="input-control text"><input type="text" placeholder="翻译人"/></div></div></div><div class="row"><div class="span10"><label>标的内容</label><div class="input-control textarea"><textarea placeholder="标的内容" rows="10"></textarea></div></div></div></div><span class="item-title">附件列表</span><comment class="text-muted margin15">Minutes of Meeting</comment><div class="expandable-section"><div class="row"><div class="span10"><label>所属附件</label><table class="table bordered"><thead><tr><th>名称</th><th>文件名</th><th>操作</th></tr></thead><tbody><tr><td>宪法章程</td><td>Xianfazhangcheng.docx</td><td class="toolbar transparent"><button><i class="icon-download">下载</i></button><button><i class="icon-remove">删除</i></button></td></tr></tbody></table></div></div><div class="row"><div class="span3"><label>上传附件</label><div class="input-control file"><input type="file"/><button class="btn-file"></button></div></div></div></div></fieldset></div><div id="_page_price" class="frame"><!--Created by bli on 2014/5/13.--><fieldset keyboard-support="keyboard-support" ng-controller="priceTabController"><span class="item-title">提案报价</span><comment class="text-muted margin15">Minutes of Meeting</comment><div class="expandable-section"><div class="row"><div class="span10"><label>报价明细</label><table class="table bordered hovered"><thead><tr><th>服务内容</th><th>服务时间</th><th>服务费用</th><th>交通费用</th><th>公关费用</th><th>小计</th><th>附件</th></tr></thead><tbody><tr popup-dialog="popup-dialog" dialog-config="priceSubitemEditor" ng-click="editSubItem($event)" on-confirm="confirmEmitted(action, data)" class="cursor-pointer"><td>市场调查</td><td>2014/05/05</td><td>2100.00</td><td>200.00</td><td>220.00</td><td>2520.00</td><td><div ng-click="downloadAttachment($event)" class="attachment-token"><i class="icon-file-excel"></i><span>发票2014-05-02 10:22xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.xlsx</span></div><!--div.attachment-token(ng-click="downloadAttachment($event)")i.icon-file-word
-span 预算.docx--></td></tr></tbody></table></div></div><div class="row"><div class="span3 margin10"><button popup-dialog="popup-dialog" dialog-config="priceSubitemEditor" ng-click="addSubItem($event, {})" on-confirm="confirmEmitted(action, data)"><i class="icon-plus-2"></i><span>添加明细</span></button></div></div></div></fieldset></div><div id="_page_contract" class="frame"><!--Created by bli on 2014/5/13.--></div><div id="_page_close" class="frame"><!--Created by bli on 2014/5/13.--></div></div></div></div><div ng-show="showDialogFooter" class="dialog-contol-panel"><div class="place-left"><button ng-click="delete()" ng-if="prop.mode=='edit'" class="button danger">删除</button></div><div class="form-actions"><button ng-click="Confirm('update', true)" class="button primary">保存</button><button type="button" ng-click="Cancel()" class="button">关闭</button></div><div ng-show="prop.showErrorMessage" class="place-right"><span class="fg-red margin20 bg-grayLighter">单据填写有误，请修正红色标记</span></div></div></div>
+
+<!--Created by Bli on 2014/5/5.-->
+<div class="view-header">
+  <div class="view-topic-span"><i ng-click="getBack()" class="icon-arrow-left-3 view-header-icon"></i><span ng-if="dialog_data_model.id" class="subheader">任务<span ng-click="toggleAbstract()" class="text-info">TK-{{dialog_data_model.id}}</span></span><span ng-if="!dialog_data_model.id" class="subheader">新建任务</span>
+    <comment class="text-muted margin20">Task Editor</comment>
+  </div>
+  <div class="btn-group place-right">
+    <button class="btn btn-default"><i class="icon-download-2"></i><span>保存</span></button>
+    <div class="btn-group">
+      <button data-toggle="dropdown" class="btn btn-default dropdown-toggle"><i class="icon-share"></i><span>提交</span><span class="caret"></span></button>
+      <ul class="dropdown-menu">
+        <li ng-repeat="precedence in statusStack track by $index"><a ng-click="console.log(precedence.nextStatus)">{{precedence.action}}</a></li>
+      </ul>
+    </div>
+    <div class="btn-group">
+      <button data-toggle="dropdown" class="btn btn-default dropdown-toggle"><i class="icon-share-2"></i><span>其它</span><span class="caret"></span></button>
+      <ul class="dropdown-menu">
+        <li><a>删除</a></li>
+      </ul>
+    </div>
+  </div>
+  <div ng-show="showAbstract" class="abstract-panel grid">
+    <div class="row">
+      <div class="span4">
+        <label>主题 :<span class="text-content"> {{dialog_data_model.topic}}</span></label>
+      </div>
+      <div class="span2">
+        <label>状态 :<span class="text-content"> {{translateEmployee(dialog_data_model.status)}}</span></label>
+      </div>
+      <div class="span2">
+        <label>报告人 :<span class="text-content"> {{translateEmployee(dialog_data_model.reporter)}}</span></label>
+      </div>
+      <div class="span2">
+        <label>担当人 :<span class="text-content"> {{translateEmployee(dialog_data_model.assignee)}}</span></label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="span4">
+        <label>客户 :<span class="text-content"> {{translateCustomer(dialog_data_model.customer)}}</span></label>
+      </div>
+      <div class="span2">
+        <label>联系人 :<span class="text-content"> {{translateEmployee(dialog_data_model.assignee)}}</span></label>
+      </div>
+      <div class="span2">
+        <label>电话 :<span class="text-content"> {{translateEmployee(dialog_data_model.customer)}}</span></label>
+      </div>
+      <div class="span3">
+        <label>邮箱 :<span class="text-content"> {{translateEmployee(dialog_data_model.customer)}}</span></label>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="task-editor-form" class="grid view-form-sheet">
+  <div class="dialog-content-panel">
+    <div data-role="tab-control" data-effect="fade" class="tab-control">
+      <ul class="tabs">
+        <li class="active"><a href="#_page_master"><i class="icon-tag"></i><span>登记</span></a></li>
+        <li ng-show="dialog_data_model.status &gt; 110"><a href="#_page_arrange"><i class="icon-eye-2"></i><span>审核</span></a></li>
+        <li ng-show="dialog_data_model.status &gt; 120"><a href="#_page_reply"><i class="icon-reply-2"></i><span>回复</span></a></li>
+        <li ng-show="dialog_data_model.status &gt;= 200"><a href="#_page_proposal"><i class="icon-bookmark-2"></i><span>提案</span></a></li>
+        <li ng-show="dialog_data_model.status &gt;= 200"><a href="#_page_price"><i class="icon-cart-2"></i><span>报价</span></a></li>
+        <li ng-show="dialog_data_model.status &gt;= 300"><a href="#_page_contract"><i class="icon-auction"></i><span>合同</span></a></li>
+        <li ng-show="dialog_data_model.status &gt;= 300"><a href="#_page_contract"><i class="icon-cycle"></i><span>执行</span></a></li>
+        <li ng-show="dialog_data_model.status &gt;= 300"><a href="#_page_contract"><i class="icon-coins"></i><span>收款</span></a></li>
+        <li ng-show="dialog_data_model.status &gt;= 300"><a href="#_page_contract"><i class="icon-history"></i><span>完成</span></a></li>
+        <li ng-show="dialog_data_model.status &gt;= 400"><a href="#_page_close"><i class="icon-stats-up"></i><span>汇总</span></a></li>
+      </ul>
+      <div class="frames">
+        <div id="_page_master" class="frame">
+          <!--Created by bli on 2014/5/9.-->
+          <fieldset keyboard-support="keyboard-support"><span class="item-title">任务信息</span>
+            <comment class="text-muted margin15">Task Information</comment>
+            <div class="expandable-section">
+              <div class="row">
+                <div class="span2">
+                  <label>任务状态</label><span class="fg-darkRed text-content">{{translateStatus(dialog_data_model.status)}}</span>
+                </div>
+                <div class="span4">
+                  <label>客户公司</label>
+                  <div class="input-control text">
+                    <input type="text" placeholder="公司名称" value="{{translateCustomer(dialog_data_model.customer)}}" list="customer_list"/>
+                    <datalist id="customer_list">
+                      <option ng-repeat="customer in customerList">{{customer.name}}</option>
+                    </datalist>
+                  </div>
+                </div>
+                <div class="span2">
+                  <label>担当人</label>
+                  <div class="input-control select">
+                    <select ng-model="dialog_data_model.assignee">
+                      <option ng-repeat="employee in employeeList" value="{{employee.id}}">{{employee.name}}</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="span2">
+                  <label>处理方式</label>
+                  <div class="input-control select">
+                    <select ng-model="dialog_data_model.handling">
+                      <option value="0">解答回复</option>
+                      <option value="1">提案回复</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div><span class="item-title">咨询信息</span>
+            <comment class="text-muted margin15">Consulting Details</comment>
+            <div class="expandable-section">
+              <div class="row">
+                <div class="span10">
+                  <label>咨询主题</label>
+                  <div class="input-control text">
+                    <input type="text" placeholder="咨询主题" ng-model="dialog_data_model.topic" required="required"/>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="span10">
+                  <label>咨询事项</label>
+                  <div class="input-control textarea">
+                    <textarea placeholder="咨询事项" ng-model="dialog_data_model.description"></textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="span5"><span class="item-title">咨询方式</span>
+                <comment class="text-muted margin15">Incoming way</comment>
+                <div class="expandable-section">
+                  <div class="input-control checkbox">
+                    <label>
+                      <input type="checkbox" ng-model="dialog_data_model.prop_isEmail"/><span class="check"></span><span>电子邮件</span>
+                    </label>
+                  </div>
+                  <div class="input-control checkbox">
+                    <label>
+                      <input type="checkbox" ng-model="dialog_data_model.prop_isTel"/><span class="check"></span><span>电话</span>
+                    </label>
+                  </div>
+                  <div class="input-control checkbox">
+                    <label>
+                      <input type="checkbox" ng-model="dialog_data_model.prop_isF2F"/><span class="check"></span><span>面谈</span>
+                    </label>
+                  </div>
+                  <div class="input-control checkbox">
+                    <label>
+                      <input type="checkbox" ng-model="dialog_data_model.prop_isFax"/><span class="check"></span><span>传真</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="span5"><span class="item-title">阅读权限</span>
+                <comment class="text-muted margin15">Permissions</comment>
+                <div class="expandable-section">
+                  <div class="input-control checkbox">
+                    <label>
+                      <input type="checkbox" ng-model="dialog_data_model.prop_internal"/><span class="check"></span><span>内部浏览</span>
+                    </label>
+                  </div>
+                  <div class="input-control checkbox">
+                    <label>
+                      <input type="checkbox" ng-model="dialog_data_model.prop_external"/><span class="check"></span><span>客户浏览</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+        <div id="_page_arrange" class="frame">
+          <!--Created by bli on 2014/5/9.-->
+          <fieldset keyboard-support="keyboard-support"><span class="item-title">分配方式</span>
+            <comment class="text-muted margin15">Assignments</comment>
+            <div class="expandable-section">
+              <div class="row">
+                <div class="span2">
+                  <label>担当人</label>
+                  <div class="input-control select">
+                    <select ng-model="dialog_data_model.assignee">
+                      <option ng-repeat="employee in employeeList" value="{{employee.id}}">{{employee.name}}</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="span2">
+                  <label>处理方式</label>
+                  <div class="input-control select">
+                    <select ng-model="dialog_data_model.handling">
+                      <option value="0">解答回复</option>
+                      <option value="1">提案回复</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div><span class="item-title">时间安排</span>
+            <comment class="text-muted margin15">Time window</comment>
+            <div class="expandable-section">
+              <div class="row">
+                <div class="span3">
+                  <label>启始日期</label>
+                  <div date-picker-helper="date-picker-helper" class="input-control text">
+                    <input type="text" placeholder="启始日期" ng-model="startdate"/>
+                    <button tabindex="-1" class="btn-date"></button>
+                  </div>
+                </div>
+                <div class="span3">
+                  <label>结束日期</label>
+                  <div date-picker-helper="date-picker-helper" class="input-control text">
+                    <input type="text" placeholder="结束日期" ng-model="enddate"/>
+                    <button tabindex="-1" class="btn-date"></button>
+                  </div>
+                </div>
+              </div>
+            </div><span class="item-title">补充信息</span>
+            <comment class="text-muted margin15">Memo</comment>
+            <div class="expandable-section">
+              <div class="row">
+                <div class="span10">
+                  <label>分配审核意见</label>
+                  <div class="input-control textarea">
+                    <textarea placeholder="咨询事项" ng-model="dialog_data_model.description" tab-end="tab-end"></textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+        <div id="_page_reply" class="frame">
+          <!--Created by bli on 2014/5/13.-->
+          <fieldset keyboard-support="keyboard-support">
+            <div ng-show="dialog_data_model.handling == 0"><span class="item-title">咨询解答 (邮件/电话)</span>
+              <comment class="text-muted margin15">Reply</comment>
+              <div class="expandable-section">
+                <div class="row">
+                  <div class="span4">
+                    <label>解答方式</label>
+                    <div class="input-control checkbox">
+                      <label>
+                        <input type="checkbox"/><span class="check"></span><span>电子邮件</span>
+                      </label>
+                    </div>
+                    <div class="input-control checkbox">
+                      <label>
+                        <input type="checkbox"/><span class="check"></span><span>电话</span>
+                      </label>
+                    </div>
+                    <div class="input-control checkbox">
+                      <label>
+                        <input type="checkbox"/><span class="check"></span><span>面谈</span>
+                      </label>
+                    </div>
+                    <div class="input-control checkbox">
+                      <label>
+                        <input type="checkbox"/><span class="check"></span><span>传真</span>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="span2">
+                    <label>咨询人</label>
+                    <div class="input-control text">
+                      <input type="text" placeholder="咨询人"/>
+                    </div>
+                  </div>
+                  <div class="span2">
+                    <label>答复人</label>
+                    <div class="input-control text">
+                      <input type="text" placeholder="答复人"/>
+                    </div>
+                  </div>
+                  <div class="span2">
+                    <label>翻译人</label>
+                    <div class="input-control text">
+                      <input type="text" placeholder="翻译人"/>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div ng-show="dialog_data_model.handling != 0"><span class="item-title">咨询解答 (面谈)</span>
+              <comment class="text-muted margin15">Reply</comment>
+              <div class="expandable-section">
+                <div class="row">
+                  <div class="span10">
+                    <label>面谈地址</label>
+                    <div class="input-control radio default-style span1">
+                      <label>
+                        <input type="radio" name="r1" ng-model="address_type" value="0"/><span class="check"></span><span>JKH</span>
+                      </label>
+                    </div>
+                    <div class="input-control radio default-style span1">
+                      <label>
+                        <input type="radio" name="r1" ng-model="address_type" value="1"/><span class="check"></span><span>其它</span>
+                      </label>
+                    </div>
+                    <div class="input input-control text span8">
+                      <input type="text" placeholder="详细地址" ng-disabled="address_type == 0"/>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="span5">
+                    <label>我方人员</label>
+                    <div class="input-control text">
+                      <input type="text" placeholder="我方人员"/>
+                    </div>
+                  </div>
+                  <div class="span5">
+                    <label>客户人员</label>
+                    <div class="input-control text">
+                      <input type="text" placeholder="客户人员"/>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div><span class="item-title">过程记录</span>
+            <comment class="text-muted margin15">Minutes of Meeting</comment>
+            <div class="expandable-section">
+              <div class="row">
+                <div class="span10">
+                  <label>咨询事项</label>
+                  <div class="input-control textarea">
+                    <textarea placeholder="咨询事项"></textarea>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="span10">
+                  <label>解答回复</label>
+                  <div class="input-control textarea">
+                    <textarea placeholder="解答回复"></textarea>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="span10">
+                  <label>法律依据</label>
+                  <div class="input-control textarea">
+                    <textarea placeholder="法律依据"></textarea>
+                  </div>
+                </div>
+              </div>
+            </div><span class="item-title">附件列表</span>
+            <comment class="text-muted margin15">Minutes of Meeting</comment>
+            <div class="expandable-section">
+              <div class="row">
+                <div class="span10">
+                  <label>所属附件</label>
+                  <table class="table bordered">
+                    <thead>
+                      <tr>
+                        <th>名称</th>
+                        <th>文件名</th>
+                        <th>操作</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>宪法章程</td>
+                        <td>Xianfazhangcheng.docx</td>
+                        <td class="toolbar transparent">
+                          <button><i class="icon-download">下载</i></button>
+                          <button><i class="icon-remove">删除</i></button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="row">
+                <div class="span5">
+                  <label>上传附件</label>
+                  <div class="input-control file">
+                    <input type="file"/>
+                    <button class="btn-file"></button>
+                  </div>
+                </div>
+                <button ng-click="uploadAttachment" class="upload-button"><i class="icon-upload-3"></i><span>上传</span></button>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+        <div id="_page_proposal" class="frame">
+          <!--Created by bli on 2014/5/13.-->
+          <fieldset keyboard-support="keyboard-support"><span class="item-title">提案要义</span>
+            <comment class="text-muted margin15">Proposal Abstract</comment>
+            <div class="expandable-section">
+              <div class="row">
+                <div class="span4">
+                  <label>提案标的</label>
+                  <div class="input-control text">
+                    <input type="text" placeholder="提案标的"/>
+                  </div>
+                </div>
+                <div class="span2">
+                  <label>提案日期</label>
+                  <div date-picker-helper="date-picker-helper" class="input-control text">
+                    <input type="text" placeholder="提案日期"/>
+                    <button tabindex="-1" class="btn-date"></button>
+                  </div>
+                </div>
+                <div class="span2">
+                  <label>提案人</label>
+                  <div class="input-control text">
+                    <input type="text" placeholder="提案人"/>
+                  </div>
+                </div>
+                <div class="span2">
+                  <label>翻译人</label>
+                  <div class="input-control text">
+                    <input type="text" placeholder="翻译人"/>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="span10">
+                  <label>标的内容</label>
+                  <div class="input-control textarea">
+                    <textarea placeholder="标的内容" rows="10"></textarea>
+                  </div>
+                </div>
+              </div>
+            </div><span class="item-title">附件列表</span>
+            <comment class="text-muted margin15">Minutes of Meeting</comment>
+            <div class="expandable-section">
+              <div class="row">
+                <div class="span10">
+                  <label>所属附件</label>
+                  <table class="table bordered">
+                    <thead>
+                      <tr>
+                        <th>名称</th>
+                        <th>文件名</th>
+                        <th>操作</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>宪法章程</td>
+                        <td>Xianfazhangcheng.docx</td>
+                        <td class="toolbar transparent">
+                          <button><i class="icon-download">下载</i></button>
+                          <button><i class="icon-remove">删除</i></button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="row">
+                <div class="span3">
+                  <label>上传附件</label>
+                  <div class="input-control file">
+                    <input type="file"/>
+                    <button class="btn-file"></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+        <div id="_page_price" class="frame">
+          <!--Created by bli on 2014/5/13.-->
+          <fieldset keyboard-support="keyboard-support" ng-controller="priceTabController"><span class="item-title">提案报价</span>
+            <comment class="text-muted margin15">Minutes of Meeting</comment>
+            <div class="expandable-section">
+              <div class="row">
+                <div class="span10">
+                  <label>报价明细</label>
+                  <table class="table bordered hovered">
+                    <thead>
+                      <tr>
+                        <th>服务内容</th>
+                        <th>服务时间</th>
+                        <th>服务费用</th>
+                        <th>交通费用</th>
+                        <th>公关费用</th>
+                        <th>小计</th>
+                        <th>附件</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr popup-dialog="popup-dialog" dialog-config="priceSubitemEditor" ng-click="editSubItem($event)" on-confirm="confirmEmitted(action, data)" class="cursor-pointer">
+                        <td>市场调查</td>
+                        <td>2014/05/05</td>
+                        <td>2100.00</td>
+                        <td>200.00</td>
+                        <td>220.00</td>
+                        <td>2520.00</td>
+                        <td>
+                          <div ng-click="downloadAttachment($event)" class="attachment-token"><i class="icon-file-excel"></i><span>发票2014-05-02 10:22xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.xlsx</span></div>
+                          <!--div.attachment-token(ng-click="downloadAttachment($event)")
+                          i.icon-file-word
+                          span 预算.docx
+                          -->
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="row">
+                <div class="span3 margin10">
+                  <button popup-dialog="popup-dialog" dialog-config="priceSubitemEditor" ng-click="addSubItem($event, {})" on-confirm="confirmEmitted(action, data)"><i class="icon-plus-2"></i><span>添加明细</span></button>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+        <div id="_page_contract" class="frame">
+          <!--Created by bli on 2014/5/13.-->
+        </div>
+        <div id="_page_close" class="frame">
+          <!--Created by bli on 2014/5/13.-->
+        </div>
+      </div>
+    </div>
+  </div>
+  <div ng-show="showDialogFooter" class="dialog-contol-panel">
+    <div class="place-left">
+      <button ng-click="delete()" ng-if="prop.mode=='edit'" class="button danger">删除</button>
+    </div>
+    <div class="form-actions">
+      <button ng-click="Confirm('update', true)" class="button primary">保存</button>
+      <button type="button" ng-click="Cancel()" class="button">关闭</button>
+    </div>
+    <div ng-show="prop.showErrorMessage" class="place-right"><span class="fg-red margin20 bg-grayLighter">单据填写有误，请修正红色标记</span></div>
+  </div>
+</div>

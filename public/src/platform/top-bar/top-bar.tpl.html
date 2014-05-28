@@ -1,22 +1,68 @@
-<!--Created by Bli on 14-2-13.--><div role="navigation" class="top-bar-wrappernavbar navbar-inverse navbar-fixed-top"><div class="container-fluid"><div class="navbar-header"><button type="button" data-toggle="collapse" data-target="#topbar-collapse" class="navbar-toggle"><span class="sr-only"></span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a class="navbar-brand">久富科技</a></div><div id="topbar-collapse" class="collapse navbar-collapse"><ul class="nav navbar-nav navbar-right"><li class="dropdown"><a data-toggle="dropdown" class="dropdown-toggle"><span class="cursor-pointer">李小帅</span><b class="caret"></b></a><ul class="dropdown-menu"><li><a href="#"><i class="icon-eye"></i><span>帐户信息</span></a></li><li><a href="#"><i class="icon-loop"></i><span>切换帐套</span></a></li><li><a href="#"><i class="icon-locked-2"></i><span>锁屏</span></a></li><li class="divider"></li><li><a href="#"><i class="icon-switch"></i><span>登出系统</span></a></li></ul></li></ul><form role="search" class="navbar-form navbar-right"><div class="form-group margin5 h-only"><input type="text" placeholder="任务代号" class="form-control"/></div><button type="submit" class="btn btn-default">查询</button></form><!--#left-menu-switcher.navbar-toggle(ng-click='toggleLeftMenu()')i.icon-lines.fg-hover-grayLight--></div></div><!--#global-search-box.input-control.textinput(type='text', value='', placeholder='请输入关键字搜索...')
-button.btn-search
---><!--#top-bar-right-button-panelnav.horizontal-menu: ul
- li
-  a.dropdown-toggle(ng-click='showUserMenu()')
-   i.icon-user-2
-   t 李小帅
-   i.icon-arrow-down-4
-  ul.dropdown-menu#user-dropdown-menu
-   li: a(href='#')
-    i.icon-eye
-    span 帐户信息
-   li: a(href='#')
-    i.icon-loop
-    span 切换帐套
-   li: a(href='#')
-    i.icon-locked-2
-    span 锁屏
-   li.divider
-   li: a(href='#')
-    i.icon-switch
-    span 登出系统--></div>
+
+<!--Created by Bli on 14-2-13.-->
+<div role="navigation" class="top-bar-wrappernavbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" data-toggle="collapse" data-target="#topbar-collapse" class="navbar-toggle"><span class="sr-only"></span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a class="navbar-brand">久富科技</a>
+    </div>
+    <div id="topbar-collapse" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav navbar-left">
+        <li class="dropdown active"><a data-toggle="dropdown" class="dropdown-toggle cursor-pointer"><i class="fa fa-bar-chart-o margin5 h-only"></i><span class="cursor-pointer">我的任务</span><b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="#"><i class="fa fa-filter margin5 h-only"></i><span>显示控制条</span></a></li>
+          </ul>
+        </li>
+        <li class="dropdown"><a data-toggle="dropdown" class="dropdown-toggle cursor-pointer"><i class="fa fa-history margin5 h-only"></i><span class="cursor-pointer">最近打开</span><b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a>无</a></li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown"><a data-toggle="dropdown" class="dropdown-toggle cursor-pointer"><i class="fa fa-user margin5 h-only"></i><span>李小帅</span><b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="#"><i class="icon-eye"></i><span>帐户信息</span></a></li>
+            <li><a href="#"><i class="icon-loop"></i><span>切换帐套</span></a></li>
+            <li><a href="#"><i class="icon-locked-2"></i><span>锁屏</span></a></li>
+            <li class="divider"></li>
+            <li><a href="#"><i class="icon-switch"></i><span>登出系统</span></a></li>
+          </ul>
+        </li>
+      </ul>
+      <form role="search" class="navbar-form navbar-right">
+        <div class="right-inner-addon"><i class="fa fa-search"></i>
+          <input type="text" placeholder="任务代号" class="form-control"/>
+        </div>
+      </form>
+      <!--#left-menu-switcher.navbar-toggle(ng-click='toggleLeftMenu()')i.icon-lines.fg-hover-grayLight
+      -->
+    </div>
+  </div>
+  <!--#global-search-box.input-control.text
+  input(type='text', value='', placeholder='请输入关键字搜索...')
+  button.btn-search
+  
+  -->
+  <!--#top-bar-right-button-panel
+  nav.horizontal-menu: ul
+   li
+    a.dropdown-toggle(ng-click='showUserMenu()')
+     i.icon-user-2
+     t 李小帅
+     i.icon-arrow-down-4
+    ul.dropdown-menu#user-dropdown-menu
+     li: a(href='#')
+      i.icon-eye
+      span 帐户信息
+     li: a(href='#')
+      i.icon-loop
+      span 切换帐套
+     li: a(href='#')
+      i.icon-locked-2
+      span 锁屏
+     li.divider
+     li: a(href='#')
+      i.icon-switch
+      span 登出系统
+  -->
+</div>

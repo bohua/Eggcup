@@ -10,11 +10,30 @@ div.top-bar-wrappernavbar.navbar-inverse.navbar-fixed-top( role="navigation")
 			a.navbar-brand 久富科技
 
 		#topbar-collapse.collapse.navbar-collapse
+			ul.nav.navbar-nav.navbar-left
+				li.dropdown.active
+					a.dropdown-toggle.cursor-pointer(data-toggle="dropdown")
+						i.fa.fa-bar-chart-o.margin5.h-only
+						span.cursor-pointer 我的任务
+						b.caret
+					ul.dropdown-menu
+						li: a(href="#")
+							i.fa.fa-filter.margin5.h-only
+							span 显示控制条
+				li.dropdown
+					a.dropdown-toggle.cursor-pointer(data-toggle="dropdown")
+						i.fa.fa-history.margin5.h-only
+						span.cursor-pointer 最近打开
+						b.caret
+					ul.dropdown-menu
+						li: a 无
+
 
 			ul.nav.navbar-nav.navbar-right
 				li.dropdown
-					a.dropdown-toggle(data-toggle="dropdown")
-						span.cursor-pointer 李小帅
+					a.dropdown-toggle.cursor-pointer(data-toggle="dropdown")
+						i.fa.fa-user.margin5.h-only
+						span 李小帅
 						b.caret
 					ul.dropdown-menu
 						li: a(href="#")
@@ -32,9 +51,9 @@ div.top-bar-wrappernavbar.navbar-inverse.navbar-fixed-top( role="navigation")
 							span 登出系统
 
 			form.navbar-form.navbar-right(role="search")
-				div.form-group.margin5.h-only
+				div.right-inner-addon
+					i.fa.fa-search
 					input.form-control(type="text", placeholder="任务代号")
-				button.btn.btn-default(type="submit") 查询
 
 
 
