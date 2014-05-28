@@ -43,6 +43,14 @@ angular.module('task-editor', [
 		$.Metro.initDropdowns('.view-header');
 		*/
 
+		/*
+		$("#task-side-nav").affix({
+			offset: {
+				top: 290
+			}
+		});
+		*/
+
 		/**
 		 * Initialize Emitters
 		 */

@@ -654,3 +654,18 @@ t {
 .attachment-token i.icon-file-pdf {
   color: #aa4643;
 }
+#task-editor-form {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+.affix {
+  width: inherit;
+  position: fixed;
+  top: 100px;
+}
+.affix-bottom {
+  width: inherit;
+  position: absolute;
+  top: auto;
+  bottom: 200px;
+}

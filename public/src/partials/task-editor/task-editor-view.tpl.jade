@@ -6,7 +6,7 @@ div.view-header
 			span.text-info(ng-click="toggleAbstract()") TK-{{dialog_data_model.id}}
 		span.subheader(ng-if="!dialog_data_model.id") 新建任务
 		comment.text-muted.margin20 Task Editor
-	div.btn-group.place-right
+	//div.btn-group.place-right
 		button.btn.btn-default
 			i.icon-download-2
 			span 保存
@@ -26,7 +26,7 @@ div.view-header
 			ul.dropdown-menu
 				li: a 删除
 
-	div.abstract-panel.grid(ng-show="showAbstract")
+	//div.abstract-panel.grid(ng-show="showAbstract")
 		div.row
 			div.span4
 				label 主题 :
@@ -54,65 +54,126 @@ div.view-header
 				label 邮箱 :
 					span.text-content  {{translateEmployee(dialog_data_model.customer)}}
 
-div#task-editor-form.grid.view-form-sheet
+#task-editor-form.container-fluid
+	div.row
+		div.col-md-2.col-sm-3
+			ul#task-side-nav.nav.nav-list.sidebar-menu.affix(data-spy="affix")
+				li
+					a(href="#page_master")
+						i.icon-tag
+						span 登记
+				li
+					a(href="#page_arrange")
+						i.icon-eye-2
+						span 审核
+				li
+					a(href="#page_reply")
+						i.icon-reply-2
+						span 回复
+				li
+					a(href="#page_proposal")
+						i.icon-bookmark-2
+						span 提案
+				li
+					a(href="#page_price")
+						i.icon-cart-2
+						span 报价
+				li
+					a(href="#page_contract")
+						i.icon-auction
+						span 合同
+				li
+					a(href="#page_contract")
+						i.icon-cycle
+						span 执行
+				li
+					a(href="#page_contract")
+						i.icon-coins
+						span 收款
+				li
+					a(href="#page_contract")
+						i.icon-history
+						span 完成
+				li
+					a(href="#page_close")
+						i.icon-stats-up
+						span 汇总
+		#task-content.col-md-10.col-sm-9
+			section#page_master
+				include task-editor-view-master-tab.tpl.jade
+			section#page_arrange
+				include task-editor-view-arrange-tab.tpl.jade
+			section#page_reply
+				include task-editor-view-reply-tab.tpl.jade
+			section#page_proposal
+				include task-editor-view-proposal-tab.tpl.jade
+			section#page_price
+				include price-tab/price-tab-view.tpl.jade
+			section#page_contract
+				include task-editor-view-contract-tab.tpl.jade
+			section#page_close
+				include task-editor-view-close-tab.tpl.jade
+
+
+//div#task-editor-form.grid.view-form-sheet
 	div.dialog-content-panel
 		div.tab-control(data-role="tab-control", data-effect="fade")
 			ul.tabs
 				li.active
-					a(href="#_page_master")
+					a(href="#page_master")
 						i.icon-tag
 						span 登记
 				li(ng-show="dialog_data_model.status > 110")
-					a(href="#_page_arrange")
+					a(href="#page_arrange")
 						i.icon-eye-2
 						span 审核
 				li(ng-show="dialog_data_model.status > 120")
-					a(href="#_page_reply")
+					a(href="#page_reply")
 						i.icon-reply-2
 						span 回复
 				li(ng-show="dialog_data_model.status >= 200")
-					a(href="#_page_proposal")
+					a(href="#page_proposal")
 						i.icon-bookmark-2
 						span 提案
 				li(ng-show="dialog_data_model.status >= 200")
-					a(href="#_page_price")
+					a(href="#page_price")
 						i.icon-cart-2
 						span 报价
 				li(ng-show="dialog_data_model.status >= 300")
-					a(href="#_page_contract")
+					a(href="#page_contract")
 						i.icon-auction
 						span 合同
 				li(ng-show="dialog_data_model.status >= 300")
-					a(href="#_page_contract")
+					a(href="#page_contract")
 						i.icon-cycle
 						span 执行
 				li(ng-show="dialog_data_model.status >= 300")
-					a(href="#_page_contract")
+					a(href="#page_contract")
 						i.icon-coins
 						span 收款
 				li(ng-show="dialog_data_model.status >= 300")
-					a(href="#_page_contract")
+					a(href="#page_contract")
 						i.icon-history
 						span 完成
 				li(ng-show="dialog_data_model.status >= 400")
-					a(href="#_page_close")
+					a(href="#page_close")
 						i.icon-stats-up
 						span 汇总
 
 			div.frames
-				div.frame#_page_master
+				div.frame#page_master
 					include task-editor-view-master-tab.tpl.jade
-				div.frame#_page_arrange
+				div.frame#page_arrange
 					include task-editor-view-arrange-tab.tpl.jade
-				div.frame#_page_reply
+				div.frame#page_reply
 					include task-editor-view-reply-tab.tpl.jade
-				div.frame#_page_proposal
+				div.frame#page_proposal
 					include task-editor-view-proposal-tab.tpl.jade
-				div.frame#_page_price
+				div.frame#page_price
 					include price-tab/price-tab-view.tpl.jade
-				div.frame#_page_contract
+				div.frame#page_contract
 					include task-editor-view-contract-tab.tpl.jade
-				div.frame#_page_close
+				div.frame#page_close
 					include task-editor-view-close-tab.tpl.jade
 
 	div.dialog-contol-panel(ng-show='showDialogFooter')
