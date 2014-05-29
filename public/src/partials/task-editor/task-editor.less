@@ -1,103 +1,99 @@
-.abstract-panel{
-  border: 1px solid @grey-border;
-  background-color: @grey-light;
-  border-radius: 5px;
-  padding: 10px;
-  margin-top: 5px;
-
-  font-size: 11pt;
-  .row{
-    margin-top: 0!important;
-    margin-left: 5px!important;
-    margin-right: 5px!important;
-    margin-bottom: 0!important;
-    border-bottom: 1px solid @grey;
-  }
-
-  label{
-    color: @grey-darker;
-  }
-
-  .text-content{
-    color: @blue-dark;
-  }
-}
-
-.view-topic-span{
-  padding-top: 8px;
-  height: 40px;
-
-  >span >span{
-    cursor: pointer;
-
-    font-size: 15pt;
-    margin: 10px;
-
-    &:hover{
-      color: #1b6eae !important;
-    }
-  }
-}
-
-.upload-button{
-  position: relative;
-  top: 26px;
-}
-
-.attachment-token{
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  max-width: 300px;
-  overflow: hidden;
-
-  border-radius: 6px;
-  border: 1px solid @grey-border;
-  background-color: @grey;
-  padding: 2px 10px;
-
-  margin-bottom: 3px;
-
-  &:hover{
-    background-color: @grey-border;
-  }
-
-  i {
-    position: relative;
-    left: -2px;
-
-    margin: 0px 5px;
-
-    &.icon-file-excel{
-      color: @green-dark;
-    }
-
-    &.icon-file-word{
-      color: @blue-dark;
-    }
-
-    &.icon-file-pdf{
-      color: @red;
-    }
-  }
-}
-
-
 #task-editor-form{
-  overflow-x: hidden;
-  overflow-y: auto;
+  overflow: hidden;
+  height: ~"calc(100% - 53px)";
+
+  .row{
+    height: 100%;
+  }
 }
 
-.affix {
-  width: inherit; //helped keep the content the same size on fluid layouts
-  position: fixed;
-  top: 100px;  //height of the nav
+#task-content{
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 100%;
 }
-.affix-bottom {
-  width: inherit;
+
+#task-side-nav{
+  padding-top: 50px;
+
+  a{
+    font-size: 20px;
+    color: @black-bg;
+    box-sizing: border-box;
+    border-radius: 30px;
+    padding: 1px 40px 1px 7px;
+    margin-bottom: 10px;
+    border: 2px solid transparent;
+    background: none;
+
+    &.active{
+      border: 2px solid @green;
+      background-color: @gray-lighter;
+    }
+
+    &.disabled{
+      cursor: not-allowed;
+      color: @gray-light;
+
+      &:hover{
+        background: none;
+      }
+    }
+
+    &:hover:not(.active):not(.disabled){
+      border: 2px solid @gray-light;
+      background-color: @gray-lighter;
+    }
+
+    &.finished{
+      i{
+        color: @green;
+      }
+
+      .progress-line{
+        background: @green;
+      }
+    }
+  }
+
+  .task-progress-indicator{
+    margin-right: 30px;
+    //vertical-align: middle;
+  }
+
+  .progress-line{
+    width: 4px;
+    height: 27px;
+    position: absolute;
+    background: #999999;
+    left: 14px;
+    top: 23px;
+    z-index: 999;
+  }
+}
+
+.task-header{
+  padding: 0;
+  margin: 0;
+  white-space: nowrap;
+
+  h3{
+    margin-top: 12px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    small{
+      margin-left: 10px;
+    }
+  }
+}
+
+.task-topic{
+  font-size: 14pt;
+  line-height: 22px;
   position: absolute;
-  top: auto;
-  bottom: 200px;  //height of the footer
-}
-.affix-top {
-  //i didn't need this style but you might
+  top: 15px;
+  width: 65%;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

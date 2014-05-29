@@ -1,11 +1,11 @@
 //Created by Bli on 2014/5/5.
-div.view-header
-	div.view-topic-span
-		i.icon-arrow-left-3.view-header-icon(ng-click="getBack()")
-		span.subheader(ng-if="dialog_data_model.id") 任务
-			span.text-info(ng-click="toggleAbstract()") TK-{{dialog_data_model.id}}
-		span.subheader(ng-if="!dialog_data_model.id") 新建任务
-		comment.text-muted.margin20 Task Editor
+						//div.view-header
+							div.view-topic-span
+								i.icon-arrow-left-3.view-header-icon(ng-click="getBack()")
+								span.subheader(ng-if="dialog_data_model.id") 任务
+									span.text-info(ng-click="toggleAbstract()") TK-{{dialog_data_model.id}}
+								span.subheader(ng-if="!dialog_data_model.id") 新建任务
+								comment.text-muted.margin20 Task Editor
 	//div.btn-group.place-right
 		button.btn.btn-default
 			i.icon-download-2
@@ -54,53 +54,85 @@ div.view-header
 				label 邮箱 :
 					span.text-content  {{translateEmployee(dialog_data_model.customer)}}
 
+div.navbar.navbar-default.task-header
+	div.container-fluid
+		div.navbar-header
+			button.navbar-toggle(type="button", data-toggle="collapse", data-target="#task-control-collapse")
+				span.sr-only
+				span.icon-bar
+				span.icon-bar
+				span.icon-bar
+
+		span.navbar-left.task-topic 任务: TK-{{dialog_data_model.id}}
+			small &nbsp;{{dialog_data_model.topic}}
+
+		#task-control-collapse.collapse.navbar-collapse.row
+			ul.nav.navbar-nav.navbar-right
+				li
+					a.dropdown-toggle.cursor-pointer(data-toggle="dropdown")
+						i.fa.fa-save.fa-fw &nbsp;
+						span.cursor-pointer 保存
+				li.dropdown
+					a.dropdown-toggle.cursor-pointer(data-toggle="dropdown")
+						i.fa.fa-share-square-o.fa-fw &nbsp;
+						span.cursor-pointer 提交
+						b.caret
+					ul.dropdown-menu
+						li(ng-repeat="precedence in statusStack track by $index")
+							a(ng-click="console.log(precedence.nextStatus)")
+								span {{precedence.action}}
+				li.dropdown
+					a.dropdown-toggle.cursor-pointer(data-toggle="dropdown")
+						i.fa.fa-share-square-o.fa-fw &nbsp;
+						span.cursor-pointer 其它
+						b.caret
+					ul.dropdown-menu
+						li
+							a.cursor-pointer
+								i.fa.fa-trash-o.fa-fw &nbsp;删除
+
 #task-editor-form.container-fluid
 	div.row
-		div.col-md-2.col-sm-3
-			ul#task-side-nav.nav.nav-list.sidebar-menu.affix(data-spy="affix")
+		nav#task-side-nav.col-md-2.col-sm-3.col-lg-2.hidden-xs(du-scroll-container="task-content")
+			ul.nav.nav-list.affix
 				li
-					a(href="#page_master")
-						i.icon-tag
+					a.finished(href="#page_master", du-smooth-scroll, du-scrollspy)
+						i.fa.fa-circle.task-progress-indicator
 						span 登记
+						div.progress-line
 				li
-					a(href="#page_arrange")
-						i.icon-eye-2
+					a.finished(href="#page_arrange", du-smooth-scroll, du-scrollspy)
+						i.fa.fa-circle.task-progress-indicator
 						span 审核
+						div.progress-line
 				li
-					a(href="#page_reply")
-						i.icon-reply-2
+					a.finished(href="#page_reply", du-smooth-scroll, du-scrollspy)
+						i.fa.fa-circle.task-progress-indicator
 						span 回复
+						div.progress-line
 				li
-					a(href="#page_proposal")
-						i.icon-bookmark-2
+					a.ongoing(href="#page_proposal", du-smooth-scroll, du-scrollspy)
+						i.fa.fa-circle.task-progress-indicator
 						span 提案
+						div.progress-line
 				li
-					a(href="#page_price")
-						i.icon-cart-2
+					a.disabled
+						i.fa.fa-circle.task-progress-indicator
 						span 报价
+						div.progress-line
 				li
-					a(href="#page_contract")
-						i.icon-auction
+					a.disabled
+						i.fa.fa-circle.task-progress-indicator
 						span 合同
+						div.progress-line
 				li
-					a(href="#page_contract")
-						i.icon-cycle
-						span 执行
-				li
-					a(href="#page_contract")
-						i.icon-coins
-						span 收款
-				li
-					a(href="#page_contract")
-						i.icon-history
-						span 完成
-				li
-					a(href="#page_close")
-						i.icon-stats-up
+					a.disabled
+						i.fa.fa-circle.task-progress-indicator
 						span 汇总
-		#task-content.col-md-10.col-sm-9
+
+		#task-content.col-md-10.col-sm-9.col-lg-10(du-scroll-container)
 			section#page_master
-				include task-editor-view-master-tab.tpl.jade
+				include 1-register-section/register-section.jade
 			section#page_arrange
 				include task-editor-view-arrange-tab.tpl.jade
 			section#page_reply

@@ -10,7 +10,8 @@ angular.module('task-editor', [
 	'task-status-service',
 
 	//No return value
-	'price-tab-controller'
+	'price-tab-controller',
+	'duScroll'
 
 ]).config(['$routeProvider', function ($routeProvider) {
 	$routeProvider.
@@ -33,7 +34,8 @@ angular.module('task-editor', [
 	'employeeListService',
 	'taskStatusService',
 	'model',
-	function ($routeParams, $location, $scope, $timeout, tagReferenceService, customerListService, employeeListService, taskStatusService, model) {
+	'$document',
+	function ($routeParams, $location, $scope, $timeout, tagReferenceService, customerListService, employeeListService, taskStatusService, model, $document) {
 		/**
 		 * Initialize Metro UI
 		 */
@@ -43,13 +45,9 @@ angular.module('task-editor', [
 		$.Metro.initDropdowns('.view-header');
 		*/
 
-		/*
-		$("#task-side-nav").affix({
-			offset: {
-				top: 290
-			}
-		});
-		*/
+		$scope.scrollToB = function(){
+			$document.scrollTop(1000, 200);
+		};
 
 		/**
 		 * Initialize Emitters
@@ -79,6 +77,7 @@ angular.module('task-editor', [
 		/**
 		 * Abstract code section
 		 */
+		/*
 		$scope.showAbstract = true;
 		$timeout(function () {
 			_reCalcWin($scope.showAbstract);
@@ -101,7 +100,7 @@ angular.module('task-editor', [
 				_reCalcWin($scope.showAbstract);
 			}, 400);
 		});
-
+*/
 		/**
 		 * view handlers binding
 		 */
@@ -123,6 +122,7 @@ angular.module('task-editor', [
 		 * Tmp
 		 */
 		$scope.address_type = 0;
+
 
 		function _reCalcWin(isAbsExpand) {
 			var delay = 400;

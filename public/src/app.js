@@ -2,7 +2,6 @@
  * Created by bli on 14-3-13.
  */
 angular.module('app', [
-	//'ui.bootstrap',
 	'tag-reference-service',
 	'task-status-service',
 	'customer-list-service',
@@ -11,7 +10,8 @@ angular.module('app', [
 	'zxdj-view',
 	'customer-list',
 	'employee-list',
-	'dashboard'
+	'dashboard',
+	'duScroll'
 ]).controller('appController', [
 	'$scope',
 	'$rootScope',

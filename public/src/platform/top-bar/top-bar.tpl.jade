@@ -1,5 +1,5 @@
 //Created by Bli on 14-2-13.
-div.top-bar-wrappernavbar.navbar-inverse.navbar-fixed-top( role="navigation")
+div.navbar.navbar-inverse.navbar-fixed-top( role="navigation")
 	div.container-fluid
 		div.navbar-header
 			button.navbar-toggle(type="button", data-toggle="collapse", data-target="#topbar-collapse")
@@ -7,53 +7,57 @@ div.top-bar-wrappernavbar.navbar-inverse.navbar-fixed-top( role="navigation")
 				span.icon-bar
 				span.icon-bar
 				span.icon-bar
-			a.navbar-brand 久富科技
+			a.navbar-brand.cursor-pointer
+				i.fa.fa-paper-plane.fa-lg.margin5.h-only
+				span.fa-lg: strong CBMS&nbsp;&nbsp;
 
-		#topbar-collapse.collapse.navbar-collapse
+		#topbar-collapse.collapse.navbar-collapse.row
 			ul.nav.navbar-nav.navbar-left
 				li.dropdown.active
 					a.dropdown-toggle.cursor-pointer(data-toggle="dropdown")
-						i.fa.fa-bar-chart-o.margin5.h-only
+						i.fa.fa-tasks.fa-fw &nbsp;
 						span.cursor-pointer 我的任务
 						b.caret
 					ul.dropdown-menu
 						li: a(href="#")
-							i.fa.fa-filter.margin5.h-only
+							i.fa.fa-bar-chart-o.fa-fw &nbsp;
+							span 任务板
+						li: a(href="#")
+							i.fa.fa-filter.fa-fw &nbsp;
 							span 显示控制条
 				li.dropdown
 					a.dropdown-toggle.cursor-pointer(data-toggle="dropdown")
-						i.fa.fa-history.margin5.h-only
+						i.fa.fa-history.fa-fw &nbsp;
 						span.cursor-pointer 最近打开
 						b.caret
 					ul.dropdown-menu
 						li: a 无
-
-
-			ul.nav.navbar-nav.navbar-right
 				li.dropdown
 					a.dropdown-toggle.cursor-pointer(data-toggle="dropdown")
-						i.fa.fa-user.margin5.h-only
+						i.fa.fa-user.fa-fw &nbsp;
 						span 李小帅
 						b.caret
 					ul.dropdown-menu
 						li: a(href="#")
-							i.icon-eye
+							i.fa.fa-info.fa-fw &nbsp;
 							span 帐户信息
 						li: a(href='#')
-							i.icon-loop
+							i.fa.fa-retweet.fa-fw &nbsp;
 							span 切换帐套
 						li: a(href='#')
-							i.icon-locked-2
+							i.fa.fa-lock.fa-fw &nbsp;
 							span 锁屏
 						li.divider
 						li: a(href='#')
-							i.icon-switch
+							i.fa.fa-sign-out.fa-fw &nbsp;
 							span 登出系统
 
-			form.navbar-form.navbar-right(role="search")
-				div.right-inner-addon
-					i.fa.fa-search
+			form.navbar-form.top-bar-search-box(role="search")
+				div.input-group
 					input.form-control(type="text", placeholder="任务代号")
+					span.input-group-btn
+						button.btn.btn-default
+							i.fa.fa-search
 
 
 
