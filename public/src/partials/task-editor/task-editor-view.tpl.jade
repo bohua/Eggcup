@@ -1,59 +1,4 @@
 //Created by Bli on 2014/5/5.
-						//div.view-header
-							div.view-topic-span
-								i.icon-arrow-left-3.view-header-icon(ng-click="getBack()")
-								span.subheader(ng-if="dialog_data_model.id") 任务
-									span.text-info(ng-click="toggleAbstract()") TK-{{dialog_data_model.id}}
-								span.subheader(ng-if="!dialog_data_model.id") 新建任务
-								comment.text-muted.margin20 Task Editor
-	//div.btn-group.place-right
-		button.btn.btn-default
-			i.icon-download-2
-			span 保存
-		div.btn-group
-			button.btn.btn-default.dropdown-toggle(data-toggle="dropdown")
-				i.icon-share
-				span 提交
-				span.caret
-			ul.dropdown-menu
-				li(ng-repeat="precedence in statusStack track by $index")
-					a(ng-click="console.log(precedence.nextStatus)") {{precedence.action}}
-		div.btn-group
-			button.btn.btn-default.dropdown-toggle(data-toggle="dropdown")
-				i.icon-share-2
-				span 其它
-				span.caret
-			ul.dropdown-menu
-				li: a 删除
-
-	//div.abstract-panel.grid(ng-show="showAbstract")
-		div.row
-			div.span4
-				label 主题 :
-					span.text-content  {{dialog_data_model.topic}}
-			div.span2
-				label 状态 :
-					span.text-content  {{translateEmployee(dialog_data_model.status)}}
-			div.span2
-				label 报告人 :
-					span.text-content  {{translateEmployee(dialog_data_model.reporter)}}
-			div.span2
-				label 担当人 :
-					span.text-content  {{translateEmployee(dialog_data_model.assignee)}}
-		div.row
-			div.span4
-				label 客户 :
-					span.text-content  {{translateCustomer(dialog_data_model.customer)}}
-			div.span2
-				label 联系人 :
-					span.text-content  {{translateEmployee(dialog_data_model.assignee)}}
-			div.span2
-				label 电话 :
-					span.text-content  {{translateEmployee(dialog_data_model.customer)}}
-			div.span3
-				label 邮箱 :
-					span.text-content  {{translateEmployee(dialog_data_model.customer)}}
-
 div.navbar.navbar-default.task-header
 	div.container-fluid
 		div.navbar-header
@@ -117,39 +62,34 @@ div.navbar.navbar-default.task-header
 						span 提按报价
 						div.progress-line
 				li
-					a.ongoing(href="#page_contract", du-smooth-scroll, du-scrollspy, offset="30")
+					a.finished(href="#page_contract", du-smooth-scroll, du-scrollspy, offset="30")
 						i.fa.fa-circle.task-progress-indicator
 						span 合同签定
 						div.progress-line
 				li
-					a.disabled
+					a.finished(href="#page_execute", du-smooth-scroll, du-scrollspy, offset="30")
 						i.fa.fa-circle.task-progress-indicator
 						span 执行日志
 						div.progress-line
 				li
-					a.disabled
+					a.finished(href="#page_account", du-smooth-scroll, du-scrollspy, offset="30")
 						i.fa.fa-circle.task-progress-indicator
 						span 合同收款
 						div.progress-line
 				li
-					a.disabled
+					a.finished(href="#page_confirm", du-smooth-scroll, du-scrollspy, offset="30")
 						i.fa.fa-circle.task-progress-indicator
 						span 完成确认
 						div.progress-line
 				li
-					a.disabled
+					a.finished(href="#page_settle", du-smooth-scroll, du-scrollspy, offset="30")
 						i.fa.fa-circle.task-progress-indicator
 						span 费用结算
 						div.progress-line
 				li
-					a.disabled
+					a.ongoing(href="#page_summary", du-smooth-scroll, du-scrollspy, offset="30")
 						i.fa.fa-circle.task-progress-indicator
 						span 汇总报告
-
-				li
-					a.cursor-pointer
-						i.fa.fa-arrow-circle-up.task-progress-indicator
-						span 返回最顶
 
 		#task-content.col-md-10.col-sm-9.col-lg-10
 			section#page_master
@@ -163,82 +103,30 @@ div.navbar.navbar-default.task-header
 			section#page_price
 				include 5-price-section/price-section.jade
 			section#page_contract
-				include task-editor-view-contract-tab.tpl.jade
-			section#page_close
-				include task-editor-view-close-tab.tpl.jade
+				include 6-contract-section/contract-section.jade
+			section#page_execute
+			section#page_account
+			section#page_confirm
+			section#page_settle
+			section#page_summary
+
 
 	#task-footer.flex-container
-		div.flex-box
-			h5 PRESTIGE
-
-
-
-//div#task-editor-form.grid.view-form-sheet
-	div.dialog-content-panel
-		div.tab-control(data-role="tab-control", data-effect="fade")
-			ul.tabs
-				li.active
-					a(href="#page_master")
-						i.icon-tag
-						span 登记
-				li(ng-show="dialog_data_model.status > 110")
-					a(href="#page_arrange")
-						i.icon-eye-2
-						span 审核
-				li(ng-show="dialog_data_model.status > 120")
-					a(href="#page_reply")
-						i.icon-reply-2
-						span 回复
-				li(ng-show="dialog_data_model.status >= 200")
-					a(href="#page_proposal")
-						i.icon-bookmark-2
-						span 提案
-				li(ng-show="dialog_data_model.status >= 200")
-					a(href="#page_price")
-						i.icon-cart-2
-						span 报价
-				li(ng-show="dialog_data_model.status >= 300")
-					a(href="#page_contract")
-						i.icon-auction
-						span 合同
-				li(ng-show="dialog_data_model.status >= 300")
-					a(href="#page_contract")
-						i.icon-cycle
-						span 执行
-				li(ng-show="dialog_data_model.status >= 300")
-					a(href="#page_contract")
-						i.icon-coins
-						span 收款
-				li(ng-show="dialog_data_model.status >= 300")
-					a(href="#page_contract")
-						i.icon-history
-						span 完成
-				li(ng-show="dialog_data_model.status >= 400")
-					a(href="#page_close")
-						i.icon-stats-up
-						span 汇总
-
-			div.frames
-				div.frame#page_master
-					include task-editor-view-master-tab.tpl.jade
-				div.frame#page_arrange
-					include task-editor-view-arrange-tab.tpl.jade
-				div.frame#page_reply
-					include task-editor-view-reply-tab.tpl.jade
-				div.frame#page_proposal
-					include task-editor-view-proposal-tab.tpl.jade
-				div.frame#page_price
-					include price-tab/price-tab-view.tpl.jade
-				div.frame#page_contract
-					include task-editor-view-contract-tab.tpl.jade
-				div.frame#page_close
-					include task-editor-view-close-tab.tpl.jade
-
-	div.dialog-contol-panel(ng-show='showDialogFooter')
-		div.place-left
-			button.button.danger(ng-click="delete()", ng-if="prop.mode=='edit'") 删除
-		div.form-actions
-			button.button.primary(ng-click="Confirm('update', true)") 保存
-			button.button(type="button", ng-click="Cancel()") 关闭
-		div.place-right(ng-show="prop.showErrorMessage")
-			span.fg-red.margin20.bg-grayLighter 单据填写有误，请修正红色标记
+		div
+			h5 Copyright &copy;1995-2014 PRESTIGE LTD SHANGHAI CHINA
+			h5 版权所有 &copy;1995-2014 中国上海久富科技有限公司
+		div.text-center
+			h3
+				i.fa.fa-paper-plane.fw &nbsp;
+				span CBMS
+			span Consulting Business Management System
+		div
+			h5
+				a.cursor-pointer 相关产品展示
+			h5 联系方式
+				a.cursor-pointer.margin10.h-only
+					i.fa.fa-qq.fw &nbsp;
+					span 1234567890
+				a.cursor-pointer.margin10.h-only
+					i.fa.fa-weibo.fw &nbsp;
+					span fantasybohua

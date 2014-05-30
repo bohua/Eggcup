@@ -611,7 +611,7 @@ t {
   min-height: 600px;
 }
 #task-side-nav {
-  padding-top: 50px;
+  padding-top: 10px;
 }
 #task-side-nav a {
   font-size: 20px;
@@ -698,8 +698,14 @@ t {
   margin-right: 10px;
 }
 #task-footer {
-  height: 250px;
+  height: 120px;
   width: 100%;
   border-top: 1px solid #999999;
   margin: 0;
+  flex-wrap: nowrap;
+  padding: 10px 20px;
+  align-items: baseline;
+}
+#task-footer div {
+  margin-right: 50px;
 }
