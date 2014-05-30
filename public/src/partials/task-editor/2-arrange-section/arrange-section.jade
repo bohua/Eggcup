@@ -1,0 +1,40 @@
+//Created by Bohua on 2014-05-29.
+div.page-header
+	h2 分配审核 &nbsp;
+		small Arrange
+		div.btn-group.pull-right
+			button.btn.btn-default
+				i.fa.fa-edit.fa-fw &nbsp;
+				span 修改
+
+#arrange-panel-group.panel-group
+	div.panel.panel-default
+		div.panel-heading.cursor-pointer
+			h4.no-margin(data-toggle="collapse", href="#arrangement-details-panel") 审核记录 &nbsp;
+				small Arrangement Details
+		#arrangement-details-panel.panel-collapse.collapse.in
+			div.flex-container.panel-body
+				div.flex-box
+					label 审批日期:
+					span {{dialog_data_model.arrange_date}}
+				div.flex-box
+					label 审批人:
+					span {{dialog_data_model.arrange_person}}
+
+				div.flex-box
+					label 人员安排:
+					span {{dialog_data_model.arranged_assignee}}
+				div.flex-box
+					label 处理方式:
+					span {{dialog_data_model.handling}}
+
+				div.flex-box
+					label 时间安排自:
+					span {{dialog_data_model.slogan}}
+				div.flex-box
+					label 时间安排至:
+					span {{dialog_data_model.slogan}}
+
+				div.flex-box
+					label 审批意见:
+					span {{dialog_data_model.arrange_comment}} 战略咨询是指为企业提供管理、决策、市场、预测等领域的咨询服务。在战略咨询方面需要咨询公司专家有着多年的历史和经验，深厚的行业背景和知识积累，深入了解行业、敏锐洞察趋势。战略咨询是咨询公司根据企业的需求，运用战略管理理论、知识和自身的咨询经验，应用必要的技能和方法，在对企业内部拥有的资源和具备的能力以及外部环境进行深入分析的基础上，为企业提供战略制定、改善、实施和培训的咨询服务；在提供战略咨询服务时，主要通过专业顾问的问题诊断以及多位专家自身在行业内积累的洞见、商业手感，针对客户面临的战略环境、战略选择给出建议。

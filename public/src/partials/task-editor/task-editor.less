@@ -11,6 +11,10 @@
   overflow-y: auto;
   overflow-x: hidden;
   height: 100%;
+
+  section{
+    margin-bottom: 80px;
+  }
 }
 
 #task-side-nav{
@@ -96,4 +100,27 @@
   width: 65%;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.flex-container{
+  display: flex;
+  font-size: 12pt;
+  flex-wrap: wrap;
+
+  .flex-box {
+    display: flex;
+    margin-right: 50px;
+    min-width: 270px;
+    margin-bottom: 5px;
+
+    label {
+      margin-right: 20px;
+      white-space: nowrap;
+      min-width: 80px;
+    }
+
+    span {
+      margin-right: 10px;
+    }
+  }
 }

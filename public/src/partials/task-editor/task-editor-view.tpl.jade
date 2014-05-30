@@ -68,10 +68,6 @@ div.navbar.navbar-default.task-header
 
 		#task-control-collapse.collapse.navbar-collapse.row
 			ul.nav.navbar-nav.navbar-right
-				li
-					a.dropdown-toggle.cursor-pointer(data-toggle="dropdown")
-						i.fa.fa-save.fa-fw &nbsp;
-						span.cursor-pointer 保存
 				li.dropdown
 					a.dropdown-toggle.cursor-pointer(data-toggle="dropdown")
 						i.fa.fa-share-square-o.fa-fw &nbsp;
@@ -96,22 +92,22 @@ div.navbar.navbar-default.task-header
 		nav#task-side-nav.col-md-2.col-sm-3.col-lg-2.hidden-xs(du-scroll-container="task-content")
 			ul.nav.nav-list.affix
 				li
-					a.finished(href="#page_master", du-smooth-scroll, du-scrollspy)
+					a.finished(href="#page_master", du-smooth-scroll, du-scrollspy, offset="30")
 						i.fa.fa-circle.task-progress-indicator
 						span 登记
 						div.progress-line
 				li
-					a.finished(href="#page_arrange", du-smooth-scroll, du-scrollspy)
+					a.finished(href="#page_arrange", du-smooth-scroll, du-scrollspy, offset="30")
 						i.fa.fa-circle.task-progress-indicator
 						span 审核
 						div.progress-line
 				li
-					a.finished(href="#page_reply", du-smooth-scroll, du-scrollspy)
+					a.finished(href="#page_reply", du-smooth-scroll, du-scrollspy, offset="30")
 						i.fa.fa-circle.task-progress-indicator
 						span 回复
 						div.progress-line
 				li
-					a.ongoing(href="#page_proposal", du-smooth-scroll, du-scrollspy)
+					a.ongoing(href="#page_proposal", du-smooth-scroll, du-scrollspy, offset="30")
 						i.fa.fa-circle.task-progress-indicator
 						span 提案
 						div.progress-line
@@ -134,9 +130,9 @@ div.navbar.navbar-default.task-header
 			section#page_master
 				include 1-register-section/register-section.jade
 			section#page_arrange
-				include task-editor-view-arrange-tab.tpl.jade
+				include 2-arrange-section/arrange-section.jade
 			section#page_reply
-				include task-editor-view-reply-tab.tpl.jade
+				include 3-reply-section/reply-section.jade
 			section#page_proposal
 				include task-editor-view-proposal-tab.tpl.jade
 			section#page_price

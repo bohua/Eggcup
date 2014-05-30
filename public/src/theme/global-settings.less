@@ -6,7 +6,7 @@
 @blue-dark: #0067b0;
 @grey: #eee;
 @grey-light: rgba(248, 248, 248, 0.5);
-@grey-lighter: rgba(225,225,225,.1);
+@grey-lighter: rgba(225, 225, 225, .1);
 @grey-border: #D9D9D9;
 @grey-dark: #AAAAAA;
 @grey-darker: #696969;
@@ -18,19 +18,19 @@
 @red-light: rgb(250, 196, 200);
 @yellow: #ffa733;
 
-@gray-darker:  #222;
-@gray-dark:    #333;
-@gray:         #555;
-@gray-light:   #999;
+@gray-darker: #222;
+@gray-dark: #333;
+@gray: #555;
+@gray-light: #999;
 @gray-lighter: #eee;
 
 @brand-primary: #428bca;
 @brand-success: #5cb85c;
-@brand-info:    #5bc0de;
+@brand-info: #5bc0de;
 @brand-warning: #f0ad4e;
-@brand-danger:  #d9534f;
+@brand-danger: #d9534f;
 
-.fg-darkRed{
+.fg-darkRed {
   color: @red-dark;
 }
 
@@ -60,12 +60,12 @@
   src: local('/fonts/glyphicons-halflings-regular'), local('/fonts/glyphicons-halflings-regular'), url("/fonts/glyphicons-halflings-regular.woff") format("woff"), url("/fonts/glyphicons-halflings-regular.otf") format("opentype"), url("/fonts/glyphicons-halflings-regular.svg") format("svg");
 }
 
-html
-{
+html {
   height: 100%;
   width: 100%;
   overflow: hidden;
 }
+
 body {
   width: 100%;
   height: 100%;
@@ -73,12 +73,12 @@ body {
   background-color: @grey-lighter;
 }
 
-span, legend, label, input, select {
+span, legend, label, input, select, p, h1, h2, h3, h4, h5, h6 {
   font-family: @font !important;
 }
 
-input, select, textarea{
-  &:hover{
+input, select, textarea {
+  &:hover {
     border: 1px solid @grey-darker !important;
   }
 }
@@ -87,30 +87,34 @@ th {
   color: #274b6d;
 }
 
-.input-control button{
+.input-control button {
   box-shadow: none !important;
-  &:hover{
+  &:hover {
     color: @grey-darker !important;
   }
 }
 
-.place-right{
+.place-right {
   float: right;
 }
 
-.place-left{
+.place-left {
   float: left;
+}
+
+.no-margin{
+  margin: 0;
 }
 
 .margin5 {
   margin: 5px;
 
-  &.v-only{
+  &.v-only {
     margin-left: 0;
     margin-right: 0;
   }
 
-  &.h-only{
+  &.h-only {
     margin-top: 0;
     margin-bottom: 0;
   }
@@ -119,12 +123,12 @@ th {
 .margin10 {
   margin: 10px;
 
-  &.v-only{
+  &.v-only {
     margin-left: 0;
     margin-right: 0;
   }
 
-  &.h-only{
+  &.h-only {
     margin-top: 0;
     margin-bottom: 0;
   }
@@ -133,12 +137,12 @@ th {
 .margin15 {
   margin: 15px;
 
-  &.v-only{
+  &.v-only {
     margin-left: 0;
     margin-right: 0;
   }
 
-  &.h-only{
+  &.h-only {
     margin-top: 0;
     margin-bottom: 0;
   }
@@ -147,17 +151,17 @@ th {
 .margin20 {
   margin: 20px;
 
-  &.v-only{
+  &.v-only {
     margin-left: 0;
     margin-right: 0;
   }
 
-  &.h-only{
+  &.h-only {
     margin-top: 0;
     margin-bottom: 0;
   }
 }
 
-.subheader{
+.subheader {
   font-size: 12pt;
 }

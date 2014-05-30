@@ -29,7 +29,14 @@ span,
 legend,
 label,
 input,
-select {
+select,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: 'Microsoft Yahei' !important;
 }
 input:hover,
@@ -51,6 +58,9 @@ th {
 }
 .place-left {
   float: left;
+}
+.no-margin {
+  margin: 0;
 }
 .margin5 {
   margin: 5px;
@@ -597,6 +607,9 @@ t {
   overflow-x: hidden;
   height: 100%;
 }
+#task-content section {
+  margin-bottom: 80px;
+}
 #task-side-nav {
   padding-top: 50px;
 }
@@ -664,4 +677,23 @@ t {
   width: 65%;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+.flex-container {
+  display: flex;
+  font-size: 12pt;
+  flex-wrap: wrap;
+}
+.flex-container .flex-box {
+  display: flex;
+  margin-right: 50px;
+  min-width: 270px;
+  margin-bottom: 5px;
+}
+.flex-container .flex-box label {
+  margin-right: 20px;
+  white-space: nowrap;
+  min-width: 80px;
+}
+.flex-container .flex-box span {
+  margin-right: 10px;
 }

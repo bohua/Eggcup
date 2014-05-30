@@ -1,0 +1,96 @@
+//Created by Bohua on 2014-05-29.
+div.page-header
+	h2 咨询解答 &nbsp;
+		small Reply
+		div.btn-group.pull-right
+			button.btn.btn-default
+				i.fa.fa-edit.fa-fw &nbsp;
+				span 修改
+
+#reply-panel-group.panel-group
+	div.panel.panel-default(ng-show="dialog_data_model.handling == 0")
+		div.panel-heading.cursor-pointer
+			h4.no-margin(data-toggle="collapse", href="#reply-info-panel-0") 咨询解答 (邮件/电话) &nbsp;
+				small Reply (Email/Telephone)
+		#reply-info-panel-0.panel-collapse.collapse.in
+			div.flex-container.panel-body
+				div.flex-box
+					label 解答方式:
+					span(ng-show="dialog_data_model.prop_isEmail") 电子邮件
+					span(ng-show="dialog_data_model.prop_isTel") 电话
+					span(ng-show="dialog_data_model.prop_isF2F") 面谈
+					span(ng-show="dialog_data_model.prop_isFax") 传真
+
+				div.flex-box
+					label 咨询人:
+					span
+
+				div.flex-box
+					label 答复人:
+					span
+
+				div.flex-box
+					label 翻译人:
+					span
+
+	div.panel.panel-default(ng-show="dialog_data_model.handling == 0")
+		div.panel-heading.cursor-pointer
+			h4.no-margin(data-toggle="collapse", href="#reply-info-panel-1") 咨询解答 (面谈) &nbsp;
+				small Reply (Appointment)
+		#reply-info-panel-1.panel-collapse.collapse.in
+			div.flex-container.panel-body
+				div.flex-box
+					label 面谈地址:
+					span
+				div.flex-box
+					label 我方人员:
+					span
+				div.flex-box
+					label 客户人员:
+					span
+
+	div.panel.panel-default
+		div.panel-heading.cursor-pointer
+			h4.no-margin(data-toggle="collapse", href="#reply-minutes-meeting-panel") 过程记录 &nbsp;
+				small Minutes of Meeting
+		#reply-minutes-meeting-panel.panel-collapse.collapse.in
+			div.flex-container.panel-body
+				div.flex-box
+					label 咨询事项:
+					span
+				div.flex-box
+					label 解答回复:
+					span
+				div.flex-box
+					label 法律依据:
+					span
+
+
+	div.panel.panel-default
+		div.panel-heading.cursor-pointer
+			h4.no-margin(data-toggle="collapse", href="#reply-attachment-panel") 附件列表 &nbsp;
+				small Attachment List
+		#reply-attachment-panel.panel-collapse.collapse.in
+			div.flex-container.panel-body
+				div.flex-box
+					button.btn.btn-primary
+						i.fa.fa-cloud-upload.fw &nbsp;
+						span 上传附件
+			table.table.bordered
+				thead
+					tr
+						th 名称
+						th 文件名
+						th 操作
+				tbody
+					tr
+						td 宪法章程
+						td Xianfazhangcheng.docx
+						td
+							div.btn-group
+								button.btn.btn-default
+									i.fa.fa-cloud-download.fw &nbsp;
+									span 下载
+								button.btn.btn-danger
+									i.fa.fa-trash-o.fw &nbsp;
+									span 删除
