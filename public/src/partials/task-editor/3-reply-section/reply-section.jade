@@ -8,7 +8,8 @@ div.page-header
 				span 修改
 
 #reply-panel-group.panel-group
-	div.panel.panel-default(ng-show="dialog_data_model.handling == 0")
+	div.panel.panel-default
+		//(ng-show="dialog_data_model.handling == 0")
 		div.panel-heading.cursor-pointer
 			h4.no-margin(data-toggle="collapse", href="#reply-info-panel-0") 咨询解答 (邮件/电话) &nbsp;
 				small Reply (Email/Telephone)
@@ -33,7 +34,8 @@ div.page-header
 					label 翻译人:
 					span
 
-	div.panel.panel-default(ng-show="dialog_data_model.handling == 0")
+	div.panel.panel-default
+		//(ng-show="dialog_data_model.handling == 0")
 		div.panel-heading.cursor-pointer
 			h4.no-margin(data-toggle="collapse", href="#reply-info-panel-1") 咨询解答 (面谈) &nbsp;
 				small Reply (Appointment)
@@ -70,27 +72,24 @@ div.page-header
 		div.panel-heading.cursor-pointer
 			h4.no-margin(data-toggle="collapse", href="#reply-attachment-panel") 附件列表 &nbsp;
 				small Attachment List
-		#reply-attachment-panel.panel-collapse.collapse.in
-			div.flex-container.panel-body
+		#reply-attachment-panel.panel-collapse.collapse.in.table-responsive
+			//div.flex-container.panel-body
 				div.flex-box
 					button.btn.btn-primary
 						i.fa.fa-cloud-upload.fw &nbsp;
 						span 上传附件
-			table.table.bordered
+			table.table.table-hover
 				thead
 					tr
 						th 名称
 						th 文件名
-						th 操作
+						th 文件类型
+						th 文件大小
 				tbody
-					tr
+					tr.cursor-pointer
 						td 宪法章程
-						td Xianfazhangcheng.docx
 						td
-							div.btn-group
-								button.btn.btn-default
-									i.fa.fa-cloud-download.fw &nbsp;
-									span 下载
-								button.btn.btn-danger
-									i.fa.fa-trash-o.fw &nbsp;
-									span 删除
+							i.fa.fa-file-word-o.text-info.fw &nbsp;
+							span Xianfazhangcheng.docx
+						td WORD文档
+						td 12.8Kb

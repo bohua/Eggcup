@@ -596,11 +596,8 @@ t {
   padding: 5px;
 }
 #task-editor-form {
-  overflow: hidden;
+  overflow: auto;
   height: calc(100% - 53px);
-}
-#task-editor-form .row {
-  height: 100%;
 }
 #task-content {
   overflow-y: auto;
@@ -610,6 +607,9 @@ t {
 #task-content section {
   margin-bottom: 80px;
 }
+#task-content section:last-child {
+  min-height: 600px;
+}
 #task-side-nav {
   padding-top: 50px;
 }
@@ -618,7 +618,7 @@ t {
   color: #4d4d4d;
   box-sizing: border-box;
   border-radius: 30px;
-  padding: 1px 40px 1px 7px;
+  padding: 1px 30px 1px 7px;
   margin-bottom: 10px;
   border: 2px solid transparent;
   background: none;
@@ -645,7 +645,7 @@ t {
   background: #1ec8a6;
 }
 #task-side-nav .task-progress-indicator {
-  margin-right: 30px;
+  margin-right: 20px;
 }
 #task-side-nav .progress-line {
   width: 4px;
@@ -696,4 +696,10 @@ t {
 }
 .flex-container .flex-box span {
   margin-right: 10px;
+}
+#task-footer {
+  height: 250px;
+  width: 100%;
+  border-top: 1px solid #999999;
+  margin: 0;
 }

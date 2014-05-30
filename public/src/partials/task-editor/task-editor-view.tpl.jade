@@ -87,46 +87,71 @@ div.navbar.navbar-default.task-header
 							a.cursor-pointer
 								i.fa.fa-trash-o.fa-fw &nbsp;删除
 
-#task-editor-form.container-fluid
+#task-editor-form.container-fluid(du-scroll-container)
 	div.row
-		nav#task-side-nav.col-md-2.col-sm-3.col-lg-2.hidden-xs(du-scroll-container="task-content")
+		nav#task-side-nav.col-md-2.col-sm-3.col-lg-2.hidden-xs(du-scroll-container="task-editor-form")
 			ul.nav.nav-list.affix
 				li
 					a.finished(href="#page_master", du-smooth-scroll, du-scrollspy, offset="30")
 						i.fa.fa-circle.task-progress-indicator
-						span 登记
+						span 咨询登记
 						div.progress-line
 				li
 					a.finished(href="#page_arrange", du-smooth-scroll, du-scrollspy, offset="30")
 						i.fa.fa-circle.task-progress-indicator
-						span 审核
+						span 分配审核
 						div.progress-line
 				li
 					a.finished(href="#page_reply", du-smooth-scroll, du-scrollspy, offset="30")
 						i.fa.fa-circle.task-progress-indicator
-						span 回复
+						span 咨询解答
 						div.progress-line
 				li
-					a.ongoing(href="#page_proposal", du-smooth-scroll, du-scrollspy, offset="30")
+					a.finished(href="#page_proposal", du-smooth-scroll, du-scrollspy, offset="30")
 						i.fa.fa-circle.task-progress-indicator
-						span 提案
+						span 提案记录
+						div.progress-line
+				li
+					a.finished(href="#page_price", du-smooth-scroll, du-scrollspy, offset="30")
+						i.fa.fa-circle.task-progress-indicator
+						span 提按报价
+						div.progress-line
+				li
+					a.ongoing(href="#page_contract", du-smooth-scroll, du-scrollspy, offset="30")
+						i.fa.fa-circle.task-progress-indicator
+						span 合同签定
 						div.progress-line
 				li
 					a.disabled
 						i.fa.fa-circle.task-progress-indicator
-						span 报价
+						span 执行日志
 						div.progress-line
 				li
 					a.disabled
 						i.fa.fa-circle.task-progress-indicator
-						span 合同
+						span 合同收款
 						div.progress-line
 				li
 					a.disabled
 						i.fa.fa-circle.task-progress-indicator
-						span 汇总
+						span 完成确认
+						div.progress-line
+				li
+					a.disabled
+						i.fa.fa-circle.task-progress-indicator
+						span 费用结算
+						div.progress-line
+				li
+					a.disabled
+						i.fa.fa-circle.task-progress-indicator
+						span 汇总报告
 
-		#task-content.col-md-10.col-sm-9.col-lg-10(du-scroll-container)
+				li
+					a.cursor-pointer
+						i.fa.fa-arrow-circle-up.task-progress-indicator
+						span 返回最顶
+
+		#task-content.col-md-10.col-sm-9.col-lg-10
 			section#page_master
 				include 1-register-section/register-section.jade
 			section#page_arrange
@@ -134,13 +159,18 @@ div.navbar.navbar-default.task-header
 			section#page_reply
 				include 3-reply-section/reply-section.jade
 			section#page_proposal
-				include task-editor-view-proposal-tab.tpl.jade
+				include 4-proposal-section/proposal-section.jade
 			section#page_price
-				include price-tab/price-tab-view.tpl.jade
+				include 5-price-section/price-section.jade
 			section#page_contract
 				include task-editor-view-contract-tab.tpl.jade
 			section#page_close
 				include task-editor-view-close-tab.tpl.jade
+
+	#task-footer.flex-container
+		div.flex-box
+			h5 PRESTIGE
+
 
 
 //div#task-editor-form.grid.view-form-sheet
