@@ -1,26 +1,21 @@
 /**
  * Created by Bli on 2014/4/29.
  */
-angular.module('task-editor', [
+angular.module('register-editor', [
 	'ngRoute',
 	'keyboard-support',
 	'tag-reference-service',
 	'customer-list-service',
 	'employee-list-service',
-	'task-status-service',
-
-	//No return value
-	'price-tab-controller',
-	'duScroll'
-
+	'task-status-service'
 ]).config(['$routeProvider', function ($routeProvider) {
 	$routeProvider.
-		when('/task-editor/:action/:taskId', {
-			templateUrl: '/src/partials/task-editor/task-editor-view.tpl.html',
-			controller: 'taskEditorController',
+		when('/register-editor/:action/:taskId', {
+			templateUrl: '/src/partials/register-editor/register-editor-view.tpl.html',
+			controller: 'registerEditorController',
 			resolve: {
 				model: function ($route, TASK) {
-					return TASK.get({task_id: $route.current.params.taskId}).$promise;
+					return TASK.get({task_id: $route.current.params.taskId, sheet: 'register'}).$promise;
 				}
 			}
 		})
@@ -75,12 +70,6 @@ angular.module('task-editor', [
 
 		//Set backward button action
 		$scope.getBack = function () {
-			$location.path('/');
+			$location.path('/task-editor/edit/:' + model.task_id);
 		}
-
-		/**
-		 * Tmp
-		 */
-		$scope.address_type = 0;
-
 	}]);
