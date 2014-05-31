@@ -8,10 +8,17 @@ module.exports = function (sequelize, DataTypes) {
 		/**
 		 * Arrangement Properties
 		 */
-		start_date:				{ type: DataTypes.DATE},
-		end_date:				{ type: DataTypes.DATE},
-		arrangement_comment:	{type: DataTypes.TEXT},
-		arrangement_date:   	{type: DataTypes.DATE}
+		start_date:				{ type: DataTypes.DATE },
+		end_date:				{ type: DataTypes.DATE },
+		arrangement_comment:	{ type: DataTypes.TEXT },
+		arrangement_date:		{ type: DataTypes.DATE },
+		arrangement_assignee:	{ type: DataTypes.STRING },
+
+		/**
+		 * Sheet Properties
+		 */
+		prop_internal:			{ type: DataTypes.BOOLEAN, defaultValue: false },
+		prop_external:			{ type: DataTypes.BOOLEAN, defaultValue: false }
 	}, {
 		classMethods: {
 			associate: function (models) {

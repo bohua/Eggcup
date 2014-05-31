@@ -28,9 +28,6 @@ db.Seq()
 						db.model('REF_CUSTOMER').findAll().success(function (customers) {
 							db.model('DATA_TASK').findAll().success(function (tasks) {
 								db.model('REF_EMPLOYEE').findAll().success(function (employees) {
-									tasks[0].addAssignee(employees[0]);
-									tasks[0].setReporter(employees[0]);
-									tasks[0].setCustomer(customers[0]);
 									//tasks[0].setReplyAttach([attachments[0], attachments[1]]);
 									//tasks[0].setProposalAttach([attachments[2]]);
 								});

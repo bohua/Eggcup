@@ -12,7 +12,13 @@ module.exports = function (sequelize, DataTypes) {
 		contract_due_date:	{ type: DataTypes.DATE },
 		contract_topic:		{ type: DataTypes.STRING },
 		contract_A:			{ type: DataTypes.STRING },
-		contract_B:			{ type: DataTypes.STRING }
+		contract_B:			{ type: DataTypes.STRING },
+
+		/**
+		 * Sheet Properties
+		 */
+		prop_internal:			{ type: DataTypes.BOOLEAN, defaultValue: false },
+		prop_external:			{ type: DataTypes.BOOLEAN, defaultValue: false }
 	}, {
 		classMethods: {
 			associate: function (models) {

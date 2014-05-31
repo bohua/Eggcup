@@ -4,7 +4,7 @@
 
 module.exports = function (sequelize, DataTypes) {
 
-	var DATA_PRICE_SUB = sequelize.define('DATA_PRICE_SUB', {
+	var DATA_PROPOSAL_SUB = sequelize.define('DATA_PROPOSAL_SUB', {
 		/**
 		 * Price Sub-item Properties
 		 */
@@ -12,17 +12,16 @@ module.exports = function (sequelize, DataTypes) {
 		date:				{ type: DataTypes.DATE },
 		expense:			{ type: DataTypes.DECIMAL(10,2), defaultValue: 0.00 },
 		traffic:			{ type: DataTypes.DECIMAL(10,2), defaultValue: 0.00 },
-		extra:				{ type: DataTypes.DECIMAL(10,2), defaultValue: 0.00 },
-		sum:				{ type: DataTypes.DECIMAL(10,2), defaultValue: 0.00 }
+		extra:				{ type: DataTypes.DECIMAL(10,2), defaultValue: 0.00 }
 	}, {
 		classMethods: {
 			associate: function (models) {
-				DATA_PRICE_SUB
-					.belongsTo(models.DATA_PRICE, {as: 'parent', foreignKey: 'price_id'})
-					.hasMany(models.REF_ATTACHMENT, {as: 'proposalAttach'})
+				DATA_PROPOSAL_SUB
+					.belongsTo(models.DATA_PROPOSAL, {as: 'parent', foreignKey: 'proposal_id'})
+					.hasMany(models.REF_ATTACHMENT, {as: 'priceAttach'})
 			}
 		}
 	});
 
-	return DATA_PRICE_SUB;
+	return DATA_PROPOSAL_SUB;
 };
