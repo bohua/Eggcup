@@ -10,8 +10,7 @@ angular.module('task-editor', [
 	'task-status-service',
 
 	//No return value
-	'price-tab-controller',
-	'duScroll'
+	'price-tab-controller'
 
 ]).config(['$routeProvider', function ($routeProvider) {
 	$routeProvider.
