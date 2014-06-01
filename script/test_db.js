@@ -5,6 +5,8 @@ var Q = require('q');
 var db = require('../models');
 var fs = require('fs');
 
+var task_bo = require(__dirname + '/../server/tasks/task_bo.js');
+
 db.setup('eggcup', 'root', 'root', {
 	dialect: 'mysql',
 	port: 3306,
@@ -21,9 +23,10 @@ db.Seq()
 		} else {
 			global.db = db;
 
+			testEagerLoadTask();
 			//testGetTaskFromEmployee();
 			//testEagerLoading();
-			testGetAttachments();
+			//testGetAttachments();
 		}
 	});
 
@@ -71,4 +74,12 @@ function testGetAttachments(){
 				console.log(JSON.stringify(attaches));
 			});
 		});
+}
+
+function testEagerLoadTask(){
+	task_bo.eagerGet().then(function(success){
+//		console.log(JSON.stringify(success));
+		console.log(success);
+
+	});
 }

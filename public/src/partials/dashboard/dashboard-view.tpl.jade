@@ -27,9 +27,9 @@ div#dashboard.container-fluid
 					div.nano-content
 						div.list-group
 							a.list-group-item(ng-repeat="task in task_group.task_list track by $index", ng-click="detail($event, task)")
-								h4.list-group-item-heading {{task.id}} - {{translateStatus(task.status)}}
-								p.list-group-item-text {{translateCustomer(task.customer)}}
-								p.list-group-item-text {{task.topic}}
+								h4.list-group-item-heading TK - {{task.id}} - {{translateStatus(task.status)}}
+								p.list-group-item-text {{translateCustomer(task.customer_name)}}
+								p.list-group-item-text {{task.slogan}}
 
 
 

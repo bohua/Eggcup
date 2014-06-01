@@ -1,37 +1,6 @@
-
-<!--Created by Bli on 2014/4/30.-->
-<div class="view-header"><i class="icon-dashboard"></i><span class="subheader">任务板</span>
-  <comment class="text-muted margin20">Dashboard</comment>
-  <div class="btn-group view-control-button-set">
-    <button class="btn btn-default"><i class="icon-filter"></i><span>过滤</span></button>
-    <button class="btn btn-default"><i class="icon-cog"></i><span>设置</span></button>
-    <button class="btn btn-default"><i class="icon-help-2"></i><span>帮助</span></button>
-  </div>
-</div>
-<div id="dashboard" class="container-fluid">
-  <div class="row">
-    <div ng-repeat="task_group in taskList track by task_group.seq" class="col-md-3 col-sm-3 task-group">
-      <div class="panel panel-default">
-        <div class="panel-heading text-center"><span class="subheader">{{task_group.title}}</span>
-          <comment class="text-muted margin20">{{task_group.sub_title}}</comment>
-        </div>
-        <div class="panel-body nano">
-          <div class="nano-content">
-            <div class="list-group"><a ng-repeat="task in task_group.task_list track by $index" ng-click="detail($event, task)" class="list-group-item">
-                <h4 class="list-group-item-heading">{{task.id}} - {{translateStatus(task.status)}}</h4>
-                <p class="list-group-item-text">{{translateCustomer(task.customer)}}</p>
-                <p class="list-group-item-text">{{task.topic}}</p></a></div>
-          </div>
-          <!--div.panel.task-block(
-          ng-repeat="task in task_group.task_list track by task.id", ng-click="detail($event, task)")
-           div.panel-heading TK-{{task.id}}
-            span.task-status.place-right.fg-darkRed {{translateStatus(task.status)}}
-           div.panel-body
-            label.text-ellipsis.text-info {{translateCustomer(task.customer)}}
-            label {{task.topic}}
-          -->
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+<!--Created by Bli on 2014/4/30.--><div class="view-header"><i class="icon-dashboard"></i><span class="subheader">任务板</span><comment class="text-muted margin20">Dashboard</comment><div class="btn-group view-control-button-set"><button class="btn btn-default"><i class="icon-filter"></i><span>过滤</span></button><button class="btn btn-default"><i class="icon-cog"></i><span>设置</span></button><button class="btn btn-default"><i class="icon-help-2"></i><span>帮助</span></button></div></div><div id="dashboard" class="container-fluid"><div class="row"><div ng-repeat="task_group in taskList track by task_group.seq" class="col-md-3 col-sm-3 task-group"><div class="panel panel-default"><div class="panel-heading text-center"><span class="subheader">{{task_group.title}}</span><comment class="text-muted margin20">{{task_group.sub_title}}</comment></div><div class="panel-body nano"><div class="nano-content"><div class="list-group"><a ng-repeat="task in task_group.task_list track by $index" ng-click="detail($event, task)" class="list-group-item"><h4 class="list-group-item-heading">TK - {{task.id}} - {{translateStatus(task.status)}}</h4><p class="list-group-item-text">{{translateCustomer(task.customer_name)}}</p><p class="list-group-item-text">{{task.slogan}}</p></a></div></div><!--div.panel.task-block(ng-repeat="task in task_group.task_list track by task.id", ng-click="detail($event, task)")
+ div.panel-heading TK-{{task.id}}
+  span.task-status.place-right.fg-darkRed {{translateStatus(task.status)}}
+ div.panel-body
+  label.text-ellipsis.text-info {{translateCustomer(task.customer)}}
+  label {{task.topic}}--></div></div></div></div></div>

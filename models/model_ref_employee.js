@@ -20,13 +20,6 @@ module.exports = function (sequelize, DataTypes) {
 
 		//激活使用
 		enable:			{ type: DataTypes.BOOLEAN, defaultValue: true }
-	},{
-		classMethods: {
-			associate: function (models) {
-				REF_EMPLOYEE
-					.hasMany(models.DATA_TASK, {through: models.MAP_TASK_ASSIGNEE, as: 'assignedTask'});
-			}
-		}
 	});
 
 	return REF_EMPLOYEE;

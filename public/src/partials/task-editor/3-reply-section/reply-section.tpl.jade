@@ -10,8 +10,7 @@ div.page-header
 				span 修改
 
 #reply-panel-group.panel-group
-	div.panel.panel-default
-		//(ng-show="dialog_data_model.handling == 0")
+	div.panel.panel-default(ng-show="task_model.handling == 0")
 		div.panel-heading.cursor-pointer
 			h4.no-margin(data-toggle="collapse", href="#reply-info-panel-0") 咨询解答 (邮件/电话) &nbsp;
 				small Reply (Email/Telephone)
@@ -19,25 +18,24 @@ div.page-header
 			div.flex-container.panel-body
 				div.flex-box
 					label 解答方式:
-					span(ng-show="dialog_data_model.prop_isEmail") 电子邮件
-					span(ng-show="dialog_data_model.prop_isTel") 电话
-					span(ng-show="dialog_data_model.prop_isF2F") 面谈
-					span(ng-show="dialog_data_model.prop_isFax") 传真
+					span(ng-show="task_model.replySheet.prop_isEmail") 电子邮件
+					span(ng-show="task_model.replySheet.prop_isTel") 电话
+					span(ng-show="task_model.replySheet.prop_isF2F") 面谈
+					span(ng-show="task_model.replySheet.prop_isFax") 传真
 
 				div.flex-box
 					label 咨询人:
-					span
+					span {{task_model.replySheet.consult_person}}
 
 				div.flex-box
 					label 答复人:
-					span
+					span {{task_model.replySheet.reply_person}}
 
 				div.flex-box
 					label 翻译人:
-					span
+					span {{task_model.replySheet.translate_person}}
 
-	div.panel.panel-default
-		//(ng-show="dialog_data_model.handling == 0")
+	div.panel.panel-default(ng-show="task_model.handling == 1")
 		div.panel-heading.cursor-pointer
 			h4.no-margin(data-toggle="collapse", href="#reply-info-panel-1") 咨询解答 (面谈) &nbsp;
 				small Reply (Appointment)
@@ -45,13 +43,13 @@ div.page-header
 			div.flex-container.panel-body
 				div.flex-box
 					label 面谈地址:
-					span
+					span {{task_model.replySheet.meeting_address}}
 				div.flex-box
 					label 我方人员:
-					span
+					span {{task_model.replySheet.meeting_people_A}}
 				div.flex-box
 					label 客户人员:
-					span
+					span {{task_model.replySheet.meeting_people_B}}
 
 	div.panel.panel-default
 		div.panel-heading.cursor-pointer
@@ -61,13 +59,13 @@ div.page-header
 			div.flex-container.panel-body
 				div.flex-box
 					label 咨询事项:
-					span
+					span {{task_model.replySheet.consult_context}}
 				div.flex-box
 					label 解答回复:
-					span
+					span {{task_model.replySheet.reply_context}}
 				div.flex-box
 					label 法律依据:
-					span
+					span {{task_model.replySheet.law_context}}
 
 
 	div.panel.panel-default
@@ -75,11 +73,6 @@ div.page-header
 			h4.no-margin(data-toggle="collapse", href="#reply-attachment-panel") 附件列表 &nbsp;
 				small Attachment List
 		#reply-attachment-panel.panel-collapse.collapse.in.table-responsive
-			//div.flex-container.panel-body
-				div.flex-box
-					button.btn.btn-primary
-						i.fa.fa-cloud-upload.fa-fw &nbsp;
-						span 上传附件
 			table.table.table-hover
 				thead
 					tr
@@ -88,10 +81,10 @@ div.page-header
 						th 文件类型
 						th 文件大小
 				tbody
-					tr.cursor-pointer
-						td 宪法章程
+					tr.cursor-pointer(ng-repeat="item in task_model.replySheet.replyAttach", ng-click="downloadFile(item.file_url)")
+						td {{item.file_desc}}
 						td
 							i.fa.fa-file-word-o.text-info.fa-fw &nbsp;
-							span Xianfazhangcheng.docx
-						td WORD文档
-						td 12.8Kb
+							span {{item.file_name}}
+						td {{item.file_ext}}
+						td {{item.file_size}}

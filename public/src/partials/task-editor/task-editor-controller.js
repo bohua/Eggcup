@@ -18,7 +18,7 @@ angular.module('task-editor', [
 			templateUrl: '/src/partials/task-editor/task-editor-view.tpl.html',
 			controller: 'taskEditorController',
 			resolve: {
-				model: function ($route, TASK) {
+				task_model: function ($route, TASK) {
 					return TASK.get({task_id: $route.current.params.taskId}).$promise;
 				}
 			}
@@ -32,8 +32,8 @@ angular.module('task-editor', [
 	'customerListService',
 	'employeeListService',
 	'taskStatusService',
-	'model',
-	function ($routeParams, $location, $scope, $timeout, tagReferenceService, customerListService, employeeListService, taskStatusService, model) {
+	'task_model',
+	function ($routeParams, $location, $scope, $timeout, tagReferenceService, customerListService, employeeListService, taskStatusService, task_model) {
 
 		/**
 		 * Initialize Emitters
@@ -55,9 +55,9 @@ angular.module('task-editor', [
 		//$scope.prop._parentApi = $scope.dialogConfig.api;
 		$scope.prop.mode = $routeParams.action;
 
-		$scope.dialog_data_model = model;
+		$scope.task_model = task_model;
 		if ($scope.prop.mode === 'new') {
-			$scope.dialog_data_model.status = 100;
+			$scope.task_model.status = 100;
 		}
 
 		/**
@@ -70,7 +70,7 @@ angular.module('task-editor', [
 		$scope.translateStatus = taskStatusService.translateStatus;
 
 		//Get possible precedence status
-		$scope.statusStack = taskStatusService.getPrecedence($scope.dialog_data_model.status);
+		$scope.statusStack = taskStatusService.getPrecedence($scope.task_model.status);
 
 		//Set backward button action
 		$scope.getBack = function () {
