@@ -27,9 +27,7 @@ var BO = function (schema) {
 		var deferred = Q.defer();
 
 		this.orm.model(this._table).findOrCreate({
-			where: {
-				id: model.id
-			}
+			id: model.id
 		}).then(function (success) {
 			if (success) {
 				success
@@ -47,10 +45,10 @@ var BO = function (schema) {
 		return deferred.promise;
 	};
 
-	this._save = function(model){
-		if(model.id){
+	this._save = function (model) {
+		if (model.id) {
 			return this.update(model);
-		}else{
+		} else {
 			return this.add(model);
 		}
 	};
@@ -116,7 +114,7 @@ var BO = function (schema) {
 	if (arguments.length > 1) {
 		for (var i in arguments) {
 			//Skip the first arg
-			if(i === "0"){
+			if (i === "0") {
 				continue;
 			}
 			this[arguments[i].name] = arguments[i].method;

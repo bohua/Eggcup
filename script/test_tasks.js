@@ -29,10 +29,14 @@ db.Seq()
 
 
 function testNestedBuild(){
+	//var task = db.model('DATA_TASK').build(task_json);
+	//var replySheet = db.model('DATA_REPLY').build(task_json.replySheet).save().success(function(reply){	console.log(reply.values);});
+
 	task_bo.save(task_json);
 }
 
 var task_json = {
+	id: 1005,
 	slogan: '平三藩',
 	description: '朝廷咨询案例，测试用例',
 	status: 450,
@@ -56,6 +60,7 @@ var task_json = {
 	prop_external: false,
 
 	replySheet: {
+		id: 1,
 		reply_withEmail:	true,
 		reply_withTel:		true,
 		reply_withF2F:		true,
@@ -77,11 +82,13 @@ var task_json = {
 
 		replyAttach: 		[
 			{
+				id: 1,
 				file_name: '清史.docx',
 				file_ext: 'docx',
 				file_size: '168309098',
 				file_url: 'localhost://attachments/test/清史.docx'
 			},{
+				id:2,
 				file_name: '鹿鼎记.pdf',
 				file_ext: 'pdf',
 				file_size: '68309098',
