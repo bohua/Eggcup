@@ -8,9 +8,9 @@ angular.module('task-editor', [
 	'customer-list-service',
 	'employee-list-service',
 	'task-status-service',
-
 	//No return value
 	'price-tab-controller'
+
 
 ]).config(['$routeProvider', function ($routeProvider) {
 	$routeProvider.
@@ -34,6 +34,10 @@ angular.module('task-editor', [
 	'taskStatusService',
 	'task_model',
 	function ($routeParams, $location, $scope, $timeout, tagReferenceService, customerListService, employeeListService, taskStatusService, task_model) {
+
+		$scope.closeToggle = function(){
+			$('li.dropdown.open').removeClass('open');
+		};
 
 		/**
 		 * Initialize Emitters
