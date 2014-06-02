@@ -1,10 +1,497 @@
-<!--Created by Bli on 2014/5/5.--><div class="navbar navbar-default task-header"><div class="container-fluid"><div class="navbar-header"><button type="button" data-toggle="collapse" data-target="#task-control-collapse" class="navbar-toggle"><span class="sr-only"></span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button></div><span class="navbar-left task-topic">任务: TK-{{task_model.id}}<small>&nbsp;{{task_model.slogan}}</small></span><div id="task-control-collapse" class="collapse navbar-collapse row"><ul class="nav navbar-nav navbar-right"><li class="dropdown"><a data-toggle="dropdown" class="dropdown-toggle cursor-pointer"><i class="fa fa-bookmark-o fa-fw">&nbsp;</i><span class="cursor-pointer">单据</span><b class="caret"></b></a><ul du-scroll-container="task-editor-form" class="dropdown-menu"><li><a href="#page_master" du-smooth-scroll="du-smooth-scroll" offset="30" ng-click="closeToggle()"><icon class="fa fa-edit fa-fw">&nbsp;</icon><span>登记</span></a></li><li><a href="#page_arrange" du-smooth-scroll="du-smooth-scroll" offset="30" ng-click="closeToggle()"><icon class="fa fa-share-alt fa-fw">&nbsp;</icon><span>审核</span></a></li><li><a href="#page_reply" du-smooth-scroll="du-smooth-scroll" offset="30" ng-click="closeToggle()"><icon class="fa fa-comments-o fa-fw">&nbsp;</icon><span>解答</span></a></li><li><a href="#page_proposal" du-smooth-scroll="du-smooth-scroll" offset="30" ng-click="closeToggle()"><icon class="fa fa-book fa-fw">&nbsp;</icon><span>提案</span></a></li><li><a href="#page_contract" du-smooth-scroll="du-smooth-scroll" offset="30" ng-click="closeToggle()"><icon class="fa fa-legal fa-fw">&nbsp;</icon><span>合同</span></a></li><li><a href="#page_execute" du-smooth-scroll="du-smooth-scroll" offset="30" ng-click="closeToggle()"><icon class="fa fa-history">&nbsp;</icon><span>执行</span></a></li><li><a href="#page_account" du-smooth-scroll="du-smooth-scroll" offset="30" ng-click="closeToggle()"><icon class="fa fa-bank fa-fw">&nbsp;</icon><span>收款</span></a></li><li><a href="#page_summary" du-smooth-scroll="du-smooth-scroll" offset="30" ng-click="closeToggle()"><icon class="fa fa-suitcase fa-fw">&nbsp;</icon><span>汇总</span></a></li><li class="nav-divider"></li><li><a href="#page_expense" du-smooth-scroll="du-smooth-scroll" offset="30" ng-click="closeToggle()"><icon class="fa fa-rmb fa-fw">&nbsp;</icon><span>费用</span></a></li></ul></li><li class="dropdown"><a data-toggle="dropdown" class="dropdown-toggle cursor-pointer"><i class="fa fa-share-square-o fa-fw">&nbsp;</i><span class="cursor-pointer">提交</span><b class="caret"></b></a><ul class="dropdown-menu"><li ng-repeat="precedence in statusStack track by $index"><a ng-click="console.log(precedence.nextStatus)"><span>{{precedence.action}}</span></a></li></ul></li><li class="dropdown"><a data-toggle="dropdown" class="dropdown-toggle cursor-pointer"><i class="fa fa-cog fa-fw">&nbsp;</i><span class="cursor-pointer">其它</span><b class="caret"></b></a><ul class="dropdown-menu"><li><a class="cursor-pointer"><i class="fa fa-trash-o fa-fw">&nbsp;删除</i></a></li></ul></li></ul></div></div></div><div id="task-editor-form" class="container-fluid"><div class="row"><nav id="task-side-nav" du-scroll-container="task-editor-form" class="col-md-2 col-sm-3 col-lg-2 hidden-xs"><ul class="nav nav-list affix"><li><a href="#page_master" du-smooth-scroll="du-smooth-scroll" du-scrollspy="du-scrollspy" offset="30" class="finished"><i class="fa fa-circle task-progress-indicator"></i><icon class="fa fa-edit fa-fw">&nbsp;</icon><span>登记</span><div class="progress-line"></div></a></li><li><a href="#page_arrange" du-smooth-scroll="du-smooth-scroll" du-scrollspy="du-scrollspy" offset="30" class="finished"><i class="fa fa-circle task-progress-indicator"></i><icon class="fa fa-share-alt fa-fw">&nbsp;</icon><span>审核</span><div class="progress-line"></div></a></li><li><a href="#page_reply" du-smooth-scroll="du-smooth-scroll" du-scrollspy="du-scrollspy" offset="30" class="finished"><i class="fa fa-circle task-progress-indicator"></i><icon class="fa fa-comments-o fa-fw">&nbsp;</icon><span>解答</span><div class="progress-line"></div></a></li><li><a href="#page_proposal" du-smooth-scroll="du-smooth-scroll" du-scrollspy="du-scrollspy" offset="30" class="finished"><i class="fa fa-circle task-progress-indicator"></i><icon class="fa fa-book fa-fw">&nbsp;</icon><span>提案</span><div class="progress-line"></div></a></li><!--lia.finished(href="#page_price", du-smooth-scroll, du-scrollspy, offset="30")
- i.fa.fa-circle.task-progress-indicator
- span 提按报价
- div.progress-line--><li><a href="#page_contract" du-smooth-scroll="du-smooth-scroll" du-scrollspy="du-scrollspy" offset="30" class="finished"><i class="fa fa-circle task-progress-indicator"></i><icon class="fa fa-legal fa-fw">&nbsp;</icon><span>合同</span><div class="progress-line"></div></a></li><li><a href="#page_execute" du-smooth-scroll="du-smooth-scroll" du-scrollspy="du-scrollspy" offset="30" class="finished"><i class="fa fa-circle task-progress-indicator"></i><icon class="fa fa-history">&nbsp;</icon><span>执行</span><div class="progress-line"></div></a></li><li><a href="#page_account" du-smooth-scroll="du-smooth-scroll" du-scrollspy="du-scrollspy" offset="30" class="finished"><i class="fa fa-circle task-progress-indicator"></i><icon class="fa fa-bank fa-fw">&nbsp;</icon><span>收款</span><div class="progress-line"></div></a></li><!--lia.finished(href="#page_confirm", du-smooth-scroll, du-scrollspy, offset="30")
- i.fa.fa-circle.task-progress-indicator
- span 完成确认
- div.progress-line--><!--lia.finished(href="#page_settle", du-smooth-scroll, du-scrollspy, offset="30")
- i.fa.fa-circle.task-progress-indicator
- span 费用结算
- div.progress-line--><li><a href="#page_summary" du-smooth-scroll="du-smooth-scroll" du-scrollspy="du-scrollspy" offset="30" class="ongoing"><i class="fa fa-circle-o task-progress-indicator"></i><icon class="fa fa-suitcase fa-fw">&nbsp;</icon><span>汇总</span></a></li><li class="nav-divider"></li><li><a href="#page_expense" du-smooth-scroll="du-smooth-scroll" du-scrollspy="du-scrollspy" offset="30" class="finished"><i class="fa fa-circle task-progress-indicator"></i><icon class="fa fa-rmb fa-fw">&nbsp;</icon><span>费用</span></a></li></ul></nav><div id="task-content" class="col-md-10 col-sm-9 col-lg-10"><section id="page_master"><!--Created by Bohua on 2014-05-29.--><div class="page-header"><h2><i class="fa fa-edit fa-fw">&nbsp;</i><span>登记 &nbsp;</span><small>Register</small><div class="btn-group pull-right"><button class="btn btn-default"><i class="fa fa-edit fa-fw">&nbsp;</i><span>修改</span></button></div></h2></div><div id="register-panel-group" class="panel-group"><div class="panel panel-default"><div class="panel-heading cursor-pointer"><h4 data-toggle="collapse" href="#register-task-info-panel" class="no-margin">任务信息 &nbsp;<small>Task Information</small></h4></div><div id="register-task-info-panel" class="panel-collapse collapse in"><div class="flex-container panel-body"><div class="flex-box"><label>任务状态:</label><span>{{translateStatus(task_model.status)}}</span></div><div class="flex-box"><label>任务主题:</label><span>{{task_model.slogan}}</span></div><div class="flex-box"><label>登记人:</label><span>{{task_model.reporter}}</span></div><div class="flex-box"><label>登记日期:</label><span>{{task_model.report_date | date:'yyyy-MM-dd'}}</span></div><div class="flex-box"><label>担当人:</label><span>{{task_model.assignee}}</span></div><div class="flex-box"><label>处理方式:</label><span>{{task_model.handling}}</span></div></div></div></div><div class="panel panel-default"><div class="panel-heading cursor-pointer"><h4 data-toggle="collapse" href="#register-customer-info-panel" class="no-margin">客户信息 &nbsp;<small>Customer Information</small></h4></div><div id="register-customer-info-panel" class="panel-collapse collapse in"><div class="flex-container panel-body"><div class="flex-box"><label>公司名称:</label><span>{{translateStatus(task_model.customer_name)}}</span></div><div class="flex-box"><label>联系人:</label><span>{{translateStatus(task_model.customer_contact)}}</span></div><div class="flex-box"><label>公司地址:</label><span>{{translateStatus(task_model.customer_address)}}</span></div><div class="flex-box"><label>联系电话:</label><span>{{translateStatus(task_model.customer_tel)}}</span></div><div class="flex-box"><label>电子邮箱:</label><span>{{translateStatus(task_model.customer_email)}}</span></div></div></div></div><div class="panel panel-default"><div class="panel-heading cursor-pointer"><h4 data-toggle="collapse" href="#register-consulting-details-panel" class="no-margin">咨询信息 &nbsp;<small>Consulting Details</small></h4></div><div id="register-consulting-details-panel" class="panel-collapse collapse in"><div class="flex-container panel-body"><div class="flex-box"><label>咨询方式:</label><span ng-show="task_model.prop_isEmail">电子邮件</span><span ng-show="task_model.prop_isTel">电话</span><span ng-show="task_model.prop_isF2F">面谈</span><span ng-show="task_model.prop_isFax">传真</span></div><div class="flex-box"><label>阅读权限:</label><span ng-show="task_model.prop_internal">内部浏览</span><span ng-show="task_model.prop_external">客户浏览</span></div><div class="flex-box"><label>咨询主题:</label><span>{{task_model.register_topic}}</span></div><div class="flex-box"><label>咨询事项:</label><span>{{task_model.register_content}}</span></div></div></div></div></div></section><section id="page_arrange"><!--Created by Bohua on 2014-05-29.--><div class="page-header"><h2><i class="fa fa-share-alt fa-fw">&nbsp;</i><span>审核 &nbsp;</span><small>Arrange</small><div class="btn-group pull-right"><button class="btn btn-default"><i class="fa fa-edit fa-fw">&nbsp;</i><span>修改</span></button></div></h2></div><div id="arrange-panel-group" class="panel-group"><div class="panel panel-default"><div class="panel-heading cursor-pointer"><h4 data-toggle="collapse" href="#arrangement-details-panel" class="no-margin">审核记录 &nbsp;<small>Arrangement Details</small></h4></div><div id="arrangement-details-panel" class="panel-collapse collapse in"><div class="flex-container panel-body"><div class="flex-box"><label>审批日期:</label><span>{{task_model.arrangeSheet.arrangement_date | date:'yyyy-MM-dd'}}</span></div><div class="flex-box"><label>审批人:</label><span>{{task_model.arrangeSheet.arrangement_assigner}}</span></div><div class="flex-box"><label>人员安排:</label><span>{{task_model.arrangeSheet.arrangement_assignee}}</span></div><div class="flex-box"><label>处理方式:</label><span>{{task_model.handling}}</span></div><div class="flex-box"><label>时间安排自:</label><span>{{task_model.arrangeSheet.start_date | date:'yyyy-MM-dd'}}</span></div><div class="flex-box"><label>时间安排至:</label><span>{{task_model.arrangeSheet.end_date | date:'yyyy-MM-dd'}}</span></div><div class="flex-box"><label>审批意见:</label><span>{{task_model.arrangeSheet.arrangement_comment}}</span></div></div></div></div></div></section><section id="page_reply"><!--Created by Bohua on 2014-05-29.--><div class="page-header"><h2><i class="fa fa-comments-o fa-fw">&nbsp;</i><span> 解答 &nbsp;</span><small>Reply</small><div class="btn-group pull-right"><button class="btn btn-default"><i class="fa fa-edit fa-fw">&nbsp;</i><span>修改</span></button></div></h2></div><div id="reply-panel-group" class="panel-group"><div ng-show="task_model.handling == 0" class="panel panel-default"><div class="panel-heading cursor-pointer"><h4 data-toggle="collapse" href="#reply-info-panel-0" class="no-margin">咨询解答 (邮件/电话) &nbsp;<small>Reply (Email/Telephone)</small></h4></div><div id="reply-info-panel-0" class="panel-collapse collapse in"><div class="flex-container panel-body"><div class="flex-box"><label>解答日期:</label><span>{{task_model.replySheet.reply_date | date:'yyyy-MM-dd'}}</span></div><div class="flex-box"><label>解答方式:</label><span ng-show="task_model.replySheet.prop_isEmail">电子邮件</span><span ng-show="task_model.replySheet.prop_isTel">电话</span><span ng-show="task_model.replySheet.prop_isF2F">面谈</span><span ng-show="task_model.replySheet.prop_isFax">传真</span></div><div class="flex-box"><label>咨询人:</label><span>{{task_model.replySheet.consult_person}}</span></div><div class="flex-box"><label>答复人:</label><span>{{task_model.replySheet.reply_person}}</span></div><div class="flex-box"><label>翻译人:</label><span>{{task_model.replySheet.translate_person}}</span></div></div></div></div><div ng-show="task_model.handling == 1" class="panel panel-default"><div class="panel-heading cursor-pointer"><h4 data-toggle="collapse" href="#reply-info-panel-1" class="no-margin">咨询解答 (面谈) &nbsp;<small>Reply (Appointment)</small></h4></div><div id="reply-info-panel-1" class="panel-collapse collapse in"><div class="flex-container panel-body"><div class="flex-box"><label>解答日期:</label><span>{{task_model.replySheet.reply_date | date:'yyyy-MM-dd'}}</span></div><div class="flex-box"><label>面谈地址:</label><span>{{task_model.replySheet.meeting_address}}</span></div><div class="flex-box"><label>我方人员:</label><span>{{task_model.replySheet.meeting_people_A}}</span></div><div class="flex-box"><label>客户人员:</label><span>{{task_model.replySheet.meeting_people_B}}</span></div></div></div></div><div class="panel panel-default"><div class="panel-heading cursor-pointer"><h4 data-toggle="collapse" href="#reply-minutes-meeting-panel" class="no-margin">过程记录 &nbsp;<small>Minutes of Meeting</small></h4></div><div id="reply-minutes-meeting-panel" class="panel-collapse collapse in"><div class="flex-container panel-body"><div class="flex-box"><label>咨询事项:</label><span>{{task_model.replySheet.consult_context}}</span></div><div class="flex-box"><label>解答回复:</label><span>{{task_model.replySheet.reply_context}}</span></div><div class="flex-box"><label>法律依据:</label><span>{{task_model.replySheet.law_context}}</span></div></div></div></div><div class="panel panel-default"><div class="panel-heading cursor-pointer"><h4 data-toggle="collapse" href="#reply-attachment-panel" class="no-margin">附件列表 &nbsp;<small>Attachment List</small></h4></div><div id="reply-attachment-panel" class="panel-collapse collapse in table-responsive"><table class="table table-hover"><thead><tr><th>名称</th><th>文件名</th><th>文件类型</th><th>文件大小</th></tr></thead><tbody><tr ng-repeat="item in task_model.replySheet.attachment" ng-click="downloadFile(item.file_url)" class="cursor-pointer"><td>{{item.file_desc}}</td><td><i class="fa fa-file-word-o text-info fa-fw">&nbsp;</i><span>{{item.file_name}}</span></td><td>{{item.file_ext}}</td><td>{{item.file_size}}</td></tr></tbody></table></div></div></div></section><section id="page_proposal"><!--Created by Bohua on 2014-05-29.--><div class="page-header"><h2><i class="fa fa-book fa-fw">&nbsp;</i><span>提案 &nbsp;</span><small>Proposal</small><div class="btn-group pull-right"><button class="btn btn-default"><i class="fa fa-edit fa-fw">&nbsp;</i><span>修改</span></button></div></h2></div><div id="proposal-panel-group" class="panel-group"><div class="panel panel-default"><div class="panel-heading cursor-pointer"><h4 data-toggle="collapse" href="#proposal-abstract-panel" class="no-margin">提案要义 &nbsp;<small>Proposal Abstract</small></h4></div><div id="proposal-abstract-panel" class="panel-collapse collapse in"><div class="flex-container panel-body"><div class="flex-box"><label>提案标的:</label><span>{{task_model.proposalSheet.proposal_topic}}</span></div><div class="flex-box"><label>标的内容:</label><span>{{task_model.proposalSheet.proposal_content}}</span></div></div></div></div><div class="panel panel-default"><div class="panel-heading cursor-pointer"><h4 data-toggle="collapse" href="#proposal-properties-panel" class="no-margin">附属信息 &nbsp;<small>Proposal Properties</small></h4></div><div id="proposal-properties-panel" class="panel-collapse collapse in"><div class="flex-container panel-body"><div class="flex-box"><label>提案人:</label><span>{{task_model.proposalSheet.proposal_person}}</span></div><div class="flex-box"><label>提案日期:</label><span>{{task_model.proposalSheet.proposal_date | date:'yyyy-MM-dd'}}</span></div><div class="flex-box"><label>翻译人:</label><span>{{task_model.proposalSheet.proposal_translator}}</span></div></div></div></div><div class="panel panel-default"><div class="panel-heading cursor-pointer"><h4 data-toggle="collapse" href="#proposal-attachment-panel" class="no-margin">附件列表 &nbsp;<small>Attachment List</small></h4></div><div id="proposal-attachment-panel" class="panel-collapse collapse in table-responsive"><table class="table table-hover"><thead><tr><th>名称</th><th>文件名</th><th>文件类型</th><th>文件大小</th></tr></thead><tbody><tr ng-repeat="item in task_model.proposalSheet.attachment" ng-click="downloadFile(item.file_url)" class="cursor-pointer"><td>{{item.file_desc}}</td><td><i class="fa fa-file-word-o text-info fa-fw">&nbsp;</i><span>{{item.file_name}}</span></td><td>{{item.file_ext}}</td><td>{{item.file_size}}</td></tr></tbody></table></div></div><div class="panel panel-default"><div class="panel-heading cursor-pointer"><h4 data-toggle="collapse" href="#proposal-price-panel" class="no-margin">报价明细 &nbsp;<small>Price List</small></h4></div><div id="proposal-price-panel" class="panel-collapse collapse in table-responsive"><table class="table table-hover"><thead><tr><th nowrap="nowrap">服务内容</th><th nowrap="nowrap">服务时间</th><th nowrap="nowrap">服务费用</th><th nowrap="nowrap">交通费用</th><th nowrap="nowrap">公关费用</th><th nowrap="nowrap">小计</th><th nowrap="nowrap">附件</th></tr></thead><tbody><tr ng-repeat="sub_item in task_model.proposalSheet.subItem"><td>{{sub_item.service}}</td><td>{{sub_item.date| date:'yyyy-MM-dd'}}</td><td>{{sub_item.expense}}</td><td>{{sub_item.traffic}}</td><td>{{sub_item.extra}}</td><td>{{sub_item.expense + sub_item.traffic + sub_item.extra}}</td><td><div ng-repeat="attach in sub_item.attachment" class="attachment-token"><i class="icon-file-excel"></i><span>{{attach.file_name}}</span></div></td></tr></tbody></table></div></div></div></section><section id="page_contract"><!--Created by Bohua on 2014-05-29.--><div class="page-header"><h2><i class="fa fa-legal fa-fw">&nbsp;</i><span>合同签定 &nbsp;</span><small>Contract</small><div class="btn-group pull-right"><button class="btn btn-default"><i class="fa fa-edit fa-fw">&nbsp;</i><span>修改</span></button></div></h2></div><div id="proposal-panel-group" class="panel-group"><div class="panel panel-default"><div class="panel-heading cursor-pointer"><h4 data-toggle="collapse" href="#proposal-abstract-panel" class="no-margin">合同要义 &nbsp;<small>Proposal Abstract</small></h4></div><div id="proposal-abstract-panel" class="panel-collapse collapse in"><div class="flex-container panel-body"><div class="flex-box"><label>签定日期:</label><span></span></div><div class="flex-box"><label>合同期限:</label><span></span></div><div class="flex-box"><label>合同标的:</label><span></span></div><div class="flex-box"><label>甲方:</label><span></span></div><div class="flex-box"><label>乙方:</label><span></span></div></div><table class="table table-hover"><thead><tr><th>约定付款时间</th><th>付款金额</th><th>到期日期</th><th>付款方式</th><th>附件</th></tr></thead><tbody><tr></tr></tbody></table></div></div></div></section><section id="page_execute"></section><section id="page_account"></section><section id="page_confirm"></section><section id="page_settle"></section><section id="page_summary"></section></div></div><div id="task-footer" class="flex-container"><div><h5>Copyright &copy;1995-2014 PRESTIGE LTD SHANGHAI</h5><h5>版权所有 &copy;1995-2014 中国上海久富科技有限公司</h5></div><div class="text-center"><h3><i class="fa fa-paper-plane fa-fw">&nbsp;</i><span>CBMS</span></h3><span>Consulting Business Management System</span></div><div><h5><a class="cursor-pointer">相关产品展示</a></h5><h5>联系方式<a class="cursor-pointer margin10 h-only"><i class="fa fa-qq fa-fw">&nbsp;</i><span>1234567890</span></a><a class="cursor-pointer margin10 h-only"><i class="fa fa-weibo fa-fw">&nbsp;</i><span>fantasybohua</span></a></h5></div></div></div>
+
+<!--Created by Bli on 2014/5/5.-->
+<div class="navbar navbar-default task-header">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" data-toggle="collapse" data-target="#task-control-collapse" class="navbar-toggle"><span class="sr-only"></span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+    </div><span class="navbar-left task-topic">任务: TK-{{task_model.id}}<small>&nbsp;{{task_model.slogan}}</small></span>
+    <div id="task-control-collapse" class="collapse navbar-collapse row">
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown"><a data-toggle="dropdown" class="dropdown-toggle cursor-pointer"><i class="fa fa-bookmark-o fa-fw">&nbsp;</i><span class="cursor-pointer">单据</span><b class="caret"></b></a>
+          <ul du-scroll-container="task-editor-form" class="dropdown-menu">
+            <li><a href="#page_master" du-smooth-scroll="du-smooth-scroll" offset="30" ng-click="closeToggle()">
+                <icon class="fa fa-edit fa-fw">&nbsp;</icon><span>登记</span></a></li>
+            <li><a href="#page_arrange" du-smooth-scroll="du-smooth-scroll" offset="30" ng-click="closeToggle()">
+                <icon class="fa fa-share-alt fa-fw">&nbsp;</icon><span>审核</span></a></li>
+            <li><a href="#page_reply" du-smooth-scroll="du-smooth-scroll" offset="30" ng-click="closeToggle()">
+                <icon class="fa fa-comments-o fa-fw">&nbsp;</icon><span>解答</span></a></li>
+            <li><a href="#page_proposal" du-smooth-scroll="du-smooth-scroll" offset="30" ng-click="closeToggle()">
+                <icon class="fa fa-book fa-fw">&nbsp;</icon><span>提案</span></a></li>
+            <li><a href="#page_contract" du-smooth-scroll="du-smooth-scroll" offset="30" ng-click="closeToggle()">
+                <icon class="fa fa-legal fa-fw">&nbsp;</icon><span>合同</span></a></li>
+            <li><a href="#page_execute" du-smooth-scroll="du-smooth-scroll" offset="30" ng-click="closeToggle()">
+                <icon class="fa fa-history">&nbsp;</icon><span>执行</span></a></li>
+            <li><a href="#page_account" du-smooth-scroll="du-smooth-scroll" offset="30" ng-click="closeToggle()">
+                <icon class="fa fa-bank fa-fw">&nbsp;</icon><span>收款</span></a></li>
+            <li><a href="#page_summary" du-smooth-scroll="du-smooth-scroll" offset="30" ng-click="closeToggle()">
+                <icon class="fa fa-suitcase fa-fw">&nbsp;</icon><span>汇总</span></a></li>
+            <li class="nav-divider"></li>
+            <li><a href="#page_expense" du-smooth-scroll="du-smooth-scroll" offset="30" ng-click="closeToggle()">
+                <icon class="fa fa-rmb fa-fw">&nbsp;</icon><span>费用</span></a></li>
+          </ul>
+        </li>
+        <li class="dropdown"><a data-toggle="dropdown" class="dropdown-toggle cursor-pointer"><i class="fa fa-share-square-o fa-fw">&nbsp;</i><span class="cursor-pointer">提交</span><b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li ng-repeat="precedence in statusStack track by $index"><a ng-click="console.log(precedence.nextStatus)"><span>{{precedence.action}}</span></a></li>
+          </ul>
+        </li>
+        <li class="dropdown"><a data-toggle="dropdown" class="dropdown-toggle cursor-pointer"><i class="fa fa-cog fa-fw">&nbsp;</i><span class="cursor-pointer">其它</span><b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a class="cursor-pointer"><i class="fa fa-trash-o fa-fw">&nbsp;删除</i></a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div id="task-editor-form" class="container-fluid">
+  <div class="row">
+    <nav id="task-side-nav" du-scroll-container="task-editor-form" class="col-md-2 col-sm-3 col-lg-2 hidden-xs">
+      <ul class="nav nav-list affix">
+        <li><a href="#page_master" du-smooth-scroll="du-smooth-scroll" du-scrollspy="du-scrollspy" offset="30" class="finished"><i class="fa fa-circle task-progress-indicator"></i>
+            <icon class="fa fa-edit fa-fw">&nbsp;</icon><span>登记</span>
+            <div class="progress-line"></div></a></li>
+        <li><a href="#page_arrange" du-smooth-scroll="du-smooth-scroll" du-scrollspy="du-scrollspy" offset="30" class="finished"><i class="fa fa-circle task-progress-indicator"></i>
+            <icon class="fa fa-share-alt fa-fw">&nbsp;</icon><span>审核</span>
+            <div class="progress-line"></div></a></li>
+        <li><a href="#page_reply" du-smooth-scroll="du-smooth-scroll" du-scrollspy="du-scrollspy" offset="30" class="finished"><i class="fa fa-circle task-progress-indicator"></i>
+            <icon class="fa fa-comments-o fa-fw">&nbsp;</icon><span>解答</span>
+            <div class="progress-line"></div></a></li>
+        <li><a href="#page_proposal" du-smooth-scroll="du-smooth-scroll" du-scrollspy="du-scrollspy" offset="30" class="finished"><i class="fa fa-circle task-progress-indicator"></i>
+            <icon class="fa fa-book fa-fw">&nbsp;</icon><span>提案</span>
+            <div class="progress-line"></div></a></li>
+        <!--li
+        a.finished(href="#page_price", du-smooth-scroll, du-scrollspy, offset="30")
+         i.fa.fa-circle.task-progress-indicator
+         span 提按报价
+         div.progress-line
+        -->
+        <li><a href="#page_contract" du-smooth-scroll="du-smooth-scroll" du-scrollspy="du-scrollspy" offset="30" class="finished"><i class="fa fa-circle task-progress-indicator"></i>
+            <icon class="fa fa-legal fa-fw">&nbsp;</icon><span>合同</span>
+            <div class="progress-line"></div></a></li>
+        <li><a href="#page_execute" du-smooth-scroll="du-smooth-scroll" du-scrollspy="du-scrollspy" offset="30" class="finished"><i class="fa fa-circle task-progress-indicator"></i>
+            <icon class="fa fa-history">&nbsp;</icon><span>执行</span>
+            <div class="progress-line"></div></a></li>
+        <li><a href="#page_account" du-smooth-scroll="du-smooth-scroll" du-scrollspy="du-scrollspy" offset="30" class="finished"><i class="fa fa-circle task-progress-indicator"></i>
+            <icon class="fa fa-bank fa-fw">&nbsp;</icon><span>收款</span>
+            <div class="progress-line"></div></a></li>
+        <!--li
+        a.finished(href="#page_confirm", du-smooth-scroll, du-scrollspy, offset="30")
+         i.fa.fa-circle.task-progress-indicator
+         span 完成确认
+         div.progress-line
+        -->
+        <!--li
+        a.finished(href="#page_settle", du-smooth-scroll, du-scrollspy, offset="30")
+         i.fa.fa-circle.task-progress-indicator
+         span 费用结算
+         div.progress-line
+        -->
+        <li><a href="#page_summary" du-smooth-scroll="du-smooth-scroll" du-scrollspy="du-scrollspy" offset="30" class="ongoing"><i class="fa fa-circle-o task-progress-indicator"></i>
+            <icon class="fa fa-suitcase fa-fw">&nbsp;</icon><span>汇总</span></a></li>
+        <li class="nav-divider"></li>
+        <li><a href="#page_expense" du-smooth-scroll="du-smooth-scroll" du-scrollspy="du-scrollspy" offset="30" class="finished"><i class="fa fa-circle task-progress-indicator"></i>
+            <icon class="fa fa-rmb fa-fw">&nbsp;</icon><span>费用</span></a></li>
+      </ul>
+    </nav>
+    <div id="task-content" class="col-md-10 col-sm-9 col-lg-10">
+      <section id="page_master">
+        <!--Created by Bohua on 2014-05-29.-->
+        <div class="page-header">
+          <h2><i class="fa fa-edit fa-fw">&nbsp;</i><span>登记 &nbsp;</span><small>Register</small>
+            <div class="btn-group pull-right">
+              <button class="btn btn-default"><i class="fa fa-edit fa-fw">&nbsp;</i><span>修改</span></button>
+            </div>
+          </h2>
+        </div>
+        <div id="register-panel-group" class="panel-group">
+          <div class="panel panel-default">
+            <div class="panel-heading cursor-pointer">
+              <h4 data-toggle="collapse" href="#register-task-info-panel" class="no-margin">任务信息 &nbsp;<small>Task Information</small></h4>
+            </div>
+            <div id="register-task-info-panel" class="panel-collapse collapse in">
+              <div class="flex-container panel-body">
+                <div class="flex-box">
+                  <label>任务状态:</label><span>{{translateStatus(task_model.status)}}</span>
+                </div>
+                <div class="flex-box">
+                  <label>任务主题:</label><span>{{task_model.slogan}}</span>
+                </div>
+                <div class="flex-box">
+                  <label>登记人:</label><span>{{task_model.reporter}}</span>
+                </div>
+                <div class="flex-box">
+                  <label>登记日期:</label><span>{{task_model.report_date | date:'yyyy-MM-dd'}}</span>
+                </div>
+                <div class="flex-box">
+                  <label>担当人:</label><span>{{task_model.assignee}}</span>
+                </div>
+                <div class="flex-box">
+                  <label>处理方式:</label><span>{{task_model.handling}}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-heading cursor-pointer">
+              <h4 data-toggle="collapse" href="#register-customer-info-panel" class="no-margin">客户信息 &nbsp;<small>Customer Information</small></h4>
+            </div>
+            <div id="register-customer-info-panel" class="panel-collapse collapse in">
+              <div class="flex-container panel-body">
+                <div class="flex-box">
+                  <label>公司名称:</label><span>{{translateStatus(task_model.customer_name)}}</span>
+                </div>
+                <div class="flex-box">
+                  <label>联系人:</label><span>{{translateStatus(task_model.customer_contact)}}</span>
+                </div>
+                <div class="flex-box">
+                  <label>公司地址:</label><span>{{translateStatus(task_model.customer_address)}}</span>
+                </div>
+                <div class="flex-box">
+                  <label>联系电话:</label><span>{{translateStatus(task_model.customer_tel)}}</span>
+                </div>
+                <div class="flex-box">
+                  <label>电子邮箱:</label><span>{{translateStatus(task_model.customer_email)}}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-heading cursor-pointer">
+              <h4 data-toggle="collapse" href="#register-consulting-details-panel" class="no-margin">咨询信息 &nbsp;<small>Consulting Details</small></h4>
+            </div>
+            <div id="register-consulting-details-panel" class="panel-collapse collapse in">
+              <div class="flex-container panel-body">
+                <div class="flex-box">
+                  <label>咨询方式:</label><span ng-show="task_model.prop_isEmail">电子邮件</span><span ng-show="task_model.prop_isTel">电话</span><span ng-show="task_model.prop_isF2F">面谈</span><span ng-show="task_model.prop_isFax">传真</span>
+                </div>
+                <div class="flex-box">
+                  <label>阅读权限:</label><span ng-show="task_model.prop_internal">内部浏览</span><span ng-show="task_model.prop_external">客户浏览</span>
+                </div>
+                <div class="flex-box">
+                  <label>咨询主题:</label><span>{{task_model.register_topic}}</span>
+                </div>
+                <div class="flex-box">
+                  <label>咨询事项:</label><span>{{task_model.register_content}}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="page_arrange">
+        <!--Created by Bohua on 2014-05-29.-->
+        <div class="page-header">
+          <h2><i class="fa fa-share-alt fa-fw">&nbsp;</i><span>审核 &nbsp;</span><small>Arrange</small>
+            <div class="btn-group pull-right">
+              <button class="btn btn-default"><i class="fa fa-edit fa-fw">&nbsp;</i><span>修改</span></button>
+            </div>
+          </h2>
+        </div>
+        <div id="arrange-panel-group" class="panel-group">
+          <div class="panel panel-default">
+            <div class="panel-heading cursor-pointer">
+              <h4 data-toggle="collapse" href="#arrangement-details-panel" class="no-margin">审核记录 &nbsp;<small>Arrangement Details</small></h4>
+            </div>
+            <div id="arrangement-details-panel" class="panel-collapse collapse in">
+              <div class="flex-container panel-body">
+                <div class="flex-box">
+                  <label>审批日期:</label><span>{{task_model.arrangeSheet.arrangement_date | date:'yyyy-MM-dd'}}</span>
+                </div>
+                <div class="flex-box">
+                  <label>审批人:</label><span>{{task_model.arrangeSheet.arrangement_assigner}}</span>
+                </div>
+                <div class="flex-box">
+                  <label>人员安排:</label><span>{{task_model.arrangeSheet.arrangement_assignee}}</span>
+                </div>
+                <div class="flex-box">
+                  <label>处理方式:</label><span>{{task_model.handling}}</span>
+                </div>
+                <div class="flex-box">
+                  <label>时间安排自:</label><span>{{task_model.arrangeSheet.start_date | date:'yyyy-MM-dd'}}</span>
+                </div>
+                <div class="flex-box">
+                  <label>时间安排至:</label><span>{{task_model.arrangeSheet.end_date | date:'yyyy-MM-dd'}}</span>
+                </div>
+                <div class="flex-box">
+                  <label>审批意见:</label><span>{{task_model.arrangeSheet.arrangement_comment}}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="page_reply">
+        <!--Created by Bohua on 2014-05-29.-->
+        <div class="page-header">
+          <h2><i class="fa fa-comments-o fa-fw">&nbsp;</i><span> 解答 &nbsp;</span><small>Reply</small>
+            <div class="btn-group pull-right">
+              <button class="btn btn-default"><i class="fa fa-edit fa-fw">&nbsp;</i><span>修改</span></button>
+            </div>
+          </h2>
+        </div>
+        <div id="reply-panel-group" class="panel-group">
+          <div ng-show="task_model.handling == 0" class="panel panel-default">
+            <div class="panel-heading cursor-pointer">
+              <h4 data-toggle="collapse" href="#reply-info-panel-0" class="no-margin">咨询解答 (邮件/电话) &nbsp;<small>Reply (Email/Telephone)</small></h4>
+            </div>
+            <div id="reply-info-panel-0" class="panel-collapse collapse in">
+              <div class="flex-container panel-body">
+                <div class="flex-box">
+                  <label>解答日期:</label><span>{{task_model.replySheet.reply_date | date:'yyyy-MM-dd'}}</span>
+                </div>
+                <div class="flex-box">
+                  <label>解答方式:</label><span ng-show="task_model.replySheet.prop_isEmail">电子邮件</span><span ng-show="task_model.replySheet.prop_isTel">电话</span><span ng-show="task_model.replySheet.prop_isF2F">面谈</span><span ng-show="task_model.replySheet.prop_isFax">传真</span>
+                </div>
+                <div class="flex-box">
+                  <label>咨询人:</label><span>{{task_model.replySheet.consult_person}}</span>
+                </div>
+                <div class="flex-box">
+                  <label>答复人:</label><span>{{task_model.replySheet.reply_person}}</span>
+                </div>
+                <div class="flex-box">
+                  <label>翻译人:</label><span>{{task_model.replySheet.translate_person}}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div ng-show="task_model.handling == 1" class="panel panel-default">
+            <div class="panel-heading cursor-pointer">
+              <h4 data-toggle="collapse" href="#reply-info-panel-1" class="no-margin">咨询解答 (面谈) &nbsp;<small>Reply (Appointment)</small></h4>
+            </div>
+            <div id="reply-info-panel-1" class="panel-collapse collapse in">
+              <div class="flex-container panel-body">
+                <div class="flex-box">
+                  <label>解答日期:</label><span>{{task_model.replySheet.reply_date | date:'yyyy-MM-dd'}}</span>
+                </div>
+                <div class="flex-box">
+                  <label>面谈地址:</label><span>{{task_model.replySheet.meeting_address}}</span>
+                </div>
+                <div class="flex-box">
+                  <label>我方人员:</label><span>{{task_model.replySheet.meeting_people_A}}</span>
+                </div>
+                <div class="flex-box">
+                  <label>客户人员:</label><span>{{task_model.replySheet.meeting_people_B}}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-heading cursor-pointer">
+              <h4 data-toggle="collapse" href="#reply-minutes-meeting-panel" class="no-margin">过程记录 &nbsp;<small>Minutes of Meeting</small></h4>
+            </div>
+            <div id="reply-minutes-meeting-panel" class="panel-collapse collapse in">
+              <div class="flex-container panel-body">
+                <div class="flex-box">
+                  <label>咨询事项:</label><span>{{task_model.replySheet.consult_context}}</span>
+                </div>
+                <div class="flex-box">
+                  <label>解答回复:</label><span>{{task_model.replySheet.reply_context}}</span>
+                </div>
+                <div class="flex-box">
+                  <label>法律依据:</label><span>{{task_model.replySheet.law_context}}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-heading cursor-pointer">
+              <h4 data-toggle="collapse" href="#reply-attachment-panel" class="no-margin">附件列表 &nbsp;<small>Attachment List</small></h4>
+            </div>
+            <div id="reply-attachment-panel" class="panel-collapse collapse in table-responsive">
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th>名称</th>
+                    <th>文件名</th>
+                    <th>文件类型</th>
+                    <th>文件大小</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr ng-repeat="item in task_model.replySheet.attachment" ng-click="downloadFile(item.file_url)" class="cursor-pointer">
+                    <td>{{item.file_desc}}</td>
+                    <td><i class="fa fa-file-word-o text-info fa-fw">&nbsp;</i><span>{{item.file_name}}</span></td>
+                    <td>{{item.file_ext}}</td>
+                    <td>{{item.file_size}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="page_proposal">
+        <!--Created by Bohua on 2014-05-29.-->
+        <div class="page-header">
+          <h2><i class="fa fa-book fa-fw">&nbsp;</i><span>提案 &nbsp;</span><small>Proposal</small>
+            <div class="btn-group pull-right">
+              <button class="btn btn-default"><i class="fa fa-edit fa-fw">&nbsp;</i><span>修改</span></button>
+            </div>
+          </h2>
+        </div>
+        <div id="proposal-panel-group" class="panel-group">
+          <div class="panel panel-default">
+            <div class="panel-heading cursor-pointer">
+              <h4 data-toggle="collapse" href="#proposal-abstract-panel" class="no-margin">提案要义 &nbsp;<small>Proposal Abstract</small></h4>
+            </div>
+            <div id="proposal-abstract-panel" class="panel-collapse collapse in">
+              <div class="flex-container panel-body">
+                <div class="flex-box">
+                  <label>提案标的:</label><span>{{task_model.proposalSheet.proposal_topic}}</span>
+                </div>
+                <div class="flex-box">
+                  <label>标的内容:</label><span>{{task_model.proposalSheet.proposal_content}}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-heading cursor-pointer">
+              <h4 data-toggle="collapse" href="#proposal-properties-panel" class="no-margin">附属信息 &nbsp;<small>Proposal Properties</small></h4>
+            </div>
+            <div id="proposal-properties-panel" class="panel-collapse collapse in">
+              <div class="flex-container panel-body">
+                <div class="flex-box">
+                  <label>提案人:</label><span>{{task_model.proposalSheet.proposal_person}}</span>
+                </div>
+                <div class="flex-box">
+                  <label>提案日期:</label><span>{{task_model.proposalSheet.proposal_date | date:'yyyy-MM-dd'}}</span>
+                </div>
+                <div class="flex-box">
+                  <label>翻译人:</label><span>{{task_model.proposalSheet.proposal_translator}}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-heading cursor-pointer">
+              <h4 data-toggle="collapse" href="#proposal-attachment-panel" class="no-margin">附件列表 &nbsp;<small>Attachment List</small></h4>
+            </div>
+            <div id="proposal-attachment-panel" class="panel-collapse collapse in table-responsive">
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th>名称</th>
+                    <th>文件名</th>
+                    <th>文件类型</th>
+                    <th>文件大小</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr ng-repeat="item in task_model.proposalSheet.attachment" ng-click="downloadFile(item.file_url)" class="cursor-pointer">
+                    <td>{{item.file_desc}}</td>
+                    <td><i class="fa fa-file-word-o text-info fa-fw">&nbsp;</i><span>{{item.file_name}}</span></td>
+                    <td>{{item.file_ext}}</td>
+                    <td>{{item.file_size}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-heading cursor-pointer">
+              <h4 data-toggle="collapse" href="#proposal-price-panel" class="no-margin">报价明细 &nbsp;<small>Price List</small></h4>
+            </div>
+            <div id="proposal-price-panel" class="panel-collapse collapse in table-responsive">
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th nowrap="nowrap">服务内容</th>
+                    <th nowrap="nowrap">服务时间</th>
+                    <th nowrap="nowrap">服务费用</th>
+                    <th nowrap="nowrap">交通费用</th>
+                    <th nowrap="nowrap">公关费用</th>
+                    <th nowrap="nowrap">小计</th>
+                    <th nowrap="nowrap">附件</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr ng-repeat="sub_item in task_model.proposalSheet.subItem">
+                    <td>{{sub_item.service}}</td>
+                    <td>{{sub_item.date| date:'yyyy-MM-dd'}}</td>
+                    <td>{{sub_item.expense}}</td>
+                    <td>{{sub_item.traffic}}</td>
+                    <td>{{sub_item.extra}}</td>
+                    <td>{{sub_item.expense + sub_item.traffic + sub_item.extra}}</td>
+                    <td>
+                      <div ng-repeat="attach in sub_item.attachment" class="attachment-token"><i class="icon-file-excel"></i><span>{{attach.file_name}}</span></div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="page_contract">
+        <!--Created by Bohua on 2014-05-29.-->
+        <div class="page-header">
+          <h2><i class="fa fa-legal fa-fw">&nbsp;</i><span>合同签定 &nbsp;</span><small>Contract</small>
+            <div class="btn-group pull-right">
+              <button class="btn btn-default"><i class="fa fa-edit fa-fw">&nbsp;</i><span>修改</span></button>
+            </div>
+          </h2>
+        </div>
+        <div id="proposal-panel-group" class="panel-group">
+          <div class="panel panel-default">
+            <div class="panel-heading cursor-pointer">
+              <h4 data-toggle="collapse" href="#proposal-abstract-panel" class="no-margin">合同要义 &nbsp;<small>Proposal Abstract</small></h4>
+            </div>
+            <div id="proposal-abstract-panel" class="panel-collapse collapse in">
+              <div class="flex-container panel-body">
+                <div class="flex-box">
+                  <label>签定日期:</label><span></span>
+                </div>
+                <div class="flex-box">
+                  <label>合同期限:</label><span></span>
+                </div>
+                <div class="flex-box">
+                  <label>合同标的:</label><span></span>
+                </div>
+                <div class="flex-box">
+                  <label>甲方:</label><span></span>
+                </div>
+                <div class="flex-box">
+                  <label>乙方:</label><span></span>
+                </div>
+              </div>
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th>约定付款时间</th>
+                    <th>付款金额</th>
+                    <th>到期日期</th>
+                    <th>付款方式</th>
+                    <th>附件</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="page_execute"></section>
+      <section id="page_account"></section>
+      <section id="page_confirm"></section>
+      <section id="page_settle"></section>
+      <section id="page_summary"></section>
+    </div>
+  </div>
+  <div id="task-footer" class="flex-container">
+    <div>
+      <h5>Copyright &copy;1995-2014 PRESTIGE LTD SHANGHAI</h5>
+      <h5>版权所有 &copy;1995-2014 中国上海久富科技有限公司</h5>
+    </div>
+    <div class="text-center">
+      <h3><i class="fa fa-paper-plane fa-fw">&nbsp;</i><span>CBMS</span></h3><span>Consulting Business Management System</span>
+    </div>
+    <div>
+      <h5><a class="cursor-pointer">相关产品展示</a></h5>
+      <h5>联系方式<a class="cursor-pointer margin10 h-only"><i class="fa fa-qq fa-fw">&nbsp;</i><span>1234567890</span></a><a class="cursor-pointer margin10 h-only"><i class="fa fa-weibo fa-fw">&nbsp;</i><span>fantasybohua</span></a></h5>
+    </div>
+  </div>
+</div>
