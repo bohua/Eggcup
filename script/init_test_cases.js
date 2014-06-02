@@ -23,15 +23,12 @@ db.Seq()
 		} else {
 			global.db = db;
 
-			testNestedBuild();
+			buildTestCases();
 		}
 	});
 
 
-function testNestedBuild(){
-	//var task = db.model('DATA_TASK').build(task_json);
-	//var replySheet = db.model('DATA_REPLY').build(task_json.replySheet).save().success(function(reply){	console.log(reply.values);});
-
+function buildTestCases(){
 	task_bo.save(task_json);
 }
 
@@ -59,6 +56,19 @@ var task_json = {
 	prop_internal: true,
 	prop_external: false,
 
+	arrangeSheet: {
+		start_date:			'2014-05-06',
+		end_date:			'2014-06-20',
+
+		arrangement_comment:'朝廷大事，理当全部出马！',
+		arrangement_date:	'2014-05-06',
+		arrangement_assignee:'李小帅,苏小美,喵小宝',
+		arrangement_assigner:'剧情隐藏之大BOSS',
+
+		prop_internal:		true,
+		prop_external:		false
+	},
+
 	replySheet: {
 		id: 1,
 		reply_withEmail:	true,
@@ -80,7 +90,7 @@ var task_json = {
 		prop_internal:		true,
 		prop_external:		false,
 
-		replyAttach: 		[
+		attachment: 		[
 			{
 				id: 1,
 				file_name: '清史.docx',

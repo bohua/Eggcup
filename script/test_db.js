@@ -77,7 +77,9 @@ function testGetAttachments(){
 }
 
 function testEagerLoadTask(){
-	task_bo.eagerGet().then(function(success){
+	task_bo.get({
+		id: '1005'
+	}).then(function(success){
 //		console.log(JSON.stringify(success));
 		console.log(success);
 

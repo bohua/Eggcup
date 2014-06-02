@@ -30,7 +30,7 @@ div.page-header
 
 				div.flex-box
 					label 登记日期:
-					span {{task_model.report_date}}
+					span {{task_model.report_date | date:'yyyy-MM-dd'}}
 
 				div.flex-box
 					label 担当人:

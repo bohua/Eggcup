@@ -13,6 +13,7 @@ module.exports = function (sequelize, DataTypes) {
 		arrangement_comment:	{ type: DataTypes.TEXT },
 		arrangement_date:		{ type: DataTypes.DATE },
 		arrangement_assignee:	{ type: DataTypes.STRING },
+		arrangement_assigner:	{ type: DataTypes.STRING },
 
 		/**
 		 * Sheet Properties
