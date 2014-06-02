@@ -5,6 +5,7 @@ var Q = require("q");
 var Bo = require(__dirname + "/../abstract_bo");
 var reply_sheet_bo = require(__dirname + "/reply_sheet_bo");
 var arrange_sheet_bo = require(__dirname + "/arrange_sheet_bo");
+var proposal_sheet_bo = require(__dirname + "/proposal_sheet_bo");
 //var Sequelize = require(__dirname + "/../models").Seq().Sequelize;
 
 var TASK = new Bo('DATA_TASK', {
@@ -27,6 +28,20 @@ var TASK = new Bo('DATA_TASK', {
 				{
 					model: this.orm.model('DATA_ARRANGE'),
 					as: 'arrangeSheet'
+				},
+				{
+					model: this.orm.model('DATA_PROPOSAL'),
+					as: 'proposalSheet',
+					include: [
+						{
+							model: this.orm.model('DATA_PROPOSAL_SUB'),
+							as: 'subItem'
+						},
+						{
+							model: this.orm.model('REF_ATTACHMENT'),
+							as: 'attachment'
+						}
+					]
 				}
 			],
 			where: where
@@ -65,6 +80,13 @@ var TASK = new Bo('DATA_TASK', {
 						});
 				}
 
+				//Save proposal sheet
+				if (model.proposalSheet) {
+					proposal_sheet_bo.save(model.proposalSheet)
+						.then(function (proposal_sheet_instance) {
+							promises.push(task_instance.setProposalSheet(proposal_sheet_instance));
+						});
+				}
 			},
 			function (failure) {
 				deferred.reject(failure);

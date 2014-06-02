@@ -18,7 +18,7 @@ module.exports = function (sequelize, DataTypes) {
 			associate: function (models) {
 				DATA_PROPOSAL_SUB
 					.belongsTo(models.DATA_PROPOSAL, {as: 'parent', foreignKey: 'proposal_id'})
-					.hasMany(models.REF_ATTACHMENT, {as: 'priceAttach'})
+					.hasMany(models.REF_ATTACHMENT, {as: 'attachment'})
 			}
 		}
 	});

@@ -17,7 +17,7 @@ module.exports = function (sequelize, DataTypes) {
 		/**
 		 * Price Properties
 		 */
-		price_date:			{ type: DataTypes.DATE},
+		price_date:				{ type: DataTypes.DATE},
 		price_discount: 		{ type: DataTypes.DECIMAL(10,2) },
 
 		/**
@@ -31,8 +31,8 @@ module.exports = function (sequelize, DataTypes) {
 			associate: function (models) {
 				DATA_PROPOSAL
 					.belongsTo(models.DATA_TASK, {as: 'task', foreignKey: 'task_id'})
-					.hasMany(models.DATA_PROPOSAL_SUB, {as: 'subItems', foreignKey: 'proposal_id'})
-					.hasMany(models.REF_ATTACHMENT, {as: 'proposalAttach'})
+					.hasMany(models.DATA_PROPOSAL_SUB, {as: 'subItem', foreignKey: 'proposal_id'})
+					.hasMany(models.REF_ATTACHMENT, {as: 'attachment', foreignKey: 'proposal_id'})
 			}
 		}
 	});
