@@ -361,20 +361,28 @@ t {
   opacity: 0.5;
 }
 #dashboard {
-  height: calc(100% - 45px);
-  overflow-y: auto;
+  height: 100%;
+  overflow-y: hidden;
   -webkit-overflow-scrolling: touch;
-  overflow-x: hidden;
-  padding: 0;
-  margin-top: 3px;
+  overflow-x: auto;
+  padding: 5px;
 }
 #dashboard > .row {
   margin: 0;
   height: 100%;
+  width: 100%;
+  display: flex;
 }
 #dashboard .task-group {
   height: 100%;
   padding: 3px;
+  flex-shrink: 0;
+  flex-basis: 100%;
+}
+@media (min-width: 992px), (min-width: 992px), (min-width: 768px) {
+  #dashboard .task-group {
+    flex-basis: auto;
+  }
 }
 #dashboard .task-group .panel {
   height: 100%;
