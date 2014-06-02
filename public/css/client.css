@@ -109,219 +109,8 @@ th {
 .subheader {
   font-size: 12pt;
 }
-.view-header {
-  height: 40px;
-  width: 100%;
-  padding: 0 20px;
-}
-.view-header .view-header-icon {
-  font-size: 25px !important;
-  margin-right: 15px;
-  cursor: pointer !important;
-}
-.view-header .view-header-icon:hover {
-  color: #aaaaaa;
-}
-.view-header > i {
-  font-size: 25px!important;
-  margin-right: 10px;
-}
-.view-header > span {
-  line-height: 40px !important;
-}
-.view-header .view-header-control-button-set .sep {
-  font-weight: bold;
-  margin: 0 5px;
-  color: #aaaaaa;
-}
-.view-header .view-header-control-button-set .dropdown-menu.right-border-fix {
-  right: -19px;
-  min-width: 150px;
-}
-.view-header .view-header-control-button-set button {
-  background: none;
-  padding: 0 5px;
-  line-height: 25px;
-}
-.view-header .view-header-control-button-set button i {
-  margin-right: 5px;
-  font-size: 14pt;
-  cursor: pointer;
-}
-.view-header .view-header-control-button-set button:hover {
-  color: #aaaaaa;
-}
-.view-form-sheet {
-  width: 100%;
-  height: calc(100% - 40px);
-  overflow-y: hidden;
-  overflow-x: hidden;
-  padding: 5px 10px;
-  /*
-  .input-control.text input:focus {
-    &:not(.hasList) {
-      padding-right: 25px !important;
-    }
-  }
-  */
-}
-.window .view-form-sheet fieldset {
-  margin-top: 10px;
-}
-.view-form-sheet fieldset .item-title {
-  margin-left: 20px;
-  border: 1px solid #d9d9d9;
-  padding: 5px 20px;
-  border-bottom: none;
-  border-top-left-radius: 6px;
-  border-top-right-radius: 6px;
-  background-color: #eeeeee;
-  color: #4d4d4d;
-}
-.view-form-sheet .tab-control {
-  height: 100%;
-}
-.view-form-sheet .tab-control ul > li > a > i {
-  margin-right: 5px;
-}
-.view-form-sheet .tab-control .frames {
-  height: calc(100% - 35px);
-  border-top: 1px #eeeeee solid;
-  border-bottom: 1px #eeeeee solid;
-  border-left: 0 !important;
-  border-right: 0 !important;
-  margin: -1px;
-}
-.view-form-sheet .tab-control .frames .frame {
-  height: 100%;
-  overflow-y: auto;
-}
-.view-form-sheet .row .span1 {
-  width: calc((100% - 180px) / 10) !important;
-}
-.view-form-sheet .row .span2 {
-  width: calc((100% - 180px) / 10 * 2 + 20px) !important;
-}
-.view-form-sheet .row .span3 {
-  width: calc((100% - 180px) / 10 * 3 + 40px) !important;
-}
-.view-form-sheet .row .span4 {
-  width: calc((100% - 180px) / 10 * 4 + 60px) !important;
-}
-.view-form-sheet .row .span5 {
-  width: calc((100% - 180px) / 10 * 5 + 80px) !important;
-}
-.view-form-sheet .row .span6 {
-  width: calc((100% - 180px) / 10 * 6 + 100px) !important;
-}
-.view-form-sheet .row .span7 {
-  width: calc((100% - 180px) / 10 * 7 + 120px) !important;
-}
-.view-form-sheet .row .span8 {
-  width: calc((100% - 180px) / 10 * 8 + 140px) !important;
-}
-.view-form-sheet .row .span9 {
-  width: calc((100% - 180px) / 10 * 9 + 160px) !important;
-}
-.view-form-sheet .row .span10 {
-  width: 100% !important;
-}
-.view-form-sheet select {
-  height: 30px;
-  padding: 0 5px 2px 5px !important;
-  font-size: 12pt;
-}
-.view-form-sheet .expandable-section {
-  background-color: rgba(248, 248, 248, 0.5);
-  padding: 0 10px 0 10px;
-  border: 1px solid #d9d9d9;
-  margin: 5px 0 20px 0;
-  border-radius: 5px;
-  box-shadow: 1px 1px 1px #eeeeee;
-}
-.view-form-sheet legend {
-  padding-top: 10px !important;
-}
-.view-form-sheet .row {
-  margin-top: 0 !important;
-}
-.view-form-sheet .view-form-legend {
-  font-size: 16px;
-}
-.view-form-sheet label {
-  color: #696969;
-  font-size: 12pt;
-}
-.view-form-sheet table {
-  background-color: rgba(248, 248, 248, 0.5);
-}
-.view-form-sheet table td {
-  vertical-align: baseline;
-}
-.view-form-sheet table a {
-  margin-left: 10px;
-  cursor: pointer;
-}
-.view-form-sheet table button {
-  border: 1px transparent  solid;
-  margin: 0;
-  font-size: 11pt!important;
-}
-.view-form-sheet table .in-table-button {
-  cursor: pointer;
-  padding: 5px 10px;
-}
-.view-form-sheet table .in-table-button:hover {
-  background: #1ec8a6;
-  border-radius: 5px;
-  color: #ffffff;
-}
-.view-form-sheet table .in-table-button:active {
-  background: #4d4d4d;
-}
-.view-form-sheet textarea {
-  resize: vertical;
-  font-size: 12pt;
-}
-.view-form-sheet .checkbox label {
-  margin: 5px 5px 5px 0;
-}
-.view-form-sheet .text-content {
-  line-height: 34px;
-}
-.view-form-sheet .dialog-content-panel {
-  height: 100%;
-}
-.view-command-button {
-  cursor: pointer;
-  padding: 5px 10px;
-  background: #1ec8a6 !important;
-  color: #ffffff !important;
-}
-.view-command-button:hover {
-  border: 1px solid #aaaaaa;
-  color: #4d4d4d !important;
-}
-.ng-invalid {
-  background-color: #fac4c8;
-}
-.record-control-button-set button {
-  background: none !important;
-  font-size: 12pt !important;
-  padding: 0 !important;
-}
 .cursor-pointer {
   cursor: pointer;
-}
-.view-control-button-set {
-  top: 5px;
-  float: right;
-}
-.view-control-button-set button.dropdown-toggle {
-  padding-right: 0!important;
-}
-.view-control-button-set button.dropdown-toggle:after {
-  content: none;
 }
 .left-inner-addon {
   position: relative;
@@ -572,10 +361,12 @@ t {
   opacity: 0.5;
 }
 #dashboard {
-  height: calc(100% - 40px);
+  height: calc(100% - 45px);
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
   overflow-x: hidden;
-  padding: 5px 0 12px 10px;
+  padding: 0;
+  margin-top: 3px;
 }
 #dashboard > .row {
   margin: 0;
@@ -587,7 +378,7 @@ t {
 }
 #dashboard .task-group .panel {
   height: 100%;
-  margin-bottom: 10px;
+  margin-bottom: 0;
 }
 #dashboard .nano {
   height: calc(100% - 45px);
@@ -595,8 +386,18 @@ t {
 #dashboard .nano-content {
   padding: 5px;
 }
+.dashboard-title {
+  height: 40px;
+  padding: 6px 20px;
+}
+.dashboard-title > i,
+.dashboard-title > span {
+  font-size: 15pt;
+  margin-top: 10px;
+}
 #task-editor-form {
   overflow: auto;
+  -webkit-overflow-scrolling: touch;
   height: calc(100% - 53px);
 }
 #task-content {

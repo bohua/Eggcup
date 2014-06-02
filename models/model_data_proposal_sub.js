@@ -10,9 +10,9 @@ module.exports = function (sequelize, DataTypes) {
 		 */
 		service:			{ type: DataTypes.STRING },
 		date:				{ type: DataTypes.DATE },
-		expense:			{ type: DataTypes.DECIMAL(10,2), defaultValue: 0.00 },
-		traffic:			{ type: DataTypes.DECIMAL(10,2), defaultValue: 0.00 },
-		extra:				{ type: DataTypes.DECIMAL(10,2), defaultValue: 0.00 }
+		expense:			{ type: DataTypes.DECIMAL(16,2), defaultValue: 0.00 },
+		traffic:			{ type: DataTypes.DECIMAL(16,2), defaultValue: 0.00 },
+		extra:				{ type: DataTypes.DECIMAL(16,2), defaultValue: 0.00 }
 	}, {
 		classMethods: {
 			associate: function (models) {

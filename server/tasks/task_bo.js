@@ -35,7 +35,13 @@ var TASK = new Bo('DATA_TASK', {
 					include: [
 						{
 							model: this.orm.model('DATA_PROPOSAL_SUB'),
-							as: 'subItem'
+							as: 'subItem',
+							include: [
+								{
+									model: this.orm.model('REF_ATTACHMENT'),
+									as: 'attachment'
+								}
+							]
 						},
 						{
 							model: this.orm.model('REF_ATTACHMENT'),
