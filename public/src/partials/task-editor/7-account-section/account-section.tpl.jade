@@ -1,0 +1,35 @@
+//Created by Bohua on 2014-05-29.
+div.page-header
+	h2
+		i.fa.fa-legal.fa-fw &nbsp;
+		span 收款 &nbsp;
+		small Accounting
+		div.btn-group.pull-right
+			button.btn.btn-default
+				i.fa.fa-edit.fa-fw &nbsp;
+				span 修改
+
+#account-panel-group.panel-group
+	div.panel.panel-default
+		div.panel-heading.cursor-pointer
+			h4.no-margin(data-toggle="collapse", href="#account-details-panel") 收款明细 &nbsp;
+				small Accounting Details
+		#account-details-panel.panel-collapse.collapse.in
+			table.table.table-hover
+				thead
+					tr
+						th 付款时间
+						th 付款金额
+						th 支付方式
+						th 付款说明
+						th 附件
+				tbody
+					tr(ng-repeat="sub_item in task_model.accountSheet.subItem")
+						td {{sub_item.account_date | date:'yyyy-MM-dd'}}
+						td {{sub_item.account_expense}}
+						td {{sub_item.account_method}}
+						td {{sub_item.account_desc}}
+						td
+							div.attachment-token.label.cursor-pointer(ng-repeat="attach in sub_item.attachment")
+								i.icon-file-excel
+								span {{attach.file_name}}
