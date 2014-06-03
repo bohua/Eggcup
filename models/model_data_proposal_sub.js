@@ -6,7 +6,7 @@ module.exports = function (sequelize, DataTypes) {
 
 	var DATA_PROPOSAL_SUB = sequelize.define('DATA_PROPOSAL_SUB', {
 		/**
-		 * Price Sub-item Properties
+		 * Proposal Price Sub-item Properties
 		 */
 		service:			{ type: DataTypes.STRING },
 		date:				{ type: DataTypes.DATE },

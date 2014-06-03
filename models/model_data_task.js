@@ -50,6 +50,9 @@ module.exports = function (sequelize, DataTypes) {
 					.hasOne(models.DATA_ARRANGE, {as:'arrangeSheet', foreignKey: 'task_id'})
 					.hasOne(models.DATA_PROPOSAL, {as:'proposalSheet', foreignKey: 'task_id'})
 					.hasOne(models.DATA_CONTRACT, {as:'contractSheet', foreignKey: 'task_id'})
+					.hasOne(models.DATA_EXECUTE, {as:'executeSheet', foreignKey: 'task_id'})
+					.hasOne(models.DATA_ACCOUNT, {as:'accountSheet', foreignKey: 'task_id'})
+					.hasOne(models.DATA_SUMMARY, {as:'summarySheet', foreignKey: 'task_id'})
 			}
 		}
 	});

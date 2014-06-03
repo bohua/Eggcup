@@ -220,9 +220,62 @@ var task_json = {
 				]
 			}
 		]
+	},
 
+	executeSheet: {
+		project_manager:	'苏小美',
+		project_runner:		'喵小宝',
+		project_topic:		'朝廷谕旨',
 
+		prop_internal:		true,
+		prop_external:		true,
 
+		subItem: [
+			{
+				execute_date:	'2014-05-30',
+				execute_runner:	'喵小宝',
+				execute_digest:	'小宝夜入敌营，刺探乱方主将与猫粮所在',
+
+				attachment: [
+					{
+						file_name: '营外偷拍.jpg',
+						file_ext: 'jpg',
+						file_size: '1239098',
+						file_url: 'localhost://attachments/test/营外偷拍.jpg'
+					},
+					{
+						file_name: '主将军帐.jpg',
+						file_ext: 'jpg',
+						file_size: '1239098',
+						file_url: 'localhost://attachments/test/主将军帐.jpg'
+					}
+					,
+					{
+						file_name: '偷吃咸鱼.jpg',
+						file_ext: 'jpg',
+						file_size: '1239098',
+						file_url: 'localhost://attachments/test/偷吃咸鱼.jpg'
+					}
+				]
+			},
+			{
+				execute_date:	'2014-06-30',
+				execute_runner:	'苏小美',
+				execute_digest:	'游说乱将，策反其部，并在关键时刻反戈',
+
+				attachment: [
+					{
+						file_name: '贿赂收据.pdf',
+						file_ext: 'pdf',
+						file_size: '1239098',
+						file_url: 'localhost://attachments/test/贿赂收据.jpg'
+					}
+				]
+			}
+		]
+	},
+
+	accountSheet: {
 
 	}
 }
