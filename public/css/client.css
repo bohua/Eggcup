@@ -112,6 +112,9 @@ th {
 .cursor-pointer {
   cursor: pointer;
 }
+th {
+  white-space: nowrap;
+}
 .left-inner-addon {
   position: relative;
 }
@@ -518,4 +521,11 @@ t {
 }
 #task-footer div {
   margin-right: 50px;
+}
+.attachment-token {
+  font-size: 11pt;
+  background-color: #0067b0;
+  color: #ffffff;
+  margin-right: 10px;
+  font-weight: normal;
 }

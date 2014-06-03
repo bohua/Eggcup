@@ -24,7 +24,7 @@ module.exports = function (sequelize, DataTypes) {
 			associate: function (models) {
 				DATA_CONTRACT
 					.belongsTo(models.DATA_TASK, {as: 'task', foreignKey: 'task_id'})
-					.hasMany(models.DATA_CONTRACT_SUB, {as: 'subItems', foreignKey: 'contract_id'})
+					.hasMany(models.DATA_CONTRACT_SUB, {as: 'subItem', foreignKey: 'contract_id'})
 			}
 		}
 	});

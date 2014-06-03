@@ -71,13 +71,13 @@ div.page-header
 			table.table.table-hover
 				thead
 					tr
-						th(nowrap) 服务内容
-						th(nowrap) 服务时间
-						th(nowrap) 服务费用
-						th(nowrap) 交通费用
-						th(nowrap) 公关费用
-						th(nowrap) 小计
-						th(nowrap) 附件
+						th 服务内容
+						th 服务时间
+						th 服务费用
+						th 交通费用
+						th 公关费用
+						th 小计
+						th 附件
 				tbody
 					tr(ng-repeat="sub_item in task_model.proposalSheet.subItem")
 						td {{sub_item.service}}
@@ -87,6 +87,6 @@ div.page-header
 						td {{sub_item.extra}}
 						td {{sub_item.expense + sub_item.traffic + sub_item.extra}}
 						td
-							div.attachment-token(ng-repeat="attach in sub_item.attachment")
+							div.attachment-token.label.cursor-pointer(ng-repeat="attach in sub_item.attachment")
 								i.icon-file-excel
 								span {{attach.file_name}}

@@ -18,26 +18,34 @@ div.page-header
 			div.flex-container.panel-body
 				div.flex-box
 					label 签定日期:
-					span
+					span {{task_model.contractSheet.contract_date | date:'yyyy-MM-dd'}}
 				div.flex-box
 					label 合同期限:
-					span
-				div.flex-box
-					label 合同标的:
-					span
+					span {{task_model.contractSheet.contract_due_date | date:'yyyy-MM-dd'}}
 				div.flex-box
 					label 甲方:
-					span
+					span {{task_model.contractSheet.contract_A}}
 				div.flex-box
 					label 乙方:
-					span
-			table.table.table-hover
-				thead
-					tr
-						th 约定付款时间
-						th 付款金额
-						th 到期日期
-						th 付款方式
-						th 附件
-				tbody
-					tr
+					span {{task_model.contractSheet.contract_B}}
+				div.flex-box
+					label 合同标的:
+					span {{task_model.contractSheet.contract_topic}}
+		table.table.table-hover
+			thead
+				tr
+					th 约定付款时间
+					th 付款金额
+					th 到期日期
+					th 付款方式
+					th 附件
+			tbody
+				tr(ng-repeat="sub_item in task_model.contractSheet.subItem")
+					td {{sub_item.pay_date | date:'yyyy-MM-dd'}}
+					td {{sub_item.expense}}
+					td {{sub_item.due_date | date:'yyyy-MM-dd'}}
+					td {{sub_item.pay_method}}
+					td
+						div.attachment-token.label.cursor-pointer(ng-repeat="attach in sub_item.attachment")
+							i.icon-file-excel
+							span {{attach.file_name}}

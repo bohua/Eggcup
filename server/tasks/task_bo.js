@@ -6,7 +6,7 @@ var Bo = require(__dirname + "/../abstract_bo");
 var reply_sheet_bo = require(__dirname + "/reply_sheet_bo");
 var arrange_sheet_bo = require(__dirname + "/arrange_sheet_bo");
 var proposal_sheet_bo = require(__dirname + "/proposal_sheet_bo");
-//var Sequelize = require(__dirname + "/../models").Seq().Sequelize;
+var contract_sheet_bo = require(__dirname + "/contract_sheet_bo");
 
 var TASK = new Bo('DATA_TASK', {
 	name: 'get',
@@ -46,6 +46,22 @@ var TASK = new Bo('DATA_TASK', {
 						{
 							model: this.orm.model('REF_ATTACHMENT'),
 							as: 'attachment'
+						}
+					]
+				},
+				{
+					model: this.orm.model('DATA_CONTRACT'),
+					as: 'contractSheet',
+					include: [
+						{
+							model: this.orm.model('DATA_CONTRACT_SUB'),
+							as: 'subItem',
+							include: [
+								{
+									model: this.orm.model('REF_ATTACHMENT'),
+									as: 'attachment'
+								}
+							]
 						}
 					]
 				}
@@ -91,6 +107,14 @@ var TASK = new Bo('DATA_TASK', {
 					proposal_sheet_bo.save(model.proposalSheet)
 						.then(function (proposal_sheet_instance) {
 							promises.push(task_instance.setProposalSheet(proposal_sheet_instance));
+						});
+				}
+
+				//Save contract sheet
+				if (model.contractSheet) {
+					contract_sheet_bo.save(model.contractSheet)
+						.then(function (contract_sheet_instance) {
+							promises.push(task_instance.setContractSheet(contract_sheet_instance));
 						});
 				}
 			},

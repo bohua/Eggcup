@@ -38,7 +38,7 @@ module.exports = function (sequelize, DataTypes) {
 			associate: function (models) {
 				DATA_REPLY
 					.belongsTo(models.DATA_TASK, {as: 'task', foreignKey: 'task_id'})
-					.hasMany(models.REF_ATTACHMENT, {as: 'attachment', foreignKey: 'reply_id'})
+					.hasMany(models.REF_ATTACHMENT, {as: 'attachment'})
 			}
 		}
 	});
