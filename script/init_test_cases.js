@@ -276,7 +276,75 @@ var task_json = {
 	},
 
 	accountSheet: {
+		prop_internal:		true,
+		prop_external:		true,
 
+		subItem: [
+			{
+				account_date:		'2014-06-31',
+				account_expense:	'20000000.00',
+				account_method:		'银票',
+				account_desc:		'头款就续',
+				attachment: [
+					{
+						file_name: '户部印章.jpg',
+						file_ext: 'jpg',
+						file_size: '1239098',
+						file_url: 'localhost://attachments/test/户部印章.jpg'
+					}
+				]
+			},
+			{
+				account_date:		'2014-07-31',
+				account_expense:	'10000000.00',
+				account_method:		'现银',
+				account_desc:		'饷银到位',
+				attachment: [
+					{
+						file_name: '兵部印章.jpg',
+						file_ext: 'jpg',
+						file_size: '1239098',
+						file_url: 'localhost://attachments/test/兵部印章.jpg'
+					}
+				]
+			},
+			{
+				account_date:		'2014-08-31',
+				account_expense:	'2133554545.00',
+				account_method:		'烧杀抢夺',
+				account_desc:		'战后得利',
+				attachment: [
+					{
+						file_name: '圣旨.jpg',
+						file_ext: 'jpg',
+						file_size: '1239098',
+						file_url: 'localhost://attachments/test/圣旨.jpg'
+					}
+				]
+			},
+			{
+				account_date:		'2014-09-31',
+				account_expense:	'0.00',
+				account_method:		'赏赐',
+				account_desc:		'平叛有功，赐平西将军，世袭镇国公',
+				attachment: [
+					{
+						file_name: '印绶截图.jpg',
+						file_ext: 'jpg',
+						file_size: '1239098',
+						file_url: 'localhost://attachments/test/印绶截图.jpg'
+					}
+				]
+			}
+		]
+	},
+	summarySheet:{
+		summary_date:		'2014-10-01',
+		summary_person:		'李小帅',
+		summary_content:	'泽国江山入战图，生民何计乐樵苏。凭君莫话封侯事，一将功成万骨枯。',
+
+		prop_internal:		true,
+		prop_external:		false
 	}
 }
 

@@ -38,8 +38,6 @@
     &.active{
       border: 2px solid @green;
       background-color: @gray-lighter;
-
-      color: #1ec8a6;
     }
 
     &.disabled{
@@ -56,13 +54,19 @@
       background-color: @gray-lighter;
     }
 
-    &.finished{
+    &.finished,{
       i{
         color: @green;
       }
 
       .progress-line{
         background: @green;
+      }
+    }
+
+    &.ongoing {
+      .progress-line{
+        background: @gray-light;
       }
     }
   }

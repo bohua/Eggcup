@@ -5,40 +5,94 @@
 		"precedence": [
 			{
 				"action": "报送审核",
-				"nextStatus": 110
+				"nextStatus": 200
 			},
 			{
-				"action": "结案",
-				"nextStatus": 400
+				"action": "中止任务",
+				"nextStatus": 800
 			}
 		]
 	},
 	{
-		"code": 110,
-		"status": "待审中"
-	},
-	{
-		"code": 120,
-		"status": "待回复"
-	},
-	{
-		"code": 130,
-		"status": "回复中"
-	},
-	{
 		"code": 200,
-		"status": "提案中"
+		"status": "审核分配中",
+		"precedence": [
+			{
+				"action": "解答回复",
+				"nextStatus": 300
+			},
+			{
+				"action": "提案回复",
+				"nextStatus": 500
+			},
+			{
+				"action": "中止任务",
+				"nextStatus": 800
+			}
+		]
 	},
 	{
 		"code": 300,
-		"status": "合同中"
+		"status": "解答回复",
+		"precedence": [
+			{
+				"action": "汇总报告",
+				"nextStatus": 700
+			},
+			{
+				"action": "重新审核",
+				"nextStatus": 200
+			},
+			{
+				"action": "中止任务",
+				"nextStatus": 800
+			}
+		]
 	},
 	{
-		"code": 400,
-		"status": "汇总报告"
+		"code": 500,
+		"status": "提案中",
+		"precedence": [
+			{
+				"action": "签定合同",
+				"nextStatus": 600
+			},
+			{
+				"action": "重新审核",
+				"nextStatus": 200
+			},
+			{
+				"action": "中止任务",
+				"nextStatus": 800
+			}
+		]
 	},
 	{
-		"code": 450,
-		"status": "汇总报告"
+		"code": 600,
+		"status": "合同中",
+		"precedence": [
+			{
+				"action": "合同完成确认",
+				"nextStatus": 700
+			},
+			{
+				"action": "中止任务",
+				"nextStatus": 800
+			}
+		]
+	},
+	{
+		"code": 800,
+		"status": "汇总报告中",
+		"precedence": [
+			{
+				"action": "结案",
+				"nextStatus": 800
+			}
+		]
+	},
+	{
+		"code": 800,
+		"status": "结案"
 	}
 ]

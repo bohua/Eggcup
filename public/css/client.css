@@ -438,7 +438,6 @@ t {
 #task-side-nav a.active {
   border: 2px solid #1ec8a6;
   background-color: #eeeeee;
-  color: #1ec8a6;
 }
 #task-side-nav a.disabled {
   cursor: not-allowed;
@@ -456,6 +455,9 @@ t {
 }
 #task-side-nav a.finished .progress-line {
   background: #1ec8a6;
+}
+#task-side-nav a.ongoing .progress-line {
+  background: #999999;
 }
 #task-side-nav .task-progress-indicator {
   margin-right: 20px;

@@ -35,34 +35,6 @@ angular.module('task-editor', [
 	'task_model',
 	function ($routeParams, $location, $scope, $timeout, tagReferenceService, customerListService, employeeListService, taskStatusService, task_model) {
 
-		$scope.closeToggle = function(){
-			$('li.dropdown.open').removeClass('open');
-		};
-
-		/**
-		 * Initialize Emitters
-		 */
-		$scope.delete = function () {
-			var confirmResult = confirm('确认删除么？');
-			if (confirmResult === true) {
-				$scope.Confirm('remove', false);
-			}
-		}
-
-		/**
-		 * Initialize default values & functions
-		 */
-		$scope.showViewHeader = true;
-		$scope.showDialogFooter = false;
-		$scope.prop = {};
-		$scope.prop.showErrorMessage = false;
-		//$scope.prop._parentApi = $scope.dialogConfig.api;
-		$scope.prop.mode = $routeParams.action;
-
-		$scope.task_model = task_model;
-		if ($scope.prop.mode === 'new') {
-			$scope.task_model.status = 100;
-		}
 
 		/**
 		 * view handlers binding
@@ -82,8 +54,32 @@ angular.module('task-editor', [
 		}
 
 		/**
-		 * Tmp
+		 * Initialize Emitters
 		 */
-		$scope.address_type = 0;
+		$scope.delete = function () {
+			var confirmResult = confirm('确认删除么？');
+			if (confirmResult === true) {
+				$scope.Confirm('remove', false);
+			}
+		}
+
+		/**
+		 * Initialize default values & functions
+		 */
+		$scope.prop.mode = $routeParams.action;
+
+		$scope.task_model = task_model;
+		if ($scope.prop.mode === 'new') {
+			$scope.task_model.status = 100;
+		}
+
+		$scope.prop.progressList = [];
+		(function(status){
+			//TODO: finish progress list logic
+		})($scope.task_model.status);
+
+		$scope.closeToggle = function(){
+			$('li.dropdown.open').removeClass('open');
+		};
 
 	}]);

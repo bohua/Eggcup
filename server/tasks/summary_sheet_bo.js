@@ -3,6 +3,6 @@
  */
 var SheetBo = require(__dirname+"/../abstract_sheet_bo");
 
-var ARRANGE_SHEET = new SheetBo('DATA_ARRANGE');
+var SUMMARY_SHEET = new SheetBo('DATA_SUMMARY');
 
-module.exports = ARRANGE_SHEET;
+module.exports = SUMMARY_SHEET;
