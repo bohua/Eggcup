@@ -500,9 +500,13 @@ t {
 }
 .flex-container .flex-box {
   display: flex;
-  margin-right: 50px;
   min-width: 270px;
   margin-bottom: 5px;
+}
+@media (min-width: 992px), (min-width: 992px), (min-width: 768px) {
+  .flex-container .flex-box {
+    margin-right: 50px;
+  }
 }
 .flex-container .flex-box label {
   margin-right: 20px;
@@ -518,11 +522,16 @@ t {
   border-top: 1px solid #999999;
   margin: 0;
   flex-wrap: nowrap;
-  padding: 10px 20px;
+  padding: 0px 20px 10px 20px;
   align-items: baseline;
 }
 #task-footer div {
-  margin-right: 50px;
+  margin-left: 20px;
+}
+@media (min-width: 992px), (min-width: 992px), (min-width: 768px) {
+  #task-footer div {
+    margin-right: 30px;
+  }
 }
 .attachment-token {
   font-size: 11pt;

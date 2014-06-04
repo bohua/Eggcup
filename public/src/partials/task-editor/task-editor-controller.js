@@ -35,6 +35,10 @@ angular.module('task-editor', [
 	'task_model',
 	function ($routeParams, $location, $scope, $timeout, tagReferenceService, customerListService, employeeListService, taskStatusService, task_model) {
 
+		/**
+		 * Initialize default values & functions
+		 */
+		$scope.task_model = task_model;
 
 		/**
 		 * view handlers binding
@@ -48,10 +52,10 @@ angular.module('task-editor', [
 		//Get possible precedence status
 		$scope.statusStack = taskStatusService.getPrecedence($scope.task_model.status);
 
-		//Set backward button action
-		$scope.getBack = function () {
-			$location.path('/');
-		}
+		$scope.progressList = [];
+		(function(status){
+			//TODO: finish progress list logic
+		})($scope.task_model.status);
 
 		/**
 		 * Initialize Emitters
@@ -63,23 +67,12 @@ angular.module('task-editor', [
 			}
 		}
 
-		/**
-		 * Initialize default values & functions
-		 */
-		$scope.prop.mode = $routeParams.action;
-
-		$scope.task_model = task_model;
-		if ($scope.prop.mode === 'new') {
-			$scope.task_model.status = 100;
-		}
-
-		$scope.prop.progressList = [];
-		(function(status){
-			//TODO: finish progress list logic
-		})($scope.task_model.status);
-
 		$scope.closeToggle = function(){
 			$('li.dropdown.open').removeClass('open');
 		};
 
+		//Set backward button action
+		$scope.getBack = function () {
+			$location.path('/');
+		}
 	}]);
