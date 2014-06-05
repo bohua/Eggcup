@@ -1,21 +1,4 @@
 //Created by Bli on 2014/4/30.
-//div.dashboard-title
-	i.fa.fa-bar-chart-o.fa-fw &nbsp;
-	span 任务板 &nbsp;
-	small.hidden-xs Dashboard
-
-	div.btn-group.view-control-button-set.pull-right
-		button.btn.btn-default
-			i.icon-filter
-			span 过滤
-		button.btn.btn-default
-			i.icon-cog
-			span 设置
-		button.btn.btn-default
-			i.icon-help-2
-			span 帮助
-
-
 div#dashboard.container-fluid
 	div.row
 		div.col-md-3.col-sm-3.task-group(ng-repeat="task_group in taskList track by task_group.seq")
@@ -28,17 +11,8 @@ div#dashboard.container-fluid
 						div.list-group
 							a.list-group-item.cursor-pointer(ng-repeat="task in task_group.task_list track by $index", ng-click="detail($event, task)")
 								h4.list-group-item-heading TK - {{task.id}}
-									span.label.label-primary.pull-right {{translateStatus(task.status)}}
+									div.label.label-primary.pull-right
+										i.fa.fa-fw(class="{{translateStatus(task.status).icon}}")
+										span {{translateStatus(task.status).status}}
 								p.list-group-item-text {{translateCustomer(task.customer_name)}}
 								p.list-group-item-text {{task.slogan}}
-
-
-
-
-					//div.panel.task-block(
-						ng-repeat="task in task_group.task_list track by task.id", ng-click="detail($event, task)")
-							div.panel-heading TK-{{task.id}}
-								span.task-status.place-right.fg-darkRed {{translateStatus(task.status)}}
-							div.panel-body
-								label.text-ellipsis.text-info {{translateCustomer(task.customer)}}
-								label {{task.topic}}

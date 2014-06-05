@@ -26,7 +26,7 @@ angular.module('task-status-service', [])
 				if (!found) {
 					return statusCode;
 				} else {
-					return found[0].status;
+					return found[0];
 				}
 			},
 

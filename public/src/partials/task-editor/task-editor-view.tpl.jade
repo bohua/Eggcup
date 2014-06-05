@@ -19,38 +19,10 @@ div.navbar.navbar-default.task-header
 						span.cursor-pointer 单据
 						b.caret
 					ul.dropdown-menu(du-scroll-container="task-editor-form")
-						li
-							a(href="#page_master", du-smooth-scroll, offset="30", ng-click="closeToggle()")
-								icon.fa.fa-edit.fa-fw &nbsp;
-								span 登记
-						li
-							a(href="#page_arrange", du-smooth-scroll, offset="30", ng-click="closeToggle()")
-								icon.fa.fa-share-alt.fa-fw &nbsp;
-								span 审核
-						li
-							a(href="#page_reply", du-smooth-scroll, offset="30", ng-click="closeToggle()")
-								icon.fa.fa-comments-o.fa-fw &nbsp;
-								span 解答
-						li
-							a(href="#page_proposal", du-smooth-scroll, offset="30", ng-click="closeToggle()")
-								icon.fa.fa-book.fa-fw &nbsp;
-								span 提案
-						li
-							a(href="#page_contract", du-smooth-scroll, offset="30", ng-click="closeToggle()")
-								icon.fa.fa-legal.fa-fw &nbsp;
-								span 合同
-						li
-							a(href="#page_execute", du-smooth-scroll, offset="30", ng-click="closeToggle()")
-								icon.fa.fa-history &nbsp;
-								span 执行
-						li
-							a(href="#page_account", du-smooth-scroll, offset="30", ng-click="closeToggle()")
-								icon.fa.fa-bank.fa-fw &nbsp;
-								span 收款
-						li
-							a(href="#page_summary", du-smooth-scroll, offset="30", ng-click="closeToggle()")
-								icon.fa.fa-suitcase.fa-fw &nbsp;
-								span 汇总
+						li(ng-repeat="p in progressList", ng-if="getProgressState(p.code) != 'disabled'")
+							a(href="{{p.href}}", du-smooth-scroll, offset="30", ng-click="closeToggle()")
+								icon.fa.fa-fw(class="{{p.icon}}")
+								span {{p.title}}
 
 						li.nav-divider
 
@@ -59,8 +31,6 @@ div.navbar.navbar-default.task-header
 								icon.fa.fa-rmb.fa-fw &nbsp;
 								span 费用
 
-
-
 				li.dropdown
 					a.dropdown-toggle.cursor-pointer(data-toggle="dropdown")
 						i.fa.fa-share-square-o.fa-fw &nbsp;
@@ -68,7 +38,8 @@ div.navbar.navbar-default.task-header
 						b.caret
 					ul.dropdown-menu
 						li(ng-repeat="precedence in statusStack track by $index")
-							a(ng-click="console.log(precedence.nextStatus)")
+							a.cursor-pointer(ng-click="console.log(precedence.nextStatus)")
+								i.fa.fa-fw(class="{{precedence.icon}}")
 								span {{precedence.action}}
 				li.dropdown
 					a.dropdown-toggle.cursor-pointer(data-toggle="dropdown")

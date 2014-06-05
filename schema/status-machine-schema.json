@@ -1,98 +1,135 @@
-[
-	{
+{
+	"register": {
 		"code": 100,
-		"status": "新任务",
+		"icon": "fa-edit",
+		"status": "登记中",
 		"precedence": [
 			{
 				"action": "报送审核",
+				"icon": "fa-share-alt",
 				"nextStatus": 200
 			},
 			{
 				"action": "中止任务",
+				"icon": "fa-times",
 				"nextStatus": 800
 			}
 		]
 	},
-	{
+	"arrange": {
 		"code": 200,
-		"status": "审核分配中",
+		"status": "审核中",
+		"icon": "fa-share-alt",
 		"precedence": [
 			{
 				"action": "回复解答",
+				"icon": "fa-envelope",
 				"nextStatus": 300
 			},
 			{
 				"action": "提案解答",
-				"nextStatus": 500
+				"icon": "fa-comments-o",
+				"nextStatus": 300
 			},
 			{
 				"action": "中止任务",
+				"icon": "fa-times",
 				"nextStatus": 800
 			}
 		]
 	},
-	{
+	"reply_a": {
 		"code": 300,
+		"icon": "fa-envelope",
 		"status": "回复解答",
 		"precedence": [
 			{
 				"action": "汇总报告",
+				"icon": "fa-suitcase",
 				"nextStatus": 700
 			},
 			{
 				"action": "重新审核",
+				"icon": "fa-mail-reply-all",
 				"nextStatus": 200
 			},
 			{
 				"action": "中止任务",
+				"icon": "fa-times",
 				"nextStatus": 800
 			}
 		]
 	},
-	{
+	"reply_b": {
+		"code": 400,
+		"icon": "fa-comments-0",
+		"status": "提案解答",
+		"precedence": [
+			{
+				"action": "设计提案",
+				"icon": "fa-book",
+				"nextStatus": 500
+			},
+			{
+				"action": "重新审核",
+				"icon": "fa-mail-reply-all",
+				"nextStatus": 200
+			},
+			{
+				"action": "中止任务",
+				"icon": "fa-times",
+				"nextStatus": 800
+			}
+		]
+	},
+	"proposal": {
 		"code": 500,
 		"status": "提案中",
+		"icon": "fa-book",
 		"precedence": [
 			{
 				"action": "签定合同",
+				"icon": "fa-legal",
 				"nextStatus": 600
 			},
 			{
-				"action": "重新审核",
-				"nextStatus": 200
-			},
-			{
 				"action": "中止任务",
+				"icon": "fa-times",
 				"nextStatus": 800
 			}
 		]
 	},
-	{
+	"contract": {
 		"code": 600,
 		"status": "合同中",
+		"icon": "fa-legal",
 		"precedence": [
 			{
 				"action": "合同完成确认",
+				"icon": "fa-suitcase",
 				"nextStatus": 700
 			},
 			{
 				"action": "中止任务",
+				"icon": "fa-times",
 				"nextStatus": 800
 			}
 		]
 	},
-	{
+	"summary": {
 		"code": 700,
 		"status": "汇总报告中",
+		"icon": "fa-suitcase",
 		"precedence": [
 			{
 				"action": "结案",
+				"icon": "fa-lock",
 				"nextStatus": 800
 			}
 		]
 	},
-	{
+	"closed": {
 		"code": 800,
 		"status": "结案"
 	}
-]
+}
