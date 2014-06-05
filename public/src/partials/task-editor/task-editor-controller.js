@@ -52,10 +52,111 @@ angular.module('task-editor', [
 		//Get possible precedence status
 		$scope.statusStack = taskStatusService.getPrecedence($scope.task_model.status);
 
-		$scope.progressList = [];
-		(function(status){
-			//TODO: finish progress list logic
-		})($scope.task_model.status);
+		(function (status, handling, scope) {
+			var progressList = {
+				register: {
+					id: 'register',
+					code: 100,
+					title: '登记',
+					icon: 'fa-edit',
+					href: '#page_register'
+				},
+				arrange: {
+					id: 'arrange',
+					code: 200,
+					title: '审核',
+					icon: 'fa-share-alt',
+					href: '#page_arrange'
+				},
+				reply: {
+					id: 'reply',
+					title: '解答',
+					code: 300,
+					icon: 'fa-comments-o',
+					href: '#page_reply'
+				},
+				proposal: {
+					code: 500,
+					id: 'proposal',
+					title: '提案',
+					icon: 'fa-book',
+					href: '#page_proposal'
+				},
+				contract: {
+					code: 600,
+					id: 'contract',
+					title: '合同',
+					icon: 'fa-legal',
+					href: '#page_arrange'
+				},
+				execute: {
+					code: 600,
+					id: 'execute',
+					title: '执行',
+					icon: 'fa-history',
+					href: '#page_arrange'
+				},
+				account: {
+					id: 'account',
+					code: 600,
+					title: '收款',
+					icon: 'fa-bank',
+					href: '#page_arrange'
+				},
+				summary: {
+					id: 'summary',
+					code: 700,
+					title: '汇总',
+					icon: 'fa-suitcase',
+					href: '#page_arrange'
+				}
+			}
+
+			var utilList = {
+				expense: {
+					id: 'expense',
+					title: '费用',
+					icon: 'fa-rmb',
+					href: '#page_expense'
+				}
+			}
+
+			if (!status) status = 100;
+			if (!handling) handling = 1;
+				scope.progressList = [
+					progressList['register'],
+					progressList['arrange'],
+					progressList['reply']
+
+				];
+			if (status <= 200) {
+				scope.progressList = [progressList['']]
+			} else if (handling === 0) {
+				scope.progressList = [
+					progressList['register'],
+					progressList['arrange'],
+					progressList['reply'],
+					progressList['summary']
+				];
+			} else {
+				scope.progressList = [
+					progressList['register'],
+					progressList['arrange'],
+					progressList['reply'],
+					progressList['proposal'],
+					progressList['contract'],
+					progressList['execute'],
+					progressList['account'],
+					progressList['summary']
+				];
+			}
+
+			scope.getProgressState = function(progressState){
+				if(status === progressState) return 'ongoing';
+				if(status < progressState) return 'disabled';
+				if(status > progressState) return 'finished';
+			}
+		})($scope.task_model.status, $scope.task_model.handling, $scope);
 
 		/**
 		 * Initialize Emitters
@@ -67,7 +168,7 @@ angular.module('task-editor', [
 			}
 		}
 
-		$scope.closeToggle = function(){
+		$scope.closeToggle = function () {
 			$('li.dropdown.open').removeClass('open');
 		};
 

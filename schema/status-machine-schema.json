@@ -18,11 +18,11 @@
 		"status": "审核分配中",
 		"precedence": [
 			{
-				"action": "解答回复",
+				"action": "回复解答",
 				"nextStatus": 300
 			},
 			{
-				"action": "提案回复",
+				"action": "提案解答",
 				"nextStatus": 500
 			},
 			{
@@ -33,7 +33,7 @@
 	},
 	{
 		"code": 300,
-		"status": "解答回复",
+		"status": "回复解答",
 		"precedence": [
 			{
 				"action": "汇总报告",
@@ -82,7 +82,7 @@
 		]
 	},
 	{
-		"code": 800,
+		"code": 700,
 		"status": "汇总报告中",
 		"precedence": [
 			{
