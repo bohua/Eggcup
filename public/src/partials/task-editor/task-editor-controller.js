@@ -87,28 +87,28 @@ angular.module('task-editor', [
 					id: 'contract',
 					title: '合同',
 					icon: 'fa-legal',
-					href: '#page_arrange'
+					href: '#page_contract'
 				},
 				execute: {
 					code: 600,
 					id: 'execute',
 					title: '执行',
 					icon: 'fa-history',
-					href: '#page_arrange'
+					href: '#page_execute'
 				},
 				account: {
 					id: 'account',
 					code: 600,
 					title: '收款',
 					icon: 'fa-bank',
-					href: '#page_arrange'
+					href: '#page_account'
 				},
 				summary: {
 					id: 'summary',
 					code: 700,
 					title: '汇总',
 					icon: 'fa-suitcase',
-					href: '#page_arrange'
+					href: '#page_summary'
 				}
 			}
 

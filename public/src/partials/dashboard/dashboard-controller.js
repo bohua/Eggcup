@@ -7,8 +7,7 @@ angular.module('dashboard', [
 	'employee-resource',
 	'task-resource',
 	'task-status-service',
-	'customer-list-service',
-	'task-editor'
+	'customer-list-service'
 ]).config(['$routeProvider', function ($routeProvider) {
 	$routeProvider.
 		when('/', {

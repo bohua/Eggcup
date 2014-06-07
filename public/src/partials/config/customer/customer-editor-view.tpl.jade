@@ -1,78 +1,164 @@
-//Created by Bohua on 2014-04-28.
-div#customer-editor-form.grid.view-form-sheet(ng-controller="customerEditorController")
-	fieldset(keyboard-support)
-		span.item-title 公司信息
-		comment.text-muted.margin15 Company Information
-		div.expandable-section
-			div.row
-				div.span3
-					label 名称
-					div.input-control.text
-						input.auto-focus(type="text", placeholder="公司名称", ng-model="dialog_data_model.name", required)
-						//button.btn-clear
-				div.span7
-					label 地址
-					div.input-control.text
-						input(type="text", placeholder="公司地址", ng-model="dialog_data_model.address")
-						//button.btn-clear
-			div.row
-				div.span2
-					label 联系人
-					div.input-control.text
-						input(type="text", placeholder="联系人", ng-model="dialog_data_model.contact")
-						//button.btn-clear
-				div.span2
-					label 电话
-					div.input-control.text
-						input(type="text", placeholder="电话", ng-model="dialog_data_model.tel")
-						//button.btn-clear
-				div.span2
-					label 传真
-					div.input-control.text
-						input(type="text", placeholder="传真", ng-model="dialog_data_model.fax")
-						//button.btn-clear
-				div.span4
-					label 邮箱
-					div.input-control.text
-						input(type="text", placeholder="公司邮箱", ng-model="dialog_data_model.email")
-						//button.btn-clear
-			div.row
-				div.span10
-					label 备注
-					div.input-control.text
-						input(type="text", placeholder="备注", ng-model="dialog_data_model.description")
-						//button.btn-clear
+#customer-editor-form.modal-dialog.modal-lg
+	div.modal-content.grid
+		div.modal-header
+			button.close(type="button", data-dismiss="modal") &times;
+			h4.modal-title 详细信息 &nbsp;
+				small Details
+		div.modal-body.row
+			div.col-sm-6
+				div.form-horizontal
+					h4 公司信息 &nbsp;
+						small Company Information
+					hr
 
-		span.item-title 业务配置
-		comment.text-muted.margin15 Business Configuration
-		div.expandable-section
-			div.row
-				div.span3
-					label 担单人员
-					div.input-control.select
-						select(ng-model="dialog_data_model.presenter")
-							option(selected="selected")
-							option(ng-repeat="employee in employee_list", value="{{employee.id}}") {{employee.name}}
-				div.span4
-					label 业务捆绑
-					div.input-control.checkbox
-						label
-							input(type="checkbox", ng-model="dialog_data_model.privateFlag")
-							span.check
-							span 绑定业务后, 公司信息只限担单本人使用
-				div.span3
-					label 会员折扣
-					div.input-control.text
-						input(type="text", placeholder="会员折扣", ng-model="dialog_data_model.membership")
-						//button.btn-clear
+					div.form-group
+						label.col-sm-3.control-label 名称:
+						div.col-sm-9
+							input.form-control(type="text", placeholder="公司名称", ng-model="dialog_data_model.name", required)
 
-		div.dialog-contol-panel
-			div.place-left
-				button.button.danger(ng-click="delete()", ng-if="prop.mode=='edit'") 删除
+					div.form-group
+						label.col-sm-3.control-label 地址:
+						div.col-sm-9
+							input.form-control(type="text", placeholder="公司地址", ng-model="dialog_data_model.address")
 
-			div.form-actions
-				button.button.primary(ng-click="Confirm('update', true)") 保存
-				button.button(type="button", ng-click="Cancel()") 取消
+					div.form-group
+						label.col-sm-3.control-label 联系人:
+						div.col-sm-9
+							input.form-control(type="text", placeholder="联系人", ng-model="dialog_data_model.contact")
 
-			div.place-right(ng-show="prop.showErrorMessage")
-				span.fg-red.margin20.bg-grayLighter 单据填写有误，请修正红色标记
+					div.form-group
+						label.col-sm-3.control-label 电话:
+						div.col-sm-9
+							input.form-control(type="text", placeholder="公司地址", ng-model="dialog_data_model.tel")
+
+					div.form-group
+						label.col-sm-3.control-label 传真:
+						div.col-sm-9
+							input.form-control(type="text", placeholder="传真", ng-model="dialog_data_model.fax")
+
+					div.form-group
+						label.col-sm-3.control-label 邮箱:
+						div.col-sm-9
+							input.form-control(type="text", placeholder="公司邮箱", ng-model="dialog_data_model.email")
+
+					div.form-group
+						label.col-sm-3.control-label 备注:
+						div.col-sm-9
+							textarea.form-control(rows="3", placeholder="备注", ng-model="dialog_data_model.description")
+
+			div.col-sm-6
+				div.form-horizontal
+					h4 业务配置 &nbsp;
+						small Business Configuration
+					hr
+
+					div.form-group
+						label.col-sm-3.control-label 担当人:
+						div.col-sm-9
+							select.form-control
+								option(selected="selected")
+								option(ng-repeat="employee in employee_list", value="{{employee.id}}") {{employee.name}}
+
+					div.form-group
+						div.col-sm-9.col-sm-offset-3
+							div.checkbox
+								label
+									input(type="checkbox")
+									span 业务捆绑
+
+					div.form-group
+						label.col-sm-3.control-label 会员折扣:
+						div.col-sm-9
+							div.input-group
+								input.form-control(type="text", placeholder="会员折扣")
+								span.input-group-addon %
+
+		div.modal-footer
+			div.pull-left
+				button.btn.btn-danger(ng-click="delete()", ng-if="prop.mode=='edit'") 删除
+
+			div.pull-left.alert-danger.panel(ng-show="prop.showErrorMessage")
+				i.fa.fa-fw.fa-warning
+				span 单据填写有误，请修正红色标记
+
+			button.btn.btn-default(type="button", ng-click="Cancel()") 取消
+			button.btn.btn-primary(type="button", ng-click="Confirm('update', true)") 保存
+
+
+	//div#customer-editor-form.grid.view-form-sheet(ng-controller="customerEditorController")
+		fieldset(keyboard-support)
+			span.item-title 公司信息
+			comment.text-muted.margin15 Company Information
+			div.expandable-section
+				div.row
+					div.span3
+						label 名称
+						div.input-control.text
+							input.auto-focus(type="text", placeholder="公司名称", ng-model="dialog_data_model.name", required)
+							//button.btn-clear
+					div.span7
+						label 地址
+						div.input-control.text
+							input(type="text", placeholder="公司地址", ng-model="dialog_data_model.address")
+							//button.btn-clear
+				div.row
+					div.span2
+						label 联系人
+						div.input-control.text
+							input(type="text", placeholder="联系人", ng-model="dialog_data_model.contact")
+							//button.btn-clear
+					div.span2
+						label 电话
+						div.input-control.text
+							input(type="text", placeholder="电话", ng-model="dialog_data_model.tel")
+							//button.btn-clear
+					div.span2
+						label 传真
+						div.input-control.text
+							input(type="text", placeholder="传真", ng-model="dialog_data_model.fax")
+							//button.btn-clear
+					div.span4
+						label 邮箱
+						div.input-control.text
+							input(type="text", placeholder="公司邮箱", ng-model="dialog_data_model.email")
+							//button.btn-clear
+				div.row
+					div.span10
+						label 备注
+						div.input-control.text
+							input(type="text", placeholder="备注", ng-model="dialog_data_model.description")
+							//button.btn-clear
+
+			span.item-title 业务配置
+			comment.text-muted.margin15 Business Configuration
+			div.expandable-section
+				div.row
+					div.span3
+						label 担单人员
+						div.input-control.select
+							select(ng-model="dialog_data_model.presenter")
+								option(selected="selected")
+								option(ng-repeat="employee in employee_list", value="{{employee.id}}") {{employee.name}}
+					div.span4
+						label 业务捆绑
+						div.input-control.checkbox
+							label
+								input(type="checkbox", ng-model="dialog_data_model.privateFlag")
+								span.check
+								span 绑定业务后, 公司信息只限担单本人使用
+					div.span3
+						label 会员折扣
+						div.input-control.text
+							input(type="text", placeholder="会员折扣", ng-model="dialog_data_model.membership")
+							//button.btn-clear
+
+			div.dialog-contol-panel
+				div.place-left
+					button.button.danger(ng-click="delete()", ng-if="prop.mode=='edit'") 删除
+
+				div.form-actions
+					button.button.primary(ng-click="Confirm('update', true)") 保存
+					button.button(type="button", ng-click="Cancel()") 取消
+
+				div.place-right(ng-show="prop.showErrorMessage")
+					span.fg-red.margin20.bg-grayLighter 单据填写有误，请修正红色标记

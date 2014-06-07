@@ -11,7 +11,7 @@ div#dashboard.container-fluid
 						div.list-group
 							a.list-group-item.cursor-pointer(ng-repeat="task in task_group.task_list track by $index", ng-click="detail($event, task)")
 								h4.list-group-item-heading TK - {{task.id}}
-									div.label.label-primary.pull-right
+									div.jf-label.label.label-primary.pull-right
 										i.fa.fa-fw(class="{{translateStatus(task.status).icon}}")
 										span {{translateStatus(task.status).status}}
 								p.list-group-item-text {{translateCustomer(task.customer_name)}}

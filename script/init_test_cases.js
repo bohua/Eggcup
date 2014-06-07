@@ -36,7 +36,7 @@ var task_json = {
 	id: 1005,
 	slogan: '平三藩',
 	description: '朝廷咨询案例，测试用例',
-	status: 450,
+	status: 700,
 	report_date: '2014-05-01',
 	reporter: '李小帅',
 	assignee: '苏小美, 喵小宝',

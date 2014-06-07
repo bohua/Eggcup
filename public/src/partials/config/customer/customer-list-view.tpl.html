@@ -1,40 +1,4 @@
-
-<!--Created by Bli on 2014/4/28.-->
-<div class="view-header"><i ng-click="getBack()" class="icon-arrow-left-3 view-header-icon"></i><span class="subheader">客户信息</span>
-  <comment class="text-muted margin20">Customer Information</comment>
-  <div class="place-right">
-    <button popup-dialog="popup-dialog" dialog-config="customerEditorConfig" ng-click="newCustomer($event, {})" on-confirm="confirmEmitted(action, data)"><i class="icon-new"></i><span>新建</span></button>
-  </div>
-  <div class="view-header-control-search-box place-right margin5">
-    <div class="input-control text">
-      <input type="text" placeholder="查找客户" ng-model="searchText"/>
-      <button tabindex="-1" class="btn-search"></button>
-    </div>
-  </div>
-</div>
-<div id="customer-list" class="grid view-form-sheet">
-  <table class="table bordered hovered">
-    <thead>
-      <tr>
-        <th ng-repeat="header in headers track by $index" nowrap="nowrap" class="text-center">
-          <t>{{header}}</t>
-        </th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr ng-repeat="row in customer_list | filter:searchText" popup-dialog="popup-dialog" dialog-config="customerEditorConfig" ng-click="detail($event, row)" on-confirm="confirmEmitted(action, data)" class="cursor-pointer">
-        <td>{{row.name}}</td>
-        <td>{{row.presenter}}</td>
-        <td>{{row.address}}</td>
-        <td>{{row.tel}}</td>
-        <td>{{row.contact}}</td>
-        <!--td.record-control-button-set
-        button.hint--bottom(data-hint="详细", ng-click="detail($event, $index)")
-         a: i.icon-clipboard-2.fg-darkBlue
-        button.hint--bottom(data-hint="删除", ng-click="remove($event, $index)")
-         a: i.icon-cancel-2.fg-darkRed
-        -->
-      </tr>
-    </tbody>
-  </table>
-</div>
+<!--Created by Bli on 2014/4/28.--><div id="customer-list-view"><div class="page-header"><h2><i class="fa fa-edit fa-fw">&nbsp;</i><span>客户信息 &nbsp;</span><small>Customers</small><button popup-dialog="popup-dialog" dialog-config="customerEditorConfig" ng-click="newCustomer($event)" class="btn btn-default pull-right"><i class="fa fa-edit fa-fw">&nbsp;</i><span>新建</span></button><div class="pull-right col-md-3 col-lg-3 col-sm-3"><div class="input-group"><input type="text" placeholder="查找客户" ng-model="searchText" class="form-control"/><span class="input-group-btn"><button class="btn btn-default"><i class="fa fa-search"></i></button></span></div></div></h2></div><div class="page-content"><div class="panel panel-default"><div class="panel-heading cursor-pointer"><h4 data-toggle="collapse" href="#reply-attachment-panel" class="no-margin">客户列表 &nbsp;<small>Customer List</small></h4></div><div id="reply-attachment-panel" class="panel-collapse collapse in table-responsive"><table class="table table-hover table-bordered"><thead><tr><th ng-repeat="header in headers track by $index" nowrap="nowrap" class="text-center"><t>{{header}}</t></th></tr></thead><tbody><tr ng-repeat="row in customer_list | filter:searchText" popup-dialog="popup-dialog" dialog-config="customerEditorConfig" ng-click="detail($event, row)" on-confirm="confirmEmitted(action, data)" class="cursor-pointer"><td>{{row.name}}</td><td>{{row.presenter}}</td><td>{{row.address}}</td><td>{{row.tel}}</td><td>{{row.contact}}</td></tr></tbody><!--td.record-control-button-setbutton.hint--bottom(data-hint="详细", ng-click="detail($event, $index)")
+ a: i.icon-clipboard-2.fg-darkBlue
+button.hint--bottom(data-hint="删除", ng-click="remove($event, $index)")
+ a: i.icon-cancel-2.fg-darkRed--></table></div></div></div></div>

@@ -18,7 +18,7 @@ div.navbar.navbar-default.task-header
 						i.fa.fa-bookmark-o.fa-fw &nbsp;
 						span.cursor-pointer 单据
 						b.caret
-					ul.dropdown-menu(du-scroll-container="task-editor-form")
+					ul.dropdown-menu(du-scroll-container="task-content")
 						li(ng-repeat="p in progressList", ng-if="getProgressState(p.code) != 'disabled'")
 							a(href="{{p.href}}", du-smooth-scroll, offset="30", ng-click="closeToggle()")
 								icon.fa.fa-fw(class="{{p.icon}}")
@@ -53,7 +53,7 @@ div.navbar.navbar-default.task-header
 
 #task-editor-form.container-fluid
 	div.row
-		nav#task-side-nav.col-md-2.col-sm-3.col-lg-2.hidden-xs(du-scroll-container="task-editor-form")
+		nav#task-side-nav.col-md-2.col-sm-3.col-lg-2.hidden-xs(du-scroll-container="task-content")
 			ul.nav.nav-list.affix
 				li(ng-repeat="p in progressList")
 					a(ng-if="getProgressState(p.code) != 'disabled'", class="{{getProgressState(p.code)}}", href="{{p.href}}", du-smooth-scroll, du-scrollspy, offset="30")
@@ -95,22 +95,14 @@ div.navbar.navbar-default.task-header
 				include 8-summary-section/summary-section.tpl.jade
 
 
-	#task-footer.flex-container
-		div
-			h5 Copyright &copy;1995-2014 PRESTIGE LTD SHANGHAI
-			h5 版权所有 &copy;1995-2014 中国上海久富科技有限公司
-		div.text-center
-			h3
-				i.fa.fa-paper-plane.fa-fw &nbsp;
-				span CBMS
-			span Consulting Business Management System
-		div
-			h5
-				a.cursor-pointer 相关产品展示
-			h5 联系方式
-				a.cursor-pointer.margin10.h-only
-					i.fa.fa-qq.fa-fw &nbsp;
-					span 1234567890
-				a.cursor-pointer.margin10.h-only
-					i.fa.fa-weibo.fa-fw &nbsp;
-					span fantasybohua
+			#task-footer
+				div.text-center
+					h3
+						i.fa.fa-paper-plane.fa-fw &nbsp;
+						span CBMS
+					span Consulting Business Management System
+
+				//div.pull-right.company-copy-right
+					h5 Copyright &copy;1995-2014 PRESTIGE LTD SHANGHAI
+					h5 版权所有 &copy;1995-2014 中国上海久富科技有限公司
+

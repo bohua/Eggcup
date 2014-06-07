@@ -13,25 +13,38 @@ div.navbar.navbar-inverse.navbar-fixed-top( role="navigation")
 
 		#topbar-collapse.collapse.navbar-collapse.row
 			ul.nav.navbar-nav.navbar-left
-				li.dropdown.active
+				li#nav-block-dashboard.dropdown
 					a.dropdown-toggle.cursor-pointer(data-toggle="dropdown")
 						i.fa.fa-tasks.fa-fw &nbsp;
-						span.cursor-pointer 我的任务
+						span.cursor-pointer 任务板
 						b.caret
 					ul.dropdown-menu
 						li: a(href="#")
 							i.fa.fa-bar-chart-o.fa-fw &nbsp;
-							span 任务板
+							span 我的任务
 						li: a(href="#")
 							i.fa.fa-filter.fa-fw &nbsp;
-							span 显示控制条
-				li.dropdown
+							span 设置
+				li#nav-block-task.dropdown
 					a.dropdown-toggle.cursor-pointer(data-toggle="dropdown")
 						i.fa.fa-history.fa-fw &nbsp;
-						span.cursor-pointer 最近打开
+						span.cursor-pointer 任务
 						b.caret
 					ul.dropdown-menu
 						li: a 无
+				li#nav-block-config.dropdown
+					a.dropdown-toggle.cursor-pointer(data-toggle="dropdown")
+						i.fa.fa-cogs.fa-fw &nbsp;
+						span.cursor-pointer 信息库
+						b.caret
+					ul.dropdown-menu
+						li: a(href="#/config/customer")
+							i.fa.fa-briefcase.fa-fw &nbsp;
+							span 客户信息
+						li: a(href="#/config/employee")
+							i.fa.fa-users.fa-fw &nbsp;
+							span 人员信息
+
 				li.dropdown
 					a.dropdown-toggle.cursor-pointer(data-toggle="dropdown")
 						i.fa.fa-user.fa-fw &nbsp;

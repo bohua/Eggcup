@@ -4,28 +4,23 @@
 angular.module('customer-list', [
 	'ngRoute',
 	'customer-resource',
-	'employee-resource',
+	'tag-reference-service',
+	'customer-list-service',
+	'employee-list-service',
 	'customer-editor'
 ]).config(['$routeProvider', function ($routeProvider) {
 	$routeProvider.
 		when('/config/customer', {
 			templateUrl: '/src/partials/config/customer/customer-list-view.tpl.html',
-			controller: 'customerListController',
-			resolve: {
-				customers: function (CUSTOMER) {
-					return CUSTOMER.query().$promise;
-				},
-				employees: function (EMPLOYEE) {
-					return EMPLOYEE.query().$promise;
-				}
-			}
+			controller: 'customerListController'
 		});
 }]).controller('customerListController', [
 	'$scope',
 	'CUSTOMER',
-	'customers',
-	'employees',
-	function ($scope, CUSTOMER, customers, employees) {
+	'tagReferenceService',
+	'customerListService',
+	'employeeListService',
+	function ($scope, CUSTOMER, tagReferenceService, customerListService, employeeListService) {
 		/**
 		 * Scope initializations
 		 */
@@ -37,34 +32,21 @@ angular.module('customer-list', [
 			'联系人'
 		];
 
-		$scope.customer_list = customers;
-		$scope.employee_list = employees;
+		$scope.customer_list = customerListService.getCustomerList();
+		$scope.employee_list = employeeListService.getEmployeeList();
 
 		/**
 		 * popup window configuration
 		 */
 		$scope.customerEditorConfig = {
 			dialogOption: {
-				overlay: true,
-				shadow: true,
-				flat: true,
-				icon: '<i class="icon-briefcase"></i>',
-				title: '详细信息',
-				padding: 10,
-				width: '80%',
-				height: '500px',
-				overlayClickClose: false
+				backdrop: 'static'
 			},
 
 			template: '/src/partials/config/customer/customer-editor-view.tpl.html',
 
 			onShow: function (_dialogWin) {
-				$.Metro.initInputs();
-				_dialogWin.find('.auto-focus').focus();
-			},
 
-			api: {
-				getEmployeeList: getEmployeeList
 			}
 		};
 
@@ -72,15 +54,15 @@ angular.module('customer-list', [
 		 * Closure functions
 		 */
 		function saveCustomer(model) {
-			 var customer = new CUSTOMER(model);
-			 customer.$save(function(){
-				 $scope.customer_list = CUSTOMER.query();
-			 });
+			var customer = new CUSTOMER(model);
+			customer.$save(function () {
+				$scope.customer_list = CUSTOMER.query();
+			});
 
 		}
 
 		function deleteCustomer(id) {
-			CUSTOMER.delete(id, function(){
+			CUSTOMER.delete(id, function () {
 				$scope.customer_list = CUSTOMER.query();
 			});
 		}
@@ -98,6 +80,7 @@ angular.module('customer-list', [
 
 		$scope.newCustomer = function ($event) {
 			$($event.currentTarget).trigger('popup', ['add']);
+
 		};
 
 		/**
@@ -117,4 +100,11 @@ angular.module('customer-list', [
 				}
 			}
 		}
+
+
+
+
+		$scope.showModal = function(){
+			$('#customer-editor-form').modal();
+		};
 	}]);

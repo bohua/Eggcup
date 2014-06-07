@@ -6,11 +6,12 @@ angular.module('app', [
 	'task-status-service',
 	'customer-list-service',
 	'employee-list-service',
+	'top-bar-service',
 	'platform',
-	'zxdj-view',
 	'customer-list',
 	'employee-list',
 	'dashboard',
+	'task-editor',
 	'duScroll'
 ]).controller('appController', [
 	'$scope',
@@ -21,7 +22,8 @@ angular.module('app', [
 	'taskStatusService',
 	'customerListService',
 	'employeeListService',
-	function ($scope, $rootScope, $timeout, $location, tagReferenceService, taskStatusService, customerListService, employeeListService) {
+	'topBarService',
+	function ($scope, $rootScope, $timeout, $location, tagReferenceService, taskStatusService, customerListService, employeeListService, topBarService) {
 
 		/*
 		 if ($location.path() !== '/') {
@@ -29,8 +31,9 @@ angular.module('app', [
 		 }
 		 */
 
+		//var path
 		$scope.$on('$routeChangeSuccess', function () {
-			$rootScope.$broadcast('toggleLeftMenu', false);
+			topBarService.trackNavBlock($location.path());
 		});
 
 		/**

@@ -11,13 +11,18 @@ angular.module('popup-dialog', [])
 				emitCancel : '&onCancel'
 			},
 			link: function ($scope, $element, $attributes) {
-				var _onDialogShow = $scope.dialogConfig.onShow,
+				var modalContainter = $('#modal-stage'),
+					_onDialogShow = $scope.dialogConfig.onShow,
 					template = $scope.dialogConfig.template,
 					popupDialog;
 
 				var _onValidateForm = $scope.dialogConfig.onValidateForm || function(){
 						return popupDialog.find('.ng-invalid').length === 0;
 					};
+
+				function close(){
+					modalContainter.modal('hide');
+				};
 
 				if (template) {
 					$('<div></div>').load(template, function (response, status, xhr) {
@@ -29,7 +34,6 @@ angular.module('popup-dialog', [])
 							//Initialization of Dialog
 							$scope.prop = {};
 							$scope.prop.showErrorMessage = false;
-							$scope.prop._parentApi = $scope.dialogConfig.api;
 							$scope.prop.mode = mode;
 
 							if(dataModel){
@@ -38,11 +42,11 @@ angular.module('popup-dialog', [])
 								$scope.dialog_data_model = {};
 							}
 
-							$.extend(true, $scope.dialogConfig.dialogOption, {
-								content: $compile(response)($scope),
-								onShow: _onDialogShow
-							});
-							popupDialog = $.Dialog($scope.dialogConfig.dialogOption);
+							modalContainter.find('.modal-dialog').replaceWith($compile(response)($scope));
+
+							_onDialogShow();
+
+							popupDialog = modalContainter.modal($scope.dialogConfig.dialogOption);
 						});
 					});
 				}
@@ -57,12 +61,13 @@ angular.module('popup-dialog', [])
 						}
 					}
 
-					$.Dialog.close();
+					close();
+
 					$scope.emitConfirm({action: action, data: $scope.dialog_data_model});
 				};
 
 				$scope.Cancel = function(){
-					$.Dialog.close();
+					close();
 					$scope.emitCancel();
 				};
 			}

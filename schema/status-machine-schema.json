@@ -118,7 +118,7 @@
 	},
 	"summary": {
 		"code": 700,
-		"status": "汇总报告中",
+		"status": "汇总中",
 		"icon": "fa-suitcase",
 		"precedence": [
 			{
@@ -130,6 +130,6 @@
 	},
 	"closed": {
 		"code": 800,
-		"status": "结案"
+		"status": "已结案"
 	}
 }
