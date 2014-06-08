@@ -51,15 +51,20 @@ angular.module('employee-list', [
 		 */
 		function saveEmployee(model) {
 			var employee = new EMPLOYEE(model);
-			employee.$save(function(){
-				 $scope.employee_list = EMPLOYEE.query();
-			 });
-
+			employee.$save(function () {
+				employeeListService.reload().then(function(employeeList){
+					$scope.employee_list = employeeList;
+				});
+			});
 		}
+
+
 
 		function deleteEmployee(id) {
 			EMPLOYEE.delete(id, function(){
-				$scope.employee_list = EMPLOYEE.query();
+				employeeListService.reload().then(function(employeeList){
+					$scope.employee_list = employeeList;
+				});
 			});
 		}
 

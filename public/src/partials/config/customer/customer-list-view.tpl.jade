@@ -6,7 +6,11 @@
 			span 客户信息 &nbsp;
 			small.hidden-xs.hidden-xs Customers
 
-			button.btn.btn-default.pull-right(popup-dialog, dialog-config="customerEditorConfig",ng-click="newCustomer($event)")
+			button.btn.btn-default.pull-right(
+			popup-dialog,
+			dialog-config="customerEditorConfig",
+			ng-click="newCustomer($event)",
+			on-confirm="confirmEmitted(action, data)")
 				i.fa.fa-edit.fa-fw &nbsp;
 				span 新建
 

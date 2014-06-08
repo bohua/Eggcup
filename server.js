@@ -57,6 +57,9 @@ app.delete('/customer', basics.delCustomer);
 app.get('/employee', basics.getEmployeeList);
 app.get('/employee/:employee_id', basics.getEmployee);
 app.post('/employee/:employee_id', basics.setEmployee);
+app.post('/employee', basics.setEmployee);
+app.delete('/employee', basics.delEmployee);
+
 /**
  * Tag Resource requests
  */

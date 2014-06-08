@@ -2,11 +2,13 @@
  * Created by bli on 2014/5/8.
  */
 angular.module('customer-list-service', ['customer-resource'])
-	.factory('customerListService', ['CUSTOMER', function (CUSTOMER) {
+	.factory('customerListService', ['CUSTOMER', '$q', function (CUSTOMER, $q) {
 		var customerList;
 		var Service = {
 			init: function () {
-				customerList = CUSTOMER.query();
+				CUSTOMER.query(function(list){
+					customerList = list;
+				});
 			},
 
 			getCustomerList: function () {
@@ -20,6 +22,17 @@ angular.module('customer-list-service', ['customer-resource'])
 				} else {
 					return found[0].name;
 				}
+			},
+
+			reload: function(){
+				var deferred = $q.defer();
+
+				CUSTOMER.query().$promise.then(function(list){
+					customerList = list;
+					deferred.resolve(customerList);
+				});
+
+				return deferred.promise;
 			}
 		};
 

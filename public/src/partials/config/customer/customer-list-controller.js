@@ -6,7 +6,6 @@ angular.module('customer-list', [
 	'customer-resource',
 	'tag-reference-service',
 	'customer-list-service',
-	'employee-list-service',
 	'customer-editor'
 ]).config(['$routeProvider', function ($routeProvider) {
 	$routeProvider.
@@ -19,8 +18,7 @@ angular.module('customer-list', [
 	'CUSTOMER',
 	'tagReferenceService',
 	'customerListService',
-	'employeeListService',
-	function ($scope, CUSTOMER, tagReferenceService, customerListService, employeeListService) {
+	function ($scope, CUSTOMER, tagReferenceService, customerListService) {
 		/**
 		 * Scope initializations
 		 */
@@ -33,7 +31,6 @@ angular.module('customer-list', [
 		];
 
 		$scope.customer_list = customerListService.getCustomerList();
-		//$scope.employee_list = employeeListService.getEmployeeList();
 
 		/**
 		 * popup window configuration
@@ -56,14 +53,17 @@ angular.module('customer-list', [
 		function saveCustomer(model) {
 			var customer = new CUSTOMER(model);
 			customer.$save(function () {
-				$scope.customer_list = CUSTOMER.query();
+				customerListService.reload().then(function(customerList){
+					$scope.customer_list = customerList;
+				});
 			});
-
 		}
 
 		function deleteCustomer(id) {
 			CUSTOMER.delete(id, function () {
-				$scope.customer_list = CUSTOMER.query();
+				customerListService.reload().then(function(customerList){
+					$scope.customer_list = customerList;
+				});
 			});
 		}
 

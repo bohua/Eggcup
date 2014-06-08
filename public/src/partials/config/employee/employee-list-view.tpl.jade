@@ -6,7 +6,11 @@
 			span 人员信息 &nbsp;
 			small.hidden-xs Employees
 
-			button.btn.btn-default.pull-right(popup-dialog, dialog-config="employeeEditorConfig",ng-click="newEmployee($event)")
+			button.btn.btn-default.pull-right(
+			popup-dialog,
+			dialog-config="employeeEditorConfig",
+			ng-click="newEmployee($event)",
+			on-confirm="confirmEmitted(action, data)")
 				i.fa.fa-edit.fa-fw &nbsp;
 				span 新建
 

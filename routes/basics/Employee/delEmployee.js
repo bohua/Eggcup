@@ -1,7 +1,7 @@
 /**
  * Created by Bohua on 2014-04-29.
  */
-var bo = require(__dirname + '/../../../server/basics/customer_bo');
+var bo = require(__dirname + '/../../../server/basics/employee_bo');
 
 module.exports = function (req, res) {
 	var id = req.query.id;
@@ -15,7 +15,7 @@ module.exports = function (req, res) {
 			res.statusCode = 400;
 			res.json({
 				code: 'ERR_DB_SAVE_CUSTOMER_FAILURE',
-				reason: '删除客户信息时数据库出错'
+				reason: '删除人员信息时数据库出错'
 			});
 		}
 	);
