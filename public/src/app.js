@@ -6,7 +6,6 @@ angular.module('app', [
 	'task-status-service',
 	'customer-list-service',
 	'employee-list-service',
-	'top-bar-service',
 	'platform',
 	'customer-list',
 	'employee-list',
@@ -22,7 +21,6 @@ angular.module('app', [
 	'taskStatusService',
 	'customerListService',
 	'employeeListService',
-	'topBarService',
 	function ($scope, $rootScope, $timeout, $location, tagReferenceService, taskStatusService, customerListService, employeeListService, topBarService) {
 
 		/*
@@ -31,10 +29,12 @@ angular.module('app', [
 		 }
 		 */
 
+		/*
 		//var path
 		$scope.$on('$routeChangeSuccess', function () {
 			topBarService.trackNavBlock($location.path());
 		});
+		*/
 
 		/**
 		 * Initialize global services

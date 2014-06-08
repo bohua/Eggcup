@@ -6,6 +6,7 @@ angular.module('platform',
 		/*'preload-mask', */
 		'left-menu-pop',
 		/*'router-guide',*/
+		'top-bar',
 		'popup-dialog',
 		'date-picker-helper'
 	]).config(function ($routeProvider) {
