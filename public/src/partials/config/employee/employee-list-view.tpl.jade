@@ -1,39 +1,43 @@
 //Created by Bli on 2014/4/28.
-div.view-header
-	i.icon-arrow-left-3.view-header-icon(ng-click="getBack()")
-	span.subheader 员工信息
-	comment.text-muted.margin20 Employee Information
-	div.place-right
-		button.hint--bottom(
-		popup-dialog,
-		dialog-config="employeeEditorConfig",
-		ng-click="new($event, {})",
-		on-confirm="confirmEmitted(action, data)"
-		)
-			i.icon-new
-			span 新建
-	div.view-header-control-search-box.place-right.margin5
-			div.input-control.text
-				input(type="text", placeholder="查找员工", ng-model="searchText")
-				button.btn-search(tabindex="-1")
+#employee-list-view
+	div.page-header
+		h2
+			i.fa.fa-edit.fa-fw &nbsp;
+			span 人员信息 &nbsp;
+			small Employees
 
+			button.btn.btn-default.pull-right(popup-dialog, dialog-config="employeeEditorConfig",ng-click="newEmployee($event)")
+				i.fa.fa-edit.fa-fw &nbsp;
+				span 新建
 
-div#customer-list.grid.view-form-sheet
-	table.table.bordered.hovered
-		thead
-			tr
-				th.text-center(ng-repeat="header in headers track by $index", nowrap)
-					t {{header}}
-		tbody
-			tr.cursor-pointer(
-			ng-repeat="row in employee_list | filter:searchText",
-			popup-dialog,
-			dialog-config="employeeEditorConfig",
-			ng-click="detail($event, row)",
-			on-confirm="confirmEmitted(action, data)"
-			)
-				td {{row.name}}
-				td {{row.role}}
-				td {{row.tel}}
-				td {{row.mobile}}
-				td {{row.email}}
+			div.pull-right.col-md-3.col-lg-3.col-sm-3
+				div.input-group
+					input.form-control(type="text", placeholder="查找人员", ng-model="searchText")
+					span.input-group-btn
+						button.btn.btn-default
+							i.fa.fa-search
+
+	div.page-content
+		div.panel.panel-default
+			div.panel-heading.cursor-pointer
+				h4.no-margin(data-toggle="collapse", href="#employee-list-panel") 人员列表 &nbsp;
+					small Employee List
+			#employee-list-panel.panel-collapse.collapse.in.table-responsive
+				table.table.bordered.hovered
+					thead
+						tr
+							th.text-center(ng-repeat="header in headers track by $index", nowrap)
+								t {{header}}
+					tbody
+						tr.cursor-pointer(
+						ng-repeat="row in employee_list | filter:searchText",
+						popup-dialog,
+						dialog-config="employeeEditorConfig",
+						ng-click="detail($event, row)",
+						on-confirm="confirmEmitted(action, data)"
+						)
+							td {{row.name}}
+							td {{row.role}}
+							td {{row.tel}}
+							td {{row.mobile}}
+							td {{row.email}}

@@ -4,23 +4,23 @@
 angular.module('employee-list', [
 	'ngRoute',
 	'employee-resource',
-	'employee-editor'
+	'employee-editor',
+	'tag-reference-service',
+	'customer-list-service',
+	'employee-list-service',
 ]).config(['$routeProvider', function ($routeProvider) {
 	$routeProvider.
 		when('/config/employee', {
 			templateUrl: '/src/partials/config/employee/employee-list-view.tpl.html',
 			controller: 'employeeListController',
-			resolve: {
-				employees: function (EMPLOYEE) {
-					return EMPLOYEE.query().$promise;
-				}
-			}
 		});
 }]).controller('employeeListController', [
 	'$scope',
 	'EMPLOYEE',
-	'employees',
-	function ($scope, EMPLOYEE, employees) {
+	'tagReferenceService',
+	'customerListService',
+	'employeeListService',
+	function ($scope, EMPLOYEE) {
 		/**
 		 * Scope initializations
 		 */
@@ -32,7 +32,7 @@ angular.module('employee-list', [
 			'邮箱'
 		];
 
-		$scope.employee_list = employees;
+		$scope.employee_list = employeeListService.getEmployeeList();
 
 		$scope.employeeEditorConfig = {
 			dialogOption: {

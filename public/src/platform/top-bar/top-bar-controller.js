@@ -11,7 +11,8 @@ angular.module('top-bar', [])
 				'/': '#nav-block-dashboard',
 				'/dashboard': '#nav-block-dashboard',
 				'/task-editor': '#nav-block-task',
-				'/config/customer': '#nav-block-config'
+				'/config/customer': '#nav-block-config',
+				'/config/employee': '#nav-block-config'
 				};
 
 			function trackNavBlock (route) {
