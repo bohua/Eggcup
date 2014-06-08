@@ -12,7 +12,7 @@ angular.module('employee-list', [
 	$routeProvider.
 		when('/config/employee', {
 			templateUrl: '/src/partials/config/employee/employee-list-view.tpl.html',
-			controller: 'employeeListController',
+			controller: 'employeeListController'
 		});
 }]).controller('employeeListController', [
 	'$scope',
@@ -20,7 +20,7 @@ angular.module('employee-list', [
 	'tagReferenceService',
 	'customerListService',
 	'employeeListService',
-	function ($scope, EMPLOYEE) {
+	function ($scope, EMPLOYEE, tagReferenceService, customerListService, employeeListService) {
 		/**
 		 * Scope initializations
 		 */
