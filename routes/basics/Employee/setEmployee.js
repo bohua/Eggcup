@@ -8,6 +8,20 @@ module.exports = function (req, res) {
 	var id = req.body.id;
 	var model = req.body;
 
+	bo.save(model).then(
+		function (success) {
+			res.statusCode = 200;
+			res.json(success);
+		},
+		function (failure) {
+			res.statusCode = 400;
+			res.json({
+				code: 'ERR_DB_SAVE_EMPLOYEE_FAILURE',
+				reason: '更新员工信息时数据库出错'
+			});
+		}
+	);
+	/*
 	tag_bo.PersistTagList(model.tags)
 		.then(function(persistedTags){
 			model.tags = persistedTags;
@@ -51,6 +65,6 @@ module.exports = function (req, res) {
 				);
 			}
 		});
-
+*/
 
 }

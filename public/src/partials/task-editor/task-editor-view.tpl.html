@@ -4,7 +4,7 @@
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" data-toggle="collapse" data-target="#task-control-collapse" class="navbar-toggle"><span class="sr-only"></span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
-    </div><span class="navbar-left task-topic">任务: TK-{{task_model.id}}<small>&nbsp;{{task_model.slogan}}</small></span>
+    </div><span class="navbar-left task-topic">任务: TK-{{task_model.id}}<small class="hidden-xs">&nbsp;{{task_model.slogan}}</small></span>
     <div id="task-control-collapse" class="collapse navbar-collapse row">
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown"><a data-toggle="dropdown" class="dropdown-toggle cursor-pointer"><i class="fa fa-bookmark-o fa-fw">&nbsp;</i><span class="cursor-pointer">单据</span><b class="caret"></b></a>
@@ -48,7 +48,7 @@
       <section id="page_register" ng-if="getProgressState(100) != 'disabled'">
         <!--Created by Bohua on 2014-05-29.-->
         <div class="page-header">
-          <h2><i class="fa fa-edit fa-fw">&nbsp;</i><span>登记 &nbsp;</span><small>Register</small>
+          <h2><i class="fa fa-edit fa-fw">&nbsp;</i><span>登记 &nbsp;</span><small class="hidden-xs">Register</small>
             <div class="btn-group pull-right">
               <button class="btn btn-default"><i class="fa fa-edit fa-fw">&nbsp;</i><span>修改</span></button>
             </div>
@@ -57,7 +57,7 @@
         <div id="register-panel-group" class="panel-group">
           <div class="panel panel-default">
             <div class="panel-heading cursor-pointer">
-              <h4 data-toggle="collapse" href="#register-task-info-panel" class="no-margin">任务信息 &nbsp;<small>Task Information</small></h4>
+              <h4 data-toggle="collapse" href="#register-task-info-panel" class="no-margin">任务信息 &nbsp;<small class="hidden-xs">Task Information</small></h4>
             </div>
             <div id="register-task-info-panel" class="panel-collapse collapse in">
               <div class="flex-container panel-body">
@@ -85,7 +85,7 @@
           </div>
           <div class="panel panel-default">
             <div class="panel-heading cursor-pointer">
-              <h4 data-toggle="collapse" href="#register-customer-info-panel" class="no-margin">客户信息 &nbsp;<small>Customer Information</small></h4>
+              <h4 data-toggle="collapse" href="#register-customer-info-panel" class="no-margin">客户信息 &nbsp;<small class="hidden-xs">Customer Information</small></h4>
             </div>
             <div id="register-customer-info-panel" class="panel-collapse collapse in">
               <div class="flex-container panel-body">
@@ -109,7 +109,7 @@
           </div>
           <div class="panel panel-default">
             <div class="panel-heading cursor-pointer">
-              <h4 data-toggle="collapse" href="#register-consulting-details-panel" class="no-margin">咨询信息 &nbsp;<small>Consulting Details</small></h4>
+              <h4 data-toggle="collapse" href="#register-consulting-details-panel" class="no-margin">咨询信息 &nbsp;<small class="hidden-xs">Consulting Details</small></h4>
             </div>
             <div id="register-consulting-details-panel" class="panel-collapse collapse in">
               <div class="flex-container panel-body">
@@ -133,7 +133,7 @@
       <section id="page_arrange" ng-if="getProgressState(200) != 'disabled'">
         <!--Created by Bohua on 2014-05-29.-->
         <div class="page-header">
-          <h2><i class="fa fa-share-alt fa-fw">&nbsp;</i><span>审核 &nbsp;</span><small>Arrange</small>
+          <h2><i class="fa fa-share-alt fa-fw">&nbsp;</i><span>审核 &nbsp;</span><small class="hidden-xs">Arrange</small>
             <div class="btn-group pull-right">
               <button class="btn btn-default"><i class="fa fa-edit fa-fw">&nbsp;</i><span>修改</span></button>
             </div>
@@ -142,7 +142,7 @@
         <div id="arrange-panel-group" class="panel-group">
           <div class="panel panel-default">
             <div class="panel-heading cursor-pointer">
-              <h4 data-toggle="collapse" href="#arrangement-details-panel" class="no-margin">审核记录 &nbsp;<small>Arrangement Details</small></h4>
+              <h4 data-toggle="collapse" href="#arrangement-details-panel" class="no-margin">审核记录 &nbsp;<small class="hidden-xs">Arrangement Details</small></h4>
             </div>
             <div id="arrangement-details-panel" class="panel-collapse collapse in">
               <div class="flex-container panel-body">
@@ -175,7 +175,7 @@
       <section id="page_reply" ng-if="getProgressState(300) != 'disabled'">
         <!--Created by Bohua on 2014-05-29.-->
         <div class="page-header">
-          <h2><i class="fa fa-comments-o fa-fw">&nbsp;</i><span> 解答 &nbsp;</span><small>Reply</small>
+          <h2><i class="fa fa-comments-o fa-fw">&nbsp;</i><span> 解答 &nbsp;</span><small class="hidden-xs">Reply</small>
             <div class="btn-group pull-right">
               <button class="btn btn-default"><i class="fa fa-edit fa-fw">&nbsp;</i><span>修改</span></button>
             </div>
@@ -184,7 +184,7 @@
         <div id="reply-panel-group" class="panel-group">
           <div ng-show="task_model.handling == 0" class="panel panel-default">
             <div class="panel-heading cursor-pointer">
-              <h4 data-toggle="collapse" href="#reply-info-panel-0" class="no-margin">咨询解答 (邮件/电话) &nbsp;<small>Reply (Email/Telephone)</small></h4>
+              <h4 data-toggle="collapse" href="#reply-info-panel-0" class="no-margin">咨询解答 (邮件/电话) &nbsp;<small class="hidden-xs">Reply (Email/Telephone)</small></h4>
             </div>
             <div id="reply-info-panel-0" class="panel-collapse collapse in">
               <div class="flex-container panel-body">
@@ -208,7 +208,7 @@
           </div>
           <div ng-show="task_model.handling == 1" class="panel panel-default">
             <div class="panel-heading cursor-pointer">
-              <h4 data-toggle="collapse" href="#reply-info-panel-1" class="no-margin">咨询解答 (面谈) &nbsp;<small>Reply (Appointment)</small></h4>
+              <h4 data-toggle="collapse" href="#reply-info-panel-1" class="no-margin">咨询解答 (面谈) &nbsp;<small class="hidden-xs">Reply (Appointment)</small></h4>
             </div>
             <div id="reply-info-panel-1" class="panel-collapse collapse in">
               <div class="flex-container panel-body">
@@ -229,7 +229,7 @@
           </div>
           <div class="panel panel-default">
             <div class="panel-heading cursor-pointer">
-              <h4 data-toggle="collapse" href="#reply-minutes-meeting-panel" class="no-margin">过程记录 &nbsp;<small>Minutes of Meeting</small></h4>
+              <h4 data-toggle="collapse" href="#reply-minutes-meeting-panel" class="no-margin">过程记录 &nbsp;<small class="hidden-xs">Minutes of Meeting</small></h4>
             </div>
             <div id="reply-minutes-meeting-panel" class="panel-collapse collapse in">
               <div class="flex-container panel-body">
@@ -247,7 +247,7 @@
           </div>
           <div class="panel panel-default">
             <div class="panel-heading cursor-pointer">
-              <h4 data-toggle="collapse" href="#reply-attachment-panel" class="no-margin">附件列表 &nbsp;<small>Attachment List</small></h4>
+              <h4 data-toggle="collapse" href="#reply-attachment-panel" class="no-margin">附件列表 &nbsp;<small class="hidden-xs">Attachment List</small></h4>
             </div>
             <div id="reply-attachment-panel" class="panel-collapse collapse in table-responsive">
               <table class="table table-hover table-bordered">
@@ -275,7 +275,7 @@
       <section id="page_proposal" ng-if="getProgressState(500) != 'disabled'">
         <!--Created by Bohua on 2014-05-29.-->
         <div class="page-header">
-          <h2><i class="fa fa-book fa-fw">&nbsp;</i><span>提案 &nbsp;</span><small>Proposal</small>
+          <h2><i class="fa fa-book fa-fw">&nbsp;</i><span>提案 &nbsp;</span><small class="hidden-xs">Proposal</small>
             <div class="btn-group pull-right">
               <button class="btn btn-default"><i class="fa fa-edit fa-fw">&nbsp;</i><span>修改</span></button>
             </div>
@@ -284,7 +284,7 @@
         <div id="proposal-panel-group" class="panel-group">
           <div class="panel panel-default">
             <div class="panel-heading cursor-pointer">
-              <h4 data-toggle="collapse" href="#proposal-abstract-panel" class="no-margin">提案要义 &nbsp;<small>Proposal Abstract</small></h4>
+              <h4 data-toggle="collapse" href="#proposal-abstract-panel" class="no-margin">提案要义 &nbsp;<small class="hidden-xs">Proposal Abstract</small></h4>
             </div>
             <div id="proposal-abstract-panel" class="panel-collapse collapse in">
               <div class="flex-container panel-body">
@@ -299,7 +299,7 @@
           </div>
           <div class="panel panel-default">
             <div class="panel-heading cursor-pointer">
-              <h4 data-toggle="collapse" href="#proposal-properties-panel" class="no-margin">附属信息 &nbsp;<small>Proposal Properties</small></h4>
+              <h4 data-toggle="collapse" href="#proposal-properties-panel" class="no-margin">附属信息 &nbsp;<small class="hidden-xs">Proposal Properties</small></h4>
             </div>
             <div id="proposal-properties-panel" class="panel-collapse collapse in">
               <div class="flex-container panel-body">
@@ -317,7 +317,7 @@
           </div>
           <div class="panel panel-default">
             <div class="panel-heading cursor-pointer">
-              <h4 data-toggle="collapse" href="#proposal-attachment-panel" class="no-margin">附件列表 &nbsp;<small>Attachment List</small></h4>
+              <h4 data-toggle="collapse" href="#proposal-attachment-panel" class="no-margin">附件列表 &nbsp;<small class="hidden-xs">Attachment List</small></h4>
             </div>
             <div id="proposal-attachment-panel" class="panel-collapse collapse in table-responsive">
               <table class="table table-hover table-bordered">
@@ -342,7 +342,7 @@
           </div>
           <div class="panel panel-default">
             <div class="panel-heading cursor-pointer">
-              <h4 data-toggle="collapse" href="#proposal-price-panel" class="no-margin">报价明细 &nbsp;<small>Price List</small></h4>
+              <h4 data-toggle="collapse" href="#proposal-price-panel" class="no-margin">报价明细 &nbsp;<small class="hidden-xs">Price List</small></h4>
             </div>
             <div id="proposal-price-panel" class="panel-collapse collapse in table-responsive">
               <table class="table table-hover table-bordered">
@@ -378,7 +378,7 @@
       <section id="page_contract" ng-if="getProgressState(600) != 'disabled'">
         <!--Created by Bohua on 2014-05-29.-->
         <div class="page-header">
-          <h2><i class="fa fa-legal fa-fw">&nbsp;</i><span>合同签定 &nbsp;</span><small>Contract</small>
+          <h2><i class="fa fa-legal fa-fw">&nbsp;</i><span>合同签定 &nbsp;</span><small class="hidden-xs">Contract</small>
             <div class="btn-group pull-right">
               <button class="btn btn-default"><i class="fa fa-edit fa-fw">&nbsp;</i><span>修改</span></button>
             </div>
@@ -387,7 +387,7 @@
         <div id="contract-panel-group" class="panel-group">
           <div class="panel panel-default">
             <div class="panel-heading cursor-pointer">
-              <h4 data-toggle="collapse" href="#contract-abstract-panel" class="no-margin">合同要义 &nbsp;<small>Contract Abstract</small></h4>
+              <h4 data-toggle="collapse" href="#contract-abstract-panel" class="no-margin">合同要义 &nbsp;<small class="hidden-xs">Contract Abstract</small></h4>
             </div>
             <div id="contract-abstract-panel" class="panel-collapse collapse in table-responsive">
               <div class="flex-container panel-body">
@@ -436,7 +436,7 @@
       <section id="page_execute" ng-if="getProgressState(600) != 'disabled'">
         <!--Created by Bohua on 2014-05-29.-->
         <div class="page-header">
-          <h2><i class="fa fa-history fa-fw">&nbsp;</i><span>执行 &nbsp;</span><small>Executing</small>
+          <h2><i class="fa fa-history fa-fw">&nbsp;</i><span>执行 &nbsp;</span><small class="hidden-xs">Executing</small>
             <div class="btn-group pull-right">
               <button class="btn btn-default"><i class="fa fa-edit fa-fw">&nbsp;</i><span>修改</span></button>
             </div>
@@ -445,7 +445,7 @@
         <div id="execute-panel-group" class="panel-group">
           <div class="panel panel-default">
             <div class="panel-heading cursor-pointer">
-              <h4 data-toggle="collapse" href="#execute-project-panel" class="no-margin">项目信息 &nbsp;<small>Project Information</small></h4>
+              <h4 data-toggle="collapse" href="#execute-project-panel" class="no-margin">项目信息 &nbsp;<small class="hidden-xs">Project Information</small></h4>
             </div>
             <div id="execute-project-panel" class="panel-collapse collapse in table-responsive">
               <div class="flex-container panel-body">
@@ -486,7 +486,7 @@
       <section id="page_account" ng-if="getProgressState(600) != 'disabled'">
         <!--Created by Bohua on 2014-05-29.-->
         <div class="page-header">
-          <h2><i class="fa fa-bank fa-fw">&nbsp;</i><span>收款 &nbsp;</span><small>Accounting</small>
+          <h2><i class="fa fa-bank fa-fw">&nbsp;</i><span>收款 &nbsp;</span><small class="hidden-xs">Accounting</small>
             <div class="btn-group pull-right">
               <button class="btn btn-default"><i class="fa fa-edit fa-fw">&nbsp;</i><span>修改</span></button>
             </div>
@@ -495,7 +495,7 @@
         <div id="account-panel-group" class="panel-group">
           <div class="panel panel-default">
             <div class="panel-heading cursor-pointer">
-              <h4 data-toggle="collapse" href="#account-details-panel" class="no-margin">收款明细 &nbsp;<small>Accounting Details</small></h4>
+              <h4 data-toggle="collapse" href="#account-details-panel" class="no-margin">收款明细 &nbsp;<small class="hidden-xs">Accounting Details</small></h4>
             </div>
             <div id="account-details-panel" class="panel-collapse collapse in table-responsive">
               <table class="table table-hover table-bordered">
@@ -527,7 +527,7 @@
       <section id="page_summary" ng-if="getProgressState(700) != 'disabled'">
         <!--Created by Bohua on 2014-05-29.-->
         <div class="page-header">
-          <h2><i class="fa fa-suitcase fa-fw">&nbsp;</i><span>汇总 &nbsp;</span><small>Summary</small>
+          <h2><i class="fa fa-suitcase fa-fw">&nbsp;</i><span>汇总 &nbsp;</span><small class="hidden-xs">Summary</small>
             <div class="btn-group pull-right">
               <button class="btn btn-default"><i class="fa fa-edit fa-fw">&nbsp;</i><span>修改</span></button>
             </div>
@@ -536,7 +536,7 @@
         <div id="summary-panel-group" class="panel-group">
           <div class="panel panel-default">
             <div class="panel-heading cursor-pointer">
-              <h4 data-toggle="collapse" href="#summary-report-panel" class="no-margin">汇总报告 &nbsp;<small>Summary Report</small></h4>
+              <h4 data-toggle="collapse" href="#summary-report-panel" class="no-margin">汇总报告 &nbsp;<small class="hidden-xs">Summary Report</small></h4>
             </div>
             <div id="summary-report-panel" class="panel-collapse collapse in">
               <div class="flex-container panel-body">

@@ -6,6 +6,7 @@ var db = require('../models');
 var fs = require('fs');
 
 var task_bo = require(__dirname + '/../server/tasks/task_bo.js');
+var customer_bo = require(__dirname + '/../server/basics/customer_bo.js');
 
 db.setup('eggcup', 'root', 'root', {
 	dialect: 'mysql',
@@ -23,7 +24,8 @@ db.Seq()
 		} else {
 			global.db = db;
 
-			testEagerLoadTask();
+			testLoadCustomer();
+			//testEagerLoadTask();
 			//testGetTaskFromEmployee();
 			//testEagerLoading();
 			//testGetAttachments();
@@ -79,6 +81,16 @@ function testGetAttachments(){
 function testEagerLoadTask(){
 	task_bo.get({
 		id: '1005'
+	}).then(function(success){
+//		console.log(JSON.stringify(success));
+		console.log(success);
+
+	});
+}
+
+function testLoadCustomer(){
+	customer_bo.get({
+		id: '1'
 	}).then(function(success){
 //		console.log(JSON.stringify(success));
 		console.log(success);

@@ -4,13 +4,13 @@
 		h2
 			i.fa.fa-edit.fa-fw &nbsp;
 			span 人员信息 &nbsp;
-			small Employees
+			small.hidden-xs Employees
 
 			button.btn.btn-default.pull-right(popup-dialog, dialog-config="employeeEditorConfig",ng-click="newEmployee($event)")
 				i.fa.fa-edit.fa-fw &nbsp;
 				span 新建
 
-			div.pull-right.col-md-3.col-lg-3.col-sm-3
+			div.pull-right.col-md-3.col-lg-3.col-sm-3.hidden-xs
 				div.input-group
 					input.form-control(type="text", placeholder="查找人员", ng-model="searchText")
 					span.input-group-btn
@@ -21,9 +21,9 @@
 		div.panel.panel-default
 			div.panel-heading.cursor-pointer
 				h4.no-margin(data-toggle="collapse", href="#employee-list-panel") 人员列表 &nbsp;
-					small Employee List
+					small.hidden-xs Employee List
 			#employee-list-panel.panel-collapse.collapse.in.table-responsive
-				table.table.bordered.hovered
+				table.table.table-hover.table-bordered
 					thead
 						tr
 							th.text-center(ng-repeat="header in headers track by $index", nowrap)

@@ -14,9 +14,7 @@ var summary_sheet_bo = require(__dirname + "/summary_sheet_bo");
 var TASK = new Bo('DATA_TASK', {
 	name: 'get',
 	method: function (where) {
-		var deferred = Q.defer();
-
-		this.orm.model(this._table).find({
+		var promise = this.orm.model(this._table).find({
 			include: [
 				{
 					model: this.orm.model('DATA_ARRANGE'),
@@ -106,31 +104,25 @@ var TASK = new Bo('DATA_TASK', {
 				}
 			],
 			where: where
-		}).then(
-			function (success) {
-				deferred.resolve(success);
-			},
-			function (failure) {
-				deferred.reject(failure);
-			});
+		})
 
-		return deferred.promise;
+		return promise;
 	}
 }, {
 	name: 'save',
 	method: function (model) {
-		var deferred = Q.defer();
+		var promise = this._save(model);
 
-		var promises = [];
-
-		this._save(model).then(
+		promise.then(
 			function (task_instance) {
 
 				//Save arrange sheet
 				if (model.arrangeSheet) {
 					arrange_sheet_bo.save(model.arrangeSheet)
 						.then(function (arrange_sheet_instance) {
-							promises.push(task_instance.setArrangeSheet(arrange_sheet_instance));
+							task_instance.setArrangeSheet(arrange_sheet_instance);
+						},function(failure){
+							global.logger.error(failure);
 						});
 				}
 
@@ -138,7 +130,9 @@ var TASK = new Bo('DATA_TASK', {
 				if (model.replySheet) {
 					reply_sheet_bo.save(model.replySheet)
 						.then(function (reply_sheet_instance) {
-							promises.push(task_instance.setReplySheet(reply_sheet_instance));
+							task_instance.setReplySheet(reply_sheet_instance);
+						},function(failure){
+							global.logger.error(failure);
 						});
 				}
 
@@ -146,15 +140,19 @@ var TASK = new Bo('DATA_TASK', {
 				if (model.proposalSheet) {
 					proposal_sheet_bo.save(model.proposalSheet)
 						.then(function (proposal_sheet_instance) {
-							promises.push(task_instance.setProposalSheet(proposal_sheet_instance));
-						});
+						task_instance.setProposalSheet(proposal_sheet_instance);
+						},function(failure){
+						global.logger.error(failure);
+					});
 				}
 
 				//Save contract sheet
 				if (model.contractSheet) {
 					contract_sheet_bo.save(model.contractSheet)
 						.then(function (contract_sheet_instance) {
-							promises.push(task_instance.setContractSheet(contract_sheet_instance));
+							task_instance.setContractSheet(contract_sheet_instance);
+						},function(failure){
+							global.logger.error(failure);
 						});
 				}
 
@@ -162,7 +160,9 @@ var TASK = new Bo('DATA_TASK', {
 				if (model.executeSheet) {
 					execute_sheet_bo.save(model.executeSheet)
 						.then(function (execute_sheet_instance) {
-							promises.push(task_instance.setExecuteSheet(execute_sheet_instance));
+							task_instance.setExecuteSheet(execute_sheet_instance);
+						},function(failure){
+							global.logger.error(failure);
 						});
 				}
 
@@ -170,7 +170,9 @@ var TASK = new Bo('DATA_TASK', {
 				if (model.accountSheet) {
 					account_sheet_bo.save(model.accountSheet)
 						.then(function (account_sheet_instance) {
-							promises.push(task_instance.setAccountSheet(account_sheet_instance));
+							task_instance.setAccountSheet(account_sheet_instance);
+						},function(failure){
+							global.logger.error(failure);
 						});
 				}
 
@@ -178,16 +180,18 @@ var TASK = new Bo('DATA_TASK', {
 				if (model.summarySheet) {
 					summary_sheet_bo.save(model.summarySheet)
 						.then(function (summary_sheet_instance) {
-							promises.push(task_instance.setSummarySheet(summary_sheet_instance));
+							task_instance.setSummarySheet(summary_sheet_instance);
+						},function(failure){
+							global.logger.error(failure);
 						});
 				}
 			},
 			function (failure) {
-				deferred.reject(failure);
+				global.logger.error(failure);
 			}
 		);
 
-		return Q.all(promises);
+		return promise;
 	}
 });
 

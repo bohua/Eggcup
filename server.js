@@ -12,6 +12,8 @@ var security = require('./routes/security');
 var basics = require('./routes/basics');
 var tasks = require('./routes/tasks');
 
+var winston = require('winston');
+
 var startup_check_promises = [];
 
 var app = express();
@@ -69,10 +71,30 @@ app.get('/statusList', tasks.getStatusList);
 /**
  * Upload request
  */
-app.post('/file-upload', function(req, res, next) {
+app.post('/file-upload', function (req, res, next) {
 	console.log(req.body);
 	console.log(req.files);
 });
+
+
+/**
+ * Initialize Logger
+ */
+var sys_logger = new (winston.Logger)({
+	transports: [
+		new (winston.transports.Console)(),
+		new (winston.transports.File)({filename: __dirname + '/logs/system.log'})
+	]
+});
+
+var db_logger = new (winston.Logger)({
+	transports: [
+		new (winston.transports.Console)(),
+		new (winston.transports.File)({filename: __dirname + '/logs/db_log.log'})
+	]
+});
+
+global.logger = sys_logger;
 
 
 /**
@@ -86,6 +108,7 @@ startup_check_promises.push(task_status_service.init());
 db.setup('eggcup', 'root', 'root', {
 	dialect: 'mysql',
 	port: 3306,
+	logging: db_logger.info,
 	pool: { maxConnections: 5, maxIdleTime: 30}
 });
 
@@ -94,21 +117,17 @@ Q.allSettled(startup_check_promises)
 	function (results) {
 		for (var i in results) {
 			if (results[i].state === "fulfilled") {
-				console.log('Startup self check passed: ', results[i].value);
-			}else{
-				console.log('Startup self check NOT passed: ', results[i].value);
+				global.logger.info('Startup self check passed: ', results[i].value);
+			} else {
+				global.logger.info('Startup self check NOT passed: ', results[i].value);
 			}
 		}
 
 		http.createServer(app).listen(app.get('port'), function () {
-			/*
-			 global.db = db;
-			 global.exception_handler = require( path.join(__dirname , 'server', 'exceptions', 'exception_handler.js'));
-			 */
-			console.log('Express server listening on port ' + app.get('port'));
+			global.logger.info('Express server listening on port ' + app.get('port'));
 		});
 	},
 	function (failure) {
-		console.log('Startup canceled, due to self check failure:', failure);
+		global.logger.error('Startup canceled, due to self check failure:', failure);
 	}
 );

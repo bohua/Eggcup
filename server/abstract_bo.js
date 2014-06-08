@@ -17,6 +17,7 @@ var BO = function (schema) {
 			.then(function (success) {
 				deferred.resolve(success);
 			}, function (failure) {
+				global.logger.error(failure);
 				deferred.reject(failure);
 			});
 
@@ -39,6 +40,7 @@ var BO = function (schema) {
 					});
 			}
 		}, function (failure) {
+			global.logger.error(failure);
 			deferred.reject(failure);
 		});
 
@@ -73,6 +75,7 @@ var BO = function (schema) {
 					});
 			}
 		}, function (failure) {
+			global.logger.error(failure);
 			deferred.reject(failure);
 		});
 
@@ -89,6 +92,7 @@ var BO = function (schema) {
 				deferred.resolve(success);
 			},
 			function (failure) {
+				global.logger.error(failure);
 				deferred.reject(failure);
 			});
 
@@ -105,6 +109,7 @@ var BO = function (schema) {
 				deferred.resolve(success);
 			},
 			function (failure) {
+				global.logger.error(failure);
 				deferred.reject(failure);
 			});
 

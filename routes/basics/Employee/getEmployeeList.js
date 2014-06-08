@@ -33,6 +33,10 @@ module.exports = function (req, res) {
 		enable: true
 	}).then(
 		function (success) {
+
+			res.contentType('json');
+			res.json(success);
+			/*
 			var promises = [];
 
 			for(var i in success){
@@ -55,6 +59,7 @@ module.exports = function (req, res) {
 					res.contentType('json');
 					res.json(dataList);
 				});
+			*/
 		},
 		function (failure) {
 			res.statusCode = 400;

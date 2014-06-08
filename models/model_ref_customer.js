@@ -19,11 +19,17 @@ module.exports = function (sequelize, DataTypes) {
 		description:	{ type: DataTypes.STRING },
 
 		//业务员绑定
-		employeeId:		{ type: DataTypes.INTEGER },
 		privateFlag:	{ type: DataTypes.BOOLEAN, defaultValue: false },
 
 		//激活使用
 		enable:			{ type: DataTypes.BOOLEAN, defaultValue: true }
+	}, {
+		classMethods: {
+			associate: function (models) {
+				REF_CUSTOMER
+					.belongsTo(models.REF_EMPLOYEE, {as: 'represent', foreignKey: 'employee_id'})
+			}
+		}
 	});
 	return REF_CUSTOMER;
 };

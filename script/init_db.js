@@ -49,7 +49,8 @@ function generateKh(db) {
 			email: 'rexwang@tencent.com',
 			website: '无',
 			membership: '',
-			description: '测试数据'
+			description: '测试数据',
+			employee_id: 1
 		},
 		{
 			name: '腾讯北京分公司',
@@ -60,7 +61,8 @@ function generateKh(db) {
 			email: 'rexwang@tencent.com',
 			website: '无',
 			membership: '',
-			description: '测试数据'
+			description: '测试数据',
+			employee_id: 2
 		},
 		{
 			name: '腾讯上海分公司',
@@ -71,7 +73,8 @@ function generateKh(db) {
 			email: 'rexwang@tencent.com',
 			website: '无',
 			membership: '',
-			description: '测试数据'
+			description: '测试数据',
+			employee_id: 3
 		},
 		{
 			name: '腾讯成都分公司',
@@ -82,7 +85,8 @@ function generateKh(db) {
 			email: 'rexwang@tencent.com',
 			website: '无',
 			membership: '',
-			description: '测试数据'
+			description: '测试数据',
+			employee_id: 1
 		}
 	]).success(function (sdepold) {
 		//console.log(sdepold)

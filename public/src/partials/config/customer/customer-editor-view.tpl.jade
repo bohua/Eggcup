@@ -1,14 +1,14 @@
-#customer-editor-form.modal-dialog.modal-lg
+#customer-editor-form.modal-dialog.modal-lg(ng-controller="customerEditorController")
 	div.modal-content.grid
 		div.modal-header
 			button.close(type="button", data-dismiss="modal") &times;
 			h4.modal-title 详细信息 &nbsp;
-				small Details
+				small.hidden-xs.hidden-xs Details
 		div.modal-body.row
 			div.col-sm-6
 				div.form-horizontal
 					h4 公司信息 &nbsp;
-						small Company Information
+						small.hidden-xs.hidden-xs Company Information
 					hr
 
 					div.form-group
@@ -49,15 +49,13 @@
 			div.col-sm-6
 				div.form-horizontal
 					h4 业务配置 &nbsp;
-						small Business Configuration
+						small.hidden-xs.hidden-xs Business Configuration
 					hr
 
 					div.form-group
 						label.col-sm-3.control-label 担当人:
 						div.col-sm-9
-							select.form-control
-								option(selected="selected")
-								option(ng-repeat="employee in employee_list", value="{{employee.id}}") {{employee.name}}
+							select.form-control(ng-model="dialog_data_model.employee_id", ng-options="employee.id as employee.name for employee in employee_list")
 
 					div.form-group
 						div.col-sm-9.col-sm-offset-3

@@ -36,39 +36,14 @@ angular.module('employee-list', [
 
 		$scope.employeeEditorConfig = {
 			dialogOption: {
-				overlay: true,
-				shadow: true,
-				flat: true,
-				icon: '<i class="icon-briefcase"></i>',
-				title: '详细信息',
-				padding: 10,
-				width: '80%',
-				height: '300px',
-				overlayClickClose: false
+				backdrop: 'static'
 			},
 
 			template: '/src/partials/config/employee/employee-editor-view.tpl.html',
 
 			onShow: function (_dialogWin) {
-				$.Metro.initInputs();
-				_dialogWin.find('.auto-focus').focus();
-				/*
-				$('input[data-role="tagsinput"]').tagsinput({
-					tagClass: function(tag) {
-						switch(tag.type){
-							case 'config': return 'label bg-darkGray';
-							case 'custom': return 'label bg-darkBlue';
-							case 'permit': return 'label bg-darkRed';
-							default : return 'label bg-darkBlue';
-						}
-					},
-					itemValue: 'id',
-					itemText: 'value'
-				});
-				*/
-			},
 
-			api: {}
+			}
 		};
 
 		/**
@@ -95,7 +70,7 @@ angular.module('employee-list', [
 			$($event.target).parent('tr').trigger('popup', ['edit', dataModel]);
 		};
 
-		$scope.new = function ($event) {
+		$scope.newEmployee = function ($event) {
 			$($event.currentTarget).trigger('popup', ['add']);
 		};
 

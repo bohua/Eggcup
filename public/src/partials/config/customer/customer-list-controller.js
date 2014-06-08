@@ -33,7 +33,7 @@ angular.module('customer-list', [
 		];
 
 		$scope.customer_list = customerListService.getCustomerList();
-		$scope.employee_list = employeeListService.getEmployeeList();
+		//$scope.employee_list = employeeListService.getEmployeeList();
 
 		/**
 		 * popup window configuration
@@ -67,10 +67,6 @@ angular.module('customer-list', [
 			});
 		}
 
-		function getEmployeeList() {
-			return $scope.employee_list;
-		}
-
 		/**
 		 * ng-click functions
 		 */
@@ -100,11 +96,4 @@ angular.module('customer-list', [
 				}
 			}
 		}
-
-
-
-
-		$scope.showModal = function(){
-			$('#customer-editor-form').modal();
-		};
 	}]);

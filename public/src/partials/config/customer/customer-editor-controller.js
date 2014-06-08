@@ -1,12 +1,12 @@
 /**
  * Created by Bli on 2014/4/29.
  */
-angular.module('customer-editor', ['tag-reference-service'])
-	.controller('customerEditorController', ['$scope', 'tagReferenceService', function($scope, tagReferenceService){
+angular.module('customer-editor', ['employee-list-service'])
+	.controller('customerEditorController', ['$scope', 'employeeListService', function($scope, employeeListService){
 		/**
 		 * Initialize References
 		 */
-		$scope.employee_list = $scope.dialogConfig.api.getEmployeeList();
+		$scope.employee_list = employeeListService.getEmployeeList();
 
 		/**
 		 * Initialize Emitters
@@ -21,5 +21,5 @@ angular.module('customer-editor', ['tag-reference-service'])
 		/**
 		 * Get system tags
 		 */
-		var sysTag = tagReferenceService.getSysTag();
+		//var sysTag = tagReferenceService.getSysTag();
 	}]);

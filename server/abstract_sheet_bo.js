@@ -21,7 +21,7 @@ var SHEET = function (schema, sub_item_handler) {
 								sheet_instance.addAttachment(attach_instance);
 							},
 							function (error) {
-								console.log(error);
+								global.logger.error(error);
 							}
 						);
 					}
@@ -36,7 +36,7 @@ var SHEET = function (schema, sub_item_handler) {
 								sheet_instance.addSubItem(sub_item_instance);
 							},
 							function (error) {
-								console.log('ERROR:', error);
+								global.logger.error(error);
 							});
 
 					}

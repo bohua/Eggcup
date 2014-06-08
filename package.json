@@ -20,6 +20,7 @@
 		"lodash":"*",
 		"extend":"*",
 		"q": "*",
+		"winston": "*",
 
 		"grunt": "*",
 		"grunt-contrib-less": "*",

@@ -2,30 +2,36 @@
  * Created by Bli on 14-3-6.
  */
 angular.module('popup-dialog', [])
-	.directive('popupDialog',[ '$compile', function ($compile) {
+	.directive('popupDialog', [ '$compile', function ($compile) {
 		var Dialog = {
 			restrict: 'AE',
 			scope: {
 				dialogConfig: "=",
-				emitConfirm : '&onConfirm',
-				emitCancel : '&onCancel'
+				emitConfirm: '&onConfirm',
+				emitCancel: '&onCancel'
 			},
 			link: function ($scope, $element, $attributes) {
-				var modalContainter = $('#modal-stage'),
-					_onDialogShow = $scope.dialogConfig.onShow,
+				var _onDialogShow = $scope.dialogConfig.onShow,
 					template = $scope.dialogConfig.template,
-					popupDialog;
+					popupDialog,
+					modalContainer;
 
-				var _onValidateForm = $scope.dialogConfig.onValidateForm || function(){
-						return popupDialog.find('.ng-invalid').length === 0;
-					};
+				var _onValidateForm = $scope.dialogConfig.onValidateForm || function () {
+					return popupDialog.find('.ng-invalid').length === 0;
+				};
 
-				function close(){
-					modalContainter.modal('hide');
+				function close() {
+					modalContainer.modal('hide');
 				};
 
 				if (template) {
-					$('<div></div>').load(template, function (response, status, xhr) {
+					if($('#modal-stage').length === 0) {
+						modalContainer = $('<div id="modal-stage"></div>').appendTo('body');
+					} else{
+						modalContainer = $('#modal-stage');
+					}
+
+					modalContainer.load(template, function (response, status, xhr) {
 						if (status == "error") {
 							return xhr.status + " " + xhr.statusText;
 						}
@@ -36,26 +42,26 @@ angular.module('popup-dialog', [])
 							$scope.prop.showErrorMessage = false;
 							$scope.prop.mode = mode;
 
-							if(dataModel){
+							if (dataModel) {
 								$scope.dialog_data_model = $.extend(true, {}, dataModel);
-							}else{
+							} else {
 								$scope.dialog_data_model = {};
 							}
 
-							modalContainter.find('.modal-dialog').replaceWith($compile(response)($scope));
+							modalContainer.empty().append($compile(response)($scope));
 
 							_onDialogShow();
 
-							popupDialog = modalContainter.modal($scope.dialogConfig.dialogOption);
+							popupDialog = modalContainer.modal($scope.dialogConfig.dialogOption);
 						});
 					});
 				}
 
-				$scope.Confirm = function(action, validate){
-					if(validate && _onValidateForm){
+				$scope.Confirm = function (action, validate) {
+					if (validate && _onValidateForm) {
 						var valid = _onValidateForm();
 
-						if(!valid){
+						if (!valid) {
 							$scope.prop.showErrorMessage = true;
 							return;
 						}
@@ -66,7 +72,7 @@ angular.module('popup-dialog', [])
 					$scope.emitConfirm({action: action, data: $scope.dialog_data_model});
 				};
 
-				$scope.Cancel = function(){
+				$scope.Cancel = function () {
 					close();
 					$scope.emitCancel();
 				};

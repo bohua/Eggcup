@@ -4,8 +4,23 @@
 var bo = require(__dirname + '/../../../server/basics/customer_bo');
 
 module.exports = function (req, res) {
-	var id = req.body.id;
+	bo.save(req.body).then(
+		function (success) {
+			res.statusCode = 200;
+			res.json(success);
+		},
+		function (failure) {
+			res.statusCode = 400;
+			res.json({
+				code: 'ERR_DB_SAVE_CUSTOMER_FAILURE',
+				reason: '更新客户信息时数据库出错',
+				failureInfo: failure
+			});
+		}
+	);
 
+	/*
+	var id = req.body.id;
 	if (!id) {
 		bo.add(req.body).then(
 			function (success) {
@@ -35,5 +50,6 @@ module.exports = function (req, res) {
 			}
 		);
 	}
+	*/
 
 }
