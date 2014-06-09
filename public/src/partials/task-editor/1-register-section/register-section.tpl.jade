@@ -46,7 +46,7 @@ div(ng-controller="registerSectionController")
 
 					div.flex-box
 						label 处理方式:
-						span {{task_model.handling}}
+						span {{translateHandling(task_model.handling)}}
 
 		div.panel.panel-default
 			div.panel-heading.cursor-pointer
@@ -56,19 +56,19 @@ div(ng-controller="registerSectionController")
 				div.flex-container.panel-body
 					div.flex-box
 						label 公司名称:
-						span {{translateStatus(task_model.customer_name)}}
+						span {{task_model.customer_name}}
 					div.flex-box
 						label 联系人:
-						span {{translateStatus(task_model.customer_contact)}}
+						span {{task_model.customer_contact}}
 					div.flex-box
 						label 公司地址:
-						span {{translateStatus(task_model.customer_address)}}
+						span {{task_model.customer_address}}
 					div.flex-box
 						label 联系电话:
-						span {{translateStatus(task_model.customer_tel)}}
+						span {{task_model.customer_tel}}
 					div.flex-box
 						label 电子邮箱:
-						span {{translateStatus(task_model.customer_email)}}
+						span {{task_model.customer_email}}
 
 
 		div.panel.panel-default

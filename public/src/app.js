@@ -6,6 +6,7 @@ angular.module('app', [
 	'task-status-service',
 	'customer-list-service',
 	'employee-list-service',
+	'handling-method-service',
 	'platform',
 	'customer-list',
 	'employee-list',
@@ -22,7 +23,8 @@ angular.module('app', [
 	'taskStatusService',
 	'customerListService',
 	'employeeListService',
-	function ($scope, $rootScope, $timeout, $location, tagReferenceService, taskStatusService, customerListService, employeeListService, topBarService) {
+	'handlingMethodService',
+	function ($scope, $rootScope, $timeout, $location, tagReferenceService, taskStatusService, customerListService, employeeListService, handlingMethodService) {
 
 		/*
 		 if ($location.path() !== '/') {
@@ -44,6 +46,7 @@ angular.module('app', [
 		taskStatusService.init();
 		customerListService.init();
 		employeeListService.init();
+		handlingMethodService.init();
 
 		/**
 		 * Global configuration

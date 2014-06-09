@@ -6,21 +6,32 @@ angular.module('token-field', [])
 		var tokenField = {
 			link: function ($scope, $element, $attributes) {
 				var wrapper = $($element).parent();
+				var ngModel = $attributes.ngModel,
+					tokens = eval("$scope." + ngModel) || [];
+
 				$($element).tokenfield({
 					autocomplete: {
-						source: ['李小帅','苏小美'],
+						source: ['李小帅', '苏小美'],
 						delay: 100,
 						appendTo: wrapper
 					},
-					showAutocompleteOnFocus: true
+					showAutocompleteOnFocus: true,
+					tokens: tokens
 				});
 
-				/*
-				$('#modal-stage').on('shown.bs.modal',function(e){
-					$('.ui-autocomplete').width(wrapper.width());
-				});
-				*/
+				function updateModel(tokens) {
+					var tStr = _.pluck(tokens, 'value').join(',');
+					eval("$scope." + ngModel + "='" + tStr + "'");
+					$scope.$apply();
+				}
 
+				$($element).on('tokenfield:createdtoken', function (e) {
+					updateModel($($element).tokenfield('getTokens'));
+				}).on('tokenfield:editedtoken', function (e) {
+					updateModel($($element).tokenfield('getTokens'));
+				}).on('tokenfield:removedtoken', function (e) {
+					updateModel($($element).tokenfield('getTokens'));
+				});
 			}
 		};
 

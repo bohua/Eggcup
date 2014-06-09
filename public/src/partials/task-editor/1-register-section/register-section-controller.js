@@ -1,8 +1,8 @@
 /**
  * Created by bli on 2014/6/9.
  */
-angular.module('register-section', ['register-editor'])
-	.controller('registerSectionController', ['$scope', function ($scope) {
+angular.module('register-section', ['register-editor', 'handling-method-service'])
+	.controller('registerSectionController', ['$scope', 'handlingMethodService', function ($scope, handlingMethodService) {
 		$scope.registerEditorConfig = {
 			dialogOption: {
 				backdrop: 'static'
@@ -13,4 +13,6 @@ angular.module('register-section', ['register-editor'])
 		$scope.showRegisterEditor = function($event, dataModel){
 			$($event.currentTarget).trigger('popup', ['edit', dataModel]);
 		};
+
+		$scope.translateHandling = handlingMethodService.translateHandling;
 	}]);
