@@ -25,9 +25,9 @@ angular.module('popup-dialog', [])
 				};
 
 				if (template) {
-					if($('#modal-stage').length === 0) {
+					if ($('#modal-stage').length === 0) {
 						modalContainer = $('<div id="modal-stage"></div>').appendTo('body');
-					} else{
+					} else {
 						modalContainer = $('#modal-stage');
 					}
 
@@ -50,7 +50,9 @@ angular.module('popup-dialog', [])
 
 							modalContainer.empty().append($compile(response)($scope));
 
-							_onDialogShow();
+							if (_onDialogShow) {
+								_onDialogShow();
+							}
 
 							popupDialog = modalContainer.modal($scope.dialogConfig.dialogOption);
 						});

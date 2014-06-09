@@ -8,10 +8,9 @@ angular.module('task-editor', [
 	'customer-list-service',
 	'employee-list-service',
 	'task-status-service',
+
 	//No return value
-	'price-tab-controller'
-
-
+	'register-section'
 ]).config(['$routeProvider', function ($routeProvider) {
 	$routeProvider.
 		when('/task-editor/:action/:taskId', {

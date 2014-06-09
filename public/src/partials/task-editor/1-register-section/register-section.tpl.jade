@@ -1,89 +1,95 @@
 //Created by Bohua on 2014-05-29.
-div.page-header
-	h2
-		i.fa.fa-edit.fa-fw &nbsp;
-		span 登记 &nbsp;
-		small.hidden-xs Register
-		div.btn-group.pull-right
-			button.btn.btn-default
-				i.fa.fa-edit.fa-fw &nbsp;
-				span 修改
+div(ng-controller="registerSectionController")
+	div.page-header
+		h2
+			i.fa.fa-edit.fa-fw &nbsp;
+			span 登记 &nbsp;
+			small.hidden-xs Register
+			div.btn-group.pull-right
+				button.btn.btn-default(
+				popup-dialog,
+				dialog-config="registerEditorConfig",
+				ng-click="showRegisterEditor($event, task_model)",
+				on-confirm="onRegisterSaved(action, data)"
+				)
+					i.fa.fa-edit.fa-fw &nbsp;
+					span 修改
 
-#register-panel-group.panel-group
-	div.panel.panel-default
-		div.panel-heading.cursor-pointer
-			h4.no-margin(data-toggle="collapse", href="#register-task-info-panel") 任务信息 &nbsp;
-				small.hidden-xs Task Information
-		#register-task-info-panel.panel-collapse.collapse.in
-			div.flex-container.panel-body
-				div.flex-box
-					label 任务状态:
-					div.label.label-primary
-						i.fa.fa-fw(class="{{translateStatus(task_model.status).icon}}")
-						span {{translateStatus(task_model.status).status}}
+	#register-panel-group.panel-group
+		div.panel.panel-default
+			div.panel-heading.cursor-pointer
+				h4.no-margin(data-toggle="collapse", href="#register-task-info-panel") 任务信息 &nbsp;
+					small.hidden-xs Task Information
+			#register-task-info-panel.panel-collapse.collapse.in
+				div.flex-container.panel-body
+					div.flex-box
+						label 任务状态:
+						div.label.label-primary
+							i.fa.fa-fw(class="{{translateStatus(task_model.status).icon}}")
+							span {{translateStatus(task_model.status).status}}
 
-				div.flex-box
-					label 任务主题:
-					span {{task_model.slogan}}
+					div.flex-box
+						label 任务主题:
+						span {{task_model.slogan}}
 
-				div.flex-box
-					label 登记人:
-					span {{task_model.reporter}}
+					div.flex-box
+						label 登记人:
+						span {{task_model.reporter}}
 
-				div.flex-box
-					label 登记日期:
-					span {{task_model.report_date | date:'yyyy-MM-dd'}}
+					div.flex-box
+						label 登记日期:
+						span {{task_model.report_date | date:'yyyy-MM-dd'}}
 
-				div.flex-box
-					label 担当人:
-					span {{task_model.assignee}}
+					div.flex-box
+						label 担当人:
+						span {{task_model.assignee}}
 
-				div.flex-box
-					label 处理方式:
-					span {{task_model.handling}}
+					div.flex-box
+						label 处理方式:
+						span {{task_model.handling}}
 
-	div.panel.panel-default
-		div.panel-heading.cursor-pointer
-			h4.no-margin(data-toggle="collapse", href="#register-customer-info-panel") 客户信息 &nbsp;
-				small.hidden-xs Customer Information
-		#register-customer-info-panel.panel-collapse.collapse.in
-			div.flex-container.panel-body
-				div.flex-box
-					label 公司名称:
-					span {{translateStatus(task_model.customer_name)}}
-				div.flex-box
-					label 联系人:
-					span {{translateStatus(task_model.customer_contact)}}
-				div.flex-box
-					label 公司地址:
-					span {{translateStatus(task_model.customer_address)}}
-				div.flex-box
-					label 联系电话:
-					span {{translateStatus(task_model.customer_tel)}}
-				div.flex-box
-					label 电子邮箱:
-					span {{translateStatus(task_model.customer_email)}}
+		div.panel.panel-default
+			div.panel-heading.cursor-pointer
+				h4.no-margin(data-toggle="collapse", href="#register-customer-info-panel") 客户信息 &nbsp;
+					small.hidden-xs Customer Information
+			#register-customer-info-panel.panel-collapse.collapse.in
+				div.flex-container.panel-body
+					div.flex-box
+						label 公司名称:
+						span {{translateStatus(task_model.customer_name)}}
+					div.flex-box
+						label 联系人:
+						span {{translateStatus(task_model.customer_contact)}}
+					div.flex-box
+						label 公司地址:
+						span {{translateStatus(task_model.customer_address)}}
+					div.flex-box
+						label 联系电话:
+						span {{translateStatus(task_model.customer_tel)}}
+					div.flex-box
+						label 电子邮箱:
+						span {{translateStatus(task_model.customer_email)}}
 
 
-	div.panel.panel-default
-		div.panel-heading.cursor-pointer
-			h4.no-margin(data-toggle="collapse", href="#register-consulting-details-panel") 咨询信息 &nbsp;
-				small.hidden-xs Consulting Details
-		#register-consulting-details-panel.panel-collapse.collapse.in
-			div.flex-container.panel-body
-				div.flex-box
-					label 咨询方式:
-					span(ng-show="task_model.prop_isEmail") 电子邮件
-					span(ng-show="task_model.prop_isTel") 电话
-					span(ng-show="task_model.prop_isF2F") 面谈
-					span(ng-show="task_model.prop_isFax") 传真
-				div.flex-box
-					label 阅读权限:
-					span(ng-show="task_model.prop_internal") 内部浏览
-					span(ng-show="task_model.prop_external") 客户浏览
-				div.flex-box
-					label 咨询主题:
-					span {{task_model.register_topic}}
-				div.flex-box
-					label 咨询事项:
-					span {{task_model.register_content}}
+		div.panel.panel-default
+			div.panel-heading.cursor-pointer
+				h4.no-margin(data-toggle="collapse", href="#register-consulting-details-panel") 咨询信息 &nbsp;
+					small.hidden-xs Consulting Details
+			#register-consulting-details-panel.panel-collapse.collapse.in
+				div.flex-container.panel-body
+					div.flex-box
+						label 咨询方式:
+						span(ng-show="task_model.prop_isEmail") 电子邮件
+						span(ng-show="task_model.prop_isTel") 电话
+						span(ng-show="task_model.prop_isF2F") 面谈
+						span(ng-show="task_model.prop_isFax") 传真
+					div.flex-box
+						label 阅读权限:
+						span(ng-show="task_model.prop_internal") 内部浏览
+						span(ng-show="task_model.prop_external") 客户浏览
+					div.flex-box
+						label 咨询主题:
+						span {{task_model.register_topic}}
+					div.flex-box
+						label 咨询事项:
+						span {{task_model.register_content}}

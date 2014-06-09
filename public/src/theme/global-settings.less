@@ -78,7 +78,7 @@ span, legend, label, input, select, p, h1, h2, h3, h4, h5, h6 {
 }
 
 input, select, textarea {
-  &:hover {
+  &:hover:not(.token-input) {
     border: 1px solid @grey-darker !important;
   }
 }
@@ -192,4 +192,31 @@ th{
 .modal-footer .alert-danger{
   padding: 5px 20px;
   margin: 0;
+}
+
+//Hide jquery autocomplete help
+.ui-helper-hidden-accessible { position: absolute; left:-999em; }
+.ui-autocomplete{
+  z-index: 9999;
+  background-color: @white;
+  border-radius: .25em;
+  border: 1px solid @grey-border;
+  box-sizing: border-box;
+
+  width: ~"calc(100% - 30px)";
+
+  .ui-menu-item {
+    font-family: @font;
+    cursor: pointer;
+    
+    .ui-corner-all {
+      color: @black-bg;
+      border-radius: .25em;
+    }
+
+    .ui-state-focus{
+      background-color: @brand-primary;
+      color: @white;
+    }
+  }
 }

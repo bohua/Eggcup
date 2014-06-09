@@ -47,83 +47,85 @@
     <div id="task-content" class="col-md-10 col-sm-9 col-lg-10">
       <section id="page_register" ng-if="getProgressState(100) != 'disabled'">
         <!--Created by Bohua on 2014-05-29.-->
-        <div class="page-header">
-          <h2><i class="fa fa-edit fa-fw">&nbsp;</i><span>登记 &nbsp;</span><small class="hidden-xs">Register</small>
-            <div class="btn-group pull-right">
-              <button class="btn btn-default"><i class="fa fa-edit fa-fw">&nbsp;</i><span>修改</span></button>
-            </div>
-          </h2>
-        </div>
-        <div id="register-panel-group" class="panel-group">
-          <div class="panel panel-default">
-            <div class="panel-heading cursor-pointer">
-              <h4 data-toggle="collapse" href="#register-task-info-panel" class="no-margin">任务信息 &nbsp;<small class="hidden-xs">Task Information</small></h4>
-            </div>
-            <div id="register-task-info-panel" class="panel-collapse collapse in">
-              <div class="flex-container panel-body">
-                <div class="flex-box">
-                  <label>任务状态:</label>
-                  <div class="label label-primary"><i class="fa fa-fw {{translateStatus(task_model.status).icon}}"></i><span>{{translateStatus(task_model.status).status}}</span></div>
-                </div>
-                <div class="flex-box">
-                  <label>任务主题:</label><span>{{task_model.slogan}}</span>
-                </div>
-                <div class="flex-box">
-                  <label>登记人:</label><span>{{task_model.reporter}}</span>
-                </div>
-                <div class="flex-box">
-                  <label>登记日期:</label><span>{{task_model.report_date | date:'yyyy-MM-dd'}}</span>
-                </div>
-                <div class="flex-box">
-                  <label>担当人:</label><span>{{task_model.assignee}}</span>
-                </div>
-                <div class="flex-box">
-                  <label>处理方式:</label><span>{{task_model.handling}}</span>
+        <div ng-controller="registerSectionController">
+          <div class="page-header">
+            <h2><i class="fa fa-edit fa-fw">&nbsp;</i><span>登记 &nbsp;</span><small class="hidden-xs">Register</small>
+              <div class="btn-group pull-right">
+                <button popup-dialog="popup-dialog" dialog-config="registerEditorConfig" ng-click="showRegisterEditor($event, task_model)" on-confirm="onRegisterSaved(action, data)" class="btn btn-default"><i class="fa fa-edit fa-fw">&nbsp;</i><span>修改</span></button>
+              </div>
+            </h2>
+          </div>
+          <div id="register-panel-group" class="panel-group">
+            <div class="panel panel-default">
+              <div class="panel-heading cursor-pointer">
+                <h4 data-toggle="collapse" href="#register-task-info-panel" class="no-margin">任务信息 &nbsp;<small class="hidden-xs">Task Information</small></h4>
+              </div>
+              <div id="register-task-info-panel" class="panel-collapse collapse in">
+                <div class="flex-container panel-body">
+                  <div class="flex-box">
+                    <label>任务状态:</label>
+                    <div class="label label-primary"><i class="fa fa-fw {{translateStatus(task_model.status).icon}}"></i><span>{{translateStatus(task_model.status).status}}</span></div>
+                  </div>
+                  <div class="flex-box">
+                    <label>任务主题:</label><span>{{task_model.slogan}}</span>
+                  </div>
+                  <div class="flex-box">
+                    <label>登记人:</label><span>{{task_model.reporter}}</span>
+                  </div>
+                  <div class="flex-box">
+                    <label>登记日期:</label><span>{{task_model.report_date | date:'yyyy-MM-dd'}}</span>
+                  </div>
+                  <div class="flex-box">
+                    <label>担当人:</label><span>{{task_model.assignee}}</span>
+                  </div>
+                  <div class="flex-box">
+                    <label>处理方式:</label><span>{{task_model.handling}}</span>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="panel panel-default">
-            <div class="panel-heading cursor-pointer">
-              <h4 data-toggle="collapse" href="#register-customer-info-panel" class="no-margin">客户信息 &nbsp;<small class="hidden-xs">Customer Information</small></h4>
-            </div>
-            <div id="register-customer-info-panel" class="panel-collapse collapse in">
-              <div class="flex-container panel-body">
-                <div class="flex-box">
-                  <label>公司名称:</label><span>{{translateStatus(task_model.customer_name)}}</span>
-                </div>
-                <div class="flex-box">
-                  <label>联系人:</label><span>{{translateStatus(task_model.customer_contact)}}</span>
-                </div>
-                <div class="flex-box">
-                  <label>公司地址:</label><span>{{translateStatus(task_model.customer_address)}}</span>
-                </div>
-                <div class="flex-box">
-                  <label>联系电话:</label><span>{{translateStatus(task_model.customer_tel)}}</span>
-                </div>
-                <div class="flex-box">
-                  <label>电子邮箱:</label><span>{{translateStatus(task_model.customer_email)}}</span>
+            <div class="panel panel-default">
+              <div class="panel-heading cursor-pointer">
+                <h4 data-toggle="collapse" href="#register-customer-info-panel" class="no-margin">客户信息 &nbsp;<small class="hidden-xs">Customer Information</small></h4>
+              </div>
+              <div id="register-customer-info-panel" class="panel-collapse collapse in">
+                <div class="flex-container panel-body">
+                  <div class="flex-box">
+                    <label>公司名称:</label><span>{{translateStatus(task_model.customer_name)}}</span>
+                  </div>
+                  <div class="flex-box">
+                    <label>联系人:</label><span>{{translateStatus(task_model.customer_contact)}}</span>
+                  </div>
+                  <div class="flex-box">
+                    <label>公司地址:</label><span>{{translateStatus(task_model.customer_address)}}</span>
+                  </div>
+                  <div class="flex-box">
+                    <label>联系电话:</label><span>{{translateStatus(task_model.customer_tel)}}</span>
+                  </div>
+                  <div class="flex-box">
+                    <label>电子邮箱:</label><span>{{translateStatus(task_model.customer_email)}}</span>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="panel panel-default">
-            <div class="panel-heading cursor-pointer">
-              <h4 data-toggle="collapse" href="#register-consulting-details-panel" class="no-margin">咨询信息 &nbsp;<small class="hidden-xs">Consulting Details</small></h4>
-            </div>
-            <div id="register-consulting-details-panel" class="panel-collapse collapse in">
-              <div class="flex-container panel-body">
-                <div class="flex-box">
-                  <label>咨询方式:</label><span ng-show="task_model.prop_isEmail">电子邮件</span><span ng-show="task_model.prop_isTel">电话</span><span ng-show="task_model.prop_isF2F">面谈</span><span ng-show="task_model.prop_isFax">传真</span>
-                </div>
-                <div class="flex-box">
-                  <label>阅读权限:</label><span ng-show="task_model.prop_internal">内部浏览</span><span ng-show="task_model.prop_external">客户浏览</span>
-                </div>
-                <div class="flex-box">
-                  <label>咨询主题:</label><span>{{task_model.register_topic}}</span>
-                </div>
-                <div class="flex-box">
-                  <label>咨询事项:</label><span>{{task_model.register_content}}</span>
+            <div class="panel panel-default">
+              <div class="panel-heading cursor-pointer">
+                <h4 data-toggle="collapse" href="#register-consulting-details-panel" class="no-margin">咨询信息 &nbsp;<small class="hidden-xs">Consulting Details</small></h4>
+              </div>
+              <div id="register-consulting-details-panel" class="panel-collapse collapse in">
+                <div class="flex-container panel-body">
+                  <div class="flex-box">
+                    <label>咨询方式:</label><span ng-show="task_model.prop_isEmail">电子邮件</span><span ng-show="task_model.prop_isTel">电话</span><span ng-show="task_model.prop_isF2F">面谈</span><span ng-show="task_model.prop_isFax">传真</span>
+                  </div>
+                  <div class="flex-box">
+                    <label>阅读权限:</label><span ng-show="task_model.prop_internal">内部浏览</span><span ng-show="task_model.prop_external">客户浏览</span>
+                  </div>
+                  <div class="flex-box">
+                    <label>咨询主题:</label><span>{{task_model.register_topic}}</span>
+                  </div>
+                  <div class="flex-box">
+                    <label>咨询事项:</label><span>{{task_model.register_content}}</span>
+                  </div>
                 </div>
               </div>
             </div>

@@ -1,82 +1,53 @@
 //Created by bli on 2014/5/9.
-fieldset(keyboard-support)
-	span.item-title 任务信息
-	comment.text-muted.margin15 Task Information
-	div.expandable-section
-		div.row
-			div.span2
-				label 任务状态
-				span.fg-darkRed.text-content {{translateStatus(dialog_data_model.status)}}
-			div.span4
-				label 客户公司
-				div.input-control.text
-					input(type="text", placeholder="公司名称", value="{{translateCustomer(dialog_data_model.customer)}}", list="customer_list")
-					datalist#customer_list
-						option(ng-repeat="customer in customerList") {{customer.name}}
-			div.span2
-				label 担当人
-				div.input-control.select
-					select(ng-model="dialog_data_model.assignee")
-						option(ng-repeat="employee in employeeList" value="{{employee.id}}") {{employee.name}}
-			div.span2
-				label 处理方式
-				div.input-control.select
-					select(ng-model="dialog_data_model.handling")
-						option(value = 0) 解答回复
-						option(value = 1) 提案回复
+#register-editor-form.modal-dialog.modal-lg(ng-controller="registerEditorController")
+	div.modal-content
+		div.modal-header
+			button.close(type="button", data-dismiss="modal") &times;
+			h4.modal-title 任务登记 &nbsp;
+				small Task Register
+		div.modal-body.container-fluid
+			h4 任务信息 &nbsp;
+				small Task Information
+			hr
+			div.row
+				div.form-group.col-sm-6
+					label.control-label 任务名:
+					div
+						input.form-control(type="text", placeholder="任务名", ng-model="dialog_data_model.name", required)
+				div.form-group.col-sm-4
+					label.control-label 担当人:
+					div()
+						input.form-control(type="text", placeholder="任务名", ng-model="dialog_data_model.assignee", token-field)
+				div.form-group.col-sm-2
+					label.control-label 处理方式:
+					div
+						select.form-control(ng-model="dialog_data_model.handling")
+							option(value="", selected) 选择方式
+							option(value="0") 回复解答
+							option(value="1") 提案解答
 
+			h4 公司信息 &nbsp;
+				small.hidden-xs.hidden-xs Company Information
+			hr
+			div.form-inline
+				div.form-group
+					label.control-label 公司名称:
+					div
+						input.form-control(type="text", placeholder="公司名称", ng-model="dialog_data_model.customer_name")
+				div.form-group
+					label.control-label 联系人:
+					div
+						input.form-control(type="text", placeholder="联系人", ng-model="dialog_data_model.customer_contact")
+				div.form-group
+					label.control-label 电话:
+					div
+						input.form-control(type="text", placeholder="电话", ng-model="dialog_data_model.customer_tel")
 
-	span.item-title 咨询信息
-	comment.text-muted.margin15 Consulting Details
-	div.expandable-section
-		div.row
-			div.span10
-				label 咨询主题
-				div.input-control.text
-					input(type="text", placeholder="咨询主题", ng-model="dialog_data_model.topic", required)
-		div.row
-			div.span10
-				label 咨询事项
-				div.input-control.textarea
-					textarea(placeholder="咨询事项", ng-model="dialog_data_model.description")
-
-	div.row
-		div.span5
-			span.item-title 咨询方式
-			comment.text-muted.margin15 Incoming way
-			div.expandable-section
-				div.input-control.checkbox
-					label
-						input(type="checkbox", ng-model="dialog_data_model.prop_isEmail")
-						span.check
-						span 电子邮件
-				div.input-control.checkbox
-					label
-						input(type="checkbox", ng-model="dialog_data_model.prop_isTel")
-						span.check
-						span 电话
-				div.input-control.checkbox
-					label
-						input(type="checkbox", ng-model="dialog_data_model.prop_isF2F")
-						span.check
-						span 面谈
-				div.input-control.checkbox
-					label
-						input(type="checkbox", ng-model="dialog_data_model.prop_isFax")
-						span.check
-						span 传真
-		div.span5
-			span.item-title 阅读权限
-			comment.text-muted.margin15 Permissions
-			div.expandable-section
-				div.input-control.checkbox
-					label
-						input(type="checkbox", ng-model="dialog_data_model.prop_internal")
-						span.check
-						span 内部浏览
-				div.input-control.checkbox
-					label
-						input(type="checkbox", ng-model="dialog_data_model.prop_external")
-						span.check
-						span 客户浏览
-
+		div.modal-footer
+			div.pull-left
+				button.btn.btn-danger(ng-click="empty()", ng-if="prop.mode=='edit'") 清空
+			div.pull-left.alert-danger.panel(ng-show="prop.showErrorMessage")
+				i.fa.fa-fw.fa-warning
+				span 单据填写有误，请修正红色标记
+			button.btn.btn-default(type="button", ng-click="Cancel()") 取消
+			button.btn.btn-primary(type="button", ng-click="Confirm('update', true)") 保存

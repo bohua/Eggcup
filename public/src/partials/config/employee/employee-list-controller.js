@@ -7,7 +7,7 @@ angular.module('employee-list', [
 	'employee-editor',
 	'tag-reference-service',
 	'customer-list-service',
-	'employee-list-service',
+	'employee-list-service'
 ]).config(['$routeProvider', function ($routeProvider) {
 	$routeProvider.
 		when('/config/employee', {
@@ -38,12 +38,7 @@ angular.module('employee-list', [
 			dialogOption: {
 				backdrop: 'static'
 			},
-
-			template: '/src/partials/config/employee/employee-editor-view.tpl.html',
-
-			onShow: function (_dialogWin) {
-
-			}
+			template: '/src/partials/config/employee/employee-editor-view.tpl.html'
 		};
 
 		/**

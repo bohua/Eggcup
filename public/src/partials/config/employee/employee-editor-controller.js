@@ -1,7 +1,7 @@
 /**
  * Created by Bli on 2014/4/29.
  */
-angular.module('employee-editor', ['tag-reference-service', 'bootstrap-tagsinput'])
+angular.module('employee-editor', ['tag-reference-service'])
 	.controller('employeeEditorController', ['$scope', 'tagReferenceService', function ($scope, tagReferenceService) {
 		/**
 		 * Initialize Emitters
@@ -16,6 +16,7 @@ angular.module('employee-editor', ['tag-reference-service', 'bootstrap-tagsinput
 		/**
 		 * Get system tags
 		 */
+			/*
 		var sysTag = tagReferenceService.getSysTag();
 
 		var tmpId = 1;
@@ -39,4 +40,5 @@ angular.module('employee-editor', ['tag-reference-service', 'bootstrap-tagsinput
 					return 'label bg-darkBlue';
 			}
 		}
+		*/
 	}]);

@@ -65,40 +65,14 @@ div.navbar.navbar-inverse.navbar-fixed-top(ng-controller="topBarController", rol
 							i.fa.fa-sign-out.fa-fw &nbsp;
 							span 登出系统
 
-			#task-searcher.navbar-form.top-bar-search-box(role="search")
+				li#new-task-btn.navbar-form.navbar-right
+					btn.btn.btn-primary
+						i.fa.fa-edit.fa-fw &nbsp;
+						span 新任务
+
+			#task-searcher.navbar-form.navbar-right.top-bar-search-box(role="search")
 				div.input-group
 					input.form-control(type="text", placeholder="任务代号")
 					span.input-group-btn
 						button.btn.btn-default
 							i.fa.fa-search
-
-
-
-
-			//#left-menu-switcher.navbar-toggle(ng-click='toggleLeftMenu()')
-				i.icon-lines.fg-hover-grayLight
-	//#global-search-box.input-control.text
-		input(type='text', value='', placeholder='请输入关键字搜索...')
-		button.btn-search
-
-	//#top-bar-right-button-panel
-		nav.horizontal-menu: ul
-			li
-				a.dropdown-toggle(ng-click='showUserMenu()')
-					i.icon-user-2
-					t 李小帅
-					i.icon-arrow-down-4
-				ul.dropdown-menu#user-dropdown-menu
-					li: a(href='#')
-						i.icon-eye
-						span 帐户信息
-					li: a(href='#')
-						i.icon-loop
-						span 切换帐套
-					li: a(href='#')
-						i.icon-locked-2
-						span 锁屏
-					li.divider
-					li: a(href='#')
-						i.icon-switch
-						span 登出系统

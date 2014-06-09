@@ -39,12 +39,7 @@ angular.module('customer-list', [
 			dialogOption: {
 				backdrop: 'static'
 			},
-
-			template: '/src/partials/config/customer/customer-editor-view.tpl.html',
-
-			onShow: function (_dialogWin) {
-
-			}
+			template: '/src/partials/config/customer/customer-editor-view.tpl.html'
 		};
 
 		/**

@@ -1,0 +1,16 @@
+/**
+ * Created by bli on 2014/6/9.
+ */
+angular.module('register-section', ['register-editor'])
+	.controller('registerSectionController', ['$scope', function ($scope) {
+		$scope.registerEditorConfig = {
+			dialogOption: {
+				backdrop: 'static'
+			},
+			template: '/src/partials/register-editor/register-editor-view.tpl.html'
+		};
+
+		$scope.showRegisterEditor = function($event, dataModel){
+			$($event.currentTarget).trigger('popup', ['edit', dataModel]);
+		};
+	}]);

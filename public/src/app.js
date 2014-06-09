@@ -11,7 +11,8 @@ angular.module('app', [
 	'employee-list',
 	'dashboard',
 	'task-editor',
-	'duScroll'
+	'duScroll',
+	'token-field'
 ]).controller('appController', [
 	'$scope',
 	'$rootScope',
