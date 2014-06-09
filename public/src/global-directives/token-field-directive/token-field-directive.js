@@ -2,7 +2,7 @@
  * Created by bli on 2014/6/9.
  */
 angular.module('token-field', [])
-	.directive('tokenField', [ '$timeout', function ($timeout) {
+	.directive('tokenField', function () {
 		var tokenField = {
 			link: function ($scope, $element, $attributes) {
 				var wrapper = $($element).parent();
@@ -36,4 +36,4 @@ angular.module('token-field', [])
 		};
 
 		return tokenField;
-	}]);
+	});

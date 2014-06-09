@@ -19,6 +19,10 @@ angular.module('handling-method-service', [])
 				} else{
 					return "";
 				}
+			},
+
+			getHandlingList: function(){
+				return methods;
 			}
 		};
 

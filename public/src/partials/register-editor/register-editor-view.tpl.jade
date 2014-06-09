@@ -21,27 +21,79 @@
 				div.form-group.col-sm-2
 					label.control-label 处理方式:
 					div
-						select.form-control(ng-model="dialog_data_model.handling")
+						select.form-control(ng-model="dialog_data_model.handling", ng-options="key as value for (key, value) in handlingList")
 							option(value="", selected) 选择方式
-							option(value="0") 回复解答
-							option(value="1") 提案解答
 
 			h4 公司信息 &nbsp;
-				small.hidden-xs.hidden-xs Company Information
+				small Company Information
 			hr
-			div.form-inline
-				div.form-group
+			div.row
+				div.form-group.col-sm-6
 					label.control-label 公司名称:
 					div
 						input.form-control(type="text", placeholder="公司名称", ng-model="dialog_data_model.customer_name")
-				div.form-group
+				div.form-group.col-sm-3
 					label.control-label 联系人:
 					div
 						input.form-control(type="text", placeholder="联系人", ng-model="dialog_data_model.customer_contact")
-				div.form-group
+				div.form-group.col-sm-3
 					label.control-label 电话:
 					div
 						input.form-control(type="text", placeholder="电话", ng-model="dialog_data_model.customer_tel")
+
+			div.row
+				div.form-group.col-sm-8
+					label.control-label 公司地址:
+					div
+						input.form-control(type="text", placeholder="公司地址", ng-model="dialog_data_model.customer_address")
+				div.form-group.col-sm-4
+					label.control-label 邮箱:
+					div
+						input.form-control(type="text", placeholder="邮箱", ng-model="dialog_data_model.customer_email")
+
+
+			h4 咨询信息 &nbsp;
+				small Consulting Information
+			hr
+			div.row
+				div.col-sm-6
+					label.control-label 咨询方式:
+					div.form-group
+						div.btn-group(data-toggle="buttons")
+							label.btn.btn-default(toggle-button-model="dialog_data_model.prop_isEmail")
+								input(type="checkbox")
+								span 邮件
+							label.btn.btn-default(toggle-button-model="dialog_data_model.prop_isTel")
+								input(type="checkbox")
+								span 电话
+							label.btn.btn-default(toggle-button-model="dialog_data_model.prop_isF2F")
+								input(type="checkbox")
+								span 面谈
+							label.btn.btn-default(toggle-button-model="dialog_data_model.prop_isFax")
+								input(type="checkbox")
+								span 传真
+
+				div.col-sm-6
+					label.control-label 阅读权限:
+					div.form-group
+						div.btn-group(data-toggle="buttons")
+							label.btn.btn-default(toggle-button-model="dialog_data_model.prop_internal")
+								input(type="checkbox")
+								span 内部浏览
+							label.btn.btn-default(toggle-button-model="dialog_data_model.prop_external")
+								input(type="checkbox")
+								span 客户浏览
+
+			div.row
+				div.form-group.col-sm-12
+					label.control-label 咨询主题:
+					div
+						input.form-control(type="text", placeholder="咨询主题", ng-model="dialog_data_model.register_topic")
+			div.row
+				div.form-group.col-sm-12
+					label.control-label 咨询事项:
+					div
+						textarea.form-control(rows="5", placeholder="咨询事项", ng-model="dialog_data_model.register_content")
 
 		div.modal-footer
 			div.pull-left
