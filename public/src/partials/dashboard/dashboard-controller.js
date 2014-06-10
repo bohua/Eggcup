@@ -26,10 +26,6 @@ angular.module('dashboard', [
 	'taskStatusService',
 	'customerListService',
 	function ($scope, $location, tasks, taskStatusService, customerListService) {
-		/**
-		 * Initialize the nano scrollers
-		 */
-		$(".nano").nanoScroller();
 
 		/**
 		 * popup window configuration
