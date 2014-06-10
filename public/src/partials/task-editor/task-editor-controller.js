@@ -176,4 +176,10 @@ angular.module('task-editor', [
 		$scope.getBack = function () {
 			$location.path('/');
 		}
+
+		//Auto active the first section
+		$timeout(function(){
+			$($('ul.affix a')[0]).addClass('active');
+		});
+
 	}]);
