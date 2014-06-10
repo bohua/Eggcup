@@ -7,17 +7,20 @@ angular.module('token-field', [])
 			link: function ($scope, $element, $attributes) {
 				var wrapper = $($element).parent();
 				var ngModel = $attributes.ngModel,
-					tokens = eval("$scope." + ngModel) || [];
+					tokens = eval("$scope." + ngModel) || [],
+					options = {
+						autocomplete: {
+							delay: 100,
+							appendTo: wrapper
+						},
+						showAutocompleteOnFocus: true,
+						tokens: tokens
+					};
 
-				$($element).tokenfield({
-					autocomplete: {
-						source: ['李小帅', '苏小美'],
-						delay: 100,
-						appendTo: wrapper
-					},
-					showAutocompleteOnFocus: true,
-					tokens: tokens
-				});
+				var inputOption = eval("$scope." + $attributes.tokenField) || {};
+				$.extend(true, options, inputOption);
+
+				$($element).tokenfield(options);
 
 				function updateModel(tokens) {
 					var tStr = _.pluck(tokens, 'value').join(',');

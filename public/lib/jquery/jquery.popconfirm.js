@@ -19,12 +19,12 @@
 	$.fn.extend({
 		popConfirm: function (options) {
 			var defaults = {
-				title: 'Confirmation',
-				content: 'Are you really sure ?',
-				placement: 'right',
+				title: '操作确认',
+				content: '真的要清除么?',
+				placement: 'top',
 				container: 'body',
-				yesBtn: 'Yes',
-				noBtn: 'No'
+				yesBtn: '是',
+				noBtn: '否'
 			};
 			var options = $.extend(defaults, options);
 			var last = null;
@@ -34,6 +34,10 @@
 				var arrayActions = [];
 				var arrayDelegatedActions = [];
 				var eventToConfirm;
+
+				if(!!options.onConfirm){
+					arrayActions.push(options.onConfirm);
+				}
 
 				// If there are jquery click events
 				if (typeof(jQuery._data(this, "events")) != "undefined" && typeof(jQuery._data(this, "events")['click']) != "undefined") {

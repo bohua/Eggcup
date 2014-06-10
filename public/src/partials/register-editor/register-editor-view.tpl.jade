@@ -17,7 +17,7 @@
 				div.form-group.col-sm-4
 					label.control-label 担当人:
 					div
-						input.form-control(type="text", placeholder="任务名", ng-model="dialog_data_model.assignee", token-field)
+						input.form-control(type="text", placeholder="任务名", ng-model="dialog_data_model.assignee", token-field="assigneeFieldOptions")
 				div.form-group.col-sm-2
 					label.control-label 处理方式:
 					div
@@ -31,7 +31,7 @@
 				div.form-group.col-sm-6
 					label.control-label 公司名称:
 					div
-						input.form-control(type="text", placeholder="公司名称", ng-model="dialog_data_model.customer_name")
+						input.form-control(type="text", placeholder="公司名称", ng-model="dialog_data_model.customer_name", auto-complete-field="customerFieldOptions")
 				div.form-group.col-sm-3
 					label.control-label 联系人:
 					div
@@ -97,7 +97,7 @@
 
 		div.modal-footer
 			div.pull-left
-				button.btn.btn-danger(ng-if="prop.mode=='edit'", pop-confirm="popConfirmOptions") 清空
+				button.btn.btn-danger(ng-if="prop.mode=='edit'", pop-confirm="emptyBtnOptions") 清空
 			div.pull-left.alert-danger.panel(ng-show="prop.showErrorMessage")
 				i.fa.fa-fw.fa-warning
 				span 单据填写有误，请修正红色标记

@@ -13,7 +13,8 @@ angular.module('app', [
 	'dashboard',
 	'task-editor',
 	'duScroll',
-	'token-field'
+	'token-field',
+	'auto-complete-field'
 ]).controller('appController', [
 	'$scope',
 	'$rootScope',

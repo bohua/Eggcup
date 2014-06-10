@@ -8,10 +8,10 @@ angular.module('pop-confirm', [])
 				var options = {
 					container: $($element).closest('div'),
 					placement: "top"
-
 				};
 
-				$.extend(true, options, $attributes.popConfirm);
+				var inputOptions = eval("$scope." + $attributes.popConfirm) || {};
+				$.extend(true, options, inputOptions);
 				$($element).popConfirm(options);
 			}
 		};
