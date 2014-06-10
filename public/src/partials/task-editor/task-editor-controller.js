@@ -10,7 +10,8 @@ angular.module('task-editor', [
 	'task-status-service',
 
 	//No return value
-	'register-section'
+	'register-section',
+	'proposal-section'
 ]).config(['$routeProvider', function ($routeProvider) {
 	$routeProvider.
 		when('/task-editor/:action/:taskId', {

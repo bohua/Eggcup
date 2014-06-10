@@ -97,7 +97,7 @@
 
 		div.modal-footer
 			div.pull-left
-				button.btn.btn-danger(ng-click="empty()", ng-if="prop.mode=='edit'") 清空
+				button.btn.btn-danger(ng-if="prop.mode=='edit'", pop-confirm="popConfirmOptions") 清空
 			div.pull-left.alert-danger.panel(ng-show="prop.showErrorMessage")
 				i.fa.fa-fw.fa-warning
 				span 单据填写有误，请修正红色标记

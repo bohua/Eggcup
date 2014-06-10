@@ -13,52 +13,18 @@ html(lang="zh", ng-app='app')
 		link(rel="apple-touch-startup-image", href="images/ipadPortrait.png", media="(device-width: 768px) and (orientation:portrait) and (-webkit-min-device-pixel-ratio: 2)")
 
 		title= title
-		link(rel='stylesheet', href='/css/bootstrap.css')
-		link(rel='stylesheet', href='/css/bootstrap-theme.css')
-		link(rel='stylesheet', href='/css/jquery-ui-1.10.4.css')
-		link(rel='stylesheet', href='/css/client.css')
-		link(rel='stylesheet', href='/css/hint.min.css')
-		link(rel='stylesheet', href='/css/nanoscroller.css')
-		link(rel='stylesheet', href='/css/font-awesome.css')
-		link(rel='stylesheet', href='/css/bootstrap-tokenfield.css')
-		link(rel='stylesheet', href='/css/tokenfield-typeahead.css')
+		link(rel='stylesheet', href='/css/angular-csp.css')
+		link(rel='stylesheet', href='/css/bootstrap.min.css')
+		link(rel='stylesheet', href='/css/bootstrap-theme.min.css')
+		link(rel='stylesheet', href='/css/jquery-ui-1.10.4.min.css')
+		link(rel='stylesheet', href='/css/font-awesome.min.css')
+		link(rel='stylesheet', href='/css/bootstrap-tokenfield.min.css')
+		link(rel='stylesheet', href='/css/tokenfield-typeahead.min.css')
+		link(rel='stylesheet', href='/css/bootstrap-datetimepicker.min.css')
 
+		link(rel='stylesheet', href='/css/client.css')
 
 		//link(href='http://fonts.googleapis.com/css?family=Audiowide', rel='stylesheet', type='text/css')
-
-		//AngularJS plugins
-		script(src='/lib/angular/angular.js')
-		script(src='/lib/angular/angular-route.js')
-		script(src='/lib/angular/angular-resource.js')
-		script(src='/lib/angular/angular-sanitize.js')
-		script(src='/lib/angular/angular-scroll.js')
-
-		//jQuery plugins
-		script(src='/lib/jquery/jquery-1.10.2.js')
-		script(src='/lib/jquery/jquery-ui-1.10.4.js')
-		script(src='/lib/jquery/jquery.widget.min.js')
-		script(src='/lib/jquery/jquery.mousewheel.js')
-		script(src='/lib/jquery/jquery.easing.min.js')
-		script(src='/lib/jquery/jquery.tabbable.js')
-		script(src='/lib/jquery/jquery.caret.1.02.js')
-		script(src='/lib/jquery/jquery.nanoscroller.js')
-		script(src='/lib/jquery/jquery.fileupload.js')
-
-		//Lo-Dash
-		script(src='/lib/lodash/lodash.js')
-
-		//Boostrap plugins
-		script(src='/lib/bootstrap/bootstrap.js')
-		script(src='/lib/bootstrap/bootstrap-tokenfield.js')
-
-		//Highcharts plugins
-		script(src='/lib/highcharts/highcharts.src.js')
-		script(src='/lib/highcharts/modules/no-data-to-display.src.js')
-
-		//Load product code
-		- var jsFilesToAppend = jsFiles || [];
-			each jsFile in jsFilesToAppend
-				script(src= jsFile)
 
 	body.unselectable(ng-controller='appController')
 		#screen-mask
@@ -73,3 +39,30 @@ html(lang="zh", ng-app='app')
 
 		#modal-stage.modal.fade(tabindex="-1", role="dialog")
 			div.modal-dialog
+
+
+		//Load JS codes
+		//AngularJS plugins
+		script(src='/lib/angular/angular.min.js')
+		script(src='/lib/angular/angular-route.min.js')
+		script(src='/lib/angular/angular-resource.min.js')
+		script(src='/lib/angular/angular-sanitize.min.js')
+		script(src='/lib/angular/angular-scroll.min.js')
+		script(src='/lib/angular/angular-locale_zh-cn.js')
+		//jQuery plugins
+		script(src='/lib/jquery/jquery-1.11.1.min.js')
+		script(src='/lib/jquery/jquery-ui-1.10.4.min.js')
+		script(src='/lib/jquery/jquery.caret.1.02.min.js')
+		script(src='/lib/jquery/jquery.popconfirm.js')
+		//Moment JS
+		script(src='/lib/momentjs/moment.min.js')
+		//Lo-Dash
+		script(src='/lib/lodash/lodash.min.js')
+		//Boostrap plugins
+		script(src='/lib/bootstrap/bootstrap.min.js')
+		script(src='/lib/bootstrap/bootstrap-tokenfield.min.js')
+		script(src='/lib/bootstrap/bootstrap-datetimepicker.min.js')
+		//Load product code
+		- var jsFilesToAppend = jsFiles || [];
+			each jsFile in jsFilesToAppend
+				script(src= jsFile)

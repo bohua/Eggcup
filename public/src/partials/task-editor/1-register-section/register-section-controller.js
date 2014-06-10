@@ -7,7 +7,13 @@ angular.module('register-section', ['register-editor', 'handling-method-service'
 			dialogOption: {
 				backdrop: 'static'
 			},
-			template: '/src/partials/register-editor/register-editor-view.tpl.html'
+			template: '/src/partials/register-editor/register-editor-view.tpl.html',
+			onShow: function(e){
+//				$(e.currentTarget).find(".popconfirm").popConfirm({
+//					placement: "top",
+//					container: $(e.currentTarget)
+//				});
+			}
 		};
 
 		$scope.showRegisterEditor = function($event, dataModel){
@@ -15,4 +21,5 @@ angular.module('register-section', ['register-editor', 'handling-method-service'
 		};
 
 		$scope.translateHandling = handlingMethodService.translateHandling;
+
 	}]);

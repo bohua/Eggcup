@@ -51,8 +51,11 @@ angular.module('popup-dialog', [])
 							modalContainer.empty().append($compile(response)($scope));
 
 							if (_onDialogShow) {
-								_onDialogShow();
+								$(modalContainer).on('shown.bs.modal', function (e) {
+									_onDialogShow(e);
+								});
 							}
+
 
 							popupDialog = modalContainer.modal($scope.dialogConfig.dialogOption);
 						});

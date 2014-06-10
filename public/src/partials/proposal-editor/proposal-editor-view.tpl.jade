@@ -1,0 +1,27 @@
+//Created by bli on 2014/6/10.
+#proposal-editor-form.modal-dialog.modal-lg(ng-controller="proposalEditorController")
+	div.modal-content
+		div.modal-header
+			button.close(type="button", data-dismiss="modal") &times;
+			h4.modal-title 提案详情 &nbsp;
+				small Proposal Details
+		div.modal-body.container-fluid
+			h4 附属信息 &nbsp;
+				small Proposal Property
+			hr
+			div.row
+				div.form-group.col-sm-6
+					label.control-label 提案人:
+					div
+						input.form-control(type="text", placeholder="提案人", ng-model="dialog_data_model.proposal_person")
+					label.control-label 翻译人:
+					div
+						input.form-control(type="text", placeholder="翻译人", ng-model="dialog_data_model.proposal_translator")
+					label.control-label 提案日期:
+					div.form-group
+						div.input-group.date
+							input.form-control(type="text", ng-model="dialog_data_model.proposal_date")
+							span.input-group-addon
+								i.fa.fa-calendar
+
+
