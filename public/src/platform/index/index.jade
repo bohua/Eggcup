@@ -17,10 +17,11 @@ html(lang="zh", ng-app='app')
 		link(rel='stylesheet', href='/css/bootstrap.min.css')
 		link(rel='stylesheet', href='/css/bootstrap-theme.min.css')
 		link(rel='stylesheet', href='/css/jquery-ui-1.10.4.min.css')
+		link(rel='stylesheet', href='/css/jquery.fileupload.css')
 		link(rel='stylesheet', href='/css/font-awesome.min.css')
 		link(rel='stylesheet', href='/css/bootstrap-tokenfield.min.css')
 		link(rel='stylesheet', href='/css/tokenfield-typeahead.min.css')
-		link(rel='stylesheet', href='/css/bootstrap-datetimepicker.min.css')
+		link(rel='stylesheet', href='/css/datepicker3.css')
 
 		link(rel='stylesheet', href='/css/client.css')
 
@@ -54,14 +55,15 @@ html(lang="zh", ng-app='app')
 		script(src='/lib/jquery/jquery-ui-1.10.4.min.js')
 		script(src='/lib/jquery/jquery.caret.1.02.min.js')
 		script(src='/lib/jquery/jquery.popconfirm.js')
-		//Moment JS
-		script(src='/lib/momentjs/moment.min.js')
+		script(src='/lib/jquery/jquery.ba-outside-events.min.js')
+		script(src='/lib/jquery/jquery.fileupload.js')
 		//Lo-Dash
 		script(src='/lib/lodash/lodash.min.js')
 		//Boostrap plugins
 		script(src='/lib/bootstrap/bootstrap.min.js')
 		script(src='/lib/bootstrap/bootstrap-tokenfield.min.js')
-		script(src='/lib/bootstrap/bootstrap-datetimepicker.min.js')
+		script(src='/lib/bootstrap/bootstrap-datepicker.js')
+		script(src='/lib/bootstrap/bootstrap-datepicker.zh-CN.js')
 		//Load product code
 		- var jsFilesToAppend = jsFiles || [];
 			each jsFile in jsFilesToAppend

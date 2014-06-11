@@ -1,0 +1,57 @@
+//Created by bli on 2014/6/11.
+#attach-editor-form.modal-dialog.modal-lg(ng-controller="attachEditorController")
+	div.modal-content
+		div.modal-header
+			button.close(type="button", data-dismiss="modal") &times;
+			h4.modal-title 附信管理 &nbsp;
+				small Attachments Management
+		div.modal-body.container-fluid
+			div.pull-right.control-buttons.btn-group(ng-show="hasSelection")
+				button.btn.btn-default 打开
+				button.btn.btn-default 删除
+			h4 附件列表 &nbsp;
+				small Attachments
+			hr
+			div.table-responsive
+				table.table.table-bordered
+					thead
+						tr
+							th 名称
+							th 文件名
+							th 文件类型
+							th 文件大小
+					tbody
+						tr.cursor-pointer(ng-repeat="item in dialog_data_model", ng-click="selectRow($event)", ng-class="{'active': $first}")
+							td {{item.file_desc}}
+							td
+								i.fa.fa-file-word-o.text-info.fa-fw &nbsp;
+								span {{item.file_name}}
+							td {{item.file_ext}}
+							td {{item.file_size}}
+
+			h4 上传附件 &nbsp;
+				small Upload
+			hr
+
+			div.row
+				div.form-group.col-sm-4
+					div.input-group
+						input.form-control
+						span.input-group-addon.upload-button.cursor-pointer
+							i.fa.fa-cloud-upload.fw &nbsp;
+							input#fileupload(type="file", name="files[]", data-url="/file-upload")
+			div.row
+				div.progress-bar(data-role="progress-bar", data-color="#428bca")
+
+			//input.form-control#fileupload(type="file", name="files[]", data-url="/file-upload")
+
+
+		div.modal-footer
+			div.pull-left
+				button.btn.btn-danger(ng-if="prop.mode=='edit'", pop-confirm="emptyBtnOptions") 清空
+			div.pull-left.alert-danger.panel(ng-show="prop.showErrorMessage")
+				i.fa.fa-fw.fa-warning
+				span 单据填写有误，请修正红色标记
+			button.btn.btn-default(type="button", ng-click="Cancel()") 取消
+			button.btn.btn-primary(type="button", ng-click="Confirm('update', true)") 保存
+

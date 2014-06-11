@@ -14,7 +14,8 @@ angular.module('app', [
 	'task-editor',
 	'duScroll',
 	'token-field',
-	'auto-complete-field'
+	'auto-complete-field',
+	'date-field-model'
 ]).controller('appController', [
 	'$scope',
 	'$rootScope',

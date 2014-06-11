@@ -117,6 +117,21 @@ var task_json = {
 		prop_internal: true,
 		prop_external: true,
 
+		attachment: [
+			{
+				file_name: '大清地图及详解.docx',
+				file_ext: 'docx',
+				file_size: '1239098',
+				file_url: 'localhost://attachments/test/大清地图及详解.docx'
+			},
+			{
+				file_name: '时局分析及思考.xlsx',
+				file_ext: 'xlsx',
+				file_size: '1239098',
+				file_url: 'localhost://attachments/test/时局分析及思考.xlsx'
+			}
+		],
+
 		subItem: [
 			{
 				service: '出谋划策',

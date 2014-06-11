@@ -10,19 +10,49 @@
 				small Proposal Property
 			hr
 			div.row
-				div.form-group.col-sm-6
+				div.form-group.col-sm-4
 					label.control-label 提案人:
 					div
-						input.form-control(type="text", placeholder="提案人", ng-model="dialog_data_model.proposal_person", token-field)
+						input.form-control(type="text", placeholder="提案人", ng-model="dialog_data_model.proposal_person", auto-complete-field="employeeFieldOptions")
 				div.form-group.col-sm-4
 					label.control-label 翻译人:
 					div
-						input.form-control(type="text", placeholder="翻译人", ng-model="dialog_data_model.proposal_translator", token-field)
+						input.form-control(type="text", placeholder="翻译人", ng-model="dialog_data_model.proposal_translator", auto-complete-field="employeeFieldOptions")
+				div.form-group.col-sm-4
 					label.control-label 提案日期:
-				div.form-group
-						div.input-group.date
-							input.form-control(type="text", ng-model="dialog_data_model.proposal_date")
-							span.input-group-addon
-								i.fa.fa-calendar
+					div.input-group.date(date-field-model="dialog_data_model.proposal_date")
+						span.input-group-addon
+							i.fa.fa-calendar
+						input.form-control.datepicker(type="text")
+			h4 提案要义 &nbsp;
+				small Proposal Abstract
+			hr
+			div.row
+				div.form-group.col-sm-8
+					label.control-label 提案标的:
+					div
+						input.form-control(type="text", placeholder="提案标的", ng-model="dialog_data_model.proposal_topic")
+				div.col-sm-4
+					label.control-label 阅读权限:
+					div.form-group
+						div.btn-group(data-toggle="buttons")
+							label.btn.btn-default(toggle-button-model="dialog_data_model.prop_internal")
+								input(type="checkbox")
+								span 内部浏览
+							label.btn.btn-default(toggle-button-model="dialog_data_model.prop_external")
+								input(type="checkbox")
+								span 客户浏览
+			div.row
+				div.form-group.col-sm-12
+					label.control-label 标的内容:
+					div
+						textarea.form-control(rows="5", placeholder="标的内容", ng-model="dialog_data_model.proposal_content")
 
-
+		div.modal-footer
+			div.pull-left
+				button.btn.btn-danger(ng-if="prop.mode=='edit'", pop-confirm="emptyBtnOptions") 清空
+			div.pull-left.alert-danger.panel(ng-show="prop.showErrorMessage")
+				i.fa.fa-fw.fa-warning
+				span 单据填写有误，请修正红色标记
+			button.btn.btn-default(type="button", ng-click="Cancel()") 取消
+			button.btn.btn-primary(type="button", ng-click="Confirm('update', true)") 保存

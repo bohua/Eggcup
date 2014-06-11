@@ -77,6 +77,8 @@ app.get('/statusList', tasks.getStatusList);
 app.post('/file-upload', function (req, res, next) {
 	console.log(req.body);
 	console.log(req.files);
+
+	res.json(req.files);
 });
 
 
