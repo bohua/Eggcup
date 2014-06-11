@@ -29,6 +29,13 @@ angular.module('proposal-section', ['proposal-editor', 'attach-editor'])
 			onShow: function(){
 				$('#fileupload').fileupload({
 					dataType: 'json',
+					add: function (e, data) {
+						data.context = $('#fileupload-btn').html('上传')
+							.click(function () {
+								data.context = $('<p/>').text('Uploading...').replaceAll($(this));
+								data.submit();
+							});
+					},
 					done: function (e, data) {
 						$.each(data.result.files, function (index, file) {
 							$('<p/>').text(file.name).appendTo(document.body);

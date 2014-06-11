@@ -36,10 +36,13 @@
 			div.row
 				div.form-group.col-sm-4
 					div.input-group
-						input.form-control
-						span.input-group-addon.upload-button.cursor-pointer
-							i.fa.fa-cloud-upload.fw &nbsp;
-							input#fileupload(type="file", name="files[]", data-url="/file-upload")
+						input#fileupload-input.form-control(type="text", readonly="true")
+						span.input-group-btn
+							button#fileupload-btn.btn.btn-default(ng-click="selectUploadFile()")
+								i.fa.fa-cloud-upload.fw &nbsp;
+								span 选择
+
+				input#fileupload(type="file", name="files[]", data-url="/file-upload")
 			div.row
 				div.progress-bar(data-role="progress-bar", data-color="#428bca")
 

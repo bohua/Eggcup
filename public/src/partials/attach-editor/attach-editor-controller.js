@@ -9,10 +9,17 @@ angular.module('attach-editor', [])
 
 			$scope.selectRow = function($event){
 				var rowElement = $($event.currentTarget);
-				var controlPanel = $('.control-buttons');
 
 				rowElement.closest('table').find('tr').removeClass('active');
 				rowElement.addClass('active');
 				$scope.hasSelection = true;
 			};
+
+			$scope.selectUploadFile = function(){
+				$('#fileupload').click();
+			};
+			$('#fileupload').change(function(){
+				$this = $(this);
+				$('#fileupload-input').text($this.val());
+			});
 		}]);
