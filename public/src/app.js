@@ -15,7 +15,8 @@ angular.module('app', [
 	'duScroll',
 	'token-field',
 	'auto-complete-field',
-	'date-field-model'
+	'date-field-model',
+	'file-upload-field'
 ]).controller('appController', [
 	'$scope',
 	'$rootScope',

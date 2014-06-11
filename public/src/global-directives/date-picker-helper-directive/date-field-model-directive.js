@@ -2,8 +2,8 @@
  * Created by Bli on 2014/5/14.
  */
 angular.module('date-field-model', [])
-	.directive('dateFieldModel', ['$parse', function ($parse) {
-		var Helper = {
+	.directive('dateFieldModel', function () {
+		var dateFieldModel = {
 			restrict: 'A',
 			link: function ($scope, $element, $attributes) {
 				var model = eval("$scope." + $attributes.dateFieldModel) || {},
@@ -23,5 +23,5 @@ angular.module('date-field-model', [])
 			}
 		}
 
-		return Helper;
-	}]);
+		return dateFieldModel;
+	});

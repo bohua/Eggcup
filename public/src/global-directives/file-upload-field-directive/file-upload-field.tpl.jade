@@ -1,0 +1,11 @@
+//Created by Bohua on 2014-06-11.
+div.row
+	div.form-group.col-sm-4
+		button.fileupload-sel-btn.btn.btn-success(ng-click="selectUploadFile()")
+			i.fa.fa-cloud-upload.fw &nbsp;
+			span 上传附件
+		input.fileupload(type="file", name="files[]", data-url="/file-upload")
+div.row
+	div.form-group.col-sm-12
+		div.progress
+			div.progress-bar(aria-valuenow="0", aria-valuemin="0", aria-valuemax="100")

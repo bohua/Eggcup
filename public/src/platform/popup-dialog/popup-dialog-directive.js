@@ -43,7 +43,9 @@ angular.module('popup-dialog', [])
 							$scope.prop.mode = mode;
 
 							if (dataModel) {
-								$scope.dialog_data_model = $.extend(true, {}, dataModel);
+								//$scope.dialog_data_model = $.extend(true, {}, dataModel);
+
+								$scope.dialog_data_model = _.cloneDeep(dataModel);
 							} else {
 								$scope.dialog_data_model = {};
 							}

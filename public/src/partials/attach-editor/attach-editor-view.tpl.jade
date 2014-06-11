@@ -7,8 +7,12 @@
 				small Attachments Management
 		div.modal-body.container-fluid
 			div.pull-right.control-buttons.btn-group(ng-show="hasSelection")
-				button.btn.btn-default 打开
-				button.btn.btn-default 删除
+				button.btn.btn-default
+					i.fa.fa-folder-open.fa-fw &nbsp;
+					span 打开
+				button.btn.btn-default
+					i.fa.fa-trash-o.fa-fw &nbsp;
+					span 删除
 			h4 附件列表 &nbsp;
 				small Attachments
 			hr
@@ -29,25 +33,7 @@
 							td {{item.file_ext}}
 							td {{item.file_size}}
 
-			h4 上传附件 &nbsp;
-				small Upload
-			hr
-
-			div.row
-				div.form-group.col-sm-4
-					div.input-group
-						input#fileupload-input.form-control(type="text", readonly="true")
-						span.input-group-btn
-							button#fileupload-btn.btn.btn-default(ng-click="selectUploadFile()")
-								i.fa.fa-cloud-upload.fw &nbsp;
-								span 选择
-
-				input#fileupload(type="file", name="files[]", data-url="/file-upload")
-			div.row
-				div.progress-bar(data-role="progress-bar", data-color="#428bca")
-
-			//input.form-control#fileupload(type="file", name="files[]", data-url="/file-upload")
-
+			file-upload-field(data-model="dialog_data_model", on-uploaded="fileUploaded(file)")
 
 		div.modal-footer
 			div.pull-left
