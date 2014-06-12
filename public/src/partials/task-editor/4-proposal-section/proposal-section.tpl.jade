@@ -11,6 +11,9 @@ div.page-header(ng-controller="proposalSectionController")
 			button.btn.btn-default(popup-dialog,dialog-config="attachEditorConfig",ng-click="showAttachEditor($event, getAttachModel())",on-confirm="onAttachSaved(action, data)")
 				i.fa.fa-paperclip.fa-fw &nbsp;
 				span 附件
+			button.btn.btn-default(popup-dialog,dialog-config="detailEditorConfig",ng-click="showDetailEditor($event, getDetailModel())",on-confirm="onDetailSaved(action, data)")
+				i.fa.fa-list-alt.fa-fw &nbsp;
+				span 明细
 
 #proposal-panel-group.panel-group
 	div.panel.panel-default

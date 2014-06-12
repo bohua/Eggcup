@@ -36,11 +36,11 @@ angular.module('app', [
 		 */
 
 		/*
-		//var path
-		$scope.$on('$routeChangeSuccess', function () {
-			topBarService.trackNavBlock($location.path());
-		});
-		*/
+		 //var path
+		 $scope.$on('$routeChangeSuccess', function () {
+		 topBarService.trackNavBlock($location.path());
+		 });
+		 */
 
 		/**
 		 * Initialize global services

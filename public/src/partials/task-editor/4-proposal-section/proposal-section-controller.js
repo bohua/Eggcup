@@ -1,7 +1,7 @@
 /**
  * Created by bli on 2014/6/9.
  */
-angular.module('proposal-section', ['proposal-editor', 'attach-editor'])
+angular.module('proposal-section', ['proposal-editor', 'attach-editor', 'detail-editor'])
 	.controller('proposalSectionController', ['$scope', function ($scope) {
 		$scope.proposalEditorConfig = {
 			dialogOption: {
@@ -37,6 +37,28 @@ angular.module('proposal-section', ['proposal-editor', 'attach-editor'])
 
 		$scope.getAttachModel = function(){
 			return $scope.task_model.proposalSheet.attachment;
+		}
+
+		/**
+		 * Detail Editor Initialization
+		 */
+		$scope.detailEditorConfig = {
+			dialogOption: {
+				backdrop: 'static',
+				keyboard: false
+			},
+			template: '/src/partials/detail-editor/proposal-detail-editor-view.tpl.html',
+			onShow: function(){
+				$('#detail-editor-form table').editableTableWidget();
+			}
+		};
+
+		$scope.showDetailEditor = function($event, dataModel){
+			$($event.currentTarget).trigger('popup', ['edit', dataModel]);
+		};
+
+		$scope.getDetailModel = function(){
+			return $scope.task_model.proposalSheet.subItem;
 		}
 
 	}]);

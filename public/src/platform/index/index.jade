@@ -38,29 +38,33 @@ html(lang="zh", ng-app='app')
 			//#router-guide(ng-include='"/src/platform/router-guide/router-guide.tpl.html"')
 			#view-port(ng-view)
 
-		#modal-stage.modal.fade(tabindex="-1", role="dialog")
+		#modal-stage.modal.fade(role="dialog")
 			div.modal-dialog
 
-
 		//Load JS codes
-		//AngularJS plugins
-		script(src='/lib/angular/angular.min.js')
-		script(src='/lib/angular/angular-route.min.js')
-		script(src='/lib/angular/angular-resource.min.js')
-		script(src='/lib/angular/angular-sanitize.min.js')
+		//AngularJS Core
+		script(src='/lib/angular/angular.js')
+		script(src='/lib/angular/angular-route.js')
+		script(src='/lib/angular/angular-resource.js')
+		script(src='/lib/angular/angular-sanitize.js')
 		script(src='/lib/angular/angular-locale_zh-cn.js')
-		script(src='/lib/angular/angular-scroll.min.js')
-		//jQuery plugins
+		//AngularJS plugins
+		script(src='/lib/angular-plugin/angular-scroll.min.js')
+		//jQuery Core
 		script(src='/lib/jquery/jquery-1.11.1.min.js')
+		//jQuery UI
 		script(src='/lib/jquery/jquery-ui-1.10.4.min.js')
+		//jQuery plugins
 		script(src='/lib/jquery/jquery.caret.1.02.min.js')
 		script(src='/lib/jquery/jquery.popconfirm.js')
 		script(src='/lib/jquery/jquery.ba-outside-events.min.js')
 		script(src='/lib/jquery/jquery.fileupload.js')
+		script(src='/lib/jquery/jquery.editabletable.js')
 		//Lo-Dash
 		script(src='/lib/lodash/lodash.min.js')
-		//Boostrap plugins
+		//Bootstrap
 		script(src='/lib/bootstrap/bootstrap.min.js')
+		//Boostrap plugins
 		script(src='/lib/bootstrap/bootstrap-tokenfield.min.js')
 		script(src='/lib/bootstrap/bootstrap-datepicker.js')
 		script(src='/lib/bootstrap/bootstrap-datepicker.zh-CN.js')

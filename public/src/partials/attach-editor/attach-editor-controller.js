@@ -5,10 +5,9 @@ angular.module('attach-editor', [])
 	.controller('attachEditorController', [
 		'$scope',
 		function ($scope) {
-			function selectLatestRow(){
+			function highlightLatestRow(){
 				var trs = $('#attach-editor-form').find('tbody tr');
-				trs.removeClass('active');
-				$(trs[trs.length - 1]).addClass('active');
+				$(trs[trs.length - 1]).effect('highlight',  {color: '#428bca'}, 1500);
 			}
 
 			$scope.hasSelection = _.size( $scope.dialog_data_model) > 0;
@@ -32,6 +31,17 @@ angular.module('attach-editor', [])
 
 				$scope.dialog_data_model.push(o);
 				$scope.$apply();
-				selectLatestRow();
+				highlightLatestRow();
+			};
+
+			$scope.removeItem= function(){
+				var selectedRow = $('#attach-editor-form').find('tbody tr.active');
+				if(selectedRow.length !== 0){
+					var scope = angular.element(selectedRow).scope();
+
+					_.remove($scope.dialog_data_model, function(file){
+						return file.file_url === scope.item.file_url;
+					})
+				}
 			};
 		}]);

@@ -6,16 +6,7 @@
 			h4.modal-title 附信管理 &nbsp;
 				small Attachments Management
 		div.modal-body.container-fluid
-			div.pull-right.control-buttons.btn-group(ng-show="hasSelection")
-				button.btn.btn-default
-					i.fa.fa-folder-open.fa-fw &nbsp;
-					span 打开
-				button.btn.btn-default
-					i.fa.fa-trash-o.fa-fw &nbsp;
-					span 删除
-			h4 附件列表 &nbsp;
-				small Attachments
-			hr
+
 			div.table-responsive
 				table.table.table-bordered
 					thead
@@ -33,10 +24,19 @@
 							td {{item.file_ext}}
 							td {{item.file_size}}
 
+			div.pull-right.control-buttons.btn-group(ng-show="hasSelection")
+				button.btn.btn-default(ng-click="downloadItem()", ng-disabled="dialog_data_model.length==0")
+					i.fa.fa-folder-open.fa-fw &nbsp;
+					span 打开
+				button.btn.btn-danger(ng-disabled="dialog_data_model.length==0", pop-confirm="emptyBtnOptions")
+					i.fa.fa-trash-o.fa-fw &nbsp;
+					span 删除
 			file-upload-field(data-model="dialog_data_model", on-uploaded="fileUploaded(file)")
 
+
+
 		div.modal-footer
-			div.pull-left
+			//div.pull-left
 				button.btn.btn-danger(ng-if="prop.mode=='edit'", pop-confirm="emptyBtnOptions") 清空
 			div.pull-left.alert-danger.panel(ng-show="prop.showErrorMessage")
 				i.fa.fa-fw.fa-warning

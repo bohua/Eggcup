@@ -1,0 +1,46 @@
+//Created by Bli on 2014/6/12.
+#detail-editor-form.modal-dialog.modal-lg(ng-controller="detailEditorController")
+	div.modal-content
+		div.modal-header
+			button.close(type="button", data-dismiss="modal") &times;
+			h4.modal-title 明细管理 &nbsp;
+				small Details Management
+		div.modal-body.container-fluid
+
+			div.table-responsive
+				table.table.table-hover.table-bordered
+					thead
+						tr
+							th 服务内容
+							th 服务时间
+							th 服务费用
+							th 交通费用
+							th 公关费用
+							th 小计
+							th 附件
+					tbody
+						tr(ng-repeat="sub_item in dialog_data_model")
+							td {{sub_item.service}}
+							td {{sub_item.date| date:'yyyy-MM-dd'}}
+							td {{sub_item.expense}}
+							td {{sub_item.traffic}}
+							td {{sub_item.extra}}
+							td {{sub_item.expense + sub_item.traffic + sub_item.extra}}
+							td
+								div.attachment-token.label.cursor-pointer(ng-repeat="attach in sub_item.attachment")
+									i.icon-file-excel
+									span {{attach.file_name}}
+
+			file-upload-field(data-model="dialog_data_model", on-uploaded="fileUploaded(file)")
+
+		div.modal-footer
+			div.pull-left
+				button.btn.btn-danger(ng-if="prop.mode=='edit'", pop-confirm="emptyBtnOptions") 清空
+			div.pull-left.alert-danger.panel(ng-show="prop.showErrorMessage")
+				i.fa.fa-fw.fa-warning
+				span 单据填写有误，请修正红色标记
+			button.btn.btn-default(type="button", ng-click="Cancel()") 取消
+			button.btn.btn-primary(type="button", ng-click="Confirm('update', true)") 保存
+
+
+
