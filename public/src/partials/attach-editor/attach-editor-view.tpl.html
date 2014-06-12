@@ -1,0 +1,44 @@
+
+<!--Created by bli on 2014/6/11.-->
+<div id="attach-editor-form" ng-controller="attachEditorController" class="modal-dialog modal-lg">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" data-dismiss="modal" class="close">&times;</button>
+      <h4 class="modal-title">附信管理 &nbsp;<small>Attachments Management</small></h4>
+    </div>
+    <div class="modal-body container-fluid">
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>名称</th>
+              <th>文件名</th>
+              <th>文件类型</th>
+              <th>文件大小</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="item in dialog_data_model" ng-click="selectRow($event)" ng-class="{'active': $first}" class="cursor-pointer">
+              <td>{{item.file_desc}}</td>
+              <td><i class="fa fa-file-word-o text-info fa-fw">&nbsp;</i><span>{{item.file_name}}</span></td>
+              <td>{{item.file_ext}}</td>
+              <td>{{item.file_size}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div ng-show="hasSelection" class="pull-right control-buttons btn-group">
+        <button ng-click="downloadItem()" ng-disabled="dialog_data_model.length==0" class="btn btn-default"><i class="fa fa-folder-open fa-fw">&nbsp;</i><span>打开</span></button>
+        <button ng-disabled="dialog_data_model.length==0" pop-confirm="emptyBtnOptions" class="btn btn-danger"><i class="fa fa-trash-o fa-fw">&nbsp;</i><span>删除</span></button>
+      </div>
+      <file-upload-field data-model="dialog_data_model" on-uploaded="fileUploaded(file)"></file-upload-field>
+    </div>
+    <div class="modal-footer">
+      <!--div.pull-leftbutton.btn.btn-danger(ng-if="prop.mode=='edit'", pop-confirm="emptyBtnOptions") 清空
+      -->
+      <div ng-show="prop.showErrorMessage" class="pull-left alert-danger panel"><i class="fa fa-fw fa-warning"></i><span>单据填写有误，请修正红色标记</span></div>
+      <button type="button" ng-click="Cancel()" class="btn btn-default">取消</button>
+      <button type="button" ng-click="Confirm('update', true)" class="btn btn-primary">保存</button>
+    </div>
+  </div>
+</div>
