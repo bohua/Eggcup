@@ -8,7 +8,7 @@
 		div.modal-body.container-fluid
 
 			div.table-responsive
-				table.table.table-hover.table-bordered
+				table.table.table-bordered(editable-table)
 					thead
 						tr
 							th 服务内容
@@ -19,19 +19,19 @@
 							th 小计
 							th 附件
 					tbody
-						tr(ng-repeat="sub_item in dialog_data_model")
-							td {{sub_item.service}}
-							td {{sub_item.date| date:'yyyy-MM-dd'}}
-							td {{sub_item.expense}}
-							td {{sub_item.traffic}}
-							td {{sub_item.extra}}
-							td {{sub_item.expense + sub_item.traffic + sub_item.extra}}
-							td
+						tr(ng-repeat="sub_item in dialog_data_model", ng-click="selectRow($event)", ng-class="{'active': $first}")
+							td(edit-model="sub_item.service") {{sub_item.service}}
+							td(edit-model="sub_item.date") {{sub_item.date| date:'yyyy-MM-dd'}}
+							td(edit-model="sub_item.expense") {{sub_item.expense}}
+							td(edit-model="sub_item.traffic") {{sub_item.traffic}}
+							td(edit-model="sub_item.extra") {{sub_item.extra}}
+							td(edit-disabled) {{sub_item.expense + sub_item.traffic + sub_item.extra}}
+							td(edit-disabled)
 								div.attachment-token.label.cursor-pointer(ng-repeat="attach in sub_item.attachment")
 									i.icon-file-excel
 									span {{attach.file_name}}
 
-			file-upload-field(data-model="dialog_data_model", on-uploaded="fileUploaded(file)")
+			//file-upload-field(data-model="dialog_data_model", on-uploaded="fileUploaded(file)")
 
 		div.modal-footer
 			div.pull-left

@@ -49,7 +49,7 @@ angular.module('proposal-section', ['proposal-editor', 'attach-editor', 'detail-
 			},
 			template: '/src/partials/detail-editor/proposal-detail-editor-view.tpl.html',
 			onShow: function(){
-				$('#detail-editor-form table').editableTableWidget();
+
 			}
 		};
 

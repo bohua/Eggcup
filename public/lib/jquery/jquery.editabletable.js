@@ -74,6 +74,12 @@ $.fn.editableTableWidget = function (options) {
 			} else if (this.selectionEnd - this.selectionStart === this.value.length) {
 				var possibleMove = movement(active, e.which);
 				if (possibleMove.length > 0) {
+
+					//Bohua hack start
+					active.parent().removeClass('active');
+					possibleMove.parent().addClass('active');
+					//Bohua hack end
+
 					possibleMove.focus();
 					e.preventDefault();
 					e.stopPropagation();
@@ -89,12 +95,19 @@ $.fn.editableTableWidget = function (options) {
 				editor.removeClass('error');
 			}
 		});
-		element.on('click keypress dblclick', showEditor)
+		//element.on('click keypress dblclick', showEditor) Bohua hack replaced
+		element.on('keypress dblclick', showEditor)
 		.css('cursor', 'pointer')
 		.keydown(function (e) {
 			var prevent = true,
 				possibleMove = movement($(e.target), e.which);
 			if (possibleMove.length > 0) {
+
+				//Bohua hack start
+				possibleMove.parents('table').find('tr').removeClass('active');
+				possibleMove.parent().addClass('active');
+				//Bohua hack end
+
 				possibleMove.focus();
 			} else if (e.which === ENTER) {
 				showEditor(false);
