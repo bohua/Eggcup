@@ -2,6 +2,7 @@
  * Created by bli on 14-3-13.
  */
 angular.module('app', [
+	'sign-in',
 	'tag-reference-service',
 	'task-status-service',
 	'customer-list-service',
@@ -35,6 +36,7 @@ angular.module('app', [
 		 $location.path('/');
 		 }
 		 */
+
 
 		/*
 		 //var path

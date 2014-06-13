@@ -28,13 +28,14 @@ html(lang="zh", ng-app='app')
 		//link(href='http://fonts.googleapis.com/css?family=Audiowide', rel='stylesheet', type='text/css')
 
 	body.unselectable(ng-controller='appController')
-		#screen-mask
-		#preload-mask(preload-mask-directive, ng-show='enablePreload')
+		#sign-in(ng-if='!hasSignIn', ng-include='"/src/platform/sign-in/sign-in-view.tpl.html"')
+		#screen-mask(ng-if='hasSignIn')
+		#preload-mask(preload-mask-directive, ng-show='enablePreload', ng-if='hasSignIn')
 
-		#top-bar.bleach-stage(ng-include='"/src/platform/top-bar/top-bar.tpl.html"')
+		#top-bar.bleach-stage(ng-include='"/src/platform/top-bar/top-bar.tpl.html"', ng-if='hasSignIn')
 
-		#left-stage.bleach-stage(ng-include='"/src/platform/left-menu-pop/left-menu-pop.tpl.html"')
-		#right-stage.bleach-stage
+		#left-stage.bleach-stage(ng-include='"/src/platform/left-menu-pop/left-menu-pop.tpl.html"', ng-if='hasSignIn')
+		#right-stage.bleach-stage(ng-if='hasSignIn')
 			//#router-guide(ng-include='"/src/platform/router-guide/router-guide.tpl.html"')
 			#view-port(ng-view)
 
