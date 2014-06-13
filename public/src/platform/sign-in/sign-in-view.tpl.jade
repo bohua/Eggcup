@@ -1,0 +1,12 @@
+//Created by Bohua on 2014-06-13.
+div.jumbotron(ng-controller="signInController")
+	div.container-fluid
+		img(src="/images/logo.png")
+		//h2 CBMS 登录
+			small &nbsp;&nbsp;Login
+		div.box
+			input(type="text", placeholder="用户名")
+			input(type="password", placeholder="密码")
+			button.btn.btn-primary.full-width(ng-click="signin()")
+				i.fa.fa-sign-in.fa-fw &nbsp;&nbsp;
+				span 登录
