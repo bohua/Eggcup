@@ -16,8 +16,8 @@ angular.module('app', [
 	'token-field',
 	'auto-complete-field',
 	'date-field-model',
-	'file-upload-field',
-	'editable-table'
+	'editable-table',
+	'table-content-handler'
 ]).controller('appController', [
 	'$scope',
 	'$rootScope',

@@ -1,0 +1,13 @@
+//Created by Bli on 2014/6/13.
+div.pull-right.control-buttons.btn-group
+	button.btn.btn-default(ng-if="hasCreateBtn", ng-click="onCreate()")
+		i.fa.fa-plus-square-o.fa-fw &nbsp;
+		span 新增
+	button.btn.btn-default(ng-if="hasOpenBtn", ng-click="onActivate()", ng-disabled="!hasSelection()")
+		i.fa.fa-folder-open.fa-fw &nbsp;
+		span 打开
+	button.btn.btn-danger(ng-if="hasDeleteBtn", ng-click="onDelete()", ng-disabled="!hasSelection()" )
+		i.fa.fa-trash-o.fa-fw &nbsp;
+		span 删除
+
+file-upload-field(ng-if="hasFileUploader", on-uploaded="fileUploaded(file)", ng-disabled="!hasSelection()")
