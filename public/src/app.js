@@ -3,7 +3,7 @@
  */
 angular.module('app', [
 	'sign-in',
-	'tag-reference-service',
+	'login-session-service',
 	'task-status-service',
 	'customer-list-service',
 	'employee-list-service',
@@ -24,19 +24,18 @@ angular.module('app', [
 	'$rootScope',
 	'$timeout',
 	'$location',
-	'tagReferenceService',
+	'loginSessionService',
 	'taskStatusService',
 	'customerListService',
 	'employeeListService',
 	'handlingMethodService',
-	function ($scope, $rootScope, $timeout, $location, tagReferenceService, taskStatusService, customerListService, employeeListService, handlingMethodService) {
+	function ($scope, $rootScope, $timeout, $location, loginSessionService, taskStatusService, customerListService, employeeListService, handlingMethodService) {
 
 		/*
 		 if ($location.path() !== '/') {
 		 $location.path('/');
 		 }
 		 */
-
 
 		/*
 		 //var path
@@ -48,16 +47,28 @@ angular.module('app', [
 		/**
 		 * Initialize global services
 		 */
-		tagReferenceService.init();
+		loginSessionService.init();
 		taskStatusService.init();
 		customerListService.init();
 		employeeListService.init();
 		handlingMethodService.init();
+
 
 		/**
 		 * Global configuration
 		 */
 		$(document).on('contextmenu', function (e) {
 			e.preventDefault();
-		})
+		});
+
+		$scope.$on('loginSuccess', function () {
+			$('#top-bar').show();
+			$('#right-stage').show();
+
+			$timeout(function(){
+				$('#top-bar').css('opacity', 1);
+				$('#right-stage').css('opacity', 1);
+
+			},100);
+		});
 	}]);

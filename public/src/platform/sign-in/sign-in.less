@@ -2,7 +2,8 @@ body {
   background: url('/images/bg.jpg');
 }
 
-.jumbotron {
+#sign-in-panel{
+  opacity: 0;
   text-align: center;
   width: 30rem;
   height: 42rem;
@@ -16,6 +17,8 @@ body {
   background-color: #fff;
   padding: 2rem;
 
+  z-index: 100;
+
   img{
     width: 100%;
   }
@@ -25,9 +28,9 @@ body {
     width: 100%;
     margin-bottom: 1.4rem;
     padding: 1rem;
-    background-color: #ecf2f4;
+    background-color: @grey;
     border-radius: 0.2rem;
-    border: none;
+    border: 2px solid @grey-border;
   }
   h2 {
     margin-bottom: 3rem;
@@ -35,6 +38,8 @@ body {
   }
   .btn {
     border-radius: 0.2rem;
+    font-size: 14pt;
+    margin-bottom: 10px;
   }
   .btn .glyphicon {
     font-size: 3rem;
@@ -61,5 +66,10 @@ body {
 
   label {
     text-align: left;
+  }
+
+  #sign-in-error-message{
+    position: absolute;
+    font-size: 12pt;
   }
 }

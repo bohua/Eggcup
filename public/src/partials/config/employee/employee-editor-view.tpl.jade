@@ -1,39 +1,72 @@
 #employee-editor-form.modal-dialog.modal-lg(ng-controller="employeeEditorController")
-	div.modal-content
+	div.modal-content.grid
 		div.modal-header
 			button.close(type="button", data-dismiss="modal") &times;
 			h4.modal-title 详细信息 &nbsp;
 				small Details
 		div.modal-body
-			div.form-horizontal
-				h4 人员信息 &nbsp;
-					small Employee Information
-				hr
+			div.row
+				div.form-horizontal.col-sm-6
+					h4 人员信息 &nbsp;
+						small Employee Information
+					hr
 
-				div.form-group
-					label.col-sm-2.control-label 姓名:
-					div.col-sm-10
-						input.form-control(type="text", placeholder="姓名", ng-model="dialog_data_model.name", required)
-				div.form-group
-					label.col-sm-2.control-label 职位:
-					div.col-sm-10
-						input.form-control(type="text", placeholder="职位", ng-model="dialog_data_model.role")
-				div.form-group
-					label.col-sm-2.control-label 电话:
-					div.col-sm-10
-						input.form-control(type="text", placeholder="电话", ng-model="dialog_data_model.tel")
-				div.form-group
-					label.col-sm-2.control-label 手机:
-					div.col-sm-10
-						input.form-control(type="text", placeholder="手机", ng-model="dialog_data_model.mobile")
-				div.form-group
-					label.col-sm-2.control-label 邮箱:
-					div.col-sm-10
-						input.form-control(type="text", placeholder="邮箱", ng-model="dialog_data_model.email")
-				div.form-group
-					label.col-sm-2.control-label 备注:
-					div.col-sm-10
-						textarea.form-control(rows="3", placeholder="备注", ng-model="dialog_data_model.description")
+					div.form-group
+						label.col-sm-2.control-label 姓名:
+						div.col-sm-10
+							input.form-control(type="text", placeholder="姓名", ng-model="dialog_data_model.name", required)
+					div.form-group
+						label.col-sm-2.control-label 职位:
+						div.col-sm-10
+							input.form-control(type="text", placeholder="职位", ng-model="dialog_data_model.role")
+					div.form-group
+						label.col-sm-2.control-label 电话:
+						div.col-sm-10
+							input.form-control(type="text", placeholder="电话", ng-model="dialog_data_model.tel")
+					div.form-group
+						label.col-sm-2.control-label 手机:
+						div.col-sm-10
+							input.form-control(type="text", placeholder="手机", ng-model="dialog_data_model.mobile")
+					div.form-group
+						label.col-sm-2.control-label 邮箱:
+						div.col-sm-10
+							input.form-control(type="text", placeholder="邮箱", ng-model="dialog_data_model.email")
+					div.form-group
+						label.col-sm-2.control-label 备注:
+						div.col-sm-10
+							textarea.form-control(rows="3", placeholder="备注", ng-model="dialog_data_model.description")
+
+				div.form-horizontal.col-sm-6
+					h4 登录帐户 &nbsp;
+						small Logon Account
+					hr
+					div.form-group
+						div.col-sm-9.col-sm-offset-3
+							div.checkbox
+								label
+									input(type="checkbox", ng-model="dialog_data_model.hasLogin")
+									span 为人员建立登录帐户
+
+					#login-pass-panel(ng-show="dialog_data_model.hasLogin")
+						div.form-group
+							label.col-sm-3.control-label 登录名:
+							div.col-sm-9
+								input.form-control(type="text", placeholder="登录名", ng-model="dialog_data_model.login.username")
+						div.form-group
+							label.col-sm-3.control-label 登录密码:
+							div.col-sm-9
+								input.form-control(type="password", placeholder="登录密码", ng-model="dialog_data_model.login.password")
+						div.form-group
+							label.col-sm-3.control-label 密码确认:
+							div.col-sm-9
+								input.form-control(type="password", placeholder="密码确认")
+						div.form-group
+							label.col-sm-3.control-label 权限级别:
+							div.col-sm-9
+								select.form-control(ng-model="dialog_data_model.login.level")
+									option(value="external") 外部人员&nbsp;   (仅可阅读有限数据)
+									option(value="internal") 内部人员&nbsp;   (可阅读并操作有限读数据)
+									option(value="admin")    管理员&nbsp;&nbsp;&nbsp;&nbsp;     (可阅读并操作所有数据)
 
 		div.modal-footer
 			div.pull-left

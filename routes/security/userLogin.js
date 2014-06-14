@@ -1,32 +1,37 @@
 /**
  * Created by Bli on 14-2-26.
- */
-//var db = require(__dirname + '/../../models');
+*/
+var login_bo = require(__dirname + '/../../server/basics/login_bo');
 
 module.exports = function (req, res) {
-	var user_name = req.body.user_name;
-	var user_pass = req.body.user_pass;
+	var username = req.body.username;
+	var password = req.body.password;
 
-	global.db.User.find({
-		where: {
-			user_name: user_name
-		}
-	}).complete(function(err, user){
-			if(!!err){
-
-			}else if(!user){
-
-			}else if(user.user_pass !== user_pass){
+	login_bo.login({
+		username: username,
+		password: password
+	}).then(
+		function (success) {
+			if(success){
 				res.contentType('json');
 				res.json({
-					login_success: false,
-					reason_number: 1
+					success: true,
+					login_pass: success
 				});
 			}else{
 				res.contentType('json');
 				res.json({
-					login_success: true
-				})
+					success: false
+				});
 			}
-		});
-}
+
+		},
+		function (failure) {
+			res.statusCode = 400;
+			res.json({
+				code: 'ERR_DB_GET_LOGIN_FAILURE',
+				reason: '检索登录信息时数据库出错'
+			});
+		}
+	);
+};

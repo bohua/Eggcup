@@ -45,21 +45,15 @@ angular.module('employee-list', [
 		 * Closure functions
 		 */
 		function saveEmployee(model) {
-			var employee = new EMPLOYEE(model);
-			employee.$save(function () {
-				employeeListService.reload().then(function(employeeList){
-					$scope.employee_list = employeeList;
-				});
+			employeeListService.saveEmployee(model).then(function () {
+				$scope.employee_list = employeeListService.getEmployeeList();
 			});
 		}
 
 
-
 		function deleteEmployee(id) {
-			EMPLOYEE.delete(id, function(){
-				employeeListService.reload().then(function(employeeList){
-					$scope.employee_list = employeeList;
-				});
+			employeeListService.deleteEmployee(id).then(function () {
+				$scope.employee_list = employeeListService.getEmployeeList();
 			});
 		}
 
@@ -67,7 +61,9 @@ angular.module('employee-list', [
 		 * ng-click functions
 		 */
 		$scope.detail = function ($event, dataModel) {
-			$($event.target).parent('tr').trigger('popup', ['edit', dataModel]);
+			employeeListService.getEmployeeDetail(dataModel.id).then(function (employee) {
+				$($event.target).parent('tr').trigger('popup', ['edit', employee]);
+			});
 		};
 
 		$scope.newEmployee = function ($event) {

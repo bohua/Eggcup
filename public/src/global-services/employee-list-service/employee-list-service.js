@@ -6,7 +6,7 @@ angular.module('employee-list-service', ['employee-resource'])
 		var employeeList;
 		var Service = {
 			init: function () {
-				EMPLOYEE.query(function(list){
+				EMPLOYEE.query(function (list) {
 					employeeList = list;
 				});
 			},
@@ -24,10 +24,48 @@ angular.module('employee-list-service', ['employee-resource'])
 				}
 			},
 
-			reload: function(){
+			getEmployeeDetail: function (employeeId) {
+				return EMPLOYEE.get({employee_id: employeeId}).$promise;
+			},
+
+			saveEmployee: function (employeeModel) {
+				var employee = new EMPLOYEE(employeeModel),
+					that = this,
+					deferred = $q.defer();
+
+				employee.$save(
+					function () {
+						that.reload().then(function (employeeList) {
+							deferred.resolve(employeeList);
+						});
+					}, function (failure) {
+						throw failure;
+						deferred.reject(failure);
+					});
+
+				return deferred.promise;
+			},
+
+			deleteEmployee: function (id) {
+				var that = this,
+					deferred = $q.defer();
+
+				EMPLOYEE.delete(id, function () {
+					that.reload().then(function(employeeList){
+						deferred.resolve(employeeList);
+					});
+				}, function (failure) {
+					throw failure;
+					deferred.reject(failure);
+				});
+
+				return deferred.promise;
+			},
+
+			reload: function () {
 				var deferred = $q.defer();
 
-				EMPLOYEE.query().$promise.then(function(list){
+				EMPLOYEE.query().$promise.then(function (list) {
 					employeeList = list;
 					deferred.resolve(employeeList);
 				});
