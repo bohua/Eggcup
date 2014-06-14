@@ -9,7 +9,7 @@ angular.module('login-session-service', [])
 		var Service = {
 			init : function(){
 				session = {
-					hasSignIn : false
+					hasSignIn : true
 				}
 			},
 
@@ -18,7 +18,8 @@ angular.module('login-session-service', [])
 				$http.post('/login', {username: username, password: password})
 					.success(function (result) {
 						if(result.success){
-							session = result.login_pass;
+							session.login_pass = result.login_pass;
+							session.hasSignIn = true;
 							deferred.resolve();
 						}else{
 							deferred.reject();

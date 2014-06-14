@@ -28,15 +28,12 @@ html(lang="zh", ng-app='app')
 		//link(href='http://fonts.googleapis.com/css?family=Audiowide', rel='stylesheet', type='text/css')
 
 	body.unselectable(ng-controller='appController')
-		#sign-in(ng-include='"/src/platform/sign-in/sign-in-view.tpl.html"')
-		//#screen-mask.fade(ng-if='hasSignIn')
-		//#preload-mask.fade(preload-mask-directive, ng-show='enablePreload', ng-if='hasSignIn')
+		#sign-in(ng-include='"/src/platform/sign-in/sign-in-view.tpl.html"', ng-if="!hasSignIn")
 
-		#top-bar.bleach-stage.fade(ng-include='"/src/platform/top-bar/top-bar.tpl.html"')
+		#top-bar.bleach-stage(ng-include='"/src/platform/top-bar/top-bar.tpl.html"', ng-if="hasSignIn")
 
-		//#left-stage.bleach-stage(ng-include='"/src/platform/left-menu-pop/left-menu-pop.tpl.html"', ng-if='hasSignIn')
-		#right-stage.bleach-stage.fade
-			#view-port(ng-view)
+		#right-stage.bleach-stage(ng-if="hasSignIn")
+			#view-port.view-animate(ng-view)
 
 		#modal-stage.modal.fade(role="dialog")
 			div.modal-dialog
@@ -47,6 +44,7 @@ html(lang="zh", ng-app='app')
 		script(src='/lib/angular/angular-route.js')
 		script(src='/lib/angular/angular-resource.js')
 		script(src='/lib/angular/angular-sanitize.js')
+		script(src='/lib/angular/angular-animate.js')
 		script(src='/lib/angular/angular-locale_zh-cn.js')
 		//AngularJS plugins
 		script(src='/lib/angular-plugin/angular-scroll.min.js')

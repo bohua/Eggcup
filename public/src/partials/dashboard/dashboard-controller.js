@@ -3,6 +3,7 @@
  */
 angular.module('dashboard', [
 	'ngRoute',
+	'ngAnimate',
 	'customer-resource',
 	'employee-resource',
 	'task-resource',

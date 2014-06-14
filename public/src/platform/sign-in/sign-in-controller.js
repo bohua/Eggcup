@@ -38,8 +38,7 @@ angular.module('sign-in', ['login-session-service'])
 							$('#sign-in-panel').animate({
 								opacity: 0,
 								top: '-=300px'
-							}, 500, function () {
-								$('#sign-in-panel').hide();
+							}, 400, function () {
 								$scope.$emit('loginSuccess');
 							});
 
@@ -48,6 +47,6 @@ angular.module('sign-in', ['login-session-service'])
 							loadingButton.replaceWith(loginButton);
 							loadingIcon.replaceWith(loginIcon);
 						});
-				}, 1000);
+				}, 400);
 			};
 		}]);

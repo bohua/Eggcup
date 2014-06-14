@@ -3,6 +3,7 @@
  */
 angular.module('task-editor', [
 	'ngRoute',
+	'ngAnimate',
 	'keyboard-support',
 	'tag-reference-service',
 	'customer-list-service',

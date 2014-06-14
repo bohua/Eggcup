@@ -30,20 +30,6 @@ angular.module('app', [
 	'employeeListService',
 	'handlingMethodService',
 	function ($scope, $rootScope, $timeout, $location, loginSessionService, taskStatusService, customerListService, employeeListService, handlingMethodService) {
-
-		/*
-		 if ($location.path() !== '/') {
-		 $location.path('/');
-		 }
-		 */
-
-		/*
-		 //var path
-		 $scope.$on('$routeChangeSuccess', function () {
-		 topBarService.trackNavBlock($location.path());
-		 });
-		 */
-
 		/**
 		 * Initialize global services
 		 */
@@ -53,6 +39,10 @@ angular.module('app', [
 		employeeListService.init();
 		handlingMethodService.init();
 
+		$scope.hasSignIn = loginSessionService.getLoginStatus();
+		if($scope.hasSignIn){
+			$timeout(showDesktop, 100);
+		}
 
 		/**
 		 * Global configuration
@@ -62,13 +52,16 @@ angular.module('app', [
 		});
 
 		$scope.$on('loginSuccess', function () {
-			$('#top-bar').show();
-			$('#right-stage').show();
-
-			$timeout(function(){
-				$('#top-bar').css('opacity', 1);
-				$('#right-stage').css('opacity', 1);
-
-			},100);
+			$scope.hasSignIn = loginSessionService.getLoginStatus();
+			$scope.$apply();
 		});
+
+
+		/**
+		 * Closure function
+		 */
+		function showDesktop() {
+			$('#top-bar').css('opacity', 1);
+			$('#right-stage').css('opacity', 1);
+		}
 	}]);
