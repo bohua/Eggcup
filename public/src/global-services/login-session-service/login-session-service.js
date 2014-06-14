@@ -7,32 +7,41 @@ angular.module('login-session-service', [])
 		var session;
 
 		var Service = {
-			init : function(){
+			init: function () {
 				session = {
-					hasSignIn : true
+					hasSignIn: true,
+					login_pass: {
+						employee: {
+							name: '李小帅'
+						}
+					}
 				}
 			},
 
-			login: function(username, password){
+			login: function (username, password) {
 				var deferred = $q.defer();
 				$http.post('/login', {username: username, password: password})
 					.success(function (result) {
-						if(result.success){
+						if (result.success) {
 							session.login_pass = result.login_pass;
 							session.hasSignIn = true;
 							deferred.resolve();
-						}else{
+						} else {
 							deferred.reject();
 						}
-					}).error(function(failure){
+					}).error(function (failure) {
 						throw failure;
 					});
 
 				return deferred.promise;
 			},
 
-			getLoginStatus: function(){
+			getLoginStatus: function () {
 				return session.hasSignIn;
+			},
+
+			getLoginUser: function () {
+				return session.login_pass.employee.name;
 			}
 		};
 

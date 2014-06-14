@@ -13,6 +13,7 @@ div.navbar.navbar-inverse.navbar-fixed-top(ng-controller="topBarController", rol
 
 		#topbar-collapse.collapse.navbar-collapse.row
 			ul.nav.navbar-nav.navbar-left
+
 				li#nav-block-dashboard.dropdown
 					a.dropdown-toggle.cursor-pointer(data-toggle="dropdown")
 						i.fa.fa-tasks.fa-fw &nbsp;
@@ -25,6 +26,7 @@ div.navbar.navbar-inverse.navbar-fixed-top(ng-controller="topBarController", rol
 						li: a(href="#")
 							i.fa.fa-filter.fa-fw &nbsp;
 							span 设置
+
 				li#nav-block-task.dropdown
 					a.dropdown-toggle.cursor-pointer(data-toggle="dropdown")
 						i.fa.fa-history.fa-fw &nbsp;
@@ -32,6 +34,7 @@ div.navbar.navbar-inverse.navbar-fixed-top(ng-controller="topBarController", rol
 						b.caret
 					ul.dropdown-menu
 						li: a 无
+
 				li#nav-block-config.dropdown
 					a.dropdown-toggle.cursor-pointer(data-toggle="dropdown")
 						i.fa.fa-cogs.fa-fw &nbsp;
@@ -45,10 +48,18 @@ div.navbar.navbar-inverse.navbar-fixed-top(ng-controller="topBarController", rol
 							i.fa.fa-users.fa-fw &nbsp;
 							span 人员信息
 
-				li.dropdown
+				li#nav-block-query.dropdown
+					a.dropdown-toggle.cursor-pointer(data-toggle="dropdown")
+						i.fa.fa-bar-chart-o.fa-fw &nbsp;
+						span.cursor-pointer 查询
+						b.caret
+					ul.dropdown-menu
+						li: a 无
+
+				li#nav-block-user.dropdown
 					a.dropdown-toggle.cursor-pointer(data-toggle="dropdown")
 						i.fa.fa-user.fa-fw &nbsp;
-						span 李小帅
+						span {{loginUser}}
 						b.caret
 					ul.dropdown-menu
 						li: a(href="#")

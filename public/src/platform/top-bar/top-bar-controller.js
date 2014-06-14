@@ -2,11 +2,12 @@
  * Created by Bohua on 14-2-13.
  */
 
-angular.module('top-bar', [])
+angular.module('top-bar', ['login-session-service'])
 	.controller('topBarController', [
 		'$scope',
 		'$location',
-		function ($scope, $location) {
+		'loginSessionService',
+		function ($scope, $location, loginSessionService) {
 			var navBlockMap = {
 				'/': '#nav-block-dashboard',
 				'/dashboard': '#nav-block-dashboard',
@@ -14,6 +15,8 @@ angular.module('top-bar', [])
 				'/config/customer': '#nav-block-config',
 				'/config/employee': '#nav-block-config'
 				};
+
+			$scope.loginUser = loginSessionService.getLoginUser();
 
 			function trackNavBlock (route) {
 

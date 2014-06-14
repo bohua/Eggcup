@@ -22,14 +22,14 @@ div.navbar.navbar-default.task-header
 						li(ng-repeat="p in progressList", ng-if="getProgressState(p.code) != 'disabled'")
 							a(href="{{p.href}}", du-smooth-scroll, offset="30", ng-click="closeToggle()")
 								icon.fa.fa-fw(class="{{p.icon}}")
-								span {{p.title}}
+								span &nbsp;&nbsp;{{p.title}}
 
 						li.nav-divider
 
 						li
 							a(href="#page_expense", du-smooth-scroll, offset="30", ng-click="closeToggle()")
 								icon.fa.fa-rmb.fa-fw &nbsp;
-								span 费用
+								span &nbsp;&nbsp;费用
 
 				li.dropdown
 					a.dropdown-toggle.cursor-pointer(data-toggle="dropdown")
@@ -40,7 +40,7 @@ div.navbar.navbar-default.task-header
 						li(ng-repeat="precedence in statusStack track by $index")
 							a.cursor-pointer(ng-click="console.log(precedence.nextStatus)")
 								i.fa.fa-fw(class="{{precedence.icon}}")
-								span {{precedence.action}}
+								span &nbsp;&nbsp;{{precedence.action}}
 				li.dropdown
 					a.dropdown-toggle.cursor-pointer(data-toggle="dropdown")
 						i.fa.fa-cog.fa-fw &nbsp;
@@ -49,11 +49,12 @@ div.navbar.navbar-default.task-header
 					ul.dropdown-menu
 						li
 							a.cursor-pointer
-								i.fa.fa-trash-o.fa-fw &nbsp;删除
+								i.fa.fa-trash-o.fa-fw
+								span &nbsp;&nbsp;删除
 
 #task-editor-form.container-fluid
 	div.row
-		nav#task-side-nav.col-md-2.col-sm-3.col-lg-2.hidden-xs(du-scroll-container="task-content")
+		nav#task-side-nav.col-sm-3.col-md-2.hidden-xs(du-scroll-container="task-content")
 			ul.nav.nav-list.affix
 				li(ng-repeat="p in progressList")
 					a(ng-if="getProgressState(p.code) != 'disabled'", class="{{getProgressState(p.code)}}", href="{{p.href}}", du-smooth-scroll, du-scrollspy, offset="30")
@@ -76,7 +77,7 @@ div.navbar.navbar-default.task-header
 						icon.fa.fa-rmb.fa-fw &nbsp;
 						span 费用
 
-		#task-content.col-md-10.col-sm-9.col-lg-10
+		#task-content.col-sm-9.col-md-10
 			section#page_register(ng-if="getProgressState(100) != 'disabled'")
 				include 1-register-section/register-section.tpl.jade
 			section#page_arrange(ng-if="getProgressState(200) != 'disabled'")
