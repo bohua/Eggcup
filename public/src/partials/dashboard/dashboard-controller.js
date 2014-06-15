@@ -39,12 +39,9 @@ angular.module('dashboard', [
 		 * ng-click bindings
 		 */
 		$scope.detail = function ($event, dataModel) {
+			$($event.currentTarget).find('.loading-mask').show();
 			//$($event.currentTarget).trigger('popup', ['edit', dataModel]);
 			$location.path('/task-editor/edit/' + dataModel.id);
-		};
-		$scope.newTask = function ($event) {
-			//$($event.currentTarget).trigger('popup', ['add']);
-			$location.path('/task-editor/new/' + new Date().toString());
 		};
 
 		/**

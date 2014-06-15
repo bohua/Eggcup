@@ -1,6 +1,6 @@
 //Created by bli on 2014/6/10.
 #proposal-editor-form.modal-dialog.modal-lg(ng-controller="proposalEditorController")
-	div.modal-content
+	form.modal-content(ng-submit="Confirm('update', true)")
 		div.modal-header
 			button.close(type="button", data-dismiss="modal") &times;
 			h4.modal-title 提案详情 &nbsp;
@@ -49,10 +49,11 @@
 						textarea.form-control(rows="5", placeholder="标的内容", ng-model="dialog_data_model.proposal_content")
 
 		div.modal-footer
+			button.btn.btn-primary(type="submit") 保存
+			button.btn.btn-default(type="button", ng-click="Cancel()") 取消
+
 			div.pull-left
 				button.btn.btn-danger(ng-if="prop.mode=='edit'", pop-confirm="emptyBtnOptions") 清空
 			div.pull-left.alert-danger.panel(ng-show="prop.showErrorMessage")
 				i.fa.fa-fw.fa-warning
 				span 单据填写有误，请修正红色标记
-			button.btn.btn-default(type="button", ng-click="Cancel()") 取消
-			button.btn.btn-primary(type="button", ng-click="Confirm('update', true)") 保存

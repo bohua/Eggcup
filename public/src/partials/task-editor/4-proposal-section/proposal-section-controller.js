@@ -3,6 +3,9 @@
  */
 angular.module('proposal-section', ['proposal-editor', 'attach-editor', 'detail-editor'])
 	.controller('proposalSectionController', ['$scope', function ($scope) {
+		/**
+		 * Proposal Editor Initialization
+		 */
 		$scope.proposalEditorConfig = {
 			dialogOption: {
 				backdrop: 'static'
@@ -16,6 +19,11 @@ angular.module('proposal-section', ['proposal-editor', 'attach-editor', 'detail-
 
 		$scope.getProposalModel = function(){
 			return $scope.task_model.proposalSheet;
+		}
+
+		$scope.onProposalSaved = function (action, data) {
+			$.extend(true, $scope.task_model.proposalSheet, data);
+			$scope.$emit('saveTaskModel');
 		}
 
 		/**
@@ -37,6 +45,13 @@ angular.module('proposal-section', ['proposal-editor', 'attach-editor', 'detail-
 
 		$scope.getAttachModel = function(){
 			return $scope.task_model.proposalSheet.attachment;
+		}
+
+		$scope.onAttachSaved = function (action, data) {
+			//$.extend(true, $scope.task_model.proposalSheet.attachment, data);
+
+			$scope.task_model.proposalSheet.attachment = data;
+			$scope.$emit('saveTaskModel');
 		}
 
 		/**
@@ -61,4 +76,8 @@ angular.module('proposal-section', ['proposal-editor', 'attach-editor', 'detail-
 			return $scope.task_model.proposalSheet.subItem;
 		}
 
+		$scope.onDetailSaved = function (action, data) {
+			$.extend(true, $scope.task_model.proposalSheet.subItem, data);
+			$scope.$emit('saveTaskModel');
+		}
 	}]);

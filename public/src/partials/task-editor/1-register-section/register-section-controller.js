@@ -20,7 +20,6 @@ angular.module('register-section', ['register-editor', 'handling-method-service'
 			$scope.translateHandling = handlingMethodService.translateHandling;
 
 			$scope.onRegisterSaved = function (action, data) {
-				//taskContentService.saveTask(data);
 				$.extend(true, $scope.task_model, data);
 				$scope.$emit('saveTaskModel');
 			}

@@ -9,6 +9,7 @@ angular.module('task-editor', [
 	'customer-list-service',
 	'employee-list-service',
 	'task-status-service',
+	'task-resource',
 
 	//No return value
 	'register-section',
@@ -34,7 +35,8 @@ angular.module('task-editor', [
 	'employeeListService',
 	'taskStatusService',
 	'task_model',
-	function ($routeParams, $location, $scope, $timeout, tagReferenceService, customerListService, employeeListService, taskStatusService, task_model) {
+	'TASK',
+	function ($routeParams, $location, $scope, $timeout, tagReferenceService, customerListService, employeeListService, taskStatusService, task_model, TASK) {
 
 		/**
 		 * Initialize default values & functions
@@ -184,7 +186,14 @@ angular.module('task-editor', [
 		});
 
 		$scope.$on('saveTaskModel', function () {
-			$scope.task_model.$save();
+			TASK.save($scope.task_model);
+
+			/*
+			var id = $scope.task_model.id;
+			$scope.task_model.$save(function () {
+				$scope.task_model = TASK.get({task_id: id});
+			});
+			*/
 		});
 
 	}]);

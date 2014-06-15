@@ -9,9 +9,12 @@ div#dashboard.container-fluid
 				div.panel-body
 					div.list-group
 						a.list-group-item.cursor-pointer(ng-repeat="task in task_group.task_list track by $index", ng-click="detail($event, task)")
+							div.loading-mask
+								i.i.fa.fa-fw.fa-spinner.fa-spin &nbsp;
+								span 读取中...
 							h4.list-group-item-heading TK - {{task.id}}
 								div.jf-label.label.label-primary.pull-right
-									i.fa.fa-fw(class="{{translateStatus(task.status).icon}}")
+									i.fa.fa-fw(class="{{translateStatus(task.status).icon}}") &nbsp;
 									span {{translateStatus(task.status).status}}
 							p.list-group-item-text {{translateCustomer(task.customer_name)}}
 							p.list-group-item-text {{task.slogan}}
