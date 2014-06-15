@@ -7,6 +7,7 @@ module.exports = function (req, res) {
 
 	task_bo.getAll().then(
 		function (success) {
+			res.statusCode = 200;
 			res.contentType('json');
 			res.json(success);
 		},

@@ -9,6 +9,7 @@ module.exports = function (req, res) {
 		id: req.params.task_id
 	}).then(
 		function (success) {
+			res.statusCode = 200;
 			res.contentType('json');
 			res.json(success);
 		},

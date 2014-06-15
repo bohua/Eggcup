@@ -77,7 +77,12 @@ div.navbar.navbar-inverse.navbar-fixed-top(ng-controller="topBarController", rol
 							span 登出系统
 
 				li#new-task-btn.navbar-form.navbar-right
-					btn.btn.btn-primary
+					btn.btn.btn-primary(
+					popup-dialog,
+					dialog-config="registerEditorConfig",
+					ng-click="showRegisterEditor($event)",
+					on-confirm="onRegisterSaved(action, data)"
+					)
 						i.fa.fa-edit.fa-fw &nbsp;
 						span 新任务
 

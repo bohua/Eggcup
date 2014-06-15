@@ -16,9 +16,10 @@ angular.module('auto-complete-field', [])
 				$.extend(true, options, inputOption);
 
 				var handler = $($element).autocomplete(options);
+
 				$($element).on('focus',function(){
 					handler.autocomplete( "search", "" );
-				})
+				});
 			}
 		};
 

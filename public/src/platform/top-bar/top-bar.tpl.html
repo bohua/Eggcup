@@ -1,1 +1,53 @@
-<!--Created by Bli on 14-2-13.--><div ng-controller="topBarController" role="navigation" class="navbar navbar-inverse navbar-fixed-top"><div class="container-fluid"><div class="navbar-header"><button type="button" data-toggle="collapse" data-target="#topbar-collapse" class="navbar-toggle"><span class="sr-only"></span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a class="navbar-brand cursor-pointer"><i class="fa fa-paper-plane fa-lg margin5 h-only"></i><span class="fa-lg"><strong>CBMS&nbsp;&nbsp;</strong></span></a></div><div id="topbar-collapse" class="collapse navbar-collapse row"><ul class="nav navbar-nav navbar-left"><li id="nav-block-dashboard" class="dropdown"><a data-toggle="dropdown" class="dropdown-toggle cursor-pointer"><i class="fa fa-tasks fa-fw">&nbsp;</i><span class="cursor-pointer">任务板</span><b class="caret"></b></a><ul class="dropdown-menu"><li><a href="#"><i class="fa fa-bar-chart-o fa-fw">&nbsp;</i><span>我的任务</span></a></li><li><a href="#"><i class="fa fa-filter fa-fw">&nbsp;</i><span>设置</span></a></li></ul></li><li id="nav-block-task" class="dropdown"><a data-toggle="dropdown" class="dropdown-toggle cursor-pointer"><i class="fa fa-history fa-fw">&nbsp;</i><span class="cursor-pointer">任务</span><b class="caret"></b></a><ul class="dropdown-menu"><li><a>无</a></li></ul></li><li id="nav-block-config" class="dropdown"><a data-toggle="dropdown" class="dropdown-toggle cursor-pointer"><i class="fa fa-cogs fa-fw">&nbsp;</i><span class="cursor-pointer">信息库</span><b class="caret"></b></a><ul class="dropdown-menu"><li><a href="#/config/customer"><i class="fa fa-briefcase fa-fw">&nbsp;</i><span>客户信息</span></a></li><li><a href="#/config/employee"><i class="fa fa-users fa-fw">&nbsp;</i><span>人员信息</span></a></li></ul></li><li id="nav-block-query" class="dropdown"><a data-toggle="dropdown" class="dropdown-toggle cursor-pointer"><i class="fa fa-bar-chart-o fa-fw">&nbsp;</i><span class="cursor-pointer">查询</span><b class="caret"></b></a><ul class="dropdown-menu"><li><a>无</a></li></ul></li><li id="nav-block-user" class="dropdown"><a data-toggle="dropdown" class="dropdown-toggle cursor-pointer"><i class="fa fa-user fa-fw">&nbsp;</i><span>{{loginUser}}</span><b class="caret"></b></a><ul class="dropdown-menu"><li><a href="#"><i class="fa fa-info fa-fw">&nbsp;</i><span>帐户信息</span></a></li><li><a href="#"><i class="fa fa-retweet fa-fw">&nbsp;</i><span>切换帐套</span></a></li><li><a href="#"><i class="fa fa-lock fa-fw">&nbsp;</i><span>锁屏</span></a></li><li class="divider"></li><li><a href="#"><i class="fa fa-sign-out fa-fw">&nbsp;</i><span>登出系统</span></a></li></ul></li><li id="new-task-btn" class="navbar-form navbar-right"><btn class="btn btn-primary"><i class="fa fa-edit fa-fw">&nbsp;</i><span>新任务</span></btn></li></ul><div id="task-searcher" role="search" class="navbar-form navbar-right top-bar-search-box"><div class="input-group"><input type="text" placeholder="任务代号" class="form-control"/><span class="input-group-btn"><button class="btn btn-default"><i class="fa fa-search"></i></button></span></div></div></div></div></div>
+
+<!--Created by Bli on 14-2-13.-->
+<div ng-controller="topBarController" role="navigation" class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" data-toggle="collapse" data-target="#topbar-collapse" class="navbar-toggle"><span class="sr-only"></span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a class="navbar-brand cursor-pointer"><i class="fa fa-paper-plane fa-lg margin5 h-only"></i><span class="fa-lg"><strong>CBMS&nbsp;&nbsp;</strong></span></a>
+    </div>
+    <div id="topbar-collapse" class="collapse navbar-collapse row">
+      <ul class="nav navbar-nav navbar-left">
+        <li id="nav-block-dashboard" class="dropdown"><a data-toggle="dropdown" class="dropdown-toggle cursor-pointer"><i class="fa fa-tasks fa-fw">&nbsp;</i><span class="cursor-pointer">任务板</span><b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="#"><i class="fa fa-bar-chart-o fa-fw">&nbsp;</i><span>我的任务</span></a></li>
+            <li><a href="#"><i class="fa fa-filter fa-fw">&nbsp;</i><span>设置</span></a></li>
+          </ul>
+        </li>
+        <li id="nav-block-task" class="dropdown"><a data-toggle="dropdown" class="dropdown-toggle cursor-pointer"><i class="fa fa-history fa-fw">&nbsp;</i><span class="cursor-pointer">任务</span><b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a>无</a></li>
+          </ul>
+        </li>
+        <li id="nav-block-config" class="dropdown"><a data-toggle="dropdown" class="dropdown-toggle cursor-pointer"><i class="fa fa-cogs fa-fw">&nbsp;</i><span class="cursor-pointer">信息库</span><b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="#/config/customer"><i class="fa fa-briefcase fa-fw">&nbsp;</i><span>客户信息</span></a></li>
+            <li><a href="#/config/employee"><i class="fa fa-users fa-fw">&nbsp;</i><span>人员信息</span></a></li>
+          </ul>
+        </li>
+        <li id="nav-block-query" class="dropdown"><a data-toggle="dropdown" class="dropdown-toggle cursor-pointer"><i class="fa fa-bar-chart-o fa-fw">&nbsp;</i><span class="cursor-pointer">查询</span><b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a>无</a></li>
+          </ul>
+        </li>
+        <li id="nav-block-user" class="dropdown"><a data-toggle="dropdown" class="dropdown-toggle cursor-pointer"><i class="fa fa-user fa-fw">&nbsp;</i><span>{{loginUser}}</span><b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="#"><i class="fa fa-info fa-fw">&nbsp;</i><span>帐户信息</span></a></li>
+            <li><a href="#"><i class="fa fa-retweet fa-fw">&nbsp;</i><span>切换帐套</span></a></li>
+            <li><a href="#"><i class="fa fa-lock fa-fw">&nbsp;</i><span>锁屏</span></a></li>
+            <li class="divider"></li>
+            <li><a href="#"><i class="fa fa-sign-out fa-fw">&nbsp;</i><span>登出系统</span></a></li>
+          </ul>
+        </li>
+        <li id="new-task-btn" class="navbar-form navbar-right">
+          <btn popup-dialog="popup-dialog" dialog-config="registerEditorConfig" ng-click="showRegisterEditor($event)" on-confirm="onRegisterSaved(action, data)" class="btn btn-primary"><i class="fa fa-edit fa-fw">&nbsp;</i><span>新任务</span></btn>
+        </li>
+      </ul>
+      <div id="task-searcher" role="search" class="navbar-form navbar-right top-bar-search-box">
+        <div class="input-group">
+          <input type="text" placeholder="任务代号" class="form-control"/><span class="input-group-btn">
+            <button class="btn btn-default"><i class="fa fa-search"></i></button></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

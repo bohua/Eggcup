@@ -26,58 +26,8 @@ angular.module('dashboard', [
 	'tasks',
 	'taskStatusService',
 	'customerListService',
-	function ($scope, $location, tasks, taskStatusService, customerListService) {
-
-		/**
-		 * popup window configuration
-		 */
-		/*
-		$scope.taskEditorConfig = {
-			dialogOption: {
-				overlay: true,
-				shadow: true,
-				flat: true,
-				icon: '<i class="icon-tag"></i>',
-				title: '详细信息',
-				padding: 10,
-				width: '90%',
-				height: '90%',
-				overlayClickClose: false
-			},
-
-			template: '/src/partials/task-editor/task-editor-view.tpl.html',
-
-			onShow: function (_dialogWin) {
-				$.Metro.initInputs();
-				$.Metro.initTabs();
-				_dialogWin.find('.auto-focus').focus();
-			},
-
-			api: {
-			}
-		};
-		*/
-
-		/**
-		 * directive bindings
-		 */
-		/*
-		$scope.confirmEmitted = function (action, data) {
-			switch (action) {
-				case 'update':
-				{
-					//saveCustomer(data);
-					break;
-				}
-				case 'remove':
-				{
-					//deleteCustomer({id: data.id});
-					break;
-				}
-			}
-		}
-		*/
-
+	'TASK',
+	function ($scope, $location, tasks, taskStatusService, customerListService, TASK) {
 		/**
 		 * Service binds
 		 */
@@ -145,5 +95,12 @@ angular.module('dashboard', [
 
 			return groups;
 		}
+
+		$scope.$on('reloadDashboard', function(){
+			TASK.query({statusGroup: ['ongoing']})
+				.$promise.then(function(newTaskList){
+					$scope.taskList = groupingTasks(newTaskList);
+				});
+		});
 	}]);
 

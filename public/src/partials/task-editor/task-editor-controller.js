@@ -124,14 +124,14 @@ angular.module('task-editor', [
 
 			if (!status) status = 100;
 			if (!handling) handling = 1;
+
+			if (status <= 200) {
 				scope.progressList = [
 					progressList['register'],
 					progressList['arrange'],
 					progressList['reply']
 
 				];
-			if (status <= 200) {
-				scope.progressList = [progressList['']]
 			} else if (handling === 0) {
 				scope.progressList = [
 					progressList['register'],
@@ -152,10 +152,10 @@ angular.module('task-editor', [
 				];
 			}
 
-			scope.getProgressState = function(progressState){
-				if(status === progressState) return 'ongoing';
-				if(status < progressState) return 'disabled';
-				if(status > progressState) return 'finished';
+			scope.getProgressState = function (progressState) {
+				if (status === progressState) return 'ongoing';
+				if (status < progressState) return 'disabled';
+				if (status > progressState) return 'finished';
 			}
 		})($scope.task_model.status, $scope.task_model.handling, $scope);
 
@@ -179,8 +179,12 @@ angular.module('task-editor', [
 		}
 
 		//Auto active the first section
-		$timeout(function(){
+		$timeout(function () {
 			$($('ul.affix a')[0]).addClass('active');
+		});
+
+		$scope.$on('saveTaskModel', function () {
+			$scope.task_model.$save();
 		});
 
 	}]);
