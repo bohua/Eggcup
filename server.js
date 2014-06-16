@@ -94,11 +94,6 @@ app.post('/file-upload', function (req, res) {
 	fs.createReadStream(file.path).pipe(fs.createWriteStream(newDest));
 });
 
-app.get('/attachment/:fileName', function (req, res) {
-	var file = req.params.fileName;
-	res.download(path.join(__dirname, 'attachments', file));
-});
-
 
 /**
  * Initialize Logger

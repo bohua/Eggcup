@@ -93,6 +93,6 @@ div.page-header(ng-controller="proposalSectionController")
 						td {{sub_item.extra}}
 						td {{sub_item.expense + sub_item.traffic + sub_item.extra}}
 						td
-							div.attachment-token.label.cursor-pointer(ng-repeat="attach in sub_item.attachment")
+							a.attachment-token.label.cursor-pointer(ng-repeat="attach in sub_item.attachment", download="item.file_name", ng-href="attachment/{{item.file_url}}")
 								i.icon-file-excel
 								span {{attach.file_name}}

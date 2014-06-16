@@ -167,9 +167,14 @@
 }
 
 .attachment-token {
+  &:hover, &:active{
+    color: @blue-dark !important;
+  }
+
   font-size: 11pt;
-  background-color: @blue-dark;
-  color: @white;
+  background-color: @gray-lighter;
+  color: @black-bg;
+  border: 1px solid @grey-border;
   margin-right: 10px;
   font-weight: normal;
 }
