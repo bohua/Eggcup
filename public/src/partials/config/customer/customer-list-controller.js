@@ -11,7 +11,12 @@ angular.module('customer-list', [
 	$routeProvider.
 		when('/config/customer', {
 			templateUrl: '/src/partials/config/customer/customer-list-view.tpl.html',
-			controller: 'customerListController'
+			controller: 'customerListController',
+			resolve: {
+				customerServiceDone : ['customerListService', function(customerListService){
+					return customerListService.ready();
+				}]
+			}
 		});
 }]).controller('customerListController', [
 	'$scope',

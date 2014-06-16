@@ -1,42 +1,47 @@
 //Created by Bohua on 2014-05-29.
-div.page-header
+div.page-header(ng-controller="arrangeSectionController")
 	h2
 		i.fa.fa-share-alt.fa-fw &nbsp;
 		span 审核 &nbsp;
 		small.hidden-xs Arrange
 		div.btn-group.pull-right
-			button.btn.btn-default
+			button.btn.btn-default(
+			popup-dialog,
+			dialog-config="arrangeEditorConfig",
+			ng-click="showArrangeEditor($event, task_model.arrangeSheet)",
+			on-confirm="onArrangeSaved(action, data)"
+			)
 				i.fa.fa-edit.fa-fw &nbsp;
 				span 修改
 
-#arrange-panel-group.panel-group
-	div.panel.panel-default
-		div.panel-heading.cursor-pointer
-			h4.no-margin(data-toggle="collapse", href="#arrangement-details-panel") 审核记录 &nbsp;
-				small.hidden-xs Arrangement Details
-		#arrangement-details-panel.panel-collapse.collapse.in
-			div.flex-container.panel-body
-				div.flex-box
-					label 审批日期:
-					span {{task_model.arrangeSheet.arrangement_date | date:'yyyy-MM-dd'}}
-				div.flex-box
-					label 审批人:
-					span {{task_model.arrangeSheet.arrangement_assigner}}
+	#arrange-panel-group.panel-group
+		div.panel.panel-default
+			div.panel-heading.cursor-pointer
+				h4.no-margin(data-toggle="collapse", href="#arrangement-details-panel") 审核记录 &nbsp;
+					small.hidden-xs Arrangement Details
+			#arrangement-details-panel.panel-collapse.collapse.in
+				div.flex-container.panel-body
+					div.flex-box
+						label 审批日期:
+						span {{task_model.arrangeSheet.arrangement_date | date:'yyyy-MM-dd'}}
+					div.flex-box
+						label 审批人:
+						span {{task_model.arrangeSheet.arrangement_assigner}}
 
-				div.flex-box
-					label 人员安排:
-					span {{task_model.arrangeSheet.arrangement_assignee}}
-				div.flex-box
-					label 处理方式:
-					span {{task_model.handling}}
+					div.flex-box
+						label 人员安排:
+						span {{task_model.arrangeSheet.arrangement_assignee}}
+					div.flex-box
+						label 处理方式:
+						span {{translateHandling(task_model.handling)}}
 
-				div.flex-box
-					label 时间安排自:
-					span {{task_model.arrangeSheet.start_date | date:'yyyy-MM-dd'}}
-				div.flex-box
-					label 时间安排至:
-					span {{task_model.arrangeSheet.end_date | date:'yyyy-MM-dd'}}
+					div.flex-box
+						label 时间安排自:
+						span {{task_model.arrangeSheet.start_date | date:'yyyy-MM-dd'}}
+					div.flex-box
+						label 时间安排至:
+						span {{task_model.arrangeSheet.end_date | date:'yyyy-MM-dd'}}
 
-				div.flex-box
-					label 审批意见:
-					span {{task_model.arrangeSheet.arrangement_comment}}
+					div.flex-box
+						label 审批意见:
+						span {{task_model.arrangeSheet.arrangement_comment}}

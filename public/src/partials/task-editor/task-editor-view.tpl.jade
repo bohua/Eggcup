@@ -38,7 +38,7 @@ div.navbar.navbar-default.task-header
 						b.caret
 					ul.dropdown-menu
 						li(ng-repeat="precedence in statusStack track by $index")
-							a.cursor-pointer(ng-click="console.log(precedence.nextStatus)")
+							a.cursor-pointer(ng-click="onStatusChange(precedence.nextStatus)")
 								i.fa.fa-fw(class="{{precedence.icon}}")
 								span &nbsp;&nbsp;{{precedence.action}}
 				li.dropdown

@@ -13,6 +13,7 @@ angular.module('task-editor', [
 
 	//No return value
 	'register-section',
+	'arrange-section',
 	'proposal-section'
 ]).config(['$routeProvider', function ($routeProvider) {
 	$routeProvider.
@@ -185,15 +186,18 @@ angular.module('task-editor', [
 			$($('ul.affix a')[0]).addClass('active');
 		});
 
-		$scope.$on('saveTaskModel', function () {
-			TASK.save($scope.task_model);
-
-			/*
-			var id = $scope.task_model.id;
-			$scope.task_model.$save(function () {
-				$scope.task_model = TASK.get({task_id: id});
-			});
-			*/
+		$scope.$on('saveTaskModel', function (event, id, data) {
+			TASK.save({task_id: id}, data);
 		});
+
+		$scope.onStatusChange = function (statusCode) {
+			switch (statusCode) {
+				case 200:
+				{
+					$scope.$broadcast('newArrange');
+					break;
+				}
+			}
+		}
 
 	}]);

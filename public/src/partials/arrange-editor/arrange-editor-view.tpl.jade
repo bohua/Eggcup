@@ -1,0 +1,34 @@
+//Created by bli on 2014/6/10.
+#arrange-editor-form.modal-dialog.modal-lg(ng-controller="arrangeEditorController")
+	form.modal-content(ng-submit="Confirm('update', true)")
+		div.modal-header
+			button.close(type="button", data-dismiss="modal") &times;
+			h4.modal-title 审核详情 &nbsp;
+				small  Details
+		div.modal-body.container-fluid
+			div.row
+				div.form-group.col-sm-4
+					label.control-label 审批日期:
+					div.input-group.date(date-field-model="dialog_data_model.arrangement_date")
+						span.input-group-addon
+							i.fa.fa-calendar
+						input.form-control.datepicker(type="text")
+
+				div.form-group.col-sm-4
+					label.control-label 审批人:
+					div
+						input.form-control(type="text", placeholder="审批人", ng-model="dialog_data_model.arrangement_assigner", auto-complete-field="employeeFieldOptions", required)
+
+				div.form-group.col-sm-2
+					label.control-label 处理方式:
+					div
+						select.form-control(ng-model="dialog_data_model.handling", ng-options="key*1 as value for (key, value) in handlingList")
+							option(value="", selected) 选择方式
+
+
+		div.modal-footer
+			button.btn.btn-primary(type="submit") 保存
+			button.btn.btn-default(type="button", ng-click="Cancel()") 取消
+
+			div.pull-left
+				button.btn.btn-danger(ng-if="prop.mode=='edit'", pop-confirm="emptyBtnOptions") 清空

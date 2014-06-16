@@ -12,7 +12,10 @@ angular.module('employee-list', [
 	$routeProvider.
 		when('/config/employee', {
 			templateUrl: '/src/partials/config/employee/employee-list-view.tpl.html',
-			controller: 'employeeListController'
+			controller: 'employeeListController',
+			employeeServiceDone : ['employeeListService', function(employeeListService){
+				return employeeListService.ready();
+			}]
 		});
 }]).controller('employeeListController', [
 	'$scope',

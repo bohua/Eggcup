@@ -15,9 +15,9 @@ angular.module('dashboard', [
 			templateUrl: '/src/partials/dashboard/dashboard-view.tpl.html',
 			controller: 'dashboardController',
 			resolve: {
-				'tasks': function (TASK) {
+				'tasks': ['TASK', function (TASK) {
 					return TASK.query({statusGroup: ['ongoing']}).$promise;
-				}
+				}]
 			}
 		});
 }]).controller('dashboardController', [

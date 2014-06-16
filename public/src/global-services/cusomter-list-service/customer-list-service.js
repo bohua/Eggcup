@@ -3,12 +3,20 @@
  */
 angular.module('customer-list-service', ['customer-resource'])
 	.factory('customerListService', ['CUSTOMER', '$q', function (CUSTOMER, $q) {
-		var customerList;
+		var customerList,
+			initiator;
+
 		var Service = {
 			init: function () {
-				CUSTOMER.query(function(list){
+				initiator = CUSTOMER.query(function(list){
 					customerList = list;
-				});
+				}).$promise;
+
+				return initiator;
+			},
+
+			ready: function(){
+				return initiator;
 			},
 
 			getCustomerList: function () {
