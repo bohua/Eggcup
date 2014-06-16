@@ -48,10 +48,16 @@ angular.module('proposal-section', ['proposal-editor', 'attach-editor', 'detail-
 		}
 
 		$scope.onAttachSaved = function (action, data) {
-			//$.extend(true, $scope.task_model.proposalSheet.attachment, data);
-
 			$scope.task_model.proposalSheet.attachment = data;
-			$scope.$emit('saveTaskModel');
+
+			var o = {
+				id: $scope.task_model.id,
+				proposalSheet: {
+					id: $scope.task_model.proposalSheet.id,
+					attachment : data
+				}
+			}
+			$scope.$emit('saveTaskModel', $scope.task_model.id, o);
 		}
 
 		/**

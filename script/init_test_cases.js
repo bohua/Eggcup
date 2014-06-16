@@ -4,6 +4,7 @@
 var Q = require('q');
 var db = require('../models');
 var fs = require('fs');
+var winston = require('winston');
 
 var task_bo = require(__dirname + '/../server/tasks/task_bo.js');
 
@@ -13,6 +14,14 @@ db.setup('eggcup', 'root', 'root', {
 	pool: { maxConnections: 5, maxIdleTime: 30}
 });
 
+/**
+ * Initialize Logger
+ */
+global.logger = new (winston.Logger)({
+	transports: [
+		new (winston.transports.Console)()
+	]
+});
 
 db.Seq()
 	.sequelize

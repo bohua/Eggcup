@@ -11,14 +11,7 @@ angular.module('attach-editor', [])
 			}
 
 			$scope.fileUploaded = function(file){
-				var o = {
-					'file_name': file[0].name,
-					'file_ext' : file[0]['content-type'],
-					'file_url' : file[0].path,
-					'file_size' : file[0].size
-				};
-
-				$scope.dialog_data_model.push(o);
+				$scope.dialog_data_model.push(file);
 				$scope.$apply();
 				highlightLatestRow();
 			};

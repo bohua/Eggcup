@@ -29,6 +29,7 @@ angular.module('task-editor', [
 }]).controller('taskEditorController', [
 	'$routeParams',
 	'$location',
+	'$http',
 	'$scope',
 	'$timeout',
 	'tagReferenceService',
@@ -37,7 +38,7 @@ angular.module('task-editor', [
 	'taskStatusService',
 	'task_model',
 	'TASK',
-	function ($routeParams, $location, $scope, $timeout, tagReferenceService, customerListService, employeeListService, taskStatusService, task_model, TASK) {
+	function ($routeParams, $location, $http, $scope , $timeout, tagReferenceService, customerListService, employeeListService, taskStatusService, task_model, TASK) {
 
 		/**
 		 * Initialize default values & functions
@@ -199,5 +200,12 @@ angular.module('task-editor', [
 				}
 			}
 		}
+
+		/**
+		 * Cross scope bindings
+		 */
+		$scope.downloadFile = function (url) {
+			$http.get('/file-download', {params: {fileUrl: url}});
+		};
 
 	}]);

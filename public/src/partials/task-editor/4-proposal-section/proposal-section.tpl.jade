@@ -60,11 +60,11 @@ div.page-header(ng-controller="proposalSectionController")
 						th 文件类型
 						th 文件大小
 				tbody
-					tr.cursor-pointer(ng-repeat="item in task_model.proposalSheet.attachment", ng-click="downloadFile(item.file_url)")
+					tr.cursor-pointer(ng-repeat="item in task_model.proposalSheet.attachment")
 						td {{item.file_desc}}
 						td
 							i.fa.fa-file-word-o.text-info.fa-fw &nbsp;
-							span {{item.file_name}}
+							a(download="item.file_name", ng-href="attachment/{{item.file_url}}") {{item.file_name}}
 						td {{item.file_ext}}
 						td {{item.file_size}}
 
