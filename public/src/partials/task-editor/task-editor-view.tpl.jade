@@ -31,7 +31,7 @@ div.navbar.navbar-default.task-header
 								icon.fa.fa-rmb.fa-fw &nbsp;
 								span &nbsp;&nbsp;费用
 
-				li.dropdown
+				li.dropdown(ng-show="task_model.status<800")
 					a.dropdown-toggle.cursor-pointer(data-toggle="dropdown")
 						i.fa.fa-share-square-o.fa-fw &nbsp;
 						span.cursor-pointer 提交
@@ -94,6 +94,7 @@ div.navbar.navbar-default.task-header
 				include 7-account-section/account-section.tpl.jade
 			section#page_summary(ng-if="getProgressState(700) != 'disabled'")
 				include 8-summary-section/summary-section.tpl.jade
+			section#page_closed(ng-if="getProgressState(800) != 'disabled'")
 
 
 			#task-footer

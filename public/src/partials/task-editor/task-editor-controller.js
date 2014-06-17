@@ -128,6 +128,13 @@ angular.module('task-editor', [
 					title: '汇总',
 					icon: 'fa-suitcase',
 					href: '#page_summary'
+				},
+				closed: {
+					id: 'closed',
+					code: 800,
+					title: '结案',
+					icon: 'fa-database',
+					href: '#page_closed'
 				}
 			}
 
@@ -153,7 +160,8 @@ angular.module('task-editor', [
 					progressList['register'],
 					progressList['arrange'],
 					progressList['reply_a'],
-					progressList['summary']
+					progressList['summary'],
+					progressList['closed']
 				];
 			} else {
 				scope.progressList = [
@@ -164,12 +172,15 @@ angular.module('task-editor', [
 					progressList['contract'],
 					progressList['execute'],
 					progressList['account'],
-					progressList['summary']
+					progressList['summary'],
+					progressList['closed']
 				];
 			}
 
 			scope.getProgressState = function (progressState) {
 				//if (scope.task_model.status === progressState) return 'ongoing';
+				if (scope.task_model.handling === 0 && progressState > 300 && progressState < 700) return 'disabled';
+
 				if (scope.task_model.status < progressState) return 'disabled';
 				if (scope.task_model.status >= progressState) return 'finished';
 			}
