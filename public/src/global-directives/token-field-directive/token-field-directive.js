@@ -37,6 +37,17 @@ angular.module('token-field', [])
 						updateModel($($element).tokenfield('getTokens'));
 					});
 
+					$($element).nextAll('input').last().on('keydown', function (e) {
+						var nextEl;
+						if (e.keyCode === 9 || e.witch === 9) {
+							nextEl = $(':input:eq(' + ($(':input').index($(e.currentTarget)) + 1) + ')');
+							nextEl.focus();
+							e.preventDefault();
+							e.stopPropagation();
+							return false;
+						}
+					});
+
 					/*
 					$($element).on('keydown', function (e) {
 						var nextEl;

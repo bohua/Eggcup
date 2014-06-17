@@ -27,7 +27,7 @@ angular.module('auto-complete-field', [])
 				$($element).on('keydown', function(e){
 					var nextEl;
 					if(e.keyCode === 9 || e.witch === 9){
-						nextEl = $(':input:eq(' + ($(':input').index($($element)) + 1) + ')');
+						nextEl = $(':input:eq(' + ($(':input').index($(e.currentTarget)) + 1) + ')');
 						nextEl.focus();
 						e.preventDefault();
 						e.stopPropagation();
