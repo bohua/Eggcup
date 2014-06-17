@@ -6,8 +6,15 @@ angular.module('date-field-model', [])
 		var dateFieldModel = {
 			restrict: 'A',
 			link: function ($scope, $element, $attributes) {
-				var model = eval("$scope." + $attributes.dateFieldModel) || {},
-					date = model? new Date(model) : new Date();
+				var model = eval("$scope." + $attributes.dateFieldModel),
+					date;
+
+				if(model){
+					date = new Date(model);
+				}else{
+					model = {};
+				}
+
 
 				$($element)
 					.datepicker({
@@ -16,7 +23,7 @@ angular.module('date-field-model', [])
 						autoclose: true
 					})
 					.datepicker('update', date)
-					.on('changeDate', function(e){
+					.on('changeDate', function (e) {
 						eval("$scope." + $attributes.dateFieldModel + "= e.date");
 						$scope.$apply();
 					});

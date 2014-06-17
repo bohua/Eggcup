@@ -38,7 +38,7 @@ angular.module('task-editor', [
 	'taskStatusService',
 	'task_model',
 	'TASK',
-	function ($routeParams, $location, $http, $scope , $timeout, tagReferenceService, customerListService, employeeListService, taskStatusService, task_model, TASK) {
+	function ($routeParams, $location, $http, $scope, $timeout, tagReferenceService, customerListService, employeeListService, taskStatusService, task_model, TASK) {
 
 		/**
 		 * Initialize default values & functions
@@ -57,7 +57,7 @@ angular.module('task-editor', [
 		//Get possible precedence status
 		$scope.statusStack = taskStatusService.getPrecedence($scope.task_model.status);
 
-		(function (status, handling, scope) {
+		(function (scope) {
 			var progressList = {
 				register: {
 					id: 'register',
@@ -127,7 +127,6 @@ angular.module('task-editor', [
 			}
 
 			if (!status) status = 100;
-			if (!handling) handling = 1;
 
 			if (status <= 200) {
 				scope.progressList = [
@@ -136,7 +135,7 @@ angular.module('task-editor', [
 					progressList['reply']
 
 				];
-			} else if (handling === 0) {
+			} else if (!scope.task_model.handling || scope.task_model.handling === 0) {
 				scope.progressList = [
 					progressList['register'],
 					progressList['arrange'],
@@ -157,11 +156,11 @@ angular.module('task-editor', [
 			}
 
 			scope.getProgressState = function (progressState) {
-				if (status === progressState) return 'ongoing';
-				if (status < progressState) return 'disabled';
-				if (status > progressState) return 'finished';
+				if (scope.task_model.status === progressState) return 'ongoing';
+				if (scope.task_model.status < progressState) return 'disabled';
+				if (scope.task_model.status > progressState) return 'finished';
 			}
-		})($scope.task_model.status, $scope.task_model.handling, $scope);
+		})($scope);
 
 		/**
 		 * Initialize Emitters
@@ -192,11 +191,26 @@ angular.module('task-editor', [
 		});
 
 		$scope.onStatusChange = function (statusCode) {
+			var answer = confirm('确认提交么？');
+			if (!answer) {
+				return;
+			}
+
 			switch (statusCode) {
 				case 200:
 				{
-					$scope.$broadcast('newArrange');
-					break;
+					$scope.task_model.status = statusCode;
+					$scope.task_model.arrangeSheet = {};
+
+					$scope.statusStack = taskStatusService.getPrecedence($scope.task_model.status);
+
+					TASK.save({task_id: $scope.task_model.id}, {
+						id: $scope.task_model.id,
+						status: $scope.task_model.status,
+						arrangeSheet: $scope.task_model.arrangeSheet
+					}, function(){
+						$scope.$broadcast('newArrange');
+					});
 				}
 			}
 		}

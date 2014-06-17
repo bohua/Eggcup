@@ -4,8 +4,9 @@
 angular.module('arrange-section', ['arrange-editor', 'handling-method-service'])
 	.controller('arrangeSectionController', [
 		'$scope',
+		'$timeout',
 		'handlingMethodService',
-		function ($scope, handlingMethodService) {
+		function ($scope, $timeout, handlingMethodService) {
 			$scope.arrangeEditorConfig = {
 				dialogOption: {
 					backdrop: 'static'
@@ -13,9 +14,9 @@ angular.module('arrange-section', ['arrange-editor', 'handling-method-service'])
 				template: '/src/partials/arrange-editor/arrange-editor-view.tpl.html'
 			};
 
-			$scope.showArrangeEditor = function ($event, dataModel) {
-				dataModel.handling = $scope.task_model.handling;
-				$($event.currentTarget).trigger('popup', ['edit', dataModel]);
+			$scope.showArrangeEditor = function ($event) {
+				$scope.task_model.arrangeSheet.handling = $scope.task_model.handling;
+				$($event.currentTarget).trigger('popup', ['edit', $scope.task_model.arrangeSheet]);
 			};
 
 			$scope.translateHandling = handlingMethodService.translateHandling;
@@ -30,4 +31,11 @@ angular.module('arrange-section', ['arrange-editor', 'handling-method-service'])
 				}
 				$scope.$emit('saveTaskModel', $scope.task_model.id, o);
 			}
+
+			$scope.$on('newArrange', function(){
+				$timeout(function(){
+					$('[dialog-config="arrangeEditorConfig"]').trigger('popup', ['new', $scope.task_model.arrangeSheet]);
+				});
+
+			});
 		}]);

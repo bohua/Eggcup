@@ -17,11 +17,11 @@
 						label.control-label 任务名:
 						div
 							input.form-control(type="text", placeholder="任务名", ng-model="dialog_data_model.slogan", required)
-					div.form-group.col-sm-4
+					div.form-group.col-sm-6
 						label.control-label 担当人:
 						div
 							input.form-control(type="text", placeholder="任务名", ng-model="dialog_data_model.assignee", token-field="assigneeFieldOptions")
-					div.form-group.col-sm-2
+					//div.form-group.col-sm-2
 						label.control-label 处理方式:
 						div
 							select.form-control(ng-model="dialog_data_model.handling", ng-options="key*1 as value for (key, value) in handlingList")
