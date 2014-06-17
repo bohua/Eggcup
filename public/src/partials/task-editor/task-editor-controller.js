@@ -57,7 +57,7 @@ angular.module('task-editor', [
 		//Get possible precedence status
 		$scope.statusStack = taskStatusService.getPrecedence($scope.task_model.status);
 
-		(function renderProgressList (scope) {
+		function renderProgressList (scope) {
 			var progressList = {
 				register: {
 					id: 'register',
@@ -73,10 +73,24 @@ angular.module('task-editor', [
 					icon: 'fa-share-alt',
 					href: '#page_arrange'
 				},
-				reply: {
-					id: 'reply',
+				choose: {
+					id: 'choose',
+					code: 1001,
 					title: '解答',
+					icon: 'fa-random',
+					href: '#page_reply'
+				},
+				reply_a: {
+					id: 'reply_a',
+					title: '回复',
 					code: 300,
+					icon: 'fa-envelope',
+					href: '#page_reply'
+				},
+				reply_b: {
+					id: 'reply_b',
+					title: '面谈',
+					code: 400,
 					icon: 'fa-comments-o',
 					href: '#page_reply'
 				},
@@ -132,21 +146,20 @@ angular.module('task-editor', [
 				scope.progressList = [
 					progressList['register'],
 					progressList['arrange'],
-					progressList['reply']
-
+					progressList['choose']
 				];
 			} else if (!scope.task_model.handling || scope.task_model.handling === 0) {
 				scope.progressList = [
 					progressList['register'],
 					progressList['arrange'],
-					progressList['reply'],
+					progressList['reply_a'],
 					progressList['summary']
 				];
 			} else {
 				scope.progressList = [
 					progressList['register'],
 					progressList['arrange'],
-					progressList['reply'],
+					progressList['reply_b'],
 					progressList['proposal'],
 					progressList['contract'],
 					progressList['execute'],
@@ -156,11 +169,12 @@ angular.module('task-editor', [
 			}
 
 			scope.getProgressState = function (progressState) {
-				if (scope.task_model.status === progressState) return 'ongoing';
+				//if (scope.task_model.status === progressState) return 'ongoing';
 				if (scope.task_model.status < progressState) return 'disabled';
-				if (scope.task_model.status > progressState) return 'finished';
+				if (scope.task_model.status >= progressState) return 'finished';
 			}
-		})($scope);
+		}
+		renderProgressList($scope);
 
 		/**
 		 * Initialize Emitters
@@ -196,12 +210,12 @@ angular.module('task-editor', [
 				return;
 			}
 
+			$scope.task_model.status = statusCode;
+
 			switch (statusCode) {
 				case 200:
 				{
-					$scope.task_model.status = statusCode;
-					$scope.task_model.arrangeSheet = {};
-					$scope.statusStack = taskStatusService.getPrecedence($scope.task_model.status);
+					$scope.task_model.arrangeSheet = $scope.task_model.arrangeSheet || {};
 
 					TASK.save({task_id: $scope.task_model.id}, {
 						id: $scope.task_model.id,
@@ -216,10 +230,8 @@ angular.module('task-editor', [
 
 				case 300:
 				{
-					$scope.task_model.status = statusCode;
 					$scope.task_model.handling = 0;
-					$scope.task_model.replySheet = {};
-					$scope.statusStack = taskStatusService.getPrecedence($scope.task_model.status);
+					$scope.task_model.replySheet = $scope.task_model.replySheet || {};
 
 					TASK.save({task_id: $scope.task_model.id}, {
 						id: $scope.task_model.id,
@@ -235,10 +247,8 @@ angular.module('task-editor', [
 
 				case 400:
 				{
-					$scope.task_model.status = 400;
 					$scope.task_model.handling = 1;
-					$scope.task_model.replySheet = {};
-					$scope.statusStack = taskStatusService.getPrecedence($scope.task_model.status);
+					$scope.task_model.replySheet = $scope.task_model.replySheet || {};
 
 					TASK.save({task_id: $scope.task_model.id}, {
 						id: $scope.task_model.id,
@@ -251,7 +261,61 @@ angular.module('task-editor', [
 
 					break;
 				}
+				case 500:
+				{
+					$scope.task_model.proposalSheet = $scope.task_model.proposalSheet || {};
+
+					TASK.save({task_id: $scope.task_model.id}, {
+						id: $scope.task_model.id,
+						status: $scope.task_model.status,
+						proposalSheet: $scope.task_model.proposalSheet
+					}, function () {
+						$scope.$broadcast('newProposal');
+					});
+
+					break;
+				}
+				case 600:
+				{
+
+					$scope.task_model.contractSheet = $scope.task_model.contractSheet || {};
+					$scope.task_model.executeSheet = $scope.task_model.executeSheet || {};
+					$scope.task_model.accountSheet = $scope.task_model.accountSheet || {};
+
+					TASK.save({task_id: $scope.task_model.id}, {
+						id: $scope.task_model.id,
+						status: $scope.task_model.status,
+						contractSheet: $scope.task_model.contractSheet,
+						executeSheet: $scope.task_model.executeSheet,
+						accountSheet: $scope.task_model.accountSheet
+					}, function () {
+						$scope.$broadcast('newContract');
+					});
+
+					break;
+				}
+				case 700:
+				{
+					$scope.task_model.summarySheet = $scope.task_model.summarySheet || {};
+
+					TASK.save({task_id: $scope.task_model.id}, {
+						id: $scope.task_model.id,
+						status: $scope.task_model.status,
+						summarySheet: $scope.task_model.summarySheet
+					}, function () {
+						$scope.$broadcast('newSummary');
+					});
+
+					break;
+				}
+				case 800:
+				{
+					break;
+				}
 			}
+
+			$scope.statusStack = taskStatusService.getPrecedence($scope.task_model.status);
+			renderProgressList($scope);
 		}
 
 		/**

@@ -41,7 +41,7 @@
 	"reply_a": {
 		"code": 300,
 		"icon": "fa-envelope",
-		"status": "回复解答",
+		"status": "回复中",
 		"precedence": [
 			{
 				"action": "汇总报告",
@@ -62,8 +62,8 @@
 	},
 	"reply_b": {
 		"code": 400,
-		"icon": "fa-comments-0",
-		"status": "提案解答",
+		"icon": "fa-comments-o",
+		"status": "面谈中",
 		"precedence": [
 			{
 				"action": "设计提案",
@@ -130,6 +130,7 @@
 	},
 	"closed": {
 		"code": 800,
-		"status": "已结案"
+		"status": "已结案",
+		"icon": "fa-eye"
 	}
 }

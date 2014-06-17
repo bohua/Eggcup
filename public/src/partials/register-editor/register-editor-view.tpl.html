@@ -17,20 +17,19 @@
               <input type="text" placeholder="任务名" ng-model="dialog_data_model.slogan" required="required" class="form-control"/>
             </div>
           </div>
-          <div class="form-group col-sm-4">
+          <div class="form-group col-sm-6">
             <label class="control-label">担当人:</label>
             <div>
               <input type="text" placeholder="任务名" ng-model="dialog_data_model.assignee" token-field="assigneeFieldOptions" class="form-control"/>
             </div>
           </div>
-          <div class="form-group col-sm-2">
-            <label class="control-label">处理方式:</label>
-            <div>
-              <select ng-model="dialog_data_model.handling" ng-options="key*1 as value for (key, value) in handlingList" class="form-control">
-                <option value="" selected="selected">选择方式</option>
-              </select>
-            </div>
-          </div>
+          <!--div.form-group.col-sm-2
+          label.control-label 处理方式:
+          div
+           select.form-control(ng-model="dialog_data_model.handling", ng-options="key*1 as value for (key, value) in handlingList")
+            option(value="", selected) 选择方式
+            
+          -->
         </div>
       </div>
       <h4 data-toggle="collapse" data-target="#register-editor-company-info" ng-class="{'collapsed': prop.mode!='edit'}" class="cursor-pointer"><i class="fa fa-fw fa-angle-down"></i><span>公司信息 &nbsp;</span><small>Company Information</small></h4>
