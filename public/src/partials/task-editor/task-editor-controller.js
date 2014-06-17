@@ -57,7 +57,7 @@ angular.module('task-editor', [
 		//Get possible precedence status
 		$scope.statusStack = taskStatusService.getPrecedence($scope.task_model.status);
 
-		(function (scope) {
+		(function renderProgressList (scope) {
 			var progressList = {
 				register: {
 					id: 'register',
@@ -126,9 +126,9 @@ angular.module('task-editor', [
 				}
 			}
 
-			if (!status) status = 100;
+			if (!scope.task_model.status) scope.task_model.status = 100;
 
-			if (status <= 200) {
+			if (scope.task_model.status <= 200) {
 				scope.progressList = [
 					progressList['register'],
 					progressList['arrange'],
@@ -201,16 +201,55 @@ angular.module('task-editor', [
 				{
 					$scope.task_model.status = statusCode;
 					$scope.task_model.arrangeSheet = {};
-
 					$scope.statusStack = taskStatusService.getPrecedence($scope.task_model.status);
 
 					TASK.save({task_id: $scope.task_model.id}, {
 						id: $scope.task_model.id,
 						status: $scope.task_model.status,
 						arrangeSheet: $scope.task_model.arrangeSheet
-					}, function(){
+					}, function () {
 						$scope.$broadcast('newArrange');
 					});
+
+					break;
+				}
+
+				case 300:
+				{
+					$scope.task_model.status = statusCode;
+					$scope.task_model.handling = 0;
+					$scope.task_model.replySheet = {};
+					$scope.statusStack = taskStatusService.getPrecedence($scope.task_model.status);
+
+					TASK.save({task_id: $scope.task_model.id}, {
+						id: $scope.task_model.id,
+						status: $scope.task_model.status,
+						handling: $scope.task_model.handling,
+						replySheet: $scope.task_model.replySheet
+					}, function () {
+						$scope.$broadcast('newReply');
+					});
+
+					break;
+				}
+
+				case 400:
+				{
+					$scope.task_model.status = 400;
+					$scope.task_model.handling = 1;
+					$scope.task_model.replySheet = {};
+					$scope.statusStack = taskStatusService.getPrecedence($scope.task_model.status);
+
+					TASK.save({task_id: $scope.task_model.id}, {
+						id: $scope.task_model.id,
+						status: $scope.task_model.status,
+						handling: $scope.task_model.handling,
+						replySheet: $scope.task_model.replySheet
+					}, function () {
+						$scope.$broadcast('newReply');
+					});
+
+					break;
 				}
 			}
 		}

@@ -29,7 +29,7 @@
 			{
 				"action": "提案解答",
 				"icon": "fa-comments-o",
-				"nextStatus": 300
+				"nextStatus": 400
 			},
 			{
 				"action": "中止任务",
