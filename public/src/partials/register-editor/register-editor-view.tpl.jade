@@ -21,11 +21,6 @@
 						label.control-label 担当人:
 						div
 							input.form-control(type="text", placeholder="任务名", ng-model="dialog_data_model.assignee", token-field="assigneeFieldOptions")
-					//div.form-group.col-sm-2
-						label.control-label 处理方式:
-						div
-							select.form-control(ng-model="dialog_data_model.handling", ng-options="key*1 as value for (key, value) in handlingList")
-								option(value="", selected) 选择方式
 
 			h4.cursor-pointer(data-toggle="collapse", data-target="#register-editor-company-info", ng-class="{'collapsed': prop.mode!='edit'}")
 				i.fa.fa-fw.fa-angle-down

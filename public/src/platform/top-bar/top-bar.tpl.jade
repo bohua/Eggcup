@@ -86,9 +86,9 @@ div.navbar.navbar-inverse.navbar-fixed-top(ng-controller="topBarController", rol
 						i.fa.fa-edit.fa-fw &nbsp;
 						span 新任务
 
-			#task-searcher.navbar-form.navbar-right.top-bar-search-box(role="search")
+			form#task-searcher.navbar-form.navbar-right.top-bar-search-box(role="search", ng-submit="findTask(query)")
 				div.input-group
-					input.form-control(type="text", placeholder="任务代号")
+					input.form-control(type="text", placeholder="任务代号", ng-model="query")
 					span.input-group-btn
-						button.btn.btn-default
+						button(type="submit").btn.btn-default
 							i.fa.fa-search

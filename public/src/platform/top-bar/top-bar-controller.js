@@ -66,4 +66,10 @@ angular.module('top-bar', ['login-session-service', 'task-resource'])
 						$rootScope.$broadcast('reloadDashboard');
 					});
 			}
+
+			$scope.findTask = function(query){
+				TASK.query({query: query}, function(result){
+					console.log(result);
+				});
+			};
 		}]);

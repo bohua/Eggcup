@@ -1,0 +1,115 @@
+//Created by Bohua on 2014-06-18.
+#reply-editor-form.modal-dialog.modal-lg(ng-controller="replyEditorController")
+	form.modal-content(ng-submit="Confirm('update', true)")
+		div.modal-header
+			button.close(type="button", data-dismiss="modal") &times;
+			h4.modal-title
+				span 任务解答 &nbsp;
+					small Task Reply
+		div.modal-body.container-fluid
+			div(ng-if="dialog_data_model.handling==0")
+				h4.cursor-pointer(data-toggle="collapse", data-target="#reply-editor-reply")
+					i.fa.fa-fw.fa-angle-down
+					span 回复解答  &nbsp;
+						small Reply
+				hr
+				#reply-editor-reply.collapse.in
+					div.row
+						div.form-group.col-sm-3
+							label.control-label 解答日期:
+							div.input-group.date(date-field-model="dialog_data_model.reply_date", required)
+								span.input-group-addon
+									i.fa.fa-calendar
+								input.form-control.datepicker(type="text")
+
+						div.form-group.col-sm-3
+							label.control-label 咨询人:
+							div
+								input.form-control(type="text", placeholder="咨询人", ng-model="dialog_data_model.consult_person")
+
+						div.form-group.col-sm-3
+							label.control-label 答复人:
+							div
+								input.form-control(type="text", placeholder="答复人", ng-model="dialog_data_model.reply_person", auto-complete-field="employeeFieldOptions")
+						div.form-group.col-sm-3
+							label.control-label 翻译人:
+							div
+								input.form-control(type="text", placeholder="答复人", ng-model="dialog_data_model.translate_person", auto-complete-field="employeeFieldOptions")
+
+					div.row
+						div.form-group.col-sm-6
+							label.control-label 解答方式:
+							div.form-group
+								div.btn-group(data-toggle="buttons")
+									label.btn.btn-default(toggle-button-model="dialog_data_model.reply_withEmail")
+										input(type="checkbox")
+										span 邮件
+									label.btn.btn-default(toggle-button-model="dialog_data_model.reply_withTel")
+										input(type="checkbox")
+										span 电话
+									label.btn.btn-default(toggle-button-model="dialog_data_model.reply_withF2F")
+										input(type="checkbox")
+										span 面谈
+									label.btn.btn-default(toggle-button-model="dialog_data_model.reply_withFax")
+										input(type="checkbox")
+										span 传真
+
+
+			div(ng-if="dialog_data_model.handling==1")
+				h4.cursor-pointer(data-toggle="collapse", data-target="#reply-editor-proposal")
+					i.fa.fa-fw.fa-angle-down
+					span 提案解答  &nbsp;
+						small Proposal
+				hr
+				#reply-editor-proposal.collapse.in
+					div.row
+
+
+			h4.cursor-pointer(data-toggle="collapse", data-target="#reply-editor-mom")
+				i.fa.fa-fw.fa-angle-down
+				span 过程记录  &nbsp;
+					small Minutes of Meeting
+			hr
+			#reply-editor-mom.collapse.in
+				div.row
+					div.form-group.col-sm-12
+						label.control-label 咨询事项:
+						div
+							textarea.form-control(rows="5", placeholder="咨询事项", ng-model="dialog_data_model.consult_context")
+				div.row
+					div.form-group.col-sm-12
+						label.control-label 解答回复:
+						div
+							textarea.form-control(rows="5", placeholder="解答回复", ng-model="dialog_data_model.reply_context")
+				div.row
+					div.form-group.col-sm-12
+						label.control-label 法律依据:
+						div
+							textarea.form-control(rows="5", placeholder="法律依据", ng-model="dialog_data_model.law_context")
+
+			h4.cursor-pointer(data-toggle="collapse", data-target="#reply-editor-privilege")
+				i.fa.fa-fw.fa-angle-down
+				span 阅读权限  &nbsp;
+					small Privileges
+			hr
+			#reply-editor-privilege.collapse.in
+				div.row
+					div.col-sm-12
+						div.form-group
+							div.btn-group(data-toggle="buttons")
+								label.btn.btn-default(toggle-button-model="dialog_data_model.prop_internal")
+									input(type="checkbox")
+									span 内部浏览
+								label.btn.btn-default(toggle-button-model="dialog_data_model.prop_external")
+									input(type="checkbox")
+									span 客户浏览
+
+		div.modal-footer
+			button.btn.btn-primary(type="submit") 保存
+			button.btn.btn-default(type="button", ng-click="Cancel()") 取消
+
+			div.pull-left
+				button.btn.btn-danger(ng-if="prop.mode=='edit'", pop-confirm="emptyBtnOptions") 清空
+			div.pull-left.alert-danger.panel(ng-show="prop.showErrorMessage")
+				i.fa.fa-fw.fa-warning
+				span 单据填写有误，请修正红色标记

@@ -1,12 +1,17 @@
 //Created by Bohua on 2014-05-29.
-div.page-header
+div.page-header(ng-controller="replySectionController")
 	h2
 		i.fa.fa-fw(ng-class="{'fa-comments-o': task_model.handling==1, 'fa-envelope': task_model.handling==0}") &nbsp;
 		span(ng-if="task_model.handling==0")  回复 &nbsp;
 		span(ng-if="task_model.handling==1")  面谈 &nbsp;
 		small.hidden-xs Reply
 		div.btn-group.pull-right
-			button.btn.btn-default
+			button.btn.btn-default(
+			popup-dialog,
+			dialog-config="replyEditorConfig",
+			ng-click="showReplyEditor($event)",
+			on-confirm="onReplySaved(action, data)"
+			)
 				i.fa.fa-edit.fa-fw &nbsp;
 				span 修改
 
@@ -23,10 +28,10 @@ div.page-header
 
 				div.flex-box
 					label 解答方式:
-					span(ng-show="task_model.replySheet.prop_isEmail") 电子邮件
-					span(ng-show="task_model.replySheet.prop_isTel") 电话
-					span(ng-show="task_model.replySheet.prop_isF2F") 面谈
-					span(ng-show="task_model.replySheet.prop_isFax") 传真
+					span(ng-show="task_model.replySheet.reply_withEmail") 电子邮件
+					span(ng-show="task_model.replySheet.reply_withTel") 电话
+					span(ng-show="task_model.replySheet.reply_withF2F") 面谈
+					span(ng-show="task_model.replySheet.reply_withFax") 传真
 
 				div.flex-box
 					label 咨询人:

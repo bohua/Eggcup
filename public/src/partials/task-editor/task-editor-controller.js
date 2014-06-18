@@ -14,6 +14,7 @@ angular.module('task-editor', [
 	//No return value
 	'register-section',
 	'arrange-section',
+	'reply-section',
 	'proposal-section'
 ]).config(['$routeProvider', function ($routeProvider) {
 	$routeProvider.
@@ -321,6 +322,12 @@ angular.module('task-editor', [
 				}
 				case 800:
 				{
+					TASK.save({task_id: $scope.task_model.id}, {
+						id: $scope.task_model.id,
+						status: $scope.task_model.status
+					}, function () {
+						$scope.$broadcast('closeTask');
+					});
 					break;
 				}
 			}
