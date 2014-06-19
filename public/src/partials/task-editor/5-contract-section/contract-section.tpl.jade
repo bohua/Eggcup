@@ -1,51 +1,55 @@
 //Created by Bohua on 2014-05-29.
-div.page-header
-	h2
-		i.fa.fa-legal.fa-fw &nbsp;
-		span 合同签定 &nbsp;
-		small.hidden-xs Contract
-		div.btn-group.pull-right
-			button.btn.btn-default
-				i.fa.fa-edit.fa-fw &nbsp;
-				span 修改
+div(ng-controller="contractSectionController")
+	div.page-header
+		h2
+			i.fa.fa-legal.fa-fw &nbsp;
+			span 合同签定 &nbsp;
+			small.hidden-xs Contract
+			div.btn-group.pull-right
+				button.btn.btn-default(popup-dialog,dialog-config="contractEditorConfig",ng-click="showContractEditor($event, getContractModel())",on-confirm="onContractSaved(action, data)")
+					i.fa.fa-edit.fa-fw &nbsp;
+					span 修改
+				button.btn.btn-default(popup-dialog,dialog-config="detailEditorConfig",ng-click="showDetailEditor($event, getDetailModel())",on-confirm="onDetailSaved(action, data)")
+					i.fa.fa-list-alt.fa-fw &nbsp;
+					span 明细
 
-#contract-panel-group.panel-group
-	div.panel.panel-default
-		div.panel-heading.cursor-pointer
-			h4.no-margin(data-toggle="collapse", href="#contract-abstract-panel") 合同要义 &nbsp;
-				small.hidden-xs Contract Abstract
-		#contract-abstract-panel.panel-collapse.collapse.in.table-responsive
-			div.flex-container.panel-body
-				div.flex-box
-					label 签定日期:
-					span {{task_model.contractSheet.contract_date | date:'yyyy-MM-dd'}}
-				div.flex-box
-					label 合同期限:
-					span {{task_model.contractSheet.contract_due_date | date:'yyyy-MM-dd'}}
-				div.flex-box
-					label 甲方:
-					span {{task_model.contractSheet.contract_A}}
-				div.flex-box
-					label 乙方:
-					span {{task_model.contractSheet.contract_B}}
-				div.flex-box
-					label 合同标的:
-					span {{task_model.contractSheet.contract_topic}}
-			table.table.table-hover.table-bordered
-				thead
-					tr
-						th 约定付款时间
-						th 付款金额
-						th 到期日期
-						th 付款方式
-						th 附件
-				tbody
-					tr(ng-repeat="sub_item in task_model.contractSheet.subItem")
-						td {{sub_item.pay_date | date:'yyyy-MM-dd'}}
-						td {{sub_item.expense}}
-						td {{sub_item.due_date | date:'yyyy-MM-dd'}}
-						td {{sub_item.pay_method}}
-						td
-							div.attachment-token.label.cursor-pointer(ng-repeat="attach in sub_item.attachment")
-								i.icon-file-excel
-								span {{attach.file_name}}
+	#contract-panel-group.panel-group
+		div.panel.panel-default
+			div.panel-heading.cursor-pointer
+				h4.no-margin(data-toggle="collapse", href="#contract-abstract-panel") 合同要义 &nbsp;
+					small.hidden-xs Contract Abstract
+			#contract-abstract-panel.panel-collapse.collapse.in.table-responsive
+				div.flex-container.panel-body
+					div.flex-box
+						label 签定日期:
+						span {{task_model.contractSheet.contract_date | date:'yyyy-MM-dd'}}
+					div.flex-box
+						label 合同期限:
+						span {{task_model.contractSheet.contract_due_date | date:'yyyy-MM-dd'}}
+					div.flex-box
+						label 甲方:
+						span {{task_model.contractSheet.contract_A}}
+					div.flex-box
+						label 乙方:
+						span {{task_model.contractSheet.contract_B}}
+					div.flex-box
+						label 合同标的:
+						span {{task_model.contractSheet.contract_topic}}
+				table.table.table-hover.table-bordered
+					thead
+						tr
+							th 约定付款时间
+							th 付款金额
+							th 到期日期
+							th 付款方式
+							th 附件
+					tbody
+						tr(ng-repeat="sub_item in task_model.contractSheet.subItem")
+							td {{sub_item.pay_date | date:'yyyy-MM-dd'}}
+							td {{sub_item.expense}}
+							td {{sub_item.due_date | date:'yyyy-MM-dd'}}
+							td {{sub_item.pay_method}}
+							td
+								a.attachment-token.label.cursor-pointer(ng-repeat="attach in sub_item.attachment", download="attach.file_name", ng-href="file-download/{{attach.file_url}}")
+									i.fa.text-info.fa-fw(class="{{translateFileType(attach.file_ext).icon}}") &nbsp;
+									span {{attach.file_name}}

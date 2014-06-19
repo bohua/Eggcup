@@ -51,17 +51,10 @@ angular.module('table-content-handler', ['file-upload-field'])
 					};
 
 					$scope.fileUploaded = function (file) {
-						var o = {
-							'file_name': file[0].name,
-							'file_ext': file[0]['content-type'],
-							'file_url': file[0].path,
-							'file_size': file[0].size
-						};
-
 						var selectedRow = $table.find('tbody tr.active');
 						if (selectedRow.length !== 0) {
 							var scope = angular.element(selectedRow).scope();
-							scope.sub_item.attachment.push(o);
+							scope.sub_item.attachment.push(file);
 						}
 
 						$scope.$apply();

@@ -60,7 +60,12 @@
 			hr
 			#register-editor-consulting-info.collapse(ng-class="{'in': prop.mode=='edit'}")
 				div.row
-					div.col-sm-6
+					div.form-group.col-sm-8
+						label.control-label 咨询主题:
+						div
+							input.form-control(type="text", placeholder="咨询主题", ng-model="dialog_data_model.register_topic")
+
+					div.col-sm-4
 						label.control-label 咨询方式:
 						div.form-group
 							div.btn-group(data-toggle="buttons")
@@ -77,8 +82,20 @@
 									input(type="checkbox")
 									span 传真
 
-					div.col-sm-6
-						label.control-label 阅读权限:
+				div.row
+					div.form-group.col-sm-12
+						label.control-label 咨询事项:
+						div
+							textarea.form-control(rows="5", placeholder="咨询事项", ng-model="dialog_data_model.register_content")
+
+			h4.cursor-pointer(data-toggle="collapse", data-target="#register-editor-privilege", ng-class="{'collapsed': prop.mode!='edit'}")
+				i.fa.fa-fw.fa-angle-down
+				span 阅读权限  &nbsp;
+					small Privileges
+			hr
+			#register-editor-privilege.collapse(ng-class="{'in': prop.mode=='edit'}")
+				div.row
+					div.col-sm-12
 						div.form-group
 							div.btn-group(data-toggle="buttons")
 								label.btn.btn-default(toggle-button-model="dialog_data_model.prop_internal")
@@ -87,17 +104,6 @@
 								label.btn.btn-default(toggle-button-model="dialog_data_model.prop_external")
 									input(type="checkbox")
 									span 客户浏览
-
-				div.row
-					div.form-group.col-sm-12
-						label.control-label 咨询主题:
-						div
-							input.form-control(type="text", placeholder="咨询主题", ng-model="dialog_data_model.register_topic")
-				div.row
-					div.form-group.col-sm-12
-						label.control-label 咨询事项:
-						div
-							textarea.form-control(rows="5", placeholder="咨询事项", ng-model="dialog_data_model.register_content")
 
 		div.modal-footer
 			button.btn.btn-primary(type="submit") 保存

@@ -1,49 +1,50 @@
 //Created by bli on 2014/6/10.
-#proposal-editor-form.modal-dialog.modal-lg(ng-controller="proposalEditorController")
+#contract-editor-form.modal-dialog.modal-lg(ng-controller="contractEditorController")
 	form.modal-content(ng-submit="Confirm('update', true)")
 		div.modal-header
 			button.close(type="button", data-dismiss="modal") &times;
-			h4.modal-title 提案详情 &nbsp;
-				small Proposal Details
+			h4.modal-title 合同详情 &nbsp;
+				small Contract Details
 		div.modal-body.container-fluid
-			h4 附属信息 &nbsp;
-				small Proposal Property
+			h4 合同要义 &nbsp;
+				small Contract Abstract
 			hr
 			div.row
 				div.form-group.col-sm-4
-					label.control-label 提案人:
-					div
-						input.form-control(type="text", placeholder="提案人", ng-model="dialog_data_model.proposal_person", auto-complete-field="employeeFieldOptions")
-				div.form-group.col-sm-4
-					label.control-label 翻译人:
-					div
-						input.form-control(type="text", placeholder="翻译人", ng-model="dialog_data_model.proposal_translator", auto-complete-field="employeeFieldOptions")
-				div.form-group.col-sm-4
-					label.control-label 提案日期:
-					div.input-group.date(date-field-model="dialog_data_model.proposal_date")
+					label.control-label 签定日期:
+					div.input-group.date(date-field-model="dialog_data_model.contract_date")
 						span.input-group-addon
 							i.fa.fa-calendar
 						input.form-control.datepicker(type="text")
-			h4 提案要义 &nbsp;
-				small Proposal Abstract
-			hr
-			div.row
-				div.form-group.col-sm-12
-					label.control-label 提案标的:
-					div
-						input.form-control(type="text", placeholder="提案标的", ng-model="dialog_data_model.proposal_topic")
-			div.row
-				div.form-group.col-sm-12
-					label.control-label 标的内容:
-					div
-						textarea.form-control(rows="5", placeholder="标的内容", ng-model="dialog_data_model.proposal_content")
+				div.form-group.col-sm-4
+					label.control-label 合同期限:
+					div.input-group.date(date-field-model="dialog_data_model.contract_due_date")
+						span.input-group-addon
+							i.fa.fa-calendar
+						input.form-control.datepicker(type="text")
 
-			h4.cursor-pointer(data-toggle="collapse", data-target="#proposal-editor-privilege")
+			div.row
+				div.form-group.col-sm-4
+					label.control-label 甲方:
+					div
+						input.form-control(type="text", placeholder="甲方", ng-model="dialog_data_model.contract_A", auto-complete-field="employeeFieldOptions")
+				div.form-group.col-sm-4
+					label.control-label 乙方:
+					div
+						input.form-control(type="text", placeholder="乙方", ng-model="dialog_data_model.contract_B")
+
+			div.row
+				div.form-group.col-sm-12
+					label.control-label 合同标的:
+					div
+						input.form-control(type="text", placeholder="合同标的", ng-model="dialog_data_model.contract_topic")
+
+			h4.cursor-pointer(data-toggle="collapse", data-target="#contract-editor-privilege")
 				i.fa.fa-fw.fa-angle-down
 				span 阅读权限  &nbsp;
 					small Privileges
 			hr
-			#proposal-editor-privilege.collapse.in
+			#contract-editor-privilege.collapse.in
 				div.row
 					div.col-sm-12
 						div.form-group

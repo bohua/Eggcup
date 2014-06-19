@@ -1,17 +1,20 @@
 /**
  * Created by Bli on 2014/6/12.
  */
-angular.module('detail-editor', [])
-	.controller('detailEditorController', [
+angular.module('proposal-detail-editor', ['file-type-service'])
+	.controller('proposalDetailEditorController', [
 		'$scope',
-		function ($scope) {
+		'fileTypeService',
+		function ($scope, fileTypeService) {
+			$scope.translateFileType = fileTypeService.translateFileType;
+
 			$scope.tableHandlerOption = {
 				hasFileUploader: true,
 				hasCreateBtn: true,
 				hasOpenBtn: false,
 				hasDeleteBtn: true,
 
-				defaultRowValue : {
+				defaultRowValue: {
 					service: '新服务',
 					date: new Date(),
 					expense: 0,

@@ -1,6 +1,18 @@
 {
 	"image/jpeg" : {
-		"type": "图片",
+		"type": "JPEG 图片",
+		"icon": "fa-file-image-o"
+	},
+	"image/png" : {
+		"type": "PNG 图片",
+		"icon": "fa-file-image-o"
+	},
+	"image/bmp" : {
+		"type": "BMP 图片",
+		"icon": "fa-file-image-o"
+	},
+	"image/gif" : {
+		"type": "GIF 图片",
 		"icon": "fa-file-image-o"
 	},
 	"application/vnd.openxmlformats-officedocument.wordprocessingml.document" : {

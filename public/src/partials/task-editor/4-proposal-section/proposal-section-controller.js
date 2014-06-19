@@ -1,7 +1,7 @@
 /**
  * Created by bli on 2014/6/9.
  */
-angular.module('proposal-section', ['proposal-editor', 'attach-editor', 'detail-editor'])
+angular.module('proposal-section', ['proposal-editor', 'attach-editor', 'proposal-detail-editor'])
 	.controller('proposalSectionController', ['$scope', function ($scope) {
 		/**
 		 * Proposal Editor Initialization
@@ -13,17 +13,16 @@ angular.module('proposal-section', ['proposal-editor', 'attach-editor', 'detail-
 			template: '/src/partials/proposal-editor/proposal-editor-view.tpl.html'
 		};
 
-		$scope.showProposalEditor = function($event, dataModel){
+		$scope.showProposalEditor = function ($event, dataModel) {
 			$($event.currentTarget).trigger('popup', ['edit', dataModel]);
 		};
 
-		$scope.getProposalModel = function(){
+		$scope.getProposalModel = function () {
 			return $scope.task_model.proposalSheet;
 		}
 
 		$scope.onProposalSaved = function (action, data) {
-			//$.extend(true, $scope.task_model.proposalSheet, data);
-			$scope.task_model.propsalSheet = data;
+			$scope.task_model.proposalSheet = data;
 			var o = {
 				id: $scope.task_model.id,
 				proposalSheet: data
@@ -39,16 +38,16 @@ angular.module('proposal-section', ['proposal-editor', 'attach-editor', 'detail-
 				backdrop: 'static'
 			},
 			template: '/src/partials/attach-editor/attach-editor-view.tpl.html',
-			onShow: function(){
+			onShow: function () {
 
 			}
 		};
 
-		$scope.showAttachEditor = function($event, dataModel){
+		$scope.showAttachEditor = function ($event, dataModel) {
 			$($event.currentTarget).trigger('popup', ['edit', dataModel]);
 		};
 
-		$scope.getAttachModel = function(){
+		$scope.getAttachModel = function () {
 			return $scope.task_model.proposalSheet.attachment;
 		}
 
@@ -59,7 +58,7 @@ angular.module('proposal-section', ['proposal-editor', 'attach-editor', 'detail-
 				id: $scope.task_model.id,
 				proposalSheet: {
 					id: $scope.task_model.proposalSheet.id,
-					attachment : data
+					attachment: data
 				}
 			}
 			$scope.$emit('saveTaskModel', $scope.task_model.id, o);
@@ -73,17 +72,17 @@ angular.module('proposal-section', ['proposal-editor', 'attach-editor', 'detail-
 				backdrop: 'static',
 				keyboard: false
 			},
-			template: '/src/partials/detail-editor/proposal-detail-editor-view.tpl.html',
-			onShow: function(){
+			template: '/src/partials/proposal-editor/proposal-detail-editor-view.tpl.html',
+			onShow: function () {
 
 			}
 		};
 
-		$scope.showDetailEditor = function($event, dataModel){
+		$scope.showDetailEditor = function ($event, dataModel) {
 			$($event.currentTarget).trigger('popup', ['edit', dataModel]);
 		};
 
-		$scope.getDetailModel = function(){
+		$scope.getDetailModel = function () {
 			return $scope.task_model.proposalSheet.subItem;
 		}
 
@@ -94,7 +93,7 @@ angular.module('proposal-section', ['proposal-editor', 'attach-editor', 'detail-
 				id: $scope.task_model.id,
 				proposalSheet: {
 					id: $scope.task_model.proposalSheet.id,
-					subItem : data
+					subItem: data
 				}
 			}
 			$scope.$emit('saveTaskModel', $scope.task_model.id, o);

@@ -11,12 +11,15 @@ angular.module('task-editor', [
 	'file-type-service',
 	'task-status-service',
 	'task-resource',
+	'file-type-service',
 
 	//No return value
 	'register-section',
 	'arrange-section',
 	'reply-section',
-	'proposal-section'
+	'proposal-section',
+	'contract-section',
+	'execute-section'
 ]).config(['$routeProvider', function ($routeProvider) {
 	$routeProvider.
 		when('/task-editor/:action/:taskId', {
@@ -26,7 +29,7 @@ angular.module('task-editor', [
 				task_model: ['$route', 'TASK', function ($route, TASK) {
 					return TASK.get({task_id: $route.current.params.taskId}).$promise;
 				}],
-				file_type_service: ['fileTypeService', function(fileTypeService){
+				file_type_service: ['fileTypeService', function (fileTypeService) {
 					return fileTypeService.ready();
 				}]
 			}
@@ -41,9 +44,10 @@ angular.module('task-editor', [
 	'customerListService',
 	'employeeListService',
 	'taskStatusService',
+	'fileTypeService',
 	'task_model',
 	'TASK',
-	function ($routeParams, $location, $http, $scope, $timeout, tagReferenceService, customerListService, employeeListService, taskStatusService, task_model, TASK ) {
+	function ($routeParams, $location, $http, $scope, $timeout, tagReferenceService, customerListService, employeeListService, taskStatusService, fileTypeService, task_model, TASK) {
 
 		/**
 		 * Initialize default values & functions
@@ -58,11 +62,12 @@ angular.module('task-editor', [
 		$scope.translateCustomer = customerListService.translateCustomer;
 		$scope.translateEmployee = employeeListService.translateEmployee;
 		$scope.translateStatus = taskStatusService.translateStatus;
+		$scope.translateFileType = fileTypeService.translateFileType;
 
 		//Get possible precedence status
 		$scope.statusStack = taskStatusService.getPrecedence($scope.task_model.status);
 
-		function renderProgressList (scope) {
+		function renderProgressList(scope) {
 			var progressList = {
 				register: {
 					id: 'register',
@@ -190,6 +195,7 @@ angular.module('task-editor', [
 				if (scope.task_model.status >= progressState) return 'finished';
 			}
 		}
+
 		renderProgressList($scope);
 
 		/**

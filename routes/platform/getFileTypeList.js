@@ -2,7 +2,7 @@
  * Created by Bli on 2014/6/19.
  */
 var schemaReader = require('./readJsonSchema');
-var schema = __dirname + "/../../schema/file-type-mapping-schma.json";
+var schema = __dirname + "/../../schema/file-type-mapping-schema.json";
 
 module.exports = function (req, res) {
 	schemaReader(schema).then(
