@@ -32,8 +32,8 @@ angular.module('reply-section', ['reply-editor'])
 			}
 
 
-			$scope.$on('newArrange', function(){
-				$timeout(function(){
+			$scope.$on('newArrange', function () {
+				$timeout(function () {
 					$scope.task_model.replySheet.handling = $scope.task_model.handling;
 					$scope.task_model.replySheet.customer_contact = $scope.task_model.customer_contact;
 					$('[dialog-config="replyEditorConfig"]').trigger('popup', ['new', $scope.task_model.replySheet]);
@@ -49,17 +49,17 @@ angular.module('reply-section', ['reply-editor'])
 					backdrop: 'static'
 				},
 				template: '/src/partials/attach-editor/attach-editor-view.tpl.html',
-				onShow: function(){
+				onShow: function () {
 
 				}
 			};
 
-			$scope.showAttachEditor = function($event, dataModel){
+			$scope.showAttachEditor = function ($event, dataModel) {
 				$($event.currentTarget).trigger('popup', ['edit', dataModel]);
 			};
 
-			$scope.getAttachModel = function(){
-				return $scope.task_model.replySheet.attachment 	|| {};
+			$scope.getAttachModel = function () {
+				return $scope.task_model.replySheet.attachment || {};
 			}
 
 			$scope.onAttachSaved = function (action, data) {
@@ -69,7 +69,7 @@ angular.module('reply-section', ['reply-editor'])
 					id: $scope.task_model.id,
 					replySheet: {
 						id: $scope.task_model.replySheet.id,
-						attachment : data
+						attachment: data
 					}
 				}
 				$scope.$emit('saveTaskModel', $scope.task_model.id, o);
