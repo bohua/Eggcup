@@ -19,7 +19,7 @@ angular.module('attach-editor', [])
 			$scope.tableHandlerOption = {
 				hasFileUploader: false,
 				hasCreateBtn: false,
-				hasOpenBtn: true,
+				hasOpenBtn: false,
 				hasDeleteBtn: true
 			};
 		}]);

@@ -19,7 +19,7 @@
 							th 小计
 							th 附件
 					tbody
-						tr(ng-repeat="sub_item in dialog_data_model")
+						tr(ng-repeat="sub_item in dialog_data_model track by $index")
 							td(edit-model="sub_item.service") {{sub_item.service}}
 							td(edit-model="sub_item.date") {{sub_item.date| date:'yyyy-MM-dd'}}
 							td(edit-model="sub_item.expense") {{sub_item.expense}}
@@ -28,7 +28,6 @@
 							td(edit-disabled) {{sub_item.expense + sub_item.traffic + sub_item.extra}}
 							td(edit-disabled)
 								a.attachment-token.label.cursor-pointer(ng-repeat="attach in sub_item.attachment")
-									i.icon-file-excel
 									span {{attach.file_name}}
 
 

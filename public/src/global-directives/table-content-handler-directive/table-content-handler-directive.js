@@ -2,7 +2,7 @@
  * Created by Bli on 2014/6/13.
  */
 angular.module('table-content-handler', ['file-upload-field'])
-	.directive('tableContentHandler', function () {
+	.directive('tableContentHandler', ['$timeout', function ($timeout) {
 		var tableContentHandler = {
 			restrict: "E",
 			scope: {
@@ -33,6 +33,14 @@ angular.module('table-content-handler', ['file-upload-field'])
 						rowElement.addClass('active');
 						$scope.$apply();
 					});
+
+					$scope.onCreate = function () {
+						$scope.$model.push(_.clone($scope.$option.defaultRowValue));
+
+						$timeout(function () {
+							$table.editableTableWidget();
+						});
+					};
 
 					$scope.onDelete = function () {
 						var selectedRow = $table.find('tbody tr.active');
@@ -69,5 +77,5 @@ angular.module('table-content-handler', ['file-upload-field'])
 		};
 
 		return tableContentHandler;
-	});
+	}]);
 

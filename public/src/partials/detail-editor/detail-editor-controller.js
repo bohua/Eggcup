@@ -9,6 +9,14 @@ angular.module('detail-editor', [])
 				hasFileUploader: true,
 				hasCreateBtn: true,
 				hasOpenBtn: false,
-				hasDeleteBtn: true
+				hasDeleteBtn: true,
+
+				defaultRowValue : {
+					service: '新服务',
+					date: new Date(),
+					expense: 0,
+					traffic: 0,
+					extra: 0
+				}
 			};
 		}]);
