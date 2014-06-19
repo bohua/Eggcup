@@ -1,0 +1,46 @@
+{
+	"image/jpeg" : {
+		"type": "图片",
+		"icon": "fa-file-image-o"
+	},
+	"application/vnd.openxmlformats-officedocument.wordprocessingml.document" : {
+		"type": "WORD 文档",
+		"icon": "fa-file-word-o"
+	},
+	"application/msword" : {
+		"type": "WORD 文档",
+		"icon": "fa-file-word-o"
+	},
+	"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" : {
+		"type": "EXCEL 表格",
+		"icon": "fa-file-excel-o"
+	},
+	"application/vnd.ms-excel":{
+		"type": "EXCEL 表格",
+		"icon": "fa-file-excel-o"
+	},
+	"application/pdf" : {
+		"type": "PDF 文档",
+		"icon": "fa-file-pdf-o"
+	},
+	"application/vnd.openxmlformats-officedocument.presentationml.presentation" : {
+		"type": "PPT 幻灯片",
+		"icon": "fa-file-powerpoint-o"
+	},
+	"application/vnd.ms-powerpoint" : {
+		"type": "PPT 幻灯片",
+		"icon": "fa-file-powerpoint-o"
+	},
+	"application/x-zip-compressed" : {
+		"type": "ZIP 压缩包",
+		"icon": "fa-file-zip-o"
+	},
+	"application/octet-stream" : {
+		"type": "RAR 压缩包",
+		"icon": "fa-file-zip-o"
+	},
+	"image/jpeg" : {
+		"type": "TXT 文本",
+		"icon": "fa-file-text-o"
+	}
+}

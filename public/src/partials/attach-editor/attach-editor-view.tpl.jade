@@ -11,18 +11,19 @@
 				table#attach-editor-table.table.table-bordered
 					thead
 						tr
-							th 名称
 							th 文件名
 							th 文件类型
 							th 文件大小
+							th 上传日期
 					tbody
 						tr.cursor-pointer(ng-repeat="item in dialog_data_model")
-							td {{item.file_desc}}
 							td
-								i.fa.fa-file-word-o.text-info.fa-fw &nbsp;
-								span {{item.file_name}}
-							td {{item.file_ext}}
+								a.attachment-token.label(download="item.file_name", ng-href="file-download/{{item.file_url}}")
+									i.fa.text-info.fa-fw(class="{{translateFileType(item.file_ext).icon}}") &nbsp;
+									span {{item.file_name}}
+							td {{translateFileType(item.file_ext).type}}
 							td {{item.file_size}}
+							td {{item.createdAt | date:'yyyy-MM-dd'}}
 
 			table-content-handler(option="tableHandlerOption", model="dialog_data_model", table="#attach-editor-table")
 

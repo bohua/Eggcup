@@ -79,6 +79,7 @@ app.post('/task', tasks.setTask);
  */
 app.post('/file-upload', attachment.fileUpload);
 app.get('/file-download/:fileUrl', attachment.fileDownload);
+app.get('/getFileTypeList', platform.getFileTypeList);
 
 /**
  * Initialize Logger

@@ -1,11 +1,14 @@
 /**
  * Created by Bli on 2014/6/16.
  */
-angular.module('reply-section', ['reply-editor'])
+angular.module('reply-section', ['reply-editor', 'file-type-service'])
 	.controller('replySectionController', [
 		'$scope',
 		'$timeout',
-		function ($scope, $timeout) {
+		'fileTypeService',
+		function ($scope, $timeout, fileTypeService) {
+			$scope.translateFileType = fileTypeService.translateFileType;
+
 			/**
 			 * Reply Editor Initialization
 			 */

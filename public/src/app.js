@@ -8,6 +8,7 @@ angular.module('app', [
 	'customer-list-service',
 	'employee-list-service',
 	'handling-method-service',
+	'file-type-service',
 	'platform',
 	'customer-list',
 	'employee-list',
@@ -29,7 +30,8 @@ angular.module('app', [
 	'customerListService',
 	'employeeListService',
 	'handlingMethodService',
-	function ($scope, $rootScope, $timeout, $location, loginSessionService, taskStatusService, customerListService, employeeListService, handlingMethodService) {
+	'fileTypeService',
+	function ($scope, $rootScope, $timeout, $location, loginSessionService, taskStatusService, customerListService, employeeListService, handlingMethodService, fileTypeService) {
 		/**
 		 * Initialize global services
 		 */
@@ -38,6 +40,7 @@ angular.module('app', [
 		customerListService.init();
 		employeeListService.init();
 		handlingMethodService.init();
+		fileTypeService.init();
 
 		$scope.hasSignIn = loginSessionService.getLoginStatus();
 		if($scope.hasSignIn){

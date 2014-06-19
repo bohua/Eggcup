@@ -8,6 +8,7 @@ angular.module('task-editor', [
 	'tag-reference-service',
 	'customer-list-service',
 	'employee-list-service',
+	'file-type-service',
 	'task-status-service',
 	'task-resource',
 
@@ -22,9 +23,12 @@ angular.module('task-editor', [
 			templateUrl: '/src/partials/task-editor/task-editor-view.tpl.html',
 			controller: 'taskEditorController',
 			resolve: {
-				task_model: function ($route, TASK) {
+				task_model: ['$route', 'TASK', function ($route, TASK) {
 					return TASK.get({task_id: $route.current.params.taskId}).$promise;
-				}
+				}],
+				file_type_service: ['fileTypeService', function(fileTypeService){
+					return fileTypeService.ready();
+				}]
 			}
 		})
 }]).controller('taskEditorController', [
@@ -39,7 +43,7 @@ angular.module('task-editor', [
 	'taskStatusService',
 	'task_model',
 	'TASK',
-	function ($routeParams, $location, $http, $scope, $timeout, tagReferenceService, customerListService, employeeListService, taskStatusService, task_model, TASK) {
+	function ($routeParams, $location, $http, $scope, $timeout, tagReferenceService, customerListService, employeeListService, taskStatusService, task_model, TASK ) {
 
 		/**
 		 * Initialize default values & functions
