@@ -64,7 +64,7 @@ div.page-header(ng-controller="proposalSectionController")
 						td {{item.file_desc}}
 						td
 							i.fa.fa-file-word-o.text-info.fa-fw &nbsp;
-							a(download="item.file_name", ng-href="attachment/{{item.file_url}}") {{item.file_name}}
+							a(download="item.file_name", ng-href="file-download/{{item.file_url}}") {{item.file_name}}
 						td {{item.file_ext}}
 						td {{item.file_size}}
 
@@ -93,6 +93,6 @@ div.page-header(ng-controller="proposalSectionController")
 						td {{sub_item.extra}}
 						td {{sub_item.expense + sub_item.traffic + sub_item.extra}}
 						td
-							a.attachment-token.label.cursor-pointer(ng-repeat="attach in sub_item.attachment", download="item.file_name", ng-href="attachment/{{item.file_url}}")
+							a.attachment-token.label.cursor-pointer(ng-repeat="attach in sub_item.attachment", download="item.file_name", ng-href="file-download/{{item.file_url}}")
 								i.icon-file-excel
 								span {{attach.file_name}}

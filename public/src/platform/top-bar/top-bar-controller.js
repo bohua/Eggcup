@@ -62,8 +62,10 @@ angular.module('top-bar', ['login-session-service', 'task-resource'])
 
 			$scope.onRegisterSaved = function (action, data) {
 				TASK.save(data)
-					.$promise.then(function () {
+					.$promise.then(function (task) {
 						$rootScope.$broadcast('reloadDashboard');
+
+						$location.path('/task-editor/edit/' + task.id);
 					});
 			}
 

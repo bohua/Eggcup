@@ -10,13 +10,19 @@ angular.module('reply-editor', ['toggle-button-model', 'pop-confirm', 'employee-
 
 			$scope.employeeFieldOptions = {
 				source: _.pluck(employeeListService.getEmployeeList(), 'name')
-			}
+			};
 
-			$scope.assigneeFieldOptions = {
+			$scope.assigneeListOptions = {
 				autocomplete: {
 					source: _.pluck(employeeListService.getEmployeeList(), 'name')
 				}
-			}
+			};
+
+			$scope.customerListOptions = {
+				autocomplete: {
+					source: [$scope.dialog_data_model.customer_contact]
+				}
+			};
 
 			/**
 			 * Set default value for new

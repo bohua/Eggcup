@@ -63,6 +63,31 @@
 				hr
 				#reply-editor-proposal.collapse.in
 					div.row
+						div.form-group.col-sm-4
+							label.control-label 解答日期:
+							div.input-group.date(date-field-model="dialog_data_model.reply_date", required)
+								span.input-group-addon
+									i.fa.fa-calendar
+								input.form-control.datepicker(type="text")
+
+						div.form-group.col-sm-8
+							label.control-label 面谈地址:
+							div
+								input.form-control(type="text", placeholder="面谈地址", ng-model="dialog_data_model.meeting_address")
+
+					div.row
+						div.form-group.col-sm-6
+							label.control-label 我方人员:
+							div
+								input.form-control(type="text", placeholder="我方人员", ng-model="dialog_data_model.meeting_people_A", token-field="assigneeListOptions")
+
+						div.form-group.col-sm-6
+							label.control-label 客户人员:
+							div
+								input.form-control(type="text", placeholder="客户人员", ng-model="dialog_data_model.meeting_people_B", token-field="customerListOptions")
+
+
+
 
 
 			h4.cursor-pointer(data-toggle="collapse", data-target="#reply-editor-mom")

@@ -11,6 +11,7 @@ var task_status_service = require('./server/tasks/task_status_service');
 var security = require('./routes/security');
 var basics = require('./routes/basics');
 var tasks = require('./routes/tasks');
+var attachment = require('./routes/attachment');
 var winston = require('winston');
 var fs = require('fs');
 
@@ -76,24 +77,8 @@ app.post('/task', tasks.setTask);
 /**
  * File requests
  */
-app.post('/file-upload', function (req, res) {
-	var file = req.files.files[0],
-		fileName = file.path.split(path.dirname(file.path))[1].replace('\\', ''),
-		o = {
-			files: {
-				file_name: file.name,
-				file_url: fileName, //file.path.split(__dirname + '\\upload\\')[1].replace(/\\\\/g, '/'),
-				file_size: file.size,
-				file_ext: file.type
-			}
-		};
-
-	res.json(o);
-
-	var newDest = path.join(__dirname, 'attachments', fileName);
-	fs.createReadStream(file.path).pipe(fs.createWriteStream(newDest));
-});
-
+app.post('/file-upload', attachment.fileUpload);
+app.get('/file-download/:fileUrl', attachment.fileDownload);
 
 /**
  * Initialize Logger
