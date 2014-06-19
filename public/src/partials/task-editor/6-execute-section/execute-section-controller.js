@@ -1,7 +1,7 @@
 /**
  * Created by bli on 2014/6/9.
  */
-angular.module('execute-section', ['execute-editor', 'attach-editor', 'execute-detail-editor'])
+angular.module('execute-section', ['execute-editor', 'execute-detail-editor'])
 	.controller('executeSectionController', ['$scope', function ($scope) {
 		/**
 		 * Execute Editor Initialization
@@ -27,7 +27,7 @@ angular.module('execute-section', ['execute-editor', 'attach-editor', 'execute-d
 				id: $scope.task_model.id,
 				executeSheet: data
 			}
-			$scope.$emit('saveTaskModel');
+			$scope.$emit('saveTaskModel', $scope.task_model.id, o);
 		}
 
 		/**

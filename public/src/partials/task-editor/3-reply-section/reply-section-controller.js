@@ -1,7 +1,7 @@
 /**
  * Created by Bli on 2014/6/16.
  */
-angular.module('reply-section', ['reply-editor'])
+angular.module('reply-section', ['reply-editor', 'attach-editor'])
 	.controller('replySectionController', [
 		'$scope',
 		'$timeout',

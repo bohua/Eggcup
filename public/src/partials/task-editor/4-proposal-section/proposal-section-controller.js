@@ -27,7 +27,7 @@ angular.module('proposal-section', ['proposal-editor', 'attach-editor', 'proposa
 				id: $scope.task_model.id,
 				proposalSheet: data
 			}
-			$scope.$emit('saveTaskModel');
+			$scope.$emit('saveTaskModel', $scope.task_model.id, o);
 		}
 
 		/**

@@ -1,7 +1,7 @@
 /**
  * Created by bli on 2014/6/9.
  */
-angular.module('contract-section', ['contract-editor', 'attach-editor', 'contract-detail-editor'])
+angular.module('contract-section', ['contract-editor', 'contract-detail-editor'])
 	.controller('contractSectionController', ['$scope', function ($scope) {
 		/**
 		 * Contract Editor Initialization
@@ -27,7 +27,7 @@ angular.module('contract-section', ['contract-editor', 'attach-editor', 'contrac
 				id: $scope.task_model.id,
 				contractSheet: data
 			}
-			$scope.$emit('saveTaskModel');
+			$scope.$emit('saveTaskModel', $scope.task_model.id, o);
 		}
 
 		/**

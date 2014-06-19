@@ -19,7 +19,9 @@ angular.module('task-editor', [
 	'reply-section',
 	'proposal-section',
 	'contract-section',
-	'execute-section'
+	'execute-section',
+	'account-section',
+	'summary-section'
 ]).config(['$routeProvider', function ($routeProvider) {
 	$routeProvider.
 		when('/task-editor/:action/:taskId', {

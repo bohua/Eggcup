@@ -1,0 +1,42 @@
+//Created by Bli on 2014/6/12.
+#account-detail-editor-form.modal-dialog.modal-lg(ng-controller="accountDetailEditorController")
+	div.modal-content
+		div.modal-header
+			button.close(type="button", data-dismiss="modal") &times;
+			h4.modal-title 明细管理 &nbsp;
+				small Details Management
+		div.modal-body.container-fluid
+
+			div.table-responsive
+				table#account-detail-editor-table.table.table-bordered(editable-table)
+					thead
+						tr
+							th 付款时间
+							th 付款金额
+							th 支付方式
+							th 付款说明
+							th 附件
+					tbody
+						tr(ng-repeat="sub_item in dialog_data_model track by $index")
+							td(edit-model="sub_item.account_date", edit-type="date") {{sub_item.account_date | date:'yyyy-MM-dd'}}
+							td(edit-model="sub_item.account_expense", edit-type="number") {{sub_item.account_expense}}
+							td(edit-model="sub_item.account_method", edit-type="string") {{sub_item.account_method}}
+							td(edit-model="sub_item.account_desc", edit-type="string") {{sub_item.account_desc}}
+							td(edit-disabled)
+								a.attachment-token.label.cursor-pointer(ng-repeat="attach in sub_item.attachment", download="attach.file_name", ng-href="file-download/{{attach.file_url}}")
+									i.fa.text-info.fa-fw(class="{{translateFileType(attach.file_ext).icon}}") &nbsp;
+									span {{attach.file_name}}
+
+
+
+			table-content-handler(option="tableHandlerOption", model="dialog_data_model", table="#account-detail-editor-table")
+
+		div.modal-footer
+			div.pull-left.alert-danger.panel(ng-show="prop.showErrorMessage")
+				i.fa.fa-fw.fa-warning
+				span 单据填写有误，请修正红色标记
+			button.btn.btn-default(type="button", ng-click="Cancel()") 取消
+			button.btn.btn-primary(type="button", ng-click="Confirm('update', true)") 保存
+
+
+
