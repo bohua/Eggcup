@@ -2,14 +2,14 @@
  * Created by Bohua on 14-2-13.
  */
 
-angular.module('top-bar', ['login-session-service', 'task-resource'])
+angular.module('top-bar', ['login-session-service', 'task-service'])
 	.controller('topBarController', [
 		'$scope',
 		'$rootScope',
 		'$location',
 		'loginSessionService',
-		'TASK',
-		function ($scope, $rootScope, $location, loginSessionService, TASK) {
+		'taskService',
+		function ($scope, $rootScope, $location, loginSessionService, taskService) {
 			var navBlockMap = {
 				'/': '#nav-block-dashboard',
 				'/dashboard': '#nav-block-dashboard',
@@ -19,6 +19,8 @@ angular.module('top-bar', ['login-session-service', 'task-resource'])
 			};
 
 			$scope.loginUser = loginSessionService.getLoginUser();
+
+//			$scope.route = null;
 
 			function trackNavBlock(route) {
 
@@ -61,17 +63,39 @@ angular.module('top-bar', ['login-session-service', 'task-resource'])
 			};
 
 			$scope.onRegisterSaved = function (action, data) {
-				TASK.save(data)
-					.$promise.then(function (task) {
+				taskService.saveTask(data).then(function (task) {
 						$rootScope.$broadcast('reloadDashboard');
-
 						$location.path('/task-editor/edit/' + task.id);
 					});
 			}
 
-			$scope.findTask = function(query){
-				TASK.query({query: query}, function(result){
-					console.log(result);
-				});
-			};
+			/**
+			 * Setup up search field
+			 */
+			taskService.ready().then(function(){
+				$('#task-searcher input').typeahead({
+						hint: true,
+						highlight: true,
+						minLength: 1
+					},
+					{
+						name: 'tasks',
+						displayKey: 'value',
+						source: taskService.getSearchEngine().ttAdapter()
+					}).on('typeahead:selected', function(event, selection){
+
+						taskService.openTask(selection.id);
+						$(event.currentTarget).val('');
+						$scope.$apply();
+
+//						$scope.route = selection.value;
+//						$scope.$apply();
+					});
+			});
+//
+//			$scope.$watch('route', function(next, pre){
+//				if(next !== pre){
+//					$location.path('/task-editor/edit/' + $scope.route);
+//				}
+//			})
 		}]);

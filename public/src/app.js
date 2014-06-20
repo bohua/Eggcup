@@ -7,6 +7,7 @@ angular.module('app', [
 	'task-status-service',
 	'customer-list-service',
 	'employee-list-service',
+	'task-service',
 	'handling-method-service',
 	'file-type-service',
 	'platform',
@@ -29,9 +30,10 @@ angular.module('app', [
 	'taskStatusService',
 	'customerListService',
 	'employeeListService',
+	'taskService',
 	'handlingMethodService',
 	'fileTypeService',
-	function ($scope, $rootScope, $timeout, $location, loginSessionService, taskStatusService, customerListService, employeeListService, handlingMethodService, fileTypeService) {
+	function ($scope, $rootScope, $timeout, $location, loginSessionService, taskStatusService, customerListService, employeeListService, taskService, handlingMethodService, fileTypeService) {
 		/**
 		 * Initialize global services
 		 */
@@ -39,6 +41,7 @@ angular.module('app', [
 		taskStatusService.init();
 		customerListService.init();
 		employeeListService.init();
+		taskService.init();
 		handlingMethodService.init();
 		fileTypeService.init();
 

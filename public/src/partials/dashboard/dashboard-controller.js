@@ -6,7 +6,7 @@ angular.module('dashboard', [
 	'ngAnimate',
 	'customer-resource',
 	'employee-resource',
-	'task-resource',
+	'task-service',
 	'task-status-service',
 	'customer-list-service'
 ]).config(['$routeProvider', function ($routeProvider) {
@@ -15,25 +15,24 @@ angular.module('dashboard', [
 			templateUrl: '/src/partials/dashboard/dashboard-view.tpl.html',
 			controller: 'dashboardController',
 			resolve: {
-				'tasks': ['TASK', function (TASK) {
-					return TASK.query({statusGroup: ['ongoing']}).$promise;
+				'taskServiceDone': ['taskService', function (taskService) {
+					return taskService.ready();
 				}]
 			}
 		});
 }]).controller('dashboardController', [
 	'$scope',
 	'$location',
-	'tasks',
+	'taskService',
 	'taskStatusService',
 	'customerListService',
-	'TASK',
-	function ($scope, $location, tasks, taskStatusService, customerListService, TASK) {
+	function ($scope, $location, taskService, taskStatusService, customerListService) {
 		/**
 		 * Service binds
 		 */
 		$scope.translateStatus = taskStatusService.translateStatus;
 		$scope.translateCustomer = customerListService.translateCustomer;
-		$scope.taskList = groupingTasks(tasks);
+		$scope.taskList = groupingTasks(taskService.getTaskList());
 
 		/**
 		 * ng-click bindings
@@ -94,10 +93,9 @@ angular.module('dashboard', [
 		}
 
 		$scope.$on('reloadDashboard', function(){
-			TASK.query({statusGroup: ['ongoing']})
-				.$promise.then(function(newTaskList){
-					$scope.taskList = groupingTasks(newTaskList);
-				});
+			taskService.reload().then(function(newTaskList){
+				$scope.taskList = groupingTasks(newTaskList);
+			});
 		});
 	}]);
 

@@ -22,7 +22,9 @@ angular.module('task-editor', [
 	'execute-section',
 	'account-section',
 	'summary-section',
-	'expense-detail-editor'
+	'expense-detail-editor',
+
+	'duScroll.scrollContainerAPI'
 ]).config(['$routeProvider', function ($routeProvider) {
 	$routeProvider.
 		when('/task-editor/:action/:taskId', {
@@ -36,9 +38,8 @@ angular.module('task-editor', [
 					return fileTypeService.ready();
 				}]
 			}
-		})
+		});
 }]).controller('taskEditorController', [
-	'$routeParams',
 	'$location',
 	'$http',
 	'$scope',
@@ -50,8 +51,7 @@ angular.module('task-editor', [
 	'fileTypeService',
 	'task_model',
 	'TASK',
-	function ($routeParams, $location, $http, $scope, $timeout, tagReferenceService, customerListService, employeeListService, taskStatusService, fileTypeService, task_model, TASK) {
-
+	function ($location, $http, $scope, $timeout, tagReferenceService, customerListService, employeeListService, taskStatusService, fileTypeService, task_model, TASK) {
 		/**
 		 * Initialize default values & functions
 		 */

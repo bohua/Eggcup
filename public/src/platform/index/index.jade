@@ -47,7 +47,7 @@ html(lang="zh", ng-app='app')
 		script(src='/lib/angular/angular-animate.js')
 		script(src='/lib/angular/angular-locale_zh-cn.js')
 		//AngularJS plugins
-		script(src='/lib/angular-plugin/angular-scroll.min.js')
+		script(src='/lib/angular-plugin/angular-scroll.js')
 		//jQuery Core
 		script(src='/lib/jquery/jquery-1.11.1.min.js')
 		//jQuery UI
@@ -66,6 +66,8 @@ html(lang="zh", ng-app='app')
 		script(src='/lib/bootstrap/bootstrap-tokenfield.min.js')
 		script(src='/lib/bootstrap/bootstrap-datepicker.js')
 		script(src='/lib/bootstrap/bootstrap-datepicker.zh-CN.js')
+		//Typeahead JS
+		script(src='/lib/typeaheadjs/typeahead.bundle.min.js')
 		//Load product code
 		- var jsFilesToAppend = jsFiles || [];
 			each jsFile in jsFilesToAppend
