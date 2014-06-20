@@ -1,6 +1,6 @@
 //Created by Bohua on 2014-05-29.
-div(ng-controller="proposalSectionController")
-	div.page-header
+div.container-fluid(ng-controller="proposalSectionController")
+	div.page-header.row
 		h2
 			i.fa.fa-book.fa-fw &nbsp;
 			span 提案 &nbsp;
@@ -15,8 +15,17 @@ div(ng-controller="proposalSectionController")
 				button.btn.btn-default(popup-dialog,dialog-config="detailEditorConfig",ng-click="showDetailEditor($event, getDetailModel())",on-confirm="onDetailSaved(action, data)")
 					i.fa.fa-list-alt.fa-fw &nbsp;
 					span 明细
+				button.btn.btn-default.dropdown-toggle(data-toggle="dropdown")
+					i.fa.fa-cog.fa-fw &nbsp;
+					span 功能
+					span.caret
+				ul.dropdown-menu
+					li
+						a
+							i.fa.fa-print.fa-fw &nbsp;
+							span 打印
 
-	#proposal-panel-group.panel-group
+	#proposal-panel-group.panel-group.row
 		div.panel.panel-default
 			div.panel-heading.cursor-pointer
 				h4.no-margin(data-toggle="collapse", href="#proposal-abstract-panel") 提案要义 &nbsp;

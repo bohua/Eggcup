@@ -185,22 +185,22 @@ var task_json = {
 	},
 
 	contractSheet: {
-		contract_date:		'2014-05-08',
-		contract_due_date:	'2014-09-30',
-		contract_topic:		'先翦两翼，再捣腹心',
-		contract_A:			'李小帅',
-		contract_B:			'四爷',
+		contract_date: '2014-05-08',
+		contract_due_date: '2014-09-30',
+		contract_topic: '先翦两翼，再捣腹心',
+		contract_A: '李小帅',
+		contract_B: '四爷',
 
-		prop_internal:		true,
-		prop_external:		true,
+		prop_internal: true,
+		prop_external: true,
 
 		subItem: [
 			{
-				pay_slogan:	'头款',
-				pay_date:	'2014-05-10',
-				expense:	20000000.00,
-				due_date:	'2014-05-20',
-				pay_method:	'银票',
+				pay_slogan: '头款',
+				pay_date: '2014-05-10',
+				expense: 20000000.00,
+				due_date: '2014-05-20',
+				pay_method: '银票',
 
 				attachment: [
 					{
@@ -215,8 +215,8 @@ var task_json = {
 				pay_slogan: '发兵粮饷',
 				pay_date: '2014-06-1',
 				expense: 10000000.00,
-				due_date:	'2014-06-30',
-				pay_method:	'铜钱/银锭',
+				due_date: '2014-06-30',
+				pay_method: '铜钱/银锭',
 
 				attachment: [
 					{
@@ -231,8 +231,8 @@ var task_json = {
 				pay_slogan: '战后赏银',
 				pay_date: '2014-08-1',
 				expense: 999999999.00,
-				due_date:	'2014-08-31',
-				pay_method:	'自己抢',
+				due_date: '2014-08-31',
+				pay_method: '自己抢',
 
 				attachment: [
 					{
@@ -247,18 +247,18 @@ var task_json = {
 	},
 
 	executeSheet: {
-		project_manager:	'苏小美',
-		project_runner:		'喵小宝',
-		project_topic:		'朝廷谕旨',
+		project_manager: '苏小美',
+		project_runner: '喵小宝',
+		project_topic: '朝廷谕旨',
 
-		prop_internal:		true,
-		prop_external:		true,
+		prop_internal: true,
+		prop_external: true,
 
 		subItem: [
 			{
-				execute_date:	'2014-05-30',
-				execute_runner:	'喵小宝',
-				execute_digest:	'小宝夜入敌营，刺探乱方主将与猫粮所在',
+				execute_date: '2014-05-30',
+				execute_runner: '喵小宝',
+				execute_digest: '小宝夜入敌营，刺探乱方主将与猫粮所在',
 
 				attachment: [
 					{
@@ -283,9 +283,9 @@ var task_json = {
 				]
 			},
 			{
-				execute_date:	'2014-06-30',
-				execute_runner:	'苏小美',
-				execute_digest:	'游说乱将，策反其部，并在关键时刻反戈',
+				execute_date: '2014-06-30',
+				execute_runner: '苏小美',
+				execute_digest: '游说乱将，策反其部，并在关键时刻反戈',
 
 				attachment: [
 					{
@@ -300,15 +300,15 @@ var task_json = {
 	},
 
 	accountSheet: {
-		prop_internal:		true,
-		prop_external:		true,
+		prop_internal: true,
+		prop_external: true,
 
 		subItem: [
 			{
-				account_date:		'2014-06-31',
-				account_expense:	'20000000.00',
-				account_method:		'银票',
-				account_desc:		'头款就续',
+				account_date: '2014-06-31',
+				account_expense: '20000000.00',
+				account_method: '银票',
+				account_desc: '头款就续',
 				attachment: [
 					{
 						file_name: '户部印章.jpg',
@@ -319,10 +319,10 @@ var task_json = {
 				]
 			},
 			{
-				account_date:		'2014-07-31',
-				account_expense:	'10000000.00',
-				account_method:		'现银',
-				account_desc:		'饷银到位',
+				account_date: '2014-07-31',
+				account_expense: '10000000.00',
+				account_method: '现银',
+				account_desc: '饷银到位',
 				attachment: [
 					{
 						file_name: '兵部印章.jpg',
@@ -333,10 +333,10 @@ var task_json = {
 				]
 			},
 			{
-				account_date:		'2014-08-31',
-				account_expense:	'2133554545.00',
-				account_method:		'烧杀抢夺',
-				account_desc:		'战后得利',
+				account_date: '2014-08-31',
+				account_expense: '2133554545.00',
+				account_method: '烧杀抢夺',
+				account_desc: '战后得利',
 				attachment: [
 					{
 						file_name: '圣旨.jpg',
@@ -347,10 +347,10 @@ var task_json = {
 				]
 			},
 			{
-				account_date:		'2014-09-31',
-				account_expense:	'0.00',
-				account_method:		'赏赐',
-				account_desc:		'平叛有功，赐平西将军，世袭镇国公',
+				account_date: '2014-09-31',
+				account_expense: '0.00',
+				account_method: '赏赐',
+				account_desc: '平叛有功，赐平西将军，世袭镇国公',
 				attachment: [
 					{
 						file_name: '印绶截图.jpg',
@@ -362,13 +362,78 @@ var task_json = {
 			}
 		]
 	},
-	summarySheet:{
-		summary_date:		'2014-10-01',
-		summary_person:		'李小帅',
-		summary_content:	'泽国江山入战图，生民何计乐樵苏。凭君莫话封侯事，一将功成万骨枯。',
+	summarySheet: {
+		summary_date: '2014-10-01',
+		summary_person: '李小帅',
+		summary_content: '泽国江山入战图，生民何计乐樵苏。凭君莫话封侯事，一将功成万骨枯。',
 
-		prop_internal:		true,
-		prop_external:		false
+		prop_internal: true,
+		prop_external: false
+	},
+
+	expenseSheet: {
+		prop_internal: true,
+		prop_external: true,
+
+		subItem: [
+			{
+				expense_date: '2014-06-31',
+				expense_expense: '20000000.00',
+				expense_method: '银票',
+				expense_desc: '头款就续',
+				attachment: [
+					{
+						file_name: '户部印章.jpg',
+						file_ext: 'jpg',
+						file_size: '1239098',
+						file_url: 'localhost://attachments/test/户部印章.jpg'
+					}
+				]
+			},
+			{
+				expense_date: '2014-07-31',
+				expense_expense: '10000000.00',
+				expense_method: '现银',
+				expense_desc: '饷银到位',
+				attachment: [
+					{
+						file_name: '兵部印章.jpg',
+						file_ext: 'jpg',
+						file_size: '1239098',
+						file_url: 'localhost://attachments/test/兵部印章.jpg'
+					}
+				]
+			},
+			{
+				expense_date: '2014-08-31',
+				expense_expense: '2133554545.00',
+				expense_method: '烧杀抢夺',
+				expense_desc: '战后得利',
+				attachment: [
+					{
+						file_name: '圣旨.jpg',
+						file_ext: 'jpg',
+						file_size: '1239098',
+						file_url: 'localhost://attachments/test/圣旨.jpg'
+					}
+				]
+			},
+			{
+				expense_date: '2014-09-31',
+				expense_expense: '0.00',
+				expense_method: '赏赐',
+				expense_desc: '平叛有功，赐平西将军，世袭镇国公',
+				attachment: [
+					{
+						file_name: '印绶截图.jpg',
+						file_ext: 'jpg',
+						file_size: '1239098',
+						file_url: 'localhost://attachments/test/印绶截图.jpg'
+					}
+				]
+			}
+		]
 	}
+
 }
 

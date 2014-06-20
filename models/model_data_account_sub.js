@@ -16,7 +16,7 @@ module.exports = function (sequelize, DataTypes) {
 		classMethods: {
 			associate: function (models) {
 				DATA_ACCOUNT_SUB
-					.belongsTo(models.DATA_EXECUTE, {as: 'parent', foreignKey: 'account_id'})
+					.belongsTo(models.DATA_ACCOUNT, {as: 'parent', foreignKey: 'account_id'})
 					.hasMany(models.REF_ATTACHMENT, {as: 'attachment'})
 			}
 		}

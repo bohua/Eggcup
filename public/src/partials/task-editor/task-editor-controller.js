@@ -21,7 +21,8 @@ angular.module('task-editor', [
 	'contract-section',
 	'execute-section',
 	'account-section',
-	'summary-section'
+	'summary-section',
+	'expense-detail-editor'
 ]).config(['$routeProvider', function ($routeProvider) {
 	$routeProvider.
 		when('/task-editor/:action/:taskId', {
@@ -224,7 +225,8 @@ angular.module('task-editor', [
 			$($('ul.affix a')[0]).addClass('active');
 		});
 
-		$scope.$on('saveTaskModel', function (event, id, data) {
+
+		$scope.$on('saveTaskModel', function(event, id, data) {
 			TASK.save({task_id: id}, data);
 		});
 
@@ -355,4 +357,41 @@ angular.module('task-editor', [
 			$http.get('/file-download', {params: {fileUrl: url}});
 		};
 
+
+		/**
+		 * Expense Detail Editor Initialization
+		 */
+		$scope.expenseEditorConfig = {
+			dialogOption: {
+				backdrop: 'static',
+				keyboard: false
+			},
+			template: '/src/partials/expense-editor/expense-detail-editor-view.tpl.html',
+			onShow: function () {
+
+			}
+		};
+
+		$scope.showExpenseEditor = function ($event, dataModel) {
+			$($event.currentTarget).trigger('popup', ['edit', dataModel]);
+		};
+
+		$scope.getExpenseModel = function () {
+			return $scope.task_model.expenseSheet.subItem  || {};
+		}
+
+		$scope.onExpenseSaved = function (action, data) {
+			$scope.task_model.expenseSheet.subItem = data;
+
+			var o = {
+				id: $scope.task_model.id,
+				expenseSheet: {
+					id: $scope.task_model.expenseSheet.id,
+					subItem: data
+				}
+			}
+
+			//saveTask(null, $scope.task_model.id, o)
+			$scope.$emit('saveTaskModel', $scope.task_model.id, o);
+		}
 	}]);

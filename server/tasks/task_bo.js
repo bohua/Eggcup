@@ -10,6 +10,7 @@ var contract_sheet_bo = require(__dirname + "/contract_sheet_bo");
 var execute_sheet_bo = require(__dirname + "/execute_sheet_bo");
 var account_sheet_bo = require(__dirname + "/account_sheet_bo");
 var summary_sheet_bo = require(__dirname + "/summary_sheet_bo");
+var expense_sheet_bo = require(__dirname + "/expense_sheet_bo");
 
 var TASK = new Bo('DATA_TASK', {
 	name: 'get',
@@ -101,6 +102,22 @@ var TASK = new Bo('DATA_TASK', {
 				{
 					model: this.orm.model('DATA_SUMMARY'),
 					as: 'summarySheet'
+				},
+				{
+					model: this.orm.model('DATA_EXPENSE'),
+					as: 'expenseSheet',
+					include: [
+						{
+							model: this.orm.model('DATA_EXPENSE_SUB'),
+							as: 'subItem',
+							include: [
+								{
+									model: this.orm.model('REF_ATTACHMENT'),
+									as: 'attachment'
+								}
+							]
+						}
+					]
 				}
 			],
 			where: where
@@ -181,6 +198,16 @@ var TASK = new Bo('DATA_TASK', {
 					summary_sheet_bo.save(model.summarySheet)
 						.then(function (summary_sheet_instance) {
 							task_instance.setSummarySheet(summary_sheet_instance);
+						},function(failure){
+							global.logger.error(failure);
+						});
+				}
+
+				//Save expense sheet
+				if (model.expenseSheet) {
+					expense_sheet_bo.save(model.expenseSheet)
+						.then(function (expense_sheet_instance) {
+							task_instance.setExpenseSheet(expense_sheet_instance);
 						},function(failure){
 							global.logger.error(failure);
 						});

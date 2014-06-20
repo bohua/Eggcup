@@ -1,6 +1,6 @@
 //Created by Bohua on 2014-05-29.
-div(ng-controller="replySectionController")
-	div.page-header
+div.container-fluid(ng-controller="replySectionController")
+	div.page-header.row
 		h2
 			i.fa.fa-fw(ng-class="{'fa-comments-o': task_model.handling==1, 'fa-envelope': task_model.handling==0}") &nbsp;
 			span(ng-if="task_model.handling==0")  回复 &nbsp;
@@ -13,8 +13,17 @@ div(ng-controller="replySectionController")
 				button.btn.btn-default(popup-dialog,dialog-config="attachEditorConfig",ng-click="showAttachEditor($event, getAttachModel())",on-confirm="onAttachSaved(action, data)")
 					i.fa.fa-paperclip.fa-fw &nbsp;
 					span 附件
+				button.btn.btn-default.dropdown-toggle(data-toggle="dropdown")
+					i.fa.fa-cog.fa-fw &nbsp;
+					span 功能
+					span.caret
+				ul.dropdown-menu
+					li
+						a
+							i.fa.fa-print.fa-fw &nbsp;
+							span 打印
 
-	#reply-panel-group.panel-group
+	#reply-panel-group.panel-group.row
 		div.panel.panel-default(ng-show="task_model.handling == 0")
 			div.panel-heading.cursor-pointer
 				h4.no-margin(data-toggle="collapse", href="#reply-info-panel-0") 回复解答 &nbsp;

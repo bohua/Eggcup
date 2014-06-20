@@ -1,6 +1,6 @@
 //Created by Bohua on 2014-05-29.
-div(ng-controller="contractSectionController")
-	div.page-header
+div.container-fluid(ng-controller="contractSectionController")
+	div.page-header.row
 		h2
 			i.fa.fa-legal.fa-fw &nbsp;
 			span 合同签定 &nbsp;
@@ -12,8 +12,17 @@ div(ng-controller="contractSectionController")
 				button.btn.btn-default(popup-dialog,dialog-config="detailEditorConfig",ng-click="showDetailEditor($event, getDetailModel())",on-confirm="onDetailSaved(action, data)")
 					i.fa.fa-list-alt.fa-fw &nbsp;
 					span 明细
+				button.btn.btn-default.dropdown-toggle(data-toggle="dropdown")
+					i.fa.fa-cog.fa-fw &nbsp;
+					span 功能
+					span.caret
+				ul.dropdown-menu
+					li
+						a
+							i.fa.fa-print.fa-fw &nbsp;
+							span 打印
 
-	#contract-panel-group.panel-group
+	#contract-panel-group.panel-group.row
 		div.panel.panel-default
 			div.panel-heading.cursor-pointer
 				h4.no-margin(data-toggle="collapse", href="#contract-abstract-panel") 合同要义 &nbsp;
