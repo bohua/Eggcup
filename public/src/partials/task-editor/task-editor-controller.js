@@ -248,7 +248,7 @@ angular.module('task-editor', [
 						status: $scope.task_model.status,
 						arrangeSheet: $scope.task_model.arrangeSheet
 					}, function () {
-						$scope.$broadcast('newArrange');
+						//$scope.$broadcast('newArrange');
 					});
 
 					break;
@@ -265,7 +265,7 @@ angular.module('task-editor', [
 						handling: $scope.task_model.handling,
 						replySheet: $scope.task_model.replySheet
 					}, function () {
-						$scope.$broadcast('newReply');
+						//$scope.$broadcast('newReply');
 					});
 
 					break;
@@ -282,7 +282,7 @@ angular.module('task-editor', [
 						handling: $scope.task_model.handling,
 						replySheet: $scope.task_model.replySheet
 					}, function () {
-						$scope.$broadcast('newReply');
+						//$scope.$broadcast('newReply');
 					});
 
 					break;
@@ -296,7 +296,7 @@ angular.module('task-editor', [
 						status: $scope.task_model.status,
 						proposalSheet: $scope.task_model.proposalSheet
 					}, function () {
-						$scope.$broadcast('newProposal');
+						//$scope.$broadcast('newProposal');
 					});
 
 					break;
@@ -315,7 +315,7 @@ angular.module('task-editor', [
 						executeSheet: $scope.task_model.executeSheet,
 						accountSheet: $scope.task_model.accountSheet
 					}, function () {
-						$scope.$broadcast('newContract');
+						//$scope.$broadcast('newContract');
 					});
 
 					break;
@@ -329,7 +329,7 @@ angular.module('task-editor', [
 						status: $scope.task_model.status,
 						summarySheet: $scope.task_model.summarySheet
 					}, function () {
-						$scope.$broadcast('newSummary');
+						//$scope.$broadcast('newSummary');
 					});
 
 					break;
