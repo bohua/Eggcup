@@ -6,7 +6,8 @@ angular.module('file-upload-field', [])
 		var fileUploadField = {
 			restrict: "E",
 			scope: {
-				emitUploaded: '&onUploaded'
+				emitUploaded: '&onUploaded',
+				ngDisabled : '='
 			},
 			templateUrl: "/src/global-directives/file-upload-field-directive/file-upload-field.tpl.html",
 			link: function ($scope, $element, $attributes) {

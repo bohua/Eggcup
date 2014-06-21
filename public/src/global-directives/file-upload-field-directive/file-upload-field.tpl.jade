@@ -1,7 +1,7 @@
 //Created by Bohua on 2014-06-11.
 div.row
 	div.form-group.col-sm-4
-		button.fileupload-sel-btn.btn.btn-success(ng-click="selectUploadFile()")
+		button.fileupload-sel-btn.btn.btn-success(ng-click="selectUploadFile()", ng-disabled="ngDisabled")
 			i.fa.fa-cloud-upload.fw &nbsp;
 			span 上传附件
 		input.fileupload(type="file", name="files[]", data-url="/file-upload")
