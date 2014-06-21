@@ -83,6 +83,7 @@ angular.module('top-bar', ['login-session-service', 'task-service'])
 						displayKey: 'value',
 						source: taskService.getSearchEngine().ttAdapter()
 					}).on('typeahead:selected', function(event, selection){
+						$location.path('/');
 
 						taskService.openTask(selection.id);
 						$(event.currentTarget).val('');

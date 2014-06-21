@@ -6,3 +6,6 @@ module.exports.getTaskList = require('./getTaskList');
 module.exports.getStatusList = require('./getStatusList');
 
 module.exports.setTask = require('./setTask');
+
+module.exports.getTaskSheet = require('./getTaskSheet');
+

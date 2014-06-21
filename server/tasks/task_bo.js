@@ -12,7 +12,7 @@ var account_sheet_bo = require(__dirname + "/account_sheet_bo");
 var summary_sheet_bo = require(__dirname + "/summary_sheet_bo");
 var expense_sheet_bo = require(__dirname + "/expense_sheet_bo");
 
-var TASK = new Bo('DATA_TASK', {
+var TASK = new Bo('DATA_TASK', /*{
 	name: 'get',
 	method: function (where) {
 		var promise = this.orm.model(this._table).find({
@@ -125,7 +125,7 @@ var TASK = new Bo('DATA_TASK', {
 
 		return promise;
 	}
-}, {
+}, */{
 	name: 'save',
 	method: function (model) {
 		var promise = this._save(model);

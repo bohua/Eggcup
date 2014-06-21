@@ -3,7 +3,7 @@
  */
 
 angular.module('task-service', ['task-resource'])
-	.factory('taskService', ['$location', '$route', '$templateCache', 'TASK' , '$q', function ($location, $route, $templateCache, TASK, $q) {
+	.factory('taskService', ['$location', '$route', '$http', 'TASK' , '$q', function ($location, $route, $http, TASK, $q) {
 		var searchEngine,
 			initiator,
 			taskList;
@@ -62,7 +62,13 @@ angular.module('task-service', ['task-resource'])
 			openTask: function (task_id) {
 //				var currentPageTemplate = $route.current.templateUrl;
 //				$templateCache.remove(currentPageTemplate);
+				$
+
 				$location.path('/task-editor/edit/' + task_id);
+			},
+
+			getTaskSheet: function (task_id, sheet_type) {
+				return $http.get('/taskSheet/' + task_id, {params: {sheetType: sheet_type}});
 			}
 		};
 
