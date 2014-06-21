@@ -74,7 +74,7 @@ app.get('/statusList', tasks.getStatusList);
 app.post('/task/:task_id', tasks.setTask);
 app.post('/task', tasks.setTask);
 app.get('/taskSheet/:task_id', tasks.getTaskSheet);
-
+app.delete('/task/:task_id', tasks.delTask);
 
 /**
  * File requests

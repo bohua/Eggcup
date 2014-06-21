@@ -42,6 +42,7 @@ angular.module('task-editor', [
 }]).controller('taskEditorController', [
 	'$location',
 	'$http',
+	'$rootScope',
 	'$scope',
 	'$timeout',
 	'tagReferenceService',
@@ -52,50 +53,29 @@ angular.module('task-editor', [
 	'taskService',
 	'task_model',
 	'TASK',
-	function ($location, $http, $scope, $timeout, tagReferenceService, customerListService, employeeListService, taskStatusService, fileTypeService, taskService, task_model, TASK) {
+	function ($location, $http, $rootScope, $scope, $timeout, tagReferenceService, customerListService, employeeListService, taskStatusService, fileTypeService, taskService, task_model, TASK) {
 		/**
 		 * Initialize task and sheets
 		 */
+		var sheetMap = {
+			arrangeSheet: {type: 'arrange'},
+			replySheet: {type: 'reply'},
+			proposalSheet: {type: 'proposal'},
+			contractSheet: {type: 'contract'},
+			executeSheet: {type: 'execute'},
+			accountSheet: {type: 'account'},
+			summarySheet: {type: 'summary'},
+			expenseSheet: {type: 'expense'}
+		}
+
 		$scope.task_model = task_model;
-		taskService.getTaskSheet($scope.task_model.id, 'arrange').success(function (arrangeSheet) {
-			if (arrangeSheet) {
-				$scope.task_model.arrangeSheet = arrangeSheet;
-			}
-		});
-		taskService.getTaskSheet($scope.task_model.id, 'reply').success(function (replySheet) {
-			if (replySheet) {
-				$scope.task_model.replySheet = replySheet;
-			}
-		});
-		taskService.getTaskSheet($scope.task_model.id, 'proposal').success(function (proposalSheet) {
-			if (proposalSheet) {
-				$scope.task_model.proposalSheet = proposalSheet;
-			}
-		});
-		taskService.getTaskSheet($scope.task_model.id, 'contract').success(function (contractSheet) {
-			if (contractSheet) {
-				$scope.task_model.contractSheet = contractSheet;
-			}
-		});
-		taskService.getTaskSheet($scope.task_model.id, 'execute').success(function (executeSheet) {
-			if (executeSheet) {
-				$scope.task_model.executeSheet = executeSheet;
-			}
-		});
-		taskService.getTaskSheet($scope.task_model.id, 'account').success(function (accountSheet) {
-			if (accountSheet) {
-				$scope.task_model.accountSheet = accountSheet;
-			}
-		});
-		taskService.getTaskSheet($scope.task_model.id, 'summary').success(function (summarySheet) {
-			if (summarySheet) {
-				$scope.task_model.summarySheet = summarySheet;
-			}
-		});
-		taskService.getTaskSheet($scope.task_model.id, 'expense').success(function (expenseSheet) {
-			if (expenseSheet) {
-				$scope.task_model.expenseSheet = expenseSheet;
-			}
+
+		$.map(sheetMap, function (val, key) {
+			taskService.getTaskSheet($scope.task_model.id, val.type).success(function (sheet_instance) {
+				if (sheet_instance) {
+					$scope.task_model[key] = sheet_instance;
+				}
+			});
 		});
 
 
@@ -246,10 +226,18 @@ angular.module('task-editor', [
 		/**
 		 * Initialize Emitters
 		 */
-		$scope.delete = function () {
+		$scope.deleteTask = function () {
 			var confirmResult = confirm('确认删除么？');
 			if (confirmResult === true) {
-				$scope.Confirm('remove', false);
+				TASK.delete({task_id: $scope.task_model.id}, function () {
+					$location.url('/');
+
+					$timeout(function(){
+						$rootScope.$broadcast('reloadDashboard');
+					});
+
+				});
+
 			}
 		}
 
@@ -257,16 +245,10 @@ angular.module('task-editor', [
 			$('li.dropdown.open').removeClass('open');
 		};
 
-		//Set backward button action
-		$scope.getBack = function () {
-			$location.path('/');
-		}
-
 		//Auto active the first section
 		$timeout(function () {
 			$($('ul.affix a')[0]).addClass('active');
 		});
-
 
 		$scope.$on('saveTaskModel', function (event, id, data) {
 			TASK.save({task_id: id}, data);

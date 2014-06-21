@@ -60,10 +60,6 @@ angular.module('task-service', ['task-resource'])
 			},
 
 			openTask: function (task_id) {
-//				var currentPageTemplate = $route.current.templateUrl;
-//				$templateCache.remove(currentPageTemplate);
-				$
-
 				$location.path('/task-editor/edit/' + task_id);
 			},
 
