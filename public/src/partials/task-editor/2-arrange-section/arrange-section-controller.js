@@ -15,7 +15,7 @@ angular.module('arrange-section', ['arrange-editor', 'handling-method-service'])
 			};
 
 			$scope.showArrangeEditor = function ($event) {
-				$scope.task_model.arrangeSheet.handling = $scope.task_model.handling;
+				$scope.task_model.arrangeSheet.inheritAssignee = $scope.task_model.assignee;
 				$($event.currentTarget).trigger('popup', ['edit', $scope.task_model.arrangeSheet]);
 			};
 
@@ -23,13 +23,16 @@ angular.module('arrange-section', ['arrange-editor', 'handling-method-service'])
 
 			$scope.onArrangeSaved = function (action, data) {
 				$scope.task_model.arrangeSheet = data;
-				$scope.task_model.handling = data.handling;
+
+				if($scope.task_model.arrangeSheet.arrangement_assignee){
+					$scope.task_model.assignee = $scope.task_model.arrangeSheet.arrangement_assignee;
+				}
 				var o = {
 					id: $scope.task_model.id,
-					handling: $scope.task_model.handling,
+					assignee: $scope.task_model.assignee,
 					arrangeSheet: data
 				}
-				$scope.$emit('saveTaskModel', $scope.task_model.id, o);
+				$scope.$emit('event:saveTaskModel', $scope.task_model.id, o);
 			}
 
 			$scope.$on('newArrange', function(){

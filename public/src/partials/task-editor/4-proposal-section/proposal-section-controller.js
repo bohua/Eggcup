@@ -27,7 +27,7 @@ angular.module('proposal-section', ['proposal-editor', 'attach-editor', 'proposa
 				id: $scope.task_model.id,
 				proposalSheet: data
 			}
-			$scope.$emit('saveTaskModel', $scope.task_model.id, o);
+			$scope.$emit('event:saveTaskModel', $scope.task_model.id, o);
 		}
 
 		/**
@@ -61,7 +61,7 @@ angular.module('proposal-section', ['proposal-editor', 'attach-editor', 'proposa
 					attachment: data
 				}
 			}
-			$scope.$emit('saveTaskModel', $scope.task_model.id, o);
+			$scope.$emit('event:saveTaskModel', $scope.task_model.id, o);
 		}
 
 		/**
@@ -96,6 +96,6 @@ angular.module('proposal-section', ['proposal-editor', 'attach-editor', 'proposa
 					subItem: data
 				}
 			}
-			$scope.$emit('saveTaskModel', $scope.task_model.id, o);
+			$scope.$emit('event:saveTaskModel', $scope.task_model.id, o);
 		}
 	}]);

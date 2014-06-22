@@ -29,7 +29,7 @@ angular.module('reply-section', ['reply-editor', 'attach-editor'])
 					id: $scope.task_model.id,
 					replySheet: data
 				}
-				$scope.$emit('saveTaskModel', $scope.task_model.id, o);
+				$scope.$emit('event:saveTaskModel', $scope.task_model.id, o);
 			}
 
 
@@ -73,6 +73,6 @@ angular.module('reply-section', ['reply-editor', 'attach-editor'])
 						attachment: data
 					}
 				}
-				$scope.$emit('saveTaskModel', $scope.task_model.id, o);
+				$scope.$emit('event:saveTaskModel', $scope.task_model.id, o);
 			}
 		}]);

@@ -24,7 +24,19 @@ angular.module('register-editor', ['handling-method-service', 'toggle-button-mod
 
 			$scope.emptyBtnOptions = {
 				onConfirm: function () {
-					console.log('empty');
+					$('#register-editor-form :input').each(function(){
+						if(this.hasAttribute('ng-model')){
+							eval("$scope." + this.getAttribute('ng-model') + "=null");
+						}
+
+						if(this.hasAttribute('token-field')){
+							$(this).tokenfield('setTokens', []);
+						}
+					});
+
+					$('[toggle-button-model]').trigger('clear');
+
+					$scope.$apply();
 				}
 			};
 

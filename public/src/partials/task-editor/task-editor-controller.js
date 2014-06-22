@@ -22,9 +22,7 @@ angular.module('task-editor', [
 	'execute-section',
 	'account-section',
 	'summary-section',
-	'expense-detail-editor',
-
-	'duScroll.scrollContainerAPI'
+	'expense-detail-editor'
 ]).config(['$routeProvider', function ($routeProvider) {
 	$routeProvider.
 		when('/task-editor/:action/:taskId', {
@@ -240,13 +238,15 @@ angular.module('task-editor', [
 		 * Initialize Emitters
 		 */
 		$scope.deleteTask = function () {
-			var confirmResult = confirm('确认删除么？');
+			var msg = '确认删除任务么? [TK-' + task_model.id + ' "' + task_model.slogan + '"]';
+			var confirmResult = confirm(msg);
 			if (confirmResult === true) {
 				TASK.delete({task_id: $scope.task_model.id}, function () {
 					$location.url('/');
 
 					$timeout(function () {
-						$rootScope.$broadcast('reloadDashboard');
+						$rootScope.$broadcast('event:reloadDashboard');
+						$rootScope.$broadcast('event:removeFromCookie', task_model.id);
 					});
 
 				});
@@ -263,7 +263,7 @@ angular.module('task-editor', [
 			$($('ul.affix a')[0]).addClass('active');
 		});
 
-		$scope.$on('saveTaskModel', function (event, id, data) {
+		$scope.$on('event:saveTaskModel', function (event, id, data) {
 			TASK.save({task_id: id}, data);
 		});
 
@@ -429,6 +429,6 @@ angular.module('task-editor', [
 			}
 
 			//saveTask(null, $scope.task_model.id, o)
-			$scope.$emit('saveTaskModel', $scope.task_model.id, o);
+			$scope.$emit('event:saveTaskModel', $scope.task_model.id, o);
 		}
 	}]);

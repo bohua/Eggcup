@@ -15,6 +15,13 @@ angular.module('toggle-button-model', [])
 				$($element).on('click',function(){
 					eval("$scope." + ngModel + "=!" + $($element).hasClass('active'));
 				})
+
+				$($element).on('clear', function(){
+					if($($element).hasClass('active')){
+						$($element).button('toggle');
+					}
+					eval("$scope." + ngModel + "=false");
+				});
 			}
 		};
 

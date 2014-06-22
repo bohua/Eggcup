@@ -27,6 +27,6 @@ angular.module('summary-section', ['summary-editor'])
 				id: $scope.task_model.id,
 				summarySheet: data
 			}
-			$scope.$emit('saveTaskModel', $scope.task_model.id, o);
+			$scope.$emit('event:saveTaskModel', $scope.task_model.id, o);
 		}
 	}]);

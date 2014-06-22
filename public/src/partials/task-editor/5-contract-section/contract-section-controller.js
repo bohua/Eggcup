@@ -27,7 +27,7 @@ angular.module('contract-section', ['contract-editor', 'contract-detail-editor']
 				id: $scope.task_model.id,
 				contractSheet: data
 			}
-			$scope.$emit('saveTaskModel', $scope.task_model.id, o);
+			$scope.$emit('event:saveTaskModel', $scope.task_model.id, o);
 		}
 
 		/**
@@ -62,6 +62,6 @@ angular.module('contract-section', ['contract-editor', 'contract-detail-editor']
 					subItem: data
 				}
 			}
-			$scope.$emit('saveTaskModel', $scope.task_model.id, o);
+			$scope.$emit('event:saveTaskModel', $scope.task_model.id, o);
 		}
 	}]);

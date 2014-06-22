@@ -27,7 +27,7 @@ angular.module('execute-section', ['execute-editor', 'execute-detail-editor'])
 				id: $scope.task_model.id,
 				executeSheet: data
 			}
-			$scope.$emit('saveTaskModel', $scope.task_model.id, o);
+			$scope.$emit('event:saveTaskModel', $scope.task_model.id, o);
 		}
 
 		/**
@@ -62,6 +62,6 @@ angular.module('execute-section', ['execute-editor', 'execute-detail-editor'])
 					subItem: data
 				}
 			}
-			$scope.$emit('saveTaskModel', $scope.task_model.id, o);
+			$scope.$emit('event:saveTaskModel', $scope.task_model.id, o);
 		}
 	}]);

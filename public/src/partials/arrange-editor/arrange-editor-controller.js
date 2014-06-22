@@ -1,15 +1,12 @@
 /**
  * Created by Bli on 2014/4/29.
  */
-angular.module('arrange-editor', ['toggle-button-model', 'pop-confirm', 'employee-list-service', 'handling-method-service', 'login-session-service'])
+angular.module('arrange-editor', ['toggle-button-model', 'pop-confirm', 'employee-list-service', 'login-session-service'])
 	.controller('arrangeEditorController', [
 		'$scope',
 		'employeeListService',
-		'handlingMethodService',
 		'loginSessionService',
-		function ($scope, employeeListService, handlingMethodService, loginSessionService) {
-
-			$scope.handlingList = handlingMethodService.getHandlingList();
+		function ($scope, employeeListService, loginSessionService) {
 
 			$scope.employeeFieldOptions = {
 				source: _.pluck(employeeListService.getEmployeeList(), 'name')
@@ -21,11 +18,7 @@ angular.module('arrange-editor', ['toggle-button-model', 'pop-confirm', 'employe
 				}
 			}
 
-			/**
-			 * Set default value for new
-			 */
-			if($scope.prop.mode === 'new'){
-				$scope.dialog_data_model.arrangement_date = new Date();
-				$scope.dialog_data_model.arrangement_assigner = loginSessionService.getLoginUser();
-			}
+			$scope.dialog_data_model.arrangement_assignee = $scope.dialog_data_model.arrangement_assignee || $scope.dialog_data_model.inheritAssignee;
+			$scope.dialog_data_model.arrangement_date = $scope.dialog_data_model.arrangement_date || new Date();
+			$scope.dialog_data_model.arrangement_assigner = $scope.dialog_data_model.arrangement_assigner || loginSessionService.getLoginUser().name;
 		}]);

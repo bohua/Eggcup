@@ -35,6 +35,6 @@ angular.module('account-section', ['account-detail-editor'])
 					subItem: data
 				}
 			}
-			$scope.$emit('saveTaskModel', $scope.task_model.id, o);
+			$scope.$emit('event:saveTaskModel', $scope.task_model.id, o);
 		}
 	}]);

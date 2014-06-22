@@ -9,10 +9,10 @@ angular.module('task-service', ['task-resource'])
 			taskList;
 
 		var Service = {
-			init: function () {
+			init: function (employee_name) {
 				var deferred = $q.defer();
 
-				TASK.query({statusGroup: ['ongoing']}, function (list) {
+				TASK.query({employee_name: employee_name}, function (list) {
 					taskList = list;
 
 					searchEngine = new Bloodhound({
@@ -20,7 +20,8 @@ angular.module('task-service', ['task-resource'])
 						queryTokenizer: Bloodhound.tokenizers.whitespace,
 						local: $.map(taskList, function (task) {
 							return { value: task.id + " - " + task.slogan, id: task.id };
-						})
+						}),
+						remote: '/searchTask?q=%QUERY'
 					});
 
 					searchEngine.initialize().done(function () {
@@ -40,10 +41,10 @@ angular.module('task-service', ['task-resource'])
 				return taskList;
 			},
 
-			reload: function () {
+			reload: function (employee_name) {
 				var deferred = $q.defer();
 
-				TASK.query({statusGroup: ['ongoing']}, function (list) {
+				TASK.query({employee_name: employee_name}, function (list) {
 					taskList = list;
 					deferred.resolve(taskList);
 				});

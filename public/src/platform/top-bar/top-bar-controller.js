@@ -19,7 +19,7 @@ angular.module('top-bar', ['login-session-service', 'task-service'])
 				'/config/employee': '#nav-block-config'
 			};
 
-			$scope.loginUser = loginSessionService.getLoginUser();
+			$scope.loginUser = loginSessionService.getLoginUser().name;
 			$scope.recentOpenedTasks = $cookieStore.get('recentOpenedTasks') || []
 
 //			$scope.route = null;
@@ -35,6 +35,7 @@ angular.module('top-bar', ['login-session-service', 'task-service'])
 					$(navBlockMap[route]).addClass('active');
 				}
 			}
+
 			function unTrackNavBlocks() {
 				$('#topbar-collapse>ul>li').removeClass('active');
 			}
@@ -43,11 +44,16 @@ angular.module('top-bar', ['login-session-service', 'task-service'])
 				trackNavBlock($location.path());
 			});
 
-			$scope.$on('event:onRecentOpenedTasks', function(){
+			$scope.$on('event:onRecentOpenedTasks', function () {
 				$scope.recentOpenedTasks = $cookieStore.get('recentOpenedTasks') || [];
 			});
 
-			$scope.signOff= function(){
+			$scope.$on('event:removeFromCookie', function(event, entry_id){
+				_.remove($scope.recentOpenedTasks, function(task){ return task.id === entry_id});
+				$cookieStore.put('recentOpenedTasks', $scope.recentOpenedTasks);
+			});
+
+			$scope.signOff = function () {
 				loginSessionService.logout();
 			}
 
@@ -64,24 +70,25 @@ angular.module('top-bar', ['login-session-service', 'task-service'])
 			$scope.showRegisterEditor = function ($event) {
 				var defaultValue = {
 					report_date: new Date(),
-					reporter: loginSessionService.getLoginUser(),
+					reporter: loginSessionService.getLoginUser().name,
+					assignee: loginSessionService.getLoginUser().name,
 					status: 100,
-					expenseSheet:{}
+					expenseSheet: {}
 				}
 				$($event.currentTarget).trigger('popup', ['new', defaultValue]);
 			};
 
 			$scope.onRegisterSaved = function (action, data) {
 				taskService.saveTask(data).then(function (task) {
-						$rootScope.$broadcast('reloadDashboard');
-						$location.path('/task-editor/edit/' + task.id);
-					});
+					$rootScope.$broadcast('event:reloadDashboard');
+					$location.path('/task-editor/edit/' + task.id);
+				});
 			}
 
 			/**
 			 * Setup up search field
 			 */
-			taskService.ready().then(function(){
+			taskService.ready().then(function () {
 				$('#task-searcher input').typeahead({
 						hint: true,
 						highlight: true,
@@ -91,7 +98,7 @@ angular.module('top-bar', ['login-session-service', 'task-service'])
 						name: 'tasks',
 						displayKey: 'value',
 						source: taskService.getSearchEngine().ttAdapter()
-					}).on('typeahead:selected', function(event, selection){
+					}).on('typeahead:selected', function (event, selection) {
 						$location.path('/');
 
 						taskService.openTask(selection.id);

@@ -7,7 +7,8 @@ angular.module('dashboard', [
 	'employee-resource',
 	'task-service',
 	'task-status-service',
-	'customer-list-service'
+	'customer-list-service',
+	'login-session-service'
 ]).config(['$routeProvider', function ($routeProvider) {
 	$routeProvider.
 		when('/', {
@@ -25,13 +26,18 @@ angular.module('dashboard', [
 	'taskService',
 	'taskStatusService',
 	'customerListService',
-	function ($scope, $location, taskService, taskStatusService, customerListService) {
+	'loginSessionService',
+	function ($scope, $location, taskService, taskStatusService, customerListService, loginSessionService) {
 		/**
 		 * Service binds
 		 */
 		$scope.translateStatus = taskStatusService.translateStatus;
 		$scope.translateCustomer = customerListService.translateCustomer;
 		$scope.taskList = groupingTasks(taskService.getTaskList());
+
+		$scope.$on('$routeChangeSuccess', function () {
+			$scope.$broadcast('event:reloadDashboard');
+		});
 
 		/**
 		 * ng-click bindings
@@ -91,8 +97,8 @@ angular.module('dashboard', [
 			return groups;
 		}
 
-		$scope.$on('reloadDashboard', function(){
-			taskService.reload().then(function(newTaskList){
+		$scope.$on('event:reloadDashboard', function(){
+			taskService.reload(loginSessionService.getLoginUser().name).then(function(newTaskList){
 				$scope.taskList = groupingTasks(newTaskList);
 			});
 		});

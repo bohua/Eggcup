@@ -41,7 +41,7 @@ angular.module('login-session-service', [])
 			},
 
 			getLoginUser: function () {
-				return session.login_pass.employee.name;
+				return session.login_pass.employee;
 			},
 
 			logout: function(){

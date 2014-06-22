@@ -43,13 +43,12 @@ angular.module('app', [
 		taskStatusService.init();
 		customerListService.init();
 		employeeListService.init();
-		taskService.init();
 		handlingMethodService.init();
 		fileTypeService.init();
 
 		$scope.hasSignIn = loginSessionService.getLoginStatus();
-		if($scope.hasSignIn){
-			$timeout(showDesktop, 100);
+		if ($scope.hasSignIn) {
+			$timeout(startEngine, 100);
 		}
 
 		/**
@@ -60,16 +59,19 @@ angular.module('app', [
 		});
 
 		$scope.$on('loginSuccess', function () {
-			$scope.hasSignIn = loginSessionService.getLoginStatus();
-			$scope.$apply();
+			taskService.init(loginSessionService.getLoginUser().name).then(function () {
+				$scope.hasSignIn = loginSessionService.getLoginStatus();
+			});
 		});
 
 
 		/**
 		 * Closure function
 		 */
-		function showDesktop() {
-			$('#top-bar').css('opacity', 1);
-			$('#right-stage').css('opacity', 1);
+		function startEngine() {
+			taskService.init().then(function () {
+				$('#top-bar').css('opacity', 1);
+				$('#right-stage').css('opacity', 1);
+			});
 		}
 	}]);
