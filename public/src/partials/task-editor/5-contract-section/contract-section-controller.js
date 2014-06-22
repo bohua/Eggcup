@@ -45,6 +45,7 @@ angular.module('contract-section', ['contract-editor', 'contract-detail-editor']
 		};
 
 		$scope.showDetailEditor = function ($event, dataModel) {
+			dataModel = dataModel || [];
 			$($event.currentTarget).trigger('popup', ['edit', dataModel]);
 		};
 

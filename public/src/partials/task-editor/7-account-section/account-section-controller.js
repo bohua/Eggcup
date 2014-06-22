@@ -18,6 +18,7 @@ angular.module('account-section', ['account-detail-editor'])
 		};
 
 		$scope.showDetailEditor = function ($event, dataModel) {
+			dataModel = dataModel || [];
 			$($event.currentTarget).trigger('popup', ['edit', dataModel]);
 		};
 

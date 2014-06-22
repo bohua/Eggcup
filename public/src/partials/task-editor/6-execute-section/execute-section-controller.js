@@ -45,6 +45,7 @@ angular.module('execute-section', ['execute-editor', 'execute-detail-editor'])
 		};
 
 		$scope.showDetailEditor = function ($event, dataModel) {
+			dataModel = dataModel || [];
 			$($event.currentTarget).trigger('popup', ['edit', dataModel]);
 		};
 

@@ -79,6 +79,7 @@ angular.module('proposal-section', ['proposal-editor', 'attach-editor', 'proposa
 		};
 
 		$scope.showDetailEditor = function ($event, dataModel) {
+			dataModel = dataModel || [];
 			$($event.currentTarget).trigger('popup', ['edit', dataModel]);
 		};
 
