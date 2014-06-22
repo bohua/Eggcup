@@ -7,9 +7,10 @@ angular.module('top-bar', ['login-session-service', 'task-service'])
 		'$scope',
 		'$rootScope',
 		'$location',
+		'$cookieStore',
 		'loginSessionService',
 		'taskService',
-		function ($scope, $rootScope, $location, loginSessionService, taskService) {
+		function ($scope, $rootScope, $location, $cookieStore, loginSessionService, taskService) {
 			var navBlockMap = {
 				'/': '#nav-block-dashboard',
 				'/dashboard': '#nav-block-dashboard',
@@ -19,6 +20,7 @@ angular.module('top-bar', ['login-session-service', 'task-service'])
 			};
 
 			$scope.loginUser = loginSessionService.getLoginUser();
+			$scope.recentOpenedTasks = $cookieStore.get('recentOpenedTasks') || []
 
 //			$scope.route = null;
 
@@ -33,7 +35,6 @@ angular.module('top-bar', ['login-session-service', 'task-service'])
 					$(navBlockMap[route]).addClass('active');
 				}
 			}
-
 			function unTrackNavBlocks() {
 				$('#topbar-collapse>ul>li').removeClass('active');
 			}
@@ -42,6 +43,13 @@ angular.module('top-bar', ['login-session-service', 'task-service'])
 				trackNavBlock($location.path());
 			});
 
+			$scope.$on('event:onRecentOpenedTasks', function(){
+				$scope.recentOpenedTasks = $cookieStore.get('recentOpenedTasks') || [];
+			});
+
+			$scope.signOff= function(){
+				loginSessionService.logout();
+			}
 
 			/**
 			 * Create new Task
@@ -88,15 +96,6 @@ angular.module('top-bar', ['login-session-service', 'task-service'])
 						taskService.openTask(selection.id);
 						$(event.currentTarget).val('');
 						$scope.$apply();
-
-//						$scope.route = selection.value;
-//						$scope.$apply();
 					});
 			});
-//
-//			$scope.$watch('route', function(next, pre){
-//				if(next !== pre){
-//					$location.path('/task-editor/edit/' + $scope.route);
-//				}
-//			})
 		}]);

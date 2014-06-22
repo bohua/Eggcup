@@ -88,15 +88,15 @@ app.get('/getFileTypeList', platform.getFileTypeList);
  */
 var sys_logger = new (winston.Logger)({
 	transports: [
-		new (winston.transports.Console)(),
-		new (winston.transports.File)({filename: __dirname + '/logs/system.log'})
+		new (winston.transports.Console)()//,
+		//new (winston.transports.File)({filename: __dirname + '/logs/system.log'})
 	]
 });
 
 var db_logger = new (winston.Logger)({
 	transports: [
-		new (winston.transports.Console)(),
-		new (winston.transports.File)({filename: __dirname + '/logs/db_log.log'})
+		new (winston.transports.Console)()//,
+		//new (winston.transports.File)({filename: __dirname + '/logs/db_log.log'})
 	]
 });
 

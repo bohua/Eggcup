@@ -45,6 +45,7 @@ angular.module('task-editor', [
 	'$rootScope',
 	'$scope',
 	'$timeout',
+	'$cookieStore',
 	'tagReferenceService',
 	'customerListService',
 	'employeeListService',
@@ -53,7 +54,7 @@ angular.module('task-editor', [
 	'taskService',
 	'task_model',
 	'TASK',
-	function ($location, $http, $rootScope, $scope, $timeout, tagReferenceService, customerListService, employeeListService, taskStatusService, fileTypeService, taskService, task_model, TASK) {
+	function ($location, $http, $rootScope, $scope, $timeout, $cookieStore, tagReferenceService, customerListService, employeeListService, taskStatusService, fileTypeService, taskService, task_model, TASK) {
 		/**
 		 * Initialize task and sheets
 		 */
@@ -69,6 +70,16 @@ angular.module('task-editor', [
 		}
 
 		$scope.task_model = task_model;
+
+		$scope.$on('$routeChangeSuccess', function () {
+			var recentOpenedTasks = $cookieStore.get('recentOpenedTasks') || [];
+			_.remove(recentOpenedTasks, function(task) { return task.id === task_model.id });
+			recentOpenedTasks.unshift({id: task_model.id, slogan: task_model.slogan});
+			$cookieStore.put('recentOpenedTasks', _.first(recentOpenedTasks, 10));
+
+			$rootScope.$broadcast('event:onRecentOpenedTasks');
+		});
+
 
 		$.map(sheetMap, function (val, key) {
 			taskService.getTaskSheet($scope.task_model.id, val.type).success(function (sheet_instance) {

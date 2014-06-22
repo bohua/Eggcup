@@ -3,17 +3,17 @@
  */
 
 angular.module('login-session-service', [])
-	.factory('loginSessionService', ['$http', '$q', function ($http, $q) {
+	.factory('loginSessionService', ['$http', '$q', '$window', '$location', function ($http, $q, $window, $location) {
 		var session;
 
 		var Service = {
 			init: function () {
 				session = {
-					hasSignIn: true,
+					hasSignIn: false,
 					login_pass: {
-						employee: {
-							name: '李小帅'
-						}
+//						employee: {
+//							name: '李小帅'
+//						}
 					}
 				}
 			},
@@ -42,6 +42,10 @@ angular.module('login-session-service', [])
 
 			getLoginUser: function () {
 				return session.login_pass.employee.name;
+			},
+
+			logout: function(){
+				session = null;
 			}
 		};
 

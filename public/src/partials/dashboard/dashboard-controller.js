@@ -2,7 +2,6 @@
  * Created by Bli on 2014/4/30.
  */
 angular.module('dashboard', [
-	'ngRoute',
 	//'ngAnimate',
 	'customer-resource',
 	'employee-resource',

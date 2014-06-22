@@ -2,6 +2,8 @@
  * Created by bli on 14-3-13.
  */
 angular.module('app', [
+	'ngRoute',
+	'ngCookies',
 	'sign-in',
 	'login-session-service',
 	'task-status-service',

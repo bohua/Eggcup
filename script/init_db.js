@@ -4,37 +4,55 @@
 var Q = require('q');
 var db = require('../models');
 var fs = require('fs');
+var mysql = require('mysql');
 
-db.setup('eggcup', 'root', 'root', {
-	dialect: 'mysql',
-	port: 3306,
-	pool: { maxConnections: 5, maxIdleTime: 30}
+//		connection.query('SELECT CONCAT("SET FOREIGN_KEY_CHECKS=0;", "DROP TABLE ", GROUP_CONCAT(table_name), ";") FROM information_schema.tables WHERE table_schema = "eggcup" and table_name like "%";')
+
+var connection = mysql.createConnection({
+	host: 'localhost',
+	user: 'root',
+	password: 'root'
 });
 
-db.Seq()
-	.sequelize
-	.query('SELECT CONCAT("SET FOREIGN_KEY_CHECKS=0;", "DROP TABLE ", GROUP_CONCAT(table_name), ";") FROM information_schema.tables WHERE table_schema = "eggcup" and table_name like "%";')
-	.success(function () {
-		db.Seq()
-			.sequelize
-			.sync({ force: true })
-			.complete(function (err) {
-				if (err) {
-					throw err;
-				} else {
-					afterAll(db);
-				}
-			});
-	}).error(function(error){
-		console.log(error);
+connection.query('drop database if exists `eggcup`', function (err) {
+	if (err) throw err;
+
+	connection.query('create database `eggcup`', function (err) {
+		if (err) throw err;
+
+		connection.end();
+
+		syncDB(db);
 	});
+});
+
+function syncDB(db) {
+	db.setup('eggcup', 'root', 'root', {
+		dialect: 'mysql',
+		port: 3306,
+		pool: { maxConnections: 5, maxIdleTime: 30}
+	});
+
+	db.Seq()
+		.sequelize
+		.sync({ force: true })
+		.complete(function (err) {
+			if (err) {
+				throw err;
+			} else {
+				afterAll(db);
+			}
+		});
+}
+
 
 function afterAll(db) {
 	//Do data initializations
 	generateEmployee(db);
 	generateKh(db);
+	generateLoginAccount(db);
 	//Initialize test cases
-	require(__dirname+ '/init_test_cases');
+	require(__dirname + '/init_test_cases');
 }
 
 function generateKh(db) {
@@ -100,6 +118,14 @@ function generateEmployee(db) {
 	var deferred = new Q.defer();
 	db.model('REF_EMPLOYEE').bulkCreate([
 		{
+			name: '管理员',
+			tel: '+467895642134',
+			mobile: '+467895642134',
+			role: '管理员',
+			description: '测试数据',
+			hasLogin : true
+		},
+		{
 			name: '李小帅',
 			tel: '+467895642134',
 			mobile: '+467895642134',
@@ -122,6 +148,23 @@ function generateEmployee(db) {
 			role: '形象代言',
 			description: '测试数据',
 			tags: "%3%"
+		}
+	]).success(function (sdepold) {
+		//console.log(sdepold)
+		deferred.resolve(sdepold);
+	});
+
+	return deferred.promise;
+}
+
+function generateLoginAccount(db) {
+	var deferred = new Q.defer();
+	db.model('REF_LOGIN').bulkCreate([
+		{
+			username: '管理员',
+			password: '8888',
+			level: 'admin',
+			employee_id: '1'
 		}
 	]).success(function (sdepold) {
 		//console.log(sdepold)

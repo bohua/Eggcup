@@ -15,7 +15,7 @@
         </li>
         <li id="nav-block-task" class="dropdown"><a data-toggle="dropdown" class="dropdown-toggle cursor-pointer"><i class="fa fa-history fa-fw">&nbsp;</i><span class="cursor-pointer">任务</span><b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li><a>无</a></li>
+            <li ng-repeat="task in recentOpenedTasks track by $index"><a ng-href="#/task-editor/edit/{{task.id}}"><i class="fa fa-link fa-fw">&nbsp;</i><span>{{task.id}} - {{task.slogan}}</span></a></li>
           </ul>
         </li>
         <li id="nav-block-config" class="dropdown"><a data-toggle="dropdown" class="dropdown-toggle cursor-pointer"><i class="fa fa-cogs fa-fw">&nbsp;</i><span class="cursor-pointer">信息库</span><b class="caret"></b></a>
@@ -35,7 +35,7 @@
             <li><a href="#"><i class="fa fa-retweet fa-fw">&nbsp;</i><span>切换帐套</span></a></li>
             <li><a href="#"><i class="fa fa-lock fa-fw">&nbsp;</i><span>锁屏</span></a></li>
             <li class="divider"></li>
-            <li><a href="#"><i class="fa fa-sign-out fa-fw">&nbsp;</i><span>登出系统</span></a></li>
+            <li><a href="/" ng-click="signOff()" class="cursor-pointer"><i class="fa fa-sign-out fa-fw">&nbsp;</i><span>登出系统</span></a></li>
           </ul>
         </li>
         <li id="new-task-btn" class="navbar-form navbar-right">

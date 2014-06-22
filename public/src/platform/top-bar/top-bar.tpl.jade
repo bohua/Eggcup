@@ -33,7 +33,10 @@ div.navbar.navbar-inverse.navbar-fixed-top(ng-controller="topBarController", rol
 						span.cursor-pointer 任务
 						b.caret
 					ul.dropdown-menu
-						li: a 无
+						li(ng-repeat="task in recentOpenedTasks track by $index")
+							a(ng-href="#/task-editor/edit/{{task.id}}")
+								i.fa.fa-link.fa-fw &nbsp;
+								span {{task.id}} - {{task.slogan}}
 
 				li#nav-block-config.dropdown
 					a.dropdown-toggle.cursor-pointer(data-toggle="dropdown")
@@ -72,7 +75,7 @@ div.navbar.navbar-inverse.navbar-fixed-top(ng-controller="topBarController", rol
 							i.fa.fa-lock.fa-fw &nbsp;
 							span 锁屏
 						li.divider
-						li: a(href='#')
+						li: a.cursor-pointer(href="/", ng-click="signOff()")
 							i.fa.fa-sign-out.fa-fw &nbsp;
 							span 登出系统
 
