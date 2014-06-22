@@ -65,7 +65,8 @@ angular.module('top-bar', ['login-session-service', 'task-service'])
 				var defaultValue = {
 					report_date: new Date(),
 					reporter: loginSessionService.getLoginUser(),
-					status: 100
+					status: 100,
+					expenseSheet:{}
 				}
 				$($event.currentTarget).trigger('popup', ['new', defaultValue]);
 			};

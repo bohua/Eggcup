@@ -15,7 +15,8 @@ angular.module('execute-detail-editor', ['file-type-service'])
 				hasDeleteBtn: true,
 
 				defaultRowValue: {
-					execute_date: new Date()
+					execute_date: new Date(),
+					attachment: []
 				}
 			};
 		}]);

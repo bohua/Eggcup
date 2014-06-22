@@ -16,7 +16,8 @@ angular.module('expense-detail-editor', ['file-type-service'])
 
 				defaultRowValue: {
 					expense_date: new Date(),
-					expense_expense: 0
+					expense_expense: 0,
+					attachment: []
 				}
 			};
 		}]);

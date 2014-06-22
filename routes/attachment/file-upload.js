@@ -12,7 +12,8 @@ module.exports = function (req, res) {
 				file_name: file.name,
 				file_url: fileName, //file.path.split(__dirname + '\\upload\\')[1].replace(/\\\\/g, '/'),
 				file_size: file.size,
-				file_ext: file.type
+				file_ext: file.type,
+				createdAt: new Date()
 			}
 		};
 

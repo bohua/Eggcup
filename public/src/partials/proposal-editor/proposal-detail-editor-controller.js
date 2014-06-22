@@ -19,7 +19,8 @@ angular.module('proposal-detail-editor', ['file-type-service'])
 					date: new Date(),
 					expense: 0,
 					traffic: 0,
-					extra: 0
+					extra: 0,
+					attachment: []
 				}
 			};
 		}]);

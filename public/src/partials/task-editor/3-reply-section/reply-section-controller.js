@@ -60,7 +60,7 @@ angular.module('reply-section', ['reply-editor', 'attach-editor'])
 			};
 
 			$scope.getAttachModel = function () {
-				return $scope.task_model.replySheet.attachment || {};
+				return $scope.task_model.replySheet.attachment || [];
 			}
 
 			$scope.onAttachSaved = function (action, data) {

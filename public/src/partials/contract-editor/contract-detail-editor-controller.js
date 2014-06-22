@@ -17,7 +17,8 @@ angular.module('contract-detail-editor', ['file-type-service'])
 				defaultRowValue: {
 					pay_date: new Date(),
 					expense: 0,
-					due_date: new Date()
+					due_date: new Date(),
+					attachment: []
 				}
 			};
 		}]);

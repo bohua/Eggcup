@@ -73,7 +73,9 @@ angular.module('task-editor', [
 
 		$scope.$on('$routeChangeSuccess', function () {
 			var recentOpenedTasks = $cookieStore.get('recentOpenedTasks') || [];
-			_.remove(recentOpenedTasks, function(task) { return task.id === task_model.id });
+			_.remove(recentOpenedTasks, function (task) {
+				return task.id === task_model.id
+			});
 			recentOpenedTasks.unshift({id: task_model.id, slogan: task_model.slogan});
 			$cookieStore.put('recentOpenedTasks', _.first(recentOpenedTasks, 10));
 
@@ -83,7 +85,7 @@ angular.module('task-editor', [
 
 		$.map(sheetMap, function (val, key) {
 			taskService.getTaskSheet($scope.task_model.id, val.type).success(function (sheet_instance) {
-				if (sheet_instance) {
+				if (sheet_instance && sheet_instance != "null") {
 					$scope.task_model[key] = sheet_instance;
 				}
 			});
@@ -243,7 +245,7 @@ angular.module('task-editor', [
 				TASK.delete({task_id: $scope.task_model.id}, function () {
 					$location.url('/');
 
-					$timeout(function(){
+					$timeout(function () {
 						$rootScope.$broadcast('reloadDashboard');
 					});
 

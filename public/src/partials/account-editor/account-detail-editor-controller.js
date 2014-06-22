@@ -16,7 +16,8 @@ angular.module('account-detail-editor', ['file-type-service'])
 
 				defaultRowValue: {
 					account_date: new Date(),
-					account_expense: 0
+					account_expense: 0,
+					attachment: []
 				}
 			};
 		}]);
