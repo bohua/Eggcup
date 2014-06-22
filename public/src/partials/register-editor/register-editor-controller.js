@@ -22,24 +22,6 @@ angular.module('register-editor', ['handling-method-service', 'toggle-button-mod
 
 			$scope.handlingList = handlingMethodService.getHandlingList();
 
-			$scope.emptyBtnOptions = {
-				onConfirm: function () {
-					$('#register-editor-form :input').each(function(){
-						if(this.hasAttribute('ng-model')){
-							eval("$scope." + this.getAttribute('ng-model') + "=null");
-						}
-
-						if(this.hasAttribute('token-field')){
-							$(this).tokenfield('setTokens', []);
-						}
-					});
-
-					$('[toggle-button-model]').trigger('clear');
-
-					$scope.$apply();
-				}
-			};
-
 			$scope.assigneeFieldOptions = {
 				autocomplete: {
 					source: _.pluck(employeeListService.getEmployeeList(), 'name')
