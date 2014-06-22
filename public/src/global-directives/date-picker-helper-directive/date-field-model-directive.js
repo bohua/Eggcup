@@ -9,9 +9,9 @@ angular.module('date-field-model', [])
 				var model = eval("$scope." + $attributes.dateFieldModel),
 					date;
 
-				if(model){
+				if (model) {
 					date = new Date(model);
-				}else{
+				} else {
 					model = {};
 				}
 
@@ -25,6 +25,11 @@ angular.module('date-field-model', [])
 					.datepicker('update', date)
 					.on('changeDate', function (e) {
 						eval("$scope." + $attributes.dateFieldModel + "= e.date");
+						$scope.$apply();
+					})
+					.on('clear', function () {
+						$($element).datepicker('update', '');
+						eval("$scope." + $attributes.dateFieldModel + "=null");
 						$scope.$apply();
 					});
 			}

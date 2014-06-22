@@ -22,6 +22,7 @@ angular.module('pop-confirm', [])
 						});
 
 						$(range).find('[toggle-button-model]').trigger('clear');
+						$(range).find('[date-field-model]').trigger('clear');
 
 						$scope.$apply();
 					}
