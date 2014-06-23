@@ -11,15 +11,13 @@ angular.module('account-section', ['account-detail-editor'])
 				backdrop: 'static',
 				keyboard: false
 			},
-			template: '/src/partials/account-editor/account-detail-editor-view.tpl.html',
-			onShow: function () {
-
-			}
+			template: '/src/partials/account-editor/account-detail-editor-view.tpl.html'
 		};
 
 		$scope.showDetailEditor = function ($event, dataModel) {
+			var mode = $scope.canEdit ? 'edit' : 'readOnly';
 			dataModel = dataModel || [];
-			$($event.currentTarget).trigger('popup', ['edit', dataModel]);
+			$($event.currentTarget).trigger('popup', [mode, dataModel]);
 		};
 
 		$scope.getDetailModel = function () {

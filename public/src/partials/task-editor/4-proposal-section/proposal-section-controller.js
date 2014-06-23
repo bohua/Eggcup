@@ -37,14 +37,13 @@ angular.module('proposal-section', ['proposal-editor', 'attach-editor', 'proposa
 			dialogOption: {
 				backdrop: 'static'
 			},
-			template: '/src/partials/attach-editor/attach-editor-view.tpl.html',
-			onShow: function () {
-
-			}
+			template: '/src/partials/attach-editor/attach-editor-view.tpl.html'
 		};
 
 		$scope.showAttachEditor = function ($event, dataModel) {
-			$($event.currentTarget).trigger('popup', ['edit', dataModel]);
+			var mode = $scope.canEdit ? 'edit' : 'readOnly';
+			dataModel = dataModel || [];
+			$($event.currentTarget).trigger('popup', [mode, dataModel]);
 		};
 
 		$scope.getAttachModel = function () {
@@ -72,15 +71,13 @@ angular.module('proposal-section', ['proposal-editor', 'attach-editor', 'proposa
 				backdrop: 'static',
 				keyboard: false
 			},
-			template: '/src/partials/proposal-editor/proposal-detail-editor-view.tpl.html',
-			onShow: function () {
-
-			}
+			template: '/src/partials/proposal-editor/proposal-detail-editor-view.tpl.html'
 		};
 
 		$scope.showDetailEditor = function ($event, dataModel) {
+			var mode = $scope.canEdit ? 'edit' : 'readOnly';
 			dataModel = dataModel || [];
-			$($event.currentTarget).trigger('popup', ['edit', dataModel]);
+			$($event.currentTarget).trigger('popup', [mode, dataModel]);
 		};
 
 		$scope.getDetailModel = function () {

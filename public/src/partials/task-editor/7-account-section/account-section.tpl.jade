@@ -6,7 +6,7 @@ div.container-fluid(ng-controller="accountSectionController")
 			span 收款 &nbsp;
 			small.hidden-xs Accounting
 			div.btn-group.pull-right
-				button.btn.btn-default(popup-dialog,dialog-config="detailEditorConfig",ng-click="showDetailEditor($event, getDetailModel())",on-confirm="onDetailSaved(action, data)")
+				button.btn.btn-default(ng-if="canEdit",popup-dialog,dialog-config="detailEditorConfig",ng-click="showDetailEditor($event, getDetailModel())",on-confirm="onDetailSaved(action, data)")
 					i.fa.fa-list-alt.fa-fw &nbsp;
 					span 明细
 				button.btn.btn-default.dropdown-toggle(data-toggle="dropdown")

@@ -57,11 +57,13 @@ angular.module('reply-section', ['reply-editor', 'attach-editor'])
 			};
 
 			$scope.showAttachEditor = function ($event, dataModel) {
-				$($event.currentTarget).trigger('popup', ['edit', dataModel]);
+				var mode = $scope.canEdit ? 'edit' : 'readOnly';
+				dataModel = dataModel || [];
+				$($event.currentTarget).trigger('popup', [mode, dataModel]);
 			};
 
 			$scope.getAttachModel = function () {
-				return $scope.task_model.replySheet.attachment || [];
+				return $scope.task_model.replySheet.attachment;
 			}
 
 			$scope.onAttachSaved = function (action, data) {

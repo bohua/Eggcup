@@ -45,8 +45,9 @@ angular.module('contract-section', ['contract-editor', 'contract-detail-editor']
 		};
 
 		$scope.showDetailEditor = function ($event, dataModel) {
+			var mode = $scope.canEdit ? 'edit' : 'readOnly';
 			dataModel = dataModel || [];
-			$($event.currentTarget).trigger('popup', ['edit', dataModel]);
+			$($event.currentTarget).trigger('popup', [mode, dataModel]);
 		};
 
 		$scope.getDetailModel = function () {

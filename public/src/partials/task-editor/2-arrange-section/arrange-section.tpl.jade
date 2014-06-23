@@ -6,7 +6,7 @@ div.container-fluid(ng-controller="arrangeSectionController")
 			span 审核 &nbsp;
 			small.hidden-xs Arrange
 			div.btn-group.pull-right
-				button.btn.btn-default(popup-dialog,dialog-config="arrangeEditorConfig",ng-click="showArrangeEditor($event)",on-confirm="onArrangeSaved(action, data)"
+				button.btn.btn-default(ng-if="canEdit",popup-dialog,dialog-config="arrangeEditorConfig",ng-click="showArrangeEditor($event)",on-confirm="onArrangeSaved(action, data)"
 				)
 					i.fa.fa-edit.fa-fw &nbsp;
 					span 修改

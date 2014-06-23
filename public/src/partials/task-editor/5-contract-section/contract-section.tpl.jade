@@ -6,10 +6,10 @@ div.container-fluid(ng-controller="contractSectionController")
 			span 合同签定 &nbsp;
 			small.hidden-xs Contract
 			div.btn-group.pull-right
-				button.btn.btn-default(popup-dialog,dialog-config="contractEditorConfig",ng-click="showContractEditor($event, getContractModel())",on-confirm="onContractSaved(action, data)")
+				button.btn.btn-default(ng-if="canEdit",popup-dialog,dialog-config="contractEditorConfig",ng-click="showContractEditor($event, getContractModel())",on-confirm="onContractSaved(action, data)")
 					i.fa.fa-edit.fa-fw &nbsp;
 					span 修改
-				button.btn.btn-default(popup-dialog,dialog-config="detailEditorConfig",ng-click="showDetailEditor($event, getDetailModel())",on-confirm="onDetailSaved(action, data)")
+				button.btn.btn-default(ng-if="canEdit",popup-dialog,dialog-config="detailEditorConfig",ng-click="showDetailEditor($event, getDetailModel())",on-confirm="onDetailSaved(action, data)")
 					i.fa.fa-list-alt.fa-fw &nbsp;
 					span 明细
 				button.btn.btn-default.dropdown-toggle(data-toggle="dropdown")

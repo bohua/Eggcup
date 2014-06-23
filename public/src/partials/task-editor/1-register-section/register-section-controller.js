@@ -22,6 +22,5 @@ angular.module('register-section', ['register-editor', 'handling-method-service'
 			$scope.onRegisterSaved = function (action, data) {
 				$.extend(true, $scope.task_model, data);
 				$scope.$emit('event:saveTaskModel', $scope.task_model.id, $scope.task_model);
-				//$scope.$emit('event:saveTaskModel');
 			}
 		}]);

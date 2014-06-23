@@ -39,7 +39,7 @@ div.navbar.navbar-default.task-header
 								icon.fa.fa-rmb.fa-fw &nbsp;
 								span &nbsp;&nbsp;费用
 
-				li.dropdown(ng-show="task_model.status<800")
+				li.dropdown(ng-if="canEdit", ng-show="task_model.status<800")
 					a.dropdown-toggle.cursor-pointer(data-toggle="dropdown")
 						i.fa.fa-share-square-o.fa-fw &nbsp;
 						span.cursor-pointer 提交

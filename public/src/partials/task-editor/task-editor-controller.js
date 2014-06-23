@@ -72,10 +72,7 @@ angular.module('task-editor', [
 
 			canRead = true;
 
-			if (permissionService.hasPermission('A002') ||
-				task_model.prop_internal && permissionService.hasPermission('A012') ||
-				task_model.prop_external && permissionService.hasPermission('A022')) {
-
+			if (permissionService.hasPermission('A002')) {
 				canEdit = true;
 			}
 		}
@@ -93,7 +90,7 @@ angular.module('task-editor', [
 			}, 1000);
 			*/
 
-			$('#task-disable-mask').css('opacity', 1);
+			$('#task-disable-mask').show();
 			$('#task-editor-form').css('-webkit-filter', 'blur(2px)');
 
 			/*
@@ -101,6 +98,8 @@ angular.module('task-editor', [
 				$scope.back();
 			}, $scope.count_down * 1000);
 */
+		}else{
+			$('#task-disable-mask').hide();
 		}
 
 		$scope.canEdit = canEdit;
@@ -462,11 +461,13 @@ angular.module('task-editor', [
 		};
 
 		$scope.showExpenseEditor = function ($event, dataModel) {
-			$($event.currentTarget).trigger('popup', ['edit', dataModel]);
+			var mode = $scope.canEdit ? 'edit' : 'readOnly';
+			dataModel = dataModel || [];
+			$($event.currentTarget).trigger('popup', [mode, dataModel]);
 		};
 
 		$scope.getExpenseModel = function () {
-			return $scope.task_model.expenseSheet.subItem || {};
+			return $scope.task_model.expenseSheet.subItem;
 		}
 
 		$scope.onExpenseSaved = function (action, data) {
@@ -479,8 +480,6 @@ angular.module('task-editor', [
 					subItem: data
 				}
 			}
-
-			//saveTask(null, $scope.task_model.id, o)
 			$scope.$emit('event:saveTaskModel', $scope.task_model.id, o);
 		}
 	}]);

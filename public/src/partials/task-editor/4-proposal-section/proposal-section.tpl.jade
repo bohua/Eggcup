@@ -6,13 +6,13 @@ div.container-fluid(ng-controller="proposalSectionController")
 			span 提案 &nbsp;
 			small.hidden-xs Proposal
 			div.btn-group.pull-right
-				button.btn.btn-default(popup-dialog,dialog-config="proposalEditorConfig",ng-click="showProposalEditor($event, getProposalModel())",on-confirm="onProposalSaved(action, data)")
+				button.btn.btn-default(ng-if="canEdit",popup-dialog,dialog-config="proposalEditorConfig",ng-click="showProposalEditor($event, getProposalModel())",on-confirm="onProposalSaved(action, data)")
 					i.fa.fa-edit.fa-fw &nbsp;
 					span 修改
-				button.btn.btn-default(popup-dialog,dialog-config="attachEditorConfig",ng-click="showAttachEditor($event, getAttachModel())",on-confirm="onAttachSaved(action, data)")
+				button.btn.btn-default(ng-if="canEdit",popup-dialog,dialog-config="attachEditorConfig",ng-click="showAttachEditor($event, getAttachModel())",on-confirm="onAttachSaved(action, data)")
 					i.fa.fa-paperclip.fa-fw &nbsp;
 					span 附件
-				button.btn.btn-default(popup-dialog,dialog-config="detailEditorConfig",ng-click="showDetailEditor($event, getDetailModel())",on-confirm="onDetailSaved(action, data)")
+				button.btn.btn-default(ng-if="canEdit",popup-dialog,dialog-config="detailEditorConfig",ng-click="showDetailEditor($event, getDetailModel())",on-confirm="onDetailSaved(action, data)")
 					i.fa.fa-list-alt.fa-fw &nbsp;
 					span 明细
 				button.btn.btn-default.dropdown-toggle(data-toggle="dropdown")

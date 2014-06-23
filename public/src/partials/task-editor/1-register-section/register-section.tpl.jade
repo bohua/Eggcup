@@ -7,6 +7,7 @@ div.container-fluid(ng-controller="registerSectionController")
 			small.hidden-xs Register
 			div.btn-group.pull-right
 				button.btn.btn-default(
+				ng-if="canEdit",
 				popup-dialog,
 				dialog-config="registerEditorConfig",
 				ng-click="showRegisterEditor($event, task_model)",

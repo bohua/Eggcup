@@ -38,15 +38,13 @@ angular.module('execute-section', ['execute-editor', 'execute-detail-editor'])
 				backdrop: 'static',
 				keyboard: false
 			},
-			template: '/src/partials/execute-editor/execute-detail-editor-view.tpl.html',
-			onShow: function () {
-
-			}
+			template: '/src/partials/execute-editor/execute-detail-editor-view.tpl.html'
 		};
 
 		$scope.showDetailEditor = function ($event, dataModel) {
+			var mode = $scope.canEdit ? 'edit' : 'readOnly';
 			dataModel = dataModel || [];
-			$($event.currentTarget).trigger('popup', ['edit', dataModel]);
+			$($event.currentTarget).trigger('popup', [mode, dataModel]);
 		};
 
 		$scope.getDetailModel = function () {
