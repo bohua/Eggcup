@@ -59,6 +59,10 @@ angular.module('task-editor', [
 	'TASK',
 	function ($location, $http, $rootScope, $scope, $timeout, $interval, $cookieStore, tagReferenceService, customerListService, employeeListService, taskStatusService, fileTypeService, taskService, permissionService, loginSessionService, task_model, TASK) {
 
+		if (task_model.code === "ERR_DB_GET_NO_TASK") {
+			$location.path('/');
+		}
+
 		var canRead = false,
 			canEdit = false;
 
@@ -76,7 +80,7 @@ angular.module('task-editor', [
 			}
 		}
 
-		if(task_model.status >= 800){
+		if (task_model.status >= 800) {
 			canEdit = false;
 		}
 
@@ -86,22 +90,22 @@ angular.module('task-editor', [
 			}
 
 			/*
-			$scope.count_down = 5;
+			 $scope.count_down = 5;
 
-			$interval(function () {
-				$scope.count_down -= 1;
-			}, 1000);
-			*/
+			 $interval(function () {
+			 $scope.count_down -= 1;
+			 }, 1000);
+			 */
 
 			$('#task-disable-mask').show();
 			$('#task-editor-form').css('-webkit-filter', 'blur(2px)');
 
 			/*
-			$timeout(function () {
-				$scope.back();
-			}, $scope.count_down * 1000);
-*/
-		}else{
+			 $timeout(function () {
+			 $scope.back();
+			 }, $scope.count_down * 1000);
+			 */
+		} else {
 			$('#task-disable-mask').hide();
 		}
 

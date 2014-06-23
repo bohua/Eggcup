@@ -9,9 +9,18 @@ module.exports = function (req, res) {
 		id: req.params.task_id
 	}).then(
 		function (success) {
-			res.statusCode = 200;
-			res.contentType('json');
-			res.json(success);
+			if(success){
+				res.statusCode = 200;
+				res.contentType('json');
+				res.json(success);
+			}else{
+				res.statusCode = 200;
+				res.contentType('json');
+				res.json({
+					code: 'ERR_DB_GET_NO_TASK',
+					reason: '无此任务'
+				});
+			}
 		},
 		function (failure) {
 			res.statusCode = 400;
