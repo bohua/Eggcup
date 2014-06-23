@@ -24,10 +24,5 @@ angular.module('reply-editor', ['toggle-button-model', 'pop-confirm', 'employee-
 				}
 			};
 
-			/**
-			 * Set default value for new
-			 */
-			if($scope.prop.mode === 'new'){
-
-			}
+			$scope.dialog_data_model.consult_context = $scope.dialog_data_model.consult_context || $scope.dialog_data_model.inherit_consult_context;
 		}]);

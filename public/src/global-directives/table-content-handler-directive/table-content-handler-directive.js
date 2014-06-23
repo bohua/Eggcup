@@ -35,7 +35,7 @@ angular.module('table-content-handler', ['file-upload-field'])
 					});
 
 					$scope.onCreate = function () {
-						$scope.$model.push(_.clone($scope.$option.defaultRowValue));
+						$scope.$model.push(_.cloneDeep($scope.$option.defaultRowValue));
 
 						$timeout(function () {
 							$table.editableTableWidget();

@@ -84,6 +84,19 @@ angular.module('popup-dialog', [])
 						close();
 						$scope.emitCancel();
 					};
+
+					$scope.sumField = function (field) {
+						var total = 0,
+							tmp;
+						$.map($scope.dialog_data_model, function (record) {
+							tmp = parseInt(record[field]);
+							tmp = _.isNumber(tmp) ? tmp : 0;
+
+							total += tmp;
+						})
+
+						return total;
+					}
 				}
 			}
 		};

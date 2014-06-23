@@ -16,6 +16,13 @@
 							th 到期日期
 							th 付款方式
 							th 附件
+					tfoot
+						tr
+							td
+							td {{sumField('expense')}}
+							td
+							td
+							td
 					tbody
 						tr(ng-repeat="sub_item in dialog_data_model track by $index")
 							td(edit-model="sub_item.pay_date", edit-type="date") {{sub_item.pay_date | date:'yyyy-MM-dd'}}

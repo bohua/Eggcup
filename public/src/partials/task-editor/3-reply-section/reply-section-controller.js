@@ -20,6 +20,7 @@ angular.module('reply-section', ['reply-editor', 'attach-editor'])
 			$scope.showReplyEditor = function ($event) {
 				$scope.task_model.replySheet.handling = $scope.task_model.handling;
 				$scope.task_model.replySheet.customer_contact = $scope.task_model.customer_contact;
+				$scope.task_model.replySheet.inherit_consult_context = $scope.task_model.register_content;
 				$($event.currentTarget).trigger('popup', ['edit', $scope.task_model.replySheet]);
 			};
 
