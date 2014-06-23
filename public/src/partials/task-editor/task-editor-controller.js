@@ -12,6 +12,8 @@ angular.module('task-editor', [
 	'task-status-service',
 	'task-resource',
 	'task-service',
+	'permission-service',
+	'login-session-service',
 
 	//No return value
 	'register-section',
@@ -43,6 +45,7 @@ angular.module('task-editor', [
 	'$rootScope',
 	'$scope',
 	'$timeout',
+	'$interval',
 	'$cookieStore',
 	'tagReferenceService',
 	'customerListService',
@@ -50,9 +53,58 @@ angular.module('task-editor', [
 	'taskStatusService',
 	'fileTypeService',
 	'taskService',
+	'permissionService',
+	'loginSessionService',
 	'task_model',
 	'TASK',
-	function ($location, $http, $rootScope, $scope, $timeout, $cookieStore, tagReferenceService, customerListService, employeeListService, taskStatusService, fileTypeService, taskService, task_model, TASK) {
+	function ($location, $http, $rootScope, $scope, $timeout, $interval, $cookieStore, tagReferenceService, customerListService, employeeListService, taskStatusService, fileTypeService, taskService, permissionService, loginSessionService, task_model, TASK) {
+
+		var canRead = false,
+			canEdit = false;
+
+		if (task_model.assignee.indexOf(loginSessionService.getLoginUser().name) !== -1) {
+			canRead = canEdit = true;
+		}
+		else if (permissionService.hasPermission('A001') ||
+			task_model.prop_internal && permissionService.hasPermission('A011') ||
+			task_model.prop_external && permissionService.hasPermission('A021')
+			) {
+
+			canRead = true;
+
+			if (permissionService.hasPermission('A002') ||
+				task_model.prop_internal && permissionService.hasPermission('A012') ||
+				task_model.prop_external && permissionService.hasPermission('A022')) {
+
+				canEdit = true;
+			}
+		}
+
+		if (!canRead) {
+			$scope.back = function () {
+				$location.path('/');
+			}
+
+			/*
+			$scope.count_down = 5;
+
+			$interval(function () {
+				$scope.count_down -= 1;
+			}, 1000);
+			*/
+
+			$('#task-disable-mask').css('opacity', 1);
+			$('#task-editor-form').css('-webkit-filter', 'blur(2px)');
+
+			/*
+			$timeout(function () {
+				$scope.back();
+			}, $scope.count_down * 1000);
+*/
+		}
+
+		$scope.canEdit = canEdit;
+
 		/**
 		 * Initialize task and sheets
 		 */

@@ -1,4 +1,12 @@
 //Created by Bli on 2014/5/5.
+#task-disable-mask.fade
+	div.panel.panel-default
+		h2
+			span 您没有浏览本任务的权限
+		button.btn.btn-default.btn-lg(ng-click="back()")
+			i.fa.fa-reply.fa-fw &nbsp;
+			span 返回任务板
+
 div.navbar.navbar-default.task-header
 	div.container-fluid
 		div.navbar-header
@@ -48,7 +56,7 @@ div.navbar.navbar-default.task-header
 						b.caret
 					ul.dropdown-menu
 						li
-							a.cursor-pointer(ng-click="deleteTask()")
+							a.cursor-pointer(ng-if="canEdit", ng-click="deleteTask()")
 								i.fa.fa-trash-o.fa-fw
 								span &nbsp;&nbsp;删除任务 TK-{{task_model.id}}
 #task-editor-form.container-fluid
