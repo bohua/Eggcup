@@ -7,6 +7,7 @@
 			small.hidden-xs Customers
 
 			button.btn.btn-default.pull-right(
+			ng-if="canEdit",
 			popup-dialog,
 			dialog-config="customerEditorConfig",
 			ng-click="newCustomer($event)",

@@ -14,27 +14,27 @@
 					div.form-group
 						label.col-sm-2.control-label 姓名:
 						div.col-sm-10
-							input.form-control(type="text", placeholder="姓名", ng-model="dialog_data_model.name", required)
+							input.form-control(type="text", placeholder="姓名", ng-model="dialog_data_model.name", required, ng-disabled="prop.mode=='readOnly'")
 					div.form-group
 						label.col-sm-2.control-label 职位:
 						div.col-sm-10
-							input.form-control(type="text", placeholder="职位", ng-model="dialog_data_model.role")
+							input.form-control(type="text", placeholder="职位", ng-model="dialog_data_model.role", ng-disabled="prop.mode=='readOnly'")
 					div.form-group
 						label.col-sm-2.control-label 电话:
 						div.col-sm-10
-							input.form-control(type="text", placeholder="电话", ng-model="dialog_data_model.tel")
+							input.form-control(type="text", placeholder="电话", ng-model="dialog_data_model.tel", ng-disabled="prop.mode=='readOnly'")
 					div.form-group
 						label.col-sm-2.control-label 手机:
 						div.col-sm-10
-							input.form-control(type="text", placeholder="手机", ng-model="dialog_data_model.mobile")
+							input.form-control(type="text", placeholder="手机", ng-model="dialog_data_model.mobile", ng-disabled="prop.mode=='readOnly'")
 					div.form-group
 						label.col-sm-2.control-label 邮箱:
 						div.col-sm-10
-							input.form-control(type="text", placeholder="邮箱", ng-model="dialog_data_model.email")
+							input.form-control(type="text", placeholder="邮箱", ng-model="dialog_data_model.email", ng-disabled="prop.mode=='readOnly'")
 					div.form-group
 						label.col-sm-2.control-label 备注:
 						div.col-sm-10
-							textarea.form-control(rows="3", placeholder="备注", ng-model="dialog_data_model.description")
+							textarea.form-control(rows="3", placeholder="备注", ng-model="dialog_data_model.description", ng-disabled="prop.mode=='readOnly'")
 
 				div.form-horizontal.col-sm-6
 					h4 登录帐户 &nbsp;
@@ -44,26 +44,26 @@
 						div.col-sm-9.col-sm-offset-3
 							div.checkbox
 								label
-									input(type="checkbox", ng-model="dialog_data_model.hasLogin")
+									input(type="checkbox", ng-model="dialog_data_model.hasLogin", ng-disabled="prop.mode=='readOnly'")
 									span 为人员建立登录帐户
 
 					#login-pass-panel(ng-show="dialog_data_model.hasLogin")
 						div.form-group
 							label.col-sm-3.control-label 登录名:
 							div.col-sm-9
-								input.form-control(type="text", placeholder="登录名", ng-model="dialog_data_model.login.username")
+								input.form-control(type="text", placeholder="登录名", ng-model="dialog_data_model.login.username", ng-disabled="prop.mode=='readOnly'")
 						div.form-group
 							label.col-sm-3.control-label 登录密码:
 							div.col-sm-9
-								input.form-control(type="password", placeholder="登录密码", ng-model="dialog_data_model.login.password")
+								input.form-control(type="password", placeholder="登录密码", ng-model="dialog_data_model.login.password", ng-disabled="prop.mode=='readOnly'")
 						div.form-group
 							label.col-sm-3.control-label 密码确认:
 							div.col-sm-9
-								input.form-control(type="password", placeholder="密码确认")
+								input.form-control(type="password", placeholder="密码确认", ng-model="passwordVerify", ng-disabled="prop.mode=='readOnly'")
 						div.form-group
 							label.col-sm-3.control-label 权限级别:
 							div.col-sm-9
-								select.form-control(ng-model="dialog_data_model.login.level")
+								select.form-control(ng-model="dialog_data_model.login.level", ng-disabled="prop.mode=='readOnly'")
 									option(value="external") 外部人员&nbsp;   (仅可阅读有限数据)
 									option(value="internal") 内部人员&nbsp;   (可阅读并操作有限读数据)
 									option(value="admin")    管理员&nbsp;&nbsp;&nbsp;&nbsp;     (可阅读并操作所有数据)
@@ -73,6 +73,6 @@
 				button.btn.btn-danger(ng-click="delete()", ng-if="prop.mode=='edit'") 删除
 			div.pull-left.alert-danger.panel(ng-show="prop.showErrorMessage")
 				i.fa.fa-fw.fa-warning
-				span 单据填写有误，请修正红色标记
-			button.btn.btn-default(type="button", ng-click="Cancel()") 取消
-			button.btn.btn-primary(type="button", ng-click="Confirm('update', true)") 保存
+				span {{errorMessage}}
+			button.btn.btn-default.cancel-button(type="button", ng-click="Cancel()") 取消
+			button.btn.btn-primary(type="button", ng-click="SubmitForm('update', true)", ng-disabled="prop.mode=='readOnly'") 保存

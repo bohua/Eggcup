@@ -1,13 +1,14 @@
 /**
  * Created by Bli on 2014/6/13.
  */
-angular.module('sign-in', ['login-session-service'])
+angular.module('sign-in', ['login-session-service', 'permission-service'])
 	.controller('signInController', [
 		'$scope',
 		'$rootScope',
 		'$timeout',
 		'loginSessionService',
-		function ($scope, $rootScope, $timeout, loginSessionService) {
+		'permissionService',
+		function ($scope, $rootScope, $timeout, loginSessionService, permissionService) {
 			$scope.loginFail = false;
 			$scope.username = '管理员';
 			$scope.password = '8888';
@@ -35,6 +36,8 @@ angular.module('sign-in', ['login-session-service'])
 					loginSessionService
 						.login($scope.username, $scope.password)
 						.then(function () {
+							permissionService.init();
+
 							$('#sign-in-panel').animate({
 								opacity: 0,
 								top: '-=300px'

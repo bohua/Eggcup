@@ -6,14 +6,15 @@ angular.module('customer-list', [
 	'customer-resource',
 	'tag-reference-service',
 	'customer-list-service',
-	'customer-editor'
+	'customer-editor',
+	'permission-service'
 ]).config(['$routeProvider', function ($routeProvider) {
 	$routeProvider.
 		when('/config/customer', {
 			templateUrl: '/src/partials/config/customer/customer-list-view.tpl.html',
 			controller: 'customerListController',
 			resolve: {
-				customerServiceDone : ['customerListService', function(customerListService){
+				customerServiceDone: ['customerListService', function (customerListService) {
 					return customerListService.ready();
 				}]
 			}
@@ -23,7 +24,8 @@ angular.module('customer-list', [
 	'CUSTOMER',
 	'tagReferenceService',
 	'customerListService',
-	function ($scope, CUSTOMER, tagReferenceService, customerListService) {
+	'permissionService',
+	function ($scope, CUSTOMER, tagReferenceService, customerListService, permissionService) {
 		/**
 		 * Scope initializations
 		 */
@@ -36,6 +38,8 @@ angular.module('customer-list', [
 		];
 
 		$scope.customer_list = customerListService.getCustomerList();
+
+		$scope.canEdit = permissionService.hasPermission('B002');
 
 		/**
 		 * popup window configuration
@@ -53,7 +57,7 @@ angular.module('customer-list', [
 		function saveCustomer(model) {
 			var customer = new CUSTOMER(model);
 			customer.$save(function () {
-				customerListService.reload().then(function(customerList){
+				customerListService.reload().then(function (customerList) {
 					$scope.customer_list = customerList;
 				});
 			});
@@ -61,7 +65,7 @@ angular.module('customer-list', [
 
 		function deleteCustomer(id) {
 			CUSTOMER.delete(id, function () {
-				customerListService.reload().then(function(customerList){
+				customerListService.reload().then(function (customerList) {
 					$scope.customer_list = customerList;
 				});
 			});
@@ -71,7 +75,8 @@ angular.module('customer-list', [
 		 * ng-click functions
 		 */
 		$scope.detail = function ($event, dataModel) {
-			$($event.target).parent('tr').trigger('popup', ['edit', dataModel]);
+			var mode = $scope.canEdit ? 'edit' : 'readOnly';
+			$($event.target).parent('tr').trigger('popup', [mode, dataModel]);
 		};
 
 		$scope.newCustomer = function ($event) {

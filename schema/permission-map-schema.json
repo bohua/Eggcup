@@ -1,0 +1,42 @@
+[
+	{
+		"p" : "浏览所有任务",
+		"code" : "A001",
+		"level": ["admin"]
+	},
+	{
+		"p" : "修改所有任务",
+		"code" : "A002",
+		"level": ["admin"]
+	},
+	{
+		"p" : "浏览内部任务",
+		"code" : "A011",
+		"level": ["admin", "internal"]
+	},
+	{
+		"p" : "修改内部任务",
+		"code" : "A012",
+		"level": ["admin", "internal"]
+	},
+	{
+		"p" : "浏览外部任务",
+		"code" : "A021",
+		"level": ["admin", "internal", "external"]
+	},
+	{
+		"p" : "修改外部任务",
+		"code" : "A022",
+		"level": ["admin", "internal"]
+	},
+	{
+		"p" : "浏览信息库",
+		"code" : "B001",
+		"level": ["admin", "internal"]
+	},
+	{
+		"p" : "修改信息库",
+		"code" : "B002",
+		"level": ["admin", "internal"]
+	}
+]

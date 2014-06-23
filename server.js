@@ -43,6 +43,7 @@ app.get('/', platform.loadIndex);
 app.get('/getLeftMenu', platform.getLeftMenu);
 app.get('/getLocationArray', platform.getLocationArray);
 app.post('/login', security.userLogin);
+app.get('/getPermission', platform.getPermission);
 
 /**
  * Customer Resource requests

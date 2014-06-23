@@ -7,13 +7,14 @@ angular.module('employee-list', [
 	'employee-editor',
 	'tag-reference-service',
 	'customer-list-service',
-	'employee-list-service'
+	'employee-list-service',
+	'permission-service'
 ]).config(['$routeProvider', function ($routeProvider) {
 	$routeProvider.
 		when('/config/employee', {
 			templateUrl: '/src/partials/config/employee/employee-list-view.tpl.html',
 			controller: 'employeeListController',
-			employeeServiceDone : ['employeeListService', function(employeeListService){
+			employeeServiceDone: ['employeeListService', function (employeeListService) {
 				return employeeListService.ready();
 			}]
 		});
@@ -23,7 +24,8 @@ angular.module('employee-list', [
 	'tagReferenceService',
 	'customerListService',
 	'employeeListService',
-	function ($scope, EMPLOYEE, tagReferenceService, customerListService, employeeListService) {
+	'permissionService',
+	function ($scope, EMPLOYEE, tagReferenceService, customerListService, employeeListService, permissionService) {
 		/**
 		 * Scope initializations
 		 */
@@ -32,7 +34,8 @@ angular.module('employee-list', [
 			'职位',
 			'电话',
 			'手机',
-			'邮箱'
+			'邮箱',
+			'备注'
 		];
 
 		$scope.employee_list = employeeListService.getEmployeeList();
@@ -43,6 +46,8 @@ angular.module('employee-list', [
 			},
 			template: '/src/partials/config/employee/employee-editor-view.tpl.html'
 		};
+
+		$scope.canEdit = permissionService.hasPermission('B002');
 
 		/**
 		 * Closure functions
@@ -64,8 +69,9 @@ angular.module('employee-list', [
 		 * ng-click functions
 		 */
 		$scope.detail = function ($event, dataModel) {
+			var mode = $scope.canEdit ? 'edit' : 'readOnly';
 			employeeListService.getEmployeeDetail(dataModel.id).then(function (employee) {
-				$($event.target).parent('tr').trigger('popup', ['edit', employee]);
+				$($event.target).parent('tr').trigger('popup', [mode, employee]);
 			});
 		};
 

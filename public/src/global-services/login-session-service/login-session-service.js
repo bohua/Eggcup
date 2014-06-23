@@ -46,6 +46,10 @@ angular.module('login-session-service', [])
 
 			logout: function(){
 				session = null;
+			},
+
+			getPermitLevel: function(){
+				return session.login_pass.level;
 			}
 		};
 
