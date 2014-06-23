@@ -10,6 +10,11 @@
 		"level": ["admin"]
 	},
 	{
+		"p" : "新建任务",
+		"code" : "A003",
+		"level": ["admin", "internal"]
+	},
+	{
 		"p" : "浏览内部任务",
 		"code" : "A011",
 		"level": ["admin", "internal"]
@@ -37,6 +42,6 @@
 	{
 		"p" : "修改信息库",
 		"code" : "B002",
-		"level": ["admin", "internal"]
+		"level": ["admin"]
 	}
 ]

@@ -2,7 +2,7 @@
  * Created by Bohua on 14-2-13.
  */
 
-angular.module('top-bar', ['login-session-service', 'task-service'])
+angular.module('top-bar', ['login-session-service', 'task-service', 'permission-service'])
 	.controller('topBarController', [
 		'$scope',
 		'$rootScope',
@@ -10,7 +10,8 @@ angular.module('top-bar', ['login-session-service', 'task-service'])
 		'$cookieStore',
 		'loginSessionService',
 		'taskService',
-		function ($scope, $rootScope, $location, $cookieStore, loginSessionService, taskService) {
+		'permissionService',
+		function ($scope, $rootScope, $location, $cookieStore, loginSessionService, taskService, permissionService) {
 			var navBlockMap = {
 				'/': '#nav-block-dashboard',
 				'/dashboard': '#nav-block-dashboard',
@@ -20,9 +21,9 @@ angular.module('top-bar', ['login-session-service', 'task-service'])
 			};
 
 			$scope.loginUser = loginSessionService.getLoginUser().name;
-			$scope.recentOpenedTasks = $cookieStore.get('recentOpenedTasks') || []
+			$scope.recentOpenedTasks = $cookieStore.get('recentOpenedTasks') || [];
 
-//			$scope.route = null;
+			$scope.canAdd = permissionService.hasPermission('A003');
 
 			function trackNavBlock(route) {
 
@@ -37,7 +38,7 @@ angular.module('top-bar', ['login-session-service', 'task-service'])
 			}
 
 			function unTrackNavBlocks() {
-				$('#topbar-collapse>ul>li').removeClass('active');
+				$("#topbar-collapse").find(">ul>li").removeClass('active');
 			}
 
 			$scope.$on('$routeChangeSuccess', function () {
@@ -48,14 +49,16 @@ angular.module('top-bar', ['login-session-service', 'task-service'])
 				$scope.recentOpenedTasks = $cookieStore.get('recentOpenedTasks') || [];
 			});
 
-			$scope.$on('event:removeFromCookie', function(event, entry_id){
-				_.remove($scope.recentOpenedTasks, function(task){ return task.id === entry_id});
+			$scope.$on('event:removeFromCookie', function (event, entry_id) {
+				_.remove($scope.recentOpenedTasks, function (task) {
+					return task.id === entry_id
+				});
 				$cookieStore.put('recentOpenedTasks', $scope.recentOpenedTasks);
 			});
 
 			$scope.signOff = function () {
 				loginSessionService.logout();
-			}
+			};
 
 			/**
 			 * Create new Task
@@ -74,7 +77,7 @@ angular.module('top-bar', ['login-session-service', 'task-service'])
 					assignee: loginSessionService.getLoginUser().name,
 					status: 100,
 					expenseSheet: {}
-				}
+				};
 				$($event.currentTarget).trigger('popup', ['new', defaultValue]);
 			};
 
@@ -83,13 +86,13 @@ angular.module('top-bar', ['login-session-service', 'task-service'])
 					$rootScope.$broadcast('event:reloadDashboard');
 					$location.path('/task-editor/edit/' + task.id);
 				});
-			}
+			};
 
 			/**
 			 * Setup up search field
 			 */
 			taskService.ready().then(function () {
-				$('#task-searcher input').typeahead({
+				$("#task-searcher").find("input").typeahead({
 						hint: true,
 						highlight: true,
 						minLength: 1

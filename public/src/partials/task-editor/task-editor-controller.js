@@ -71,10 +71,13 @@ angular.module('task-editor', [
 			) {
 
 			canRead = true;
-
 			if (permissionService.hasPermission('A002')) {
 				canEdit = true;
 			}
+		}
+
+		if(task_model.status >= 800){
+			canEdit = false;
 		}
 
 		if (!canRead) {
