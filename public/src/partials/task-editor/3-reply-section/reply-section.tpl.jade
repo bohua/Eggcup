@@ -22,6 +22,10 @@ div.container-fluid(ng-controller="replySectionController")
 						a
 							i.fa.fa-print.fa-fw &nbsp;
 							span 打印
+					li
+						a(ng-if="canEdit",popup-dialog,dialog-config="appointmentEditorConfig",ng-click="showAppointmentEditor($event, getAppointmentModel())",on-confirm="onAppointmentSaved(action, data)")
+							i.fa.fa-calendar-o.fa-fw &nbsp;
+							span 面谈预约
 
 	#reply-panel-group.panel-group.row
 		div.panel.panel-default(ng-show="task_model.handling == 0")

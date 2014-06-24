@@ -1,7 +1,7 @@
 /**
  * Created by Bli on 2014/6/16.
  */
-angular.module('reply-section', ['reply-editor', 'attach-editor'])
+angular.module('reply-section', ['reply-editor', 'attach-editor', 'appointment-editor'])
 	.controller('replySectionController', [
 		'$scope',
 		'$timeout',
@@ -50,10 +50,7 @@ angular.module('reply-section', ['reply-editor', 'attach-editor'])
 				dialogOption: {
 					backdrop: 'static'
 				},
-				template: '/src/partials/attach-editor/attach-editor-view.tpl.html',
-				onShow: function () {
-
-				}
+				template: '/src/partials/attach-editor/attach-editor-view.tpl.html'
 			};
 
 			$scope.showAttachEditor = function ($event, dataModel) {
@@ -75,6 +72,44 @@ angular.module('reply-section', ['reply-editor', 'attach-editor'])
 						id: $scope.task_model.replySheet.id,
 						attachment: data
 					}
+				}
+				$scope.$emit('event:saveTaskModel', $scope.task_model.id, o);
+			}
+
+			/**
+			 * Appointment Editor Initialization
+			 */
+			$scope.appointmentEditorConfig = {
+				dialogOption: {
+					backdrop: 'static'
+				},
+				template: '/src/partials/appointment-editor/appointment-editor-view.tpl.html'
+			};
+
+			$scope.showAppointmentEditor = function ($event, dataModel) {
+				$($event.currentTarget).trigger('popup', ['edit', dataModel]);
+			};
+
+			$scope.getAppointmentModel = function () {
+				return {
+					customer_name: $scope.task_model.customer_name,
+					consult_topic: $scope.task_model.register_topic,
+					appointment_date: new Date(),
+					appointment_address: $scope.task_model.replySheet.meeting_address,
+					appointment_desc: ''
+				};
+			}
+
+			$scope.onAppointmentSaved = function (action, data) {
+				$scope.task_model.appointmentSheet = $scope.task_model.appointmentSheet || {
+					subItem: []
+				};
+
+				$scope.task_model.appointmentSheet.subItem.push(data);
+
+				var o = {
+					id: $scope.task_model.id,
+					appointmentSheet: $scope.task_model.appointmentSheet
 				}
 				$scope.$emit('event:saveTaskModel', $scope.task_model.id, o);
 			}

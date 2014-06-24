@@ -24,7 +24,8 @@ angular.module('task-editor', [
 	'execute-section',
 	'account-section',
 	'summary-section',
-	'expense-detail-editor'
+	'expense-detail-editor',
+	'appointment-detail-editor'
 ]).config(['$routeProvider', function ($routeProvider) {
 	$routeProvider.
 		when('/task-editor/:action/:taskId', {
@@ -122,7 +123,8 @@ angular.module('task-editor', [
 			executeSheet: {type: 'execute'},
 			accountSheet: {type: 'account'},
 			summarySheet: {type: 'summary'},
-			expenseSheet: {type: 'expense'}
+			expenseSheet: {type: 'expense'},
+			appointmentSheet: {type: 'appointment'}
 		}
 
 		$scope.task_model = task_model;
@@ -461,10 +463,7 @@ angular.module('task-editor', [
 				backdrop: 'static',
 				keyboard: false
 			},
-			template: '/src/partials/expense-editor/expense-detail-editor-view.tpl.html',
-			onShow: function () {
-
-			}
+			template: '/src/partials/expense-editor/expense-detail-editor-view.tpl.html'
 		};
 
 		$scope.showExpenseEditor = function ($event, dataModel) {
@@ -484,6 +483,38 @@ angular.module('task-editor', [
 				id: $scope.task_model.id,
 				expenseSheet: {
 					id: $scope.task_model.expenseSheet.id,
+					subItem: data
+				}
+			}
+			$scope.$emit('event:saveTaskModel', $scope.task_model.id, o);
+		}
+
+		/**
+		 * Appointment Detail Editor Initialization
+		 */
+		$scope.appointmentDetailEditorConfig = {
+			dialogOption: {
+				backdrop: 'static',
+				keyboard: false
+			},
+			template: '/src/partials/appointment-editor/appointment-detail-editor-view.tpl.html'
+		};
+
+		$scope.showAppointmentDetailEditor = function ($event, dataModel) {
+			$($event.currentTarget).trigger('popup', ['readOnly', dataModel]);
+		};
+
+		$scope.getAppointmentDetailModel = function () {
+			return $scope.task_model.appointmentSheet.subItem;
+		}
+
+		$scope.onAppointmentDetailSaved = function (action, data) {
+			$scope.task_model.appointmentSheet.subItem = data;
+
+			var o = {
+				id: $scope.task_model.id,
+				appointmentSheet: {
+					id: $scope.task_model.appointmentSheet.id,
 					subItem: data
 				}
 			}

@@ -83,7 +83,7 @@ div.navbar.navbar-default.task-header
 						i.fa.fa-circle.task-progress-indicator
 						icon.fa.fa-rmb.fa-fw &nbsp;
 						span 费用
-					a.disabled.cursor-pointer()
+					a.finished.cursor-pointer(popup-dialog,dialog-config="appointmentDetailEditorConfig",ng-click="showAppointmentDetailEditor($event, getAppointmentDetailModel())", on-confirm="onAppointmentDetailSaved(action, data)")
 						i.fa.fa-circle.task-progress-indicator
 						icon.fa.fa-calendar-o.fa-fw &nbsp;
 						span 预约

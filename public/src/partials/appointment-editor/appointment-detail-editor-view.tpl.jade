@@ -1,0 +1,36 @@
+//Created by Bli on 2014/6/12.
+#appointment-detail-editor-form.modal-dialog.modal-lg(ng-controller="appointmentDetailEditorController")
+	div.modal-content
+		div.modal-header
+			button.close(type="button", data-dismiss="modal") &times;
+			h4.modal-title 预约单记录 &nbsp;
+				small Details Management
+		div.modal-body.container-fluid
+
+			div.table-responsive
+				table#appointment-detail-editor-table.table.table-bordered
+					thead
+						tr
+							th 面谈日期
+							th 面谈地址
+							th 备注事项
+							th 发送日期
+
+					tbody
+						tr(ng-repeat="sub_item in dialog_data_model track by $index")
+							td {{sub_item.appointment_date | date:'yyyy-MM-dd'}}
+							td {{sub_item.appointment_address}}
+							td {{sub_item.appointment_desc}}
+							td {{sub_item.appointment_sent| date:'yyyy-MM-dd'}}
+
+			table-content-handler(option="tableHandlerOption", model="dialog_data_model", table="#appointment-detail-editor-table")
+
+		div.modal-footer
+			div.pull-left.alert-danger.panel(ng-show="prop.showErrorMessage")
+				i.fa.fa-fw.fa-warning
+				span 单据填写有误，请修正红色标记
+			button.btn.btn-default(type="button", ng-click="Cancel()") 取消
+			button.btn.btn-primary(type="button", ng-click="Confirm('update', true)") 保存
+
+
+

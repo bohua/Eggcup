@@ -1,0 +1,44 @@
+//Created by Bli on 2014/6/12.
+#appointment-editor-form.modal-dialog.modal-lg(ng-controller="appointmentEditorController")
+	form.modal-content(ng-submit="Confirm('update', true)")
+		div.modal-header
+			button.close(type="button", data-dismiss="modal") &times;
+			h4.modal-title 面谈预约通知单 &nbsp;
+				small  Details
+		div.modal-body.container-fluid
+			div.row
+				div.form-group.col-sm-12
+					label.control-label 公司:
+					div
+						p.form-control-static {{dialog_data_model.customer_name}}
+			div.row
+				div.form-group.col-sm-12
+					label.control-label 咨询主题:
+					div
+						p.form-control-static {{dialog_data_model.consult_topic}}
+			div.row
+				div.form-group.col-sm-3
+					label.control-label 面谈日期:
+					div.input-group.date(date-field-model="dialog_data_model.appointment_date", required)
+						span.input-group-addon
+							i.fa.fa-calendar
+						input.form-control.datepicker(type="text")
+
+				div.form-group.col-sm-9
+					label.control-label 面谈地址:
+					div
+						input.form-control(type="text", placeholder="面谈地址", ng-model="dialog_data_model.appointment_address", required)
+
+			div.row
+				div.form-group.col-sm-12
+					label.control-label 备注事项:
+					div
+						textarea.form-control(rows="5", placeholder="备注事项", ng-model="dialog_data_model.appointment_desc")
+
+
+		div.modal-footer
+			button.btn.btn-primary(type="submit") 生成预约单
+			button.btn.btn-default(type="button", ng-click="Cancel()") 取消
+
+			div.pull-left
+				button.btn.btn-danger(ng-if="prop.mode=='edit'", pop-confirm="emptyBtnOptions") 清空

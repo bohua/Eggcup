@@ -9,7 +9,8 @@ var sheet_bo_map = {
 	execute: require(__dirname + "/../../server/tasks/execute_sheet_bo"),
 	account: require(__dirname + "/../../server/tasks/account_sheet_bo"),
 	summary: require(__dirname + "/../../server/tasks/summary_sheet_bo"),
-	expense: require(__dirname + "/../../server/tasks/expense_sheet_bo")
+	expense: require(__dirname + "/../../server/tasks/expense_sheet_bo"),
+	appointment: require(__dirname + "/../../server/tasks/appointment_sheet_bo")
 };
 
 module.exports = function (req, res) {

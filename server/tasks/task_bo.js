@@ -11,121 +11,9 @@ var execute_sheet_bo = require(__dirname + "/execute_sheet_bo");
 var account_sheet_bo = require(__dirname + "/account_sheet_bo");
 var summary_sheet_bo = require(__dirname + "/summary_sheet_bo");
 var expense_sheet_bo = require(__dirname + "/expense_sheet_bo");
+var appointment_sheet_bo = require(__dirname + "/appointment_sheet_bo");
 
-var TASK = new Bo('DATA_TASK', /*{
-	name: 'get',
-	method: function (where) {
-		var promise = this.orm.model(this._table).find({
-			include: [
-				{
-					model: this.orm.model('DATA_ARRANGE'),
-					as: 'arrangeSheet'
-				},
-				{
-					model: this.orm.model('DATA_REPLY'),
-					as: 'replySheet',
-					include: [
-						{
-							model: this.orm.model('REF_ATTACHMENT'),
-							as: 'attachment'
-						}
-					]
-				},
-				{
-					model: this.orm.model('DATA_PROPOSAL'),
-					as: 'proposalSheet',
-					include: [
-						{
-							model: this.orm.model('DATA_PROPOSAL_SUB'),
-							as: 'subItem',
-							include: [
-								{
-									model: this.orm.model('REF_ATTACHMENT'),
-									as: 'attachment'
-								}
-							]
-						},
-						{
-							model: this.orm.model('REF_ATTACHMENT'),
-							as: 'attachment'
-						}
-					]
-				},
-				{
-					model: this.orm.model('DATA_CONTRACT'),
-					as: 'contractSheet',
-					include: [
-						{
-							model: this.orm.model('DATA_CONTRACT_SUB'),
-							as: 'subItem',
-							include: [
-								{
-									model: this.orm.model('REF_ATTACHMENT'),
-									as: 'attachment'
-								}
-							]
-						}
-					]
-				},
-				{
-					model: this.orm.model('DATA_EXECUTE'),
-					as: 'executeSheet',
-					include: [
-						{
-							model: this.orm.model('DATA_EXECUTE_SUB'),
-							as: 'subItem',
-							include: [
-								{
-									model: this.orm.model('REF_ATTACHMENT'),
-									as: 'attachment'
-								}
-							]
-						}
-					]
-				},
-				{
-					model: this.orm.model('DATA_ACCOUNT'),
-					as: 'accountSheet',
-					include: [
-						{
-							model: this.orm.model('DATA_ACCOUNT_SUB'),
-							as: 'subItem',
-							include: [
-								{
-									model: this.orm.model('REF_ATTACHMENT'),
-									as: 'attachment'
-								}
-							]
-						}
-					]
-				},
-				{
-					model: this.orm.model('DATA_SUMMARY'),
-					as: 'summarySheet'
-				},
-				{
-					model: this.orm.model('DATA_EXPENSE'),
-					as: 'expenseSheet',
-					include: [
-						{
-							model: this.orm.model('DATA_EXPENSE_SUB'),
-							as: 'subItem',
-							include: [
-								{
-									model: this.orm.model('REF_ATTACHMENT'),
-									as: 'attachment'
-								}
-							]
-						}
-					]
-				}
-			],
-			where: where
-		})
-
-		return promise;
-	}
-}, */{
+var TASK = new Bo('DATA_TASK', {
 	name: 'save',
 	method: function (model) {
 		var promise = this._save(model);
@@ -208,6 +96,16 @@ var TASK = new Bo('DATA_TASK', /*{
 					expense_sheet_bo.save(model.expenseSheet)
 						.then(function (expense_sheet_instance) {
 							task_instance.setExpenseSheet(expense_sheet_instance);
+						},function(failure){
+							global.logger.error(failure);
+						});
+				}
+
+				//Save appointment sheet
+				if (model.appointmentSheet) {
+					appointment_sheet_bo.save(model.appointmentSheet)
+						.then(function (appointment_sheet_instance) {
+							task_instance.setAppointmentSheet(appointment_sheet_instance);
 						},function(failure){
 							global.logger.error(failure);
 						});

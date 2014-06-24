@@ -1,1 +1,19 @@
-<!--Created by Bli on 14-2-10.--><nav ng-controller="leftMenuController" class="sidebar light"><ul><li class="title"><div class="side-menu-header"><i class="icon-firefox"></i><t>功能列表</t></div><i id="left-menu-switcher" ng-click="toggleLeftMenu()" class="icon-lines"></i></li><li ng-repeat="menu in menus" menu-id="{{menu.id}}" class="sidebar-menu"><a ng-if="hasLink(menu.link)" href="{{menu.link}}" ng-class="{&quot;dropdown-toggle&quot;: hasSubMenu(menu)}"><i class="{{menu.icon}}"></i><t>{{menu.title}}</t></a><a ng-if="!hasLink(menu.link)" ng-class="{&quot;dropdown-toggle&quot;: hasSubMenu(menu)}"><i class="{{menu.icon}}"></i><t>{{menu.title}}</t></a><ul ng-if="hasSubMenu(menu)" data-role="dropdown" class="dropdown-menu"><li ng-repeat="submenu in menu.submenus" menu-id="{{submenu.id}}" class="sidebar-sub-menu"><a href="{{submenu.link}}"><i class="{{submenu.icon}}"></i><t>{{submenu.title}}</t></a></li></ul></li></ul></nav>
+
+<!--Created by Bli on 14-2-10.-->
+<nav ng-controller="leftMenuController" class="sidebar light">
+  <ul>
+    <li class="title">
+      <div class="side-menu-header"><i class="icon-firefox"></i>
+        <t>功能列表</t>
+      </div><i id="left-menu-switcher" ng-click="toggleLeftMenu()" class="icon-lines"></i>
+    </li>
+    <li ng-repeat="menu in menus" menu-id="{{menu.id}}" class="sidebar-menu"><a ng-if="hasLink(menu.link)" href="{{menu.link}}" ng-class="{&quot;dropdown-toggle&quot;: hasSubMenu(menu)}"><i class="{{menu.icon}}"></i>
+        <t>{{menu.title}}</t></a><a ng-if="!hasLink(menu.link)" ng-class="{&quot;dropdown-toggle&quot;: hasSubMenu(menu)}"><i class="{{menu.icon}}"></i>
+        <t>{{menu.title}}</t></a>
+      <ul ng-if="hasSubMenu(menu)" data-role="dropdown" class="dropdown-menu">
+        <li ng-repeat="submenu in menu.submenus" menu-id="{{submenu.id}}" class="sidebar-sub-menu"><a href="{{submenu.link}}"><i class="{{submenu.icon}}"></i>
+            <t>{{submenu.title}}</t></a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
