@@ -19,11 +19,11 @@ div.container-fluid(ng-controller="replySectionController")
 					span.caret
 				ul.dropdown-menu
 					li
-						a
+						a.cursor-pointer
 							i.fa.fa-print.fa-fw &nbsp;
 							span 打印
 					li
-						a(ng-if="canEdit",popup-dialog,dialog-config="appointmentEditorConfig",ng-click="showAppointmentEditor($event, getAppointmentModel())",on-confirm="onAppointmentSaved(action, data)")
+						a.cursor-pointer(ng-if="canEdit",popup-dialog,dialog-config="appointmentEditorConfig",ng-click="showAppointmentEditor($event, getAppointmentModel())",on-confirm="onAppointmentSaved(action, data)")
 							i.fa.fa-calendar-o.fa-fw &nbsp;
 							span 预约面谈
 

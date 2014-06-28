@@ -12,17 +12,17 @@ angular.module('appointment-editor', ['toggle-button-model', 'pop-confirm', 'log
 			$scope.dialog_data_model.sender = loginSessionService.getLoginUser().name;
 
 			$scope.dialog_data_model.appointment_sent = new Date();
-
-			$timeout(function () {
-				var $el = $('#timer');
-				$el.timepicker({
-					appendWidgetTo: $el.closest('#modal-stage'),
-					minuteStep: 1,
-					showInputs: false,
-					template: 'dropdown',
-					modalBackdrop: true
-				});
-			});
+//
+//			$timeout(function () {
+//				var $el = $('#timer');
+//				$el.timepicker({
+//					appendWidgetTo: $el.closest('#modal-stage'),
+//					minuteStep: 1,
+//					showInputs: false,
+//					template: 'dropdown',
+//					modalBackdrop: true
+//				});
+//			});
 
 			$scope.Generate = function () {
 				$scope.sheetDetail = $scope.dialog_data_model;

@@ -24,7 +24,10 @@ angular.module('date-field-model', [])
 					})
 					.datepicker('update', date)
 					.on('changeDate', function (e) {
-						eval("$scope." + $attributes.dateFieldModel + "= e.date");
+						date.setFullYear(e.date.getFullYear());
+						date.setMonth(e.date.getMonth());
+						date.setDate(e.date.getDate());
+						eval("$scope." + $attributes.dateFieldModel + "=date");
 						$scope.$apply();
 					})
 					.on('clear', function () {

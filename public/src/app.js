@@ -21,6 +21,7 @@ angular.module('app', [
 	'token-field',
 	'auto-complete-field',
 	'date-field-model',
+	'time-field-model',
 	'editable-table',
 	'table-content-handler'
 ]).controller('appController', [

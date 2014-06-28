@@ -36,16 +36,16 @@
 			div.row
 				div.form-group.col-sm-3
 					label.control-label 面谈日期:
-					div.input-group.date(date-field-model="dialog_data_model.appointment_date", required)
+					div.input-group.date(date-field-model="dialog_data_model.appointment_date")
 						span.input-group-addon
 							i.fa.fa-calendar
 						input.form-control.datepicker(type="text")
 				div.form-group.col-sm-3
 					label.control-label 面谈时间:
-					div.input-group.bootstrap-timepicker()
+					div.input-group.bootstrap-timepicker
 						span.input-group-addon
 							i.fa.fa-clock-o
-						input#timer.form-control.datepicker(type="text")
+						input.form-control.datepicker(type="text", time-field-model="dialog_data_model.appointment_date")
 			div.row
 				div.form-group.col-sm-12
 					label.control-label 面谈地址:
