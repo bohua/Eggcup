@@ -12,6 +12,7 @@ var account_sheet_bo = require(__dirname + "/account_sheet_bo");
 var summary_sheet_bo = require(__dirname + "/summary_sheet_bo");
 var expense_sheet_bo = require(__dirname + "/expense_sheet_bo");
 var appointment_sheet_bo = require(__dirname + "/appointment_sheet_bo");
+var reminder_sheet_bo = require(__dirname + "/reminder_sheet_bo");
 
 var TASK = new Bo('DATA_TASK', {
 	name: 'save',
@@ -106,6 +107,16 @@ var TASK = new Bo('DATA_TASK', {
 					appointment_sheet_bo.save(model.appointmentSheet)
 						.then(function (appointment_sheet_instance) {
 							task_instance.setAppointmentSheet(appointment_sheet_instance);
+						},function(failure){
+							global.logger.error(failure);
+						});
+				}
+
+				//Save reminder sheet
+				if (model.reminderSheet) {
+					reminder_sheet_bo.save(model.reminderSheet)
+						.then(function (reminder_sheet_instance) {
+							task_instance.setReminderSheet(reminder_sheet_instance);
 						},function(failure){
 							global.logger.error(failure);
 						});

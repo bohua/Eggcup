@@ -55,6 +55,7 @@ module.exports = function (sequelize, DataTypes) {
 					.hasOne(models.DATA_SUMMARY, {as:'summarySheet', foreignKey: 'task_id'})
 					.hasOne(models.DATA_EXPENSE, {as:'expenseSheet', foreignKey: 'task_id'})
 					.hasOne(models.DATA_APPOINTMENT, {as:'appointmentSheet', foreignKey: 'task_id'})
+					.hasOne(models.DATA_REMINDER, {as:'reminderSheet', foreignKey: 'task_id'})
 			}
 		}
 	});

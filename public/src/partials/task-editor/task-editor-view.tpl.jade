@@ -87,7 +87,7 @@ div.navbar.navbar-default.task-header
 						i.fa.fa-circle.task-progress-indicator
 						icon.fa.fa-calendar-o.fa-fw &nbsp;
 						span 面谈
-					a.disabled.cursor-pointer()
+					a.finished.cursor-pointer(popup-dialog,dialog-config="reminderDetailEditorConfig",ng-click="showReminderDetailEditor($event, getReminderDetailModel())", on-confirm="onReminderDetailSaved(action, data)")
 						i.fa.fa-circle.task-progress-indicator
 						icon.fa.fa-bullhorn.fa-fw &nbsp;
 						span 催款

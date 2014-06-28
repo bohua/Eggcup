@@ -1,8 +1,8 @@
 /**
  * Created by Bli on 2014/4/29.
  */
-angular.module('appointment-editor', ['toggle-button-model', 'pop-confirm', 'login-session-service'])
-	.controller('appointmentEditorController', [
+angular.module('reminder-editor', ['toggle-button-model', 'pop-confirm', 'login-session-service'])
+	.controller('reminderEditorController', [
 		'$scope',
 		'$timeout',
 		'loginSessionService',
@@ -11,7 +11,7 @@ angular.module('appointment-editor', ['toggle-button-model', 'pop-confirm', 'log
 
 			$scope.dialog_data_model.sender = loginSessionService.getLoginUser().name;
 
-			$scope.dialog_data_model.appointment_sent = new Date();
+			$scope.dialog_data_model.reminder_sent = new Date();
 
 			$scope.Generate = function () {
 				$scope.sheetDetail = $scope.dialog_data_model;
@@ -28,7 +28,7 @@ angular.module('appointment-editor', ['toggle-button-model', 'pop-confirm', 'log
 
 				client.on( "copy", function (event) {
 					var clipboard = event.clipboardData;
-					clipboard.setData( "text/html", $('#appointment-preview-table').html() );
+					clipboard.setData( "text/html", $('#reminder-preview-table').html() );
 
 					alert('已复制到剪贴板！');
 				});

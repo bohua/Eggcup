@@ -25,7 +25,8 @@ angular.module('task-editor', [
 	'account-section',
 	'summary-section',
 	'expense-detail-editor',
-	'appointment-detail-editor'
+	'appointment-detail-editor',
+	'reminder-detail-editor'
 ]).config(['$routeProvider', function ($routeProvider) {
 	$routeProvider.
 		when('/task-editor/:action/:taskId', {
@@ -88,7 +89,7 @@ angular.module('task-editor', [
 		if (!canRead) {
 			$scope.back = function () {
 				$location.path('/');
-			}
+			};
 
 			/*
 			 $scope.count_down = 5;
@@ -124,8 +125,9 @@ angular.module('task-editor', [
 			accountSheet: {type: 'account'},
 			summarySheet: {type: 'summary'},
 			expenseSheet: {type: 'expense'},
-			appointmentSheet: {type: 'appointment'}
-		}
+			appointmentSheet: {type: 'appointment'},
+			reminderSheet: {type: 'reminder'}
+		};
 
 		$scope.task_model = task_model;
 
@@ -242,16 +244,7 @@ angular.module('task-editor', [
 					icon: 'fa-database',
 					href: '#page_closed'
 				}
-			}
-
-			var utilList = {
-				expense: {
-					id: 'expense',
-					title: '费用',
-					icon: 'fa-rmb',
-					href: '#page_expense'
-				}
-			}
+			};
 
 			if (!scope.task_model.status) scope.task_model.status = 100;
 
@@ -312,7 +305,7 @@ angular.module('task-editor', [
 				});
 
 			}
-		}
+		};
 
 		$scope.closeToggle = function () {
 			$('li.dropdown.open').removeClass('open');
@@ -447,7 +440,7 @@ angular.module('task-editor', [
 
 			$scope.statusStack = taskStatusService.getPrecedence($scope.task_model.status);
 			renderProgressList($scope);
-		}
+		};
 
 		/**
 		 * Cross scope bindings
@@ -476,7 +469,7 @@ angular.module('task-editor', [
 
 		$scope.getExpenseModel = function () {
 			return $scope.task_model.expenseSheet.subItem;
-		}
+		};
 
 		$scope.onExpenseSaved = function (action, data) {
 			$scope.task_model.expenseSheet.subItem = data;
@@ -487,9 +480,9 @@ angular.module('task-editor', [
 					id: $scope.task_model.expenseSheet.id,
 					subItem: data
 				}
-			}
+			};
 			$scope.$emit('event:saveTaskModel', $scope.task_model.id, o);
-		}
+		};
 
 		/**
 		 * Appointment Detail Editor Initialization
@@ -508,7 +501,7 @@ angular.module('task-editor', [
 
 		$scope.getAppointmentDetailModel = function () {
 			return $scope.task_model.appointmentSheet.subItem;
-		}
+		};
 
 		$scope.onAppointmentDetailSaved = function (action, data) {
 			$scope.task_model.appointmentSheet.subItem = data;
@@ -519,7 +512,40 @@ angular.module('task-editor', [
 					id: $scope.task_model.appointmentSheet.id,
 					subItem: data
 				}
-			}
+			};
+			$scope.$emit('event:saveTaskModel', $scope.task_model.id, o);
+		}
+
+
+		/**
+		 * Reminder Detail Editor Initialization
+		 */
+		$scope.reminderDetailEditorConfig = {
+			dialogOption: {
+				backdrop: 'static',
+				keyboard: false
+			},
+			template: '/src/partials/reminder-editor/reminder-detail-editor-view.tpl.html'
+		};
+
+		$scope.showReminderDetailEditor = function ($event, dataModel) {
+			$($event.currentTarget).trigger('popup', ['readOnly', dataModel]);
+		};
+
+		$scope.getReminderDetailModel = function () {
+			return $scope.task_model.reminderSheet.subItem;
+		};
+
+		$scope.onReminderDetailSaved = function (action, data) {
+			$scope.task_model.reminderSheet.subItem = data;
+
+			var o = {
+				id: $scope.task_model.id,
+				reminderSheet: {
+					id: $scope.task_model.reminderSheet.id,
+					subItem: data
+				}
+			};
 			$scope.$emit('event:saveTaskModel', $scope.task_model.id, o);
 		}
 	}]);

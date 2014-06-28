@@ -13,19 +13,19 @@ div.container-fluid(ng-controller="replySectionController")
 				button.btn.btn-default(ng-if="canEdit",popup-dialog,dialog-config="attachEditorConfig",ng-click="showAttachEditor($event, getAttachModel())",on-confirm="onAttachSaved(action, data)")
 					i.fa.fa-paperclip.fa-fw &nbsp;
 					span 附件
+				button.btn.btn-default(ng-if="canEdit",popup-dialog,dialog-config="appointmentEditorConfig",ng-click="showAppointmentEditor($event, getAppointmentModel())",on-confirm="onAppointmentSaved(action, data)")
+					i.fa.fa-calendar-o.fa-fw &nbsp;
+					span 预约
 				button.btn.btn-default.dropdown-toggle(data-toggle="dropdown")
 					i.fa.fa-cog.fa-fw &nbsp;
 					span 功能
 					span.caret
+
 				ul.dropdown-menu
 					li
 						a.cursor-pointer
 							i.fa.fa-print.fa-fw &nbsp;
 							span 打印
-					li
-						a.cursor-pointer(ng-if="canEdit",popup-dialog,dialog-config="appointmentEditorConfig",ng-click="showAppointmentEditor($event, getAppointmentModel())",on-confirm="onAppointmentSaved(action, data)")
-							i.fa.fa-calendar-o.fa-fw &nbsp;
-							span 预约面谈
 
 	#reply-panel-group.panel-group.row
 		div.panel.panel-default(ng-show="task_model.handling == 0")

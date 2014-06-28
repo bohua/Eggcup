@@ -1,0 +1,35 @@
+//Created by Bli on 2014/6/12.
+#reminder-detail-editor-form.modal-dialog.modal-lg(ng-controller="reminderDetailEditorController")
+	#page0.modal-content.animate-show(ng-show="prop.paging==0")
+		div.modal-header
+			button.close(type="button", data-dismiss="modal") &times;
+			h4.modal-title 催款记录 &nbsp;
+				small Reminder Management
+		div.modal-body.container-fluid
+
+			div.table-responsive
+				table#reminder-detail-editor-table.table.table-bordered
+					thead
+						tr
+							th 付款期限
+							th 服务内容
+							th 付款金额
+							th 发送日期
+
+					tbody
+						tr(ng-repeat="sub_item in dialog_data_model track by $index")
+							td {{sub_item.reminder_due_date | date:'yyyy-MM-dd'}}
+							td {{sub_item.reminder_service}}
+							td {{sub_item.reminder_expense}}
+							td {{sub_item.reminder_sent| date:'yyyy-MM-dd'}}
+
+			table-content-handler(option="tableHandlerOption", model="dialog_data_model", table="#reminder-detail-editor-table")
+
+		div.modal-footer
+			button.btn.btn-default(type="button", ng-click="Cancel()") 取消
+			button.btn.btn-primary(type="button", ng-click="Confirm('update', true)") 保存
+
+	div#page1.modal-content.animate-show(ng-show="prop.paging==1")
+		include reminder-perview-view.tpl.jade
+
+

@@ -9,6 +9,9 @@ div.container-fluid(ng-controller="accountSectionController")
 				button.btn.btn-default(ng-if="canEdit",popup-dialog,dialog-config="detailEditorConfig",ng-click="showDetailEditor($event, getDetailModel())",on-confirm="onDetailSaved(action, data)")
 					i.fa.fa-list-alt.fa-fw &nbsp;
 					span 明细
+				button.btn.btn-default(ng-if="canEdit",popup-dialog,dialog-config="reminderEditorConfig",ng-click="showReminderEditor($event, getReminderModel())",on-confirm="onReminderSaved(action, data)")
+					i.fa.fa-bullhorn.fa-fw &nbsp;
+					span 催款
 				button.btn.btn-default.dropdown-toggle(data-toggle="dropdown")
 					i.fa.fa-cog.fa-fw &nbsp;
 					span 功能

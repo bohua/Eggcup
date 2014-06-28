@@ -1,0 +1,46 @@
+//Created by Bohua on 2014-06-28.
+div.modal-header
+	button.close(type="button", data-dismiss="modal") &times;
+	h4.modal-title 合同催款单 &nbsp;
+		small Contract Reminder
+div.modal-body.container-fluid
+
+	#reminder-preview-table.table-responsive
+		table(style="border: 1px solid #ddd; font-size: 12pt; font-family: 'Microsoft Yahei';").table.table-bordered
+			tbody
+				tr
+					td(style="border: 1px solid #ddd;padding: 8px;")
+						b 公司名称
+					td(style="border: 1px solid #ddd;padding: 8px;") {{sheetDetail.customer_name}}
+					td(style="border: 1px solid #ddd;padding: 8px;")
+						b 合同标的
+					td(style="border: 1px solid #ddd;padding: 8px;") {{sheetDetail.contract_topic}}
+				tr
+					td(style="border: 1px solid #ddd;padding: 8px;")
+						b 签定日期
+					td(style="border: 1px solid #ddd;padding: 8px;") {{sheetDetail.contract_date| date:'yyyy年MM月dd日'}}
+					td(style="border: 1px solid #ddd;padding: 8px;")
+						b 合同期限
+					td(style="border: 1px solid #ddd;padding: 8px;") {{sheetDetail.contract_due_date| date:'yyyy年MM月dd日'}}
+				tr
+					td(style="border: 1px solid #ddd;padding: 8px;")
+						b 服务内容
+					td(style="border: 1px solid #ddd;padding: 8px;", colspan="4") {{sheetDetail.reminder_service}}
+				tr
+					td(style="border: 1px solid #ddd;padding: 8px;")
+						b 付款金额
+					td(style="border: 1px solid #ddd;padding: 8px;") {{sheetDetail.reminder_expense}}
+					td(style="border: 1px solid #ddd;padding: 8px;")
+						b 付款期限
+					td(style="border: 1px solid #ddd;padding: 8px;") {{sheetDetail.reminder_due_date| date:'yyyy年MM月dd日'}}
+				tr
+					td(style="border: 1px solid #ddd;padding: 8px;", colspan="2")
+						p: b 通知人:
+						p {{sheetDetail.sender}}
+					td(style="border: 1px solid #ddd;padding: 8px;", colspan="2")
+						p: b 通知日期:
+						p {{sheetDetail.reminder_sent | date:'yyyy年MM月dd日'}}
+
+div.modal-footer
+	button.btn.btn-success.copy-button(type="button") 复制到剪贴板
+	button.btn.btn-default(type="button", ng-click="Back()") 返回

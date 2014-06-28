@@ -1,0 +1,54 @@
+//Created by Bli on 2014/6/12.
+#reminder-editor-form.modal-dialog.modal-lg(ng-controller="reminderEditorController")
+	form#page0.modal-content.animate-show(ng-submit="Confirm('update', true)", ng-show="prop.paging==0")
+		div.modal-header
+			button.close(type="button", data-dismiss="modal") &times;
+			h4.modal-title 面谈预约通知单 &nbsp;
+				small  Details
+		div.modal-body.container-fluid
+			div.row
+				div.form-group.col-sm-6
+					label.control-label 公司名称:
+					div
+						input.form-control(type="text", placeholder="公司名称", ng-model="dialog_data_model.customer_name", disabled)
+				div.form-group.col-sm-6
+					label.control-label 合同标的:
+					div
+						input.form-control(type="text", placeholder="合同标的", ng-model="dialog_data_model.contract_topic", disabled)
+			div.row
+				div.form-group.col-sm-3
+					label.control-label 签定日期:
+					div.input-group.date(date-field-model="dialog_data_model.contract_date")
+						span.input-group-addon
+							i.fa.fa-calendar
+						input.form-control.datepicker(type="text")
+				div.form-group.col-sm-3
+					label.control-label 合同期限:
+					div.input-group.date(date-field-model="dialog_data_model.contract_due_date")
+						span.input-group-addon
+							i.fa.fa-calendar
+						input.form-control.datepicker(type="text")
+
+			div.row
+				div.form-group.col-sm-3
+					label.control-label 服务内容:
+					div
+						input.form-control(type="text", placeholder="服务内容", ng-model="dialog_data_model.reminder_service", required)
+				div.form-group.col-sm-3
+					label.control-label 付款金额:
+					div
+						input.form-control(type="text", placeholder="服务内容", ng-model="dialog_data_model.reminder_expense", required)
+				div.form-group.col-sm-3
+					label.control-label 付款期限:
+					div.input-group.date(date-field-model="dialog_data_model.reminder_due_date")
+						span.input-group-addon
+							i.fa.fa-calendar
+						input.form-control.datepicker(type="text")
+
+		div.modal-footer
+			button.btn.btn-success(type="button", ng-click="Generate()") 预览
+			button.btn.btn-primary(type="submit") 保存
+			button.btn.btn-default(type="button", ng-click="Cancel()") 取消
+
+	div#page1.modal-content.animate-show(ng-show="prop.paging==1")
+		include reminder-perview-view.tpl.jade
