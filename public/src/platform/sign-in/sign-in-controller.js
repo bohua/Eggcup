@@ -10,8 +10,8 @@ angular.module('sign-in', ['login-session-service', 'permission-service'])
 		'permissionService',
 		function ($scope, $rootScope, $timeout, loginSessionService, permissionService) {
 			$scope.loginFail = false;
-			$scope.username = '管理员';
-			$scope.password = '8888';
+//			$scope.username = '管理员';
+//			$scope.password = '8888';
 
 			var loginButton = $('#sign-in-panel button[type="submit"] span');
 			var loadingButton = $('<span> 验证中... </span>');
