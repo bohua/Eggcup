@@ -16,12 +16,13 @@ module.exports = function (sequelize, DataTypes) {
 		/**
 		 * Redundant info
 		 */
-		customer_name:			{ type: DataTypes.STRING},
-		customer_contact:		{ type: DataTypes.STRING},
-		customer_tel:			{ type: DataTypes.STRING},
-		customer_address:		{ type: DataTypes.STRING},
-		customer_email:			{ type: DataTypes.STRING},
-		consult_topic:			{ type: DataTypes.STRING}
+		customer_name:			{ type: DataTypes.STRING },
+		customer_contact:		{ type: DataTypes.STRING },
+		customer_tel:			{ type: DataTypes.STRING },
+		customer_address:		{ type: DataTypes.STRING },
+		customer_email:			{ type: DataTypes.STRING },
+		consult_topic:			{ type: DataTypes.STRING },
+		sender:					{ type: DataTypes.STRING }
 	}, {
 		classMethods: {
 			associate: function (models) {

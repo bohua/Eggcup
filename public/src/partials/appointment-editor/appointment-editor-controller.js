@@ -9,7 +9,7 @@ angular.module('appointment-editor', ['toggle-button-model', 'pop-confirm', 'log
 		function ($scope, $timeout, loginSessionService) {
 			$scope.prop.paging = 0;
 
-			$scope.sender = loginSessionService.getLoginUser().name;
+			$scope.dialog_data_model.sender = loginSessionService.getLoginUser().name;
 
 			$scope.dialog_data_model.appointment_sent = new Date();
 
