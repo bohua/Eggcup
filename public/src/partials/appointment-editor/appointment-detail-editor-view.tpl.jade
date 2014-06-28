@@ -1,9 +1,9 @@
 //Created by Bli on 2014/6/12.
 #appointment-detail-editor-form.modal-dialog.modal-lg(ng-controller="appointmentDetailEditorController")
-	div.modal-content
+	#page0.modal-content.animate-show(ng-show="prop.paging==0")
 		div.modal-header
 			button.close(type="button", data-dismiss="modal") &times;
-			h4.modal-title 预约单记录 &nbsp;
+			h4.modal-title 面谈记录 &nbsp;
 				small Details Management
 		div.modal-body.container-fluid
 
@@ -32,5 +32,7 @@
 			button.btn.btn-default(type="button", ng-click="Cancel()") 取消
 			button.btn.btn-primary(type="button", ng-click="Confirm('update', true)") 保存
 
+	div#page1.modal-content.animate-show(ng-show="prop.paging==1")
+		include appointment-perview-view.tpl.jade
 
 

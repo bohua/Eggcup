@@ -22,6 +22,7 @@ html(lang="zh", ng-app='app')
 		link(rel='stylesheet', href='/css/bootstrap-tokenfield.min.css')
 		link(rel='stylesheet', href='/css/tokenfield-typeahead.min.css')
 		link(rel='stylesheet', href='/css/datepicker3.css')
+		link(rel='stylesheet', href='/css/bootstrap-timepicker.min.css')
 
 		link(rel='stylesheet', href='/css/client.css')
 
@@ -44,6 +45,7 @@ html(lang="zh", ng-app='app')
 		script(src='/lib/angular/angular-route.js')
 		script(src='/lib/angular/angular-resource.js')
 		script(src='/lib/angular/angular-sanitize.js')
+		//script(src='/lib/angular/angular-animate.js')
 		script(src='/lib/angular/angular-cookies.js')
 		script(src='/lib/angular/angular-locale_zh-cn.js')
 		//AngularJS plugins
@@ -66,8 +68,11 @@ html(lang="zh", ng-app='app')
 		script(src='/lib/bootstrap/bootstrap-tokenfield.min.js')
 		script(src='/lib/bootstrap/bootstrap-datepicker.js')
 		script(src='/lib/bootstrap/bootstrap-datepicker.zh-CN.js')
+		script(src='/lib/bootstrap/bootstrap-timepicker.min.js')
 		//Typeahead JS
 		script(src='/lib/typeaheadjs/typeahead.bundle.min.js')
+		//ZeroClipboard
+		script(src='/lib/zeroClipboard/ZeroClipboard.min.js')
 		//Load product code
 		- var jsFilesToAppend = jsFiles || [];
 			each jsFile in jsFilesToAppend

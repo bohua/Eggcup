@@ -18,11 +18,16 @@ angular.module('reply-editor', ['toggle-button-model', 'pop-confirm', 'employee-
 				}
 			};
 
+			var source = [];
+			if ($scope.dialog_data_model.customer_contact) {
+				source = [$scope.dialog_data_model.customer_contact];
+			}
 			$scope.customerListOptions = {
 				autocomplete: {
-					source: [$scope.dialog_data_model.customer_contact]
+					source: source
 				}
 			};
+
 
 			$scope.dialog_data_model.consult_context = $scope.dialog_data_model.consult_context || $scope.dialog_data_model.inherit_consult_context;
 		}]);

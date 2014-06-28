@@ -11,7 +11,17 @@ module.exports = function (sequelize, DataTypes) {
 		appointment_date:		{ type: DataTypes.DATE },
 		appointment_address:	{ type: DataTypes.STRING },
 		appointment_desc:		{ type: DataTypes.TEXT },
-		appointment_sent:		{ type: DataTypes.DATE }
+		appointment_sent:		{ type: DataTypes.DATE },
+
+		/**
+		 * Redundant info
+		 */
+		customer_name:			{ type: DataTypes.STRING},
+		customer_contact:		{ type: DataTypes.STRING},
+		customer_tel:			{ type: DataTypes.STRING},
+		customer_address:		{ type: DataTypes.STRING},
+		customer_email:			{ type: DataTypes.STRING},
+		consult_topic:			{ type: DataTypes.STRING}
 	}, {
 		classMethods: {
 			associate: function (models) {

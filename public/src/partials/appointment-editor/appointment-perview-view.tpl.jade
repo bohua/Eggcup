@@ -1,0 +1,41 @@
+//Created by Bohua on 2014-06-28.
+div.modal-header
+	button.close(type="button", data-dismiss="modal") &times;
+	h4.modal-title 咨询预约单 &nbsp;
+		small Consulting Appointment
+div.modal-body.container-fluid
+
+	#appointment-preview-table.table-responsive
+		table(style="border: 1px solid #ddd;").table.table-bordered
+			tbody
+				tr
+					td(style="border: 1px solid #ddd;padding: 8px;") 公司名称
+					td(style="border: 1px solid #ddd;padding: 8px;") {{sheetDetail.customer_name}}
+					td(style="border: 1px solid #ddd;padding: 8px;") 联系人
+					td(style="border: 1px solid #ddd;padding: 8px;") {{sheetDetail.customer_contact}}
+				tr
+					td(style="border: 1px solid #ddd;padding: 8px;") 联系电话
+					td(style="border: 1px solid #ddd;padding: 8px;") {{sheetDetail.customer_tel}}
+					td(style="border: 1px solid #ddd;padding: 8px;") 邮箱
+					td(style="border: 1px solid #ddd;padding: 8px;") {{sheetDetail.customer_email}}
+				tr
+					td(style="border: 1px solid #ddd;padding: 8px;") 地址
+					td(style="border: 1px solid #ddd;padding: 8px;") {{sheetDetail.customer_address}}
+					td(style="border: 1px solid #ddd;padding: 8px;") 预约面谈日期
+					td(style="border: 1px solid #ddd;padding: 8px;") {{sheetDetail.appointment_date | date:'yyyy年MM月dd日hh时mm分'}}
+				tr
+					td(style="border: 1px solid #ddd;padding: 8px;") 面谈地址
+					td(style="border: 1px solid #ddd;padding: 8px;")(colspan="3") {{sheetDetail.appointment_address}}
+				tr
+					td(style="border: 1px solid #ddd;padding: 8px;")(rowspan="2") 面谈人员
+					td(style="border: 1px solid #ddd;padding: 8px;")(colspan="3") JKH: {{}}
+				tr
+					td(style="border: 1px solid #ddd;padding: 8px;")(colspan="3") 客户: {{}}
+				tr
+					td(style="border: 1px solid #ddd;padding: 8px;")(colspan="4") {{sheetDetail.appointment_desc}}
+				tr
+					td(style="border: 1px solid #ddd;padding: 8px;")(colspan="4") 登记人: {{sender}}
+
+div.modal-footer
+	button.btn.btn-success.copy-button(type="button") 复制到剪贴板
+	button.btn.btn-default(type="button", ng-click="Back()") 返回

@@ -14,6 +14,16 @@ angular.module('table-content-handler', ['file-upload-field'])
 				post: function postLink($scope, $element, $attributes) {
 					var $table = $($element).parent().find($attributes.table);
 
+					$scope.getSelectedData = function(){
+						var selectedRow = $table.find('tbody tr.active');
+						if (selectedRow.length !== 0) {
+							var scope = angular.element(selectedRow).scope();
+							return $scope.$model[scope.$index];
+						}
+
+						return null;
+					};
+
 					function highlightRow($row) {
 						$row.effect('highlight', {color: '#428bca'}, 1500);
 					}
@@ -61,10 +71,9 @@ angular.module('table-content-handler', ['file-upload-field'])
 						highlightRow(selectedRow);
 					};
 
-					$scope.hasFileUploader = $scope.$option.hasFileUploader;
-					$scope.hasCreateBtn = $scope.$option.hasCreateBtn;
-					$scope.hasOpenBtn = $scope.$option.hasOpenBtn;
-					$scope.hasDeleteBtn = $scope.$option.hasDeleteBtn;
+					$.map($scope.$option, function(op, index){
+						$scope[index] = op;
+					})
 				}
 			}
 		};

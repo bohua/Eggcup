@@ -60,6 +60,10 @@ angular.module('top-bar', ['login-session-service', 'task-service', 'permission-
 				loginSessionService.logout();
 			};
 
+			$scope.showPersonalEditor = function(){
+
+			};
+
 			/**
 			 * Create new Task
 			 */
@@ -76,7 +80,9 @@ angular.module('top-bar', ['login-session-service', 'task-service', 'permission-
 					reporter: loginSessionService.getLoginUser().name,
 					assignee: loginSessionService.getLoginUser().name,
 					status: 100,
-					expenseSheet: {}
+					expenseSheet: {},
+					appointmentSheet: {},
+					reminderSheet: {}
 				};
 				$($event.currentTarget).trigger('popup', ['new', defaultValue]);
 			};

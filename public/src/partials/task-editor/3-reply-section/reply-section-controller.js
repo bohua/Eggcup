@@ -29,9 +29,9 @@ angular.module('reply-section', ['reply-editor', 'attach-editor', 'appointment-e
 				var o = {
 					id: $scope.task_model.id,
 					replySheet: data
-				}
+				};
 				$scope.$emit('event:saveTaskModel', $scope.task_model.id, o);
-			}
+			};
 
 
 			$scope.$on('newArrange', function () {
@@ -61,7 +61,7 @@ angular.module('reply-section', ['reply-editor', 'attach-editor', 'appointment-e
 
 			$scope.getAttachModel = function () {
 				return $scope.task_model.replySheet.attachment;
-			}
+			};
 
 			$scope.onAttachSaved = function (action, data) {
 				$scope.task_model.replySheet.attachment = data;
@@ -72,9 +72,9 @@ angular.module('reply-section', ['reply-editor', 'attach-editor', 'appointment-e
 						id: $scope.task_model.replySheet.id,
 						attachment: data
 					}
-				}
+				};
 				$scope.$emit('event:saveTaskModel', $scope.task_model.id, o);
-			}
+			};
 
 			/**
 			 * Appointment Editor Initialization
@@ -93,12 +93,16 @@ angular.module('reply-section', ['reply-editor', 'attach-editor', 'appointment-e
 			$scope.getAppointmentModel = function () {
 				return {
 					customer_name: $scope.task_model.customer_name,
+					customer_contact: $scope.task_model.customer_contact,
+					customer_tel: $scope.task_model.customer_tel,
+					customer_address: $scope.task_model.customer_address,
+					customer_email: $scope.task_model.customer_email,
 					consult_topic: $scope.task_model.register_topic,
 					appointment_date: new Date(),
 					appointment_address: $scope.task_model.replySheet.meeting_address,
 					appointment_desc: ''
 				};
-			}
+			};
 
 			$scope.onAppointmentSaved = function (action, data) {
 				$scope.task_model.appointmentSheet = $scope.task_model.appointmentSheet || {
@@ -110,7 +114,8 @@ angular.module('reply-section', ['reply-editor', 'attach-editor', 'appointment-e
 				var o = {
 					id: $scope.task_model.id,
 					appointmentSheet: $scope.task_model.appointmentSheet
-				}
+				};
 				$scope.$emit('event:saveTaskModel', $scope.task_model.id, o);
-			}
+			};
+
 		}]);

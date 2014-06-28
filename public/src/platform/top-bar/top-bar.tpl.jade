@@ -57,15 +57,15 @@ div.navbar.navbar-inverse.navbar-fixed-top(ng-controller="topBarController", rol
 						span {{loginUser}}
 						b.caret
 					ul.dropdown-menu
-						li: a(href="#")
+						li: a.cursor-pointer(ng-click="showPersonalEditor()")
 							i.fa.fa-info.fa-fw &nbsp;
 							span 帐户信息
-						li: a(href='#')
-							i.fa.fa-retweet.fa-fw &nbsp;
-							span 切换帐套
-						li: a(href='#')
-							i.fa.fa-lock.fa-fw &nbsp;
-							span 锁屏
+						//li: a(href='#')
+						//	i.fa.fa-retweet.fa-fw &nbsp;
+						//	span 切换帐套
+						//li: a(href='#')
+						//	i.fa.fa-lock.fa-fw &nbsp;
+						//	span 锁屏
 						li.divider
 						li: a.cursor-pointer(href="/", ng-click="signOff()")
 							i.fa.fa-sign-out.fa-fw &nbsp;

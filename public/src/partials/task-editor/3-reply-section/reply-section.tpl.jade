@@ -25,14 +25,14 @@ div.container-fluid(ng-controller="replySectionController")
 					li
 						a(ng-if="canEdit",popup-dialog,dialog-config="appointmentEditorConfig",ng-click="showAppointmentEditor($event, getAppointmentModel())",on-confirm="onAppointmentSaved(action, data)")
 							i.fa.fa-calendar-o.fa-fw &nbsp;
-							span 面谈预约
+							span 预约面谈
 
 	#reply-panel-group.panel-group.row
 		div.panel.panel-default(ng-show="task_model.handling == 0")
 			div.panel-heading.cursor-pointer
-				h4.no-margin(data-toggle="collapse", href="#reply-info-panel-0") 回复解答 &nbsp;
+				h4.no-margin(data-toggle="collapse", href="#reply-info-panel-0-reply") 回复解答 &nbsp;
 					small.hidden-xs Reply
-			#reply-info-panel-0.panel-collapse.collapse.in
+			#reply-info-panel-0-reply.panel-collapse.collapse.in
 				div.flex-container.panel-body
 					div.flex-box
 						label 解答日期:
@@ -56,6 +56,21 @@ div.container-fluid(ng-controller="replySectionController")
 					div.flex-box
 						label 翻译人:
 						span {{task_model.replySheet.translate_person}}
+
+			div.panel-heading.cursor-pointer
+				h4.no-margin(data-toggle="collapse", href="#reply-info-panel-0-f2f") 回复面谈 &nbsp;
+					small.hidden-xs Appointment
+			#reply-info-panel-0-f2f.panel-collapse.collapse.in
+				div.flex-container.panel-body
+					div.flex-box
+						label 面谈地址:
+						span {{task_model.replySheet.meeting_address}}
+					div.flex-box
+						label 我方人员:
+						span {{task_model.replySheet.meeting_people_A}}
+					div.flex-box
+						label 客户人员:
+						span {{task_model.replySheet.meeting_people_B}}
 
 		div.panel.panel-default(ng-show="task_model.handling == 1")
 			div.panel-heading.cursor-pointer

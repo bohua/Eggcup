@@ -3,7 +3,7 @@ div.pull-right.control-buttons.btn-group
 	button.btn.btn-default(ng-if="hasCreateBtn", ng-click="onCreate()")
 		i.fa.fa-plus-square-o.fa-fw &nbsp;
 		span 新增
-	button.btn.btn-default(ng-if="hasOpenBtn", ng-click="onActivate()", ng-disabled="!hasSelection()")
+	button.btn.btn-default(ng-if="hasOpenBtn", ng-click="onActivate(this)", ng-disabled="!hasSelection()")
 		i.fa.fa-folder-open.fa-fw &nbsp;
 		span 打开
 	button.btn.btn-danger(ng-if="hasDeleteBtn", ng-click="onDelete()", ng-disabled="!hasSelection()" )

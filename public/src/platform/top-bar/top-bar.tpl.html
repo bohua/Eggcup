@@ -26,9 +26,13 @@
         </li>
         <li id="nav-block-user" class="dropdown"><a data-toggle="dropdown" class="dropdown-toggle cursor-pointer"><i class="fa fa-user fa-fw">&nbsp;</i><span>{{loginUser}}</span><b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li><a href="#"><i class="fa fa-info fa-fw">&nbsp;</i><span>帐户信息</span></a></li>
-            <li><a href="#"><i class="fa fa-retweet fa-fw">&nbsp;</i><span>切换帐套</span></a></li>
-            <li><a href="#"><i class="fa fa-lock fa-fw">&nbsp;</i><span>锁屏</span></a></li>
+            <li><a ng-click="showPersonalEditor()" class="cursor-pointer"><i class="fa fa-info fa-fw">&nbsp;</i><span>帐户信息</span></a></li>
+            <!--li: a(href='#')-->
+            <!--	i.fa.fa-retweet.fa-fw &nbsp;-->
+            <!--	span 切换帐套-->
+            <!--li: a(href='#')-->
+            <!--	i.fa.fa-lock.fa-fw &nbsp;-->
+            <!--	span 锁屏-->
             <li class="divider"></li>
             <li><a href="/" ng-click="signOff()" class="cursor-pointer"><i class="fa fa-sign-out fa-fw">&nbsp;</i><span>登出系统</span></a></li>
           </ul>

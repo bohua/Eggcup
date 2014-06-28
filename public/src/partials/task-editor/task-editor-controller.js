@@ -195,7 +195,7 @@ angular.module('task-editor', [
 				},
 				reply_b: {
 					id: 'reply_b',
-					title: '面谈',
+					title: '解答',
 					code: 400,
 					icon: 'fa-comments-o',
 					href: '#page_reply'
@@ -355,6 +355,7 @@ angular.module('task-editor', [
 				{
 					$scope.task_model.handling = 0;
 					$scope.task_model.replySheet = $scope.task_model.replySheet || {};
+					//$scope.task_model.replySheet.consult_context = $scope.task_model.register_content;
 
 					TASK.save({task_id: $scope.task_model.id}, {
 						id: $scope.task_model.id,
@@ -372,6 +373,7 @@ angular.module('task-editor', [
 				{
 					$scope.task_model.handling = 1;
 					$scope.task_model.replySheet = $scope.task_model.replySheet || {};
+					//$scope.task_model.replySheet.consult_context = $scope.task_model.register_content;
 
 					TASK.save({task_id: $scope.task_model.id}, {
 						id: $scope.task_model.id,
