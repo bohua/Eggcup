@@ -1,0 +1,33 @@
+#personal-settings-form.modal-dialog(ng-controller="personalSettingsController")
+	div.modal-content.grid
+		div.modal-header
+			button.close(type="button", data-dismiss="modal") &times;
+			h4.modal-title 登录帐户 &nbsp;
+				small My Login Settings
+		div.modal-body.container-fluid
+			div.row
+				div.form-horizontal
+					#login-pass-panel
+						div.form-group
+							label.col-sm-3.control-label 登录名:
+							div.col-sm-8
+								input.form-control(type="text", placeholder="登录名", ng-model="dialog_data_model.login.username", ng-disabled="prop.mode=='readOnly'", required)
+						div.form-group
+							label.col-sm-3.control-label 登录密码:
+							div.col-sm-8
+								input.form-control(type="password", placeholder="登录密码", ng-model="dialog_data_model.login.password", ng-disabled="prop.mode=='readOnly'", required)
+						div.form-group
+							label.col-sm-3.control-label 密码确认:
+							div.col-sm-8
+								input.form-control(type="password", placeholder="密码确认", ng-model="passwordVerify", ng-disabled="prop.mode=='readOnly'", required)
+						div.form-group
+							label.col-sm-3.control-label 权限级别:
+							div.col-sm-8
+								p.form-control-static {{translateLevel(dialog_data_model.login.level)}}
+
+		div.modal-footer
+			div.pull-left.alert-danger.panel(ng-show="prop.showErrorMessage")
+				i.fa.fa-fw.fa-warning
+				span {{errorMessage}}
+			button.btn.btn-default.cancel-button(type="button", ng-click="Cancel()") 取消
+			button.btn.btn-primary(type="button", ng-click="SubmitForm('update', true)", ng-disabled="prop.mode=='readOnly'") 保存

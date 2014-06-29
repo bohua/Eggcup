@@ -57,9 +57,14 @@ div.navbar.navbar-inverse.navbar-fixed-top(ng-controller="topBarController", rol
 						span {{loginUser}}
 						b.caret
 					ul.dropdown-menu
-						li: a.cursor-pointer(ng-click="showPersonalEditor()")
+						li: a.cursor-pointer(
+						popup-dialog,
+						dialog-config="personalSettingsConfig",
+						ng-click="showPersonalSettings($event)",
+						on-confirm="onPersonalSettingsSaved(action, data)"
+						)
 							i.fa.fa-info.fa-fw &nbsp;
-							span 帐户信息
+							span 修改登录信息
 						//li: a(href='#')
 						//	i.fa.fa-retweet.fa-fw &nbsp;
 						//	span 切换帐套

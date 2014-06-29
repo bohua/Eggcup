@@ -50,6 +50,10 @@ angular.module('login-session-service', [])
 
 			getPermitLevel: function(){
 				return session.login_pass.level;
+			},
+
+			getLoginPass: function(){
+				return session.login_pass;
 			}
 		};
 

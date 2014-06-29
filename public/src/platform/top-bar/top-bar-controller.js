@@ -2,7 +2,7 @@
  * Created by Bohua on 14-2-13.
  */
 
-angular.module('top-bar', ['login-session-service', 'task-service', 'permission-service'])
+angular.module('top-bar', ['login-session-service', 'task-service', 'permission-service', 'personal-settings', 'employee-list-service'])
 	.controller('topBarController', [
 		'$scope',
 		'$rootScope',
@@ -11,7 +11,8 @@ angular.module('top-bar', ['login-session-service', 'task-service', 'permission-
 		'loginSessionService',
 		'taskService',
 		'permissionService',
-		function ($scope, $rootScope, $location, $cookieStore, loginSessionService, taskService, permissionService) {
+		'employeeListService',
+		function ($scope, $rootScope, $location, $cookieStore, loginSessionService, taskService, permissionService, employeeListService) {
 			var navBlockMap = {
 				'/': '#nav-block-dashboard',
 				'/dashboard': '#nav-block-dashboard',
@@ -57,10 +58,11 @@ angular.module('top-bar', ['login-session-service', 'task-service', 'permission-
 			});
 
 			$scope.signOff = function () {
-				loginSessionService.logout();
+
+				window.location.assign(window.location.origin);
 			};
 
-			$scope.showPersonalEditor = function(){
+			$scope.showPersonalEditor = function () {
 
 			};
 
@@ -115,4 +117,30 @@ angular.module('top-bar', ['login-session-service', 'task-service', 'permission-
 						$scope.$apply();
 					});
 			});
+
+			/**
+			 * Setup personal settings dialog
+			 */
+			$scope.personalSettingsConfig = {
+				dialogOption: {
+					backdrop: 'static'
+				},
+				template: '/src/partials/personal-settings/personal-settings-view.tpl.html'
+			};
+
+			$scope.showPersonalSettings = function ($event) {
+				var defaultValue = {
+					login: loginSessionService.getLoginPass()
+				};
+				$($event.currentTarget).trigger('popup', ['new', defaultValue]);
+			};
+
+			$scope.onPersonalSettingsSaved = function (action, data) {
+				var o = {
+					id: loginSessionService.getLoginUser().id,
+					login: data.login
+				}
+
+				employeeListService.saveEmployee(o);
+			};
 		}]);

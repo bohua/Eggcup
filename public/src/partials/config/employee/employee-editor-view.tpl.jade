@@ -70,7 +70,7 @@
 
 		div.modal-footer
 			div.pull-left
-				button.btn.btn-danger(ng-click="delete()", ng-if="prop.mode=='edit'") 删除
+				button.btn.btn-danger(ng-click="deleteEmployee()", ng-if="prop.mode=='edit'") 删除
 			div.pull-left.alert-danger.panel(ng-show="prop.showErrorMessage")
 				i.fa.fa-fw.fa-warning
 				span {{errorMessage}}

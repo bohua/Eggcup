@@ -94,7 +94,7 @@
     </div>
     <div class="modal-footer">
       <div class="pull-left">
-        <button ng-click="delete()" ng-if="prop.mode=='edit'" class="btn btn-danger">删除</button>
+        <button ng-click="deleteEmployee()" ng-if="prop.mode=='edit'" class="btn btn-danger">删除</button>
       </div>
       <div ng-show="prop.showErrorMessage" class="pull-left alert-danger panel"><i class="fa fa-fw fa-warning"></i><span>{{errorMessage}}</span></div>
       <button type="button" ng-click="Cancel()" class="btn btn-default cancel-button">取消</button>

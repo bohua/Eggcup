@@ -13,13 +13,14 @@ angular.module('time-field-model', [])
 
 					if (model) {
 						date = new Date(model);
-						time = (date.getHours() + 1) + ':00';
 						date.setHours(date.getHours() + 1);
 						date.setMinutes(0);
 						eval("$scope." + $attributes.timeFieldModel + "=date");
 					} else {
-						model = {};
+						date = new Date();
 					}
+
+					time = (date.getHours() + 1) + ':00';
 
 					$timeout(function () {
 						$($element)
