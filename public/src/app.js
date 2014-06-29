@@ -17,6 +17,7 @@ angular.module('app', [
 	'employee-list',
 	'dashboard',
 	'task-editor',
+	'queryer',
 	'duScroll',
 	'token-field',
 	'auto-complete-field',
