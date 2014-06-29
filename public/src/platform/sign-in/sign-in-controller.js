@@ -10,13 +10,14 @@ angular.module('sign-in', ['login-session-service', 'permission-service'])
 		'permissionService',
 		function ($scope, $rootScope, $timeout, loginSessionService, permissionService) {
 			$scope.loginFail = false;
+
+			/*
 			$scope.username = '管理员';
 			$scope.password = '8888';
-
 			$timeout(function(){
-				$scope.signin();
-			},500);
-
+			$scope.signin();
+			 },500);
+			 */
 
 			var loginButton = $('#sign-in-panel button[type="submit"] span');
 			var loadingButton = $('<span> 验证中... </span>');
@@ -25,7 +26,7 @@ angular.module('sign-in', ['login-session-service', 'permission-service'])
 
 			var logoImg = new Image();
 			logoImg.src = '/images/logo.png';
-			logoImg.onload = function(){
+			logoImg.onload = function () {
 				$('#sign-in-panel').animate({
 					opacity: 1
 				}, 1000);
@@ -37,7 +38,7 @@ angular.module('sign-in', ['login-session-service', 'permission-service'])
 				loginButton.replaceWith(loadingButton);
 				loginIcon.replaceWith(loadingIcon);
 
-				$timeout(function(){
+				$timeout(function () {
 					loginSessionService
 						.login($scope.username, $scope.password)
 						.then(function () {

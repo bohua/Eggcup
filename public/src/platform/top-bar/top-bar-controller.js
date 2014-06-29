@@ -58,7 +58,6 @@ angular.module('top-bar', ['login-session-service', 'task-service', 'permission-
 			});
 
 			$scope.signOff = function () {
-
 				window.location.assign(window.location.origin);
 			};
 
