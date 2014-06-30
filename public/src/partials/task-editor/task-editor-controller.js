@@ -24,6 +24,7 @@ angular.module('task-editor', [
 	'execute-section',
 	'account-section',
 	'summary-section',
+	'final-section',
 	'expense-detail-editor',
 	'appointment-detail-editor',
 	'reminder-detail-editor'
@@ -237,12 +238,12 @@ angular.module('task-editor', [
 					icon: 'fa-suitcase',
 					href: '#page_summary'
 				},
-				closed: {
-					id: 'closed',
+				final: {
+					id: 'final',
 					code: 800,
 					title: '结案',
 					icon: 'fa-database',
-					href: '#page_closed'
+					href: '#page_final'
 				}
 			};
 
@@ -260,7 +261,7 @@ angular.module('task-editor', [
 					progressList['arrange'],
 					progressList['reply_a'],
 					progressList['summary'],
-					progressList['closed']
+					progressList['final']
 				];
 			} else {
 				scope.progressList = [
@@ -272,7 +273,7 @@ angular.module('task-editor', [
 					progressList['execute'],
 					progressList['account'],
 					progressList['summary'],
-					progressList['closed']
+					progressList['final']
 				];
 			}
 

@@ -1,0 +1,113 @@
+//Created by Bohua on 2014-05-29.
+div.container-fluid(ng-controller="finalSectionController")
+	div.page-header.row
+		h2
+			i.fa.fa-database.fa-fw &nbsp;
+			span 结案 &nbsp;
+			small.hidden-xs Finalize
+			div.btn-group.pull-right
+				button.btn.btn-default.dropdown-toggle(data-toggle="dropdown")
+					i.fa.fa-cog.fa-fw &nbsp;
+					span 功能
+					span.caret
+				ul.dropdown-menu
+					li
+						a.cursor-pointer.copy-button
+							i.fa.fa-copy.fa-fw &nbsp;
+							span 复制到剪贴板
+					li
+						a.cursor-pointer
+							i.fa.fa-print.fa-fw &nbsp;
+							span 打印
+
+	#final-panel-group.panel-group.row
+		div.panel.panel-default
+			div.panel-heading.cursor-pointer
+				h4.no-margin(data-toggle="collapse", href="#final-report-panel") 结案报告 &nbsp;
+					small.hidden-xs Finalizing Report
+			#final-report-panel.panel-collapse.collapse.in
+				#final-report-table.panel-body
+					table.table-bordered(style="border: 1px solid #ddd; font-size: 12pt; font-family: 'Microsoft Yahei'; width: 100%;")
+						tr
+							td(colspan="10", rowspan="2", style="border: 1px solid #ddd;padding: 8px; text-align:center;")
+								h1(ng-if="task_model.handling==0") 回复解答报告
+								h1(ng-if="task_model.handling==1") 项目汇总报告
+							td(nowrap, style="border: 1px solid #ddd;padding: 8px;"): b 任务号:
+							td(nowrap, style="border: 1px solid #ddd;padding: 8px;") TK-{{task_model.id}}
+						tr
+							td(nowrap, style="border: 1px solid #ddd;padding: 8px;"): b 报告人:
+							td(nowrap, style="border: 1px solid #ddd;padding: 8px;") {{task_model.reporter}}
+						tr
+							td(nowrap, style="border: 1px solid #ddd;padding: 8px;"): b 公司名称:
+							td(colspan="4",style="border: 1px solid #ddd;padding: 8px;") {{task_model.customer_name}}
+							td(nowrap, style="border: 1px solid #ddd;padding: 8px;"): b 咨询主题:
+							td(colspan="4",style="border: 1px solid #ddd;padding: 8px;") {{task_model.slogan}}
+							td(nowrap, style="border: 1px solid #ddd;padding: 8px;"): b 立案日期:
+							td(nowrap, style="border: 1px solid #ddd;padding: 8px;") {{task_model.report_date | date:'yyyy年MM月dd日'}}
+						tr
+							td(nowrap, style="border: 1px solid #ddd;padding: 8px;"): b 邮箱:
+							td(colspan="3",style="border: 1px solid #ddd;padding: 8px;") {{task_model.customer_email}}
+							td(nowrap, style="border: 1px solid #ddd;padding: 8px;"): b 地址:
+							td(colspan="4",style="border: 1px solid #ddd;padding: 8px;") {{task_model.customer_address}}
+							td(nowrap, style="border: 1px solid #ddd;padding: 8px;"): b 联系人:
+							td(colspan="2",style="border: 1px solid #ddd;padding: 8px;") {{task_model.customer_contact}}
+
+						//******************* 回复解答 *************************
+						tr(ng-if="task_model.handling==0")
+							td(nowrap, style="border: 1px solid #ddd;padding: 8px;"): b 咨询人:
+							td(colspan="2",style="border: 1px solid #ddd;padding: 8px;") {{task_model.replySheet.consult_person}}
+							td(nowrap, style="border: 1px solid #ddd;padding: 8px;"): b 答复人:
+							td(colspan="2",style="border: 1px solid #ddd;padding: 8px;") {{task_model.replySheet.reply_person}}
+							td(nowrap, style="border: 1px solid #ddd;padding: 8px;"): b 翻译人:
+							td(colspan="2",style="border: 1px solid #ddd;padding: 8px;") {{task_model.replySheet.translate_person}}
+							td(nowrap, style="border: 1px solid #ddd;padding: 8px;"): b 解答方式:
+							td(colspan="2",style="border: 1px solid #ddd;padding: 8px;")
+								span(style="margin-right:10px;",ng-show="task_model.replySheet.reply_withEmail") 电子邮件,
+								span(style="margin-right:10px;",ng-show="task_model.replySheet.reply_withTel") 电话,
+								span(style="margin-right:10px;",ng-show="task_model.replySheet.reply_withF2F") 面谈,
+								span(style="margin-right:10px;",ng-show="task_model.replySheet.reply_withFax") 传真
+						tr(ng-if="task_model.handling==0")
+							td(nowrap, style="border: 1px solid #ddd;padding: 8px;"): b 面谈地址:
+							td(colspan="5",style="border: 1px solid #ddd;padding: 8px;") {{task_model.replySheet.meeting_address}}
+							td(nowrap, style="border: 1px solid #ddd;padding: 8px;"): b 我方人员:
+							td(colspan="2",style="border: 1px solid #ddd;padding: 8px;") {{task_model.replySheet.meeting_people_A}}
+							td(nowrap, style="border: 1px solid #ddd;padding: 8px;"): b 客户人员:
+							td(colspan="2",style="border: 1px solid #ddd;padding: 8px;") {{task_model.replySheet.meeting_people_B}}
+						tr(ng-if="task_model.handling==0")
+							td(colspan="12",style="border: 1px solid #ddd;padding: 8px;")
+								p: b 咨询事项:
+								p {{task_model.replySheet.consult_context}}
+						tr(ng-if="task_model.handling==0")
+							td(colspan="12",style="border: 1px solid #ddd;padding: 8px;")
+								p: b 咨询解答:
+								p {{task_model.replySheet.reply_context}}
+
+
+						//******************* 提案解答 *************************
+						tr(ng-if="task_model.handling==1")
+							td(nowrap, style="border: 1px solid #ddd;padding: 8px;"): b 项目名称:
+							td(colspan="8",style="border: 1px solid #ddd;padding: 8px;") {{task_model.executeSheet.project_topic}}
+							td(nowrap, style="border: 1px solid #ddd;padding: 8px;"): b 项目费用:
+							td(colspan="2",style="border: 1px solid #ddd;padding: 8px;")
+						tr(ng-if="task_model.handling==1")
+							td(nowrap, style="border: 1px solid #ddd;padding: 8px;"): b 负责人:
+							td(colspan="2",style="border: 1px solid #ddd;padding: 8px;") {{task_model.executeSheet.project_manager}}
+							td(nowrap, style="border: 1px solid #ddd;padding: 8px;"): b 执行人:
+							td(colspan="2",style="border: 1px solid #ddd;padding: 8px;") {{task_model.executeSheet.project_runner}}
+							td(nowrap, style="border: 1px solid #ddd;padding: 8px;"): b 翻译人:
+							td(colspan="2",style="border: 1px solid #ddd;padding: 8px;") {{task_model.proposalSheet.proposal_translator}}
+							td(nowrap, style="border: 1px solid #ddd;padding: 8px;"): b 提案人:
+							td(colspan="2",style="border: 1px solid #ddd;padding: 8px;") {{task_model.proposalSheet.proposal_person}}
+						tr(ng-if="task_model.handling==1")
+							td(colspan="12",style="border: 1px solid #ddd;padding: 8px;")
+								p: b 结案总结:
+								p {{task_model.summarySheet.summary_content}}
+
+
+						tr
+							td(nowrap, style="border: 1px solid #ddd;padding: 8px;"): b 结案日期:
+							td(colspan="3",style="border: 1px solid #ddd;padding: 8px;") {{task_model.summarySheet.summary_date | date:'yyyy年MM月dd日'}}
+							td(colspan="5",style="border: 1px solid #ddd;padding: 8px;")
+							td(nowrap, style="border: 1px solid #ddd;padding: 8px;"): b 结案人:
+							td(colspan="2",style="border: 1px solid #ddd;padding: 8px;") {{task_model.summarySheet.summary_person}}
+

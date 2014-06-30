@@ -109,8 +109,8 @@ div.navbar.navbar-default.task-header
 				include 7-account-section/account-section.tpl.jade
 			section#page_summary(ng-if="getProgressState(700) != 'disabled'")
 				include 8-summary-section/summary-section.tpl.jade
-			section#page_closed(ng-if="getProgressState(800) != 'disabled'")
-
+			section#page_final(ng-if="getProgressState(800) != 'disabled'")
+				include 9-final-section/final-section.tpl.jade
 
 			#task-footer
 				div.text-center
