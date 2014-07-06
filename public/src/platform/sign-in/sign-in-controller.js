@@ -12,11 +12,11 @@ angular.module('sign-in', ['login-session-service', 'permission-service'])
 			$scope.loginFail = false;
 
 
-//			$scope.username = '管理员';
-//			$scope.password = '8888';
-//			$timeout(function () {
-//				$scope.signin();
-//			}, 500);
+			$scope.username = '管理员';
+			$scope.password = '8888';
+			$timeout(function () {
+				$scope.signin();
+			}, 500);
 
 
 			var loginButton = $('#sign-in-panel button[type="submit"] span');
