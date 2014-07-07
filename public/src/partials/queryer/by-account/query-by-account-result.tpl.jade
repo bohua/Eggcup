@@ -1,0 +1,25 @@
+table.table.table-hover.table-bordered
+	thead
+		tr
+			th 序号
+			th 合同签定日期
+			th 任务号
+			th 客户
+			th 担当人
+			th 任务主题
+			th 合同标的
+			th 收款金额
+			th 欠款金额
+	tbody
+		tr.cursor-pointer(ng-repeat="row in searchResult", ng-click="openTask($event, row.id)")
+			td {{$index}}
+			td {{row.contract_date | date:'yyyy-MM-dd'}}
+			td
+				div.label.label-primary
+					span TK-{{row.id}}
+			td {{row.customer_name}}
+			td {{row.assignee}}
+			td {{row.slogan}}
+			td {{row.contract_topic}}
+			td {{row.accout_total}}
+			td {{row.accout_topay}}

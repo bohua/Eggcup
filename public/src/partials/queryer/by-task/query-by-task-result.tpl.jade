@@ -1,0 +1,20 @@
+table.table.table-hover.table-bordered
+	thead
+		tr
+			th 任务号
+			th 状态
+			th 任务主题
+			th 客户
+			th 担当人
+			th 立案日期
+	tbody
+		tr.cursor-pointer(ng-repeat="row in searchResult", ng-click="openTask($event, row.id)")
+			td TK-{{row.id}}
+			td
+				div.label.label-primary
+					i.fa.fa-fw(class="{{translateStatus(row.status).icon}}")
+					span {{translateStatus(row.status).status}}
+			td {{row.slogan}}
+			td {{row.customer_name}}
+			td {{row.assignee}}
+			td {{row.report_date | date:'yyyy-MM-dd'}}

@@ -3,7 +3,7 @@
 	div.page-header
 		h2
 			i.fa.fa-search.fa-fw &nbsp;
-			span 条件查询 &nbsp;
+			span 查询 &nbsp;
 			small.hidden-xs Query
 
 			button.btn.btn-default.pull-right(ng-click="startQuery()")
@@ -16,63 +16,10 @@
 			div.panel-heading.cursor-pointer
 				h4.no-margin(data-toggle="collapse", href="#queryer-condition-panel") 查询条件 &nbsp;
 					small.hidden-xs Query Condition
-			#queryer-condition-panel.panel-collapse.collapse.in.panel-body
-				div.row
-					div.form-group.col-sm-2
-						label.control-label 担当人:
-						div
-							input.form-control(type="text", placeholder="担当人", ng-model="condition.employee_name", auto-complete-field="assigneeFieldOptions")
-
-					div.form-group.col-sm-4
-						label.control-label 公司名称:
-						div
-							input.form-control(type="text", placeholder="公司名称", ng-model="condition.customer_name", auto-complete-field="customerFieldOptions")
-
-					div.form-group.col-sm-2
-						label.control-label 启始日期:
-						div.input-group.date(date-field-model="condition.start_date")
-							span.input-group-addon
-								i.fa.fa-calendar
-							input.form-control.datepicker(type="text")
-
-					div.form-group.col-sm-2
-						label.control-label 结束日期:
-						div.input-group.date(date-field-model="condition.end_date")
-							span.input-group-addon
-								i.fa.fa-calendar
-							input.form-control.datepicker(type="text")
-
-					div.form-group.col-sm-2
-						label.control-label 任务状态:
-						div
-							select.form-control(ng-model="condition.status")
-								option(value="all") 所有状态
-								option(value="ongoing") 未结案
-								option(value="closed") 已结案
+			#queryer-condition-panel.panel-collapse.collapse.in.panel-body(ng-include="conditionTpl")
 
 		div.panel.panel-default
 			div.panel-heading.cursor-pointer
 				h4.no-margin(data-toggle="collapse", href="#queryer-result-panel") 查询结果列表 &nbsp;
 					small.hidden-xs Query Result
-			#queryer-result-panel.panel-collapse.collapse.in.table-responsive
-				table.table.table-hover.table-bordered
-					thead
-						tr
-							th 任务号
-							th 状态
-							th 任务主题
-							th 客户
-							th 担当人
-							th 立案日期
-
-					tbody
-						tr.cursor-pointer(ng-repeat="row in searchResult", ng-click="openTask($event, row.id)")
-							td TK-{{row.id}}
-							td
-								div.label.label-primary
-									i.fa.fa-fw(class="{{translateStatus(row.status).icon}}")
-									span {{translateStatus(row.status).status}}
-							td {{row.slogan}}
-							td {{row.customer_name}}
-							td {{row.assignee}}
-							td {{row.report_date | date:'yyyy-MM-dd'}}
+			#queryer-result-panel.panel-collapse.collapse.in.table-responsive(ng-include="resultTpl")

@@ -21,7 +21,6 @@
 		"extend":"*",
 		"q": "*",
 		"winston": "*",
-		"xlsjs": "*",
 
 		"grunt": "*",
 		"grunt-contrib-less": "*",

@@ -70,6 +70,8 @@ app.get('/tag', basics.getTagList);
  * Task Resource requests
  */
 app.get('/task', tasks.getTaskList);
+app.get('/taskByAccount', tasks.getTaskListByAccount);
+//app.get('/taskByExpense', tasks.getTaskList);
 app.get('/searchTask', tasks.searchTask);
 app.get('/task/:task_id', tasks.getTask);
 app.get('/statusList', tasks.getStatusList);

@@ -4,6 +4,7 @@
 module.exports.getTask = require('./getTask');
 module.exports.delTask = require('./delTask');
 module.exports.getTaskList = require('./getTaskList');
+module.exports.getTaskListByAccount = require('./getTaskListByAccount');
 module.exports.searchTask = require('./searchTask');
 module.exports.getStatusList = require('./getStatusList');
 

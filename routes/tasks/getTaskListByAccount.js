@@ -1,18 +1,18 @@
 /**
- * Created by Bli on 2014/5/5.
+ * Created by bli on 2014/7/7.
  */
 var task_bo = require(__dirname + '/../../server/tasks/task_bo');
 
 module.exports = function (req, res) {
 	var condition = {
-			employee_name: req.query.employee_name,
-			customer_name: req.query.customer_name,
-			start_date: req.query.start_date,
-			end_date: req.query.end_date,
-			status: req.query.status
-		};
+		employee_name: req.query.employee_name,
+		customer_name: req.query.customer_name,
+		start_date: req.query.start_date,
+		end_date: req.query.end_date,
+		paymentDone: req.query.paymentDone
+	};
 
-	task_bo.searchByTask(condition).then(
+	task_bo.searchByAccount(condition).then(
 		function (success) {
 			res.statusCode = 200;
 			res.contentType('json');

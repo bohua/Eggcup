@@ -1,0 +1,28 @@
+div.row
+	div.form-group.col-sm-2
+		label.control-label 启始日期:
+		div.input-group.date(date-field-model="condition.start_date")
+			span.input-group-addon
+				i.fa.fa-calendar
+			input.form-control.datepicker(type="text")
+	div.form-group.col-sm-2
+		label.control-label 结束日期:
+		div.input-group.date(date-field-model="condition.end_date")
+			span.input-group-addon
+				i.fa.fa-calendar
+			input.form-control.datepicker(type="text")
+	div.form-group.col-sm-2
+		label.control-label 担当人:
+		div
+			input.form-control(type="text", placeholder="担当人", ng-model="condition.employee_name", auto-complete-field="assigneeFieldOptions")
+	div.form-group.col-sm-4
+		label.control-label 公司名称:
+		div
+			input.form-control(type="text", placeholder="公司名称", ng-model="condition.customer_name", auto-complete-field="customerFieldOptions")
+	div.form-group.col-sm-2
+		label.control-label 任务状态:
+		div
+			select.form-control(ng-model="condition.paymentDone")
+				option(value="all") 所有状态
+				option(value="true") 欠款的合同
+				option(value="false") 已结清的合同

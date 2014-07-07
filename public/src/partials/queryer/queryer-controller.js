@@ -9,19 +9,48 @@ angular.module('queryer', [
 	'permission-service'
 ]).config(['$routeProvider', function ($routeProvider) {
 	$routeProvider.
-		when('/queryer', {
+		when('/queryer/:queryMode', {
 			templateUrl: '/src/partials/queryer/queryer-view.tpl.html',
-			controller: 'queryerController'
+			controller: 'taskQueryerController'
 		});
-}]).controller('queryerController', [
+}]).controller('taskQueryerController', [
 	'$scope',
+	'$routeParams',
 	'$location',
 	'$http',
 	'customerListService',
 	'employeeListService',
 	'taskStatusService',
 	'permissionService',
-	function ($scope, $location, $http, customerListService, employeeListService, taskStatusService, permissionService) {
+	function ($scope, $routeParams, $location, $http, customerListService, employeeListService, taskStatusService, permissionService) {
+		switch ($routeParams.queryMode) {
+			case 'account':
+			{
+				$scope.queryPath = '/taskByAccount';
+				$scope.conditionTpl = "/src/partials/queryer/by-account/query-by-account-condition.tpl.html";
+				$scope.resultTpl = "/src/partials/queryer/by-account/query-by-account-result.tpl.html";
+
+				break;
+			}
+			case 'expense':
+			{
+				$scope.queryPath = '/taskByExpense';
+				$scope.conditionTpl = "/src/partials/queryer/by-expense/query-by-expense-condition.tpl.html";
+				$scope.resultTpl = "/src/partials/queryer/by-expense/query-by-expense-result.tpl.html";
+
+				break;
+			}
+
+			default:
+			{
+				$scope.queryPath = '/task';
+				$scope.conditionTpl = "/src/partials/queryer/by-task/query-by-task-condition.tpl.html";
+				$scope.resultTpl = "/src/partials/queryer/by-task/query-by-task-result.tpl.html";
+
+				break;
+			}
+		}
+
 		$scope.customer_list = customerListService.getCustomerList();
 		$scope.employee_list = employeeListService.getEmployeeList();
 		$scope.translateStatus = taskStatusService.translateStatus;
@@ -42,7 +71,7 @@ angular.module('queryer', [
 				}
 			});
 
-			$http.get('/task', {params: params}).success(function (data) {
+			$http.get($scope.queryPath, {params: params}).success(function (data) {
 				$scope.searchResult = data;
 			});
 		};
