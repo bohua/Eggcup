@@ -32,15 +32,15 @@ function generateQuery(condition, extra) {
 
 	if (condition.start_date) {
 		condition.start_date = condition.start_date.replace('"', '').split('T')[0];
-		where.push({report_date: {gte: condition.start_date}});
+		where.push({report_date: {gte: condition.start_date + " 00:00:00"}});
 	}
 
 	if (condition.end_date) {
 		condition.end_date = condition.end_date.replace('"', '').split('T')[0];
-		where.push({report_date: {lte: condition.end_date}});
+		where.push({report_date: {lte: condition.end_date + " 23:59:59"}});
 	}
 
-	if(extra){
+	if (extra) {
 		where = where.concat(extra);
 	}
 
@@ -198,32 +198,48 @@ var TASK = new Bo('DATA_TASK', {
 	name: 'searchByAccount',
 	method: function (condition) {
 		var deferred = Q.defer(),
-			model = this.orm.model;
+			model = this.orm.model,
+			sequelize = this.orm.Seq().sequelize,
+			extra = [];
 
-		model(this._table).findAll({
-
-			include:[
+		model('DATA_ACCOUNT').findAll({
+			include: [
 				{
-					model: model('DATA_ACCOUNT'),
-					as: 'accountSheet',
+					model: model('DATA_ACCOUNT_SUB'),
+					as: 'subItem'
+				},
+				{
+					model: model('DATA_TASK'),
+					as: 'task',
+					where: generateQuery(condition, extra),
 					include: [
 						{
-							model: model('DATA_ACCOUNT_SUB'),
-							as: 'subItem',
-							include: [
-								{
-									model: model('REF_ATTACHMENT'),
-									as: 'attachment'
-								}
-							]
+							model: model('DATA_CONTRACT'),
+							as: 'contractSheet'
 						}
 					]
 				}
 			],
-			where: generateQuery(condition, null)
+			attributes: [
+				[sequelize.fn('SUM', sequelize.col('subItem.account_expense')), 'account_total']
+			]
 		}).then(
 			function (success) {
-				deferred.resolve(success);
+				var results = [];
+				_.map(success, function (item) {
+					results.push({
+						contract_date: item.task.contractSheet.contract_date,
+						contract_topic: item.task.contractSheet.contract_topic,
+						id: item.task.id,
+						customer_name: item.task.customer_name,
+						assignee: item.task.assignee,
+						slogan: item.task.slogan,
+						account_total: item.getDataValue('account_total'),
+						account_topay: -item.getDataValue('account_total'),
+						subItem: item.subItem
+					});
+				});
+				deferred.resolve(results);
 			},
 			function (failure) {
 				global.logger.error(failure);
