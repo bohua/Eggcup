@@ -218,28 +218,30 @@ var TASK = new Bo('DATA_TASK', {
 						}
 					]
 				}
-			],
-			attributes: [
-				[sequelize.fn('SUM', sequelize.col('subItem.account_expense')), 'account_total']
 			]
 		}).then(
 			function (success) {
 				var results = [];
 				_.map(success, function (item) {
 					var tmp = {};
-					tmp.account_total = item.getDataValue('account_total');
-					tmp.subItem = item.subItem;
+					if (item.subItem) {
+						tmp.subItem = item.subItem;
+
+						tmp.account_total = _.pluck(item.subItem, 'account_expense').reduce(function (sum, num) {
+							return sum + num;
+						});
+					}
 
 					if (item.task) {
 						tmp.id = item.task.id;
+						tmp.report_date = item.task.report_date;
 						tmp.customer_name = item.task.customer_name;
 						tmp.assignee = item.task.assignee;
 						tmp.slogan = item.task.slogan;
 
 						if (item.task.contractSheet) {
-							tmp.contract_date = item.task.contractSheet.contract_date;
-							tmp.contract_topic = item.task.contractSheet.contract_price;
-							tmp.account_topay = item.task.contractSheet.contract_price - item.getDataValue('account_total');
+							tmp.contract_price = item.task.contractSheet.contract_price;
+							tmp.account_topay = item.task.contractSheet.contract_price - (tmp.account_total || 0);
 						}
 					}
 
@@ -247,7 +249,7 @@ var TASK = new Bo('DATA_TASK', {
 						switch (condition.status) {
 							case 'clear':
 							{
-								if(tmp.account_topay && tmp.account_topay === 0){
+								if (tmp.account_topay && tmp.account_topay === 0) {
 									results.push(tmp);
 								}
 								break;
@@ -255,18 +257,80 @@ var TASK = new Bo('DATA_TASK', {
 
 							case 'unclear':
 							{
-								if(tmp.account_topay && tmp.account_topay < 0){
+								if (tmp.account_topay && tmp.account_topay < 0) {
 									results.push(tmp);
 								}
 								break;
 							}
 
-							default : {
+							default :
+							{
 								results.push(tmp);
 								break;
 							}
 						}
 					}
+				});
+				deferred.resolve(results);
+			},
+			function (failure) {
+				global.logger.error(failure);
+				deferred.reject(failure);
+			});
+
+		return deferred.promise;
+	}
+}, {
+	name: 'searchByExpense',
+	method: function (condition) {
+		var deferred = Q.defer(),
+			model = this.orm.model,
+			sequelize = this.orm.Seq().sequelize,
+			extra = [];
+
+		model('DATA_EXPENSE').findAll({
+			include: [
+				{
+					model: model('DATA_EXPENSE_SUB'),
+					as: 'subItem'
+				},
+				{
+					model: model('DATA_TASK'),
+					as: 'task',
+					where: generateQuery(condition, extra),
+					include: [
+						{
+							model: model('DATA_CONTRACT'),
+							as: 'contractSheet'
+						}
+					]
+				}
+			]
+		}).then(
+			function (success) {
+				var results = [];
+				_.map(success, function (item) {
+					var tmp = {};
+					if (item.subItem) {
+						tmp.subItem = item.subItem;
+
+						tmp.expense_total = _.pluck(item.subItem, 'expense_expense').reduce(function (sum, num) {
+							return sum + num;
+						});
+					}
+
+					if (item.task) {
+						tmp.id = item.task.id;
+						tmp.report_date = item.task.report_date;
+						tmp.customer_name = item.task.customer_name;
+						tmp.assignee = item.task.assignee;
+						tmp.slogan = item.task.slogan;
+
+						if (item.task.contractSheet) {
+							tmp.contract_price = item.task.contractSheet.contract_price;
+						}
+					}
+					results.push(tmp);
 				});
 				deferred.resolve(results);
 			},

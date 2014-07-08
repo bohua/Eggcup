@@ -71,6 +71,7 @@ app.get('/tag', basics.getTagList);
  */
 app.get('/task', tasks.getTaskList);
 app.get('/taskByAccount', tasks.getTaskListByAccount);
+app.get('/taskByExpense', tasks.getTaskListByExpense);
 //app.get('/taskByExpense', tasks.getTaskList);
 app.get('/searchTask', tasks.searchTask);
 app.get('/task/:task_id', tasks.getTask);

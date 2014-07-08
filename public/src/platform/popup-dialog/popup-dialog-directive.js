@@ -37,7 +37,7 @@ angular.module('popup-dialog', [])
 								return xhr.status + " " + xhr.statusText;
 							}
 
-							$($element).on('popup', function ($event, mode, dataModel) {
+							$($element).on('popup', function ($event, mode, dataModel, extraArgs) {
 								//Initialization of Dialog
 								$scope.prop = {};
 								$scope.prop.showErrorMessage = false;
@@ -49,6 +49,10 @@ angular.module('popup-dialog', [])
 									$scope.dialog_data_model = _.cloneDeep(dataModel);
 								} else {
 									$scope.dialog_data_model = {};
+								}
+
+								if(extraArgs){
+									$scope.extra_args = extraArgs;
 								}
 
 								modalContainer.empty().append($compile(response)($scope));
@@ -93,7 +97,7 @@ angular.module('popup-dialog', [])
 							tmp = _.isNumber(tmp) ? tmp : 0;
 
 							total += tmp;
-						})
+						});
 
 						return total;
 					}

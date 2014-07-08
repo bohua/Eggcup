@@ -1,20 +1,33 @@
 table.table.table-hover.table-bordered
 	thead
 		tr
+			th 序号
+			th 立案日期
 			th 任务号
-			th 状态
-			th 任务主题
 			th 客户
 			th 担当人
-			th 立案日期
-	tbody
-		tr.cursor-pointer(ng-repeat="row in searchResult", ng-click="openTask($event, row.id)")
-			td TK-{{row.id}}
+			th 任务主题
+			th 合同标的
+			th 费用金额
+	tfoot
+		tr
 			td
-				div.label.label-primary
-					i.fa.fa-fw(class="{{translateStatus(row.status).icon}}")
-					span {{translateStatus(row.status).status}}
-			td {{row.slogan}}
+			td 金额合计
+			td
+			td
+			td
+			td
+			td {{sumField(searchResult, 'contract_price')}}
+			td {{sumField(searchResult, 'expense_total')}}
+	tbody
+		tr.cursor-pointer(ng-repeat="row in searchResult")
+			td {{$index + 1}}
+			td {{row.report_date | date:'yyyy-MM-dd'}}
+			td
+				div.label.label-primary(ng-click="openTask($event, row.id)")
+					span TK-{{row.id}}
 			td {{row.customer_name}}
 			td {{row.assignee}}
-			td {{row.report_date | date:'yyyy-MM-dd'}}
+			td {{row.slogan}}
+			td.text-right {{row.contract_price}}
+			td.text-right {{row.expense_total}}

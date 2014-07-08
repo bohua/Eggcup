@@ -4,20 +4,35 @@
 angular.module('account-detail-editor', ['file-type-service'])
 	.controller('accountDetailEditorController', [
 		'$scope',
+		'$location',
 		'fileTypeService',
-		function ($scope, fileTypeService) {
+		function ($scope, $location, fileTypeService) {
 			$scope.translateFileType = fileTypeService.translateFileType;
 
-			$scope.tableHandlerOption = {
-				hasFileUploader: true,
-				hasCreateBtn: true,
-				hasOpenBtn: false,
-				hasDeleteBtn: true,
-
-				defaultRowValue: {
-					account_date: new Date(),
-					account_expense: 0,
-					attachment: []
-				}
+			$scope.openTask = function(){
+				$scope.Cancel();
+				$location.path("/task-editor/edit/" + $scope.extra_args.task_id);
 			};
+
+			if($scope.prop.mode === 'edit'){
+				$scope.tableHandlerOption = {
+					hasFileUploader: true,
+					hasCreateBtn: true,
+					hasOpenBtn: false,
+					hasDeleteBtn: true,
+
+					defaultRowValue: {
+						account_date: new Date(),
+						account_expense: 0,
+						attachment: []
+					}
+				};
+			}else{
+				$scope.tableHandlerOption = {
+					hasFileUploader: false,
+					hasCreateBtn: false,
+					hasOpenBtn: false,
+					hasDeleteBtn: false
+				};
+			}
 		}]);

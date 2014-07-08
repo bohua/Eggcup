@@ -2,7 +2,7 @@ table.table.table-hover.table-bordered
 	thead
 		tr
 			th 序号
-			th 合同签定日期
+			th 立案日期
 			th 任务号
 			th 客户
 			th 担当人
@@ -10,16 +10,27 @@ table.table.table-hover.table-bordered
 			th 合同标的
 			th 收款金额
 			th 欠款金额
-	tbody
-		tr.cursor-pointer(ng-repeat="row in searchResult", ng-click="openTask($event, row.id)")
-			td {{$index + 1}}
-			td {{row.contract_date | date:'yyyy-MM-dd'}}
+	tfoot
+		tr
 			td
-				div.label.label-primary
+			td 金额合计
+			td
+			td
+			td
+			td
+			td {{sumField(searchResult, 'contract_price')}}
+			td {{sumField(searchResult, 'account_total')}}
+			td {{sumField(searchResult, 'account_topay')}}
+	tbody
+		tr.cursor-pointer(ng-repeat="row in searchResult", popup-dialog,dialog-config="detailEditorConfig",ng-click="showDetailEditor($event, row)")
+			td {{$index + 1}}
+			td {{row.report_date | date:'yyyy-MM-dd'}}
+			td
+				div.label.label-primary(ng-click="openTask($event, row.id)")
 					span TK-{{row.id}}
 			td {{row.customer_name}}
 			td {{row.assignee}}
 			td {{row.slogan}}
-			td {{row.contract_price}}
-			td {{row.account_total}}
-			td {{row.account_topay}}
+			td.text-right {{row.contract_price}}
+			td.text-right {{row.account_total}}
+			td.text-right {{row.account_topay}}

@@ -6,7 +6,8 @@ angular.module('queryer', [
 	'customer-list-service',
 	'employee-list-service',
 	'task-status-service',
-	'permission-service'
+	'permission-service',
+	'account-detail-editor'
 ]).config(['$routeProvider', function ($routeProvider) {
 	$routeProvider.
 		when('/queryer/:queryMode', {
@@ -70,24 +71,63 @@ angular.module('queryer', [
 					params[index] = c;
 				}
 			});
-
-			$http.get($scope.queryPath, {params: params}).success(function (data) {
-				$scope.searchResult = data;
-			});
+			$location.search(params);
 		};
 
 		$scope.openTask = function ($event, id) {
-			//$($event.currentTarget).closest('.loading-mask').show();
 			$location.path('/task-editor/edit/' + id);
 		};
 
+		/**
+		 * Sum function
+		 */
+		$scope.sumField = function (data_model, field) {
+			var total = 0,
+				tmp;
+
+			if (!data_model) {
+				return 0;
+			}
+
+			$.map(data_model, function (record) {
+				tmp = parseInt(record[field]);
+				tmp = _.isNumber(tmp) ? tmp : 0;
+
+				total += tmp;
+			});
+
+			return total;
+		}
+
+		/**
+		 * Account Detail Editor Initialization
+		 */
+		$scope.detailEditorConfig = {
+			dialogOption: {
+				backdrop: 'static',
+				keyboard: false
+			},
+			template: '/src/partials/account-editor/account-detail-editor-view.tpl.html'
+		};
+
+		$scope.showDetailEditor = function ($event, dataModel) {
+			$($event.currentTarget).trigger('popup', ['queryPop', dataModel.subItem || [], {task_id: dataModel.id}]);
+		};
+
+		/**
+		 * Param parsing
+		 */
+		var params = $location.search();
+		$http.get($scope.queryPath, {params: params}).success(function (data) {
+			$scope.searchResult = data;
+		});
 
 		/**
 		 * Initialize query conditions
 		 */
 		$scope.condition = {
-			start_date: new Date(),
-			end_date: new Date(),
-			status: 'all'
+			start_date: params.start_date || new Date(),
+			end_date: params.end_date ||new Date(),
+			status: params.status || 'all'
 		};
 	}]);

@@ -19,10 +19,3 @@ div.row
 		label.control-label 公司名称:
 		div
 			input.form-control(type="text", placeholder="公司名称", ng-model="condition.customer_name", auto-complete-field="customerFieldOptions")
-	div.form-group.col-sm-2
-		label.control-label 任务状态:
-		div
-			select.form-control(ng-model="condition.status")
-				option(value="all") 所有状态
-				option(value="ongoing") 未结案
-				option(value="closed") 已结案
