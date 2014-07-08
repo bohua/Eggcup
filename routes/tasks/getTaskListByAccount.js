@@ -9,7 +9,7 @@ module.exports = function (req, res) {
 		customer_name: req.query.customer_name,
 		start_date: req.query.start_date,
 		end_date: req.query.end_date,
-		paymentDone: req.query.paymentDone
+		status: req.query.status
 	};
 
 	task_bo.searchByAccount(condition).then(

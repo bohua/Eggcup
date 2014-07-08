@@ -189,7 +189,6 @@ var TASK = new Bo('DATA_TASK', {
 					break;
 				}
 			}
-
 		}
 
 		return this.getAll(generateQuery(condition, extra));
@@ -227,17 +226,47 @@ var TASK = new Bo('DATA_TASK', {
 			function (success) {
 				var results = [];
 				_.map(success, function (item) {
-					results.push({
-						contract_date: item.task.contractSheet.contract_date,
-						contract_topic: item.task.contractSheet.contract_topic,
-						id: item.task.id,
-						customer_name: item.task.customer_name,
-						assignee: item.task.assignee,
-						slogan: item.task.slogan,
-						account_total: item.getDataValue('account_total'),
-						account_topay: -item.getDataValue('account_total'),
-						subItem: item.subItem
-					});
+					var tmp = {};
+					tmp.account_total = item.getDataValue('account_total');
+					tmp.subItem = item.subItem;
+
+					if (item.task) {
+						tmp.id = item.task.id;
+						tmp.customer_name = item.task.customer_name;
+						tmp.assignee = item.task.assignee;
+						tmp.slogan = item.task.slogan;
+
+						if (item.task.contractSheet) {
+							tmp.contract_date = item.task.contractSheet.contract_date;
+							tmp.contract_topic = item.task.contractSheet.contract_price;
+							tmp.account_topay = item.task.contractSheet.contract_price - item.getDataValue('account_total');
+						}
+					}
+
+					if (condition.status) {
+						switch (condition.status) {
+							case 'clear':
+							{
+								if(tmp.account_topay && tmp.account_topay === 0){
+									results.push(tmp);
+								}
+								break;
+							}
+
+							case 'unclear':
+							{
+								if(tmp.account_topay && tmp.account_topay < 0){
+									results.push(tmp);
+								}
+								break;
+							}
+
+							default : {
+								results.push(tmp);
+								break;
+							}
+						}
+					}
 				});
 				deferred.resolve(results);
 			},
