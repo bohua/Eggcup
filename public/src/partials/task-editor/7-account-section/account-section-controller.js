@@ -4,7 +4,7 @@
 angular.module('account-section', ['account-detail-editor', 'reminder-editor'])
 	.controller('accountSectionController', ['$scope', function ($scope) {
 		/**
-		 * Detail Editor Initialization
+		 * Account Detail Editor Initialization
 		 */
 		$scope.detailEditorConfig = {
 			dialogOption: {
@@ -22,7 +22,7 @@ angular.module('account-section', ['account-detail-editor', 'reminder-editor'])
 
 		$scope.getDetailModel = function () {
 			return $scope.task_model.accountSheet.subItem;
-		}
+		};
 
 		$scope.onDetailSaved = function (action, data) {
 			$scope.task_model.accountSheet.subItem = data;
@@ -33,9 +33,9 @@ angular.module('account-section', ['account-detail-editor', 'reminder-editor'])
 					id: $scope.task_model.accountSheet.id,
 					subItem: data
 				}
-			}
+			};
 			$scope.$emit('event:saveTaskModel', $scope.task_model.id, o);
-		}
+		};
 
 
 		/**

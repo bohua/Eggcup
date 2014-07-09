@@ -1,7 +1,7 @@
 /**
  * Created by bli on 2014/6/9.
  */
-angular.module('execute-section', ['execute-editor', 'execute-detail-editor'])
+angular.module('execute-section', ['execute-editor', 'execute-detail-editor', 'reminder-editor'])
 	.controller('executeSectionController', ['$scope', function ($scope) {
 		/**
 		 * Execute Editor Initialization
@@ -63,4 +63,46 @@ angular.module('execute-section', ['execute-editor', 'execute-detail-editor'])
 			}
 			$scope.$emit('event:saveTaskModel', $scope.task_model.id, o);
 		}
+
+		/**
+		 * Reminder Editor Initialization
+		 */
+		$scope.reminderEditorConfig = {
+			dialogOption: {
+				backdrop: 'static'
+			},
+			template: '/src/partials/reminder-editor/reminder-editor-view.tpl.html'
+		};
+
+		$scope.showReminderEditor = function ($event, dataModel) {
+			$($event.currentTarget).trigger('popup', ['edit', dataModel]);
+		};
+
+		$scope.getReminderModel = function () {
+			return {
+				customer_name: $scope.task_model.customer_name,
+				contract_topic: $scope.task_model.contractSheet.contract_topic,
+				contract_date: $scope.task_model.contractSheet.contract_date,
+				contract_due_date: $scope.task_model.contractSheet.contract_due_date,
+
+				reminder_date: new Date(),
+				reminder_due_date: new Date(),
+				reminder_service: '',
+				reminder_expense: 0
+			};
+		};
+
+		$scope.onReminderSaved = function (action, data) {
+			$scope.task_model.reminderSheet = $scope.task_model.reminderSheet || {
+				subItem: []
+			};
+
+			$scope.task_model.reminderSheet.subItem.push(data);
+
+			var o = {
+				id: $scope.task_model.id,
+				reminderSheet: $scope.task_model.reminderSheet
+			};
+			$scope.$emit('event:saveTaskModel', $scope.task_model.id, o);
+		};
 	}]);

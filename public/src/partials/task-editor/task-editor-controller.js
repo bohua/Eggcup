@@ -22,12 +22,13 @@ angular.module('task-editor', [
 	'proposal-section',
 	'contract-section',
 	'execute-section',
-	'account-section',
+	//'account-section',
 	'summary-section',
 	'final-section',
 	'expense-detail-editor',
 	'appointment-detail-editor',
-	'reminder-detail-editor'
+	'reminder-detail-editor',
+	'account-detail-editor'
 ]).config(['$routeProvider', function ($routeProvider) {
 	$routeProvider.
 		when('/task-editor/:action/:taskId', {
@@ -224,6 +225,7 @@ angular.module('task-editor', [
 					icon: 'fa-history',
 					href: '#page_execute'
 				},
+				/*
 				account: {
 					id: 'account',
 					code: 600,
@@ -231,6 +233,7 @@ angular.module('task-editor', [
 					icon: 'fa-bank',
 					href: '#page_account'
 				},
+				*/
 				summary: {
 					id: 'summary',
 					code: 700,
@@ -271,7 +274,7 @@ angular.module('task-editor', [
 					progressList['proposal'],
 					progressList['contract'],
 					progressList['execute'],
-					progressList['account'],
+					//progressList['account'],
 					progressList['summary'],
 					progressList['final']
 				];
@@ -496,12 +499,9 @@ angular.module('task-editor', [
 			template: '/src/partials/appointment-editor/appointment-detail-editor-view.tpl.html'
 		};
 
-		$scope.showAppointmentDetailEditor = function ($event, dataModel) {
-			$($event.currentTarget).trigger('popup', ['readOnly', dataModel]);
-		};
-
-		$scope.getAppointmentDetailModel = function () {
-			return $scope.task_model.appointmentSheet.subItem;
+		$scope.showAppointmentDetailEditor = function ($event) {
+			if($($event.currentTarget).hasClass('disabled')){return;}
+			$($event.currentTarget).trigger('popup', ['readOnly', $scope.task_model.appointmentSheet.subItem || []]);
 		};
 
 		$scope.onAppointmentDetailSaved = function (action, data) {
@@ -529,12 +529,9 @@ angular.module('task-editor', [
 			template: '/src/partials/reminder-editor/reminder-detail-editor-view.tpl.html'
 		};
 
-		$scope.showReminderDetailEditor = function ($event, dataModel) {
-			$($event.currentTarget).trigger('popup', ['readOnly', dataModel]);
-		};
-
-		$scope.getReminderDetailModel = function () {
-			return $scope.task_model.reminderSheet.subItem;
+		$scope.showReminderDetailEditor = function ($event) {
+			if($($event.currentTarget).hasClass('disabled')){return;}
+			$($event.currentTarget).trigger('popup', ['readOnly', $scope.task_model.reminderSheet.subItem || []]);
 		};
 
 		$scope.onReminderDetailSaved = function (action, data) {
@@ -549,4 +546,33 @@ angular.module('task-editor', [
 			};
 			$scope.$emit('event:saveTaskModel', $scope.task_model.id, o);
 		}
+
+		/**
+		 * Account Detail Editor Initialization
+		 */
+		$scope.detailEditorConfig = {
+			dialogOption: {
+				backdrop: 'static',
+				keyboard: false
+			},
+			template: '/src/partials/account-editor/account-detail-editor-view.tpl.html'
+		};
+
+		$scope.showDetailEditor = function ($event) {
+			if($($event.currentTarget).hasClass('disabled')){return;}
+			$($event.currentTarget).trigger('popup', ['edit', $scope.task_model.accountSheet.subItem || []]);
+		};
+
+		$scope.onDetailSaved = function (action, data) {
+			$scope.task_model.accountSheet.subItem = data;
+
+			var o = {
+				id: $scope.task_model.id,
+				accountSheet: {
+					id: $scope.task_model.accountSheet.id,
+					subItem: data
+				}
+			};
+			$scope.$emit('event:saveTaskModel', $scope.task_model.id, o);
+		};
 	}]);
