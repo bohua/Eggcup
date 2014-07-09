@@ -5,13 +5,14 @@
 var print_bo = require(__dirname + '/../../server/print/print_bo');
 
 module.exports = function (req, res) {
+	var printDocType = req.body.sheetType,
+		dataModel = req.body.sheetData;
 
-	print_bo.print().then(
+	print_bo.print(printDocType, dataModel).then(
 		function (success) {
 			if(success){
 				res.statusCode = 200;
-				res.contentType('json');
-				res.json(success);
+				res.end(success);
 			}else{
 				res.statusCode = 200;
 				res.contentType('json');

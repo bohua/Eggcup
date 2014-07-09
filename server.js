@@ -11,6 +11,7 @@ var task_status_service = require('./server/tasks/task_status_service');
 var security = require('./routes/security');
 var basics = require('./routes/basics');
 var tasks = require('./routes/tasks');
+var print = require('./routes/print');
 var attachment = require('./routes/attachment');
 var winston = require('winston');
 var fs = require('fs');
@@ -87,6 +88,11 @@ app.delete('/task/:task_id', tasks.delTask);
 app.post('/file-upload', attachment.fileUpload);
 app.get('/file-download/:fileUrl', attachment.fileDownload);
 app.get('/getFileTypeList', platform.getFileTypeList);
+
+/**
+ * Print
+ */
+app.post('/printTaskSheet', print.printTaskSheet);
 
 /**
  * Initialize Logger

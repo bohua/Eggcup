@@ -5,16 +5,18 @@
 var exec = require('child_process').exec;
 var Q = require('q');
 
-Gen = function (docType, expPath, dataMapper) {
+Gen = function (tplPath, expPath, dataMapper) {
 	var deferred = Q.defer();
-	var tplMapper = {
-		"register" : "templates/登记表.xls"
-	}
+
+	var json = JSON.stringify(dataMapper).replace(/\"/g, "'");
+	json = '"' + json + '"';
 
 	var cmd = __dirname + "/lib/eggcupXlsParser.exe" +
-		" -tpl " + tplMapper[docType] +
+		" -tpl " + tplPath +
 		" -export " + expPath +
-		" -json " + JSON.stringify(dataMapper);
+		" -json " + json;
+
+	console.log(cmd);
 
 	exec(cmd, function(error, stdout, stderr){
 		if (error !== null) {
