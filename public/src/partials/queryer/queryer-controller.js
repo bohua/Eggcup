@@ -7,12 +7,14 @@ angular.module('queryer', [
 	'employee-list-service',
 	'task-status-service',
 	'permission-service',
-	'account-detail-editor'
+	'account-detail-editor',
+	'expense-detail-editor'
 ]).config(['$routeProvider', function ($routeProvider) {
 	$routeProvider.
 		when('/queryer/:queryMode', {
 			templateUrl: '/src/partials/queryer/queryer-view.tpl.html',
-			controller: 'taskQueryerController'
+			controller: 'taskQueryerController',
+			reloadOnSearch: true
 		});
 }]).controller('taskQueryerController', [
 	'$scope',
@@ -65,9 +67,14 @@ angular.module('queryer', [
 		};
 
 		$scope.startQuery = function () {
-			var params = {};
+			var params = {
+				tid : (new Date()).getTime()
+			};
 			$.map($scope.condition, function (c, index) {
 				if (c) {
+					if (_.isDate(c)) {
+						c = c.toISOString();
+					}
 					params[index] = c;
 				}
 			});
@@ -115,19 +122,41 @@ angular.module('queryer', [
 		};
 
 		/**
+		 * Expense Detail Editor Initialization
+		 */
+		$scope.expenseEditorConfig = {
+			dialogOption: {
+				backdrop: 'static',
+				keyboard: false
+			},
+			template: '/src/partials/expense-editor/expense-detail-editor-view.tpl.html'
+		};
+
+		$scope.showExpenseEditor = function ($event, dataModel) {
+			$($event.currentTarget).trigger('popup', ['queryPop', dataModel.subItem || [], {task_id: dataModel.id}]);
+		};
+
+		/**
 		 * Param parsing
 		 */
 		var params = $location.search();
-		$http.get($scope.queryPath, {params: params}).success(function (data) {
-			$scope.searchResult = data;
-		});
+		if (!_.isEmpty(params)) {
+			$http.get($scope.queryPath, {params: params}).success(function (data) {
+				if(_.isEmpty(data)){
+					alert('没有符合条件的数据!');
+				}
+				$scope.searchResult = data;
+			});
+		}
 
 		/**
 		 * Initialize query conditions
 		 */
 		$scope.condition = {
 			start_date: params.start_date || new Date(),
-			end_date: params.end_date ||new Date(),
-			status: params.status || 'all'
+			end_date: params.end_date || new Date(),
+			status: params.status || 'all',
+			employee_name: params.employee_name || '',
+			customer_name: params.customer_name || ''
 		};
 	}]);

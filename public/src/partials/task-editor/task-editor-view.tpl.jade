@@ -35,7 +35,7 @@ div.navbar.navbar-default.task-header
 						li.nav-divider
 
 						li
-							a(href="#page_expense", du-smooth-scroll, offset="30", ng-click="closeToggle()")
+							a(popup-dialog,dialog-config="expenseEditorConfig",ng-click="showExpenseEditor($event, getExpenseModel())",on-confirm="onExpenseSaved(action, data)")
 								icon.fa.fa-rmb.fa-fw &nbsp;
 								span &nbsp;&nbsp;费用
 

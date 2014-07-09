@@ -20,11 +20,11 @@ table.table.table-hover.table-bordered
 			td {{sumField(searchResult, 'contract_price')}}
 			td {{sumField(searchResult, 'expense_total')}}
 	tbody
-		tr.cursor-pointer(ng-repeat="row in searchResult")
+		tr.cursor-pointer(ng-repeat="row in searchResult", popup-dialog,dialog-config="expenseEditorConfig",ng-click="showExpenseEditor($event, row)")
 			td {{$index + 1}}
 			td {{row.report_date | date:'yyyy-MM-dd'}}
 			td
-				div.label.label-primary(ng-click="openTask($event, row.id)")
+				div.label.label-primary
 					span TK-{{row.id}}
 			td {{row.customer_name}}
 			td {{row.assignee}}
