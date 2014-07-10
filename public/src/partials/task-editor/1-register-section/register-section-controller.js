@@ -1,12 +1,13 @@
 /**
  * Created by bli on 2014/6/9.
  */
-angular.module('register-section', ['register-editor', 'handling-method-service'])
+angular.module('register-section', ['register-editor', 'handling-method-service', 'print-service'])
 	.controller('registerSectionController', [
 		'$scope',
 		'$http',
 		'handlingMethodService',
-		function ($scope, $http, handlingMethodService) {
+		'printService',
+		function ($scope, $http, handlingMethodService, printService) {
 			$scope.registerEditorConfig = {
 				dialogOption: {
 					backdrop: 'static'
@@ -53,16 +54,6 @@ angular.module('register-section', ['register-editor', 'handling-method-service'
 					}
 				};
 
-				//$http.get('/printTaskSheet', {params: params});
-
-				var hiddenIFrameID = 'hiddenDownloader',
-					iframe = document.getElementById(hiddenIFrameID);
-				if (iframe === null) {
-					iframe = document.createElement('iframe');
-					iframe.id = hiddenIFrameID;
-					iframe.style.display = 'none';
-					document.body.appendChild(iframe);
-				}
-				iframe.src = '/printTaskSheet/' + JSON.stringify(params);
+				printService.print(params);
 			}
 		}]);

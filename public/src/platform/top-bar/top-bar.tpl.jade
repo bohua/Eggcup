@@ -38,10 +38,10 @@ div.navbar.navbar-inverse.navbar-fixed-top(ng-controller="topBarController", rol
 					ul.dropdown-menu
 						li: a(href="#/config/customer")
 							i.fa.fa-briefcase.fa-fw &nbsp;
-							span 客户信息
+							span &nbsp;客户信息
 						li: a(href="#/config/employee")
 							i.fa.fa-users.fa-fw &nbsp;
-							span 人员信息
+							span &nbsp;人员信息
 
 				li#nav-block-query.dropdown
 					a.dropdown-toggle.cursor-pointer(data-toggle="dropdown")
@@ -49,9 +49,15 @@ div.navbar.navbar-inverse.navbar-fixed-top(ng-controller="topBarController", rol
 						span.cursor-pointer 查询
 						b.caret
 					ul.dropdown-menu
-						li: a(href="#/queryer/task") 项目查询
-						li: a(href="#/queryer/account") 收款查询
-						li: a(href="#/queryer/expense") 费用查询
+						li: a(href="#/queryer/task")
+							i.fa.fa-calendar.fa-fw &nbsp;
+							span &nbsp;项目查询
+						li: a(href="#/queryer/account")
+							i.fa.fa-bank.fa-fw &nbsp;
+							span &nbsp;收款查询
+						li: a(href="#/queryer/expense")
+							i.fa.fa-rmb.fa-fw &nbsp;
+							span &nbsp;费用查询
 
 				li#nav-block-user.dropdown
 					a.dropdown-toggle.cursor-pointer(data-toggle="dropdown")
@@ -66,7 +72,7 @@ div.navbar.navbar-inverse.navbar-fixed-top(ng-controller="topBarController", rol
 						on-confirm="onPersonalSettingsSaved(action, data)"
 						)
 							i.fa.fa-info.fa-fw &nbsp;
-							span 修改登录信息
+							span &nbsp;修改登录信息
 						//li: a(href='#')
 						//	i.fa.fa-retweet.fa-fw &nbsp;
 						//	span 切换帐套
@@ -76,7 +82,7 @@ div.navbar.navbar-inverse.navbar-fixed-top(ng-controller="topBarController", rol
 						li.divider
 						li: a.cursor-pointer(href="/", ng-click="signOff()")
 							i.fa.fa-sign-out.fa-fw &nbsp;
-							span 登出系统
+							span &nbsp;登出系统
 
 				li#new-task-btn.navbar-form.navbar-right(ng-if="canAdd")
 					btn.btn.btn-primary(
