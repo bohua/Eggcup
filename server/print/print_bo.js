@@ -38,14 +38,14 @@ module.exports = {
 			return deferred.promise;
 		}
 
-		exportPath += template.export_name;
 		schemaReader(template.mapper).then(
 			function (json) {
 				var dataMapper = createDataMapper(dataModel, json);
+				var expPath = exportPath + template.export_name;
 
-				xlsGenerator(template.xls, exportPath, dataMapper).then(
+				xlsGenerator(template.xls, expPath, dataMapper).then(
 					function () {
-						deferred.resolve(exportPath);
+						deferred.resolve(expPath);
 					},
 					function (failure) {
 						deferred.reject({

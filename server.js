@@ -92,7 +92,7 @@ app.get('/getFileTypeList', platform.getFileTypeList);
 /**
  * Print
  */
-app.post('/printTaskSheet', print.printTaskSheet);
+app.get('/printTaskSheet/:printData', print.printTaskSheet);
 
 /**
  * Initialize Logger
