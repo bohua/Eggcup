@@ -40,11 +40,11 @@ angular.module('register-section', ['register-editor', 'handling-method-service'
 				var params = {
 					sheetType: 'register',
 					sheetData: {
-						company_name: $scope.task_model.company_name,
-						company_contact: $scope.task_model.company_contact,
-						company_tel: $scope.task_model.company_tel,
-						company_email: $scope.task_model.company_email,
-						company_address: $scope.task_model.company_address,
+						customer_name: $scope.task_model.customer_name,
+						customer_contact: $scope.task_model.customer_contact,
+						customer_tel: $scope.task_model.customer_tel,
+						customer_email: $scope.task_model.customer_email,
+						customer_address: $scope.task_model.customer_address,
 						register_content: $scope.task_model.register_content,
 						report_date: $scope.task_model.report_date.split('T')[0],
 

@@ -6,23 +6,23 @@
 	},{
 		"name": "公司名称",
 		"cell": "B,3",
-		"data_field": "company_name"
+		"data_field": "customer_name"
 	},{
 		"name": "联系人",
 		"cell": "E,3",
-		"data_field": "company_contact"
+		"data_field": "customer_contact"
 	},{
 		"name": "联系电话",
 		"cell": "B,4",
-		"data_field": "company_tel"
+		"data_field": "customer_tel"
 	},{
 		"name": "邮箱",
 		"cell": "E,4",
-		"data_field": "company_email"
+		"data_field": "customer_email"
 	},{
 		"name": "地址",
 		"cell": "B,5",
-		"data_field": "company_address"
+		"data_field": "customer_address"
 	},{
 		"name": "咨询日期",
 		"cell": "E,5",
