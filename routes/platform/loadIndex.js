@@ -1,6 +1,9 @@
 /*
  * GET home page.
  */
+var path = require('path');
+var walk = require('walk');
+
 function formatFilePath(longPath){
 	var pathArr = longPath.split('/public');
 	if(pathArr.length >=2 && pathArr[0].length < longPath.length){
@@ -10,22 +13,21 @@ function formatFilePath(longPath){
 }
 
 module.exports = function (req, res) {
-	var walk = require('walk');
 	var jsFiles = [];
 	var cssFiles = [];
-	var pathArr = __dirname.split('\\');
+	var pathArr = path.normalize(__dirname).split('/');
 	pathArr.pop();
 	pathArr.pop();
 	var projectPath= pathArr.join('/');
 	var jsToImport = [];
 	var jsRule = /.*\.js/;
 
-	var productCodeWalker  = walk.walk(projectPath+'/public/src', { followLinks: false });
+	var productCodeWalker  = walk.walk(path.join(projectPath, '/public/src'), { followLinks: false });
 
 	productCodeWalker.on('file', function(root, stat, next) {
 		// Add production code & style to the list of files
 		if(stat.name.match(jsRule)){
-			jsFiles.push(root + '/' + stat.name);
+			jsFiles.push(path.join(root, stat.name));
 		}
 		next();
 

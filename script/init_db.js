@@ -17,7 +17,7 @@ var connection = mysql.createConnection({
 connection.query('drop database if exists `eggcup`', function (err) {
 	if (err) throw err;
 
-	connection.query('create database `eggcup`', function (err) {
+	connection.query('create database `eggcup` DEFAULT CHARSET=utf8', function (err) {
 		if (err) throw err;
 
 		connection.end();
