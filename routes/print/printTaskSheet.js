@@ -28,10 +28,7 @@ module.exports = function (req, res) {
 		},
 		function (failure) {
 			res.statusCode = 400;
-			res.json({
-				code: 'ERR_PRINT_ERROR',
-				reason: '打印失败时数据出错'
-			});
+			res.json(failure);
 		}
 	);
 };

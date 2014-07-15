@@ -26,7 +26,7 @@ table.table.table-hover.table-bordered
 			td {{$index + 1}}
 			td {{row.report_date | date:'yyyy-MM-dd'}}
 			td
-				div.label.label-primary(ng-click="openTask($event, row.id)")
+				div.label.label-primary
 					span TK-{{row.id}}
 			td {{row.customer_name}}
 			td {{row.assignee}}

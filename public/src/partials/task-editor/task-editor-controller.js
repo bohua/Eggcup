@@ -467,12 +467,7 @@ angular.module('task-editor', [
 
 		$scope.showExpenseEditor = function ($event, dataModel) {
 			var mode = $scope.canEdit ? 'edit' : 'readOnly';
-			dataModel = dataModel || [];
-			$($event.currentTarget).trigger('popup', [mode, dataModel]);
-		};
-
-		$scope.getExpenseModel = function () {
-			return $scope.task_model.expenseSheet.subItem;
+			$($event.currentTarget).trigger('popup', [mode, $scope.task_model.expenseSheet.subItem || []]);
 		};
 
 		$scope.onExpenseSaved = function (action, data) {

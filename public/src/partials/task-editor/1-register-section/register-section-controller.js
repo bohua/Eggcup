@@ -41,16 +41,18 @@ angular.module('register-section', ['register-editor', 'handling-method-service'
 				var params = {
 					sheetType: 'register',
 					sheetData: {
-						customer_name: $scope.task_model.customer_name,
-						customer_contact: $scope.task_model.customer_contact,
-						customer_tel: $scope.task_model.customer_tel,
-						customer_email: $scope.task_model.customer_email,
-						customer_address: $scope.task_model.customer_address,
-						register_content: $scope.task_model.register_content,
-						report_date: $scope.task_model.report_date.split('T')[0],
+						singleMapper: {
+							customer_name: $scope.task_model.customer_name,
+							customer_contact: $scope.task_model.customer_contact,
+							customer_tel: $scope.task_model.customer_tel,
+							customer_email: $scope.task_model.customer_email,
+							customer_address: $scope.task_model.customer_address,
+							register_content: $scope.task_model.register_content,
+							report_date: $scope.task_model.report_date.split('T')[0],
 
-						consult_method: consultMethods.join(', '),
-						privilege: privileges.join(', ')
+							consult_method: consultMethods.join(', '),
+							privilege: privileges.join(', ')
+						}
 					}
 				};
 

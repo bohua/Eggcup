@@ -9,21 +9,53 @@ var exportPath = __dirname + '/tmp/';
 
 var templates = {
 	register: {
-		xls: __dirname + "/templates/register.tpl.xls",
-		mapper: __dirname + "/templates/register.map.json",
+		xls: __dirname + "/templates/登记表.tpl.xls",
+		mapper: __dirname + "/templates/登记表_对照.map.json",
 		export_name: "打印登记表.xls"
+	},
+	contract: {
+		xls: __dirname + "/templates/合同要义概览.tpl.xls",
+		mapper: __dirname + "/templates/合同要义概览_对照.map.json",
+		export_name: "打印合同要义概览.xls"
 	}
 }
 
 function createDataMapper(dataModel, mapper) {
 	var result = {};
 
-	_.forEach(dataModel, function (v, k) {
-		var dataField = _.where(mapper, {data_field: k});
-		if (!_.isEmpty(dataField)) {
-			result[dataField[0]['cell']] = v;
-		}
-	});
+	if (dataModel.singleMapper) {
+		_.forEach(dataModel.singleMapper, function (v, k) {
+			var dataField = _.where(mapper.singleMapper, {data_field: k});
+			if (!_.isEmpty(dataField)) {
+				if (!result.singleMapper) {
+					result.singleMapper = {};
+				}
+				result.singleMapper[dataField[0]['cell']] = v;
+			}
+		});
+	}
+
+	if (dataModel.rowMapper && mapper.rowMapper) {
+		_.forEach(dataModel.rowMapper.rowData, function (row) {
+			var newRow = {};
+
+			_.forEach(row, function (v, k) {
+				var dataField = _.where(mapper.rowMapper.rowData, {data_field: k});
+				if (!_.isEmpty(dataField)) {
+					newRow[dataField[0]['cell']] = v;
+				}
+			});
+
+			if (!result.rowMapper) {
+				result.rowMapper = {
+					startRow: mapper.rowMapper.startRow,
+					rowData: []
+				};
+			}
+
+			result.rowMapper.rowData.push(newRow);
+		});
+	}
 
 	return result;
 }

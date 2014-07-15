@@ -18,7 +18,7 @@ div.container-fluid(ng-controller="contractSectionController")
 					span.caret
 				ul.dropdown-menu
 					li
-						a
+						a(ng-click="printDoc()")
 							i.fa.fa-print.fa-fw &nbsp;
 							span 打印
 
@@ -43,7 +43,7 @@ div.container-fluid(ng-controller="contractSectionController")
 						span {{task_model.contractSheet.contract_B}}
 					div.flex-box
 						label 合同标的:
-						span {{task_model.contractSheet.contract_topic}}
+						span {{task_model.contractSheet.contract_price}}
 				table.table.table-hover.table-bordered
 					thead
 						tr

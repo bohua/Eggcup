@@ -1,0 +1,76 @@
+{
+	"singleMapper": [
+		{
+			"name": "合同状态",
+			"cell": "B,2",
+			"data_field": "contract_status"
+		},{
+			"name": "阅读权限",
+			"cell": "E,2",
+			"data_field": "privilege"
+		},{
+			"name": "公司名称",
+			"cell": "B,3",
+			"data_field": "customer_name"
+		},{
+			"name": "联系人",
+			"cell": "E,3",
+			"data_field": "customer_contact"
+		},{
+			"name": "联系电话",
+			"cell": "B,4",
+			"data_field": "customer_tel"
+		},{
+			"name": "邮箱",
+			"cell": "E,4",
+			"data_field": "customer_email"
+		},{
+			"name": "地址",
+			"cell": "B,5",
+			"data_field": "customer_address"
+		},{
+			"name": "任务号",
+			"cell": "B,6",
+			"data_field": "task_id"
+		},{
+			"name": "签定日期",
+			"cell": "E,6",
+			"data_field": "contract_date"
+		},{
+			"name": "合同标的",
+			"cell": "B,6",
+			"data_field": "contract_price"
+		},{
+			"name": "合同期限",
+			"cell": "E,6",
+			"data_field": "contract_due_date"
+		},{
+			"name": "主要内容",
+			"cell": "B,8",
+			"data_field": "contract_topic"
+		}
+	],
+
+	"rowMapper": {
+		"startRow" : "11",
+		"rowData": [
+			{
+				"name": "约定付款时间",
+				"cell": "A",
+				"data_field": "pay_date"
+			},{
+				"name": "付款金额",
+				"cell": "C",
+				"data_field": "expense"
+			},{
+				"name": "到款日期",
+				"cell": "D",
+				"data_field": "due_date"
+			},{
+				"name": "付款方式",
+				"cell": "F",
+				"data_field": "pay_method"
+			}
+		]
+	}
+}
