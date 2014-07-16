@@ -19,16 +19,16 @@ angular.module('contract-section', ['contract-editor', 'contract-detail-editor',
 
 		$scope.getContractModel = function () {
 			return $scope.task_model.contractSheet;
-		}
+		};
 
 		$scope.onContractSaved = function (action, data) {
 			$scope.task_model.contractSheet = data;
 			var o = {
 				id: $scope.task_model.id,
 				contractSheet: data
-			}
+			};
 			$scope.$emit('event:saveTaskModel', $scope.task_model.id, o);
-		}
+		};
 
 		/**
 		 * Detail Editor Initialization
@@ -52,7 +52,7 @@ angular.module('contract-section', ['contract-editor', 'contract-detail-editor',
 
 		$scope.getDetailModel = function () {
 			return $scope.task_model.contractSheet.subItem;
-		}
+		};
 
 		$scope.onDetailSaved = function (action, data) {
 			$scope.task_model.contractSheet.subItem = data;
@@ -63,9 +63,9 @@ angular.module('contract-section', ['contract-editor', 'contract-detail-editor',
 					id: $scope.task_model.contractSheet.id,
 					subItem: data
 				}
-			}
+			};
 			$scope.$emit('event:saveTaskModel', $scope.task_model.id, o);
-		}
+		};
 
 		/**
 		 * Print Configuration
@@ -123,5 +123,5 @@ angular.module('contract-section', ['contract-editor', 'contract-detail-editor',
 			};
 
 			printService.print(params);
-		}
+		};
 	}]);

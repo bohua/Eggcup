@@ -1,8 +1,8 @@
 /**
  * Created by bli on 2014/6/9.
  */
-angular.module('execute-section', ['execute-editor', 'execute-detail-editor', 'reminder-editor'])
-	.controller('executeSectionController', ['$scope', function ($scope) {
+angular.module('execute-section', ['execute-editor', 'execute-detail-editor', 'reminder-editor', 'print-service'])
+	.controller('executeSectionController', ['$scope', 'printService', function ($scope, printService) {
 		/**
 		 * Execute Editor Initialization
 		 */
@@ -19,16 +19,16 @@ angular.module('execute-section', ['execute-editor', 'execute-detail-editor', 'r
 
 		$scope.getExecuteModel = function () {
 			return $scope.task_model.executeSheet;
-		}
+		};
 
 		$scope.onExecuteSaved = function (action, data) {
 			$scope.task_model.executeSheet = data;
 			var o = {
 				id: $scope.task_model.id,
 				executeSheet: data
-			}
+			};
 			$scope.$emit('event:saveTaskModel', $scope.task_model.id, o);
-		}
+		};
 
 		/**
 		 * Detail Editor Initialization
@@ -49,7 +49,7 @@ angular.module('execute-section', ['execute-editor', 'execute-detail-editor', 'r
 
 		$scope.getDetailModel = function () {
 			return $scope.task_model.executeSheet.subItem;
-		}
+		};
 
 		$scope.onDetailSaved = function (action, data) {
 			$scope.task_model.executeSheet.subItem = data;
@@ -60,9 +60,9 @@ angular.module('execute-section', ['execute-editor', 'execute-detail-editor', 'r
 					id: $scope.task_model.executeSheet.id,
 					subItem: data
 				}
-			}
+			};
 			$scope.$emit('event:saveTaskModel', $scope.task_model.id, o);
-		}
+		};
 
 		/**
 		 * Reminder Editor Initialization
@@ -104,5 +104,53 @@ angular.module('execute-section', ['execute-editor', 'execute-detail-editor', 'r
 				reminderSheet: $scope.task_model.reminderSheet
 			};
 			$scope.$emit('event:saveTaskModel', $scope.task_model.id, o);
+		};
+
+		/**
+		 * Print Configuration
+		 */
+		$scope.printDoc = function () {
+			var privileges = [];
+
+			if ($scope.task_model.prop_internal) privileges.push("内部浏览");
+			if ($scope.task_model.prop_external) privileges.push("客户浏览");
+
+			var params = {
+				sheetType: 'execute',
+				sheetData: {
+					singleMapper: {
+						task_id: $scope.task_model.id,
+
+						customer_name: $scope.task_model.customer_name,
+						customer_contact: $scope.task_model.customer_contact,
+						customer_tel: $scope.task_model.customer_tel,
+						customer_email: $scope.task_model.customer_email,
+						customer_address: $scope.task_model.customer_address,
+
+						project_manager: $scope.task_model.executeSheet.project_manager,
+						project_runner: $scope.task_model.executeSheet.project_runner,
+						project_topic: $scope.task_model.executeSheet.project_topic,
+
+						privilege: privileges.join(', ')
+					},
+
+					rowMapper: {
+						rowData: _.map($scope.task_model.executeSheet.subItem, function (item) {
+							var o = {
+								execute_runner: item.execute_runner,
+								execute_digest: item.execute_digest
+							};
+
+							if (item.execute_date) {
+								o.execute_date = item.execute_date.split('T')[0];
+							}
+
+							return o;
+						})
+					}
+				}
+			};
+
+			printService.print(params);
 		};
 	}]);

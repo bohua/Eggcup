@@ -18,10 +18,35 @@ var templates = {
 		mapper: __dirname + "/templates/审核表_对照.map.json",
 		export_name: "打印审核表.xls"
 	},
+	reply_a: {
+		xls: __dirname + "/templates/解答表_邮件电话.tpl.xls",
+		mapper: __dirname + "/templates/解答表_邮件电话_对照.map.json",
+		export_name: "打印解答表_邮件电话.xls"
+	},
+	reply_b: {
+		xls: __dirname + "/templates/解答表_面谈.tpl.xls",
+		mapper: __dirname + "/templates/解答表_面谈_对照.map.json",
+		export_name: "打印解答表_面谈.xls"
+	},
+	proposal: {
+		xls: __dirname + "/templates/提案表.tpl.xls",
+		mapper: __dirname + "/templates/提案表_对照.map.json",
+		export_name: "打印提案表.xls"
+	},
 	contract: {
 		xls: __dirname + "/templates/合同表.tpl.xls",
 		mapper: __dirname + "/templates/合同表_对照.map.json",
 		export_name: "打印合同表.xls"
+	},
+	execute: {
+		xls: __dirname + "/templates/执行表.tpl.xls",
+		mapper: __dirname + "/templates/执行表_对照.map.json",
+		export_name: "打印执行表.xls"
+	},
+	summary: {
+		xls: __dirname + "/templates/汇总表.tpl.xls",
+		mapper: __dirname + "/templates/汇总表_对照.map.json",
+		export_name: "打印汇总表.xls"
 	}
 }
 

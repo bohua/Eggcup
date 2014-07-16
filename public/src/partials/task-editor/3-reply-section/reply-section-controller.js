@@ -1,11 +1,12 @@
 /**
  * Created by Bli on 2014/6/16.
  */
-angular.module('reply-section', ['reply-editor', 'attach-editor', 'appointment-editor'])
+angular.module('reply-section', ['reply-editor', 'attach-editor', 'appointment-editor', 'print-service'])
 	.controller('replySectionController', [
 		'$scope',
 		'$timeout',
-		function ($scope, $timeout) {
+		'printService',
+		function ($scope, $timeout, printService) {
 
 			/**
 			 * Reply Editor Initialization
@@ -116,6 +117,49 @@ angular.module('reply-section', ['reply-editor', 'attach-editor', 'appointment-e
 					appointmentSheet: $scope.task_model.appointmentSheet
 				};
 				$scope.$emit('event:saveTaskModel', $scope.task_model.id, o);
+			};
+
+			$scope.printDoc = function () {
+				var sheetType = $scope.task_model.handling === 0 ? 'reply_a' : 'reply_b';
+				var consultMethods = [],
+					privileges = [];
+
+				if ($scope.task_model.prop_isEmail) consultMethods.push("电子邮件");
+				if ($scope.task_model.prop_isTel) consultMethods.push("电话");
+				if ($scope.task_model.prop_isF2F) consultMethods.push("面谈");
+				if ($scope.task_model.prop_isFax) consultMethods.push("传真");
+
+				if ($scope.task_model.prop_internal) privileges.push("内部浏览");
+				if ($scope.task_model.prop_external) privileges.push("客户浏览");
+
+				var params = {
+					sheetType: sheetType,
+					sheetData: {
+						singleMapper: {
+							customer_name: $scope.task_model.customer_name,
+							customer_contact: $scope.task_model.customer_contact,
+							customer_tel: $scope.task_model.customer_tel,
+							customer_email: $scope.task_model.customer_email,
+							customer_address: $scope.task_model.customer_address,
+							report_date: $scope.task_model.report_date.split('T')[0],
+
+							reply_date: $scope.task_model.replySheet.reply_date.split('T')[0],
+
+							consult_context: $scope.task_model.replySheet.consult_context,
+							reply_context: $scope.task_model.replySheet.reply_context,
+							law_context: $scope.task_model.replySheet.law_context,
+							reply_person: $scope.task_model.replySheet.reply_person,
+							meeting_address: $scope.task_model.replySheet.meeting_address,
+							meeting_people_A: $scope.task_model.replySheet.meeting_people_A,
+							meeting_people_B: $scope.task_model.replySheet.meeting_people_B,
+
+							consult_method: consultMethods.join(', '),
+							privilege: privileges.join(', ')
+						}
+					}
+				};
+
+				printService.print(params);
 			};
 
 		}]);
