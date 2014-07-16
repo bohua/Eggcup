@@ -13,10 +13,15 @@ var templates = {
 		mapper: __dirname + "/templates/登记表_对照.map.json",
 		export_name: "打印登记表.xls"
 	},
+	arrange: {
+		xls: __dirname + "/templates/审核表.tpl.xls",
+		mapper: __dirname + "/templates/审核表_对照.map.json",
+		export_name: "打印审核表.xls"
+	},
 	contract: {
-		xls: __dirname + "/templates/合同要义概览.tpl.xls",
-		mapper: __dirname + "/templates/合同要义概览_对照.map.json",
-		export_name: "打印合同要义概览.xls"
+		xls: __dirname + "/templates/合同表.tpl.xls",
+		mapper: __dirname + "/templates/合同表_对照.map.json",
+		export_name: "打印合同表.xls"
 	}
 }
 

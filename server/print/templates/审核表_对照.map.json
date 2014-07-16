@@ -1,0 +1,45 @@
+{
+	"singleMapper": [
+		{
+			"name": "任务号",
+			"cell": "B,2",
+			"data_field": "task_id"
+		},{
+			"name": "立案日期",
+			"cell": "F,2",
+			"data_field": "report_date"
+		},{
+			"name": "咨询主题",
+			"cell": "B,3",
+			"data_field": "slogan"
+		},{
+			"name": "处理方式",
+			"cell": "B,4",
+			"data_field": "handling"
+		},{
+			"name": "审核日期",
+			"cell": "B,5",
+			"data_field": "arrangement_date"
+		},{
+			"name": "审核人",
+			"cell": "F,5",
+			"data_field": "arrangement_assigner"
+		},{
+			"name": "人员案排",
+			"cell": "B,6",
+			"data_field": "arrangement_assignee"
+		},{
+			"name": "从",
+			"cell": "C,7",
+			"data_field": "start_date"
+		},{
+			"name": "至",
+			"cell": "E,7",
+			"data_field": "end_date"
+		},{
+			"name": "审核意见",
+			"cell": "A,9",
+			"data_field": "arrangement_comment"
+		}
+	]
+}
