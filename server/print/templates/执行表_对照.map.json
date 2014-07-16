@@ -1,0 +1,60 @@
+{
+	"singleMapper": [
+		{
+			"name": "阅读权限",
+			"cell": "E,2",
+			"data_field": "privilege"
+		},{
+			"name": "公司名称",
+			"cell": "B,3",
+			"data_field": "customer_name"
+		},{
+			"name": "联系人",
+			"cell": "E,3",
+			"data_field": "customer_contact"
+		},{
+			"name": "联系电话",
+			"cell": "B,4",
+			"data_field": "customer_tel"
+		},{
+			"name": "邮箱",
+			"cell": "E,4",
+			"data_field": "customer_email"
+		},{
+			"name": "地址",
+			"cell": "B,5",
+			"data_field": "customer_address"
+		},{
+			"name": "项目名称",
+			"cell": "B,6",
+			"data_field": "project_topic"
+		},{
+			"name": "项目负责人",
+			"cell": "B,7",
+			"data_field": "project_manager"
+		},{
+			"name": "项目执行人",
+			"cell": "E,7",
+			"data_field": "project_runner"
+		}
+	],
+
+	"rowMapper": {
+		"startRow" : "10",
+		"rowData": [
+			{
+				"name": "执行日期",
+				"cell": "A",
+				"data_field": "execute_date"
+			},{
+				"name": "执行人",
+				"cell": "C",
+				"data_field": "execute_runner"
+			},{
+				"name": "执行情况",
+				"cell": "D",
+				"data_field": "execute_digest"
+			}
+		]
+	}
+}

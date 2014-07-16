@@ -1,0 +1,72 @@
+{
+	"singleMapper": [
+		{
+			"name": "任务号",
+			"cell": "C,2",
+			"data_field": "task_id"
+		},{
+			"name": "阅读权限",
+			"cell": "F,2",
+			"data_field": "privilege"
+		},{
+			"name": "公司名称",
+			"cell": "C,3",
+			"data_field": "customer_name"
+		},{
+			"name": "联系人",
+			"cell": "F,3",
+			"data_field": "customer_contact"
+		},{
+			"name": "联系电话",
+			"cell": "C,4",
+			"data_field": "customer_tel"
+		},{
+			"name": "邮箱",
+			"cell": "F,4",
+			"data_field": "customer_email"
+		},{
+			"name": "地址",
+			"cell": "C,5",
+			"data_field": "customer_address"
+		},{
+			"name": "报价日期",
+			"cell": "F,5",
+			"data_field": "project_expense"
+		}
+	],
+
+	"rowMapper": {
+		"startRow" : "8",
+		"rowData": [
+			{
+				"name": "序号",
+				"cell": "A",
+				"data_field": "index"
+			},{
+				"name": "报务内容",
+				"cell": "B",
+				"data_field": "service"
+			},{
+				"name": "服务时间",
+				"cell": "D",
+				"data_field": "date"
+			},{
+				"name": "服务费用",
+				"cell": "E",
+				"data_field": "expense"
+			},{
+				"name": "交通费用",
+				"cell": "F",
+				"data_field": "traffic"
+			},{
+				"name": "公关费用",
+				"cell": "G",
+				"data_field": "extra"
+			},{
+				"name": "合计",
+				"cell": "H",
+				"data_field": "total"
+			}
+		]
+	}
+}

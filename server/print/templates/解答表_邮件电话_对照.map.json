@@ -1,0 +1,61 @@
+{
+	"singleMapper": [
+		{
+			"name": "阅读权限",
+			"cell": "D,2",
+			"data_field": "privilege"
+		},{
+			"name": "公司名称",
+			"cell": "B,3",
+			"data_field": "customer_name"
+		},{
+			"name": "联系人",
+			"cell": "D,3",
+			"data_field": "customer_contact"
+		},{
+			"name": "联系电话",
+			"cell": "B,4",
+			"data_field": "customer_tel"
+		},{
+			"name": "邮箱",
+			"cell": "D,4",
+			"data_field": "customer_email"
+		},{
+			"name": "地址",
+			"cell": "B,5",
+			"data_field": "customer_address"
+		},{
+			"name": "预约面谈日期",
+			"cell": "D,7",
+			"data_field": ""
+		},{
+			"name": "咨询日期",
+			"cell": "B,7",
+			"data_field": "report_date"
+		},{
+			"name": "答复日期",
+			"cell": "B,8",
+			"data_field": "reply_date"
+		},{
+			"name": "咨询方式",
+			"cell": "D,8",
+			"data_field": "consult_method"
+		},{
+			"name": "咨询事项",
+			"cell": "A,10",
+			"data_field": "consult_context"
+		},{
+			"name": "解答回复",
+			"cell": "A,21",
+			"data_field": "reply_context"
+		},{
+			"name": "法律依据",
+			"cell": "A,33",
+			"data_field": "law_context"
+		},{
+			"name": "登记人",
+			"cell": "B,39",
+			"data_field": "reply_person"
+		}
+	]
+}
