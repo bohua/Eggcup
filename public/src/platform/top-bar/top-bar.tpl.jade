@@ -73,6 +73,15 @@ div.navbar.navbar-inverse.navbar-fixed-top(ng-controller="topBarController", rol
 						)
 							i.fa.fa-info.fa-fw &nbsp;
 							span &nbsp;修改登录信息
+
+						li: a.cursor-pointer(ng-click="backupDB()")
+							i.fa.fa-download.fa-fw &nbsp;
+							span &nbsp;数据备份
+
+						//li: a.cursor-pointer(ng-click="restoreDB()")
+						//	i.fa.fa-upload.fa-fw &nbsp;
+						//	span &nbsp;数据还原
+
 						//li: a(href='#')
 						//	i.fa.fa-retweet.fa-fw &nbsp;
 						//	span 切换帐套

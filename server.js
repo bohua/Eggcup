@@ -12,6 +12,7 @@ var security = require('./routes/security');
 var basics = require('./routes/basics');
 var tasks = require('./routes/tasks');
 var print = require('./routes/print');
+var backup = require('./routes/backup');
 var attachment = require('./routes/attachment');
 var winston = require('winston');
 var fs = require('fs');
@@ -93,6 +94,12 @@ app.get('/getFileTypeList', platform.getFileTypeList);
  * Print
  */
 app.get('/printTaskSheet/:printData', print.printTaskSheet);
+
+/**
+ * Backup
+ */
+app.get('/backup/:file_name', backup.backup_data);
+app.post('/restore', backup.restore_data);
 
 /**
  * Initialize Logger

@@ -142,4 +142,22 @@ angular.module('top-bar', ['login-session-service', 'task-service', 'permission-
 
 				employeeListService.saveEmployee(o);
 			};
+
+			/**
+			 * Backup
+			 */
+			$scope.backupDB = function () {
+				var date = (new Date()).toJSON().split('T')[0];
+				$scope.backupFileName = '备份数据' + date + '.rsp';
+
+				var hiddenIFrameID = 'hiddenDownloader',
+					iframe = document.getElementById(hiddenIFrameID);
+				if (iframe === null) {
+					iframe = document.createElement('iframe');
+					iframe.id = hiddenIFrameID;
+					iframe.style.display = 'none';
+					document.body.appendChild(iframe);
+				}
+				iframe.src = '/backup/'+$scope.backupFileName;
+			};
 		}]);
