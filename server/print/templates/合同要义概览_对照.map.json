@@ -38,11 +38,11 @@
 			"data_field": "contract_date"
 		},{
 			"name": "合同标的",
-			"cell": "B,6",
+			"cell": "B,7",
 			"data_field": "contract_price"
 		},{
 			"name": "合同期限",
-			"cell": "E,6",
+			"cell": "E,7",
 			"data_field": "contract_due_date"
 		},{
 			"name": "主要内容",

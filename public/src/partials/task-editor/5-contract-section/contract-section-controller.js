@@ -82,9 +82,18 @@ angular.module('contract-section', ['contract-editor', 'contract-detail-editor',
 				sheetType: 'contract',
 				sheetData: {
 					singleMapper: {
+						task_id: $scope.task_model.id,
+
+						customer_name: $scope.task_model.customer_name,
+						customer_contact: $scope.task_model.customer_contact,
+						customer_tel: $scope.task_model.customer_tel,
+						customer_email: $scope.task_model.customer_email,
+						customer_address: $scope.task_model.customer_address,
+
 						contract_date: contract_date.split('T')[0],
 						contract_due_date: contract_due_date.split('T')[0],
 
+						contract_status : $scope.task_model > 600 ? '已完成' : '进行中',
 						contract_A: $scope.task_model.contractSheet.contract_A,
 						contract_B: $scope.task_model.contractSheet.contract_B,
 
