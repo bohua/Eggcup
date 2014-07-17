@@ -82,6 +82,7 @@ angular.module('execute-section', ['execute-editor', 'execute-detail-editor', 'r
 			return {
 				customer_name: $scope.task_model.customer_name,
 				contract_topic: $scope.task_model.contractSheet.contract_topic,
+				contract_price: $scope.task_model.contractSheet.contract_price,
 				contract_date: $scope.task_model.contractSheet.contract_date,
 				contract_due_date: $scope.task_model.contractSheet.contract_due_date,
 
@@ -130,6 +131,7 @@ angular.module('execute-section', ['execute-editor', 'execute-detail-editor', 'r
 						project_manager: $scope.task_model.executeSheet.project_manager,
 						project_runner: $scope.task_model.executeSheet.project_runner,
 						project_topic: $scope.task_model.executeSheet.project_topic,
+						contract_price: $scope.task_model.executeSheet.contract_price,
 
 						privilege: privileges.join(', ')
 					},

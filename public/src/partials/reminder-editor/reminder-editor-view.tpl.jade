@@ -3,7 +3,7 @@
 	form#page0.modal-content.animate-show(ng-submit="Confirm('update', true)", ng-show="prop.paging==0")
 		div.modal-header
 			button.close(type="button", data-dismiss="modal") &times;
-			h4.modal-title 面谈预约通知单 &nbsp;
+			h4.modal-title 合同催款通知单 &nbsp;
 				small  Details
 		div.modal-body.container-fluid
 			div.row
@@ -14,7 +14,7 @@
 				div.form-group.col-sm-6
 					label.control-label 合同标的:
 					div
-						input.form-control(type="text", placeholder="合同标的", ng-model="dialog_data_model.contract_topic", disabled)
+						input.form-control(type="text", placeholder="合同标的", ng-model="dialog_data_model.contract_price", disabled)
 			div.row
 				div.form-group.col-sm-3
 					label.control-label 签定日期:

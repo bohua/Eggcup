@@ -224,7 +224,7 @@ var TASK = new Bo('DATA_TASK', {
 				var results = [];
 				_.map(success, function (item) {
 					var tmp = {};
-					if (item.subItem) {
+					if (item.subItem && !_.isEmpty(item.subItem)) {
 						tmp.subItem = item.subItem;
 
 						tmp.account_total = _.pluck(item.subItem, 'account_expense').reduce(function (sum, num) {
@@ -249,7 +249,7 @@ var TASK = new Bo('DATA_TASK', {
 						switch (condition.status) {
 							case 'clear':
 							{
-								if (tmp.account_topay && tmp.account_topay === 0) {
+								if (!_.isUndefined(tmp.account_topay) && tmp.account_topay === 0) {
 									results.push(tmp);
 								}
 								break;
@@ -257,7 +257,7 @@ var TASK = new Bo('DATA_TASK', {
 
 							case 'unclear':
 							{
-								if (tmp.account_topay && tmp.account_topay < 0) {
+								if (!_.isUndefined(tmp.account_topay) && tmp.account_topay !== 0) {
 									results.push(tmp);
 								}
 								break;
@@ -311,7 +311,7 @@ var TASK = new Bo('DATA_TASK', {
 				var results = [];
 				_.map(success, function (item) {
 					var tmp = {};
-					if (item.subItem) {
+					if (item.subItem && !_.isEmpty(item.subItem)) {
 						tmp.subItem = item.subItem;
 
 						tmp.expense_total = _.pluck(item.subItem, 'expense_expense').reduce(function (sum, num) {

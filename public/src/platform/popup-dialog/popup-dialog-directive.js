@@ -94,7 +94,9 @@ angular.module('popup-dialog', [])
 							tmp;
 						$.map($scope.dialog_data_model, function (record) {
 							tmp = parseInt(record[field]);
-							tmp = _.isNumber(tmp) ? tmp : 0;
+							if (_.isNaN(tmp)) {
+								tmp = 0;
+							}
 
 							total += tmp;
 						});

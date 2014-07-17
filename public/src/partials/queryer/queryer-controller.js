@@ -68,7 +68,7 @@ angular.module('queryer', [
 
 		$scope.startQuery = function () {
 			var params = {
-				tid : (new Date()).getTime()
+				tid: (new Date()).getTime()
 			};
 			$.map($scope.condition, function (c, index) {
 				if (c) {
@@ -98,8 +98,9 @@ angular.module('queryer', [
 
 			$.map(data_model, function (record) {
 				tmp = parseInt(record[field]);
-				tmp = _.isNumber(tmp) ? tmp : 0;
-
+				if (_.isNaN(tmp)) {
+					tmp = 0;
+				}
 				total += tmp;
 			});
 
@@ -142,7 +143,7 @@ angular.module('queryer', [
 		var params = $location.search();
 		if (!_.isEmpty(params)) {
 			$http.get($scope.queryPath, {params: params}).success(function (data) {
-				if(_.isEmpty(data)){
+				if (_.isEmpty(data)) {
 					alert('没有符合条件的数据!');
 				}
 				$scope.searchResult = data;
