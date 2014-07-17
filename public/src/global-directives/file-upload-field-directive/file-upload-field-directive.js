@@ -7,13 +7,15 @@ angular.module('file-upload-field', [])
 			restrict: "E",
 			scope: {
 				emitUploaded: '&onUploaded',
+				acceptTypes: '=',
 				ngDisabled : '='
 			},
 			templateUrl: "/src/global-directives/file-upload-field-directive/file-upload-field.tpl.html",
 			link: function ($scope, $element, $attributes) {
 
 				(function setupFileUpload() {
-					var uploadShadow = $('<input type="file" name="files[]" data-url="/file-upload" class="fileupload"/>'),
+					var elementStr = '<input type="file" name="files[]" data-url="/file-upload" class="fileupload" accept="' + $scope.acceptTypes + '"/>',
+						uploadShadow = $(elementStr),
 						progressBar = $($element).find('.progress .progress-bar');
 
 					$scope.selectUploadFile = function () {

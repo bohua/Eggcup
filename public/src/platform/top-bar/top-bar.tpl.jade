@@ -78,9 +78,9 @@ div.navbar.navbar-inverse.navbar-fixed-top(ng-controller="topBarController", rol
 							i.fa.fa-download.fa-fw &nbsp;
 							span &nbsp;数据备份
 
-						//li: a.cursor-pointer(ng-click="restoreDB()")
-						//	i.fa.fa-upload.fa-fw &nbsp;
-						//	span &nbsp;数据还原
+						li: a.cursor-pointer(popup-dialog,dialog-config="restoreDialogConfig",ng-click="showRestoreDialog($event)")
+							i.fa.fa-upload.fa-fw &nbsp;
+							span &nbsp;数据还原
 
 						//li: a(href='#')
 						//	i.fa.fa-retweet.fa-fw &nbsp;

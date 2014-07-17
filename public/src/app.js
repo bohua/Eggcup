@@ -18,6 +18,7 @@ angular.module('app', [
 	'dashboard',
 	'task-editor',
 	'queryer',
+	'restore-dialog',
 	'duScroll',
 	'token-field',
 	'auto-complete-field',

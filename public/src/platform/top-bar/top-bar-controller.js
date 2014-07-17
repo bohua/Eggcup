@@ -160,4 +160,18 @@ angular.module('top-bar', ['login-session-service', 'task-service', 'permission-
 				}
 				iframe.src = '/backup/'+$scope.backupFileName;
 			};
+
+			/**
+			 * Restore
+			 */
+			$scope.restoreDialogConfig = {
+				dialogOption: {
+					backdrop: 'static'
+				},
+				template: '/src/partials/restore-dialog/restore-dialog-view.tpl.html'
+			};
+
+			$scope.showRestoreDialog = function($event){
+				$($event.currentTarget).trigger('popup');
+			}
 		}]);

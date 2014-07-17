@@ -1,0 +1,18 @@
+//Created by bli on 2014/7/17.
+#restore-dialog-form.modal-dialog(ng-controller="restoreDialogController")
+	div.modal-content(ng-submit="Confirm('update', true)")
+		div.modal-header
+			button.close(type="button", data-dismiss="modal") &times;
+			h4.modal-title
+				span 数据还原 &nbsp;
+					small Data Restore
+		div.modal-body.container-fluid
+			file-upload-field(on-uploaded="fileUploaded(file)", accept-types="'.rsp'")
+
+		div.modal-footer
+			button.btn.btn-primary(type="button", ng-click="restoreDB()", ng-disabled="!canRestore") 开始还原
+			button.btn.btn-default(type="button", ng-click="Cancel()") 取消
+
+			div.pull-left.alert-danger.panel
+				i.fa.fa-fw.fa-warning
+				span 数据还原过程中请保证所有用户已退出系统！

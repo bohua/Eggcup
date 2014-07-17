@@ -1,30 +1,24 @@
 /**
  * Created by 文远 on 13-11-13.
  */
+var child_process = require('child_process');
+var zlib = require('zlib');
+var path = require("path");
+var fs = require('fs');
+
 module.exports = function (req, res) {
 	"use strict";
 
-	var child_process = require('child_process');
-	var zlib = require('zlib');
-	var fs = require('fs');
-
-	//RSP file path and name
-	var filePath = req.files.thumbnail.path;
-
 	//Get upload path
-	var pathbasearray = __dirname.split('\\');
-	pathbasearray.pop();
-	pathbasearray.pop();
-	var path_base = pathbasearray.join('\\');
-	var scriptFile = path_base + '\\uploads\\eggcup.sql';
+	var zipFile = path.resolve(__dirname, '../../uploads', req.body.restore_src);
+	var dataSrc = path.resolve(__dirname, '../../uploads', './eggcup.sql');
 
-	var out = fs.createWriteStream(scriptFile);
-	var in_stream = fs.createReadStream(filePath);
+	var out = fs.createWriteStream(dataSrc);
+	var in_stream = fs.createReadStream(zipFile);
 
 	in_stream.pipe(zlib.createUnzip()).pipe(out);
 
-
-	var cmd = 'mysql -uroot -proot eggcup < ' + scriptFile;
+	var cmd = 'mysql -uroot -proot eggcup < ' + dataSrc;
 
 	child_process.exec(cmd, {maxBuffer: 1024*1024*512}, function (error, stdout, stderr) {
 		if (stderr !== 'Warning: Using a password on the command line interface can be insecure.\r\n' && error !== null) {
@@ -38,7 +32,7 @@ module.exports = function (req, res) {
 		}
 
 		//Remove tmp files
-		fs.unlinkSync(scriptFile);
-		fs.unlinkSync(filePath);
+		fs.unlinkSync(zipFile);
+		fs.unlinkSync(dataSrc);
 	});
 };
