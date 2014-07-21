@@ -3,23 +3,39 @@
 	div.page-header
 		h2
 			i.fa.fa-search.fa-fw &nbsp;
-			span 查询 &nbsp;
-			small.hidden-xs Query
+			span {{queryTitle}} &nbsp;
+			small.hidden-xs {{querySubTitle}}
 
-			button.btn.btn-default.pull-right(ng-click="startQuery()")
-				i.fa.fa-search.fa-fw &nbsp;
-				span 开始查询
+			div.btn-group.pull-right.hidden-print
+				button.btn.btn-default(ng-click="startQuery()")
+					i.fa.fa-search.fa-fw &nbsp;
+					span 开始查询
+				button.btn.btn-default.dropdown-toggle(data-toggle="dropdown")
+					i.fa.fa-cog.fa-fw &nbsp;
+					span 功能
+					span.caret
+				ul.dropdown-menu
+					li
+						a(ng-click="printResult()")
+							i.fa.fa-print.fa-fw &nbsp;
+							span 打印
+
 
 
 	div.page-content
-		div.panel.panel-default.hidden-print
+		div.panel.panel-default
 			div.panel-heading.cursor-pointer
 				h4.no-margin(data-toggle="collapse", href="#queryer-condition-panel") 查询条件 &nbsp;
 					small.hidden-xs Query Condition
 			#queryer-condition-panel.panel-collapse.collapse.in.panel-body(ng-include="conditionTpl")
 
-		div.panel.panel-default
-			div.panel-heading.cursor-pointer
+		//div.panel.panel-default
+			div.panel-heading.cursor-pointer.hidden-print
 				h4.no-margin(data-toggle="collapse", href="#queryer-result-panel") 查询结果列表 &nbsp;
 					small.hidden-xs Query Result
 			#queryer-result-panel.panel-collapse.collapse.in.table-responsive(ng-include="resultTpl")
+
+		div
+			h4(data-toggle="collapse") 查询结果列表 &nbsp;
+				small.hidden-xs Query Result
+		#queryer-result-panel.panel-collapse.collapse.in(ng-include="resultTpl")

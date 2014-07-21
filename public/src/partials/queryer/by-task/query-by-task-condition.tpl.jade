@@ -1,4 +1,4 @@
-div.row
+div.row.hidden-print
 	div.form-group.col-sm-2
 		label.control-label 启始日期:
 		div.input-group.date(date-field-model="condition.start_date")
@@ -23,6 +23,9 @@ div.row
 		label.control-label 任务状态:
 		div
 			select.form-control(ng-model="condition.status")
-				option(value="all") 所有状态
-				option(value="ongoing") 未结案
-				option(value="closed") 已结案
+				option(value="all") {{translateQueryStatus('all')}}
+				option(value="ongoing") {{translateQueryStatus('ongoing')}}
+				option(value="closed") {{translateQueryStatus('closed')}}
+
+div.row.visible-print
+	p 日期: {{condition.start_date | date:'yyyy-MM-dd'}} 至 {{condition.end_date | date:'yyyy-MM-dd'}} &nbsp;/&nbsp; 结案状态: {{translateQueryStatus(condition.status)}}

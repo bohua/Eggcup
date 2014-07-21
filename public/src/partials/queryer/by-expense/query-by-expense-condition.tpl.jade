@@ -1,4 +1,4 @@
-div.row
+div.row.hidden-print
 	div.form-group.col-sm-2
 		label.control-label 启始日期:
 		div.input-group.date(date-field-model="condition.start_date")
@@ -19,3 +19,6 @@ div.row
 		label.control-label 公司名称:
 		div
 			input.form-control(type="text", placeholder="公司名称", ng-model="condition.customer_name", auto-complete-field="customerFieldOptions")
+
+div.row.visible-print
+	p 日期: {{condition.start_date | date:'yyyy-MM-dd'}} 至 {{condition.end_date | date:'yyyy-MM-dd'}}

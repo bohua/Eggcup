@@ -32,6 +32,9 @@ angular.module('queryer', [
 				$scope.queryPath = '/taskByAccount';
 				$scope.conditionTpl = "/src/partials/queryer/by-account/query-by-account-condition.tpl.html";
 				$scope.resultTpl = "/src/partials/queryer/by-account/query-by-account-result.tpl.html";
+				$scope.queryTitle = "收款查询";
+				$scope.querySubTitle = "Query by Accounting";
+
 
 				break;
 			}
@@ -40,6 +43,8 @@ angular.module('queryer', [
 				$scope.queryPath = '/taskByExpense';
 				$scope.conditionTpl = "/src/partials/queryer/by-expense/query-by-expense-condition.tpl.html";
 				$scope.resultTpl = "/src/partials/queryer/by-expense/query-by-expense-result.tpl.html";
+				$scope.queryTitle = "费用查询";
+				$scope.querySubTitle = "Query by Expenses";
 
 				break;
 			}
@@ -49,6 +54,8 @@ angular.module('queryer', [
 				$scope.queryPath = '/task';
 				$scope.conditionTpl = "/src/partials/queryer/by-task/query-by-task-condition.tpl.html";
 				$scope.resultTpl = "/src/partials/queryer/by-task/query-by-task-result.tpl.html";
+				$scope.queryTitle = "项目查询";
+				$scope.querySubTitle = "Query by Tasks";
 
 				break;
 			}
@@ -160,4 +167,20 @@ angular.module('queryer', [
 			employee_name: params.employee_name || '',
 			customer_name: params.customer_name || ''
 		};
+
+		$scope.translateQueryStatus = function(status){
+			switch (status){
+				case 'all': return "所有状态";
+				case 'ongoing': return "未结案";
+				case 'closed': return "已结案";
+				case 'unclear': return "欠款的合同";
+				case 'clear': return "已结清的合同";
+			}
+
+			return '';
+		};
+
+		$scope.printResult = function(){
+			window.print();
+		}
 	}]);
