@@ -44,6 +44,6 @@ div.container-fluid(ng-controller="accountSectionController")
 							td {{sub_item.account_method}}
 							td {{sub_item.account_desc}}
 							td
-								a.attachment-token.label.cursor-pointer(ng-repeat="attach in sub_item.attachment", download="attach.file_name", ng-href="file-download/{{attach.file_url}}?givenName={{attach.file_name}}")
+								a.attachment-token.label.cursor-pointer(ng-repeat="attach in sub_item.attachment", download="{{attach.file_name}}", ng-href="file-download/{{attach.file_url}}")
 									i.fa.text-info.fa-fw(class="{{translateFileType(attach.file_ext).icon}}") &nbsp;
 									span {{attach.file_name}}

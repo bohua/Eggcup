@@ -18,7 +18,7 @@
 					tbody
 						tr.cursor-pointer(ng-repeat="item in dialog_data_model")
 							td
-								a.attachment-token.label(download="item.file_name", ng-href="file-download/{{item.file_url}}?givenName={{item.file_name}}")
+								a.attachment-token.label(download="{{item.file_name}}", ng-href="file-download/{{item.file_url}}?givenName={{item.file_name}}")
 									i.fa.text-info.fa-fw(class="{{translateFileType(item.file_ext).icon}}") &nbsp;
 									span {{item.file_name}}
 							td {{translateFileType(item.file_ext).type}}

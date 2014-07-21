@@ -36,7 +36,7 @@
 							td(edit-model="sub_item.extra", edit-type="number") {{sub_item.extra}}
 							td(edit-disabled, edit-type="number") {{sub_item.expense + sub_item.traffic + sub_item.extra}}
 							td(edit-disabled)
-								a.attachment-token.label.cursor-pointer(ng-repeat="attach in sub_item.attachment",download="attach.file_name", ng-href="file-download/{{attach.file_url}}?givenName={{attach.file_name}}")
+								a.attachment-token.label.cursor-pointer(ng-repeat="attach in sub_item.attachment",download="{{attach.file_name}}", ng-href="file-download/{{attach.file_url}}")
 									i.fa.text-info.fa-fw(class="{{translateFileType(attach.file_ext).icon}}") &nbsp;
 									span {{attach.file_name}}
 
