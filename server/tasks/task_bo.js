@@ -205,7 +205,13 @@ var TASK = new Bo('DATA_TASK', {
 			include: [
 				{
 					model: model('DATA_ACCOUNT_SUB'),
-					as: 'subItem'
+					as: 'subItem',
+					include: [
+						{
+							model: model('REF_ATTACHMENT'),
+							as: 'attachment'
+						}
+					]
 				},
 				{
 					model: model('DATA_TASK'),
@@ -292,7 +298,13 @@ var TASK = new Bo('DATA_TASK', {
 			include: [
 				{
 					model: model('DATA_EXPENSE_SUB'),
-					as: 'subItem'
+					as: 'subItem',
+					include: [
+						{
+							model: model('REF_ATTACHMENT'),
+							as: 'attachment'
+						}
+					]
 				},
 				{
 					model: model('DATA_TASK'),
