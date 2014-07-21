@@ -126,6 +126,6 @@ angular.module('proposal-section', ['proposal-editor', 'attach-editor', 'proposa
 				}
 			};
 
-			printService.print(params);
+			printService.print(params, '打印提案表_TK' + $scope.task_model.id);
 		};
 	}]);

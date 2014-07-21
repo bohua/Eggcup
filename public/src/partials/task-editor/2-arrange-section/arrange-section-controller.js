@@ -62,6 +62,6 @@ angular.module('arrange-section', ['arrange-editor', 'handling-method-service', 
 					}
 				};
 
-				printService.print(params);
+				printService.print(params, '打印审核表_TK' + $scope.task_model.id);
 			};
 		}]);

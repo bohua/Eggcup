@@ -6,7 +6,7 @@ var print_bo = require(__dirname + '/../../server/print/print_bo'),
 	path = require('path');
 
 module.exports = function (req, res) {
-	var json = JSON.parse(req.params.printData);
+	var json = JSON.parse(req.query.params);
 	var printDocType = json.sheetType,
 		dataModel = json.sheetData;
 
@@ -15,7 +15,7 @@ module.exports = function (req, res) {
 			var filePath = path.normalize(file),
 				baseName = path.basename(filePath);
 			if (file) {
-				res.download(filePath, baseName);
+				res.sendfile(filePath);
 
 			} else {
 				res.statusCode = 200;

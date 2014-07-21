@@ -56,6 +56,6 @@ angular.module('register-section', ['register-editor', 'handling-method-service'
 					}
 				};
 
-				printService.print(params);
+				printService.print(params, '打印登记表_TK' + $scope.task_model.id);
 			}
 		}]);

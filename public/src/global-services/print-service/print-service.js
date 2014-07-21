@@ -6,16 +6,17 @@ angular.module('print-service', [])
 	.factory('printService', function () {
 
 		var Service = {
-			print: function (params) {
+			print: function (params, downloadName) {
 				var hiddenIFrameID = 'hiddenDownloader',
-					iframe = document.getElementById(hiddenIFrameID);
+					dateStr = (new Date()).toJSON().split('T')[0];
+				iframe = document.getElementById(hiddenIFrameID);
 				if (iframe === null) {
 					iframe = document.createElement('iframe');
 					iframe.id = hiddenIFrameID;
 					iframe.style.display = 'none';
 					document.body.appendChild(iframe);
 				}
-				iframe.src = '/printTaskSheet/' + JSON.stringify(params);
+				iframe.src = '/printTaskSheet/' + downloadName + '_' + dateStr + '.xls?params=' + JSON.stringify(params);
 			}
 		};
 

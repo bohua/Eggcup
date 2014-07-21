@@ -122,6 +122,6 @@ angular.module('contract-section', ['contract-editor', 'contract-detail-editor',
 				}
 			};
 
-			printService.print(params);
+			printService.print(params, '打印合同表_TK' + $scope.task_model.id);
 		};
 	}]);

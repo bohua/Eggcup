@@ -159,7 +159,7 @@ angular.module('reply-section', ['reply-editor', 'attach-editor', 'appointment-e
 					}
 				};
 
-				printService.print(params);
+				printService.print(params, '打印回复表_TK' + $scope.task_model.id);
 			};
 
 		}]);

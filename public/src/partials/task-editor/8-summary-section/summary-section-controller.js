@@ -56,6 +56,6 @@ angular.module('summary-section', ['summary-editor', 'print-service'])
 				}
 			};
 
-			printService.print(params);
+			printService.print(params, '打印汇总表_TK' + $scope.task_model.id);
 		};
 	}]);

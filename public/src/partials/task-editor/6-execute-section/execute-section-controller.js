@@ -153,6 +153,6 @@ angular.module('execute-section', ['execute-editor', 'execute-detail-editor', 'r
 				}
 			};
 
-			printService.print(params);
+			printService.print(params, '打印合同执行表_TK' + $scope.task_model.id);
 		};
 	}]);
