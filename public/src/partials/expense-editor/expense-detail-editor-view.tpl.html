@@ -33,7 +33,7 @@
               <td edit-model="sub_item.expense_expense" edit-type="number">{{sub_item.expense_expense}}</td>
               <td edit-model="sub_item.expense_method" edit-type="string">{{sub_item.expense_method}}</td>
               <td edit-model="sub_item.expense_desc" edit-type="string">{{sub_item.expense_desc}}</td>
-              <td edit-disabled="edit-disabled"><a ng-repeat="attach in sub_item.attachment" href="file-download/{{attach.file_url}}" download="{{attach.file_name}}" class="attachment-token label cursor-pointer"><i class="fa text-info fa-fw {{translateFileType(attach.file_ext).icon}}">&nbsp;</i><span>{{attach.file_name}}</span></a></td>
+              <td edit-disabled="edit-disabled"><a ng-repeat="attach in sub_item.attachment" href="file-download/{{attach.file_url}}?givenName={{attach.file_name}}" download="{{attach.file_name}}" class="attachment-token label cursor-pointer"><i class="fa text-info fa-fw {{translateFileType(attach.file_ext).icon}}">&nbsp;</i><span>{{attach.file_name}}</span></a></td>
             </tr>
           </tbody>
         </table>

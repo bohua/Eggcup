@@ -22,7 +22,7 @@
               <td edit-model="sub_item.execute_date" edit-type="date">{{sub_item.execute_date | date:'yyyy-MM-dd'}}</td>
               <td edit-model="sub_item.execute_runner" edit-type="string">{{sub_item.execute_runner}}</td>
               <td edit-model="sub_item.execute_digest" edit-type="string">{{sub_item.execute_digest}}</td>
-              <td edit-disabled="edit-disabled"><a ng-repeat="attach in sub_item.attachment" download="attach.file_name" ng-href="file-download/{{attach.file_url}}" class="attachment-token label cursor-pointer"><i class="fa text-info fa-fw {{translateFileType(attach.file_ext).icon}}">&nbsp;</i><span>{{attach.file_name}}</span></a></td>
+              <td edit-disabled="edit-disabled"><a ng-repeat="attach in sub_item.attachment" download="attach.file_name" ng-href="file-download/{{attach.file_url}}?givenName={{attach.file_name}}" class="attachment-token label cursor-pointer"><i class="fa text-info fa-fw {{translateFileType(attach.file_ext).icon}}">&nbsp;</i><span>{{attach.file_name}}</span></a></td>
             </tr>
           </tbody>
         </table>

@@ -72,7 +72,7 @@ div.container-fluid(ng-controller="proposalSectionController")
 					tbody
 						tr.cursor-pointer(ng-repeat="item in task_model.proposalSheet.attachment")
 							td
-								a.attachment-token.label(download="item.file_name", ng-href="file-download/{{item.file_url}}")
+								a.attachment-token.label(download="item.file_name", ng-href="file-download/{{item.file_url}}?givenName={{item.file_name}}")
 									i.fa.text-info.fa-fw(class="{{translateFileType(item.file_ext).icon}}") &nbsp;
 									span {{item.file_name}}
 							td {{translateFileType(item.file_ext).type}}
@@ -104,6 +104,6 @@ div.container-fluid(ng-controller="proposalSectionController")
 							td {{sub_item.extra}}
 							td {{sub_item.expense + sub_item.traffic + sub_item.extra}}
 							td
-								a.attachment-token.label.cursor-pointer(ng-repeat="attach in sub_item.attachment", download="attach.file_name", ng-href="file-download/{{attach.file_url}}")
+								a.attachment-token.label.cursor-pointer(ng-repeat="attach in sub_item.attachment", download="attach.file_name", ng-href="file-download/{{attach.file_url}}?givenName={{attach.file_name}}")
 									i.fa.text-info.fa-fw(class="{{translateFileType(attach.file_ext).icon}}") &nbsp;
 									span {{attach.file_name}}

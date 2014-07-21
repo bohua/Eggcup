@@ -305,7 +305,7 @@
                   </thead>
                   <tbody>
                     <tr ng-repeat="item in task_model.replySheet.attachment" class="cursor-pointer">
-                      <td><a download="item.file_name" ng-href="file-download/{{item.file_url}}" class="attachment-token label"><i class="fa text-info fa-fw {{translateFileType(item.file_ext).icon}}">&nbsp;</i><span>{{item.file_name}}</span></a></td>
+                      <td><a download="item.file_name" ng-href="file-download/{{item.file_url}}?givenName={{item.file_name}}" class="attachment-token label"><i class="fa text-info fa-fw {{translateFileType(item.file_ext).icon}}">&nbsp;</i><span>{{item.file_name}}</span></a></td>
                       <td>{{translateFileType(item.file_ext).type}}</td>
                       <td>{{item.file_size}}</td>
                       <td>{{item.createdAt | date:'yyyy-MM-dd'}}</td>
@@ -383,7 +383,7 @@
                   </thead>
                   <tbody>
                     <tr ng-repeat="item in task_model.proposalSheet.attachment" class="cursor-pointer">
-                      <td><a download="item.file_name" ng-href="file-download/{{item.file_url}}" class="attachment-token label"><i class="fa text-info fa-fw {{translateFileType(item.file_ext).icon}}">&nbsp;</i><span>{{item.file_name}}</span></a></td>
+                      <td><a download="item.file_name" ng-href="file-download/{{item.file_url}}?givenName={{item.file_name}}" class="attachment-token label"><i class="fa text-info fa-fw {{translateFileType(item.file_ext).icon}}">&nbsp;</i><span>{{item.file_name}}</span></a></td>
                       <td>{{translateFileType(item.file_ext).type}}</td>
                       <td>{{item.file_size}}</td>
                       <td>{{item.createdAt | date:'yyyy-MM-dd'}}</td>
@@ -417,7 +417,7 @@
                       <td>{{sub_item.traffic}}</td>
                       <td>{{sub_item.extra}}</td>
                       <td>{{sub_item.expense + sub_item.traffic + sub_item.extra}}</td>
-                      <td><a ng-repeat="attach in sub_item.attachment" download="attach.file_name" ng-href="file-download/{{attach.file_url}}" class="attachment-token label cursor-pointer"><i class="fa text-info fa-fw {{translateFileType(attach.file_ext).icon}}">&nbsp;</i><span>{{attach.file_name}}</span></a></td>
+                      <td><a ng-repeat="attach in sub_item.attachment" download="attach.file_name" ng-href="file-download/{{attach.file_url}}?givenName={{attach.file_name}}" class="attachment-token label cursor-pointer"><i class="fa text-info fa-fw {{translateFileType(attach.file_ext).icon}}">&nbsp;</i><span>{{attach.file_name}}</span></a></td>
                     </tr>
                   </tbody>
                 </table>
@@ -480,7 +480,7 @@
                       <td>{{sub_item.expense}}</td>
                       <td>{{sub_item.due_date | date:'yyyy-MM-dd'}}</td>
                       <td>{{sub_item.pay_method}}</td>
-                      <td><a ng-repeat="attach in sub_item.attachment" download="attach.file_name" ng-href="file-download/{{attach.file_url}}" class="attachment-token label cursor-pointer"><i class="fa text-info fa-fw {{translateFileType(attach.file_ext).icon}}">&nbsp;</i><span>{{attach.file_name}}</span></a></td>
+                      <td><a ng-repeat="attach in sub_item.attachment" download="attach.file_name" ng-href="file-download/{{attach.file_url}}?givenName={{attach.file_name}}" class="attachment-token label cursor-pointer"><i class="fa text-info fa-fw {{translateFileType(attach.file_ext).icon}}">&nbsp;</i><span>{{attach.file_name}}</span></a></td>
                     </tr>
                   </tbody>
                 </table>
@@ -536,7 +536,7 @@
                       <td>{{sub_item.execute_date | date:'yyyy-MM-dd'}}</td>
                       <td>{{sub_item.execute_runner}}</td>
                       <td>{{sub_item.execute_digest}}</td>
-                      <td><a ng-repeat="attach in sub_item.attachment" download="attach.file_name" ng-href="file-download/{{attach.file_url}}" class="attachment-token label cursor-pointer"><i class="fa text-info fa-fw {{translateFileType(attach.file_ext).icon}}">&nbsp;</i><span>{{attach.file_name}}</span></a></td>
+                      <td><a ng-repeat="attach in sub_item.attachment" download="attach.file_name" ng-href="file-download/{{attach.file_url}}?givenName={{attach.file_name}}?givenName={{attach.file_name}}" class="attachment-token label cursor-pointer"><i class="fa text-info fa-fw {{translateFileType(attach.file_ext).icon}}">&nbsp;</i><span>{{attach.file_name}}</span></a></td>
                     </tr>
                   </tbody>
                 </table>
