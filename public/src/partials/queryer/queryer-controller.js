@@ -183,4 +183,16 @@ angular.module('queryer', [
 		$scope.printResult = function(){
 			window.print();
 		}
+
+		/**
+		 * Filters
+		 */
+		$scope.hideZeroFn = function(row){
+			if((row.contract_price && row.contract_price > 0) &&
+				(row.account_total && row.account_total > 0)){
+				return true;
+			}
+
+			return false;
+		}
 	}]);

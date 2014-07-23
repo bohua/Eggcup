@@ -75,5 +75,5 @@ module.exports = function (grunt) {
 
 	grunt.registerTask('default', ['less', 'jade', 'watch']);
 
-	grunt.registerTask('build', ['clean:build', 'copy:build']);
+	grunt.registerTask('build', ['less', 'jade', 'clean:build', 'copy:build']);
 };

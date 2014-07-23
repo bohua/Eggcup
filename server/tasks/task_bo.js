@@ -230,6 +230,7 @@ var TASK = new Bo('DATA_TASK', {
 				var results = [];
 				_.map(success, function (item) {
 					var tmp = {};
+
 					if (item.subItem && !_.isEmpty(item.subItem)) {
 						tmp.subItem = item.subItem;
 
@@ -249,6 +250,13 @@ var TASK = new Bo('DATA_TASK', {
 							tmp.contract_price = item.task.contractSheet.contract_price;
 							tmp.account_topay = item.task.contractSheet.contract_price - (tmp.account_total || 0);
 						}
+					}
+
+					if(!tmp.contract_price || tmp.contract_price <=0){
+						return;
+					}
+					if(!tmp.account_total || tmp.account_total <=0){
+						return;
 					}
 
 					if (condition.status) {
@@ -342,6 +350,11 @@ var TASK = new Bo('DATA_TASK', {
 							tmp.contract_price = item.task.contractSheet.contract_price;
 						}
 					}
+
+					if(!tmp.expense_total || tmp.expense_total <=0){
+						return;
+					}
+
 					results.push(tmp);
 				});
 				deferred.resolve(results);

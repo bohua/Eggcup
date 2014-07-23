@@ -344,9 +344,10 @@ angular.module('task-editor', [
 
 					TASK.save({task_id: $scope.task_model.id}, {
 						id: $scope.task_model.id,
-						status: $scope.task_model.status
+						status: $scope.task_model.status,
+						arrangeSheet: $scope.task_model.arrangeSheet
 					}, function () {
-						//$scope.$broadcast('newArrange');
+						$scope.loadTask();
 					});
 
 					break;
@@ -361,9 +362,10 @@ angular.module('task-editor', [
 					TASK.save({task_id: $scope.task_model.id}, {
 						id: $scope.task_model.id,
 						status: $scope.task_model.status,
-						handling: $scope.task_model.handling
+						handling: $scope.task_model.handling,
+						replySheet: $scope.task_model.replySheet
 					}, function () {
-						//$scope.$broadcast('newReply');
+						$scope.loadTask();
 					});
 
 					break;
@@ -378,9 +380,10 @@ angular.module('task-editor', [
 					TASK.save({task_id: $scope.task_model.id}, {
 						id: $scope.task_model.id,
 						status: $scope.task_model.status,
-						handling: $scope.task_model.handling
+						handling: $scope.task_model.handling,
+						replySheet: $scope.task_model.replySheet
 					}, function () {
-						//$scope.$broadcast('newReply');
+						$scope.loadTask();
 					});
 
 					break;
@@ -391,14 +394,10 @@ angular.module('task-editor', [
 
 					TASK.save({task_id: $scope.task_model.id}, {
 						id: $scope.task_model.id,
-						status: $scope.task_model.status
+						status: $scope.task_model.status,
+						proposalSheet: $scope.task_model.proposalSheet
 					}, function () {
-						//$scope.$broadcast('newProposal');
-//						taskService.getTaskSheet($scope.task_model.id, 'proposal').success(function (sheet_instance) {
-//							if (sheet_instance && sheet_instance != "null") {
-//								$scope.task_model.proposalSheet = sheet_instance;
-//							}
-//						});
+						$scope.loadTask();
 					});
 
 					break;
@@ -412,9 +411,12 @@ angular.module('task-editor', [
 
 					TASK.save({task_id: $scope.task_model.id}, {
 						id: $scope.task_model.id,
-						status: $scope.task_model.status
+						status: $scope.task_model.status,
+						contractSheet: $scope.task_model.contractSheet,
+						executeSheet: $scope.task_model.executeSheet,
+						accountSheet: $scope.task_model.accountSheet
 					}, function () {
-						//$scope.$broadcast('newContract');
+						$scope.loadTask();
 					});
 
 					break;
@@ -425,9 +427,10 @@ angular.module('task-editor', [
 
 					TASK.save({task_id: $scope.task_model.id}, {
 						id: $scope.task_model.id,
-						status: $scope.task_model.status
+						status: $scope.task_model.status,
+						summarySheet: $scope.task_model.summarySheet
 					}, function () {
-						//$scope.$broadcast('newSummary');
+						$scope.loadTask();
 					});
 
 					break;
