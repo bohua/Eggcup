@@ -145,13 +145,16 @@ angular.module('task-editor', [
 		});
 
 
-		$.map(sheetMap, function (val, key) {
-			taskService.getTaskSheet($scope.task_model.id, val.type).success(function (sheet_instance) {
-				if (sheet_instance && sheet_instance != "null") {
-					$scope.task_model[key] = sheet_instance;
-				}
+		$scope.loadTask = function() {
+			$.map(sheetMap, function (val, key) {
+				taskService.getTaskSheet($scope.task_model.id, val.type).success(function (sheet_instance) {
+					if (sheet_instance && sheet_instance != "null") {
+						$scope.task_model[key] = sheet_instance;
+					}
+				});
 			});
-		});
+		};
+		$scope.loadTask();
 
 
 		/**
@@ -321,7 +324,9 @@ angular.module('task-editor', [
 		});
 
 		$scope.$on('event:saveTaskModel', function (event, id, data) {
-			TASK.save({task_id: id}, data);
+			TASK.save({task_id: id}, data, function(){
+				$scope.loadTask();
+			});
 		});
 
 		$scope.onStatusChange = function (statusCode) {

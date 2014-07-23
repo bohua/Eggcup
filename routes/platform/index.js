@@ -7,3 +7,4 @@ module.exports.getLocationArray = require('./getLocationArray.js');
 module.exports.loadIndex = require('./loadIndex.js');
 module.exports.readJsonSchema = require('./readJsonSchema.js');
 module.exports.getPermission = require('./getPermission.js');
+module.exports.getConfigs = require('./getConfigs.js');

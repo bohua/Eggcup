@@ -5,6 +5,7 @@ angular.module('app', [
 	'ngRoute',
 	'ngCookies',
 	'sign-in',
+	'config-service',
 	'login-session-service',
 	'task-status-service',
 	'customer-list-service',
@@ -31,6 +32,7 @@ angular.module('app', [
 	'$rootScope',
 	'$timeout',
 	'$location',
+	'configService',
 	'loginSessionService',
 	'taskStatusService',
 	'customerListService',
@@ -38,10 +40,11 @@ angular.module('app', [
 	'taskService',
 	'handlingMethodService',
 	'fileTypeService',
-	function ($scope, $rootScope, $timeout, $location, loginSessionService, taskStatusService, customerListService, employeeListService, taskService, handlingMethodService, fileTypeService) {
+	function ($scope, $rootScope, $timeout, $location, configService, loginSessionService, taskStatusService, customerListService, employeeListService, taskService, handlingMethodService, fileTypeService) {
 		/**
 		 * Initialize global services
 		 */
+		configService.init();
 		loginSessionService.init();
 		taskStatusService.init();
 		customerListService.init();
