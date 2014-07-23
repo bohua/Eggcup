@@ -551,6 +551,12 @@ angular.module('task-editor', [
 		};
 
 		$scope.showDetailEditor = function ($event) {
+			if(!$scope.task_model.accountSheet){
+				$scope.task_model.accountSheet = {
+					subItem: []
+				}
+			}
+
 			if($($event.currentTarget).hasClass('disabled')){return;}
 			$($event.currentTarget).trigger('popup', ['edit', $scope.task_model.accountSheet.subItem || []]);
 		};

@@ -1,6 +1,7 @@
 table.table.table-hover.table-bordered
 	thead
 		tr
+			td 序号
 			th 任务号
 			th 状态
 			th 任务主题
@@ -9,6 +10,7 @@ table.table.table-hover.table-bordered
 			th 立案日期
 	tbody
 		tr.cursor-pointer(ng-repeat="row in searchResult", ng-click="openTask($event, row.id)")
+			td {{$index}}
 			td TK-{{row.id}}
 			td
 				div.label.label-primary
