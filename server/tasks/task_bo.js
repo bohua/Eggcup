@@ -255,9 +255,6 @@ var TASK = new Bo('DATA_TASK', {
 					if(!tmp.contract_price || tmp.contract_price <=0){
 						return;
 					}
-					if(!tmp.account_total || tmp.account_total <=0){
-						return;
-					}
 
 					if (condition.status) {
 						switch (condition.status) {

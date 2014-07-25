@@ -35,9 +35,18 @@ div.navbar.navbar-default.task-header
 						li.nav-divider
 
 						li
-							a(popup-dialog,dialog-config="expenseEditorConfig",ng-click="showExpenseEditor($event, getExpenseModel())",on-confirm="onExpenseSaved(action, data)")
+							a.cursor-pointer(popup-dialog,dialog-config="expenseEditorConfig",ng-click="showExpenseEditor($event, getExpenseModel())",on-confirm="onExpenseSaved(action, data)")
 								icon.fa.fa-rmb.fa-fw &nbsp;
 								span &nbsp;&nbsp;费用
+							a.cursor-pointer(ng-class="{'disabled':task_model.status<300}",popup-dialog,dialog-config="appointmentDetailEditorConfig",ng-click="showAppointmentDetailEditor($event)", on-confirm="onAppointmentDetailSaved(action, data)")
+								icon.fa.fa-calendar-o.fa-fw &nbsp;
+								span &nbsp;&nbsp;面谈
+							a.cursor-pointer(ng-class="{'disabled':task_model.status<600}",popup-dialog,dialog-config="detailEditorConfig",ng-click="showDetailEditor($event)",on-confirm="onDetailSaved(action, data)")
+								icon.fa.fa-bank.fa-fw &nbsp;
+								span &nbsp;&nbsp;收款
+							a.cursor-pointer(ng-class="{'disabled':task_model.status<600}",popup-dialog,dialog-config="reminderDetailEditorConfig",ng-click="showReminderDetailEditor($event)", on-confirm="onReminderDetailSaved(action, data)")
+								icon.fa.fa-bullhorn.fa-fw &nbsp;
+								span &nbsp;&nbsp;催款
 
 				li.dropdown(ng-if="canEdit", ng-show="task_model.status<800")
 					a.dropdown-toggle.cursor-pointer(data-toggle="dropdown")

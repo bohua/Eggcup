@@ -32,9 +32,14 @@ t {
 .dropdown-menu{
   //background: @grey-light !important;
 
-  li:hover:not(.divider){
-    background: @primary !important;
-    border-color: @primary !important;
+//  li:hover:not(.divider){
+//    background: @primary !important;
+//    border-color: @primary !important;
+//  }
+
+  li>a.disabled{
+    color: @gray-light;
+    cursor: not-allowed;
   }
 
   i, t {
