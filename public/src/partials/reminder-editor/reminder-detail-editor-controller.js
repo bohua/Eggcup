@@ -12,7 +12,7 @@ angular.module('reminder-detail-editor', [])
 				hasFileUploader: false,
 				hasCreateBtn: false,
 				hasOpenBtn: true,
-				hasDeleteBtn: true,
+				hasDeleteBtn: $scope.prop.mode === 'edit',
 
 				onActivate: function(scope){
 					var selection = scope.getSelectedData();

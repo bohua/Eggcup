@@ -25,6 +25,8 @@ angular.module('top-bar', ['login-session-service', 'task-service', 'permission-
 			$scope.recentOpenedTasks = $cookieStore.get('recentOpenedTasks') || [];
 
 			$scope.canAdd = permissionService.hasPermission('A003');
+			$scope.canBackup = permissionService.hasPermission('C001');
+			$scope.canRestore = permissionService.hasPermission('C002');
 
 			function trackNavBlock(route) {
 

@@ -14,6 +14,7 @@ angular.module('task-editor', [
 	'task-service',
 	'permission-service',
 	'login-session-service',
+	'modal-service',
 
 	//No return value
 	'register-section',
@@ -28,7 +29,8 @@ angular.module('task-editor', [
 	'expense-detail-editor',
 	'appointment-detail-editor',
 	'reminder-detail-editor',
-	'account-detail-editor'
+	'account-detail-editor',
+	'abort-editor'
 ]).config(['$routeProvider', function ($routeProvider) {
 	$routeProvider.
 		when('/task-editor/:action/:taskId', {
@@ -59,9 +61,10 @@ angular.module('task-editor', [
 	'taskService',
 	'permissionService',
 	'loginSessionService',
+	'modalService',
 	'task_model',
 	'TASK',
-	function ($location, $http, $rootScope, $scope, $timeout, $interval, $cookieStore, tagReferenceService, customerListService, employeeListService, taskStatusService, fileTypeService, taskService, permissionService, loginSessionService, task_model, TASK) {
+	function ($location, $http, $rootScope, $scope, $timeout, $interval, $cookieStore, tagReferenceService, customerListService, employeeListService, taskStatusService, fileTypeService, taskService, permissionService, loginSessionService, modalService, task_model, TASK) {
 
 		if (task_model.code === "ERR_DB_GET_NO_TASK") {
 			$location.path('/');
@@ -70,7 +73,8 @@ angular.module('task-editor', [
 		var canRead = false,
 			canEdit = false;
 
-		if (task_model.assignee.indexOf(loginSessionService.getLoginUser().name) !== -1) {
+		if (!task_model.assignee ||
+			task_model.assignee.indexOf(loginSessionService.getLoginUser().name) !== -1) {
 			canRead = canEdit = true;
 		}
 		else if (permissionService.hasPermission('A001') ||
@@ -84,7 +88,7 @@ angular.module('task-editor', [
 			}
 		}
 
-		if (task_model.status >= 800) {
+		if (task_model.status >= 800 || task_model.aborted) {
 			canEdit = false;
 		}
 
@@ -145,7 +149,7 @@ angular.module('task-editor', [
 		});
 
 
-		$scope.loadTask = function() {
+		$scope.loadTask = function () {
 			$.map(sheetMap, function (val, key) {
 				taskService.getTaskSheet($scope.task_model.id, val.type).success(function (sheet_instance) {
 					if (sheet_instance && sheet_instance != "null") {
@@ -229,14 +233,14 @@ angular.module('task-editor', [
 					href: '#page_execute'
 				},
 				/*
-				account: {
-					id: 'account',
-					code: 600,
-					title: '收款',
-					icon: 'fa-bank',
-					href: '#page_account'
-				},
-				*/
+				 account: {
+				 id: 'account',
+				 code: 600,
+				 title: '收款',
+				 icon: 'fa-bank',
+				 href: '#page_account'
+				 },
+				 */
 				summary: {
 					id: 'summary',
 					code: 700,
@@ -261,6 +265,10 @@ angular.module('task-editor', [
 					progressList['arrange'],
 					progressList['choose']
 				];
+
+				if(scope.task_model.aborted){
+					scope.progressList.push(progressList['final']);
+				}
 			} else if (!scope.task_model.handling || scope.task_model.handling === 0) {
 				scope.progressList = [
 					progressList['register'],
@@ -285,6 +293,7 @@ angular.module('task-editor', [
 
 			scope.getProgressState = function (progressState) {
 				//if (scope.task_model.status === progressState) return 'ongoing';
+				if (progressState === 800 && scope.task_model.aborted) return 'aborted';
 				if (scope.task_model.handling === 0 && progressState > 300 && progressState < 700) return 'disabled';
 
 				if (scope.task_model.status < progressState) return 'disabled';
@@ -324,18 +333,21 @@ angular.module('task-editor', [
 		});
 
 		$scope.$on('event:saveTaskModel', function (event, id, data) {
-			TASK.save({task_id: id}, data, function(){
+			TASK.save({task_id: id}, data, function () {
 				$scope.loadTask();
 			});
 		});
 
 		$scope.onStatusChange = function (statusCode) {
-			var answer = confirm('确认提交么？');
-			if (!answer) {
-				return;
-			}
 
-			$scope.task_model.status = statusCode;
+			if (statusCode != 900) {
+				var answer = confirm('确认提交么？');
+				if (!answer) {
+					return;
+				}
+
+				$scope.task_model.status = statusCode;
+			}
 
 			switch (statusCode) {
 				case 200:
@@ -441,9 +453,45 @@ angular.module('task-editor', [
 						id: $scope.task_model.id,
 						status: $scope.task_model.status
 					}, function () {
-						$scope.$broadcast('closeTask');
+						//$scope.$broadcast('closeTask');
+						$scope.canEdit = false;
 					});
 					break;
+				}
+
+				case 900:
+				{
+					var abortEditorConfig = {
+						dialogOption: {
+							backdrop: 'static',
+							keyboard: false
+						},
+						template: '/src/partials/abort-editor/abort-editor-view.tpl.html',
+						onConfirm: function (action, data) {
+							$scope.task_model.abort_date = data.abort_date;
+							$scope.task_model.abort_person = data.abort_person;
+							$scope.task_model.abort_reason = data.abort_reason;
+
+							var o = {
+								id: $scope.task_model.id,
+								aborted: true,
+								abort_date: data.abort_date,
+								abort_person: data.abort_person,
+								abort_reason: data.abort_reason
+							};
+							$scope.$emit('event:saveTaskModel', $scope.task_model.id, o);
+							$scope.canEdit = false;
+						}
+					};
+
+					var dataModel = {
+						abort_date: (new Date()).toJSON().split('T')[0],
+						abort_person: loginSessionService.getLoginUser().name
+					};
+
+					modalService.showDialog($scope, abortEditorConfig, dataModel);
+
+					return;
 				}
 			}
 
@@ -500,8 +548,11 @@ angular.module('task-editor', [
 		};
 
 		$scope.showAppointmentDetailEditor = function ($event) {
-			if($($event.currentTarget).hasClass('disabled')){return;}
-			$($event.currentTarget).trigger('popup', ['readOnly', $scope.task_model.appointmentSheet.subItem || []]);
+			var mode = $scope.canEdit ? 'edit' : 'readOnly';
+			if ($($event.currentTarget).hasClass('disabled')) {
+				return;
+			}
+			$($event.currentTarget).trigger('popup', [mode, $scope.task_model.appointmentSheet.subItem || []]);
 		};
 
 		$scope.onAppointmentDetailSaved = function (action, data) {
@@ -530,8 +581,11 @@ angular.module('task-editor', [
 		};
 
 		$scope.showReminderDetailEditor = function ($event) {
-			if($($event.currentTarget).hasClass('disabled')){return;}
-			$($event.currentTarget).trigger('popup', ['readOnly', $scope.task_model.reminderSheet.subItem || []]);
+			var mode = $scope.canEdit ? 'edit' : 'readOnly';
+			if ($($event.currentTarget).hasClass('disabled')) {
+				return;
+			}
+			$($event.currentTarget).trigger('popup', [mode, $scope.task_model.reminderSheet.subItem || []]);
 		};
 
 		$scope.onReminderDetailSaved = function (action, data) {
@@ -550,7 +604,7 @@ angular.module('task-editor', [
 		/**
 		 * Account Detail Editor Initialization
 		 */
-		$scope.detailEditorConfig = {
+		$scope.accountDetailEditorConfig = {
 			dialogOption: {
 				backdrop: 'static',
 				keyboard: false
@@ -558,18 +612,21 @@ angular.module('task-editor', [
 			template: '/src/partials/account-editor/account-detail-editor-view.tpl.html'
 		};
 
-		$scope.showDetailEditor = function ($event) {
-			if(!$scope.task_model.accountSheet){
+		$scope.showAccountDetailEditor = function ($event) {
+			var mode = $scope.canEdit ? 'edit' : 'readOnly';
+			if (!$scope.task_model.accountSheet) {
 				$scope.task_model.accountSheet = {
 					subItem: []
 				}
 			}
 
-			if($($event.currentTarget).hasClass('disabled')){return;}
-			$($event.currentTarget).trigger('popup', ['edit', $scope.task_model.accountSheet.subItem || []]);
+			if ($($event.currentTarget).hasClass('disabled')) {
+				return;
+			}
+			$($event.currentTarget).trigger('popup', [mode, $scope.task_model.accountSheet.subItem || []]);
 		};
 
-		$scope.onDetailSaved = function (action, data) {
+		$scope.onAccountDetailSaved = function (action, data) {
 			$scope.task_model.accountSheet.subItem = data;
 
 			var o = {
@@ -581,4 +638,5 @@ angular.module('task-editor', [
 			};
 			$scope.$emit('event:saveTaskModel', $scope.task_model.id, o);
 		};
+
 	}]);

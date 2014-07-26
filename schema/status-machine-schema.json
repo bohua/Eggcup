@@ -12,7 +12,7 @@
 			{
 				"action": "中止任务",
 				"icon": "fa-times",
-				"nextStatus": 800
+				"nextStatus": 900
 			}
 		]
 	},
@@ -34,7 +34,7 @@
 			{
 				"action": "中止任务",
 				"icon": "fa-times",
-				"nextStatus": 800
+				"nextStatus": 900
 			}
 		]
 	},
@@ -56,7 +56,7 @@
 			{
 				"action": "中止任务",
 				"icon": "fa-times",
-				"nextStatus": 800
+				"nextStatus": 900
 			}
 		]
 	},
@@ -78,7 +78,7 @@
 			{
 				"action": "中止任务",
 				"icon": "fa-times",
-				"nextStatus": 800
+				"nextStatus": 900
 			}
 		]
 	},
@@ -95,7 +95,7 @@
 			{
 				"action": "中止任务",
 				"icon": "fa-times",
-				"nextStatus": 800
+				"nextStatus": 900
 			}
 		]
 	},
@@ -112,7 +112,7 @@
 			{
 				"action": "中止任务",
 				"icon": "fa-times",
-				"nextStatus": 800
+				"nextStatus": 900
 			}
 		]
 	},
@@ -132,5 +132,10 @@
 		"code": 800,
 		"status": "已结案",
 		"icon": "fa-eye"
+	},
+	"aborted":{
+		"code": 900,
+		"status": "已中止",
+		"icon": "fa-times"
 	}
 }

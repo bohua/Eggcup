@@ -102,7 +102,7 @@ angular.module('popup-dialog', [])
 						});
 
 						return total;
-					}
+					};
 				}
 			}
 		};

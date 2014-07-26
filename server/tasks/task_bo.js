@@ -252,7 +252,15 @@ var TASK = new Bo('DATA_TASK', {
 						}
 					}
 
-					if(!tmp.contract_price || tmp.contract_price <=0){
+					if (!tmp.account_total) {
+						tmp.account_total = 0;
+					}
+
+					if (!tmp.contract_price) {
+						tmp.contract_price = 0;
+					}
+
+					if (tmp.account_total === 0 && tmp.contract_price === 0) {
 						return;
 					}
 
@@ -348,7 +356,7 @@ var TASK = new Bo('DATA_TASK', {
 						}
 					}
 
-					if(!tmp.expense_total || tmp.expense_total <=0){
+					if (!tmp.expense_total || tmp.expense_total <= 0) {
 						return;
 					}
 

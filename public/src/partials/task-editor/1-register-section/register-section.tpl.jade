@@ -34,9 +34,12 @@ div.container-fluid(ng-controller="registerSectionController")
 				div.flex-container.panel-body
 					div.flex-box
 						label 任务状态:
-						div.label.label-primary
+						div.label.label-primary(ng-if="!task_model.aborted")
 							i.fa.fa-fw(class="{{translateStatus(task_model.status).icon}}")
 							span {{translateStatus(task_model.status).status}}
+						div.label.label-danger(ng-if="task_model.aborted")
+							i.fa.fa-fw.fa-times
+							span 已中止
 
 					div.flex-box
 						label 任务主题:

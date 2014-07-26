@@ -29,14 +29,8 @@
         <li id="nav-block-user" class="dropdown"><a data-toggle="dropdown" class="dropdown-toggle cursor-pointer"><i class="fa fa-user fa-fw">&nbsp;</i><span>{{loginUser}}</span><b class="caret"></b></a>
           <ul class="dropdown-menu">
             <li><a popup-dialog="popup-dialog" dialog-config="personalSettingsConfig" ng-click="showPersonalSettings($event)" on-confirm="onPersonalSettingsSaved(action, data)" class="cursor-pointer"><i class="fa fa-info fa-fw">&nbsp;</i><span>&nbsp;修改登录信息</span></a></li>
-            <li><a ng-click="backupDB()" class="cursor-pointer"><i class="fa fa-download fa-fw">&nbsp;</i><span>&nbsp;数据备份</span></a></li>
-            <li><a popup-dialog="popup-dialog" dialog-config="restoreDialogConfig" ng-click="showRestoreDialog($event)" class="cursor-pointer"><i class="fa fa-upload fa-fw">&nbsp;</i><span>&nbsp;数据还原</span></a></li>
-            <!--li: a(href='#')-->
-            <!--	i.fa.fa-retweet.fa-fw &nbsp;-->
-            <!--	span 切换帐套-->
-            <!--li: a(href='#')-->
-            <!--	i.fa.fa-lock.fa-fw &nbsp;-->
-            <!--	span 锁屏-->
+            <li><a ng-click="backupDB()" ng-if="canBackup" class="cursor-pointer"><i class="fa fa-download fa-fw">&nbsp;</i><span>&nbsp;数据备份</span></a></li>
+            <li><a popup-dialog="popup-dialog" dialog-config="restoreDialogConfig" ng-click="showRestoreDialog($event)" ng-if="canRestore" class="cursor-pointer"><i class="fa fa-upload fa-fw">&nbsp;</i><span>&nbsp;数据还原</span></a></li>
             <li class="divider"></li>
             <li><a href="/" ng-click="signOff()" class="cursor-pointer"><i class="fa fa-sign-out fa-fw">&nbsp;</i><span>&nbsp;登出系统</span></a></li>
           </ul>

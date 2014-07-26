@@ -14,6 +14,14 @@ module.exports = function (sequelize, DataTypes) {
 		handling:				{ type: DataTypes.INTEGER },
 
 		/**
+		 * Abort Properties
+		 */
+		aborted:				{ type: DataTypes.BOOLEAN, defaultValue: false },
+		abort_date:				{ type: DataTypes.DATE },
+		abort_person:			{ type: DataTypes.STRING },
+		abort_reason:			{ type: DataTypes.STRING },
+
+		/**
 		 * Register Properties
 		 */
 		register_topic:			{ type: DataTypes.STRING },

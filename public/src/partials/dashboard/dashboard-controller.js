@@ -83,6 +83,10 @@ angular.module('dashboard', [
 			for (var i in taskList) {
 				var task = taskList[i];
 
+				if(task.aborted){
+					continue;
+				}
+
 				if (task.status < 500) {
 					groups[0].task_list.push(task);
 				} else if (task.status < 600) {

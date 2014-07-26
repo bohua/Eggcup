@@ -30,7 +30,7 @@
 				i.fa.fa-fw.fa-warning
 				span 单据填写有误，请修正红色标记
 			button.btn.btn-default(type="button", ng-click="Cancel()") 取消
-			button.btn.btn-primary(type="button", ng-click="Confirm('update', true)") 保存
+			button.btn.btn-primary(type="button", ng-click="Confirm('update', true)", ng-if="prop.mode==='edit'") 保存
 
 	div#page1.modal-content.animate-show(ng-show="prop.paging==1")
 		include appointment-perview-view.tpl.jade

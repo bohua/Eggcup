@@ -1,0 +1,32 @@
+//Created by Bli on 2014/6/12.
+#abort-editor-form.modal-dialog.modal-lg(ng-controller="abortEditorController")
+	div.modal-content
+		div.modal-header
+			button.close(type="button", data-dismiss="modal") &times;
+			h4.modal-title 中止任务 &nbsp;
+				small Abort Task
+		div.modal-body.container-fluid
+			div.row
+				div.form-group.col-sm-4
+					label.control-label 中止人:
+					div
+						input.form-control(type="text", ng-model="dialog_data_model.abort_person", disabled)
+				div.form-group.col-sm-4
+					label.control-label 中止日期:
+					div
+						input.form-control(type="text", ng-model="dialog_data_model.abort_date", disabled)
+			div.row
+				div.form-group.col-sm-12
+					label.control-label 中止原因:
+					div
+						textarea.form-control(rows="5", placeholder="咨询事项", ng-model="dialog_data_model.abort_reason")
+
+		div.modal-footer
+			div.pull-left.alert-danger.panel(ng-show="prop.showErrorMessage")
+				i.fa.fa-fw.fa-warning
+				span 单据填写有误，请修正红色标记
+			button.btn.btn-default(type="button", ng-click="Cancel()") 取消
+			button.btn.btn-primary(type="button", ng-click="Confirm('update', true)") 确定
+
+
+

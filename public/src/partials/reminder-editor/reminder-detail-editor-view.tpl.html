@@ -31,7 +31,7 @@
     </div>
     <div class="modal-footer">
       <button type="button" ng-click="Cancel()" class="btn btn-default">取消</button>
-      <button type="button" ng-click="Confirm('update', true)" class="btn btn-primary">保存</button>
+      <button type="button" ng-click="Confirm('update', true)" ng-if="prop.mode==='edit'" class="btn btn-primary">保存</button>
     </div>
   </div>
   <div id="page1" ng-show="prop.paging==1" class="modal-content animate-show">
