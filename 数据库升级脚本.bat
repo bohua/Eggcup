@@ -1,3 +1,3 @@
-mysql -uroot -proot eggcup < upgrade_db.sql
+mysql -uroot -proot eggcup<upgrade.sql
 
 pause

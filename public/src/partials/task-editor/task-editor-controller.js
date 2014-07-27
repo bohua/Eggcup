@@ -88,6 +88,7 @@ angular.module('task-editor', [
 			}
 		}
 
+		$scope._canEditPermission = canEdit;
 		if (task_model.status >= 800 || task_model.aborted) {
 			canEdit = false;
 		}
@@ -468,6 +469,7 @@ angular.module('task-editor', [
 						},
 						template: '/src/partials/abort-editor/abort-editor-view.tpl.html',
 						onConfirm: function (action, data) {
+							$scope.task_model.aborted = true;
 							$scope.task_model.abort_date = data.abort_date;
 							$scope.task_model.abort_person = data.abort_person;
 							$scope.task_model.abort_reason = data.abort_reason;
@@ -481,6 +483,8 @@ angular.module('task-editor', [
 							};
 							$scope.$emit('event:saveTaskModel', $scope.task_model.id, o);
 							$scope.canEdit = false;
+
+							renderProgressList($scope);
 						}
 					};
 
@@ -507,6 +511,17 @@ angular.module('task-editor', [
 		};
 
 
+		function getEditorMode(){
+			if($scope.task_model.aborted){
+				return 'readOnly';
+			}
+
+			if(!$scope._canEditPermission){
+				return 'readOnly';
+			}
+
+			return 'edit'
+		}
 		/**
 		 * Expense Detail Editor Initialization
 		 */
@@ -519,8 +534,7 @@ angular.module('task-editor', [
 		};
 
 		$scope.showExpenseEditor = function ($event, dataModel) {
-			var mode = $scope.canEdit ? 'edit' : 'readOnly';
-			$($event.currentTarget).trigger('popup', [mode, $scope.task_model.expenseSheet.subItem || []]);
+			$($event.currentTarget).trigger('popup', [getEditorMode(), $scope.task_model.expenseSheet.subItem || []]);
 		};
 
 		$scope.onExpenseSaved = function (action, data) {
@@ -581,11 +595,10 @@ angular.module('task-editor', [
 		};
 
 		$scope.showReminderDetailEditor = function ($event) {
-			var mode = $scope.canEdit ? 'edit' : 'readOnly';
 			if ($($event.currentTarget).hasClass('disabled')) {
 				return;
 			}
-			$($event.currentTarget).trigger('popup', [mode, $scope.task_model.reminderSheet.subItem || []]);
+			$($event.currentTarget).trigger('popup', [getEditorMode(), $scope.task_model.reminderSheet.subItem || []]);
 		};
 
 		$scope.onReminderDetailSaved = function (action, data) {
@@ -613,7 +626,6 @@ angular.module('task-editor', [
 		};
 
 		$scope.showAccountDetailEditor = function ($event) {
-			var mode = $scope.canEdit ? 'edit' : 'readOnly';
 			if (!$scope.task_model.accountSheet) {
 				$scope.task_model.accountSheet = {
 					subItem: []
@@ -623,7 +635,7 @@ angular.module('task-editor', [
 			if ($($event.currentTarget).hasClass('disabled')) {
 				return;
 			}
-			$($event.currentTarget).trigger('popup', [mode, $scope.task_model.accountSheet.subItem || []]);
+			$($event.currentTarget).trigger('popup', [getEditorMode(), $scope.task_model.accountSheet.subItem || []]);
 		};
 
 		$scope.onAccountDetailSaved = function (action, data) {
