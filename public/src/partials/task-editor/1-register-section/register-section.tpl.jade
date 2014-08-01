@@ -46,6 +46,10 @@ div.container-fluid(ng-controller="registerSectionController")
 						span {{task_model.slogan}}
 
 					div.flex-box
+						label 咨询日期:
+						span {{task_model.consult_date | date:'yyyy-MM-dd'}}
+
+					div.flex-box
 						label 登记人:
 						span {{task_model.reporter}}
 

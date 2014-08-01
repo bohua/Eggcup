@@ -49,6 +49,7 @@ angular.module('register-section', ['register-editor', 'handling-method-service'
 							customer_address: $scope.task_model.customer_address,
 							register_content: $scope.task_model.register_content,
 							report_date: $scope.task_model.report_date.split('T')[0],
+							consult_date: $scope.task_model.consult_date.split('T')[0],
 
 							consult_method: consultMethods.join(', '),
 							privilege: privileges.join(', ')

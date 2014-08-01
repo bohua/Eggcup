@@ -1,6 +1,10 @@
 {
 	"singleMapper": [
 		{
+			"name": "登记日期",
+			"cell": "B,2",
+			"data_field": "report_date"
+		},{
 			"name": "阅读权限",
 			"cell": "E,2",
 			"data_field": "privilege"
@@ -27,7 +31,7 @@
 		},{
 			"name": "咨询日期",
 			"cell": "E,5",
-			"data_field": "report_date"
+			"data_field": "consult_date"
 		},{
 			"name": "咨询方式",
 			"cell": "B,6",

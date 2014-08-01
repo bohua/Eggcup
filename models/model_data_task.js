@@ -7,6 +7,7 @@ module.exports = function (sequelize, DataTypes) {
 
 		status:					{ type: DataTypes.INTEGER, defaultValue: 100 },
 		report_date:			{ type: DataTypes.DATE },
+		consult_date:			{ type: DataTypes.DATE },
 		reporter:				{ type: DataTypes.STRING },
 		assignee:				{ type: DataTypes.STRING },
 		slogan:					{ type: DataTypes.STRING, defaultValue: '暂无主题' },
