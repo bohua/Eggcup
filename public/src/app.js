@@ -61,7 +61,12 @@ angular.module('app', [
 		 * Global configuration
 		 */
 		$(document).on('contextmenu', function (e) {
-			e.preventDefault();
+			var tagName = e.target.tagName;
+
+			if (tagName !== 'INPUT' &&
+				tagName !== 'TEXTAREA')
+
+				e.preventDefault();
 		});
 
 		$scope.$on('loginSuccess', function () {
