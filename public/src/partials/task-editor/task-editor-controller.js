@@ -46,6 +46,7 @@ angular.module('task-editor', [
 			}
 		});
 }]).controller('taskEditorController', [
+	'$routeParams',
 	'$location',
 	'$http',
 	'$rootScope',
@@ -64,10 +65,17 @@ angular.module('task-editor', [
 	'modalService',
 	'task_model',
 	'TASK',
-	function ($location, $http, $rootScope, $scope, $timeout, $interval, $cookieStore, tagReferenceService, customerListService, employeeListService, taskStatusService, fileTypeService, taskService, permissionService, loginSessionService, modalService, task_model, TASK) {
+	function ($routeParams, $location, $http, $rootScope, $scope, $timeout, $interval, $cookieStore, tagReferenceService, customerListService, employeeListService, taskStatusService, fileTypeService, taskService, permissionService, loginSessionService, modalService, task_model, TASK) {
 
 		if (task_model.code === "ERR_DB_GET_NO_TASK") {
 			$location.path('/');
+		}
+
+		if($routeParams.action === 'queryEdit'){
+			$scope.canBack = true;
+			$scope.backToQuery = function(){
+				window.history.back();
+			};
 		}
 
 		var canRead = false,

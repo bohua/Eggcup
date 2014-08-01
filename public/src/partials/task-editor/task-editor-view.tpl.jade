@@ -16,8 +16,10 @@ div.navbar.navbar-default.task-header
 				span.icon-bar
 				span.icon-bar
 
-		span.navbar-left.task-topic 任务: TK-{{task_model.id}}
-			small.hidden-xs &nbsp;{{task_model.slogan}}
+		span.navbar-left.task-topic
+			i#backToQueryBtn.navbar-left.fa.fa-arrow-circle-o-left.fa-fw.cursor-pointer(ng-if="canBack", ng-click="backToQuery()") &nbsp;&nbsp;
+			span 任务: TK-{{task_model.id}}
+				small.hidden-xs &nbsp;{{task_model.slogan}}
 
 		#task-control-collapse.collapse.navbar-collapse.row
 			ul.nav.navbar-nav.navbar-right

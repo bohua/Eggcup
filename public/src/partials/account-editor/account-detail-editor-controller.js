@@ -11,7 +11,7 @@ angular.module('account-detail-editor', ['file-type-service'])
 
 			$scope.openTask = function(){
 				$scope.Cancel();
-				$location.path("/task-editor/edit/" + $scope.extra_args.task_id);
+				$location.path("/task-editor/queryEdit/" + $scope.extra_args.task_id);
 			};
 
 			if($scope.prop.mode === 'edit'){

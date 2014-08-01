@@ -12,6 +12,7 @@ module.exports = function (sequelize, DataTypes) {
 		slogan:					{ type: DataTypes.STRING, defaultValue: '暂无主题' },
 		tags:					{ type: DataTypes.STRING },
 		handling:				{ type: DataTypes.INTEGER },
+		aborted:				{ type: DataTypes.BOOLEAN, defaultValue: false },
 
 		/**
 		 * Abort Properties

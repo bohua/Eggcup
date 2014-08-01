@@ -89,7 +89,7 @@ angular.module('queryer', [
 		};
 
 		$scope.openTask = function ($event, id) {
-			$location.path('/task-editor/edit/' + id);
+			$location.path('/task-editor/queryEdit/' + id);
 		};
 
 		/**
