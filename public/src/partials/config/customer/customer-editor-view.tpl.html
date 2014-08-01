@@ -1,1 +1,117 @@
-<div id="customer-editor-form" ng-controller="customerEditorController" class="modal-dialog modal-lg"><div class="modal-content grid"><div class="modal-header"><button type="button" data-dismiss="modal" class="close">&times;</button><h4 class="modal-title">详细信息 &nbsp;<small>Details</small></h4></div><div class="modal-body"><div class="row"><div class="col-sm-6"><div class="form-horizontal"><h4>公司信息 &nbsp;<small>Company Information</small></h4><hr/><div class="form-group"><label class="col-sm-3 control-label">名称:</label><div class="col-sm-9"><input type="text" placeholder="公司名称" ng-model="dialog_data_model.name" required="required" ng-disabled="prop.mode=='readOnly'" class="form-control"/></div></div><div class="form-group"><label class="col-sm-3 control-label">地址:</label><div class="col-sm-9"><input type="text" placeholder="公司地址" ng-model="dialog_data_model.address" ng-disabled="prop.mode=='readOnly'" class="form-control"/></div></div><div class="form-group"><label class="col-sm-3 control-label">传真:</label><div class="col-sm-9"><input type="text" placeholder="传真" ng-model="dialog_data_model.fax" ng-disabled="prop.mode=='readOnly'" class="form-control"/></div></div><div class="form-group"><label class="col-sm-3 control-label">备注:</label><div class="col-sm-9"><textarea rows="3" placeholder="备注" ng-model="dialog_data_model.description" ng-disabled="prop.mode=='readOnly'" class="form-control"></textarea></div></div></div></div><div class="col-sm-6"><div class="form-horizontal"><h4>业务配置 &nbsp;<small class="hidden-xs hidden-xs">Business Configuration</small></h4><hr/><div class="form-group"><label class="col-sm-3 control-label">担当人:</label><div class="col-sm-9"><select ng-model="dialog_data_model.employee_id" ng-options="employee.id as employee.name for employee in employee_list" ng-disabled="prop.mode=='readOnly'" class="form-control"></select></div></div><div class="form-group"><div class="col-sm-9 col-sm-offset-3"><div class="checkbox"><label><input type="checkbox" ng-disabled="prop.mode=='readOnly'"/><span>业务捆绑</span></label></div></div></div><div class="form-group"><label class="col-sm-3 control-label">会员折扣:</label><div class="col-sm-9"><div class="input-group"><input type="text" placeholder="会员折扣" ng-model="dialog_data_model.membership" ng-disabled="prop.mode=='readOnly'" class="form-control"/><span class="input-group-addon">%</span></div></div></div></div></div></div><div class="row"><div class="col-sm-12"><h4>公司联系人列表 &nbsp;<small>Company Contact List</small></h4><hr/><table id="customer-contact-list-table" editable-table="editable-table" class="table table-bordered"><thead><tr><th>联系人</th><th>电话</th><th>邮箱</th></tr></thead><tbody><tr ng-repeat="contact in dialog_data_model.contactList track by $index"><td edit-model="contact.contact" edit-type="string">{{contact.contact}}</td><td edit-model="contact.tel" edit-type="string">{{contact.tel}}</td><td edit-model="contact.email" edit-type="string">{{contact.email}}</td></tr></tbody></table><table-content-handler option="tableHandlerOption" model="dialog_data_model.contactList" table="#customer-contact-list-table"></table-content-handler><!--div.form-group--><!--	label.col-sm-3.control-label 联系人:--><!--	div.col-sm-9--><!--		input.form-control(type="text", placeholder="联系人", ng-model="dialog_data_model.contact", ng-disabled="prop.mode=='readOnly'")--><!----><!--div.form-group--><!--	label.col-sm-3.control-label 电话:--><!--	div.col-sm-9--><!--		input.form-control(type="text", placeholder="联系人电话", ng-model="dialog_data_model.tel", ng-disabled="prop.mode=='readOnly'")--><!----><!--div.form-group--><!--	label.col-sm-3.control-label 邮箱:--><!--	div.col-sm-9--><!--		input.form-control(type="text", placeholder="联系人邮箱", ng-model="dialog_data_model.email", ng-disabled="prop.mode=='readOnly'")--></div></div></div><div class="modal-footer"><div class="pull-left"><button ng-click="delete()" ng-if="prop.mode=='edit'" class="btn btn-danger">删除</button></div><div ng-show="prop.showErrorMessage" class="pull-left alert-danger panel"><i class="fa fa-fw fa-warning"></i><span>单据填写有误，请修正红色标记</span></div><button type="button" ng-click="Cancel()" class="btn btn-default">取消</button><button type="button" ng-click="Confirm('update', true)" ng-disabled="prop.mode=='readOnly'" class="btn btn-primary">保存</button></div></div></div>
+
+<div id="customer-editor-form" ng-controller="customerEditorController" class="modal-dialog modal-lg">
+  <div class="modal-content grid">
+    <div class="modal-header">
+      <button type="button" data-dismiss="modal" class="close">&times;</button>
+      <h4 class="modal-title">详细信息 &nbsp;<small>Details</small></h4>
+    </div>
+    <div class="modal-body">
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-horizontal">
+            <h4>公司信息 &nbsp;<small>Company Information</small></h4>
+            <hr/>
+            <div class="form-group">
+              <label class="col-sm-3 control-label">名称:</label>
+              <div class="col-sm-9">
+                <input type="text" placeholder="公司名称" ng-model="dialog_data_model.name" required="required" ng-disabled="prop.mode=='readOnly'" class="form-control"/>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-3 control-label">地址:</label>
+              <div class="col-sm-9">
+                <input type="text" placeholder="公司地址" ng-model="dialog_data_model.address" ng-disabled="prop.mode=='readOnly'" class="form-control"/>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-3 control-label">传真:</label>
+              <div class="col-sm-9">
+                <input type="text" placeholder="传真" ng-model="dialog_data_model.fax" ng-disabled="prop.mode=='readOnly'" class="form-control"/>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-3 control-label">备注:</label>
+              <div class="col-sm-9">
+                <textarea rows="3" placeholder="备注" ng-model="dialog_data_model.description" ng-disabled="prop.mode=='readOnly'" class="form-control"></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-horizontal">
+            <h4>业务配置 &nbsp;<small class="hidden-xs hidden-xs">Business Configuration</small></h4>
+            <hr/>
+            <div class="form-group">
+              <label class="col-sm-3 control-label">担当人:</label>
+              <div class="col-sm-9">
+                <select ng-model="dialog_data_model.employee_id" ng-options="employee.id as employee.name for employee in employee_list" ng-disabled="prop.mode=='readOnly'" class="form-control"></select>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-sm-9 col-sm-offset-3">
+                <div class="checkbox">
+                  <label>
+                    <input type="checkbox" ng-disabled="prop.mode=='readOnly'"/><span>业务捆绑</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-3 control-label">会员折扣:</label>
+              <div class="col-sm-9">
+                <div class="input-group">
+                  <input type="text" placeholder="会员折扣" ng-model="dialog_data_model.membership" ng-disabled="prop.mode=='readOnly'" class="form-control"/><span class="input-group-addon">%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <h4>公司联系人列表 &nbsp;<small>Company Contact List</small></h4>
+          <hr/>
+          <table id="customer-contact-list-table" editable-table="editable-table" class="table table-bordered">
+            <thead>
+              <tr>
+                <th>联系人</th>
+                <th>电话</th>
+                <th>邮箱</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="contact in dialog_data_model.contactList track by $index">
+                <td edit-model="contact.contact" edit-type="string">{{contact.contact}}</td>
+                <td edit-model="contact.tel" edit-type="string">{{contact.tel}}</td>
+                <td edit-model="contact.email" edit-type="string">{{contact.email}}</td>
+              </tr>
+            </tbody>
+          </table>
+          <table-content-handler option="tableHandlerOption" model="dialog_data_model.contactList" table="#customer-contact-list-table"></table-content-handler>
+          <!--div.form-group-->
+          <!--	label.col-sm-3.control-label 联系人:-->
+          <!--	div.col-sm-9-->
+          <!--		input.form-control(type="text", placeholder="联系人", ng-model="dialog_data_model.contact", ng-disabled="prop.mode=='readOnly'")-->
+          <!---->
+          <!--div.form-group-->
+          <!--	label.col-sm-3.control-label 电话:-->
+          <!--	div.col-sm-9-->
+          <!--		input.form-control(type="text", placeholder="联系人电话", ng-model="dialog_data_model.tel", ng-disabled="prop.mode=='readOnly'")-->
+          <!---->
+          <!--div.form-group-->
+          <!--	label.col-sm-3.control-label 邮箱:-->
+          <!--	div.col-sm-9-->
+          <!--		input.form-control(type="text", placeholder="联系人邮箱", ng-model="dialog_data_model.email", ng-disabled="prop.mode=='readOnly'")-->
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <div class="pull-left">
+        <button ng-click="delete()" ng-if="prop.mode=='edit'" class="btn btn-danger">删除</button>
+      </div>
+      <div ng-show="prop.showErrorMessage" class="pull-left alert-danger panel"><i class="fa fa-fw fa-warning"></i><span>单据填写有误，请修正红色标记</span></div>
+      <button type="button" ng-click="Cancel()" class="btn btn-default">取消</button>
+      <button type="button" ng-click="Confirm('update', true)" ng-disabled="prop.mode=='readOnly'" class="btn btn-primary">保存</button>
+    </div>
+  </div>
+</div>

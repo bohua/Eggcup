@@ -1,7 +1,7 @@
 DELIMITER $$
 
-DROP PROCEDURE IF EXISTS upgrade_database $$
-CREATE PROCEDURE upgrade_database()
+DROP PROCEDURE IF EXISTS upgrade_database_0_9_0_91 $$
+CREATE PROCEDURE upgrade_database_0_9_0_91()
 BEGIN
 
 IF NOT EXISTS( (SELECT * FROM information_schema.COLUMNS WHERE TABLE_SCHEMA='eggcup'
@@ -31,6 +31,6 @@ END IF;
 
 END $$
 
-CALL upgrade_database() $$
+CALL upgrade_database_0_9_0_91() $$
 
 DELIMITER ;
