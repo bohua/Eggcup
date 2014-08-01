@@ -2,7 +2,7 @@
  * Created by Bohua on 14-2-13.
  */
 
-angular.module('top-bar', ['login-session-service', 'task-service', 'permission-service', 'personal-settings', 'employee-list-service'])
+angular.module('top-bar', ['login-session-service', 'task-service', 'permission-service', 'personal-settings', 'employee-list-service', 'about-dialog'])
 	.controller('topBarController', [
 		'$scope',
 		'$rootScope',
@@ -140,7 +140,7 @@ angular.module('top-bar', ['login-session-service', 'task-service', 'permission-
 				var o = {
 					id: loginSessionService.getLoginUser().id,
 					login: data.login
-				}
+				};
 
 				employeeListService.saveEmployee(o);
 			};
@@ -175,5 +175,19 @@ angular.module('top-bar', ['login-session-service', 'task-service', 'permission-
 
 			$scope.showRestoreDialog = function($event){
 				$($event.currentTarget).trigger('popup');
-			}
+			};
+
+			/**
+			 * Restore
+			 */
+			$scope.aboutDialogConfig = {
+				dialogOption: {
+					backdrop: 'static'
+				},
+				template: '/src/partials/about-dialog/about-dialog-view.tpl.html'
+			};
+
+			$scope.showAboutDialog = function($event){
+				$($event.currentTarget).trigger('popup');
+			};
 		}]);

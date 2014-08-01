@@ -1,4 +1,12 @@
 {
 	"debug": false,
-	"version": 0.9
+	"version": 0.92,
+	"vendor": "上海久富软件工作室",
+	"telList": [
+		"021-33040487",
+		"13901927079"
+	],
+	"emailList": [
+		"604952351@qq.com"
+	]
 }

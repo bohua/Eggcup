@@ -83,6 +83,12 @@ div.navbar.navbar-inverse.navbar-fixed-top(ng-controller="topBarController", rol
 							span &nbsp;数据还原
 
 						li.divider
+
+						li: a.cursor-pointer(popup-dialog,dialog-config="aboutDialogConfig",ng-click="showAboutDialog($event)")
+							i.fa.fa-paper-plane-o.fa-fw &nbsp;
+							span &nbsp;关于
+						li.divider
+
 						li: a.cursor-pointer(href="/", ng-click="signOff()")
 							i.fa.fa-sign-out.fa-fw &nbsp;
 							span &nbsp;登出系统

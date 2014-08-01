@@ -1,0 +1,33 @@
+//Created by Bli on 2014/6/12.
+#about-dialog-form.modal-dialog(ng-controller="aboutDialogController")
+	div.modal-content
+		div.modal-header
+			button.close(type="button", data-dismiss="modal") &times;
+			h4.modal-title 咨询业务管理平台 &nbsp;
+				small Consulting Business Management System
+		div.modal-body.container-fluid
+			div.row
+				div.form-horizontal
+					div.form-group
+						label.col-sm-3.control-label 版本:
+						p.col-sm-9.form-control-static {{version}}
+
+					div.form-group
+						label.col-sm-3.control-label 版权所有:
+						p.col-sm-9.form-control-static {{vendor}}
+
+					div.form-group(ng-repeat="tel in telList")
+						label.col-sm-3.control-label
+							span(ng-if="$index==0") 电话:
+						p.col-sm-9.form-control-static {{tel}}
+
+					div.form-group(ng-repeat="email in emailList")
+						label.col-sm-3.control-label
+							span(ng-if="$index==0") 电子邮件:
+						p.col-sm-9.form-control-static {{email}}
+
+		div.modal-footer
+			button.btn.btn-primary(type="button", ng-click="Cancel()") 确定
+
+
+

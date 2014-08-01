@@ -32,6 +32,8 @@
             <li><a ng-click="backupDB()" ng-if="canBackup" class="cursor-pointer"><i class="fa fa-download fa-fw">&nbsp;</i><span>&nbsp;数据备份</span></a></li>
             <li><a popup-dialog="popup-dialog" dialog-config="restoreDialogConfig" ng-click="showRestoreDialog($event)" ng-if="canRestore" class="cursor-pointer"><i class="fa fa-upload fa-fw">&nbsp;</i><span>&nbsp;数据还原</span></a></li>
             <li class="divider"></li>
+            <li><a popup-dialog="popup-dialog" dialog-config="aboutDialogConfig" ng-click="showAboutDialog($event)" class="cursor-pointer"><i class="fa fa-paper-plane-o fa-fw">&nbsp;</i><span>&nbsp;关于</span></a></li>
+            <li class="divider"></li>
             <li><a href="/" ng-click="signOff()" class="cursor-pointer"><i class="fa fa-sign-out fa-fw">&nbsp;</i><span>&nbsp;登出系统</span></a></li>
           </ul>
         </li>
