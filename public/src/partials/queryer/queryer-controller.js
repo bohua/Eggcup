@@ -77,14 +77,20 @@ angular.module('queryer', [
 			var params = {
 				tid: (new Date()).getTime()
 			};
-			$.map($scope.condition, function (c, index) {
-				if (c) {
-					if (_.isDate(c)) {
-						c = c.toISOString();
+
+			if(!_.isEmpty($scope.condition.task_slogan)){
+				params.task_slogan = $scope.condition.task_slogan;
+			}else{
+				$.map($scope.condition, function (c, index) {
+					if (c) {
+						if (_.isDate(c)) {
+							c = c.toISOString();
+						}
+						params[index] = c;
 					}
-					params[index] = c;
-				}
-			});
+				});
+			}
+
 			$location.search(params);
 		};
 
@@ -161,6 +167,7 @@ angular.module('queryer', [
 		 * Initialize query conditions
 		 */
 		$scope.condition = {
+			task_slogan: params.task_slogan || '',
 			start_date: params.start_date || new Date(),
 			end_date: params.end_date || new Date(),
 			status: params.status || 'all',
@@ -195,4 +202,13 @@ angular.module('queryer', [
 
 			return false;
 		}
+
+		/**
+		 * Watches
+		 */
+//		$scope.$watch('condition.task_slogan', function(val){
+//			if(!_.isEmpty(val)){
+//
+//			}
+//		})
 	}]);

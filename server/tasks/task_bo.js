@@ -22,6 +22,11 @@ function generateQuery(condition, extra) {
 		where = [],
 		d;
 
+
+	if (condition.task_slogan) {
+		where.push(["slogan LIKE '%" + condition.task_slogan + "%'"]);
+	}
+
 	if (condition.employee_name) {
 		where.push(["assignee LIKE '%" + condition.employee_name + "%'"]);
 	}

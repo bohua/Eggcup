@@ -1,28 +1,32 @@
 div.row.hidden-print
 	div.form-group.col-sm-2
+		label.control-label 任务主题:
+		div
+			input.form-control(type="text", placeholder="任务主题", ng-model="condition.task_slogan")
+	div.form-group.col-sm-2
 		label.control-label 启始日期:
 		div.input-group.date(date-field-model="condition.start_date")
 			span.input-group-addon
 				i.fa.fa-calendar
-			input.form-control.datepicker(type="text")
+			input.form-control.datepicker(type="text", ng-disabled="condition.task_slogan")
 	div.form-group.col-sm-2
 		label.control-label 结束日期:
 		div.input-group.date(date-field-model="condition.end_date")
 			span.input-group-addon
 				i.fa.fa-calendar
-			input.form-control.datepicker(type="text")
+			input.form-control.datepicker(type="text", ng-disabled="condition.task_slogan")
 	div.form-group.col-sm-2
 		label.control-label 担当人:
 		div
-			input.form-control(type="text", placeholder="担当人", ng-model="condition.employee_name", auto-complete-field="assigneeFieldOptions")
-	div.form-group.col-sm-4
+			input.form-control(type="text", placeholder="担当人", ng-model="condition.employee_name", auto-complete-field="assigneeFieldOptions", ng-disabled="condition.task_slogan")
+	div.form-group.col-sm-2
 		label.control-label 公司名称:
 		div
-			input.form-control(type="text", placeholder="公司名称", ng-model="condition.customer_name", auto-complete-field="customerFieldOptions")
+			input.form-control(type="text", placeholder="公司名称", ng-model="condition.customer_name", auto-complete-field="customerFieldOptions", ng-disabled="condition.task_slogan")
 	div.form-group.col-sm-2
 		label.control-label 任务状态:
 		div
-			select.form-control(ng-model="condition.status")
+			select.form-control(ng-model="condition.status", ng-disabled="condition.task_slogan")
 				option(value="all") {{translateQueryStatus('all')}}
 				option(value="ongoing") {{translateQueryStatus('ongoing')}}
 				option(value="closed") {{translateQueryStatus('closed')}}

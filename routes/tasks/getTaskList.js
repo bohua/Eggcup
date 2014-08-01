@@ -5,6 +5,7 @@ var task_bo = require(__dirname + '/../../server/tasks/task_bo');
 
 module.exports = function (req, res) {
 	var condition = {
+			task_slogan: req.query.task_slogan,
 			employee_name: req.query.employee_name,
 			customer_name: req.query.customer_name,
 			start_date: req.query.start_date,
