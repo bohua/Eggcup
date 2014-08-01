@@ -29,25 +29,25 @@
 			hr
 			#register-editor-company-info.collapse(ng-class="{'in': prop.mode=='edit'}")
 				div.row
-					div.form-group.col-sm-6
+					div.form-group.col-sm-4
 						label.control-label 公司名称:
 						div
 							input.form-control(type="text", placeholder="公司名称", ng-model="dialog_data_model.customer_name", auto-complete-field="customerFieldOptions")
-					div.form-group.col-sm-3
-						label.control-label 联系人:
-						div
-							input.form-control(type="text", placeholder="联系人", ng-model="dialog_data_model.customer_contact")
-					div.form-group.col-sm-3
-						label.control-label 电话:
-						div
-							input.form-control(type="text", placeholder="电话", ng-model="dialog_data_model.customer_tel")
-
-				div.row
 					div.form-group.col-sm-8
 						label.control-label 公司地址:
 						div
 							input.form-control(type="text", placeholder="公司地址", ng-model="dialog_data_model.customer_address")
+
+				div.row
+					div.form-group.col-sm-3
+						label.control-label 联系人:
+						div
+							input#contactField.form-control(type="text", placeholder="联系人", ng-model="dialog_data_model.customer_contact", auto-complete-field="contactFieldOptions")
 					div.form-group.col-sm-4
+						label.control-label 电话:
+						div
+							input.form-control(type="text", placeholder="电话", ng-model="dialog_data_model.customer_tel")
+					div.form-group.col-sm-5
 						label.control-label 邮箱:
 						div
 							input.form-control(type="text", placeholder="邮箱", ng-model="dialog_data_model.customer_email")

@@ -5,6 +5,7 @@ var Q = require('q');
 var db = require('../models');
 var fs = require('fs');
 var mysql = require('mysql');
+var customer_bo = require('../server/basics/customer_bo')
 
 //		connection.query('SELECT CONCAT("SET FOREIGN_KEY_CHECKS=0;", "DROP TABLE ", GROUP_CONCAT(table_name), ";") FROM information_schema.tables WHERE table_schema = "eggcup" and table_name like "%";')
 
@@ -51,67 +52,41 @@ function afterAll(db) {
 	generateEmployee(db);
 	generateKh(db);
 	generateLoginAccount(db);
+
 	//Initialize test cases
 	require(__dirname + '/init_test_cases');
 }
 
 function generateKh(db) {
-	var deferred = new Q.defer();
-	db.model('REF_CUSTOMER').bulkCreate([
+	//var deferred = new Q.defer();
+	return customer_bo.save(
 		{
 			name: '腾讯深圳总部',
 			address: '深圳市南山区高新科技园中区一路腾讯大厦',
-			tel: '0755-86013388',
 			fax: '0755-86013399',
-			contact: 'A小姐',
-			email: 'rexwang@tencent.com',
 			website: '无',
 			membership: '',
 			description: '测试数据',
-			employee_id: 1
-		},
-		{
-			name: '腾讯北京分公司',
-			address: '北京市海淀区海淀大街38号银科大厦16层',
-			tel: '010-62671188',
-			fax: '010-82603119',
-			contact: 'B小姐',
-			email: 'rexwang@tencent.com',
-			website: '无',
-			membership: '',
-			description: '测试数据',
-			employee_id: 2
-		},
-		{
-			name: '腾讯上海分公司',
-			address: '上海市徐汇区田林路397号A楼 上海腾云大厦',
-			tel: '021-54569595',
-			fax: '021-54393079',
-			contact: 'C小姐',
-			email: 'rexwang@tencent.com',
-			website: '无',
-			membership: '',
-			description: '测试数据',
-			employee_id: 3
-		},
-		{
-			name: '腾讯成都分公司',
-			address: '成都市高新区拓东新街81号天府软件园二期C区4号楼',
-			tel: '028-85225111',
-			fax: '028-85980512',
-			contact: 'D小姐',
-			email: 'rexwang@tencent.com',
-			website: '无',
-			membership: '',
-			description: '测试数据',
-			employee_id: 1
-		}
-	]).success(function (sdepold) {
-		//console.log(sdepold)
-		deferred.resolve(sdepold);
-	});
+			contactList:[
+				{
+					contact: 'A小姐',
+					tel: '0755-86000001',
+					email: 'a@tencent.com'
+				},
+				{
+					contact: 'X小姐',
+					tel: '0755-86000002',
+					email: 'x@tencent.com'
+				},
+				{
+					contact: 'Y小姐',
+					tel: '0755-86000003',
+					email: 'y@tencent.com'
+				}
+			]
+		});
 
-	return deferred.promise;
+	 //deferred.promise;
 }
 
 function generateEmployee(db) {

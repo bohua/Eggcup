@@ -5,20 +5,28 @@ angular.module('auto-complete-field', [])
 	.directive('autoCompleteField', function () {
 		var autoCompleteField = {
 			link: function ($scope, $element, $attributes) {
-				var wrapper = $($element).closest('div'),
-					options = {
-						delay: 100,
-						appendTo: wrapper,
-						minLength: 0,
-						select: function (a, b) {
-							eval("$scope." + $attributes.ngModel + "='" + b.item.value + "'");
-						}
-					};
+				var wrapper,
+					options,
+					handler;
 
-				var inputOption = eval("$scope." + $attributes.autoCompleteField) || {};
-				$.extend(true, options, inputOption);
+				function init(){
+					wrapper = $($element).closest('div'),
+						options = {
+							delay: 100,
+							appendTo: wrapper,
+							minLength: 0,
+							select: function (a, b) {
+								eval("$scope." + $attributes.ngModel + "='" + b.item.value + "'");
+							}
+						};
 
-				var handler = $($element).autocomplete(options);
+					var inputOption = eval("$scope." + $attributes.autoCompleteField) || {};
+					$.extend(true, options, inputOption);
+
+					handler = $($element).autocomplete(options);
+				}
+
+				init();
 
 				$($element).on('focus', function () {
 					handler.autocomplete("search", "");
@@ -33,6 +41,11 @@ angular.module('auto-complete-field', [])
 						e.stopPropagation();
 						return false;
 					}
+				});
+
+				$($element).on('event:reload', function(e){
+					handler.autocomplete('destroy');
+					init();
 				});
 			}
 		};

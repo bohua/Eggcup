@@ -7,6 +7,9 @@ angular.module('customer-editor', ['employee-list-service'])
 		 * Initialize References
 		 */
 		$scope.employee_list = employeeListService.getEmployeeList();
+		if(!$scope.dialog_data_model.contactList){
+			$scope.dialog_data_model.contactList= [];
+		}
 
 		/**
 		 * Initialize Emitters
@@ -17,6 +20,17 @@ angular.module('customer-editor', ['employee-list-service'])
 				$scope.Confirm('remove', false);
 			}
 		}
+
+		$scope.tableHandlerOption = {
+			hasFileUploader: false,
+			hasCreateBtn: true,
+			hasOpenBtn: false,
+			hasDeleteBtn: true,
+
+			defaultRowValue: {
+				contact: '新联系人'
+			}
+		};
 
 		/**
 		 * Get system tags

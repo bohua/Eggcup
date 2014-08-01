@@ -28,6 +28,7 @@ module.exports = function (sequelize, DataTypes) {
 			associate: function (models) {
 				REF_CUSTOMER
 					.belongsTo(models.REF_EMPLOYEE, {as: 'represent', foreignKey: 'employee_id'})
+					.hasMany(models.REF_CUSTOMER_CONTACT, {as: 'contact_list', foreignKey: 'customer_id'})
 			}
 		}
 	});

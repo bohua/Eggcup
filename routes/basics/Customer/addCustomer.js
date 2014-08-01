@@ -5,7 +5,7 @@ var bo = require(__dirname + '/../../../server/basics/customer_bo');
 
 module.exports = function (req, res) {
 
-	bo.add(req.body).then(
+	bo.save(req.body).then(
 		function (success) {
 			res.statusCode = 200;
 			res.json(success);

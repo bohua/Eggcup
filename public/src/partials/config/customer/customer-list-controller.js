@@ -33,8 +33,7 @@ angular.module('customer-list', [
 			'公司名称',
 			'担当',
 			'地址',
-			'电话',
-			'联系人'
+			'备注'
 		];
 
 		$scope.customer_list = customerListService.getCustomerList();
