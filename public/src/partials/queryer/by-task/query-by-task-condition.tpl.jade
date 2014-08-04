@@ -1,8 +1,11 @@
 div.row.hidden-print
 	div.form-group.col-sm-2
 		label.control-label 任务主题:
-		div
+		div.input-group
 			input.form-control(type="text", placeholder="任务主题", ng-model="condition.task_slogan")
+			span.input-group-btn
+				button.btn.btn-default(type="button", ng-click="clearField($event, 'condition.task_slogan')")
+					i.fa.fa-times.fa-fw
 	div.form-group.col-sm-2
 		label.control-label 启始日期:
 		div.input-group.date(date-field-model="condition.start_date")

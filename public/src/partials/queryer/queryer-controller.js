@@ -98,6 +98,10 @@ angular.module('queryer', [
 			$location.path('/task-editor/queryEdit/' + id);
 		};
 
+		$scope.clearField = function($event, field){
+			eval("$scope." + field + "=''");
+		};
+
 		/**
 		 * Sum function
 		 */
