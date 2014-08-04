@@ -1,0 +1,13 @@
+@media only print {
+  body, #right-stage, #view-port {
+    width: auto;
+    height: auto;
+    overflow: visible;
+  }
+
+  table { page-break-after:auto }
+  tr    { page-break-inside:avoid; page-break-after:auto }
+  td, th{ page-break-inside:avoid; page-break-after:auto }
+  thead { display:table-header-group }
+  tfoot { display:table-footer-group }
+}

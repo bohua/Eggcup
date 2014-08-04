@@ -63,9 +63,9 @@ angular.module('top-bar', ['login-session-service', 'task-service', 'permission-
 				window.location.assign(window.location.origin);
 			};
 
-			$scope.showPersonalEditor = function () {
-
-			};
+			$scope.goQuery = function(mode){
+				$location.url("queryer/" + mode);
+			}
 
 			/**
 			 * Create new Task

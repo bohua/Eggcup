@@ -49,13 +49,13 @@ div.navbar.navbar-inverse.navbar-fixed-top(ng-controller="topBarController", rol
 						span.cursor-pointer 查询
 						b.caret
 					ul.dropdown-menu
-						li: a(href="#/queryer/task")
+						li: a.cursor-pointer(ng-click="goQuery('task')")
 							i.fa.fa-calendar.fa-fw &nbsp;
 							span &nbsp;项目查询
-						li: a(href="#/queryer/account")
+						li: a.cursor-pointer(ng-click="goQuery('account')")
 							i.fa.fa-bank.fa-fw &nbsp;
 							span &nbsp;收款查询
-						li: a(href="#/queryer/expense")
+						li: a.cursor-pointer(ng-click="goQuery('expense')")
 							i.fa.fa-rmb.fa-fw &nbsp;
 							span &nbsp;费用查询
 
