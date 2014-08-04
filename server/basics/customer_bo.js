@@ -3,8 +3,43 @@
  */
 var Q = require("q");
 var Bo = require(__dirname + "/../abstract_bo");
+var _ = require('lodash');
 
 var CUSTOEMR_CONTACT = new Bo('REF_CUSTOMER_CONTACT');
+
+function saveContact(customer_instance, contact) {
+	var deferred = Q.defer();
+
+	CUSTOEMR_CONTACT.save(contact).then(
+		function (contact_instance) {
+			customer_instance.addContactList(contact_instance).then(
+				function (success) {
+					deferred.resolve();
+				},
+				function (error) {
+					global.logger.error(error);
+					deferred.reject();
+				}
+			);
+		},
+		function (error) {
+			global.logger.error(error);
+			deferred.reject();
+		}
+	);
+
+	return deferred.promise;
+}
+
+function saveContactList(customer_instance, contactList) {
+	var promises = [];
+
+	_.forEach(contactList, function (contact) {
+		promises.push(saveContact(customer_instance, contact));
+	})
+
+	return Q.all(promises);
+}
 
 var CUSTOMER = new Bo('REF_CUSTOMER',
 	{
@@ -50,47 +85,26 @@ var CUSTOMER = new Bo('REF_CUSTOMER',
 	{
 		name: 'save',
 		method: function (model) {
-			var save_handler = this._save(model);
+			//var save_handler = this._save(model);
+			var deferred = Q.defer();
 
-			save_handler.then(function (customer_instance) {
+			this._save(model)
+				.then(function (customer_instance) {
 
-				//Save contact list
 				if (model.contactList) {
-					customer_instance.setContactList([]).success(function () {
-						for (var i in model.contactList) {
-							CUSTOEMR_CONTACT.save(model.contactList[i])
-								.then(
-								function (contact_instance) {
-									customer_instance.addContactList(contact_instance);
-								},
-								function (error) {
-									global.logger.error(error);
-								}
-							);
-						}
+					customer_instance.setContactList([]).success(function(){
+						saveContactList(customer_instance, model.contactList).done(function(){
+							deferred.resolve();
+						},function(){
+							deferred.reject();
+						});
 					});
+				} else{
+					deferred.resolve();
 				}
-
-
-				//Save sub items
-//				if (sub_item_handler && model.subItem && sheet_instance.addSubItem) {
-//					sheet_instance.setSubItem([]).success(function () {
-//						for (var i in model.subItem) {
-//							new SHEET(sub_item_handler).save(model.subItem[i])
-//								.then(
-//								function (sub_item_instance) {
-//									sheet_instance.addSubItem(sub_item_instance);
-//								},
-//								function (error) {
-//									global.logger.error(error);
-//								});
-//
-//						}
-//					});
-//				}
 			});
 
-			return save_handler;
+			return deferred.promise;
 		}
 	});
 
