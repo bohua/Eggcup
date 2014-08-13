@@ -4,11 +4,11 @@
 			div.page-header
 				h4
 					i.fa.fa-fw.fa-comments-o
-					span 咨询留言
+					span 留言管理
 					small &nbsp;&nbsp; Word Press
 
 			div.list-group
-				a.list-group-item.cursor-pointer.active
+				a.list-group-item.cursor-pointer
 					span.badge.pull-right 3
 					i.fa.fa-fw.fa-envelope-o
 					span &nbsp; 待回复
@@ -21,6 +21,51 @@
 					i.fa.fa-fw.fa-folder-open-o
 					span &nbsp; 所有留言
 
+			//div.panel.panel-default
+			//	div.panel-body
+			//		button.btn.btn-default
+			//			i.fa.fa-fw.fa-edit
+			//			span &nbsp; 新建留言
+
+			div.page-header
+				h4
+					i.fa.fa-fw.fa-search
+					span 留言查询
+					small &nbsp;&nbsp; Search
+
+			div.panel.panel-default
+				div.panel-body
+					div.form-group
+						label.control-label 留言主题:
+						div.input-group
+							input.form-control(type="text", placeholder="留言主题", ng-model="condition.topic")
+							span.input-group-btn
+								button.btn.btn-default(type="button", ng-click="clearField($event, 'condition.topic')")
+									i.fa.fa-times.fa-fw
+
+					div.form-group
+						label.control-label 启始日期:
+						div.input-group.date(date-field-model="condition.start_date")
+							span.input-group-addon
+								i.fa.fa-calendar
+							input.form-control.datepicker(type="text", ng-disabled="condition.topic")
+
+					div.form-group
+						label.control-label 结束日期:
+						div.input-group.date(date-field-model="condition.end_date")
+							span.input-group-addon
+								i.fa.fa-calendar
+							input.form-control.datepicker(type="text", ng-disabled="condition.topic")
+
+					div.form-group
+						label.control-label 公司名称:
+						div
+							input.form-control(type="text", placeholder="公司名称", ng-model="condition.customer_name", auto-complete-field="customerFieldOptions", ng-disabled="condition.topic")
+
+					div.form-group
+						button.btn.btn-default.pull-right
+							i.fa.fa-fw.fa-search
+							span &nbsp; 查找
 
 		#wordpress-content.col-sm-9
 			div.panel.panel-default

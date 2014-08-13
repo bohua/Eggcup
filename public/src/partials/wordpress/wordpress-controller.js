@@ -22,5 +22,5 @@ angular.module('wordpress', [
 	'employeeListService',
 	'permissionService',
 	function ($scope, $routeParams, $location, $http, customerListService, employeeListService, permissionService) {
-
+		$scope.condition= {};
 	}]);
