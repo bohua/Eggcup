@@ -19,6 +19,7 @@ angular.module('app', [
 	'dashboard',
 	'task-editor',
 	'queryer',
+	'wordpress',
 	'restore-dialog',
 	'duScroll',
 	'token-field',
