@@ -2,7 +2,7 @@
   height: 100%;
   width: 100%;
 
-  > .row{
+  > .row {
     height: 100%;
   }
 }
@@ -11,13 +11,20 @@
   height: 100%;
   padding: 10px 0 10px 10px;
 
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  .panel {
+    margin-bottom: 0;
+  }
+
   input, button {
     height: 32px;
   }
 }
 
 #wordpress-content {
-  height: 100%;
+  height: ~"calc(100% - 50px)";
   padding: 10px;
 
   .panel {
@@ -26,5 +33,14 @@
 
     overflow-x: hidden;
     overflow-y: auto;
+  }
+}
+
+#wordpress-control-panel {
+  margin-bottom: 7px;
+  text-align: right;
+
+  .btn-group {
+    text-align: left;
   }
 }

@@ -68,5 +68,20 @@
 							span &nbsp; 查找
 
 		#wordpress-content.col-sm-9
+			#wordpress-control-panel.page-header
+				div.btn-group
+					button.btn.btn-primary
+						i.fa.fa-edit.fa-fw &nbsp;
+						span 新建留言
+					button.btn.btn-default.dropdown-toggle(data-toggle="dropdown")
+						i.fa.fa-cog.fa-fw &nbsp;
+						span 功能
+						span.caret
+					ul.dropdown-menu
+						li
+							a(ng-click="printDoc()")
+								i.fa.fa-print.fa-fw &nbsp;
+								span 打印
+
 			div.panel.panel-default
 				div.panel-body

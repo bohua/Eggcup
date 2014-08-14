@@ -53,8 +53,11 @@ function afterAll(db) {
 	generateKh(db);
 	generateLoginAccount(db);
 
+	//Word press
+	generateWordpress(db);
+
 	//Initialize test cases
-	require(__dirname + '/init_test_cases');
+	//require(__dirname + '/init_test_cases');
 }
 
 function generateKh(db) {
@@ -67,7 +70,7 @@ function generateKh(db) {
 			website: '无',
 			membership: '',
 			description: '测试数据',
-			contactList:[
+			contactList: [
 				{
 					contact: 'A小姐',
 					tel: '0755-86000001',
@@ -86,7 +89,7 @@ function generateKh(db) {
 			]
 		});
 
-	 //deferred.promise;
+	//deferred.promise;
 }
 
 function generateEmployee(db) {
@@ -98,7 +101,7 @@ function generateEmployee(db) {
 			mobile: '+467895642134',
 			role: '管理员',
 			description: '测试数据',
-			hasLogin : true
+			hasLogin: true
 		},
 		{
 			name: '李小帅',
@@ -193,4 +196,87 @@ function generateTag() {
 
 	return deferred.promise;
 
+}
+
+function generateWordpress() {
+	var wordpress_bo = require(__dirname + '/../server/wordpress/wordpress_bo.js');
+
+	wordpress_bo.save({
+		owner: '李小帅',
+		creator: '李小帅',
+		customer_name: '刘备军突击团',
+		customer_address: '荆州新野县县衙',
+		customer_tel: '8888-546B',
+		customer_email: 'empire_uncle_liu@sanguo.com',
+		customer_contact: '赵小云',
+		topic: '关于如何抵御夏侯敦20万大军进犯',
+		description: '公元207年秋，曹操平定北方，遂遣大将夏侯元让，帅大军二十万，直取荆州，新野县为荆北门户，若有所失，荆州则危矣',
+		status: '新问题',
+
+		subItem: [
+			{
+				owner: '赵小云',
+				content: '曹军来犯，如何是好？',
+				is_customer_word: true,
+				importance: 3,
+				has_read: false
+			},
+			{
+				owner: '赵小云',
+				content: '曹军来犯，如何是好？你咋不回我？',
+				is_customer_word: true,
+				importance: 0,
+				has_read: true
+			},
+			{
+				owner: '李小帅',
+				content: '子曰： 急个屁！ 去隆中找诸葛大大帮忙',
+				is_customer_word: false,
+				importance: 0,
+				has_read: true
+			},
+			{
+				owner: '刘小备',
+				content: '请问诸葛先生做什么工作的，一天到晚不在家？',
+				is_customer_word: true,
+				importance: 0,
+				has_read: true
+			},
+			{
+				owner: '李小帅',
+				content: '貌似兼职导游， 多去几次呗，么么达',
+				is_customer_word: false,
+				importance: 0,
+				has_read: true
+			},
+			{
+				owner: '关小羽',
+				content: '他家书童为什么可以这么吊？ 我可以打他么？',
+				is_customer_word: true,
+				importance: 0,
+				has_read: true
+			},
+			{
+				owner: '李小帅',
+				content: '打人范法',
+				is_customer_word: false,
+				importance: 0,
+				has_read: true
+			},
+			{
+				owner: '张小飞',
+				content: '那偶可以烧他家房子么？',
+				is_customer_word: true,
+				importance: 0,
+				has_read: true
+			},
+			{
+				owner: '李小帅',
+				content: '哪儿凉快哪儿烧去',
+				is_customer_word: false,
+				importance: 0,
+				has_read: true
+			}
+		]
+	});
 }

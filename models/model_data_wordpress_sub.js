@@ -12,7 +12,7 @@ module.exports = function (sequelize, DataTypes) {
 		content:				{ type: DataTypes.TEXT },
 		is_customer_word:		{ type: DataTypes.BOOLEAN, defaultValue: false },
 
-		importance		:		{ type: DataTypes.STRING },
+		importance		:		{ type: DataTypes.INTEGER, defaultValue: 0 },
 
 		has_read:				{ type: DataTypes.BOOLEAN, defaultValue: false }
 	}, {
