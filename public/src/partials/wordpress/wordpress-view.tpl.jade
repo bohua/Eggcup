@@ -1,6 +1,6 @@
 #wordpress-view.container-fluid
 	div.row
-		#wordpress-navigator.col-sm-3
+		#wordpress-navigator.col-sm-3.col-lg-2
 			div.page-header
 				h4
 					i.fa.fa-fw.fa-comments-o
@@ -67,7 +67,7 @@
 							i.fa.fa-fw.fa-search
 							span &nbsp; 查找
 
-		#wordpress-content.col-sm-9
+		#wordpress-content.col-sm-9.col-lg-10
 			#wordpress-control-panel.page-header
 				div.btn-group
 					button.btn.btn-primary
@@ -83,5 +83,46 @@
 								i.fa.fa-print.fa-fw &nbsp;
 								span 打印
 
-			div.panel.panel-default
-				div.panel-body
+			#wordpress-content-panel(ng-switch="displayMode")
+				div.panel.panel-default(ng-switch-when="list")
+					div.panel-heading
+						i.fa.fa-fw.fa-list
+						span &nbsp;留言
+
+					div.table-responsive
+						table.table.table-hover.table-bordered(style="border-bottom: 1px solid #ddd;")
+							thead
+								th 序号
+								th 状态
+								th 留言日期
+								th 最近回复
+								th 留言主题
+								th 公司名称
+								th 联系人
+								th 担当人
+							tbody
+								tr.cursor-pointer(ng-repeat="row in wordpressList", ng-click="getWordpress(row)")
+									td {{$index + 1}}
+									td {{row.status}}
+									td {{row.createdAt | date:'yyyy-MM-dd'}}
+									td {{row.updatedAt | date:'yyyy-MM-dd'}}
+									td {{row.topic}}
+									td {{row.customer_name}}
+									td {{row.customer_contact}}
+									td {{row.owner}}
+
+				div.panel.panel-default(ng-switch-when="detail")
+
+					div.row(ng-repeat="item in wordpressSubItems", ng-class="{'': !item.is_customer_word, 'align-right': item.is_customer_word}")
+						div.col-sm-1
+							span(ng-if="!item.is_customer_word") {{item.owner}}
+
+						div.well.col-sm-10
+							span {{item.content}}
+
+						div.col-sm-1
+							span(ng-if="item.is_customer_word") {{item.owner}}
+
+						hr
+
+

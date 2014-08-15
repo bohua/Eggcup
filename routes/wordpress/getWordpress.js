@@ -2,7 +2,7 @@
  * Created by Bli on 2014/4/28.
  */
 
-var bo = require(__dirname + '/../../../server/wordpress/wordpress_bo');
+var bo = require(__dirname + '/../../server/wordpress/wordpress_bo');
 
 module.exports = function (req, res) {
 

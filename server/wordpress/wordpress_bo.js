@@ -49,7 +49,7 @@ var WORDPRESS = new Bo('DATA_WORDPRESS',
 				include: [
 					{
 						model: this.orm.model('DATA_WORDPRESS_SUB'),
-						as: 'represent'
+						as: 'subItem'
 					}
 				],
 				where: where
@@ -65,7 +65,7 @@ var WORDPRESS = new Bo('DATA_WORDPRESS',
 				include: [
 					{
 						model: this.orm.model('DATA_WORDPRESS_SUB'),
-						as: 'represent'
+						as: 'subItem'
 					}
 				],
 				where: where

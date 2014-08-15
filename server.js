@@ -11,6 +11,7 @@ var task_status_service = require('./server/tasks/task_status_service');
 var security = require('./routes/security');
 var basics = require('./routes/basics');
 var tasks = require('./routes/tasks');
+var wordpress = require('./routes/wordpress');
 var print = require('./routes/print');
 var backup = require('./routes/backup');
 var attachment = require('./routes/attachment');
@@ -83,6 +84,11 @@ app.post('/task/:task_id', tasks.setTask);
 app.post('/task', tasks.setTask);
 app.get('/taskSheet/:task_id', tasks.getTaskSheet);
 app.delete('/task/:task_id', tasks.delTask);
+
+/**
+ * Wordpress requests
+ */
+app.get('/getWordpressList', wordpress.getWordpressList);
 
 /**
  * File requests
