@@ -30,16 +30,25 @@
   .panel {
     margin-bottom: 0;
   }
-
-  .align-left{
-
-  }
 }
 
 #wordpress-content-panel {
   height: 100%;
-  overflow-x: hidden;
-  overflow-y: auto;
+
+  .table {
+    border: 1px solid #ddd;
+  }
+
+  > .panel {
+    height: 100%;
+  }
+
+  .panel-body {
+    height: ~"calc(100% - 45px)";
+
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
 }
 
 #wordpress-control-panel {
@@ -48,5 +57,17 @@
 
   .btn-group {
     text-align: left;
+  }
+}
+
+.wordpress-box {
+  padding: 20px 15px 0 10px;
+
+  img {
+    margin-top: 14px;
+  }
+
+  hr {
+    margin-bottom: 0;
   }
 }

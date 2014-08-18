@@ -89,8 +89,8 @@
 						i.fa.fa-fw.fa-list
 						span &nbsp;留言
 
-					div.table-responsive
-						table.table.table-hover.table-bordered(style="border-bottom: 1px solid #ddd;")
+					div.panel-body.table-responsive
+						table.table.table-hover.table-bordered
 							thead
 								th 序号
 								th 状态
@@ -112,17 +112,50 @@
 									td {{row.owner}}
 
 				div.panel.panel-default(ng-switch-when="detail")
+					div.panel-heading
+						label.control-label 咨询主题:
+						span {{currentWordpress.topic}}
 
-					div.row(ng-repeat="item in wordpressSubItems", ng-class="{'': !item.is_customer_word, 'align-right': item.is_customer_word}")
-						div.col-sm-1
-							span(ng-if="!item.is_customer_word") {{item.owner}}
+					div.panel-body
+						div.container-fluid
+							div.row
+								div.form-group.col-sm-6
+									label.col-sm-4.control-label 公司名称:
+									div.col-sm-8 {{currentWordpress.customer_name}}
+								div.form-group.col-sm-6
+									label.col-sm-3.control-label 电话:
+									div.col-sm-9 {{currentWordpress.customer_tel}}
+							div.row
+								div.form-group.col-sm-6
+									label.col-sm-4.control-label 公司地址:
+									div.col-sm-8 {{currentWordpress.customer_address}}
+								div.form-group.col-sm-6
+									label.col-sm-3.control-label 邮箱:
+									div.col-sm-9 {{currentWordpress.customer_email}}
+							div.row
+								div.form-group.col-sm-6
+									label.col-sm-4.control-label 联系人:
+									div.col-sm-8 {{currentWordpress.customer_contact}}
+								div.form-group.col-sm-6
+									label.col-sm-3.control-label 担当人:
+									div.col-sm-9 {{currentWordpress.owner}}
+							hr
 
-						div.well.col-sm-10
-							span {{item.content}}
+							div.wordpress-box(ng-repeat="item in currentWordpress.subItem")
+								div.media
+									a.pull-left
+										img.media-object(ng-if="item.is_customer_word", src="/images/question_mark.jpg", height="80px", width="80px")
+										img.media-object(ng-if="!item.is_customer_word", src="/images/logo.png", height="80px", width="80px")
 
-						div.col-sm-1
-							span(ng-if="item.is_customer_word") {{item.owner}}
+									div.media-body
+										h4
+											span {{item.owner}}
+											i.fa.fa-fw.fa-flag.pull-right.cursor-pointer
+											i.fa.fa-fw.fa-copy.pull-right.cursor-pointer
+											i.fa.fa-fw.fa-trash-o.pull-right.cursor-pointer
+											i.fa.fa-fw.fa-edit.pull-right.cursor-pointer
+										div.well {{item.content}}
 
-						hr
+								hr
 
 

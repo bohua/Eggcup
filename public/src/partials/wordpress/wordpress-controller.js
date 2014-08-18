@@ -53,6 +53,6 @@ angular.module('wordpress', [
 		$scope.getWordpress = function(model){
 			$scope.displayMode = 'detail';
 
-			$scope.wordpressSubItems = model.subItem
+			$scope.currentWordpress = model;
 		}
 	}]);
