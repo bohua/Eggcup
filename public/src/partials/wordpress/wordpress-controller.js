@@ -55,4 +55,10 @@ angular.module('wordpress', [
 
 			$scope.currentWordpress = model;
 		}
+
+		$scope.backToListMode = function(){
+			$scope.displayMode = 'list';
+
+			$scope.currentWordpress = null;
+		}
 	}]);
