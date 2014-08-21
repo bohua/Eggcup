@@ -62,12 +62,6 @@ var WORDPRESS = new Bo('DATA_WORDPRESS',
 		name: 'getAll',
 		method: function (where) {
 			var promise = this.orm.model(this._table).findAll({
-				include: [
-					{
-						model: this.orm.model('DATA_WORDPRESS_SUB'),
-						as: 'subItem'
-					}
-				],
 				where: where
 			});
 
@@ -84,19 +78,71 @@ var WORDPRESS = new Bo('DATA_WORDPRESS',
 				.then(function (parent_instance) {
 
 					if (model.subItem) {
-						parent_instance.setSubItem([]).success(function(){
-							saveSubItem(parent_instance, model.subItem).done(function(){
+						parent_instance.setSubItem([]).success(function () {
+							saveSubItem(parent_instance, model.subItem).done(function () {
 								deferred.resolve();
-							},function(){
+							}, function () {
 								deferred.reject();
 							});
 						});
-					} else{
+					} else {
 						deferred.resolve();
 					}
 				});
 
 			return deferred.promise;
+		}
+	},
+	{
+		name: 'updateSubItem',
+		method: function (model) {
+			var deferred = Q.defer();
+
+			this.get({id: model.wordpress_id}).then(
+				function (parent_instance) {
+					saveSubItem(parent_instance, [model]).done(function () {
+						deferred.resolve();
+					}, function () {
+						deferred.reject();
+					});
+				},
+				function (error) {
+					global.logger.error(error);
+					deferred.reject();
+				}
+			);
+
+			return deferred.promise;
+
+			/*
+			 SUB_BO.save(model).then(
+			 function (child_instance) {
+			 this.get({id: model.wordpress_id}).then(
+			 function (parent_instance) {
+			 parent_instance.addSubItem(child_instance).then(
+			 function (success) {
+			 deferred.resolve();
+			 },
+			 function (error) {
+			 global.logger.error(error);
+			 deferred.reject();
+			 }
+			 );
+			 },
+			 function (error) {
+			 global.logger.error(error);
+			 deferred.reject();
+			 }
+			 );
+			 },
+			 function (error) {
+			 global.logger.error(error);
+			 deferred.reject();
+			 }
+			 );
+			 */
+
+
 		}
 	});
 

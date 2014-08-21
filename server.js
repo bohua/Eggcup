@@ -88,7 +88,10 @@ app.delete('/task/:task_id', tasks.delTask);
 /**
  * Wordpress requests
  */
+app.get('/wordpress/:wordpress_id', wordpress.getWordpress);
 app.get('/getWordpressList', wordpress.getWordpressList);
+app.post('/wordpressSubItem', wordpress.updateWordpressSubItem);
+//app.delete('/wordpressSubItem', wordpress.deleteWordpressSubItem);
 
 /**
  * File requests

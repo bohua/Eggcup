@@ -73,7 +73,7 @@
 					button.btn.btn-primary
 						i.fa.fa-edit.fa-fw &nbsp;
 						span 新建留言
-					button.btn.btn-default(ng-show="displayMode=='detail'")
+					button.btn.btn-default(ng-show="displayMode=='detail'", popup-dialog,dialog-config="wordpressEditorConfig",ng-click="showWordpressEditor($event, null, 'new')", on-confirm="onWordpressSaved(action, data)")
 						i.fa.fa-reply.fa-fw &nbsp;
 						span 回复
 					button.btn.btn-default.dropdown-toggle(data-toggle="dropdown")
@@ -153,10 +153,11 @@
 									div.media-body
 										h4
 											span {{item.owner}}
+												small &nbsp;&nbsp; {{item.updatedAt | date:'yyyy-MM-dd hh:mm'}}
 											i.fa.fa-fw.fa-flag.pull-right.cursor-pointer
 											i.fa.fa-fw.fa-copy.pull-right.cursor-pointer
 											i.fa.fa-fw.fa-trash-o.pull-right.cursor-pointer
-											i.fa.fa-fw.fa-edit.pull-right.cursor-pointer
+											i.fa.fa-fw.fa-edit.pull-right.cursor-pointer(popup-dialog,dialog-config="wordpressEditorConfig",ng-click="showWordpressEditor($event, item, 'edit')", on-confirm="onWordpressUpdated(action, data)")
 										div.well {{item.content}}
 
 

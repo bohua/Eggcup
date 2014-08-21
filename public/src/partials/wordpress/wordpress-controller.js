@@ -3,6 +3,7 @@
  */
 angular.module('wordpress', [
 	'ngRoute',
+	'wordpress-resource',
 	'customer-list-service',
 	'employee-list-service',
 	'permission-service'
@@ -18,10 +19,11 @@ angular.module('wordpress', [
 	'$routeParams',
 	'$location',
 	'$http',
+	'WORDPRESS',
 	'customerListService',
 	'employeeListService',
 	'permissionService',
-	function ($scope, $routeParams, $location, $http, customerListService, employeeListService, permissionService) {
+	function ($scope, $routeParams, $location, $http, WORDPRESS, customerListService, employeeListService, permissionService) {
 		$scope.queryPath = '/getWordpressList';
 		$scope.displayMode = 'list';
 
@@ -50,15 +52,57 @@ angular.module('wordpress', [
 		/**
 		 * ng-click bindings
 		 */
-		$scope.getWordpress = function(model){
-			$scope.displayMode = 'detail';
-
-			$scope.currentWordpress = model;
+		function loadWordpress(id){
+			var currentWordpress = WORDPRESS.get({wordpress_id: id}, function(){
+				$scope.currentWordpress = currentWordpress;
+				$scope.displayMode = 'detail';
+			});
 		}
+
+		$scope.getWordpress = function(model){
+			loadWordpress(model.id);
+		};
 
 		$scope.backToListMode = function(){
 			$scope.displayMode = 'list';
 
 			$scope.currentWordpress = null;
-		}
+		};
+
+
+		/**
+		 * Wordpress editor Initialization
+		 */
+		$scope.wordpressEditorConfig = {
+			dialogOption: {
+				backdrop: 'static',
+				keyboard: false
+			},
+			template: '/src/partials/wordpress/wordpress-editor-view.tpl.html'
+		};
+
+		$scope.showWordpressEditor = function ($event, dataModel, mode) {
+			$($event.currentTarget).trigger('popup', [mode, dataModel || {}]);
+		};
+
+		$scope.onWordpressUpdated = function (action, data) {
+			$http.post('/wordpressSubItem', {data: data})
+				.success(function(){
+					loadWordpress(data.wordpress_id);
+				});
+
+
+			/*
+			$scope.task_model.expenseSheet.subItem = data;
+
+			var o = {
+				id: $scope.task_model.id,
+				expenseSheet: {
+					id: $scope.task_model.expenseSheet.id,
+					subItem: data
+				}
+			};
+			$scope.$emit('event:saveTaskModel', $scope.task_model.id, o);
+			*/
+		};
 	}]);
