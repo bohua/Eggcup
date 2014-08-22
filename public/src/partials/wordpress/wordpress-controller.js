@@ -92,7 +92,7 @@ angular.module('wordpress', [
 							loadWordpress($scope.currentWordpress.id);
 
 							if(isNew){
-								$('#wordpress-detial-wrapper').animate({ scrollTop: $('#wordpress-detial-content').height() }, "slow");
+								$('#wordpress-detail-wrapper').animate({ scrollTop: $('#wordpress-detail-content').height() }, "slow");
 							}
 						});
 
