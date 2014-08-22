@@ -4,6 +4,7 @@
 angular.module('wordpress', [
 	'ngRoute',
 	'wordpress-resource',
+	'modal-service',
 	'customer-list-service',
 	'employee-list-service',
 	'permission-service'
@@ -20,10 +21,11 @@ angular.module('wordpress', [
 	'$location',
 	'$http',
 	'WORDPRESS',
+	'modalService',
 	'customerListService',
 	'employeeListService',
 	'permissionService',
-	function ($scope, $routeParams, $location, $http, WORDPRESS, customerListService, employeeListService, permissionService) {
+	function ($scope, $routeParams, $location, $http, WORDPRESS, modalService, customerListService, employeeListService, permissionService) {
 		$scope.queryPath = '/getWordpressList';
 		$scope.displayMode = 'list';
 
@@ -52,57 +54,64 @@ angular.module('wordpress', [
 		/**
 		 * ng-click bindings
 		 */
-		function loadWordpress(id){
-			var currentWordpress = WORDPRESS.get({wordpress_id: id}, function(){
+		function loadWordpress(id) {
+			var currentWordpress = WORDPRESS.get({wordpress_id: id}, function () {
 				$scope.currentWordpress = currentWordpress;
 				$scope.displayMode = 'detail';
 			});
 		}
 
-		$scope.getWordpress = function(model){
+		$scope.getWordpress = function (model) {
 			loadWordpress(model.id);
 		};
 
-		$scope.backToListMode = function(){
+		$scope.backToListMode = function () {
 			$scope.displayMode = 'list';
 
 			$scope.currentWordpress = null;
 		};
 
+		$scope.editWordpressItem = function(dataModel){
+			var wordpressEditorConfig = {
+				dialogOption: {
+					backdrop: 'static',
+					keyboard: false
+				},
+				template: '/src/partials/wordpress/wordpress-editor-view.tpl.html',
 
-		/**
-		 * Wordpress editor Initialization
-		 */
-		$scope.wordpressEditorConfig = {
-			dialogOption: {
-				backdrop: 'static',
-				keyboard: false
-			},
-			template: '/src/partials/wordpress/wordpress-editor-view.tpl.html'
-		};
+				onConfirm: function (action, data) {
+					var isNew = false;
+					if (!data.wordpress_id) {
+						isNew = true;
+					}
 
-		$scope.showWordpressEditor = function ($event, dataModel, mode) {
-			$($event.currentTarget).trigger('popup', [mode, dataModel || {}]);
-		};
+					data.wordpress_id = isNew ? $scope.currentWordpress.id : data.wordpress_id;
 
-		$scope.onWordpressUpdated = function (action, data) {
-			$http.post('/wordpressSubItem', {data: data})
-				.success(function(){
-					loadWordpress(data.wordpress_id);
-				});
+					$http.post('/wordpressSubItem', {data: data})
+						.success(function () {
+							loadWordpress($scope.currentWordpress.id);
 
+							if(isNew){
+								$('#wordpress-detial-wrapper').animate({ scrollTop: $('#wordpress-detial-content').height() }, "slow");
+							}
+						});
 
-			/*
-			$scope.task_model.expenseSheet.subItem = data;
-
-			var o = {
-				id: $scope.task_model.id,
-				expenseSheet: {
-					id: $scope.task_model.expenseSheet.id,
-					subItem: data
 				}
 			};
-			$scope.$emit('event:saveTaskModel', $scope.task_model.id, o);
-			*/
+
+			modalService.showDialog($scope, wordpressEditorConfig, dataModel || {});
 		};
+
+		$scope.deleteWordpressItem = function(id){
+			var msg = "确定要删除留言么？";
+			var confirmResult = confirm(msg);
+			if (confirmResult === true) {
+				$http.delete('/wordpressSubItem/' + id)
+					.success(function () {
+						loadWordpress($scope.currentWordpress.id);
+					});
+
+			}
+
+		}
 	}]);

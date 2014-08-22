@@ -1,15 +1,12 @@
 /**
- * Created by bli on 2014/8/21.
+ * Created by bli on 2014/8/22.
  */
 var bo = require(__dirname + '/../../server/wordpress/wordpress_bo');
 
 module.exports = function (req, res) {
-	var data = req.body.data;
+	var id = req.params.wordpress_id;
 
-	delete data.updatedAt;
-	delete data.createdAt;
-
-	bo.updateSubItem(data).then(
+	bo.removeSubItem(id).then(
 		function (success) {
 			res.contentType('json');
 			res.json(success);
@@ -17,8 +14,8 @@ module.exports = function (req, res) {
 		function (failure) {
 			res.statusCode = 400;
 			res.json({
-				code: 'ERR_DB_SET_WORDPRESS_LIST_FAILURE',
-				reason: '修改留言信息时数据库出错'
+				code: 'ERR_DB_DEL_WORDPRESS_LIST_FAILURE',
+				reason: '删除留言信息时数据库出错'
 			});
 		}
 	);

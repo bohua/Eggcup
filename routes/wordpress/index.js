@@ -5,3 +5,4 @@
 module.exports.getWordpressList = require('./getWordpressList');
 module.exports.getWordpress = require('./getWordpress');
 module.exports.updateWordpressSubItem = require('./updateWordpressSubItem');
+module.exports.deleteWordpressSubItem = require('./deleteWordpressSubItem');

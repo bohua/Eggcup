@@ -113,36 +113,11 @@ var WORDPRESS = new Bo('DATA_WORDPRESS',
 			);
 
 			return deferred.promise;
-
-			/*
-			 SUB_BO.save(model).then(
-			 function (child_instance) {
-			 this.get({id: model.wordpress_id}).then(
-			 function (parent_instance) {
-			 parent_instance.addSubItem(child_instance).then(
-			 function (success) {
-			 deferred.resolve();
-			 },
-			 function (error) {
-			 global.logger.error(error);
-			 deferred.reject();
-			 }
-			 );
-			 },
-			 function (error) {
-			 global.logger.error(error);
-			 deferred.reject();
-			 }
-			 );
-			 },
-			 function (error) {
-			 global.logger.error(error);
-			 deferred.reject();
-			 }
-			 );
-			 */
-
-
+		}
+	},{
+		name: 'removeSubItem',
+		method: function (id) {
+			return SUB_BO.delete(id);
 		}
 	});
 

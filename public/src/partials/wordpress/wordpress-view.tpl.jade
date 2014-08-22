@@ -73,7 +73,7 @@
 					button.btn.btn-primary
 						i.fa.fa-edit.fa-fw &nbsp;
 						span 新建留言
-					button.btn.btn-default(ng-show="displayMode=='detail'", popup-dialog,dialog-config="wordpressEditorConfig",ng-click="showWordpressEditor($event, null, 'new')", on-confirm="onWordpressSaved(action, data)")
+					button.btn.btn-default(ng-show="displayMode=='detail'", ng-click="editWordpressItem(item)")
 						i.fa.fa-reply.fa-fw &nbsp;
 						span 回复
 					button.btn.btn-default.dropdown-toggle(data-toggle="dropdown")
@@ -121,8 +121,8 @@
 							b 咨询主题:&nbsp;&nbsp;
 							span {{currentWordpress.topic}}
 
-					div.panel-body
-						div.container-fluid
+					#wordpress-detial-wrapper.panel-body
+						#wordpress-detial-content.container-fluid
 							div.wordpress-header.flex-container
 								div.flex-box
 									label 公司名称:
@@ -156,8 +156,8 @@
 												small &nbsp;&nbsp; {{item.updatedAt | date:'yyyy-MM-dd hh:mm'}}
 											i.fa.fa-fw.fa-flag.pull-right.cursor-pointer
 											i.fa.fa-fw.fa-copy.pull-right.cursor-pointer
-											i.fa.fa-fw.fa-trash-o.pull-right.cursor-pointer
-											i.fa.fa-fw.fa-edit.pull-right.cursor-pointer(popup-dialog,dialog-config="wordpressEditorConfig",ng-click="showWordpressEditor($event, item, 'edit')", on-confirm="onWordpressUpdated(action, data)")
+											i.fa.fa-fw.fa-trash-o.pull-right.cursor-pointer(ng-click="deleteWordpressItem(item.id)")
+											i.fa.fa-fw.fa-edit.pull-right.cursor-pointer(ng-click="editWordpressItem(item)")
 										div.well {{item.content}}
 
 

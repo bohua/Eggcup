@@ -91,7 +91,7 @@ app.delete('/task/:task_id', tasks.delTask);
 app.get('/wordpress/:wordpress_id', wordpress.getWordpress);
 app.get('/getWordpressList', wordpress.getWordpressList);
 app.post('/wordpressSubItem', wordpress.updateWordpressSubItem);
-//app.delete('/wordpressSubItem', wordpress.deleteWordpressSubItem);
+app.delete('/wordpressSubItem/:wordpress_id', wordpress.deleteWordpressSubItem);
 
 /**
  * File requests

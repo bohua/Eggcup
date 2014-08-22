@@ -215,6 +215,7 @@ function generateWordpress() {
 
 		subItem: [
 			{
+				id: 1,
 				owner: '赵小云',
 				content: '曹军来犯，如何是好？',
 				is_customer_word: true,
@@ -222,6 +223,7 @@ function generateWordpress() {
 				has_read: false
 			},
 			{
+				id: 2,
 				owner: '赵小云',
 				content: '曹军来犯，如何是好？你咋不回我？',
 				is_customer_word: true,
@@ -229,6 +231,7 @@ function generateWordpress() {
 				has_read: true
 			},
 			{
+				id: 3,
 				owner: '李小帅',
 				content: '子曰： 急个屁！ 去隆中找诸葛大大帮忙',
 				is_customer_word: false,
@@ -236,6 +239,7 @@ function generateWordpress() {
 				has_read: true
 			},
 			{
+				id: 4,
 				owner: '刘小备',
 				content: '请问诸葛先生做什么工作的，一天到晚不在家？',
 				is_customer_word: true,
@@ -243,6 +247,7 @@ function generateWordpress() {
 				has_read: true
 			},
 			{
+				id: 5,
 				owner: '李小帅',
 				content: '貌似兼职导游， 多去几次呗，么么达',
 				is_customer_word: false,
@@ -250,6 +255,7 @@ function generateWordpress() {
 				has_read: true
 			},
 			{
+				id: 6,
 				owner: '关小羽',
 				content: '他家书童为什么可以这么吊？ 我可以打他么？',
 				is_customer_word: true,
@@ -257,6 +263,7 @@ function generateWordpress() {
 				has_read: true
 			},
 			{
+				id: 7,
 				owner: '李小帅',
 				content: '打人范法',
 				is_customer_word: false,
@@ -264,6 +271,7 @@ function generateWordpress() {
 				has_read: true
 			},
 			{
+				id: 8,
 				owner: '张小飞',
 				content: '那偶可以烧他家房子么？',
 				is_customer_word: true,
@@ -271,6 +279,7 @@ function generateWordpress() {
 				has_read: true
 			},
 			{
+				id: 9,
 				owner: '李小帅',
 				content: '哪儿凉快哪儿烧去',
 				is_customer_word: false,
