@@ -18,11 +18,12 @@ angular.module('reply-section', ['reply-editor', 'attach-editor', 'appointment-e
 				template: '/src/partials/reply-editor/reply-editor-view.tpl.html'
 			};
 
-			$scope.showReplyEditor = function ($event) {
-				$scope.task_model.replySheet.handling = $scope.task_model.handling;
-				$scope.task_model.replySheet.customer_contact = $scope.task_model.customer_contact;
-				$scope.task_model.replySheet.inherit_consult_context = $scope.task_model.register_content;
-				$($event.currentTarget).trigger('popup', ['edit', $scope.task_model.replySheet]);
+			$scope.showReplyEditor = function ($event, dataModel) {
+				dataModel.handling = $scope.task_model.handling;
+				dataModel.customer_contact = $scope.task_model.customer_contact;
+				dataModel.inherit_consult_context = $scope.task_model.register_content;
+
+				$($event.currentTarget).trigger('popup', ['edit', dataModel]);
 			};
 
 			$scope.onReplySaved = function (action, data) {

@@ -96,6 +96,8 @@ angular.module('contract-section', ['contract-editor', 'contract-detail-editor',
 						contract_status : $scope.task_model > 600 ? '已完成' : '进行中',
 						contract_A: $scope.task_model.contractSheet.contract_A,
 						contract_B: $scope.task_model.contractSheet.contract_B,
+						contract_C: $scope.task_model.contractSheet.contract_C,
+						contract_D: $scope.task_model.contractSheet.contract_D,
 
 						contract_price: $scope.task_model.contractSheet.contract_price,
 

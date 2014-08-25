@@ -41,6 +41,12 @@ div.container-fluid(ng-controller="contractSectionController")
 					div.flex-box
 						label 乙方:
 						span {{task_model.contractSheet.contract_B}}
+					div.flex-box(ng-if="task_model.contractSheet.contract_C")
+						label 丙方:
+						span {{task_model.contractSheet.contract_C}}
+					div.flex-box(ng-if="task_model.contractSheet.contract_D")
+						label 丁方:
+						span {{task_model.contractSheet.contract_D}}
 					div.flex-box
 						label 合同标的:
 						span {{task_model.contractSheet.contract_price}}

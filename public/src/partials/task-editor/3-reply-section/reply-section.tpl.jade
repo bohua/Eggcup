@@ -7,12 +7,9 @@ div.container-fluid(ng-controller="replySectionController")
 			span(ng-if="task_model.handling==1")  面谈 &nbsp;
 			small.hidden-xs Reply
 			div.btn-group.pull-right
-				button.btn.btn-default(ng-if="canEdit",popup-dialog,dialog-config="replyEditorConfig",ng-click="showReplyEditor($event)",on-confirm="onReplySaved(action, data)")
+				button.btn.btn-default(ng-if="canEdit",popup-dialog,dialog-config="replyEditorConfig",ng-click="showReplyEditor($event, {})",on-confirm="onReplySaved(action, data)")
 					i.fa.fa-edit.fa-fw &nbsp;
-					span 修改
-				button.btn.btn-default(ng-if="canEdit",popup-dialog,dialog-config="attachEditorConfig",ng-click="showAttachEditor($event, getAttachModel())",on-confirm="onAttachSaved(action, data)")
-					i.fa.fa-paperclip.fa-fw &nbsp;
-					span 附件
+					span 新增
 				button.btn.btn-default(ng-if="canEdit",popup-dialog,dialog-config="appointmentEditorConfig",ng-click="showAppointmentEditor($event, getAppointmentModel())",on-confirm="onAppointmentSaved(action, data)")
 					i.fa.fa-calendar-o.fa-fw &nbsp;
 					span 预约
@@ -76,56 +73,61 @@ div.container-fluid(ng-controller="replySectionController")
 			div.panel-heading.cursor-pointer
 				h4.no-margin(data-toggle="collapse", href="#reply-info-panel-1") 提案解答 &nbsp;
 					small.hidden-xs Reply
-			#reply-info-panel-1.panel-collapse.collapse.in
-				div.flex-container.panel-body
-					div.flex-box
-						label 解答日期:
-						span {{task_model.replySheet.reply_date | date:'yyyy-MM-dd'}}
-					div.flex-box
-						label 面谈地址:
-						span {{task_model.replySheet.meeting_address}}
-					div.flex-box
-						label 我方人员:
-						span {{task_model.replySheet.meeting_people_A}}
-					div.flex-box
-						label 客户人员:
-						span {{task_model.replySheet.meeting_people_B}}
-
-		div.panel.panel-default
-			div.panel-heading.cursor-pointer
-				h4.no-margin(data-toggle="collapse", href="#reply-minutes-meeting-panel") 过程记录 &nbsp;
-					small.hidden-xs Minutes of Meeting
-			#reply-minutes-meeting-panel.panel-collapse.collapse.in
-				div.flex-container.panel-body
-					div.flex-box
-						label 咨询事项:
-						span {{task_model.replySheet.consult_context}}
-					div.flex-box
-						label 解答回复:
-						span {{task_model.replySheet.reply_context}}
-					div.flex-box
-						label 法律依据:
-						span {{task_model.replySheet.law_context}}
-
-
-		div.panel.panel-default
-			div.panel-heading.cursor-pointer
-				h4.no-margin(data-toggle="collapse", href="#reply-attachment-panel") 附件列表 &nbsp;
-					small.hidden-xs Attachment List
-			#reply-attachment-panel.panel-collapse.collapse.in.table-responsive
+			#reply-info-panel-1.panel-collapse.collapse.in.table-responsive
 				table.table.table-hover.table-bordered
 					thead
 						tr
-							th 文件名
-							th 文件类型
-							th 文件大小
-							th 上传日期
+							th 解合日期
+							th 面谈地址
+							th 我方人员
+							th 客户人员
+							th 附件
 					tbody
-						tr.cursor-pointer(ng-repeat="item in task_model.replySheet.attachment")
+						tr.cursor-pointer(ng-repeat="sub_item in task_model.replySheet.subItem", ng-if="canEdit",popup-dialog,dialog-config="replyEditorConfig",ng-click="showReplyEditor($event, sub_item)",on-confirm="onReplySaved(action, data)")
+							td {{sub_item.reply_date | date:'yyyy-MM-dd'}}
+							td {{sub_item.meeting_address}}
+							td {{sub_item.meeting_people_A}}
+							td {{sub_item.meeting_people_B}}
 							td
-								a.attachment-token.label(download="{{item.file_name}}", ng-href="file-download/{{item.file_url}}")
-									i.fa.text-info.fa-fw(class="{{translateFileType(item.file_ext).icon}}") &nbsp;
-									span {{item.file_name}}
-							td {{translateFileType(item.file_ext).type}}
-							td {{item.file_size}}
-							td {{item.createdAt | date:'yyyy-MM-dd'}}
+								a.attachment-token.label.cursor-pointer(ng-repeat="attach in sub_item.attachment", download="{{attach.file_name}}", ng-href="file-download/{{attach.file_url}}")
+									i.fa.text-info.fa-fw(class="{{translateFileType(attach.file_ext).icon}}") &nbsp;
+									span {{attach.file_name}}
+
+		//div.panel.panel-default
+		//	div.panel-heading.cursor-pointer
+		//		h4.no-margin(data-toggle="collapse", href="#reply-minutes-meeting-panel") 过程记录 &nbsp;
+		//			small.hidden-xs Minutes of Meeting
+		//	#reply-minutes-meeting-panel.panel-collapse.collapse.in
+		//		div.flex-container.panel-body
+		//			div.flex-box
+		//				label 咨询事项:
+		//				span {{task_model.replySheet.consult_context}}
+		//			div.flex-box
+		//				label 解答回复:
+		//				span {{task_model.replySheet.reply_context}}
+		//			div.flex-box
+		//				label 法律依据:
+		//				span {{task_model.replySheet.law_context}}
+
+
+		//div.panel.panel-default
+		//	div.panel-heading.cursor-pointer
+		//		h4.no-margin(data-toggle="collapse", href="#reply-attachment-panel") 附件列表 &nbsp;
+		//			small.hidden-xs Attachment List
+		//	#reply-attachment-panel.panel-collapse.collapse.in.table-responsive
+		//		table.table.table-hover.table-bordered
+		//			thead
+		//				tr
+		//					th 文件名
+		//					th 文件类型
+		//					th 文件大小
+		//					th 上传日期
+		//			tbody
+		//				tr.cursor-pointer(ng-repeat="item in task_model.replySheet.attachment")
+		//					td
+		//						a.attachment-token.label(download="{{item.file_name}}", ng-href="file-download/{{item.file_url}}")
+		//							i.fa.text-info.fa-fw(class="{{translateFileType(item.file_ext).icon}}") &nbsp;
+		//							span {{item.file_name}}
+		//					td {{translateFileType(item.file_ext).type}}
+		//					td {{item.file_size}}
+		//					td {{item.createdAt | date:'yyyy-MM-dd'}}

@@ -7,6 +7,8 @@ angular.module('execute-editor', ['toggle-button-model', 'pop-confirm', 'employe
 		'employeeListService',
 		function ($scope, employeeListService) {
 			$scope.employeeFieldOptions = {
-				source: _.pluck(employeeListService.getEmployeeList(), 'name')
-			}
+				autocomplete: {
+					source: _.pluck(employeeListService.getEmployeeList(), 'name')
+				}
+			};
 		}]);

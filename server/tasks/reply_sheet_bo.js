@@ -4,7 +4,7 @@
 var SheetBo = require(__dirname + "/../abstract_sheet_bo");
 var Q = require('q');
 
-var REPLY_SHEET = new SheetBo('DATA_REPLY');
+var REPLY_SHEET = new SheetBo('DATA_REPLY', 'DATA_REPLY_SUB');
 
 REPLY_SHEET.get = function (where) {
 	var deferred = Q.defer(),
@@ -13,8 +13,14 @@ REPLY_SHEET.get = function (where) {
 	model(this._table).find({
 		include: [
 			{
-				model: model('REF_ATTACHMENT'),
-				as: 'attachment'
+				model: model('DATA_REPLY_SUB'),
+				as: 'subItem',
+				include: [
+					{
+						model: model('REF_ATTACHMENT'),
+						as: 'attachment'
+					}
+				]
 			}
 		],
 		where: where

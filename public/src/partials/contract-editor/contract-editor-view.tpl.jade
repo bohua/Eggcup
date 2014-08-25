@@ -35,6 +35,16 @@
 
 			div.row
 				div.form-group.col-sm-4
+					label.control-label 丙方:
+					div
+						input.form-control(type="text", placeholder="丙方", ng-model="dialog_data_model.contract_C")
+				div.form-group.col-sm-4
+					label.control-label 丁方:
+					div
+						input.form-control(type="text", placeholder="丁方", ng-model="dialog_data_model.contract_D")
+
+			div.row
+				div.form-group.col-sm-4
 					label.control-label 合同标的:
 					div
 						input.form-control(type="text", placeholder="合同标的", ng-model="dialog_data_model.contract_price")

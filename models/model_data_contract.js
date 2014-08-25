@@ -14,7 +14,8 @@ module.exports = function (sequelize, DataTypes) {
 		contract_price:		{ type: DataTypes.DECIMAL(16,2), defaultValue: 0 },
 		contract_A:			{ type: DataTypes.STRING },
 		contract_B:			{ type: DataTypes.STRING },
-
+		contract_C:			{ type: DataTypes.STRING },
+		contract_D:			{ type: DataTypes.STRING },
 		/**
 		 * Sheet Properties
 		 */
