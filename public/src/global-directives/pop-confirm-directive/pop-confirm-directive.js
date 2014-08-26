@@ -5,28 +5,39 @@ angular.module('pop-confirm', [])
 	.directive('popConfirm', function () {
 		var popConfirm = {
 			link: function ($scope, $element, $attributes) {
-				var range = $attributes.clearRange || $($element).closest('.modal-content');
+				var options, range;
+				if ($attributes.popConfirm) {
+					options = eval("$scope." + $attributes.popConfirm);
+				}
+
+				if (options){
+					options.container = options.container || $($element).closest('div');
+					options.placement = options.placement || 'top';
+				}
+				else{
+					range = $attributes.clearRange || $($element).closest('.modal-content');
 					options = {
-					container: $($element).closest('div'),
-					placement: "top",
+						container: $($element).closest('div'),
+						placement: "top",
 
-					onConfirm: function(){
-						$(range).find(':input').each(function(){
-							if(this.hasAttribute('ng-model')){
-								eval("$scope." + this.getAttribute('ng-model') + "=null");
-							}
+						onConfirm: function () {
+							$(range).find(':input').each(function () {
+								if (this.hasAttribute('ng-model')) {
+									eval("$scope." + this.getAttribute('ng-model') + "=null");
+								}
 
-							if(this.hasAttribute('token-field')){
-								$(this).tokenfield('setTokens', []);
-							}
-						});
+								if (this.hasAttribute('token-field')) {
+									$(this).tokenfield('setTokens', []);
+								}
+							});
 
-						$(range).find('[toggle-button-model]').trigger('clear');
-						$(range).find('[date-field-model]').trigger('clear');
+							$(range).find('[toggle-button-model]').trigger('clear');
+							$(range).find('[date-field-model]').trigger('clear');
 
-						$scope.$apply();
-					}
-				};
+							$scope.$apply();
+						}
+					};
+				}
 
 				//var inputOptions = eval("$scope." + $attributes.popConfirm) || {};
 

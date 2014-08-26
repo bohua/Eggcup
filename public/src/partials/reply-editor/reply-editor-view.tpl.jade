@@ -1,6 +1,6 @@
 //Created by Bohua on 2014-06-18.
 #reply-editor-form.modal-dialog.modal-lg(ng-controller="replyEditorController")
-	form.modal-content(ng-submit="Confirm('update', true)")
+	div.modal-content
 		div.modal-header
 			button.close(type="button", data-dismiss="modal") &times;
 			h4.modal-title
@@ -20,61 +20,61 @@
 							div.input-group.date(date-field-model="dialog_data_model.reply_date", required)
 								span.input-group-addon
 									i.fa.fa-calendar
-								input.form-control.datepicker(type="text")
+								input.form-control.datepicker(type="text", ng-disabled="prop.mode=='readOnly'")
 
 						div.form-group.col-sm-3
 							label.control-label 咨询人:
 							div
-								input.form-control(type="text", placeholder="咨询人", ng-model="dialog_data_model.consult_person")
+								input.form-control(type="text", placeholder="咨询人", ng-model="dialog_data_model.consult_person", ng-disabled="prop.mode=='readOnly'")
 
 						div.form-group.col-sm-3
 							label.control-label 答复人:
 							div
-								input.form-control(type="text", placeholder="答复人", ng-model="dialog_data_model.reply_person", auto-complete-field="employeeFieldOptions")
+								input.form-control(type="text", placeholder="答复人", ng-model="dialog_data_model.reply_person", auto-complete-field="employeeFieldOptions", ng-disabled="prop.mode=='readOnly'")
 						div.form-group.col-sm-3
 							label.control-label 翻译人:
 							div
-								input.form-control(type="text", placeholder="答复人", ng-model="dialog_data_model.translate_person", auto-complete-field="employeeFieldOptions")
+								input.form-control(type="text", placeholder="答复人", ng-model="dialog_data_model.translate_person", auto-complete-field="employeeFieldOptions", ng-disabled="prop.mode=='readOnly'")
 
 					div.row
 						div.form-group.col-sm-6
 							label.control-label 解答方式:
 							div.form-group
 								div.btn-group(data-toggle="buttons")
-									label.btn.btn-default(toggle-button-model="dialog_data_model.reply_withEmail")
+									label.btn.btn-default(toggle-button-model="dialog_data_model.reply_withEmail", ng-disabled="prop.mode=='readOnly'")
 										input(type="checkbox")
 										span 邮件
-									label.btn.btn-default(toggle-button-model="dialog_data_model.reply_withTel")
+									label.btn.btn-default(toggle-button-model="dialog_data_model.reply_withTel", ng-disabled="prop.mode=='readOnly'")
 										input(type="checkbox")
 										span 电话
-									label.btn.btn-default(toggle-button-model="dialog_data_model.reply_withF2F")
-										input(type="checkbox")
-										span 面谈
-									label.btn.btn-default(toggle-button-model="dialog_data_model.reply_withFax")
+									label.btn.btn-default(toggle-button-model="dialog_data_model.reply_withFax", ng-disabled="prop.mode=='readOnly'")
 										input(type="checkbox")
 										span 传真
+									label.btn.btn-default(toggle-button-model="dialog_data_model.reply_withF2F", ng-disabled="prop.mode=='readOnly'")
+										input(type="checkbox")
+										span 面谈
 
-				h4.cursor-pointer(data-toggle="collapse", data-target="#reply-editor-f2f")
+				h4.cursor-pointer(data-toggle="collapse", data-target="#reply-editor-f2f", ng-show="dialog_data_model.reply_withF2F")
 					i.fa.fa-fw.fa-angle-down
 					span 回复面谈  &nbsp;
 						small Appointment
 				hr
-				#reply-editor-f2f.collapse.in
+				#reply-editor-f2f.collapse.in(ng-show="dialog_data_model.reply_withF2F")
 					div.row
 						div.form-group.col-sm-12
 							label.control-label 面谈地址:
 							div
-								input.form-control(type="text", placeholder="面谈地址", ng-model="dialog_data_model.meeting_address")
+								input.form-control(type="text", placeholder="面谈地址", ng-model="dialog_data_model.meeting_address", ng-disabled="prop.mode=='readOnly'")
 					div.row
 						div.form-group.col-sm-6
 							label.control-label 我方人员:
 							div
-								input.form-control(type="text", placeholder="我方人员", ng-model="dialog_data_model.meeting_people_A", token-field="assigneeListOptions")
+								input.form-control(type="text", placeholder="我方人员", ng-model="dialog_data_model.meeting_people_A", token-field="assigneeListOptions", ng-disabled="prop.mode=='readOnly'")
 
 						div.form-group.col-sm-6
 							label.control-label 客户人员:
 							div
-								input.form-control(type="text", placeholder="客户人员", ng-model="dialog_data_model.meeting_people_B", token-field="customerListOptions")
+								input.form-control(type="text", placeholder="客户人员", ng-model="dialog_data_model.meeting_people_B", token-field="customerListOptions", ng-disabled="prop.mode=='readOnly'")
 
 
 			div(ng-if="dialog_data_model.handling==1")
@@ -90,23 +90,23 @@
 							div.input-group.date(date-field-model="dialog_data_model.reply_date", required)
 								span.input-group-addon
 									i.fa.fa-calendar
-								input.form-control.datepicker(type="text")
+								input.form-control.datepicker(type="text", ng-disabled="prop.mode=='readOnly'")
 
 						div.form-group.col-sm-8
 							label.control-label 面谈地址:
 							div
-								input.form-control(type="text", placeholder="面谈地址", ng-model="dialog_data_model.meeting_address")
+								input.form-control(type="text", placeholder="面谈地址", ng-model="dialog_data_model.meeting_address", ng-disabled="prop.mode=='readOnly'")
 
 					div.row
 						div.form-group.col-sm-6
 							label.control-label 我方人员:
 							div
-								input.form-control(type="text", placeholder="我方人员", ng-model="dialog_data_model.meeting_people_A", token-field="assigneeListOptions")
+								input.form-control(type="text", placeholder="我方人员", ng-model="dialog_data_model.meeting_people_A", token-field="assigneeListOptions", ng-disabled="prop.mode=='readOnly'")
 
 						div.form-group.col-sm-6
 							label.control-label 客户人员:
 							div
-								input.form-control(type="text", placeholder="客户人员", ng-model="dialog_data_model.meeting_people_B", token-field="customerListOptions")
+								input.form-control(type="text", placeholder="客户人员", ng-model="dialog_data_model.meeting_people_B", token-field="customerListOptions", ng-disabled="prop.mode=='readOnly'")
 
 			h4.cursor-pointer(data-toggle="collapse", data-target="#reply-editor-mom")
 				i.fa.fa-fw.fa-angle-down
@@ -118,17 +118,47 @@
 					div.form-group.col-sm-12
 						label.control-label 咨询事项:
 						div
-							textarea.form-control(rows="5", placeholder="咨询事项", ng-model="dialog_data_model.consult_context")
+							textarea.form-control(rows="5", placeholder="咨询事项", ng-model="dialog_data_model.consult_context", ng-disabled="prop.mode=='readOnly'")
 				div.row
 					div.form-group.col-sm-12
 						label.control-label 解答回复:
 						div
-							textarea.form-control(rows="5", placeholder="解答回复", ng-model="dialog_data_model.reply_context")
+							textarea.form-control(rows="5", placeholder="解答回复", ng-model="dialog_data_model.reply_context", ng-disabled="prop.mode=='readOnly'")
 				div.row
 					div.form-group.col-sm-12
 						label.control-label 法律依据:
 						div
-							textarea.form-control(rows="5", placeholder="法律依据", ng-model="dialog_data_model.law_context")
+							textarea.form-control(rows="5", placeholder="法律依据", ng-model="dialog_data_model.law_context", ng-disabled="prop.mode=='readOnly'")
+
+
+			h4.cursor-pointer(data-toggle="collapse", data-target="#reply-editor-attachment")
+				i.fa.fa-fw.fa-angle-down
+				span 附件管理  &nbsp;
+					small Privileges
+			hr
+			#reply-editor-attachment.collapse.in
+				div.table-responsive
+					table#reply-attach-editor-table.table.table-bordered
+						thead
+							tr
+								th 文件名
+								th 文件类型
+								th 文件大小
+								th 上传日期
+						tbody
+							tr.cursor-pointer(ng-repeat="item in dialog_data_model.attachment")
+								td
+									a.attachment-token.label(download="{{item.file_name}}", ng-href="file-download/{{item.file_url}}")
+										i.fa.text-info.fa-fw(class="{{translateFileType(item.file_ext).icon}}") &nbsp;
+										span {{item.file_name}}
+								td {{translateFileType(item.file_ext).type}}
+								td {{item.file_size}}
+								td {{item.createdAt | date:'yyyy-MM-dd'}}
+
+				table-content-handler(option="tableHandlerOption", model="dialog_data_model.attachment", table="#reply-attach-editor-table")
+
+				file-upload-field(on-uploaded="fileUploaded(file)", ng-disabled="prop.mode=='readOnly'")
+
 
 			//h4.cursor-pointer(data-toggle="collapse", data-target="#reply-editor-privilege")
 			//	i.fa.fa-fw.fa-angle-down
@@ -148,11 +178,11 @@
 			//						span 客户浏览
 
 		div.modal-footer
-			button.btn.btn-primary(type="submit") 保存
+			button.btn.btn-primary(type="submit", ng-click="Confirm('update', true)", ng-show="prop.mode!='readOnly'") 保存
 			button.btn.btn-default(type="button", ng-click="Cancel()") 取消
 
 			div.pull-left
-				button.btn.btn-danger(ng-if="prop.mode=='edit'", pop-confirm="emptyBtnOptions") 清空
+				button.btn.btn-danger(ng-if="prop.mode=='edit'", pop-confirm="deleteBtnOptions") 删除
 			div.pull-left.alert-danger.panel(ng-show="prop.showErrorMessage")
 				i.fa.fa-fw.fa-warning
 				span 单据填写有误，请修正红色标记

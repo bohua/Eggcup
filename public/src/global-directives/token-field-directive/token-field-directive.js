@@ -6,6 +6,7 @@ angular.module('token-field', [])
 		var tokenField = {
 			link: {
 				post: function ($scope, $element, $attributes) {
+					var isDisabled = eval('$scope.' + $attributes.ngDisabled);
 					var wrapper = $($element).parent();
 					var ngModel = $attributes.ngModel,
 						tokens = eval("$scope." + ngModel) || [],
@@ -21,6 +22,16 @@ angular.module('token-field', [])
 					var inputOption = eval("$scope." + $attributes.tokenField) || {};
 					$.extend(true, options, inputOption);
 
+					/**
+					 * If disabled
+					 */
+					if(isDisabled){
+						return;
+					}
+
+					/**
+					 * If enabled
+					 */
 					$($element).tokenfield(options);
 
 					function updateModel(tokens) {

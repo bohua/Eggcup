@@ -18,19 +18,69 @@ angular.module('reply-section', ['reply-editor', 'attach-editor', 'appointment-e
 				template: '/src/partials/reply-editor/reply-editor-view.tpl.html'
 			};
 
-			$scope.showReplyEditor = function ($event, dataModel) {
+			$scope.showReplyEditor = function ($event, dataModel, mode) {
+				if(!$scope.canEdit){
+					mode = 'readOnly';
+				}
+
+				if ($($event.target).closest('td').hasClass('attachment-td')) {
+					return;
+				}
+
 				dataModel.handling = $scope.task_model.handling;
 				dataModel.customer_contact = $scope.task_model.customer_contact;
 				dataModel.inherit_consult_context = $scope.task_model.register_content;
 
-				$($event.currentTarget).trigger('popup', ['edit', dataModel]);
+				$($event.currentTarget).trigger('popup', [mode || 'readOnly', dataModel]);
 			};
 
+			function updateReplySubItem(replySheet, updatedItem) {
+				if (!updatedItem.id) {
+					replySheet.subItem.push(updatedItem);
+					return true;
+				}
+
+				for (var i in replySheet.subItem) {
+					var item = replySheet.subItem[i];
+					if (item.id === updatedItem.id) {
+						replySheet.subItem[i] = updatedItem;
+						return true;
+					}
+				}
+
+				return false;
+			}
+			function removeReplySubItem(replySheet, removedItem){
+				for (var i in replySheet.subItem) {
+					var item = replySheet.subItem[i];
+					if (item.id === removedItem.id) {
+						replySheet.subItem.splice(i, 1);
+						return true;
+					}
+				}
+
+				return false;
+			}
+
 			$scope.onReplySaved = function (action, data) {
-				$scope.task_model.replySheet = data;
+				switch (action) {
+					case 'remove':
+					{
+						removeReplySubItem($scope.task_model.replySheet, data);
+						break;
+					}
+
+					case 'new':
+					case 'update':
+					{
+						updateReplySubItem($scope.task_model.replySheet, data);
+						break;
+					}
+				}
+
 				var o = {
 					id: $scope.task_model.id,
-					replySheet: data
+					replySheet: $scope.task_model.replySheet
 				};
 				$scope.$emit('event:saveTaskModel', $scope.task_model.id, o);
 			};
@@ -44,39 +94,6 @@ angular.module('reply-section', ['reply-editor', 'attach-editor', 'appointment-e
 				});
 
 			});
-
-			/**
-			 * Attachment Editor Initialization
-			 */
-			$scope.attachEditorConfig = {
-				dialogOption: {
-					backdrop: 'static'
-				},
-				template: '/src/partials/attach-editor/attach-editor-view.tpl.html'
-			};
-
-			$scope.showAttachEditor = function ($event, dataModel) {
-				var mode = $scope.canEdit ? 'edit' : 'readOnly';
-				dataModel = dataModel || [];
-				$($event.currentTarget).trigger('popup', [mode, dataModel]);
-			};
-
-			$scope.getAttachModel = function () {
-				return $scope.task_model.replySheet.attachment;
-			};
-
-			$scope.onAttachSaved = function (action, data) {
-				$scope.task_model.replySheet.attachment = data;
-
-				var o = {
-					id: $scope.task_model.id,
-					replySheet: {
-						id: $scope.task_model.replySheet.id,
-						attachment: data
-					}
-				};
-				$scope.$emit('event:saveTaskModel', $scope.task_model.id, o);
-			};
 
 			/**
 			 * Appointment Editor Initialization
