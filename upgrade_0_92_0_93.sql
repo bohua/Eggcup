@@ -62,9 +62,47 @@ IF NOT EXISTS( (SELECT * FROM information_schema.TABLES WHERE TABLE_SCHEMA='eggc
              id
       FROM data_replies;
 
+END IF;
 
+
+IF EXISTS((SELECT * FROM information_schema.COLUMNS WHERE TABLE_SCHEMA='eggcup'
+        AND COLUMN_NAME='DATAREPLYId' AND TABLE_NAME='ref_attachments'))
+	AND NOT EXISTS( (SELECT * FROM information_schema.COLUMNS WHERE TABLE_SCHEMA='eggcup'
+        AND COLUMN_NAME='DATAREPLYSUBId' AND TABLE_NAME='ref_attachments') ) THEN
+
+	ALTER TABLE ref_attachments ADD COLUMN DATAREPLYSUBId INT(11) NULL;
+
+	UPDATE ref_attachments
+	JOIN
+		data_reply_subs
+	ON
+		ref_attachments.DATAREPLYId = data_reply_subs.reply_id
+
+	SET ref_attachments.DATAREPLYSUBId = data_reply_subs.id
+	WHERE
+		 data_reply_subs.reply_id IS NOT NULL;
 
 END IF;
+
+IF EXISTS((SELECT * FROM information_schema.COLUMNS WHERE TABLE_SCHEMA='eggcup'
+        AND COLUMN_NAME='DATA_REPLY_Id' AND TABLE_NAME='ref_attachments'))
+	AND NOT EXISTS( (SELECT * FROM information_schema.COLUMNS WHERE TABLE_SCHEMA='eggcup'
+        AND COLUMN_NAME='DATA_REPLY_SUB_Id' AND TABLE_NAME='ref_attachments') ) THEN
+
+	ALTER TABLE ref_attachments ADD COLUMN DATA_REPLY_SUB_Id INT(11) NULL;
+
+	UPDATE ref_attachments
+	JOIN
+		data_reply_subs
+	ON
+		ref_attachments.DATA_REPLY_Id = data_reply_subs.reply_id
+
+	SET ref_attachments.DATA_REPLY_SUB_Id = data_reply_subs.id
+	WHERE
+		 data_reply_subs.reply_id IS NOT NULL;
+
+END IF;
+
 
 END $$
 CALL upgrade_database_0_92_0_93() $$
