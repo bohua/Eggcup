@@ -103,6 +103,15 @@ IF EXISTS((SELECT * FROM information_schema.COLUMNS WHERE TABLE_SCHEMA='eggcup'
 
 END IF;
 
+IF NOT EXISTS( (SELECT * FROM information_schema.COLUMNS WHERE TABLE_SCHEMA='eggcup'
+        AND COLUMN_NAME='contract_D' AND TABLE_NAME='data_contracts') ) THEN
+    ALTER TABLE data_contracts ADD COLUMN contract_D VARCHAR(255) NULL DEFAULT NULL AFTER contract_B;
+END IF;
+
+IF NOT EXISTS( (SELECT * FROM information_schema.COLUMNS WHERE TABLE_SCHEMA='eggcup'
+        AND COLUMN_NAME='contract_C' AND TABLE_NAME='data_contracts') ) THEN
+    ALTER TABLE data_contracts ADD COLUMN contract_C VARCHAR(255) NULL DEFAULT NULL AFTER contract_B;
+END IF;
 
 END $$
 CALL upgrade_database_0_92_0_93() $$
