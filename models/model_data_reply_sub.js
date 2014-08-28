@@ -33,7 +33,7 @@ module.exports = function (sequelize, DataTypes) {
 			associate: function (models) {
 				DATA_REPLY_SUB
 					.belongsTo(models.DATA_REPLY, {as: 'parent', foreignKey: 'reply_id'})
-					.hasMany(models.REF_ATTACHMENT, {as: 'attachment'})
+					.hasMany(models.REF_ATTACHMENT, {as: 'attachment', foreignKey: 'reply_sub_id'})
 			}
 		}
 	});

@@ -17,7 +17,7 @@ module.exports = function (sequelize, DataTypes) {
 			associate: function (models) {
 				DATA_ACCOUNT_SUB
 					.belongsTo(models.DATA_ACCOUNT, {as: 'parent', foreignKey: 'account_id'})
-					.hasMany(models.REF_ATTACHMENT, {as: 'attachment'})
+					.hasMany(models.REF_ATTACHMENT, {as: 'attachment', foreignKey: 'account_sub_id'})
 			}
 		}
 	});
