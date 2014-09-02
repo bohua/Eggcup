@@ -5,59 +5,82 @@ BEGIN
 
 IF EXISTS( (SELECT * FROM information_schema.COLUMNS WHERE TABLE_SCHEMA='eggcup'
         AND COLUMN_NAME='DATAACCOUNTSUBId' AND TABLE_NAME='ref_attachments') ) THEN
+    ALTER TABLE eggcup.ref_attachments DROP FOREIGN KEY ref_attachments_ibfk_1;
     ALTER TABLE eggcup.ref_attachments CHANGE COLUMN DATAACCOUNTSUBId account_sub_id INT(11) NULL DEFAULT NULL ;
+    ALTER TABLE eggcup.ref_attachments ADD FOREIGN KEY (account_sub_id) REFERENCES data_account_subs(id);
 END IF;
 IF EXISTS( (SELECT * FROM information_schema.COLUMNS WHERE TABLE_SCHEMA='eggcup'
         AND COLUMN_NAME='DATA_ACCOUNT_SUB_Id' AND TABLE_NAME='ref_attachments') ) THEN
+    ALTER TABLE eggcup.ref_attachments DROP FOREIGN KEY ref_attachments_ibfk_1;
     ALTER TABLE eggcup.ref_attachments CHANGE COLUMN DATA_ACCOUNT_SUB_Id account_sub_id INT(11) NULL DEFAULT NULL ;
+    ALTER TABLE eggcup.ref_attachments ADD FOREIGN KEY (account_sub_id) REFERENCES data_account_subs(id);
 END IF;
 
 
 IF EXISTS( (SELECT * FROM information_schema.COLUMNS WHERE TABLE_SCHEMA='eggcup'
         AND COLUMN_NAME='DATACONTRACTSUBId' AND TABLE_NAME='ref_attachments') ) THEN
+    ALTER TABLE eggcup.ref_attachments DROP FOREIGN KEY ref_attachments_ibfk_2;
     ALTER TABLE eggcup.ref_attachments CHANGE COLUMN DATACONTRACTSUBId contract_sub_id INT(11) NULL DEFAULT NULL ;
+    ALTER TABLE eggcup.ref_attachments ADD FOREIGN KEY (contract_sub_id) REFERENCES data_contract_subs(id);
 END IF;
 IF EXISTS( (SELECT * FROM information_schema.COLUMNS WHERE TABLE_SCHEMA='eggcup'
         AND COLUMN_NAME='DATA_CONTRACT_SUB_Id' AND TABLE_NAME='ref_attachments') ) THEN
+    ALTER TABLE eggcup.ref_attachments DROP FOREIGN KEY ref_attachments_ibfk_2;
     ALTER TABLE eggcup.ref_attachments CHANGE COLUMN DATA_CONTRACT_SUB_Id contract_sub_id INT(11) NULL DEFAULT NULL ;
+    ALTER TABLE eggcup.ref_attachments ADD FOREIGN KEY (contract_sub_id) REFERENCES data_contract_subs(id);
 END IF;
 
 IF EXISTS( (SELECT * FROM information_schema.COLUMNS WHERE TABLE_SCHEMA='eggcup'
         AND COLUMN_NAME='DATAEXECUTESUBId' AND TABLE_NAME='ref_attachments') ) THEN
+    ALTER TABLE eggcup.ref_attachments DROP FOREIGN KEY ref_attachments_ibfk_3;
     ALTER TABLE eggcup.ref_attachments CHANGE COLUMN DATAEXECUTESUBId execute_sub_id INT(11) NULL DEFAULT NULL ;
+    ALTER TABLE eggcup.ref_attachments ADD FOREIGN KEY (execute_sub_id) REFERENCES data_execute_subs(id);
 END IF;
 IF EXISTS( (SELECT * FROM information_schema.COLUMNS WHERE TABLE_SCHEMA='eggcup'
         AND COLUMN_NAME='DATA_EXECUTE_SUB_Id' AND TABLE_NAME='ref_attachments') ) THEN
+    ALTER TABLE eggcup.ref_attachments DROP FOREIGN KEY ref_attachments_ibfk_3;
     ALTER TABLE eggcup.ref_attachments CHANGE COLUMN DATA_EXECUTE_SUB_Id execute_sub_id INT(11) NULL DEFAULT NULL ;
-END IF;
-
-IF EXISTS( (SELECT * FROM information_schema.COLUMNS WHERE TABLE_SCHEMA='eggcup'
-        AND COLUMN_NAME='DATAPROPOSALSUBId' AND TABLE_NAME='ref_attachments') ) THEN
-    ALTER TABLE eggcup.ref_attachments CHANGE COLUMN DATAPROPOSALSUBId proposal_sub_id INT(11) NULL DEFAULT NULL ;
-END IF;
-IF EXISTS( (SELECT * FROM information_schema.COLUMNS WHERE TABLE_SCHEMA='eggcup'
-        AND COLUMN_NAME='DATA_PROPOSAL_SUB_Id' AND TABLE_NAME='ref_attachments') ) THEN
-    ALTER TABLE eggcup.ref_attachments CHANGE COLUMN DATA_PROPOSAL_SUB_Id proposal_sub_id INT(11) NULL DEFAULT NULL ;
-END IF;
-
-IF EXISTS( (SELECT * FROM information_schema.COLUMNS WHERE TABLE_SCHEMA='eggcup'
-        AND COLUMN_NAME='DATAREPLYId' AND TABLE_NAME='ref_attachments') ) THEN
-    ALTER TABLE eggcup.ref_attachments CHANGE COLUMN DATAREPLYId reply_id INT(11) NULL DEFAULT NULL ;
-END IF;
-IF EXISTS( (SELECT * FROM information_schema.COLUMNS WHERE TABLE_SCHEMA='eggcup'
-        AND COLUMN_NAME='DATA_REPLY_Id' AND TABLE_NAME='ref_attachments') ) THEN
-    ALTER TABLE eggcup.ref_attachments CHANGE COLUMN DATA_REPLY_Id reply_id INT(11) NULL DEFAULT NULL ;
+    ALTER TABLE eggcup.ref_attachments ADD FOREIGN KEY (execute_sub_id) REFERENCES data_execute_subs(id);
 END IF;
 
 IF EXISTS( (SELECT * FROM information_schema.COLUMNS WHERE TABLE_SCHEMA='eggcup'
         AND COLUMN_NAME='DATAEXPENSESUBId' AND TABLE_NAME='ref_attachments') ) THEN
+    ALTER TABLE eggcup.ref_attachments DROP FOREIGN KEY ref_attachments_ibfk_4;
     ALTER TABLE eggcup.ref_attachments CHANGE COLUMN DATAEXPENSESUBId expense_sub_id INT(11) NULL DEFAULT NULL ;
+    ALTER TABLE eggcup.ref_attachments ADD FOREIGN KEY (expense_sub_id) REFERENCES data_expense_subs(id);
 END IF;
 IF EXISTS( (SELECT * FROM information_schema.COLUMNS WHERE TABLE_SCHEMA='eggcup'
         AND COLUMN_NAME='DATA_EXPENSE_SUB_Id' AND TABLE_NAME='ref_attachments') ) THEN
+    ALTER TABLE eggcup.ref_attachments DROP FOREIGN KEY ref_attachments_ibfk_4;
     ALTER TABLE eggcup.ref_attachments CHANGE COLUMN DATA_EXPENSE_SUB_Id expense_sub_id INT(11) NULL DEFAULT NULL ;
+    ALTER TABLE eggcup.ref_attachments ADD FOREIGN KEY (expense_sub_id) REFERENCES data_expense_subs(id);
 END IF;
 
+IF EXISTS( (SELECT * FROM information_schema.COLUMNS WHERE TABLE_SCHEMA='eggcup'
+        AND COLUMN_NAME='DATAPROPOSALSUBId' AND TABLE_NAME='ref_attachments') ) THEN
+    ALTER TABLE eggcup.ref_attachments DROP FOREIGN KEY ref_attachments_ibfk_6;
+    ALTER TABLE eggcup.ref_attachments CHANGE COLUMN DATAPROPOSALSUBId proposal_sub_id INT(11) NULL DEFAULT NULL ;
+    ALTER TABLE eggcup.ref_attachments ADD FOREIGN KEY (proposal_sub_id) REFERENCES data_proposal_subs(id);
+END IF;
+IF EXISTS( (SELECT * FROM information_schema.COLUMNS WHERE TABLE_SCHEMA='eggcup'
+        AND COLUMN_NAME='DATA_PROPOSAL_SUB_Id' AND TABLE_NAME='ref_attachments') ) THEN
+    ALTER TABLE eggcup.ref_attachments DROP FOREIGN KEY ref_attachments_ibfk_6;
+    ALTER TABLE eggcup.ref_attachments CHANGE COLUMN DATA_PROPOSAL_SUB_Id proposal_sub_id INT(11) NULL DEFAULT NULL ;
+    ALTER TABLE eggcup.ref_attachments ADD FOREIGN KEY (proposal_sub_id) REFERENCES data_proposal_subs(id);
+END IF;
+
+IF EXISTS( (SELECT * FROM information_schema.COLUMNS WHERE TABLE_SCHEMA='eggcup'
+        AND COLUMN_NAME='DATAREPLYId' AND TABLE_NAME='ref_attachments') ) THEN
+    ALTER TABLE eggcup.ref_attachments DROP FOREIGN KEY ref_attachments_ibfk_7;
+    ALTER TABLE eggcup.ref_attachments CHANGE COLUMN DATAREPLYId reply_id INT(11) NULL DEFAULT NULL ;
+    ALTER TABLE eggcup.ref_attachments ADD FOREIGN KEY (reply_id) REFERENCES data_replies(id);
+END IF;
+IF EXISTS( (SELECT * FROM information_schema.COLUMNS WHERE TABLE_SCHEMA='eggcup'
+        AND COLUMN_NAME='DATA_REPLY_Id' AND TABLE_NAME='ref_attachments') ) THEN
+    ALTER TABLE eggcup.ref_attachments DROP FOREIGN KEY ref_attachments_ibfk_7;
+    ALTER TABLE eggcup.ref_attachments CHANGE COLUMN DATA_REPLY_Id reply_id INT(11) NULL DEFAULT NULL ;
+    ALTER TABLE eggcup.ref_attachments ADD FOREIGN KEY (reply_id) REFERENCES data_replies(id);
+END IF;
 
 IF NOT EXISTS( (SELECT * FROM information_schema.TABLES WHERE TABLE_SCHEMA='eggcup'
         AND TABLE_NAME='data_reply_subs') ) THEN
