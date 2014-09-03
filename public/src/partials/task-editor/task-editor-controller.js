@@ -343,7 +343,9 @@ angular.module('task-editor', [
 
 		$scope.$on('event:saveTaskModel', function (event, id, data) {
 			TASK.save({task_id: id}, data, function () {
-				$scope.loadTask();
+				$timeout(function(){
+					$scope.loadTask();
+				}, 500);
 			});
 		});
 
