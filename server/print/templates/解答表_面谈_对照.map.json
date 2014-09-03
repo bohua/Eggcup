@@ -27,7 +27,7 @@
 		},{
 			"name": "面谈日期",
 			"cell": "E,5",
-			"data_field": ""
+			"data_field": "reply_date"
 		},{
 			"name": "面谈地址",
 			"cell": "B,6",
