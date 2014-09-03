@@ -178,13 +178,13 @@
 			//						span 客户浏览
 
 		div.modal-footer
+			button.btn.btn-default(ng-click="printDoc()") 打印
 			button.btn.btn-primary(type="submit", ng-click="Confirm('update', true)", ng-show="prop.mode!='readOnly'") 保存
 			button.btn.btn-default(type="button", ng-click="Cancel()") 取消
+
 
 			div.pull-left
 				button.btn.btn-danger(ng-if="prop.mode=='edit'", pop-confirm="deleteBtnOptions") 删除
 			div.pull-left.alert-danger.panel(ng-show="prop.showErrorMessage")
 				i.fa.fa-fw.fa-warning
 				span 单据填写有误，请修正红色标记
-			div.pull-left
-				button.btn.btn-primary(ng-click="printDoc()") 打印
