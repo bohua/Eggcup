@@ -39,6 +39,9 @@ angular.module('reply-editor', ['toggle-button-model', 'pop-confirm', 'employee-
 			$scope.translateFileType = fileTypeService.translateFileType;
 
 			$scope.fileUploaded = function(file){
+				if(!$scope.dialog_data_model.attachment){
+					$scope.dialog_data_model.attachment = [];
+				}
 				$scope.dialog_data_model.attachment.push(file);
 				$scope.$apply();
 			};
